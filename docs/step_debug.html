@@ -1,0 +1,1141 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+        "http://www.w3.org/TR/2000/REC-xhtml1-20000126/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>Xdebug: Documentation » Step Debugging</title>
+	<meta name="ROBOTS" content="ALL" />
+	<meta name="MSSmartTagsPreventParsing" content="true" />
+	<meta name="DESCRIPTION" content="Xdebug: A powerful debugger for PHP" />
+	<meta name="AUTHOR" content="Derick Rethans, as in derick@xdebug.org" />
+	<link rel="icon" type="image/png" href="/images/favicon.png">
+		<link rel="stylesheet" type="text/css" href="/core2.css" />
+	<meta name="viewport" content="initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+</head>
+<body>
+	<nav>
+	<div class="content_width">
+		<h1><a href="/"><svg xmlns="http://www.w3.org/2000/svg" width="351" height="181" viewBox="0 0 351 181"><title>Xdebug</title><g fill="none" fill-rule="evenodd" stroke="#FFF"><g transform="translate(5 5)"><path fill="#317E1E" fill-rule="nonzero" stroke-width="5" d="M127.9 85.5l68.2 70.7.4 17.3h-38.6l-60.8-59.7-60 59.7h-39v-17.6l69.7-69.8-69.6-71.2V-2.5h38.7l60.2 60 61-60h38.3v16l-68.5 72z"/><circle cx="75.9" cy="74.6" r="3.5" stroke-opacity=".8" stroke-width="4"/><circle cx="105.1" cy="85" r="3.5" stroke-opacity=".8" stroke-width="4"/><circle cx="158.4" cy="15" r="3.5" stroke-opacity=".8" stroke-width="4"/><circle cx="50.9" cy="140" r="3.5" stroke-opacity=".8" stroke-width="4"/><circle cx="180.4" cy="158.5" r="3.5" stroke-opacity=".8" stroke-width="4"/><path stroke-linecap="square" stroke-linejoin="round" stroke-width="4" d="M32.6 158.2L42 149M104.3 69.1l49.4-49.4"/><path stroke-linejoin="round" stroke-width="4" d="M102.3 82.7L30.3 10H11.2M167.4 10H183M11.2 160.7l79.2-78"/><path stroke-linejoin="round" stroke-opacity=".7" stroke-width="4" d="M116.3 74.6L181 10"/><path stroke-linejoin="round" stroke-width="4" d="M20.7 19.7l52.7 52.6"/><path stroke-linejoin="round" stroke-opacity=".7" stroke-width="4" d="M116.3 96.7l32 32"/><path stroke-linejoin="round" stroke-width="4" d="M155.2 133.6l22.1 22M53.6 137.5L97 94.9l67.1 66.6h4.9"/></g><g fill="#000" fill-rule="nonzero" stroke-width="4"><path d="M158.3 107.7V72.9c0-.5 0-.5-.8-.5-.7 0-.7 0-.7.6v34.7c0 .6 0 .5.7.5.8 0 .7 0 .7-.5zm3.9 11.2a22.5 22.5 0 0 1-20-.7c-3.4-2-5.2-4.8-5.2-8.4V69.6c0-3 1.5-5.6 4.3-7.4a17 17 0 0 1 9.2-2.4c3 0 5.6.3 7.7 1V47H178v73h-15l-.8-1.1zM200.9 84V73.2c0-.8 0-.8-.8-.8s-.8 0-.8.8V84h1.6zm-1.6 12.5v11c0 .7 0 .7.8.7.7 0 .8 0 .8-.8V97.2h19.8v10.4c0 8.9-7.3 13.2-20.7 13.2-13.3 0-20.5-4.5-20.5-13.7V73.6c0-9.2 7.2-13.8 20.5-13.8 13.4 0 20.7 4.4 20.7 13.4v23.3h-21.4zM243.3 107.7V73c0-.6 0-.6-.7-.6-.8 0-.8 0-.8.5v34.8c0 .6 0 .5.8.5.7 0 .7 0 .7-.5zm-5.4 11.1l-.9 1.3h-15V47h19.8v13.8c2.1-.7 4.7-1 7.9-1 3.1 0 6.1.8 8.8 2.3 3 1.6 4.6 4.2 4.6 7.5v40.2c0 3.6-1.8 6.4-5.3 8.4a22.5 22.5 0 0 1-19.9.6zM285.8 119.7c-2.1.8-4.7 1.1-7.8 1.1a17 17 0 0 1-9.1-2.4c-2.8-1.7-4.4-4.2-4.4-7.2v-51h19.8v47.5c0 .6 0 .5.8.5.7 0 .7 0 .7-.4V60h19.8v60h-19.8v-.4zM328.3 108.3V73c0-.6 0-.6-.7-.6-.8 0-.8 0-.8.6V108c0 .6 0 .6.8.6.7 0 .7 0 .7-.4zm-.9 11.8c-2 .5-4.2.7-6.9.7a17 17 0 0 1-9.1-2.4c-2.9-1.7-4.4-4.2-4.4-7.2V71c0-7.4 5.2-11.2 14.6-11.2 2.3 0 5 .7 8.3 2l1.7-1.7H348v57.3c0 4.4-1 9.5-2.8 12-2.1 3.2-7.7 4.5-17 4.5h-18.4v-12h14.9c1.1 0 2-.7 2.7-1.8z"/></g></g></svg>
+</a></h1>
+		<ul id="menu">
+			<li><a href="/docs/install">Install</a></li>
+			<li><a href="/docs/">Documentation</a></li>
+			<li><a href="/reporting-bugs">Report Issues</a></li>
+			<li><a href="https://github.com/xdebug/xdebug" target="_blank">GitHub</a></li>
+		</ul>
+	</div>
+</nav>
+
+	<div class="content_width" id="support">If you find Xdebug useful, please consider <a href='/support'>supporting the project</a>.</div>
+
+	<main class="content_width">
+<h1>Step Debugging</h1>
+
+
+<div class="doc_section">
+	<p class='intro'>Xdebug's step debugger allows you to interactively walk through your code to
+debug control flow and examine data structures.</p>
+	<h2>Introduction <a name="Introduction" href="#Introduction">#</a></h2>
+
+<p>Xdebug interacts with IDEs to provide step debugging functionality, and
+therefore you also need to configure an IDE that knows how to talk to Xdebug
+with the open <a href="/docs/dbgp">DBGp</a> protocol.</p>
+
+<p>This protocol is supported by nearly every PHP IDE (including Visual Studio 
+Code and PhpStorm), and also by text-based editors. There is
+also a simple <a href='/docs/dbgpClient'>Command Line Debug Client</a> available as part of the Xdebug project,
+but it is strongly recommended that you use an IDE for debugging. (An <a
+href="#clients">overview of third party clients</a> is available further down
+this page.)</p>
+
+<a name="starting"></a>
+<h2>Configuring Step Debugging <a name="configure" href="#configure">#</a></h2>
+
+<p>In your <code>php.ini</code>, <code>99-xdebug.ini</code>, or other
+distribution specific PHP ini file, change (or set) the <a href="/docs/all_settings#mode">xdebug.mode</a> setting to
+<code>debug</code>. Please refer to <a
+href='/docs/install#configure-php'>Configure PHP</a> in the documentation to
+find out which PHP ini file to modify.</p>
+
+<p>In set-ups where PHP/Xdebug and your IDE all run on the
+same host, this is all you need to configure on the PHP and Xdebug side.
+<small>(Skip to <a href='#activate_debugger'>Activating the Debugger</a> if
+that's the case.)</small> </p>
+
+<p>If PHP/Xdebug run on a different machine, virtual host, or in a Docker
+container, you need to tell Xdebug where to make the debugging connection
+<b>to</b>, as it is Xdebug that initiates the communication to the IDE, and not
+the other way around.</p>
+
+<p>If PHP/Xdebug run on a different machine in the same sub-net, and you run
+your browser on the same host as your IDE, then you set the
+<a href="/docs/all_settings#discover_client_host">xdebug.discover_client_host</a> setting to <code>1</code>. Xdebug will then use the
+HTTP headers to find out the IP address of the host that initiated the
+debugging request, and use that IP address to connect to. This is a common
+way of set-up if you are sharing a development server among you and your team
+mates.</p>
+
+<p>In more complex set-ups you need to configure the host and port that Xdebug
+connects to yourself. With <a href="/docs/all_settings#client_host">xdebug.client_host</a> you can select the IP or hostname
+of the machine that runs your IDE, and with <a href="/docs/all_settings#client_port">xdebug.client_port</a> the TCP port.
+Make sure that the host running PHP/Xdebug can connect to your IDE with the
+configured IP address and port, and that there is no firewall or other software
+blocking an incoming connection.</p>
+
+<h2>Activating Step Debugging <a name="activate_debugger" href="#activate_debugger">#</a></h2>
+
+<p>In the default configuration, the debugger activates if a "trigger" is
+present, although it's possible to instruct the debugger to always initiate a
+debugging session by setting <a href="/docs/all_settings#start_with_request">xdebug.start_with_request</a> to <code>yes</code>.</p>
+
+<p>Which trigger to use depends on whether you're debugging a PHP application
+through <a href='#activate_browser'>a browser</a>, or on the <a
+href='#activate_cmdline'>command line</a>, such as when running unit tests.</p>
+
+<h3>Command Line <a name="activate-debugger-cmd" href="#activate-debugger-cmd">#</a></h3>
+
+<p>To signal the debugger to initiate connections, Xdebug will look whether the
+<code>XDEBUG_SESSION</code> environment variable is present.</p> <p>The value
+of the variable does not matter unless you have set up a trigger value with
+<a href="/docs/all_settings#trigger_value">xdebug.trigger_value</a>.</p>
+
+<p>
+On Unix like platforms, you can set it like:
+</p>
+<pre class="example">
+export XDEBUG_SESSION=1
+</pre>
+<p>
+On Windows, you set the environment like:
+</p>
+<pre class="example">
+set XDEBUG_SESSION=1
+</pre>
+
+<p>When you now run a php script with <code>php myscript.php</code> or
+<code>vendor/bin/phpunit</code> Xdebug will initiate a debugging session and
+connect to your IDE.</p>
+<p>Please refer to the <a href="#troubleshoot">Troubleshooting</a> section if
+it does not seem like Xdebug is activating.</p>
+
+<h3>Web Application <a name="web-application" href="#web-application">#</a></h3>
+
+<p>The recommended way to initiate a debugging session is by configuring your
+IDE to accept incoming debugging connections, and then use a browser extension
+which sets the right trigger cookie.</p>
+
+<h4>Browser Extension Initiation <a name="browser-extensions" href="#browser-extensions">#</a></h4>
+
+<p>
+The extensions are:
+</p>
+<a name="firefox-ext"></a>
+<ul>
+<li>
+	<a href="https://addons.mozilla.org/en-GB/firefox/addon/xdebug-helper-for-firefox/">Xdebug Helper for Firefox</a>
+	(<a href="https://github.com/BrianGilbert/xdebug-helper-for-firefox">source</a>).
+</li>
+<li>
+	<a href="https://chrome.google.com/extensions/detail/eadndfjplgieldjbigjakmdgkmoaaaoc">Xdebug Helper for Chrome</a>
+	(<a href="https://github.com/mac-cain13/xdebug-helper-for-chrome">source</a>).
+</li>
+<li>
+	<a href="https://apps.apple.com/app/safari-xdebug-toggle/id1437227804?mt=12">XDebugToggle for Safari</a>
+	(<a href="https://github.com/kampfq/SafariXDebugToggle">source</a>).
+</li>
+</ul>
+<p>Each extension adds an icon to your browser where you can select which
+functionality you want to trigger. Xdebug will continue to start debugging for
+every request as long as the debug toggle has been enabled.</p>
+
+<h4>Manual Initiation <a name="manual-init" href="#manual-init">#</a></h4>
+<p>Alternatively, you can signal Xdebug to initiate debugging for a
+<strong>single</strong> request by adding
+<code>XDEBUG_SESSION=session_name</code> as additional <code>GET</code> (or
+<code>POST</code>) parameter. You can pick any value for
+<code>session_name</code>, unless <a href="/docs/all_settings#trigger_value">xdebug.trigger_value</a> is set.</p>
+
+<a name="browser_session"></a>
+<p>For debugging <strong>multiple</strong> subsequent requests, Xdebug supports
+debugging sessions managed by a cookie.</p>
+
+<p>Set the <code>XDEBUG_SESSION_START=session_name</code> <code>GET</code> (or
+<code>POST</code>) HTTP parameter.</p>
+
+<p>Xdebug will set the <code>XDEBUG_SESSION</code> cookie. As long as the
+cookie is present, debugging will be initiated for every HTTP request
+(including favicons and images if they go through PHP).</p>
+
+<p>Before Xdebug 3.1, the time-out of the cookie is one hour. Starting with
+Xdebug 3.1, the cookie has no time-out configured.</p>
+
+<p>If you set the <code>XDEBUG_SESSION_STOP</code> <code>GET</code> (or
+<code>POST</code>) HTTP parameter, Xdebug removes the cookie.</p>
+
+
+<h4>HTTP Cookie <a name="cookie-init" href="#cookie-init">#</a></h4>
+<p>Xdebug will initiate a debug session in the presence of the
+<code>XDEBUG_SESSION</code> HTTP cookie. You can pick any value for the cookie,
+unless <a href="/docs/all_settings#trigger_value">xdebug.trigger_value</a> is set, in which case the value needs to match the
+value/one of the values from <a href="/docs/all_settings#trigger_value">xdebug.trigger_value</a>.</p>
+
+<p>A typical header looks like:</p>
+<pre>
+Cookie: XDEBUG_SESSION=start
+</pre>
+
+
+<h3>Alternative Ways of Triggering the Debugger <a name="alternative" href="#alterative">#</a></h3>
+
+<p>There are other ways how debugger activation can be triggered.</p>
+
+<h4>By Calling xdebug_break()</h4>
+
+<p>Calling <a href="/docs/all_functions#xdebug_break">xdebug_break()</a> will trigger a debugging connection as long as
+<a href="/docs/all_settings#start_with_request">xdebug.start_with_request</a> is set to <code>trigger</code> and no debugger session
+is active yet. If a debugger session is already active, it will simply act as
+if a breakpoint was set through your IDE.</p>
+
+<h4>Upon an Error Situation</h4>
+
+<p>If you set <a href="/docs/all_settings#start_upon_error">xdebug.start_upon_error</a> to <code>yes</code> then Xdebug will
+trigger a debugging connection when a PHP Notice or Warning appears, or when a
+<a href="https://www.php.net/manual/en/class.throwable.php">Throwable</a>
+(Error or Exception) is thrown.</p>
+
+<h2>Troubleshooting <a name="troubleshoot" href="#troubleshoot">#</a></h2>
+
+<p>You can troubleshoot Xdebug's attempts at initiating debugging connections
+by configuring a log file through <a href="/docs/all_settings#log">xdebug.log</a>. When the connection is
+successfully established the log will also contain the communication between
+Xdebug and IDE.</p>
+
+<p>The log file will contain to which IP addresses it is attempting to connect
+and at which ports, which should be a great help debugging why it sometimes
+doesn't work. A "remote log file" is also required when reporting a bug in
+Xdebug's step debugger.</p>
+
+<p>There are several logging levels which can be configured through
+<a href="/docs/all_settings#log_level">xdebug.log_level</a>.</p>
+
+<p>The <a href="/docs/all_settings#log">xdebug.log</a> setting requires as argument a full path to a file, to
+which the user that PHP/Xdebug runs as can write to. It is advisable to use
+something like <code>/tmp/xdebug.log</code>.</p>
+
+<p><i>Be aware:</i> On many Linux distributions that run services through
+Systemd, the actual file path could be different, such as:</p>
+
+<pre>/tmp/systemd-private-80b2a71a8b9843c0b7c21b0d357e59cc-apache2.service-CN4RBr/xdebug.log</pre>
+
+<h2>Debugging Clients <a name="clients" href="#clients">#</a></h2>
+<p>
+This is an incomplete list of third-party clients, both free and commercial.
+Please refer to the original authors of these tools for documentation and
+support:
+<ul>
+<li><b>Eclipse <a href="https://wiki.eclipse.org/Debugging_using_XDebug">plugin</a></b> (IDE).</li>
+<li><b><a href="https://www.kdevelop.org/">KDevelop</a></b> (IDE: Linux (KDE); Open Source).</li>
+<li>ActiveState's <b><a href="https://www.activestate.com/products/komodo-ide/">Komodo</a></b> (IDE: Windows, Linux, Mac; Commercial).</li>
+<li><b><a href="http://php.netbeans.org">NetBeans</a></b> (IDE: Windows, Linux, Mac OS X and Solaris).</li>
+<li>Devsense's <b><a href="http://www.devsense.com/products/php-tools">PHP Tools for Visual Studio</a></b> (Plugin; Commercial).</li>
+<li>JetBrains' <b><a href="http://www.jetbrains.com/phpstorm/">PhpStorm</a></b> (IDE; Commercial).</li>
+<li><b><a href="https://packagecontrol.io/packages/Xdebug%20Client">SublimeTextXdebug</a></b> (Plugin for Sublime Text 2 and 3, Open Source).</li>
+<li><b>VIM <a href="https://github.com/joonty/vdebug">plugin</a></b> (Plugin; Open Source).</li>
+<li><b>VS Code <a href="https://marketplace.visualstudio.com/items?itemName=felixfbecker.php-debug">plugin</a></b> (Plugin; Open Source).</li>
+</ul>
+</p>
+<p>
+The simple command line client <code>dbgpClient</code> for debugging is
+available on the <a href='/download#dbgpClient'>download page</a>.
+</p>
+
+
+<h2>Implementation Details <a name="implementation-details" href="#implementation-details">#</a></h2>
+<p>This section documents some implementation details, that are mostly useful
+for authors of debugging clients that interact with Xdebug.</p>
+
+<h4>DBGp: context_names</h4>
+<p>
+Xdebug's implementation of the
+<a href="/docs-dbgp.php#context-names">DBGp protocol's <code>context_names</code></a>
+command does not depend on the stack level. The returned value is always the
+same during each debugger session, and hence, can be safely cached.
+</p>
+
+<h3>Custom DBGp commands</h3>
+<p>
+The DBGp protocol allows for debugger engine specific commands, prefixed with
+the <code>xcmd_</code> prefix. Xdebug includes a few of these, and they're
+documented here.
+</p>
+
+<a name="xcmd_profiler_get_name"></a>
+<h4>DBGp: xcmd_profiler_name_get</h4>
+<p>
+If Xdebug's profiler is currently active (See: <a href='/docs/profiler'>Profiling</a>), this command
+returns the name of the file that is being used to write the profiling
+information to.
+</p>
+
+<a name="xcmd_get_executable_lines"></a>
+<h4>DBGp: xcmd_get_executable_lines</h4>
+<p>
+This command returns which lines in an active stack frame can have a working
+breakpoint. These are the lines which have an <code>EXT_STMT</code>
+opcode on them. This commands accepts a <code>-d</code> option, which
+indicates the stack depth, with <code>0</code> being the top leve stack frame.
+</p>
+<p>
+The command returns the information in the following XML format:
+</p>
+<pre class="example">
+&lt;?xml version="1.0" encoding="iso-8859-1"?&gt;
+&lt;response
+  xmlns="urn:debugger_protocol_v1"
+  xmlns:xdebug="https://xdebug.org/dbgp/xdebug"
+  command="xcmd_get_executable_lines"
+  transaction_id="10"&gt;
+	&lt;xdebug:lines&gt;
+		&lt;xdebug:line lineno="2"&gt;&lt;/xdebug:line&gt;
+		&lt;xdebug:line lineno="3"&gt;&lt;/xdebug:line&gt;
+		&lt;xdebug:line lineno="4"&gt;&lt;/xdebug:line&gt;
+		&lt;xdebug:line lineno="6"&gt;&lt;/xdebug:line&gt;
+		&lt;xdebug:line lineno="8"&gt;&lt;/xdebug:line&gt;
+	&lt;/xdebug:lines&gt;
+&lt;/response&gt;
+</pre>
+
+	<a name='related_content'></a>
+			<div class="content">
+			<h2>Related Content <a name="related_content" href="#related_content">#</a></h2>
+
+			<ul>
+									<li><span class='type'><img src="/images/docs/type-01.svg"/></span> <a target='_blank' href='https://www.youtube.com/watch?v=AsBLzqj3B2U'>Step Debugging Unit Tests with PhpStorm on Linux</a>
+<p>This video explains how to install Xdebug on the Linux command line through PECL, and then shows how to find and fix bugs when running unit tests with PHPUnit.</p>
+</li>
+									<li><span class='type'><img src="/images/docs/type-01.svg"/></span> <a target='_blank' href='https://www.youtube.com/watch?v=4opFac50Vwo'>Step Debugging with Docker and PhpStorm</a>
+<p>This video explains in a few minutes how to set-up debugging with PHP and Xdebug running in Docker and PhpStorm.</p>
+</li>
+									<li><span class='type'><img src="/images/docs/type-01.svg"/></span> <a target='_blank' href='https://www.youtube.com/watch?v=ZIGdBSD6zvU'>Step Debugging with Docker and VS Code</a>
+<p>This video explains how to dockerify the Symfony Demo Application, and then setup debugging with Xdebug and VS Code.</p>
+</li>
+							</ul>
+		</div>
+	
+			<h2>Related Settings and Functions <a name="related_settings_and_functions" href="#related_settings_and_functions">#</a></h2>
+		<ul>
+							<li><span class='type'>string</span> <a href='#client_discovery_header'>xdebug.client_discovery_header</a> = <span class='default'>""</span></li>
+							<li><span class='type'>string</span> <a href='#client_host'>xdebug.client_host</a> = <span class='default'>localhost</span></li>
+							<li><span class='type'>integer</span> <a href='#client_port'>xdebug.client_port</a> = <span class='default'>9003</span></li>
+							<li><span class='type'>string</span> <a href='#cloud_id'>xdebug.cloud_id</a> = <span class='default'></span></li>
+							<li><span class='type'>integer</span> <a href='#connect_timeout_ms'>xdebug.connect_timeout_ms</a> = <span class='default'>200</span></li>
+							<li><span class='type'>boolean</span> <a href='#discover_client_host'>xdebug.discover_client_host</a> = <span class='default'>false</span></li>
+							<li><span class='type'>string</span> <a href='#idekey'>xdebug.idekey</a> = <span class='default'>*complex*</span></li>
+							<li><span class='type'>string</span> <a href='#log'>xdebug.log</a> = <span class='default'></span></li>
+							<li><span class='type'>integer</span> <a href='#log_level'>xdebug.log_level</a> = <span class='default'>7</span></li>
+							<li><span class='type'>string</span> <a href='#mode'>xdebug.mode</a> = <span class='default'>develop</span></li>
+							<li><span class='type'>string</span> <a href='#start_upon_error'>xdebug.start_upon_error</a> = <span class='default'>default</span></li>
+							<li><span class='type'>string</span> <a href='#start_with_request'>xdebug.start_with_request</a> = <span class='default'>default</span></li>
+							<li><span class='type'>string</span> <a href='#trigger_value'>xdebug.trigger_value</a> = <span class='default'>""</span></li>
+					</ul>
+		<ul>
+							<li><a href='#xdebug_break'><span class='name'>xdebug_break</span></a>()<span class='type'> : bool</span></li>
+							<li><a href='#xdebug_connect_to_client'><span class='name'>xdebug_connect_to_client</span></a>()<span class='type'> : bool</span></li>
+							<li><a href='#xdebug_info'><span class='name'>xdebug_info</span></a>()<span class='type'> : mixed</span></li>
+							<li><a href='#xdebug_is_debugger_active'><span class='name'>xdebug_is_debugger_active</span></a>()<span class='type'> : bool</span></li>
+							<li><a href='#xdebug_notify'><span class='name'>xdebug_notify</span></a>()<span class='type'> : bool</span></li>
+					</ul>
+	
+	<a name='settings'></a>
+			<div class='settings'>
+			<h3>Settings <a name="related_settings" href="#related_settings">#</a></h3>
+
+							<hr>
+				<div class="doc_setting">
+	<a name='client_discovery_header'></a>
+	<a name='xdebug.client_discovery_header'></a>
+	<h4><span class='type'>string</span> xdebug.client_discovery_header = <span class='default'>""</span> <a href='#client_discovery_header'>#</a></h4>
+
+		
+	<div class='description'><p>If <a href="/docs/all_settings#client_discovery_header">xdebug.client_discovery_header</a> is configured to be a non-empty string, then the
+value is used as key in the <code>$_SERVER</code> superglobal array to determine
+which header to use to find the IP address or hostname to use for 'connecting
+back to'. This setting is only used in combination with
+<a href="/docs/all_settings#discover_client_host">xdebug.discover_client_host</a> and is otherwise ignored.</p>
+
+<p>For example, if <a href="/docs/all_settings#client_discovery_header">xdebug.client_discovery_header</a> is set to <code>FORWARD_HOST</code>,
+then Xdebug will check <code>$_SERVER['FORWARD_HOST']</code> before the
+<code>$_SERVER['HTTP_X_FORWARDED_FOR']</code> and
+<code>$_SERVER['REMOTE_ADDR']</code> variables.</p>
+</div>
+</div>
+							<hr>
+				<div class="doc_setting">
+	<a name='client_host'></a>
+	<a name='xdebug.client_host'></a>
+	<h4><span class='type'>string</span> xdebug.client_host = <span class='default'>localhost</span> <a href='#client_host'>#</a></h4>
+
+		
+	<div class='description'><p>Configures the IP address or hostname where Xdebug will attempt to connect to when initiating a
+debugging connection. This address should be the address of the machine where your IDE or debugging
+client is listening for incoming debugging connections.</p>
+<p>On non-Windows platforms, it is also possible to configure a <a
+href="https://en.wikipedia.org/wiki/Unix_domain_socket">Unix domain socket</a> which is supported by
+only a select view debugging clients. In that case, instead of the hostname or IP address, use
+<code>unix:///path/to/sock</code>.</p>
+<p>If <a href="/docs/all_settings#discover_client_host">xdebug.discover_client_host</a> is enabled then Xdebug will only use the value of this setting in
+case Xdebug can not connect to an IDE using the information it obtained from HTTP headers. In that
+case, the value of this setting acts as a fallback only.</p>
+
+<p class="note">This setting can additionally be configured through the
+<code>XDEBUG_CONFIG</code>
+<a href="/docs/all_settings#XDEBUG_CONFIG">environment variable</a>.</p>
+</div>
+</div>
+							<hr>
+				<div class="doc_setting">
+	<a name='client_port'></a>
+	<a name='xdebug.client_port'></a>
+	<h4><span class='type'>integer</span> xdebug.client_port = <span class='default'>9003</span> <a href='#client_port'>#</a></h4>
+
+		
+	<div class='description'><p>The port to which Xdebug tries to connect on the remote host. Port
+<code>9003</code> is the default for both Xdebug and the <a href='/docs/dbgpClient'>Command Line Debug Client</a>.
+As many clients use this port number, it is best to leave this setting
+unchanged.</p>
+
+<p class="note">This setting can additionally be configured through the
+<code>XDEBUG_CONFIG</code>
+<a href="/docs/all_settings#XDEBUG_CONFIG">environment variable</a>.</p>
+</div>
+</div>
+							<hr>
+				<div class="doc_setting">
+	<a name='cloud_id'></a>
+	<a name='xdebug.cloud_id'></a>
+	<h4><span class='type'>string</span> xdebug.cloud_id = <span class='default'></span> <a href='#cloud_id'>#</a></h4>
+
+		
+	<div class='description'><p>
+With this setting you configure Xdebug for use with <a
+href="https://xdebug.cloud">Xdebug Cloud</a>. It needs to match one of the
+tokens from your <a href="https://xdebug.cloud/profile#tokens">profile
+page</a>.
+</p>
+<p>
+Your IDE needs to be configured with the same token for Xdebug and your IDE to
+communicate through Xdebug Cloud.
+</p>
+<p>In PhpStorm you can find this setting under:<br/>
+<code>File | Settings | PHP | Debug | Xdebug Cloud</code> for Windows and Linux<br/>
+<code>PhpStorm | Preferences | PHP | Debug | Xdebug Cloud</code> for macOS
+</p>
+</div>
+</div>
+							<hr>
+				<div class="doc_setting">
+	<a name='connect_timeout_ms'></a>
+	<a name='xdebug.connect_timeout_ms'></a>
+	<h4><span class='type'>integer</span> xdebug.connect_timeout_ms = <span class='default'>200</span> <a href='#connect_timeout_ms'>#</a></h4>
+
+		
+	<div class='description'><p>The amount of time in milliseconds that Xdebug will wait for on an
+IDE to acknowledge an incoming debugging connection. The default value of 200
+ms should in most cases be enough. In case you often get dropped debugging
+requests, perhaps because you have a high latency network, or a development box
+far away from your IDE, or have a slow firewall, then you can should increase
+this value.</p>
+<p>Please note that increasing this value might mean that your requests seem to
+'hang' in case Xdebug tries to establish a connection, but your IDE is not
+listening.</p>
+</div>
+</div>
+							<hr>
+				<div class="doc_setting">
+	<a name='discover_client_host'></a>
+	<a name='xdebug.discover_client_host'></a>
+	<h4><span class='type'>boolean</span> xdebug.discover_client_host = <span class='default'>false</span> <a href='#discover_client_host'>#</a></h4>
+
+		
+	<div class='description'><p>If enabled, Xdebug will first try to connect to the client that made the
+HTTP request. It checks the <code>$_SERVER['HTTP_X_FORWARDED_FOR']</code> and
+<code>$_SERVER['REMOTE_ADDR']</code> variables to find out which hostname or IP
+address to use.</p>
+
+<p>If <a href="/docs/all_settings#client_discovery_header">xdebug.client_discovery_header</a> is configured, then the <code>$_SERVER</code>
+variable with that configured name will be checked before
+<code>HTTP_X_FORWARDED_FOR</code> and <code>REMOTE_ADDR</code>.</p>
+
+<p>If Xdebug can not connect to a debugging client as found in one of the HTTP
+headers, it will fall back to the hostname or IP address as configured by the
+<a href="/docs/all_settings#client_host">xdebug.client_host</a> setting.</p>
+
+<p>This setting does not apply for debugging through the CLI, as the
+<code>$_SERVER</code> header variables are not available there.</p>
+
+<p class="note">This setting can additionally be configured through the
+<code>XDEBUG_CONFIG</code>
+<a href="/docs/all_settings#XDEBUG_CONFIG">environment variable</a>.</p>
+
+<p class="warning">Please note that there is no filter
+available, and anybody who can connect to the webserver will then be able to
+start a debugging session, even if their address does not match
+<a href="/docs/all_settings#client_host">xdebug.client_host</a>.</p>
+</div>
+</div>
+							<hr>
+				<div class="doc_setting">
+	<a name='idekey'></a>
+	<a name='xdebug.idekey'></a>
+	<h4><span class='type'>string</span> xdebug.idekey = <span class='default'>*complex*</span> <a href='#idekey'>#</a></h4>
+
+		
+	<div class='description'><p>Controls which IDE Key Xdebug should pass on to the debugging client or
+proxy. The IDE Key is only important for use with the <a href='/docs/dbgpProxy'>DBGp Proxy Tool</a>,
+although some IDEs are incorrectly picky as to what its value is.</p>
+
+<p>The default is based on the <code>DBGP_IDEKEY</code> environment setting. If
+it is not present, the default falls back to an empty string.</p>
+
+<p>If this setting is set to a non-empty string, it selects its value over
+<code>DBGP_IDEKEY</code> environment variable as default value.</p>
+
+<p>The internal IDE Key also gets updated through debugging session management
+and overrides the value of this setting as is explained in the
+<a href='/docs/step_debug#activate_debugger'>Step Debugging</a> documentation.</p>
+
+<p class="note">This setting can additionally be configured through the
+<code>XDEBUG_CONFIG</code>
+<a href="/docs/all_settings#XDEBUG_CONFIG">environment variable</a>.</p>
+</div>
+</div>
+							<hr>
+				<div class="doc_setting">
+	<a name='log'></a>
+	<a name='xdebug.log'></a>
+	<h4><span class='type'>string</span> xdebug.log = <span class='default'></span> <a href='#log'>#</a></h4>
+
+		
+	<div class='description'><p>Configures Xdebug's log file.</p>
+
+<p>Xdebug will log to this file all file creations issues, <a href='/docs/step_debug'>Step Debugging</a>
+connection attempts, failures, and debug communication.</p>
+
+<p>Enable this functionality by setting the value to a absolute path. Make sure
+that the system user that PHP runs at (such as <code>www-data</code> if you are
+running with Apache) can create and write to the file.</p>
+
+<p>The file is opened in append-mode,
+and will therefore not be overwritten by default. There is no concurrency
+protection available.</p>
+
+<p>The log file will include any attempt that Xdebug
+makes to connect to an IDE:</p>
+
+<pre>
+[2693358] Log opened at 2020-09-02 07:19:09.616195
+[2693358] [Step Debug] INFO: Connecting to configured address/port: localhost:9003.
+[2693358] [Step Debug] ERR: Could not connect to debugging client. Tried: localhost:9003 (through xdebug.client_host/xdebug.client_port).
+[2693358] [Profiler] ERR: File '/foo/cachegrind.out.2693358' could not be opened.
+[2693358] [Profiler] WARN: /foo: No such file or directory
+[2693358] [Tracing] ERR: File '/foo/trace.1485761369' could not be opened.
+[2693358] [Tracing] WARN: /foo: No such file or directory
+[2693358] Log closed at 2020-09-02 07:19:09.617510
+</pre>
+<p>It includes the opening time (<code>2020-09-02 07:19:09.616195</code>), the
+IP/Hostname and port Xdebug is trying to connect to
+(<code>localhost:9003</code>), and whether it succeeded (<code>Connected to
+client</code>). The number in brackets (<code>[2693358]</code>) is the
+Process ID.</p>
+
+<p>It includes:
+<dl>
+<dt><code>[2693358]</code></dt>
+<dd>process ID in brackets</dd>
+
+<dt><code>2020-09-02 07:19:09.616195</code></dt>
+<dd>opening time<dd>
+</dl>
+</p>
+
+<p>For <a href='/docs/step_debug'>Step Debugging</a>:</p>
+<pre>
+INFO: Connecting to configured address/port: localhost:9003.
+ERR: Could not connect to debugging client. Tried: localhost:9003 (through xdebug.client_host/xdebug.client_port).
+</pre>
+
+<p>For <a href='/docs/profiler'>Profiling</a>:</p>
+<pre>
+ERR: File '/foo/cachegrind.out.2693358' could not be opened.
+WARN: /foo: No such file or directory
+</pre>
+
+<p>For <a href='/docs/trace'>Function Trace</a>:</p>
+<pre>
+ERR: File '/foo/trace.1485761369' could not be opened.
+WARN: /foo: No such file or directory
+</pre>
+
+<p>All warnings and errors are described on the <a href='/docs/errors'>Description of errors</a> page, with
+detailed instructions on how to resolve the problem, if possible. All errors are always logged through
+PHP's internal logging mechanism (configured with <a
+href="https://www.php.net/manual/en/errorfunc.configuration.php#ini.error-log">error_log</a>
+in <code>php.ini</code>). All warnings and errors also show up in the
+diagnostics log that you can view by calling <a href="/docs/all_functions#xdebug_info">xdebug_info()</a>.</p>
+
+<h5>Step Debugger Communication</h5>
+
+<p>The debugging log can also log the communication between Xdebug and an IDE.
+This communication is in XML, and starts with the <code>&lt;init</code> XML
+element:</p>
+<pre>
+&lt;init
+    xmlns="urn:debugger_protocol_v1" xmlns:xdebug="https://xdebug.org/dbgp/xdebug"
+    fileuri="file:///home/httpd/www.xdebug.org/html/router.php"
+    language="PHP" xdebug:language_version="7.4.11-dev"
+    protocol_version="1.0" appid="2693358" idekey="XDEBUG_ECLIPSE"&gt;
+        &lt;engine version="3.0.0-dev"&gt;&lt;![CDATA[Xdebug]]&gt;&lt;/engine&gt;
+        &lt;author&gt;&lt;![CDATA[Derick Rethans]]&gt;&lt;/author&gt;
+        &lt;url&gt;&lt;![CDATA[https://xdebug.org]]&gt;&lt;/url&gt;
+        &lt;copyright&gt;&lt;![CDATA[Copyright (c) 2002-2020 by Derick Rethans]]&gt;&lt;/copyright&gt;
+&lt;/init&gt;
+</pre>
+<p>The <code>fileuri</code> attribute lists the entry point of your
+application, which can be useful to compare to <code>breakpoint_set</code>
+commands to see if path mappings are set-up correctly.</p>
+
+<p>Beyond the <code>&lt;init</code> element, you will find the configuration of
+<a href="/docs/dbgp#feature-names">features</a>:</p>
+
+<pre>
+&lt;- feature_set -i 4 -n extended_properties -v 1
+-&gt; &lt;response
+       xmlns="urn:debugger_protocol_v1" xmlns:xdebug="https://xdebug.org/dbgp/xdebug"
+       command="feature_set" transaction_id="4" feature="extended_properties" success="1"&gt;
+   &lt;/response&gt;
+</pre>
+
+<p>And <a href="/docs/dbgp#continuation-commands">continuation commands</a>:</p>
+
+<pre>
+&lt;- step_into -i 9
+-&gt; &lt;response
+       xmlns="urn:debugger_protocol_v1" xmlns:xdebug="https://xdebug.org/dbgp/xdebug"
+       command="step_into" transaction_id="9"
+       status="break" reason="ok"&gt;
+           &lt;xdebug:message filename="file:///home/httpd/www.xdebug.org/html/router.php" lineno="3"&gt;
+           &lt;/xdebug:message&gt;
+   &lt;/response&gt;
+</pre>
+
+<p>You can read about <a href='/docs/dbgp'>DBGP - A common debugger protocol specification</a> at its dedicated documation page.</p>
+
+<p>The <a href="/docs/all_settings#log_level">xdebug.log_level</a> setting controls how much information is
+logged.</p>
+
+<p class="warning">Many Linux distributions now use systemd, which
+implements <strong>private tmp</strong> directories. This means that when PHP
+is run through a web server or as PHP-FPM, the <code>/tmp</code> directory is
+prefixed with something akin to:
+<pre>
+/tmp/systemd-private-ea3cfa882b4e478993e1994033fc5feb-apache.service-FfWZRg
+</pre>
+
+<p class="note">This setting can additionally be configured through the
+<code>XDEBUG_CONFIG</code>
+<a href="/docs/all_settings#XDEBUG_CONFIG">environment variable</a>.</p>
+</div>
+</div>
+							<hr>
+				<div class="doc_setting">
+	<a name='log_level'></a>
+	<a name='xdebug.log_level'></a>
+	<h4><span class='type'>integer</span> xdebug.log_level = <span class='default'>7</span> <a href='#log_level'>#</a></h4>
+
+		
+	<div class='description'><p>Configures which logging messages should be added to the log file.</p>
+
+<p>The log file is configured with the <a href="/docs/all_settings#log">xdebug.log</a> setting.</p>
+
+<p>The following levels are supported:</p>
+<table class='table'>
+<tr><th>Level</th><th>Name</th><th>Example</th></tr>
+<tr><td>0</td><td>Criticals</td><td>Errors in the configuration</td></tr>
+<tr><td>1</td><td>Errors</td><td>Connection errors</td></tr>
+<tr><td>3</td><td>Warnings</td><td>Connection warnings</td></tr>
+<tr><td>5</td><td>Communication</td><td>Protocol messages</td></tr>
+<tr><td><strong>7</strong></td><td>Information</td><td>Information while connecting</td></tr>
+<tr><td>10</td><td>Debug</td><td>Breakpoint resolving information</td></tr>
+</table>
+
+<p>Criticals, errors, and warnings always show up in the
+diagnostics log that you can view by calling <a href="/docs/all_functions#xdebug_info">xdebug_info()</a>.</p>
+
+<p>Criticals and errors are additionally logged through
+PHP's internal logging mechanism (configured with <a
+href="https://www.php.net/manual/en/errorfunc.configuration.php#ini.error-log">error_log</a>
+in <code>php.ini</code>).</p>
+
+<p class="note">This setting can additionally be configured through the
+<code>XDEBUG_CONFIG</code>
+<a href="/docs/all_settings#XDEBUG_CONFIG">environment variable</a>.</p>
+</div>
+</div>
+							<hr>
+				<div class="doc_setting">
+	<a name='mode'></a>
+	<a name='xdebug.mode'></a>
+	<h4><span class='type'>string</span> xdebug.mode = <span class='default'>develop</span> <a href='#mode'>#</a></h4>
+
+		
+	<div class='description'><p>This setting controls which Xdebug features are enabled.</p>
+
+<p class="note">This setting can only be set in <code>php.ini</code> or
+files like <code>99-xdebug.ini</code> that are read when a PHP process starts
+(directly, or through php-fpm), but not in <code>.htaccess</code> and
+<code>.user.ini</code> files, which are read per-request.</p>
+
+<p>The following values are accepted:</p>
+
+<dl>
+<dt><code>off</code></dt>
+<dd>Nothing is enabled. Xdebug does no work besides checking whether
+functionality is enabled. Use this setting if you want close to 0
+overhead.</dd>
+
+<dt><code>develop</code></dt>
+<dd>Enables <a href='/docs/develop'>Development Helpers</a> including the overloaded <a href="/docs/all_functions#var_dump">var_dump()</a>.</dd>
+
+<dt><code>coverage</code></dt>
+<dd>Enables <a href='/docs/code_coverage'>Code Coverage Analysis</a> to generate code coverage reports, mainly in
+combination with
+<a href="https://phpunit.readthedocs.io/en/9.0/code-coverage-analysis.html">PHPUnit</a>.</dd>
+
+<dt><code>debug</code></dt>
+<dd>Enables <a href='/docs/step_debug'>Step Debugging</a>. This can be used to step through your code while it
+is running, and analyse values of variables.</dd>
+
+<dt><code>gcstats</code></dt>
+<dd>Enables <a href='/docs/garbage_collection'>Garbage Collection Statistics</a> to collect statistics about PHP's Garbage
+Collection Mechanism.</dd>
+
+<dt><code>profile</code></dt>
+<dd>Enables <a href='/docs/profiler'>Profiling</a>, with which you can analyse performance bottlenecks
+with tools like <a href="/docs/profiler#kcachegrind">KCacheGrind</a>.</dd>
+
+<dt><code>trace</code></dt>
+<dd>Enables the <a href='/docs/trace'>Function Trace</a> feature, which allows you record every function
+call, including arguments, variable assignment, and return value that is made
+during a request to a file.</dd>
+</dl>
+
+<p>You can enable multiple modes at the same time by comma separating their
+identifiers as value to <a href="/docs/all_settings#mode">xdebug.mode</a>: <code>xdebug.mode=develop,trace</code>.</p>
+
+<h4>XDEBUG_MODE environment variable</h4>
+<p>You can also set Xdebug's mode by setting the <code>XDEBUG_MODE</code>
+environment variable on the command-line; this will take precedence over the
+<a href="/docs/all_settings#mode">xdebug.mode</a> setting, but will not change the value of the <a href="/docs/all_settings#mode">xdebug.mode</a>
+setting.</p>
+
+<p class="warning">Some web servers have a configuration option to
+prevent environment variables from being propagated to PHP and Xdebug.
+<br/><br/>
+For example, PHP-FPM has a <a
+href="https://www.php.net/manual/en/install.fpm.configuration.php#clear-env"><code>clear_env</code></a>
+configuration setting that is <code>on</code> by default, which you will
+need to turn <code>off</code> if you want to use <code>XDEBUG_MODE</code>.
+<br/><br/>
+Make sure that your web server does not clean the environment, or specifically
+allows the <code>XDEBUG_MODE</code> environment variable to be passed on.</p>
+</div>
+</div>
+							<hr>
+				<div class="doc_setting">
+	<a name='start_upon_error'></a>
+	<a name='xdebug.start_upon_error'></a>
+	<h4><span class='type'>string</span> xdebug.start_upon_error = <span class='default'>default</span> <a href='#start_upon_error'>#</a></h4>
+
+		
+	<div class='description'><p><a href='/docs/step_debug'>Step Debugging</a> can be activated when a PHP Notice or Warning is emitted, or
+when a <a href="https://www.php.net/manual/en/class.throwable.php">Throwable</a>
+(Exception/Error) is thrown, depending on the value of this setting:</p>
+
+<dl>
+
+<dt><code>yes</code></dt>
+<dd>
+<p>Initialise a debugging session when a PHP Notice or Warning is emitted, or
+when a Throwable is thrown.</p>
+</dd>
+
+<dt><code>no</code></dt>
+<dt><code>default</code></dt>
+<dd>
+<p>Do not start a debugging session upon an error situation.</p>
+</dd>
+
+<p>This setting is independent of <a href="/docs/all_settings#start_with_request">xdebug.start_with_request</a>, and therefore it is
+not necessary to set <a href="/docs/all_settings#start_with_request">xdebug.start_with_request</a><code>=trigger</code>.</p>
+</dl>
+</div>
+</div>
+							<hr>
+				<div class="doc_setting">
+	<a name='start_with_request'></a>
+	<a name='xdebug.start_with_request'></a>
+	<h4><span class='type'>string</span> xdebug.start_with_request = <span class='default'>default</span> <a href='#start_with_request'>#</a></h4>
+
+		
+	<div class='description'><p>A <a href='/docs/trace'>Function Trace</a>, <a href='/docs/garbage_collection'>Garbage Collection Statistics</a>, <a href='/docs/profiler'>Profiling</a>, or <a href='/docs/step_debug'>Step Debugging</a>
+can be activated at the start of a PHP request. Whether this happens depends on
+the value of this setting:</p>
+
+<dl>
+
+<dt><code>yes</code></dt>
+<dd>
+<p>The functionality starts when the PHP request starts, and before any PHP
+code is run.</p>
+
+<p>For example <a href="/docs/all_settings#mode">xdebug.mode</a>=<code>trace</code> and
+<a href="/docs/all_settings#start_with_request">xdebug.start_with_request</a>=<code>yes</code> starts a <a href='/docs/trace'>Function Trace</a> for the
+whole request.</p>
+</dd>
+
+
+<dt><code>no</code></dt>
+<dd>
+<p>The functionality does not get activated when the request starts.</p>
+
+<p>You can still start a <a href='/docs/trace'>Function Trace</a> with <a href="/docs/all_functions#xdebug_start_trace">xdebug_start_trace()</a>, 
+<a href='/docs/step_debug'>Step Debugging</a> with <a href="/docs/all_functions#xdebug_break">xdebug_break()</a>, or <a href='/docs/garbage_collection'>Garbage Collection Statistics</a> with <a href="/docs/all_functions#xdebug_start_gcstats">xdebug_start_gcstats()</a>.</p>
+</dd>
+
+
+<a name="start_with_request#trigger"></a>
+<dt><code>trigger</code></dt>
+<dd>
+<p>The functionality only gets activated when a specific trigger is present
+when the request starts.</p>
+
+<p>The name of the trigger is <code>XDEBUG_TRIGGER</code>, and Xdebug checks
+for its presence in either <code>$_ENV</code> (environment variable),
+<code>$_GET</code> or <code>$_POST</code> variable, or <code>$_COOKIE</code>
+(HTTP cookie name).</p>
+
+<p>There is a legacy fallback to a functionality specific trigger name:
+<code>XDEBUG_PROFILE</code> (for <a href='/docs/profiler'>Profiling</a>), <code>XDEBUG_TRACE</code>
+(for a <a href='/docs/trace'>Function Trace</a>), and <code>XDEBUG_SESSION</code> (for
+<a href='/docs/step_debug'>Step Debugging</a>).</p>
+
+<p>There is another legacy trigger. If you set the <code>XDEBUG_CONFIG</code>
+environment variable to any value, then Xdebug will also get activated.</p>
+
+<p>Debug session management for <a href='/docs/step_debug#browser_session'>Step Debugging</a> is also
+available through <code>XDEBUG_SESSION_START</code>.</p>
+
+<p>With <a href="/docs/all_settings#trigger_value">xdebug.trigger_value</a> you can control which specific trigger value will
+activate the trigger. If <a href="/docs/all_settings#trigger_value">xdebug.trigger_value</a> is set to an empty
+string, <strong>any</strong> value will be accepted.</p>
+</dd>
+
+
+<dt><code>default</code></dt>
+<dd>
+<p>The <code>default</code> value depends on <a href="/docs/all_settings#mode">xdebug.mode</a>:</p>
+<ul>
+<li><strong>debug</strong>: <code>trigger</code></p>
+<li><strong>gcstats</strong>: <code>no</code></p>
+<li><strong>profile</strong>: <code>yes</code></p>
+<li><strong>trace</strong>: <code>trigger</code></p>
+</ul>
+</dd>
+
+</dl>
+</div>
+</div>
+							<hr>
+				<div class="doc_setting">
+	<a name='trigger_value'></a>
+	<a name='xdebug.trigger_value'></a>
+	<h4><span class='type'>string</span> xdebug.trigger_value = <span class='default'>""</span> <a href='#trigger_value'>#</a></h4>
+
+		
+	<div class='description'><p>This setting can be used when <a href="/docs/all_settings#start_with_request">xdebug.start_with_request</a> is set to
+<code>trigger</code>, which is the default for <a href='/docs/step_debug'>Step Debugging</a> and <a href='/docs/trace'>Function Trace</a>.</p>
+
+<p>In <code>trigger</code> mode, Xdebug will only start its
+functionality when the <code>XDEBUG_TRIGGER</code> is set in the environment,
+or when the <code>XDEBUG_TRIGGER</code> GET, POST, or COOKIE variable is
+set.</p>
+
+<p>The legacy names <code>XDEBUG_SESSION</code> (for <a href='/docs/step_debug'>Step Debugging</a>),
+<code>XDEBUG_PROFILE</code> (for <a href='/docs/profiler'>Profiling</a>), and <code>XDEBUG_TRACE</code>
+(for <a href='/docs/trace'>Function Trace</a>) can also be used instead of <code>XDEBUG_TRIGGER</code>.</p>
+
+<p>Normally, Xdebug does not look at which value is actually used. If this
+setting is set to a non-empty string, then Xdebug will only trigger if the
+value matches the value of this setting.</p>
+
+<p>With the following settings:</p>
+
+<pre class="example">
+xdebug.mode=profile
+xdebug.start_with_request=trigger
+xdebug.trigger_value=StartProfileForMe
+</pre>
+
+<p>Xdebug's profiler will only start when either the environment variable
+<code>XDEBUG_TRIGGER</code> is set to <code>StartProfileForMe</code>, the GET
+or POST variable <code>XDEBUG_TRIGGER</code> is set to
+<code>StartProfileForMe</code>, or when the cookie <code>XDEBUG_TRIGGER</code>
+has the value <code>StartProfileForMe</code>.
+
+<p>From Xdebug 3.1, it is possible to configure multiple values by using a
+comma separated list. In that case, Xdebug will trigger if the supplied value
+matches any of the entries that are configured through this setting:</p>
+
+<pre class="example">
+xdebug.trigger_value=StartDebuggerForMe,StartDebuggerForYou
+</pre>
+
+<p>
+See also:
+</p>
+
+<dl>
+<dt><a href="/docs/all_settings#start_with_request#trigger">xdebug.start_with_request#trigger</a></dt><dd>For how the triggering mechanism works, and which environment and server variables Xdebug acts on.</dd>
+</dl>
+</div>
+</div>
+					</div>
+	
+	<a name='functions'></a>
+			<div class='functions'>
+			<h3>Functions <a name="related_functions" href="#related_functions">#</a></h3>
+
+							<hr>
+				<div class="doc_function">
+	<a name='xdebug_break'></a>
+	<h3 class="name">
+					xdebug_break()
+				<span class='type'> : bool</span>
+		<a href='#xdebug_break'>#</a>
+	</h3>
+
+	<div class='short-description'><p>Emits a breakpoint to the debug client</p></div>
+
+	
+	<div class='description'><p>
+This function makes the debugger break on the line it is called from, as if a
+ normal file/line breakpoint was set on this line through the debugger protocol.
+ 
+
+</p><p>
+If no debugging session is active yet, and <a href="/docs/all_settings#start_upon_request">xdebug.start_upon_request</a> is set to
+ <code>trigger</code>, then Xdebug will attempt to start a new debugging session
+ first.
+ 
+
+</p><p>
+The function returns <code>true</code> if a debugging session is (now) active,
+ and the breakpoint was succesfully set. It returns <code>false</code> if a
+ debugging session was not active and could not be activated.
+
+</p></div>
+</div>
+							<hr>
+				<div class="doc_function">
+	<a name='xdebug_connect_to_client'></a>
+	<h3 class="name">
+					xdebug_connect_to_client()
+				<span class='type'> : bool</span>
+		<a href='#xdebug_connect_to_client'>#</a>
+	</h3>
+
+	<div class='short-description'><p>Instructs Xdebug to establish a debugging session</p></div>
+
+		<div class='version'>Introduced in version 3.1</div>
+	
+	<div class='description'><p>
+This functions instructs Xdebug to try to establish a connection to a debugging
+ client.
+ 
+
+</p><p>
+Normally, Xdebug tries to start a debugging session at the start of the
+ request. If a debugging client is not listening at that point, then Xdebug does
+ not try to re-establish a connection during the remainder of the request.
+ 
+
+</p><p>
+In the situation where one long running PHP process handles multiple tasks,
+ perhaps from a queue, calling <a href="/docs/all_functions#xdebug_connect_to_client">xdebug_connect_to_client()</a> can then be used
+ to re-try to establish a connection for a specific worker job.
+
+</p></div>
+</div>
+							<hr>
+				<div class="doc_function">
+	<a name='xdebug_info'></a>
+	<h3 class="name">
+					xdebug_info( <span class='type'>string $category = null</span> )
+				<span class='type'> : mixed</span>
+		<a href='#xdebug_info'>#</a>
+	</h3>
+
+	<div class='short-description'><p>Show and retrieve diagnostic information</p></div>
+
+	
+	<div class='description'><p>
+This function presents APIs to retrieve information about Xdebug itself. Which
+ information gets returned, or displayed, depends on which arguments, or none at
+ all, are given.
+ 
+
+</p><p>
+<h4><code>$category</code> = </h4>
+ 
+
+</p><p>
+Without arguments, this function returns an HTML page which shows diagnostic
+ information. It is analogous to PHP's <a
+ href='https://php.net/phpinfo'>phpinfo()</a> function.
+ 
+
+</p><p>
+The HTML output includes which mode is active, what the settings are, and
+ diagnostic information in case there are problems with debugging connections,
+ opening of files, etc.
+ 
+
+</p><p>
+Each warning and error in the diagnostics log also links through to the
+ <a href='/docs/errors'>Description of errors</a> documentation page.
+ 
+
+</p><p>
+<img src="/images/diagnostics.png"/>
+ 
+ 
+
+</p><p>
+<h4><code>$category</code> = <code>'mode'</code> <em>(New in Xdebug 3.1)</em></h4>
+ 
+
+</p><p>
+The function returns an array of all the
+ enabled modes, whether through <a href="/docs/all_settings#mode">xdebug.mode</a> or the
+ <code>XDEBUG_MODE</code> environment variable.
+ 
+
+</p><div class='example'><h4>Example:</h4>
+<code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />var_dump</span><span style="color: #007700">(&nbsp;</span><span style="color: #0000BB">xdebug_info</span><span style="color: #007700">(&nbsp;</span><span style="color: #DD0000">'mode'&nbsp;</span><span style="color: #007700">)&nbsp;);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+<div class='example-returns'><h4>Returns:</h4><pre>
+<pre><b>array</b>(<font color="#00AA00">3</font>) {
+  [0] =&gt;
+  <b>string</b>(<font color="#00AA00">5</font>) &quot;<font color="#AA0000">debug</font>&quot;
+  [1] =&gt;
+  <b>string</b>(<font color="#00AA00">7</font>) &quot;<font color="#AA0000">develop</font>&quot;
+  [2] =&gt;
+  <b>string</b>(<font color="#00AA00">5</font>) &quot;<font color="#AA0000">trace</font>&quot;
+}
+</pre></pre></div>
+<p>
+<h4><code>$category</code> = <code>'extension-flags'</code> <em>(New in Xdebug 3.1)</em></h4>
+ 
+
+</p><p>
+The function returns an array of all the compile flags that were enabled when
+ running <code>./configure</code> as part of Xdebug's compilation process.
+ 
+
+</p><p>
+The only flag that is available, is the <code>compression</code> flag. If this
+ flag is enabled, then the <a href="/docs/all_settings#use_compression">xdebug.use_compression</a> setting is available, and enabled by default.
+ 
+
+</p><p>
+<a href='/docs/profiler'>Profiling</a> and <a href='/docs/trace'>Function Trace</a> will create GZip compressed files if the
+ <a href="/docs/all_settings#use_compression">xdebug.use_compression</a> setting is turned on (the default).
+ 
+ 
+
+</p><div class='example'><h4>Example:</h4>
+<code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />var_dump</span><span style="color: #007700">(&nbsp;</span><span style="color: #0000BB">xdebug_info</span><span style="color: #007700">(&nbsp;</span><span style="color: #DD0000">'extension-flags'&nbsp;</span><span style="color: #007700">)&nbsp;);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+<div class='example-returns'><h4>Returns:</h4><pre>
+<pre><b>array</b>(<font color="#00AA00">1</font>) {
+  [0] =&gt;
+  <b>string</b>(<font color="#00AA00">11</font>) &quot;<font color="#AA0000">compression</font>&quot;
+}
+</pre></pre></div>
+</div>
+</div>
+							<hr>
+				<div class="doc_function">
+	<a name='xdebug_is_debugger_active'></a>
+	<h3 class="name">
+					xdebug_is_debugger_active()
+				<span class='type'> : bool</span>
+		<a href='#xdebug_is_debugger_active'>#</a>
+	</h3>
+
+	<div class='short-description'><p>Returns whether a debugging session is active</p></div>
+
+	
+	<div class='description'><p>
+Returns <code>true</code> if a debugging session through DBGp is currently
+ active with a client attached; <code>false</code>, if not.
+
+</p></div>
+</div>
+							<hr>
+				<div class="doc_function">
+	<a name='xdebug_notify'></a>
+	<h3 class="name">
+					xdebug_notify( <span class='type'>mixed $data</span> )
+				<span class='type'> : bool</span>
+		<a href='#xdebug_notify'>#</a>
+	</h3>
+
+	<div class='short-description'><p>Sends data to a debugging client</p></div>
+
+		<div class='version'>Introduced in version 3.1</div>
+	
+	<div class='description'><p>
+This function sends the contents of the <code>$data</code> variable over the debugging
+ protocol to a client.
+ 
+
+</p><p>
+If the step debugger mode is not active, or if there is no active debugging
+ session, this function returns <code>false</code>, otherwise <code>true</code>
+ is returned.
+ 
+
+</p><p>
+A debugging client needs specific support to handle these notifications.
+
+</p></div>
+</div>
+					</div>
+	</div>
+
+
+</main>
+
+
+	<footer class="content_width">
+		<p>
+		This site and all of its contents are Copyright &copy; 2002-2022 by Derick Rethans.<br />
+		All rights reserved.
+		</p>
+	</footer>
+</body>
+</html>

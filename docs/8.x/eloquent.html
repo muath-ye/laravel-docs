@@ -1,0 +1,2249 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Eloquent: Getting Started - Laravel - The PHP Framework For Web Artisans</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+        <link rel="canonical" href="eloquent.html">
+    
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="../../img/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../../img/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../../img/favicon/favicon-16x16.png">
+    <link rel="manifest" href="../../img/favicon/site.webmanifest">
+    <link rel="mask-icon" href="../../img/favicon/safari-pinned-tab.svg" color="#ff2d20">
+    <link rel="shortcut icon" href="../../img/favicon/favicon.ico">
+    <meta name="msapplication-TileColor" content="#ff2d20">
+    <meta name="msapplication-config" content="/img/favicon/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
+    
+    <link rel="stylesheet" href="../../assets/css/ins2wgm.css">
+    <link rel="stylesheet" type="text/css" href="../../css/app.css?id=e59564080d0a323bcdb7">
+
+    <script>
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+        if (localStorage.theme === 'system') {
+            if (e.matches) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+        }
+    });
+
+    function updateTheme() {
+        if (!('theme' in localStorage)) {
+            localStorage.theme = 'system';
+        }
+
+        switch (localStorage.theme) {
+            case 'system':
+                if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                    document.documentElement.classList.add('dark');
+                } else {
+                    document.documentElement.classList.remove('dark');
+                }
+                document.documentElement.setAttribute('color-theme', 'system');
+                break;
+
+            case 'dark':
+                document.documentElement.classList.add('dark');
+                document.documentElement.setAttribute('color-theme', 'dark');
+                break;
+
+            case 'light':
+                document.documentElement.classList.remove('dark');
+                document.documentElement.setAttribute('color-theme', 'light');
+                break;
+        }
+    }
+
+    updateTheme();
+</script>
+</head>
+<body x-data="{
+        navIsOpen: false,
+        searchIsOpen: false,
+        search: '',
+    }" class="language-php h-full w-full font-sans text-gray-900 antialiased">
+
+     <a id="skip-to-content-link" href="#main-content" class="absolute bg-gray-100 px-4 py-2 top-3 left-3 text-gray-700 shadow-xl">
+    Skip to content
+</a>
+ 
+    <div class="relative overflow-auto dark:bg-dark-700" id="docsScreen">
+        <div class="relative lg:flex lg:items-start">
+            <aside x-init="init()" x-data="{
+                    navIsOpen: false,
+                    init() {
+                        this.$watch('navIsOpen', (val) => {
+                            if (val) {
+                                document.body.classList.add('overflow-hidden');
+                            } else {
+                                document.body.classList.remove('overflow-hidden');
+                            }
+                        });
+                    }
+                }" class="hidden fixed top-0 bottom-0 left-0 z-20 h-full w-16 flex flex-col bg-gradient-to-b from-gray-100 to-white transition-all duration-300 overflow-hidden lg:sticky lg:w-80 lg:flex-shrink-0 lg:flex lg:justify-end lg:items-end 2xl:max-w-lg 2xl:w-full dark:from-dark-800 dark:to-dark-700" :class="{ 'w-64': navIsOpen }" @click.away="navIsOpen = false" @keydown.window.escape="navIsOpen = false">
+                <div class="relative min-h-0 flex-1 flex flex-col xl:w-80">
+                    <a href="../../index.htm" class="flex items-center py-8 px-4 lg:px-8 xl:px-16">
+                        <img class="w-8 h-8 flex-shrink-0 transition-all duration-300 lg:w-12 lg:h-12" :class="{ 'w-12 h-12': navIsOpen }" src="../../img/logomark.min.svg" alt="Laravel" width="50" height="52">
+                        <img x-show="navIsOpen" x-cloak="" class="ml-4 transition-all duration-300 lg:hidden" x-transition:enter="duration-250 ease-out" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" x-transition:leave="duration-250 ease-in" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0" src="../../img/logotype.min.svg" alt="Laravel" width="114" height="29">
+                        <img src="../../img/logotype.min.svg" alt="Laravel" class="hidden ml-4 lg:block" width="114" height="29">
+                    </a>
+                    <div class="overflow-y-auto overflow-x-hidden px-4 lg:overflow-hidden lg:px-8 xl:px-16">
+                        <nav x-show="navIsOpen" x-cloak="" class="mt-4 lg:hidden">
+                            <div class="docs_sidebar">
+                                <ul>
+<li>
+<h2>Prologue</h2>
+<ul>
+<li><a href="releases.html">Release Notes</a></li>
+<li><a href="upgrade.html">Upgrade Guide</a></li>
+<li><a href="contributions.html">Contribution Guide</a></li>
+</ul>
+</li>
+<li>
+<h2>Getting Started</h2>
+<ul>
+<li><a href="installation.html">Installation</a></li>
+<li><a href="configuration.html">Configuration</a></li>
+<li><a href="structure.html">Directory Structure</a></li>
+<li><a href="starter-kits.html">Starter Kits</a></li>
+<li><a href="deployment.html">Deployment</a></li>
+</ul>
+</li>
+<li>
+<h2>Architecture Concepts</h2>
+<ul>
+<li><a href="lifecycle.html">Request Lifecycle</a></li>
+<li><a href="container.html">Service Container</a></li>
+<li><a href="providers.html">Service Providers</a></li>
+<li><a href="facades.html">Facades</a></li>
+</ul>
+</li>
+<li>
+<h2>The Basics</h2>
+<ul>
+<li><a href="routing.html">Routing</a></li>
+<li><a href="middleware.html">Middleware</a></li>
+<li><a href="csrf.html">CSRF Protection</a></li>
+<li><a href="controllers.html">Controllers</a></li>
+<li><a href="requests.html">Requests</a></li>
+<li><a href="responses.html">Responses</a></li>
+<li><a href="views.html">Views</a></li>
+<li><a href="blade.html">Blade Templates</a></li>
+<li><a href="urls.html">URL Generation</a></li>
+<li><a href="session.html">Session</a></li>
+<li><a href="validation.html">Validation</a></li>
+<li><a href="errors.html">Error Handling</a></li>
+<li><a href="logging.html">Logging</a></li>
+</ul>
+</li>
+<li>
+<h2>Digging Deeper</h2>
+<ul>
+<li><a href="artisan.html">Artisan Console</a></li>
+<li><a href="broadcasting.html">Broadcasting</a></li>
+<li><a href="cache.html">Cache</a></li>
+<li><a href="collections.html">Collections</a></li>
+<li><a href="mix.html">Compiling Assets</a></li>
+<li><a href="contracts.html">Contracts</a></li>
+<li><a href="events.html">Events</a></li>
+<li><a href="filesystem.html">File Storage</a></li>
+<li><a href="helpers.html">Helpers</a></li>
+<li><a href="http-client.html">HTTP Client</a></li>
+<li><a href="localization.html">Localization</a></li>
+<li><a href="mail.html">Mail</a></li>
+<li><a href="notifications.html">Notifications</a></li>
+<li><a href="packages.html">Package Development</a></li>
+<li><a href="queues.html">Queues</a></li>
+<li><a href="rate-limiting.html">Rate Limiting</a></li>
+<li><a href="scheduling.html">Task Scheduling</a></li>
+</ul>
+</li>
+<li>
+<h2>Security</h2>
+<ul>
+<li><a href="authentication.html">Authentication</a></li>
+<li><a href="authorization.html">Authorization</a></li>
+<li><a href="verification.html">Email Verification</a></li>
+<li><a href="encryption.html">Encryption</a></li>
+<li><a href="hashing.html">Hashing</a></li>
+<li><a href="passwords.html">Password Reset</a></li>
+</ul>
+</li>
+<li>
+<h2>Database</h2>
+<ul>
+<li><a href="database.html">Getting Started</a></li>
+<li><a href="queries.html">Query Builder</a></li>
+<li><a href="pagination.html">Pagination</a></li>
+<li><a href="migrations.html">Migrations</a></li>
+<li><a href="seeding.html">Seeding</a></li>
+<li><a href="redis.html">Redis</a></li>
+</ul>
+</li>
+<li>
+<h2>Eloquent ORM</h2>
+<ul>
+<li><a href="eloquent.html">Getting Started</a></li>
+<li><a href="eloquent-relationships.html">Relationships</a></li>
+<li><a href="eloquent-collections.html">Collections</a></li>
+<li><a href="eloquent-mutators.html">Mutators / Casts</a></li>
+<li><a href="eloquent-resources.html">API Resources</a></li>
+<li><a href="eloquent-serialization.html">Serialization</a></li>
+</ul>
+</li>
+<li>
+<h2>Testing</h2>
+<ul>
+<li><a href="testing.html">Getting Started</a></li>
+<li><a href="http-tests.html">HTTP Tests</a></li>
+<li><a href="console-tests.html">Console Tests</a></li>
+<li><a href="dusk.html">Browser Tests</a></li>
+<li><a href="database-testing.html">Database</a></li>
+<li><a href="mocking.html">Mocking</a></li>
+</ul>
+</li>
+<li>
+<h2>Packages</h2>
+<ul>
+<li><a href="starter-kits.html#laravel-breeze">Breeze</a></li>
+<li><a href="billing.html">Cashier (Stripe)</a></li>
+<li><a href="cashier-paddle.html">Cashier (Paddle)</a></li>
+<li><a href="dusk.html">Dusk</a></li>
+<li><a href="envoy.html">Envoy</a></li>
+<li><a href="fortify.html">Fortify</a></li>
+<li><a href="homestead.html">Homestead</a></li>
+<li><a href="horizon.html">Horizon</a></li>
+<li><a href="../../index-6.htm">Jetstream</a></li>
+<li><a href="octane.html">Octane</a></li>
+<li><a href="passport.html">Passport</a></li>
+<li><a href="sail.html">Sail</a></li>
+<li><a href="sanctum.html">Sanctum</a></li>
+<li><a href="scout.html">Scout</a></li>
+<li><a href="socialite.html">Socialite</a></li>
+<li><a href="telescope.html">Telescope</a></li>
+<li><a href="valet.html">Valet</a></li>
+</ul>
+</li>
+<li><a href="/api/8.x">API Documentation</a></li>
+</ul>
+                            </div>
+                        </nav>
+                        <nav id="indexed-nav" class="hidden lg:block lg:mt-4">
+                            <div class="docs_sidebar">
+                                <ul>
+<li>
+<h2>Prologue</h2>
+<ul>
+<li><a href="releases.html">Release Notes</a></li>
+<li><a href="upgrade.html">Upgrade Guide</a></li>
+<li><a href="contributions.html">Contribution Guide</a></li>
+</ul>
+</li>
+<li>
+<h2>Getting Started</h2>
+<ul>
+<li><a href="installation.html">Installation</a></li>
+<li><a href="configuration.html">Configuration</a></li>
+<li><a href="structure.html">Directory Structure</a></li>
+<li><a href="starter-kits.html">Starter Kits</a></li>
+<li><a href="deployment.html">Deployment</a></li>
+</ul>
+</li>
+<li>
+<h2>Architecture Concepts</h2>
+<ul>
+<li><a href="lifecycle.html">Request Lifecycle</a></li>
+<li><a href="container.html">Service Container</a></li>
+<li><a href="providers.html">Service Providers</a></li>
+<li><a href="facades.html">Facades</a></li>
+</ul>
+</li>
+<li>
+<h2>The Basics</h2>
+<ul>
+<li><a href="routing.html">Routing</a></li>
+<li><a href="middleware.html">Middleware</a></li>
+<li><a href="csrf.html">CSRF Protection</a></li>
+<li><a href="controllers.html">Controllers</a></li>
+<li><a href="requests.html">Requests</a></li>
+<li><a href="responses.html">Responses</a></li>
+<li><a href="views.html">Views</a></li>
+<li><a href="blade.html">Blade Templates</a></li>
+<li><a href="urls.html">URL Generation</a></li>
+<li><a href="session.html">Session</a></li>
+<li><a href="validation.html">Validation</a></li>
+<li><a href="errors.html">Error Handling</a></li>
+<li><a href="logging.html">Logging</a></li>
+</ul>
+</li>
+<li>
+<h2>Digging Deeper</h2>
+<ul>
+<li><a href="artisan.html">Artisan Console</a></li>
+<li><a href="broadcasting.html">Broadcasting</a></li>
+<li><a href="cache.html">Cache</a></li>
+<li><a href="collections.html">Collections</a></li>
+<li><a href="mix.html">Compiling Assets</a></li>
+<li><a href="contracts.html">Contracts</a></li>
+<li><a href="events.html">Events</a></li>
+<li><a href="filesystem.html">File Storage</a></li>
+<li><a href="helpers.html">Helpers</a></li>
+<li><a href="http-client.html">HTTP Client</a></li>
+<li><a href="localization.html">Localization</a></li>
+<li><a href="mail.html">Mail</a></li>
+<li><a href="notifications.html">Notifications</a></li>
+<li><a href="packages.html">Package Development</a></li>
+<li><a href="queues.html">Queues</a></li>
+<li><a href="rate-limiting.html">Rate Limiting</a></li>
+<li><a href="scheduling.html">Task Scheduling</a></li>
+</ul>
+</li>
+<li>
+<h2>Security</h2>
+<ul>
+<li><a href="authentication.html">Authentication</a></li>
+<li><a href="authorization.html">Authorization</a></li>
+<li><a href="verification.html">Email Verification</a></li>
+<li><a href="encryption.html">Encryption</a></li>
+<li><a href="hashing.html">Hashing</a></li>
+<li><a href="passwords.html">Password Reset</a></li>
+</ul>
+</li>
+<li>
+<h2>Database</h2>
+<ul>
+<li><a href="database.html">Getting Started</a></li>
+<li><a href="queries.html">Query Builder</a></li>
+<li><a href="pagination.html">Pagination</a></li>
+<li><a href="migrations.html">Migrations</a></li>
+<li><a href="seeding.html">Seeding</a></li>
+<li><a href="redis.html">Redis</a></li>
+</ul>
+</li>
+<li>
+<h2>Eloquent ORM</h2>
+<ul>
+<li><a href="eloquent.html">Getting Started</a></li>
+<li><a href="eloquent-relationships.html">Relationships</a></li>
+<li><a href="eloquent-collections.html">Collections</a></li>
+<li><a href="eloquent-mutators.html">Mutators / Casts</a></li>
+<li><a href="eloquent-resources.html">API Resources</a></li>
+<li><a href="eloquent-serialization.html">Serialization</a></li>
+</ul>
+</li>
+<li>
+<h2>Testing</h2>
+<ul>
+<li><a href="testing.html">Getting Started</a></li>
+<li><a href="http-tests.html">HTTP Tests</a></li>
+<li><a href="console-tests.html">Console Tests</a></li>
+<li><a href="dusk.html">Browser Tests</a></li>
+<li><a href="database-testing.html">Database</a></li>
+<li><a href="mocking.html">Mocking</a></li>
+</ul>
+</li>
+<li>
+<h2>Packages</h2>
+<ul>
+<li><a href="starter-kits.html#laravel-breeze">Breeze</a></li>
+<li><a href="billing.html">Cashier (Stripe)</a></li>
+<li><a href="cashier-paddle.html">Cashier (Paddle)</a></li>
+<li><a href="dusk.html">Dusk</a></li>
+<li><a href="envoy.html">Envoy</a></li>
+<li><a href="fortify.html">Fortify</a></li>
+<li><a href="homestead.html">Homestead</a></li>
+<li><a href="horizon.html">Horizon</a></li>
+<li><a href="../../index-6.htm">Jetstream</a></li>
+<li><a href="octane.html">Octane</a></li>
+<li><a href="passport.html">Passport</a></li>
+<li><a href="sail.html">Sail</a></li>
+<li><a href="sanctum.html">Sanctum</a></li>
+<li><a href="scout.html">Scout</a></li>
+<li><a href="socialite.html">Socialite</a></li>
+<li><a href="telescope.html">Telescope</a></li>
+<li><a href="valet.html">Valet</a></li>
+</ul>
+</li>
+<li><a href="/api/8.x">API Documentation</a></li>
+</ul>
+                            </div>
+                        </nav>
+
+                        
+                        
+                        
+                                            </div>
+                    <div class="sticky bottom-0 flex-1 flex flex-col justify-end lg:hidden">
+                        <div class="py-4 px-4 bg-white">
+                            <button class="relative ml-1 w-6 h-6 text-red-600 lg:hidden focus:outline-none focus:shadow-outline" aria-label="Menu" @click.prevent="navIsOpen = !navIsOpen">
+                                <svg x-show.transition.opacity="! navIsOpen" class="absolute inset-0 w-6 h-6" viewbox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+                                <svg x-show.transition.opacity="navIsOpen" x-cloak="" class="absolute inset-0 w-6 h-6" viewbox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+
+            <header class="lg:hidden" @keydown.window.escape="navIsOpen = false" @click.away="navIsOpen = false">
+                <div class="relative mx-auto w-full py-10 bg-white transition duration-200 dark:bg-dark-700">
+                    <div class="mx-auto px-8 sm:px-16 flex items-center justify-between">
+                        <a href="../../index.htm" class="flex items-center">
+                            <img class="" src="../../img/logomark.min.svg" alt="Laravel">
+                            <img class="hidden ml-5 sm:block" src="../../img/logotype.min.svg" alt="Laravel">
+                        </a>
+                        <div class="flex-1 flex items-center justify-end">
+                            <button id="header__sun" onclick="toSystemMode()" title="Switch to system theme" class="relative w-10 h-10 focus:outline-none focus:shadow-outline text-gray-500">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-sun" width="24" height="24" viewbox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                    <circle cx="12" cy="12" r="4"></circle>
+                                    <path d="M3 12h1m8 -9v1m8 8h1m-9 8v1m-6.4 -15.4l.7 .7m12.1 -.7l-.7 .7m0 11.4l.7 .7m-12.1 -.7l-.7 .7"></path>
+                                 </svg>
+                            </button>
+                            <button id="header__moon" onclick="toLightMode()" title="Switch to light mode" class="relative w-10 h-10 focus:outline-none focus:shadow-outline text-gray-500">
+                                <svg style="width:24px;height:24px" viewbox="0 0 24 24">
+                                    <path fill="currentColor" d="M17.75,4.09L15.22,6.03L16.13,9.09L13.5,7.28L10.87,9.09L11.78,6.03L9.25,4.09L12.44,4L13.5,1L14.56,4L17.75,4.09M21.25,11L19.61,12.25L20.2,14.23L18.5,13.06L16.8,14.23L17.39,12.25L15.75,11L17.81,10.95L18.5,9L19.19,10.95L21.25,11M18.97,15.95C19.8,15.87 20.69,17.05 20.16,17.8C19.84,18.25 19.5,18.67 19.08,19.07C15.17,23 8.84,23 4.94,19.07C1.03,15.17 1.03,8.83 4.94,4.93C5.34,4.53 5.76,4.17 6.21,3.85C6.96,3.32 8.14,4.21 8.06,5.04C7.79,7.9 8.75,10.87 10.95,13.06C13.14,15.26 16.1,16.22 18.97,15.95M17.33,17.97C14.5,17.81 11.7,16.64 9.53,14.5C7.36,12.31 6.2,9.5 6.04,6.68C3.23,9.82 3.34,14.64 6.35,17.66C9.37,20.67 14.19,20.78 17.33,17.97Z"></path>
+                                </svg>
+                            </button>
+                            <button id="header__indeterminate" onclick="toDarkMode()" title="Switch to dark mode" class="relative w-10 h-10 focus:outline-none focus:shadow-outline text-gray-500">
+                                <svg style="width:24px;height:24px" viewbox="0 0 24 24">
+                                    <path fill="currentColor" d="M12 2A10 10 0 0 0 2 12A10 10 0 0 0 12 22A10 10 0 0 0 22 12A10 10 0 0 0 12 2M12 4A8 8 0 0 1 20 12A8 8 0 0 1 12 20V4Z"></path>
+                                </svg>
+                            </button>
+                            <button class="ml-2 relative w-10 h-10 p-2 text-red-600 lg:hidden focus:outline-none focus:shadow-outline" aria-label="Menu" @click.prevent="navIsOpen = !navIsOpen">
+                                <svg x-show.transition.opacity="! navIsOpen" class="absolute inset-0 mt-2 ml-2 w-6 h-6" viewbox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+                                <svg x-show.transition.opacity="navIsOpen" x-cloak="" class="absolute inset-0 mt-2 ml-2 w-6 h-6" viewbox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                            </button>
+                        </div>
+                    </div>
+                    <span :class="{ 'shadow-sm': navIsOpen }" class="absolute inset-0 z-20 pointer-events-none"></span>
+                </div>
+                <div x-show="navIsOpen" x-transition:enter="duration-150" x-transition:leave="duration-100 ease-in" x-cloak="">
+                    <nav x-show="navIsOpen" x-cloak="" class="absolute w-full transform origin-top shadow-sm z-10" x-transition:enter="duration-150 ease-out" x-transition:enter-start="opacity-0 -translate-y-8 scale-75" x-transition:enter-end="opacity-100 scale-100" x-transition:leave="duration-100 ease-in" x-transition:leave-start="opacity-100 scale-100" x-transition:leave-end="opacity-0 -translate-y-8 scale-75">
+                        <div class="relative p-8 bg-white docs_sidebar dark:bg-dark-600">
+                            <ul>
+<li>
+<h2>Prologue</h2>
+<ul>
+<li><a href="releases.html">Release Notes</a></li>
+<li><a href="upgrade.html">Upgrade Guide</a></li>
+<li><a href="contributions.html">Contribution Guide</a></li>
+</ul>
+</li>
+<li>
+<h2>Getting Started</h2>
+<ul>
+<li><a href="installation.html">Installation</a></li>
+<li><a href="configuration.html">Configuration</a></li>
+<li><a href="structure.html">Directory Structure</a></li>
+<li><a href="starter-kits.html">Starter Kits</a></li>
+<li><a href="deployment.html">Deployment</a></li>
+</ul>
+</li>
+<li>
+<h2>Architecture Concepts</h2>
+<ul>
+<li><a href="lifecycle.html">Request Lifecycle</a></li>
+<li><a href="container.html">Service Container</a></li>
+<li><a href="providers.html">Service Providers</a></li>
+<li><a href="facades.html">Facades</a></li>
+</ul>
+</li>
+<li>
+<h2>The Basics</h2>
+<ul>
+<li><a href="routing.html">Routing</a></li>
+<li><a href="middleware.html">Middleware</a></li>
+<li><a href="csrf.html">CSRF Protection</a></li>
+<li><a href="controllers.html">Controllers</a></li>
+<li><a href="requests.html">Requests</a></li>
+<li><a href="responses.html">Responses</a></li>
+<li><a href="views.html">Views</a></li>
+<li><a href="blade.html">Blade Templates</a></li>
+<li><a href="urls.html">URL Generation</a></li>
+<li><a href="session.html">Session</a></li>
+<li><a href="validation.html">Validation</a></li>
+<li><a href="errors.html">Error Handling</a></li>
+<li><a href="logging.html">Logging</a></li>
+</ul>
+</li>
+<li>
+<h2>Digging Deeper</h2>
+<ul>
+<li><a href="artisan.html">Artisan Console</a></li>
+<li><a href="broadcasting.html">Broadcasting</a></li>
+<li><a href="cache.html">Cache</a></li>
+<li><a href="collections.html">Collections</a></li>
+<li><a href="mix.html">Compiling Assets</a></li>
+<li><a href="contracts.html">Contracts</a></li>
+<li><a href="events.html">Events</a></li>
+<li><a href="filesystem.html">File Storage</a></li>
+<li><a href="helpers.html">Helpers</a></li>
+<li><a href="http-client.html">HTTP Client</a></li>
+<li><a href="localization.html">Localization</a></li>
+<li><a href="mail.html">Mail</a></li>
+<li><a href="notifications.html">Notifications</a></li>
+<li><a href="packages.html">Package Development</a></li>
+<li><a href="queues.html">Queues</a></li>
+<li><a href="rate-limiting.html">Rate Limiting</a></li>
+<li><a href="scheduling.html">Task Scheduling</a></li>
+</ul>
+</li>
+<li>
+<h2>Security</h2>
+<ul>
+<li><a href="authentication.html">Authentication</a></li>
+<li><a href="authorization.html">Authorization</a></li>
+<li><a href="verification.html">Email Verification</a></li>
+<li><a href="encryption.html">Encryption</a></li>
+<li><a href="hashing.html">Hashing</a></li>
+<li><a href="passwords.html">Password Reset</a></li>
+</ul>
+</li>
+<li>
+<h2>Database</h2>
+<ul>
+<li><a href="database.html">Getting Started</a></li>
+<li><a href="queries.html">Query Builder</a></li>
+<li><a href="pagination.html">Pagination</a></li>
+<li><a href="migrations.html">Migrations</a></li>
+<li><a href="seeding.html">Seeding</a></li>
+<li><a href="redis.html">Redis</a></li>
+</ul>
+</li>
+<li>
+<h2>Eloquent ORM</h2>
+<ul>
+<li><a href="eloquent.html">Getting Started</a></li>
+<li><a href="eloquent-relationships.html">Relationships</a></li>
+<li><a href="eloquent-collections.html">Collections</a></li>
+<li><a href="eloquent-mutators.html">Mutators / Casts</a></li>
+<li><a href="eloquent-resources.html">API Resources</a></li>
+<li><a href="eloquent-serialization.html">Serialization</a></li>
+</ul>
+</li>
+<li>
+<h2>Testing</h2>
+<ul>
+<li><a href="testing.html">Getting Started</a></li>
+<li><a href="http-tests.html">HTTP Tests</a></li>
+<li><a href="console-tests.html">Console Tests</a></li>
+<li><a href="dusk.html">Browser Tests</a></li>
+<li><a href="database-testing.html">Database</a></li>
+<li><a href="mocking.html">Mocking</a></li>
+</ul>
+</li>
+<li>
+<h2>Packages</h2>
+<ul>
+<li><a href="starter-kits.html#laravel-breeze">Breeze</a></li>
+<li><a href="billing.html">Cashier (Stripe)</a></li>
+<li><a href="cashier-paddle.html">Cashier (Paddle)</a></li>
+<li><a href="dusk.html">Dusk</a></li>
+<li><a href="envoy.html">Envoy</a></li>
+<li><a href="fortify.html">Fortify</a></li>
+<li><a href="homestead.html">Homestead</a></li>
+<li><a href="horizon.html">Horizon</a></li>
+<li><a href="../../index-6.htm">Jetstream</a></li>
+<li><a href="octane.html">Octane</a></li>
+<li><a href="passport.html">Passport</a></li>
+<li><a href="sail.html">Sail</a></li>
+<li><a href="sanctum.html">Sanctum</a></li>
+<li><a href="scout.html">Scout</a></li>
+<li><a href="socialite.html">Socialite</a></li>
+<li><a href="telescope.html">Telescope</a></li>
+<li><a href="valet.html">Valet</a></li>
+</ul>
+</li>
+<li><a href="/api/8.x">API Documentation</a></li>
+</ul>
+                        </div>
+                    </nav>
+                </div>
+            </header>
+
+            <section class="flex-1 dark:bg-dark-700">
+                <div class="max-w-screen-lg px-8 sm:px-16 lg:px-24">
+                    <div class="flex flex-col items-end lg:mt-8 lg:flex-row-reverse">
+                        <div class="hidden lg:flex items-center justify-center ml-8">
+                            <button id="header__sun" onclick="toSystemMode()" title="Switch to system theme" class="relative w-10 h-10 focus:outline-none focus:shadow-outline text-gray-500">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-sun" width="24" height="24" viewbox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                    <circle cx="12" cy="12" r="4"></circle>
+                                    <path d="M3 12h1m8 -9v1m8 8h1m-9 8v1m-6.4 -15.4l.7 .7m12.1 -.7l-.7 .7m0 11.4l.7 .7m-12.1 -.7l-.7 .7"></path>
+                                 </svg>
+                            </button>
+                            <button id="header__moon" onclick="toLightMode()" title="Switch to light mode" class="relative w-10 h-10 focus:outline-none focus:shadow-outline text-gray-500">
+                                <svg style="width:24px;height:24px" viewbox="0 0 24 24">
+                                    <path fill="currentColor" d="M17.75,4.09L15.22,6.03L16.13,9.09L13.5,7.28L10.87,9.09L11.78,6.03L9.25,4.09L12.44,4L13.5,1L14.56,4L17.75,4.09M21.25,11L19.61,12.25L20.2,14.23L18.5,13.06L16.8,14.23L17.39,12.25L15.75,11L17.81,10.95L18.5,9L19.19,10.95L21.25,11M18.97,15.95C19.8,15.87 20.69,17.05 20.16,17.8C19.84,18.25 19.5,18.67 19.08,19.07C15.17,23 8.84,23 4.94,19.07C1.03,15.17 1.03,8.83 4.94,4.93C5.34,4.53 5.76,4.17 6.21,3.85C6.96,3.32 8.14,4.21 8.06,5.04C7.79,7.9 8.75,10.87 10.95,13.06C13.14,15.26 16.1,16.22 18.97,15.95M17.33,17.97C14.5,17.81 11.7,16.64 9.53,14.5C7.36,12.31 6.2,9.5 6.04,6.68C3.23,9.82 3.34,14.64 6.35,17.66C9.37,20.67 14.19,20.78 17.33,17.97Z"></path>
+                                </svg>
+                            </button>
+                            <button id="header__indeterminate" onclick="toDarkMode()" title="Switch to dark mode" class="relative w-10 h-10 focus:outline-none focus:shadow-outline text-gray-500">
+                                <svg style="width:24px;height:24px" viewbox="0 0 24 24">
+                                    <path fill="currentColor" d="M12 2A10 10 0 0 0 2 12A10 10 0 0 0 12 22A10 10 0 0 0 22 12A10 10 0 0 0 12 2M12 4A8 8 0 0 1 20 12A8 8 0 0 1 12 20V4Z"></path>
+                                </svg>
+                            </button>
+                        </div>
+                        <div class="w-full lg:w-64 lg:pl-12">
+                            <div>
+                                <label class="text-gray-600 text-xs tracking-widest uppercase dark:text-gray-500" for="version-switch">Version</label>
+                                <div x-data="" class="relative w-full bg-white border-b border-gray-600 border-opacity-50 transition-all duration-500 focus-within:border-gray-600 dark:bg-gray-800">
+                                    <select id="version-switcher" aria-label="Laravel version" class="appearance-none flex-1 w-full px-0 py-1 placeholder-gray-900 tracking-wide bg-white focus:outline-none dark:bg-dark-700 dark:text-gray-400 dark:placeholder-gray-500" @change="window.location = $event.target.value">
+                                                                                    <option value="http://laravel.test/docs/muathye/eloquent">Muathye</option>
+                                                                                    <option value="http://laravel.test/docs/master/eloquent">Master</option>
+                                                                                    <option selected="" value="http://laravel.test/docs/8.x/eloquent">8.x</option>
+                                                                                    <option value="http://laravel.test/docs/7.x/eloquent">7.x</option>
+                                                                                    <option value="http://laravel.test/docs/6.x/eloquent">6.x</option>
+                                                                                    <option value="http://laravel.test/docs/5.8/eloquent">5.8</option>
+                                                                                    <option value="http://laravel.test/docs/5.7/eloquent">5.7</option>
+                                                                                    <option value="http://laravel.test/docs/5.6/eloquent">5.6</option>
+                                                                                    <option value="http://laravel.test/docs/5.5/eloquent">5.5</option>
+                                                                                    <option value="http://laravel.test/docs/5.4/eloquent">5.4</option>
+                                                                                    <option value="http://laravel.test/docs/5.3/eloquent">5.3</option>
+                                                                                    <option value="http://laravel.test/docs/5.2/eloquent">5.2</option>
+                                                                                    <option value="http://laravel.test/docs/5.1/eloquent">5.1</option>
+                                                                                    <option value="http://laravel.test/docs/5.0/eloquent">5.0</option>
+                                                                                    <option value="http://laravel.test/docs/4.2/eloquent">4.2</option>
+                                                                            </select>
+                                    <img class="absolute inset-y-0 right-0 mt-2.5 w-2.5 h-2.5 text-gray-900 pointer-events-none" id="docs_search__version_arrow" src="../../img/icons/drop_arrow.min.svg" alt="">
+                                    <img class="absolute inset-y-0 right-0 mt-2.5 w-2.5 h-2.5 text-gray-900 pointer-events-none" id="docs_search__version_arrow_dark" src="../../img/icons/drop_arrow.dark.min.svg" alt="">
+                                </div>
+                            </div>
+                        </div>
+                        <div x-data="searchComponent()" x-init="init()" class="relative mt-8 flex justify-end w-full lg:mt-0">
+                            <div class="relative w-full border-b border-gray-600 border-opacity-50 overflow-hidden transition-all duration-500 focus-within:border-gray-600" @click="searchIsOpen = true" @click.away="clear" @keydown.window.escape="clear" @keydown.window="handleSlashKey">
+                                <svg class="absolute inset-y-0 left-0 mt-1 w-5 h-5 text-gray-900 pointer-events-none dark:text-gray-500" fill="none" viewbox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                                <input x-model.debouce.200ms="search" x-ref="searchInput" class="flex-1 w-full pl-8 pr-4 py-1 placeholder-gray-900 tracking-wide bg-white focus:outline-none dark:bg-dark-700 dark:text-gray-400 dark:placeholder-gray-500" placeholder="Search Docs (Press '/')" aria-label="Search in the documentation" @keydown.arrow-up.prevent="focusPreviousResult()" @keydown.arrow-down.prevent="focusNextResult()">
+                            </div>
+                            <div x-show="hits.length" x-cloak="" class="absolute w-full mt-8 pt-px divide-y divide-gray-200 shadow-sm z-30 dark:divide-dark-500">
+    <template x-for="(hit, index) in hits" :key="index">
+        <a :id="'search-result-' + index" :href="hit.url" class="search-result block px-4 py-3 bg-gray-100 transition-colors duration-200 hover:bg-gray-200 focus:outline-none focus:bg-gray-200 dark:bg-dark-600 dark:text-gray-400 dark:focus:bg-dark-500 dark:hover:bg-dark-500" @keydown.arrow-up.prevent="focusPreviousResult(index)" @keydown.arrow-down.prevent="focusNextResult(index)">
+            <div x-show="hit._highlightResult.hierarchy.lvl0" class="text-sm font-medium" x-html="hit._highlightResult.hierarchy.lvl0 ? hit._highlightResult.hierarchy.lvl0.value : ''"></div>
+            <div class="mt-2">
+                <div x-show="hit._highlightResult.hierarchy.lvl1" class="text-sm">
+                    <span class="text-red-600 opacity-75">#</span> <span x-html="hit._highlightResult.hierarchy.lvl1 ? hit._highlightResult.hierarchy.lvl1.value : ''"></span>
+                </div>
+
+                <div x-show="hit._highlightResult.hierarchy.lvl2" class="text-sm">
+                    > <span x-html="hit._highlightResult.hierarchy.lvl2 ? hit._highlightResult.hierarchy.lvl2.value : ''"></span>
+                </div>
+
+                <div x-show="hit._highlightResult.hierarchy.lvl3" class="text-sm">
+                    > <span x-html="hit._highlightResult.hierarchy.lvl3 ? hit._highlightResult.hierarchy.lvl3.value : ''"></span>
+                </div>
+
+                <div x-show="hit._highlightResult.hierarchy.lvl4" class="text-sm">
+                    > <span x-html="hit._highlightResult.hierarchy.lvl4 ? hit._highlightResult.hierarchy.lvl4.value : ''"></span>
+                </div>
+
+                <div x-show="hit._highlightResult.hierarchy.lvl5" class="text-sm">
+                    > <span x-html="hit._highlightResult.hierarchy.lvl5 ? hit._highlightResult.hierarchy.lvl5.value : ''"></span>
+                </div>
+            </div>
+        </a>
+    </template>
+	<div class="bg-gray-100 flex justify-end dark:bg-dark-600 dark:text-gray-400">
+		<a class="px-4 py-2 inline-block" target="_blank" href="../../index-9.htm?utm_source=laravel&utm_medium=link&utm_campaign=laravel_documentation_search">
+            <img width="105" src="../../img/icons/algolia.min.svg" id="docs_search__algolia" alt="Algolia">
+            <img width="105" src="../../img/icons/algolia.dark.min.svg" id="docs_search__algolia_dark" alt="Algolia">
+		</a>
+	</div>
+</div>
+
+<div x-show="search && ! hits.length" x-cloak="" class="absolute w-full mt-8 pt-px divide-y divide-gray-200 shadow-sm z-30 dark:divide-dark-500">
+	<div class="px-4 py-2 bg-gray-100 dark:bg-dark-600 dark:text-gray-400">
+		<div class="text-sm" x-text="`We didn't find any result for '${search}'. Sorry!`"></div>
+	</div>
+	<div class="bg-gray-100 flex justify-end dark:bg-dark-600 dark:text-gray-400">
+		<a class="px-4 py-2 inline-block" target="_blank" href="../../index-9.htm?utm_source=laravel&utm_medium=link&utm_campaign=laravel_documentation_search">
+            <img width="105" src="../../img/icons/algolia.min.svg" id="docs_search__algolia" alt="Algolia">
+            <img width="105" src="../../img/icons/algolia.dark.min.svg" id="docs_search__algolia_dark" alt="Algolia">
+		</a>
+	</div>
+</div>
+                        </div>
+                    </div>
+
+                    <section class="mt-8 md:mt-16">
+                        <section class="docs_main max-w-prose">
+                            
+                                                         <div id="main-content">
+    <h1>Eloquent: Getting Started</h1>
+<ul>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#generating-model-classes">Generating Model Classes</a></li>
+<li><a href="#eloquent-model-conventions">Eloquent Model Conventions</a>
+<ul>
+<li><a href="#table-names">Table Names</a></li>
+<li><a href="#primary-keys">Primary Keys</a></li>
+<li><a href="#timestamps">Timestamps</a></li>
+<li><a href="#database-connections">Database Connections</a></li>
+<li><a href="#default-attribute-values">Default Attribute Values</a></li>
+</ul></li>
+<li><a href="#retrieving-models">Retrieving Models</a>
+<ul>
+<li><a href="#collections">Collections</a></li>
+<li><a href="#chunking-results">Chunking Results</a></li>
+<li><a href="#streaming-results-lazily">Streaming Results Lazily</a></li>
+<li><a href="#cursors">Cursors</a></li>
+<li><a href="#advanced-subqueries">Advanced Subqueries</a></li>
+</ul></li>
+<li><a href="#retrieving-single-models">Retrieving Single Models / Aggregates</a>
+<ul>
+<li><a href="#retrieving-or-creating-models">Retrieving Or Creating Models</a></li>
+<li><a href="#retrieving-aggregates">Retrieving Aggregates</a></li>
+</ul></li>
+<li><a href="#inserting-and-updating-models">Inserting &amp; Updating Models</a>
+<ul>
+<li><a href="#inserts">Inserts</a></li>
+<li><a href="#updates">Updates</a></li>
+<li><a href="#mass-assignment">Mass Assignment</a></li>
+<li><a href="#upserts">Upserts</a></li>
+</ul></li>
+<li><a href="#deleting-models">Deleting Models</a>
+<ul>
+<li><a href="#soft-deleting">Soft Deleting</a></li>
+<li><a href="#querying-soft-deleted-models">Querying Soft Deleted Models</a></li>
+</ul></li>
+<li><a href="#pruning-models">Pruning Models</a></li>
+<li><a href="#replicating-models">Replicating Models</a></li>
+<li><a href="#query-scopes">Query Scopes</a>
+<ul>
+<li><a href="#global-scopes">Global Scopes</a></li>
+<li><a href="#local-scopes">Local Scopes</a></li>
+</ul></li>
+<li><a href="#comparing-models">Comparing Models</a></li>
+<li><a href="#events">Events</a>
+<ul>
+<li><a href="#events-using-closures">Using Closures</a></li>
+<li><a href="#observers">Observers</a></li>
+<li><a href="#muting-events">Muting Events</a></li>
+</ul></li>
+</ul>
+<p><a name="introduction"></a></p>
+<h2 id="introduction">Introduction</h2>
+<p>Laravel includes Eloquent, an object-relational mapper (ORM) that makes it enjoyable to interact with your database. When using Eloquent, each database table has a corresponding &quot;Model&quot; that is used to interact with that table. In addition to retrieving records from the database table, Eloquent models allow you to insert, update, and delete records from the table as well.</p>
+<blockquote>
+<p>{tip} Before getting started, be sure to configure a database connection in your application's <code>config/database.php</code> configuration file. For more information on configuring your database, check out <a href="database.html#configuration">the database configuration documentation</a>.</p>
+</blockquote>
+<p><a name="generating-model-classes"></a></p>
+<h2 id="generating-model-classes">Generating Model Classes</h2>
+<p>To get started, let's create an Eloquent model. Models typically live in the <code>app\Models</code> directory and extend the <code>Illuminate\Database\Eloquent\Model</code> class. You may use the <code>make:model</code> <a href="artisan.html">Artisan command</a> to generate a new model:</p>
+<pre><code>php artisan make:model Flight</code></pre>
+<p>If you would like to generate a <a href="migrations.html">database migration</a> when you generate the model, you may use the <code>--migration</code> or <code>-m</code> option:</p>
+<pre><code>php artisan make:model Flight --migration</code></pre>
+<p>You may generate various other types of classes when generating a model, such as factories, seeders, policies, controllers, and form requests. In addition, these options may be combined to create multiple classes at once:</p>
+<pre><code class="language-bash"># Generate a model and a FlightFactory class...
+php artisan make:model Flight --factory
+php artisan make:model Flight -f
+
+# Generate a model and a FlightSeeder class...
+php artisan make:model Flight --seed
+php artisan make:model Flight -s
+
+# Generate a model and a FlightController class...
+php artisan make:model Flight --controller
+php artisan make:model Flight -c
+
+# Generate a model, FlightController resource class, and form request classes...
+php artisan make:model Flight --controller --resource --requests
+php artisan make:model Flight -crR
+
+# Generate a model and a FlightPolicy class...
+php artisan make:model Flight --policy
+
+# Generate a model and a migration, factory, seeder, and controller...
+php artisan make:model Flight -mfsc
+
+# Shortcut to generate a model, migration, factory, seeder, policy, controller, and form requests...
+php artisan make:model Flight --all
+
+# Generate a pivot model...
+php artisan make:model Member --pivot</code></pre>
+<p><a name="eloquent-model-conventions"></a></p>
+<h2 id="eloquent-model-conventions">Eloquent Model Conventions</h2>
+<p>Models generated by the <code>make:model</code> command will be placed in the <code>app/Models</code> directory. Let's examine a basic model class and discuss some of Eloquent's key conventions:</p>
+<pre><code>&lt;?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Flight extends Model
+{
+    //
+}</code></pre>
+<p><a name="table-names"></a></p>
+<h3 id="table-names">Table Names</h3>
+<p>After glancing at the example above, you may have noticed that we did not tell Eloquent which database table corresponds to our <code>Flight</code> model. By convention, the &quot;snake case&quot;, plural name of the class will be used as the table name unless another name is explicitly specified. So, in this case, Eloquent will assume the <code>Flight</code> model stores records in the <code>flights</code> table, while an <code>AirTrafficController</code> model would store records in an <code>air_traffic_controllers</code> table.</p>
+<p>If your model's corresponding database table does not fit this convention, you may manually specify the model's table name by defining a <code>table</code> property on the model:</p>
+<pre><code>&lt;?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Flight extends Model
+{
+    /**
+     * The table associated with the model.
+     *
+     * @var string
+     */
+    protected $table = 'my_flights';
+}</code></pre>
+<p><a name="primary-keys"></a></p>
+<h3 id="primary-keys">Primary Keys</h3>
+<p>Eloquent will also assume that each model's corresponding database table has a primary key column named <code>id</code>. If necessary, you may define a protected <code>$primaryKey</code> property on your model to specify a different column that serves as your model's primary key:</p>
+<pre><code>&lt;?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Flight extends Model
+{
+    /**
+     * The primary key associated with the table.
+     *
+     * @var string
+     */
+    protected $primaryKey = 'flight_id';
+}</code></pre>
+<p>In addition, Eloquent assumes that the primary key is an incrementing integer value, which means that Eloquent will automatically cast the primary key to an integer. If you wish to use a non-incrementing or a non-numeric primary key you must define a public <code>$incrementing</code> property on your model that is set to <code>false</code>:</p>
+<pre><code>&lt;?php
+
+class Flight extends Model
+{
+    /**
+     * Indicates if the model's ID is auto-incrementing.
+     *
+     * @var bool
+     */
+    public $incrementing = false;
+}</code></pre>
+<p>If your model's primary key is not an integer, you should define a protected <code>$keyType</code> property on your model. This property should have a value of <code>string</code>:</p>
+<pre><code>&lt;?php
+
+class Flight extends Model
+{
+    /**
+     * The data type of the auto-incrementing ID.
+     *
+     * @var string
+     */
+    protected $keyType = 'string';
+}</code></pre>
+<p><a name="composite-primary-keys"></a></p>
+<h4 id="composite-primary-keys">&quot;Composite&quot; Primary Keys</h4>
+<p>Eloquent requires each model to have at least one uniquely identifying &quot;ID&quot; that can serve as its primary key. &quot;Composite&quot; primary keys are not supported by Eloquent models. However, you are free to add additional multi-column, unique indexes to your database tables in addition to the table's uniquely identifying primary key.</p>
+<p><a name="timestamps"></a></p>
+<h3 id="timestamps">Timestamps</h3>
+<p>By default, Eloquent expects <code>created_at</code> and <code>updated_at</code> columns to exist on your model's corresponding database table.  Eloquent will automatically set these column's values when models are created or updated. If you do not want these columns to be automatically managed by Eloquent, you should define a <code>$timestamps</code> property on your model with a value of <code>false</code>:</p>
+<pre><code>&lt;?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Flight extends Model
+{
+    /**
+     * Indicates if the model should be timestamped.
+     *
+     * @var bool
+     */
+    public $timestamps = false;
+}</code></pre>
+<p>If you need to customize the format of your model's timestamps, set the <code>$dateFormat</code> property on your model. This property determines how date attributes are stored in the database as well as their format when the model is serialized to an array or JSON:</p>
+<pre><code>&lt;?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Flight extends Model
+{
+    /**
+     * The storage format of the model's date columns.
+     *
+     * @var string
+     */
+    protected $dateFormat = 'U';
+}</code></pre>
+<p>If you need to customize the names of the columns used to store the timestamps, you may define <code>CREATED_AT</code> and <code>UPDATED_AT</code> constants on your model:</p>
+<pre><code>&lt;?php
+
+class Flight extends Model
+{
+    const CREATED_AT = 'creation_date';
+    const UPDATED_AT = 'updated_date';
+}</code></pre>
+<p><a name="database-connections"></a></p>
+<h3 id="database-connections">Database Connections</h3>
+<p>By default, all Eloquent models will use the default database connection that is configured for your application. If you would like to specify a different connection that should be used when interacting with a particular model, you should define a <code>$connection</code> property on the model:</p>
+<pre><code>&lt;?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Flight extends Model
+{
+    /**
+     * The database connection that should be used by the model.
+     *
+     * @var string
+     */
+    protected $connection = 'sqlite';
+}</code></pre>
+<p><a name="default-attribute-values"></a></p>
+<h3 id="default-attribute-values">Default Attribute Values</h3>
+<p>By default, a newly instantiated model instance will not contain any attribute values. If you would like to define the default values for some of your model's attributes, you may define an <code>$attributes</code> property on your model:</p>
+<pre><code>&lt;?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Flight extends Model
+{
+    /**
+     * The model's default values for attributes.
+     *
+     * @var array
+     */
+    protected $attributes = [
+        'delayed' =&gt; false,
+    ];
+}</code></pre>
+<p><a name="retrieving-models"></a></p>
+<h2 id="retrieving-models">Retrieving Models</h2>
+<p>Once you have created a model and <a href="migrations.html#writing-migrations">its associated database table</a>, you are ready to start retrieving data from your database. You can think of each Eloquent model as a powerful <a href="queries.html">query builder</a> allowing you to fluently query the database table associated with the model. The model's <code>all</code> method will retrieve all of the records from the model's associated database table:</p>
+<pre><code>use App\Models\Flight;
+
+foreach (Flight::all() as $flight) {
+    echo $flight-&gt;name;
+}</code></pre>
+<p><a name="building-queries"></a></p>
+<h4 id="building-queries">Building Queries</h4>
+<p>The Eloquent <code>all</code> method will return all of the results in the model's table. However, since each Eloquent model serves as a <a href="queries.html">query builder</a>, you may add additional constraints to queries and then invoke the <code>get</code> method to retrieve the results:</p>
+<pre><code>$flights = Flight::where('active', 1)
+               -&gt;orderBy('name')
+               -&gt;take(10)
+               -&gt;get();</code></pre>
+<blockquote>
+<p>{tip} Since Eloquent models are query builders, you should review all of the methods provided by Laravel's <a href="queries.html">query builder</a>. You may use any of these methods when writing your Eloquent queries.</p>
+</blockquote>
+<p><a name="refreshing-models"></a></p>
+<h4 id="refreshing-models">Refreshing Models</h4>
+<p>If you already have an instance of an Eloquent model that was retrieved from the database, you can &quot;refresh&quot; the model using the <code>fresh</code> and <code>refresh</code> methods. The <code>fresh</code> method will re-retrieve the model from the database. The existing model instance will not be affected:</p>
+<pre><code>$flight = Flight::where('number', 'FR 900')-&gt;first();
+
+$freshFlight = $flight-&gt;fresh();</code></pre>
+<p>The <code>refresh</code> method will re-hydrate the existing model using fresh data from the database. In addition, all of its loaded relationships will be refreshed as well:</p>
+<pre><code>$flight = Flight::where('number', 'FR 900')-&gt;first();
+
+$flight-&gt;number = 'FR 456';
+
+$flight-&gt;refresh();
+
+$flight-&gt;number; // "FR 900"</code></pre>
+<p><a name="collections"></a></p>
+<h3 id="collections">Collections</h3>
+<p>As we have seen, Eloquent methods like <code>all</code> and <code>get</code> retrieve multiple records from the database. However, these methods don't return a plain PHP array. Instead, an instance of <code>Illuminate\Database\Eloquent\Collection</code> is returned.</p>
+<p>The Eloquent <code>Collection</code> class extends Laravel's base <code>Illuminate\Support\Collection</code> class, which provides a <a href="collections.html#available-methods">variety of helpful methods</a> for interacting with data collections. For example, the <code>reject</code> method may be used to remove models from a collection based on the results of an invoked closure:</p>
+<pre><code class="language-php">$flights = Flight::where('destination', 'Paris')-&gt;get();
+
+$flights = $flights-&gt;reject(function ($flight) {
+    return $flight-&gt;cancelled;
+});</code></pre>
+<p>In addition to the methods provided by Laravel's base collection class, the Eloquent collection class provides <a href="eloquent-collections.html#available-methods">a few extra methods</a> that are specifically intended for interacting with collections of Eloquent models.</p>
+<p>Since all of Laravel's collections implement PHP's iterable interfaces, you may loop over collections as if they were an array:</p>
+<pre><code class="language-php">foreach ($flights as $flight) {
+    echo $flight-&gt;name;
+}</code></pre>
+<p><a name="chunking-results"></a></p>
+<h3 id="chunking-results">Chunking Results</h3>
+<p>Your application may run out of memory if you attempt to load tens of thousands of Eloquent records via the <code>all</code> or <code>get</code> methods. Instead of using these methods, the <code>chunk</code> method may be used to process large numbers of models more efficiently.</p>
+<p>The <code>chunk</code> method will retrieve a subset of Eloquent models, passing them to a closure for processing. Since only the current chunk of Eloquent models is retrieved at a time, the <code>chunk</code> method will provide significantly reduced memory usage when working with a large number of models:</p>
+<pre><code class="language-php">use App\Models\Flight;
+
+Flight::chunk(200, function ($flights) {
+    foreach ($flights as $flight) {
+        //
+    }
+});</code></pre>
+<p>The first argument passed to the <code>chunk</code> method is the number of records you wish to receive per &quot;chunk&quot;. The closure passed as the second argument will be invoked for each chunk that is retrieved from the database. A database query will be executed to retrieve each chunk of records passed to the closure.</p>
+<p>If you are filtering the results of the <code>chunk</code> method based on a column that you will also be updating while iterating over the results, you should use the <code>chunkById</code> method. Using the <code>chunk</code> method in these scenarios could lead to unexpected and inconsistent results. Internally, the <code>chunkById</code> method will always retrieve models with an <code>id</code> column greater than the last model in the previous chunk:</p>
+<pre><code class="language-php">Flight::where('departed', true)
+    -&gt;chunkById(200, function ($flights) {
+        $flights-&gt;each-&gt;update(['departed' =&gt; false]);
+    }, $column = 'id');</code></pre>
+<p><a name="streaming-results-lazily"></a></p>
+<h3 id="streaming-results-lazily">Streaming Results Lazily</h3>
+<p>The <code>lazy</code> method works similarly to <a href="#chunking-results">the <code>chunk</code> method</a> in the sense that, behind the scenes, it executes the query in chunks. However, instead of passing each chunk directly into a callback as is, the <code>lazy</code> method returns a flattened <a href="collections.html#lazy-collections"><code>LazyCollection</code></a> of Eloquent models, which lets you interact with the results as a single stream:</p>
+<pre><code class="language-php">use App\Models\Flight;
+
+foreach (Flight::lazy() as $flight) {
+    //
+}</code></pre>
+<p>If you are filtering the results of the <code>lazy</code> method based on a column that you will also be updating while iterating over the results, you should use the <code>lazyById</code> method. Internally, the <code>lazyById</code> method will always retrieve models with an <code>id</code> column greater than the last model in the previous chunk:</p>
+<pre><code class="language-php">Flight::where('departed', true)
+    -&gt;lazyById(200, $column = 'id')
+    -&gt;each-&gt;update(['departed' =&gt; false]);</code></pre>
+<p>You may filter the results based on the descending order of the <code>id</code> using the <code>lazyByIdDesc</code> method. </p>
+<p><a name="cursors"></a></p>
+<h3 id="cursors">Cursors</h3>
+<p>Similar to the <code>lazy</code> method, the <code>cursor</code> method may be used to significantly reduce your application's memory consumption when iterating through tens of thousands of Eloquent model records.</p>
+<p>The <code>cursor</code> method will only execute a single database query; however, the individual Eloquent models will not be hydrated until they are actually iterated over. Therefore, only one Eloquent model is kept in memory at any given time while iterating over the cursor.</p>
+<blockquote>
+<p>{note} Since the <code>cursor</code> method only ever holds a single Eloquent model in memory at a time, it cannot eager load relationships. If you need to eager load relationships, consider using <a href="#streaming-results-lazily">the <code>lazy</code> method</a> instead.</p>
+</blockquote>
+<p>Internally, the <code>cursor</code> method uses PHP <a href="../../manual/en/language.generators.overview.php.html">generators</a> to implement this functionality:</p>
+<pre><code class="language-php">use App\Models\Flight;
+
+foreach (Flight::where('destination', 'Zurich')-&gt;cursor() as $flight) {
+    //
+}</code></pre>
+<p>The <code>cursor</code> returns an <code>Illuminate\Support\LazyCollection</code> instance. <a href="collections.html#lazy-collections">Lazy collections</a> allow you to use many of the collection methods available on typical Laravel collections while only loading a single model into memory at a time:</p>
+<pre><code class="language-php">use App\Models\User;
+
+$users = User::cursor()-&gt;filter(function ($user) {
+    return $user-&gt;id &gt; 500;
+});
+
+foreach ($users as $user) {
+    echo $user-&gt;id;
+}</code></pre>
+<p>Although the <code>cursor</code> method uses far less memory than a regular query (by only holding a single Eloquent model in memory at a time), it will still eventually run out of memory. This is <a href="../../manual/en/mysqlinfo.concepts.buffering.php.html">due to PHP's PDO driver internally caching all raw query results in its buffer</a>. If you're dealing with a very large number of Eloquent records, consider using <a href="#streaming-results-lazily">the <code>lazy</code> method</a> instead.</p>
+<p><a name="advanced-subqueries"></a></p>
+<h3 id="advanced-subqueries">Advanced Subqueries</h3>
+<p><a name="subquery-selects"></a></p>
+<h4 id="subquery-selects">Subquery Selects</h4>
+<p>Eloquent also offers advanced subquery support, which allows you to pull information from related tables in a single query. For example, let's imagine that we have a table of flight <code>destinations</code> and a table of <code>flights</code> to destinations. The <code>flights</code> table contains an <code>arrived_at</code> column which indicates when the flight arrived at the destination.</p>
+<p>Using the subquery functionality available to the query builder's <code>select</code> and <code>addSelect</code> methods, we can select all of the <code>destinations</code> and the name of the flight that most recently arrived at that destination using a single query:</p>
+<pre><code>use App\Models\Destination;
+use App\Models\Flight;
+
+return Destination::addSelect(['last_flight' =&gt; Flight::select('name')
+    -&gt;whereColumn('destination_id', 'destinations.id')
+    -&gt;orderByDesc('arrived_at')
+    -&gt;limit(1)
+])-&gt;get();</code></pre>
+<p><a name="subquery-ordering"></a></p>
+<h4 id="subquery-ordering">Subquery Ordering</h4>
+<p>In addition, the query builder's <code>orderBy</code> function supports subqueries. Continuing to use our flight example, we may use this functionality to sort all destinations based on when the last flight arrived at that destination. Again, this may be done while executing a single database query:</p>
+<pre><code>return Destination::orderByDesc(
+    Flight::select('arrived_at')
+        -&gt;whereColumn('destination_id', 'destinations.id')
+        -&gt;orderByDesc('arrived_at')
+        -&gt;limit(1)
+)-&gt;get();</code></pre>
+<p><a name="retrieving-single-models"></a></p>
+<h2 id="retrieving-single-models">Retrieving Single Models / Aggregates</h2>
+<p>In addition to retrieving all of the records matching a given query, you may also retrieve single records using the <code>find</code>, <code>first</code>, or <code>firstWhere</code> methods. Instead of returning a collection of models, these methods return a single model instance:</p>
+<pre><code>use App\Models\Flight;
+
+// Retrieve a model by its primary key...
+$flight = Flight::find(1);
+
+// Retrieve the first model matching the query constraints...
+$flight = Flight::where('active', 1)-&gt;first();
+
+// Alternative to retrieving the first model matching the query constraints...
+$flight = Flight::firstWhere('active', 1);</code></pre>
+<p>Sometimes you may wish to retrieve the first result of a query or perform some other action if no results are found. The <code>firstOr</code> method will return the first result matching the query or, if no results are found, execute the given closure. The value returned by the closure will be considered the result of the <code>firstOr</code> method:</p>
+<pre><code>$model = Flight::where('legs', '&gt;', 3)-&gt;firstOr(function () {
+    // ...
+});</code></pre>
+<p><a name="not-found-exceptions"></a></p>
+<h4 id="not-found-exceptions">Not Found Exceptions</h4>
+<p>Sometimes you may wish to throw an exception if a model is not found. This is particularly useful in routes or controllers. The <code>findOrFail</code> and <code>firstOrFail</code> methods will retrieve the first result of the query; however, if no result is found, an <code>Illuminate\Database\Eloquent\ModelNotFoundException</code> will be thrown:</p>
+<pre><code>$flight = Flight::findOrFail(1);
+
+$flight = Flight::where('legs', '&gt;', 3)-&gt;firstOrFail();</code></pre>
+<p>If the <code>ModelNotFoundException</code> is not caught, a 404 HTTP response is automatically sent back to the client:</p>
+<pre><code>use App\Models\Flight;
+
+Route::get('/api/flights/{id}', function ($id) {
+    return Flight::findOrFail($id);
+});</code></pre>
+<p><a name="retrieving-or-creating-models"></a></p>
+<h3 id="retrieving-or-creating-models">Retrieving Or Creating Models</h3>
+<p>The <code>firstOrCreate</code> method will attempt to locate a database record using the given column / value pairs. If the model can not be found in the database, a record will be inserted with the attributes resulting from merging the first array argument with the optional second array argument:</p>
+<p>The <code>firstOrNew</code> method, like <code>firstOrCreate</code>, will attempt to locate a record in the database matching the given attributes. However, if a model is not found, a new model instance will be returned. Note that the model returned by <code>firstOrNew</code> has not yet been persisted to the database. You will need to manually call the <code>save</code> method to persist it:</p>
+<pre><code>use App\Models\Flight;
+
+// Retrieve flight by name or create it if it doesn't exist...
+$flight = Flight::firstOrCreate([
+    'name' =&gt; 'London to Paris'
+]);
+
+// Retrieve flight by name or create it with the name, delayed, and arrival_time attributes...
+$flight = Flight::firstOrCreate(
+    ['name' =&gt; 'London to Paris'],
+    ['delayed' =&gt; 1, 'arrival_time' =&gt; '11:30']
+);
+
+// Retrieve flight by name or instantiate a new Flight instance...
+$flight = Flight::firstOrNew([
+    'name' =&gt; 'London to Paris'
+]);
+
+// Retrieve flight by name or instantiate with the name, delayed, and arrival_time attributes...
+$flight = Flight::firstOrNew(
+    ['name' =&gt; 'Tokyo to Sydney'],
+    ['delayed' =&gt; 1, 'arrival_time' =&gt; '11:30']
+);</code></pre>
+<p><a name="retrieving-aggregates"></a></p>
+<h3 id="retrieving-aggregates">Retrieving Aggregates</h3>
+<p>When interacting with Eloquent models, you may also use the <code>count</code>, <code>sum</code>, <code>max</code>, and other <a href="queries.html#aggregates">aggregate methods</a> provided by the Laravel <a href="queries.html">query builder</a>. As you might expect, these methods return a scalar value instead of an Eloquent model instance:</p>
+<pre><code>$count = Flight::where('active', 1)-&gt;count();
+
+$max = Flight::where('active', 1)-&gt;max('price');</code></pre>
+<p><a name="inserting-and-updating-models"></a></p>
+<h2 id="inserting-and-updating-models">Inserting &amp; Updating Models</h2>
+<p><a name="inserts"></a></p>
+<h3 id="inserts">Inserts</h3>
+<p>Of course, when using Eloquent, we don't only need to retrieve models from the database. We also need to insert new records. Thankfully, Eloquent makes it simple. To insert a new record into the database, you should instantiate a new model instance and set attributes on the model. Then, call the <code>save</code> method on the model instance:</p>
+<pre><code>&lt;?php
+
+namespace App\Http\Controllers;
+
+use App\Http\Controllers\Controller;
+use App\Models\Flight;
+use Illuminate\Http\Request;
+
+class FlightController extends Controller
+{
+    /**
+     * Store a new flight in the database.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        // Validate the request...
+
+        $flight = new Flight;
+
+        $flight-&gt;name = $request-&gt;name;
+
+        $flight-&gt;save();
+    }
+}</code></pre>
+<p>In this example, we assign the <code>name</code> field from the incoming HTTP request to the <code>name</code> attribute of the <code>App\Models\Flight</code> model instance. When we call the <code>save</code> method, a record will be inserted into the database. The model's <code>created_at</code> and <code>updated_at</code> timestamps will automatically be set when the <code>save</code> method is called, so there is no need to set them manually.</p>
+<p>Alternatively, you may use the <code>create</code> method to &quot;save&quot; a new model using a single PHP statement. The inserted model instance will be returned to you by the <code>create</code> method:</p>
+<pre><code>use App\Models\Flight;
+
+$flight = Flight::create([
+    'name' =&gt; 'London to Paris',
+]);</code></pre>
+<p>However, before using the <code>create</code> method, you will need to specify either a <code>fillable</code> or <code>guarded</code> property on your model class. These properties are required because all Eloquent models are protected against mass assignment vulnerabilities by default. To learn more about mass assignment, please consult the <a href="#mass-assignment">mass assignment documentation</a>.</p>
+<p><a name="updates"></a></p>
+<h3 id="updates">Updates</h3>
+<p>The <code>save</code> method may also be used to update models that already exist in the database. To update a model, you should retrieve it and set any attributes you wish to update. Then, you should call the model's <code>save</code> method. Again, the <code>updated_at</code> timestamp will automatically be updated, so there is no need to manually set its value:</p>
+<pre><code>use App\Models\Flight;
+
+$flight = Flight::find(1);
+
+$flight-&gt;name = 'Paris to London';
+
+$flight-&gt;save();</code></pre>
+<p><a name="mass-updates"></a></p>
+<h4 id="mass-updates">Mass Updates</h4>
+<p>Updates can also be performed against models that match a given query. In this example, all flights that are <code>active</code> and have a <code>destination</code> of <code>San Diego</code> will be marked as delayed:</p>
+<pre><code>Flight::where('active', 1)
+      -&gt;where('destination', 'San Diego')
+      -&gt;update(['delayed' =&gt; 1]);</code></pre>
+<p>The <code>update</code> method expects an array of column and value pairs representing the columns that should be updated.</p>
+<blockquote>
+<p>{note} When issuing a mass update via Eloquent, the <code>saving</code>, <code>saved</code>, <code>updating</code>, and <code>updated</code> model events will not be fired for the updated models. This is because the models are never actually retrieved when issuing a mass update.</p>
+</blockquote>
+<p><a name="examining-attribute-changes"></a></p>
+<h4 id="examining-attribute-changes">Examining Attribute Changes</h4>
+<p>Eloquent provides the <code>isDirty</code>, <code>isClean</code>, and <code>wasChanged</code> methods to examine the internal state of your model and determine how its attributes have changed from when the model was originally retrieved.</p>
+<p>The <code>isDirty</code> method determines if any of the model's attributes have been changed since the model was retrieved. You may pass a specific attribute name to the <code>isDirty</code> method to determine if a particular attribute is dirty. The <code>isClean</code> will determine if an attribute has remained unchanged since the model was retrieved. This method also accepts an optional attribute argument:</p>
+<pre><code>use App\Models\User;
+
+$user = User::create([
+    'first_name' =&gt; 'Taylor',
+    'last_name' =&gt; 'Otwell',
+    'title' =&gt; 'Developer',
+]);
+
+$user-&gt;title = 'Painter';
+
+$user-&gt;isDirty(); // true
+$user-&gt;isDirty('title'); // true
+$user-&gt;isDirty('first_name'); // false
+
+$user-&gt;isClean(); // false
+$user-&gt;isClean('title'); // false
+$user-&gt;isClean('first_name'); // true
+
+$user-&gt;save();
+
+$user-&gt;isDirty(); // false
+$user-&gt;isClean(); // true</code></pre>
+<p>The <code>wasChanged</code> method determines if any attributes were changed when the model was last saved within the current request cycle. If needed, you may pass an attribute name to see if a particular attribute was changed:</p>
+<pre><code>$user = User::create([
+    'first_name' =&gt; 'Taylor',
+    'last_name' =&gt; 'Otwell',
+    'title' =&gt; 'Developer',
+]);
+
+$user-&gt;title = 'Painter';
+
+$user-&gt;save();
+
+$user-&gt;wasChanged(); // true
+$user-&gt;wasChanged('title'); // true
+$user-&gt;wasChanged('first_name'); // false</code></pre>
+<p>The <code>getOriginal</code> method returns an array containing the original attributes of the model regardless of any changes to the model since it was retrieved. If needed, you may pass a specific attribute name to get the original value of a particular attribute:</p>
+<pre><code>$user = User::find(1);
+
+$user-&gt;name; // John
+$user-&gt;email; // john@example.com
+
+$user-&gt;name = "Jack";
+$user-&gt;name; // Jack
+
+$user-&gt;getOriginal('name'); // John
+$user-&gt;getOriginal(); // Array of original attributes...</code></pre>
+<p><a name="mass-assignment"></a></p>
+<h3 id="mass-assignment">Mass Assignment</h3>
+<p>You may use the <code>create</code> method to &quot;save&quot; a new model using a single PHP statement. The inserted model instance will be returned to you by the method:</p>
+<pre><code>use App\Models\Flight;
+
+$flight = Flight::create([
+    'name' =&gt; 'London to Paris',
+]);</code></pre>
+<p>However, before using the <code>create</code> method, you will need to specify either a <code>fillable</code> or <code>guarded</code> property on your model class. These properties are required because all Eloquent models are protected against mass assignment vulnerabilities by default.</p>
+<p>A mass assignment vulnerability occurs when a user passes an unexpected HTTP request field and that field changes a column in your database that you did not expect. For example, a malicious user might send an <code>is_admin</code> parameter through an HTTP request, which is then passed to your model's <code>create</code> method, allowing the user to escalate themselves to an administrator.</p>
+<p>So, to get started, you should define which model attributes you want to make mass assignable. You may do this using the <code>$fillable</code> property on the model. For example, let's make the <code>name</code> attribute of our <code>Flight</code> model mass assignable:</p>
+<pre><code>&lt;?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Flight extends Model
+{
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = ['name'];
+}</code></pre>
+<p>Once you have specified which attributes are mass assignable, you may use the <code>create</code> method to insert a new record in the database. The <code>create</code> method returns the newly created model instance:</p>
+<pre><code>$flight = Flight::create(['name' =&gt; 'London to Paris']);</code></pre>
+<p>If you already have a model instance, you may use the <code>fill</code> method to populate it with an array of attributes:</p>
+<pre><code>$flight-&gt;fill(['name' =&gt; 'Amsterdam to Frankfurt']);</code></pre>
+<p><a name="mass-assignment-json-columns"></a></p>
+<h4 id="mass-assignment-json-columns">Mass Assignment &amp; JSON Columns</h4>
+<p>When assigning JSON columns, each column's mass assignable key must be specified in your model's <code>$fillable</code> array. For security, Laravel does not support updating nested JSON attributes when using the <code>guarded</code> property:</p>
+<pre><code>/**
+ * The attributes that are mass assignable.
+ *
+ * @var array
+ */
+protected $fillable = [
+    'options-&gt;enabled',
+];</code></pre>
+<p><a name="allowing-mass-assignment"></a></p>
+<h4 id="allowing-mass-assignment">Allowing Mass Assignment</h4>
+<p>If you would like to make all of your attributes mass assignable, you may define your model's <code>$guarded</code> property as an empty array. If you choose to unguard your model, you should take special care to always hand-craft the arrays passed to Eloquent's <code>fill</code>, <code>create</code>, and <code>update</code> methods:</p>
+<pre><code>/**
+ * The attributes that aren't mass assignable.
+ *
+ * @var array
+ */
+protected $guarded = [];</code></pre>
+<p><a name="upserts"></a></p>
+<h3 id="upserts">Upserts</h3>
+<p>Occasionally, you may need to update an existing model or create a new model if no matching model exists. Like the <code>firstOrCreate</code> method, the <code>updateOrCreate</code> method persists the model, so there's no need to manually call the <code>save</code> method.</p>
+<p>In the example below, if a flight exists with a <code>departure</code> location of <code>Oakland</code> and a <code>destination</code> location of <code>San Diego</code>, its <code>price</code> and <code>discounted</code> columns will be updated. If no such flight exists, a new flight will be created which has the attributes resulting from merging the first argument array with the second argument array:</p>
+<pre><code>$flight = Flight::updateOrCreate(
+    ['departure' =&gt; 'Oakland', 'destination' =&gt; 'San Diego'],
+    ['price' =&gt; 99, 'discounted' =&gt; 1]
+);</code></pre>
+<p>If you would like to perform multiple &quot;upserts&quot; in a single query, then you should use the <code>upsert</code> method instead. The method's first argument consists of the values to insert or update, while the second argument lists the column(s) that uniquely identify records within the associated table. The method's third and final argument is an array of the columns that should be updated if a matching record already exists in the database. The <code>upsert</code> method will automatically set the <code>created_at</code> and <code>updated_at</code> timestamps if timestamps are enabled on the model:</p>
+<pre><code>Flight::upsert([
+    ['departure' =&gt; 'Oakland', 'destination' =&gt; 'San Diego', 'price' =&gt; 99],
+    ['departure' =&gt; 'Chicago', 'destination' =&gt; 'New York', 'price' =&gt; 150]
+], ['departure', 'destination'], ['price']);</code></pre>
+<p><a name="deleting-models"></a></p>
+<h2 id="deleting-models">Deleting Models</h2>
+<p>To delete a model, you may call the <code>delete</code> method on the model instance:</p>
+<pre><code>use App\Models\Flight;
+
+$flight = Flight::find(1);
+
+$flight-&gt;delete();</code></pre>
+<p>You may call the <code>truncate</code> method to delete all of the model's associated database records. The <code>truncate</code> operation will also reset any auto-incrementing IDs on the model's associated table:</p>
+<pre><code>Flight::truncate();</code></pre>
+<p><a name="deleting-an-existing-model-by-its-primary-key"></a></p>
+<h4 id="deleting-an-existing-model-by-its-primary-key">Deleting An Existing Model By Its Primary Key</h4>
+<p>In the example above, we are retrieving the model from the database before calling the <code>delete</code> method. However, if you know the primary key of the model, you may delete the model without explicitly retrieving it by calling the <code>destroy</code> method.  In addition to accepting the single primary key, the <code>destroy</code> method will accept multiple primary keys, an array of primary keys, or a <a href="collections.html">collection</a> of primary keys:</p>
+<pre><code>Flight::destroy(1);
+
+Flight::destroy(1, 2, 3);
+
+Flight::destroy([1, 2, 3]);
+
+Flight::destroy(collect([1, 2, 3]));</code></pre>
+<blockquote>
+<p>{note} The <code>destroy</code> method loads each model individually and calls the <code>delete</code> method so that the <code>deleting</code> and <code>deleted</code> events are properly dispatched for each model.</p>
+</blockquote>
+<p><a name="deleting-models-using-queries"></a></p>
+<h4 id="deleting-models-using-queries">Deleting Models Using Queries</h4>
+<p>Of course, you may build an Eloquent query to delete all models matching your query's criteria. In this example, we will delete all flights that are marked as inactive. Like mass updates, mass deletes will not dispatch model events for the models that are deleted:</p>
+<pre><code>$deletedRows = Flight::where('active', 0)-&gt;delete();</code></pre>
+<blockquote>
+<p>{note} When executing a mass delete statement via Eloquent, the <code>deleting</code> and <code>deleted</code> model events will not be dispatched for the deleted models. This is because the models are never actually retrieved when executing the delete statement.</p>
+</blockquote>
+<p><a name="soft-deleting"></a></p>
+<h3 id="soft-deleting">Soft Deleting</h3>
+<p>In addition to actually removing records from your database, Eloquent can also &quot;soft delete&quot; models. When models are soft deleted, they are not actually removed from your database. Instead, a <code>deleted_at</code> attribute is set on the model indicating the date and time at which the model was &quot;deleted&quot;. To enable soft deletes for a model, add the <code>Illuminate\Database\Eloquent\SoftDeletes</code> trait to the model:</p>
+<pre><code>&lt;?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
+
+class Flight extends Model
+{
+    use SoftDeletes;
+}</code></pre>
+<blockquote>
+<p>{tip} The <code>SoftDeletes</code> trait will automatically cast the <code>deleted_at</code> attribute to a <code>DateTime</code> / <code>Carbon</code> instance for you.</p>
+</blockquote>
+<p>You should also add the <code>deleted_at</code> column to your database table. The Laravel <a href="migrations.html">schema builder</a> contains a helper method to create this column:</p>
+<pre><code>use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+Schema::table('flights', function (Blueprint $table) {
+    $table-&gt;softDeletes();
+});
+
+Schema::table('flights', function (Blueprint $table) {
+    $table-&gt;dropSoftDeletes();
+});</code></pre>
+<p>Now, when you call the <code>delete</code> method on the model, the <code>deleted_at</code> column will be set to the current date and time. However, the model's database record will be left in the table. When querying a model that uses soft deletes, the soft deleted models will automatically be excluded from all query results.</p>
+<p>To determine if a given model instance has been soft deleted, you may use the <code>trashed</code> method:</p>
+<pre><code>if ($flight-&gt;trashed()) {
+    //
+}</code></pre>
+<p><a name="restoring-soft-deleted-models"></a></p>
+<h4 id="restoring-soft-deleted-models">Restoring Soft Deleted Models</h4>
+<p>Sometimes you may wish to &quot;un-delete&quot; a soft deleted model. To restore a soft deleted model, you may call the <code>restore</code> method on a model instance. The <code>restore</code> method will set the model's <code>deleted_at</code> column to <code>null</code>:</p>
+<pre><code>$flight-&gt;restore();</code></pre>
+<p>You may also use the <code>restore</code> method in a query to restore multiple models. Again, like other &quot;mass&quot; operations, this will not dispatch any model events for the models that are restored:</p>
+<pre><code>Flight::withTrashed()
+        -&gt;where('airline_id', 1)
+        -&gt;restore();</code></pre>
+<p>The <code>restore</code> method may also be used when building <a href="eloquent-relationships.html">relationship</a> queries:</p>
+<pre><code>$flight-&gt;history()-&gt;restore();</code></pre>
+<p><a name="permanently-deleting-models"></a></p>
+<h4 id="permanently-deleting-models">Permanently Deleting Models</h4>
+<p>Sometimes you may need to truly remove a model from your database. You may use the <code>forceDelete</code> method to permanently remove a soft deleted model from the database table:</p>
+<pre><code>$flight-&gt;forceDelete();</code></pre>
+<p>You may also use the <code>forceDelete</code> method when building Eloquent relationship queries:</p>
+<pre><code>$flight-&gt;history()-&gt;forceDelete();</code></pre>
+<p><a name="querying-soft-deleted-models"></a></p>
+<h3 id="querying-soft-deleted-models">Querying Soft Deleted Models</h3>
+<p><a name="including-soft-deleted-models"></a></p>
+<h4 id="including-soft-deleted-models">Including Soft Deleted Models</h4>
+<p>As noted above, soft deleted models will automatically be excluded from query results. However, you may force soft deleted models to be included in a query's results by calling the <code>withTrashed</code> method on the query:</p>
+<pre><code>use App\Models\Flight;
+
+$flights = Flight::withTrashed()
+                -&gt;where('account_id', 1)
+                -&gt;get();</code></pre>
+<p>The <code>withTrashed</code> method may also be called when building a <a href="eloquent-relationships.html">relationship</a> query:</p>
+<pre><code>$flight-&gt;history()-&gt;withTrashed()-&gt;get();</code></pre>
+<p><a name="retrieving-only-soft-deleted-models"></a></p>
+<h4 id="retrieving-only-soft-deleted-models">Retrieving Only Soft Deleted Models</h4>
+<p>The <code>onlyTrashed</code> method will retrieve <strong>only</strong> soft deleted models:</p>
+<pre><code>$flights = Flight::onlyTrashed()
+                -&gt;where('airline_id', 1)
+                -&gt;get();</code></pre>
+<p><a name="pruning-models"></a></p>
+<h2 id="pruning-models">Pruning Models</h2>
+<p>Sometimes you may want to periodically delete models that are no longer needed. To accomplish this, you may add the <code>Illuminate\Database\Eloquent\Prunable</code> or <code>Illuminate\Database\Eloquent\MassPrunable</code> trait to the models you would like to periodically prune. After adding one of the traits to the model, implement a <code>prunable</code> method which returns an Eloquent query builder that resolves the models that are no longer needed:</p>
+<pre><code>&lt;?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Prunable;
+
+class Flight extends Model
+{
+    use Prunable;
+
+    /**
+     * Get the prunable model query.
+     *
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function prunable()
+    {
+        return static::where('created_at', '&lt;=', now()-&gt;subMonth());
+    }
+}</code></pre>
+<p>When marking models as <code>Prunable</code>, you may also define a <code>pruning</code> method on the model. This method will be called before the model is deleted. This method can be useful for deleting any additional resources associated with the model, such as stored files, before the model is permanently removed from the database:</p>
+<pre><code>/**
+ * Prepare the model for pruning.
+ *
+ * @return void
+ */
+protected function pruning()
+{
+    //
+}</code></pre>
+<p>After configuring your prunable model, you should schedule the <code>model:prune</code> Artisan command in your application's <code>App\Console\Kernel</code> class. You are free to choose the appropriate interval at which this command should be run:</p>
+<pre><code>/**
+ * Define the application's command schedule.
+ *
+ * @param  \Illuminate\Console\Scheduling\Schedule  $schedule
+ * @return void
+ */
+protected function schedule(Schedule $schedule)
+{
+    $schedule-&gt;command('model:prune')-&gt;daily();
+}</code></pre>
+<p>Behind the scenes, the <code>model:prune</code> command will automatically detect &quot;Prunable&quot; models within your application's <code>app/Models</code> directory. If your models are in a different location, you may use the <code>--model</code> option to specify the model class names:</p>
+<pre><code>$schedule-&gt;command('model:prune', [
+    '--model' =&gt; [Address::class, Flight::class],
+])-&gt;daily();</code></pre>
+<p>If you wish to exclude certain models from being pruned while pruning all other detected models, you may use the <code>--except</code> option:</p>
+<pre><code>$schedule-&gt;command('model:prune', [
+    '--except' =&gt; [Address::class, Flight::class],
+])-&gt;daily();</code></pre>
+<p>You may test your <code>prunable</code> query by executing the <code>model:prune</code> command with the <code>--pretend</code> option. When pretending, the <code>model:prune</code> command will simply report how many records would be pruned if the command were to actually run:</p>
+<pre><code>php artisan model:prune --pretend</code></pre>
+<blockquote>
+<p>{note} Soft deleting models will be permanently deleted (<code>forceDelete</code>) if they match the prunable query.</p>
+</blockquote>
+<p><a name="mass-pruning"></a></p>
+<h4 id="mass-pruning">Mass Pruning</h4>
+<p>When models are marked with the <code>Illuminate\Database\Eloquent\MassPrunable</code> trait, models are deleted from the database using mass-deletion queries. Therefore, the <code>pruning</code> method will not be invoked, nor will the <code>deleting</code> and <code>deleted</code> model events be dispatched. This is because the models are never actually retrieved before deletion, thus making the pruning process much more efficient:</p>
+<pre><code>&lt;?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\MassPrunable;
+
+class Flight extends Model
+{
+    use MassPrunable;
+
+    /**
+     * Get the prunable model query.
+     *
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function prunable()
+    {
+        return static::where('created_at', '&lt;=', now()-&gt;subMonth());
+    }
+}</code></pre>
+<p><a name="replicating-models"></a></p>
+<h2 id="replicating-models">Replicating Models</h2>
+<p>You may create an unsaved copy of an existing model instance using the <code>replicate</code> method. This method is particularly useful when you have model instances that share many of the same attributes:</p>
+<pre><code>use App\Models\Address;
+
+$shipping = Address::create([
+    'type' =&gt; 'shipping',
+    'line_1' =&gt; '123 Example Street',
+    'city' =&gt; 'Victorville',
+    'state' =&gt; 'CA',
+    'postcode' =&gt; '90001',
+]);
+
+$billing = $shipping-&gt;replicate()-&gt;fill([
+    'type' =&gt; 'billing'
+]);
+
+$billing-&gt;save();</code></pre>
+<p>To exclude one or more attributes from being replicated to the new model, you may pass an array to the <code>replicate</code> method:</p>
+<pre><code>$flight = Flight::create([
+    'destination' =&gt; 'LAX',
+    'origin' =&gt; 'LHR',
+    'last_flown' =&gt; '2020-03-04 11:00:00',
+    'last_pilot_id' =&gt; 747,
+]);
+
+$flight = $flight-&gt;replicate([
+    'last_flown',
+    'last_pilot_id'
+]);</code></pre>
+<p><a name="query-scopes"></a></p>
+<h2 id="query-scopes">Query Scopes</h2>
+<p><a name="global-scopes"></a></p>
+<h3 id="global-scopes">Global Scopes</h3>
+<p>Global scopes allow you to add constraints to all queries for a given model. Laravel's own <a href="#soft-deleting">soft delete</a> functionality utilizes global scopes to only retrieve &quot;non-deleted&quot; models from the database. Writing your own global scopes can provide a convenient, easy way to make sure every query for a given model receives certain constraints.</p>
+<p><a name="writing-global-scopes"></a></p>
+<h4 id="writing-global-scopes">Writing Global Scopes</h4>
+<p>Writing a global scope is simple. First, define a class that implements the <code>Illuminate\Database\Eloquent\Scope</code> interface. Laravel does not have a conventional location that you should place scope classes, so you are free to place this class in any directory that you wish.</p>
+<p>The <code>Scope</code> interface requires you to implement one method: <code>apply</code>. The <code>apply</code> method may add <code>where</code> constraints or other types of clauses to the query as needed:</p>
+<pre><code>&lt;?php
+
+namespace App\Scopes;
+
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Scope;
+
+class AncientScope implements Scope
+{
+    /**
+     * Apply the scope to a given Eloquent query builder.
+     *
+     * @param  \Illuminate\Database\Eloquent\Builder  $builder
+     * @param  \Illuminate\Database\Eloquent\Model  $model
+     * @return void
+     */
+    public function apply(Builder $builder, Model $model)
+    {
+        $builder-&gt;where('created_at', '&lt;', now()-&gt;subYears(2000));
+    }
+}</code></pre>
+<blockquote>
+<p>{tip} If your global scope is adding columns to the select clause of the query, you should use the <code>addSelect</code> method instead of <code>select</code>. This will prevent the unintentional replacement of the query's existing select clause.</p>
+</blockquote>
+<p><a name="applying-global-scopes"></a></p>
+<h4 id="applying-global-scopes">Applying Global Scopes</h4>
+<p>To assign a global scope to a model, you should override the model's <code>booted</code> method and invoke the model's <code>addGlobalScope</code> method. The <code>addGlobalScope</code> method accepts an instance of your scope as its only argument:</p>
+<pre><code>&lt;?php
+
+namespace App\Models;
+
+use App\Scopes\AncientScope;
+use Illuminate\Database\Eloquent\Model;
+
+class User extends Model
+{
+    /**
+     * The "booted" method of the model.
+     *
+     * @return void
+     */
+    protected static function booted()
+    {
+        static::addGlobalScope(new AncientScope);
+    }
+}</code></pre>
+<p>After adding the scope in the example above to the <code>App\Models\User</code> model, a call to the <code>User::all()</code> method will execute the following SQL query:</p>
+<pre><code class="language-sql">select * from `users` where `created_at` &lt; 0021-02-18 00:00:00</code></pre>
+<p><a name="anonymous-global-scopes"></a></p>
+<h4 id="anonymous-global-scopes">Anonymous Global Scopes</h4>
+<p>Eloquent also allows you to define global scopes using closures, which is particularly useful for simple scopes that do not warrant a separate class of their own. When defining a global scope using a closure, you should provide a scope name of your own choosing as the first argument to the <code>addGlobalScope</code> method:</p>
+<pre><code>&lt;?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model;
+
+class User extends Model
+{
+    /**
+     * The "booted" method of the model.
+     *
+     * @return void
+     */
+    protected static function booted()
+    {
+        static::addGlobalScope('ancient', function (Builder $builder) {
+            $builder-&gt;where('created_at', '&lt;', now()-&gt;subYears(2000));
+        });
+    }
+}</code></pre>
+<p><a name="removing-global-scopes"></a></p>
+<h4 id="removing-global-scopes">Removing Global Scopes</h4>
+<p>If you would like to remove a global scope for a given query, you may use the <code>withoutGlobalScope</code> method. This method accepts the class name of the global scope as its only argument:</p>
+<pre><code>User::withoutGlobalScope(AncientScope::class)-&gt;get();</code></pre>
+<p>Or, if you defined the global scope using a closure, you should pass the string name that you assigned to the global scope:</p>
+<pre><code>User::withoutGlobalScope('ancient')-&gt;get();</code></pre>
+<p>If you would like to remove several or even all of the query's global scopes, you may use the <code>withoutGlobalScopes</code> method:</p>
+<pre><code>// Remove all of the global scopes...
+User::withoutGlobalScopes()-&gt;get();
+
+// Remove some of the global scopes...
+User::withoutGlobalScopes([
+    FirstScope::class, SecondScope::class
+])-&gt;get();</code></pre>
+<p><a name="local-scopes"></a></p>
+<h3 id="local-scopes">Local Scopes</h3>
+<p>Local scopes allow you to define common sets of query constraints that you may easily re-use throughout your application. For example, you may need to frequently retrieve all users that are considered &quot;popular&quot;. To define a scope, prefix an Eloquent model method with <code>scope</code>.</p>
+<p>Scopes should always return the same query builder instance or <code>void</code>:</p>
+<pre><code>&lt;?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+
+class User extends Model
+{
+    /**
+     * Scope a query to only include popular users.
+     *
+     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopePopular($query)
+    {
+        return $query-&gt;where('votes', '&gt;', 100);
+    }
+
+    /**
+     * Scope a query to only include active users.
+     *
+     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @return void
+     */
+    public function scopeActive($query)
+    {
+        $query-&gt;where('active', 1);
+    }
+}</code></pre>
+<p><a name="utilizing-a-local-scope"></a></p>
+<h4 id="utilizing-a-local-scope">Utilizing A Local Scope</h4>
+<p>Once the scope has been defined, you may call the scope methods when querying the model. However, you should not include the <code>scope</code> prefix when calling the method. You can even chain calls to various scopes:</p>
+<pre><code>use App\Models\User;
+
+$users = User::popular()-&gt;active()-&gt;orderBy('created_at')-&gt;get();</code></pre>
+<p>Combining multiple Eloquent model scopes via an <code>or</code> query operator may require the use of closures to achieve the correct <a href="queries.html#logical-grouping">logical grouping</a>:</p>
+<pre><code>$users = User::popular()-&gt;orWhere(function (Builder $query) {
+    $query-&gt;active();
+})-&gt;get();</code></pre>
+<p>However, since this can be cumbersome, Laravel provides a &quot;higher order&quot; <code>orWhere</code> method that allows you to fluently chain scopes together without the use of closures:</p>
+<pre><code>$users = App\Models\User::popular()-&gt;orWhere-&gt;active()-&gt;get();</code></pre>
+<p><a name="dynamic-scopes"></a></p>
+<h4 id="dynamic-scopes">Dynamic Scopes</h4>
+<p>Sometimes you may wish to define a scope that accepts parameters. To get started, just add your additional parameters to your scope method's signature. Scope parameters should be defined after the <code>$query</code> parameter:</p>
+<pre><code>&lt;?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+
+class User extends Model
+{
+    /**
+     * Scope a query to only include users of a given type.
+     *
+     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @param  mixed  $type
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeOfType($query, $type)
+    {
+        return $query-&gt;where('type', $type);
+    }
+}</code></pre>
+<p>Once the expected arguments have been added to your scope method's signature, you may pass the arguments when calling the scope:</p>
+<pre><code>$users = User::ofType('admin')-&gt;get();</code></pre>
+<p><a name="comparing-models"></a></p>
+<h2 id="comparing-models">Comparing Models</h2>
+<p>Sometimes you may need to determine if two models are the &quot;same&quot; or not. The <code>is</code> and <code>isNot</code> methods may be used to quickly verify two models have the same primary key, table, and database connection or not:</p>
+<pre><code>if ($post-&gt;is($anotherPost)) {
+    //
+}
+
+if ($post-&gt;isNot($anotherPost)) {
+    //
+}</code></pre>
+<p>The <code>is</code> and <code>isNot</code> methods are also available when using the <code>belongsTo</code>, <code>hasOne</code>, <code>morphTo</code>, and <code>morphOne</code> <a href="eloquent-relationships.html">relationships</a>. This method is particularly helpful when you would like to compare a related model without issuing a query to retrieve that model:</p>
+<pre><code>if ($post-&gt;author()-&gt;is($user)) {
+    //
+}</code></pre>
+<p><a name="events"></a></p>
+<h2 id="events">Events</h2>
+<blockquote>
+<p>{tip} Want to broadcast your Eloquent events directly to your client-side application? Check out Laravel's <a href="broadcasting.html#model-broadcasting">model event broadcasting</a>.</p>
+</blockquote>
+<p>Eloquent models dispatch several events, allowing you to hook into the following moments in a model's lifecycle: <code>retrieved</code>, <code>creating</code>, <code>created</code>, <code>updating</code>, <code>updated</code>, <code>saving</code>, <code>saved</code>, <code>deleting</code>, <code>deleted</code>, <code>restoring</code>, <code>restored</code>, and <code>replicating</code>.</p>
+<p>The <code>retrieved</code> event will dispatch when an existing model is retrieved from the database. When a new model is saved for the first time, the <code>creating</code> and <code>created</code> events will dispatch. The <code>updating</code> / <code>updated</code> events will dispatch when an existing model is modified and the <code>save</code> method is called. The <code>saving</code> / <code>saved</code> events will dispatch when a model is created or updated - even if the model's attributes have not been changed. Event names ending with <code>-ing</code> are dispatched before any changes to the model are persisted, while events ending with <code>-ed</code> are dispatched after the changes to the model are persisted.</p>
+<p>To start listening to model events, define a <code>$dispatchesEvents</code> property on your Eloquent model. This property maps various points of the Eloquent model's lifecycle to your own <a href="events.html">event classes</a>. Each model event class should expect to receive an instance of the affected model via its constructor:</p>
+<pre><code>&lt;?php
+
+namespace App\Models;
+
+use App\Events\UserDeleted;
+use App\Events\UserSaved;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+
+class User extends Authenticatable
+{
+    use Notifiable;
+
+    /**
+     * The event map for the model.
+     *
+     * @var array
+     */
+    protected $dispatchesEvents = [
+        'saved' =&gt; UserSaved::class,
+        'deleted' =&gt; UserDeleted::class,
+    ];
+}</code></pre>
+<p>After defining and mapping your Eloquent events, you may use <a href="events.html#defining-listeners">event listeners</a> to handle the events.</p>
+<blockquote>
+<p>{note} When issuing a mass update or delete query via Eloquent, the <code>saved</code>, <code>updated</code>, <code>deleting</code>, and <code>deleted</code> model events will not be dispatched for the affected models. This is because the models are never actually retrieved when performing mass updates or deletes.</p>
+</blockquote>
+<p><a name="events-using-closures"></a></p>
+<h3 id="events-using-closures">Using Closures</h3>
+<p>Instead of using custom event classes, you may register closures that execute when various model events are dispatched. Typically, you should register these closures in the <code>booted</code> method of your model:</p>
+<pre><code>&lt;?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+
+class User extends Model
+{
+    /**
+     * The "booted" method of the model.
+     *
+     * @return void
+     */
+    protected static function booted()
+    {
+        static::created(function ($user) {
+            //
+        });
+    }
+}</code></pre>
+<p>If needed, you may utilize <a href="events.html#queuable-anonymous-event-listeners">queueable anonymous event listeners</a> when registering model events. This will instruct Laravel to execute the model event listener in the background using your application's <a href="queues.html">queue</a>:</p>
+<pre><code>use function Illuminate\Events\queueable;
+
+static::created(queueable(function ($user) {
+    //
+}));</code></pre>
+<p><a name="observers"></a></p>
+<h3 id="observers">Observers</h3>
+<p><a name="defining-observers"></a></p>
+<h4 id="defining-observers">Defining Observers</h4>
+<p>If you are listening for many events on a given model, you may use observers to group all of your listeners into a single class. Observer classes have method names which reflect the Eloquent events you wish to listen for. Each of these methods receives the affected model as their only argument. The <code>make:observer</code> Artisan command is the easiest way to create a new observer class:</p>
+<pre><code>php artisan make:observer UserObserver --model=User</code></pre>
+<p>This command will place the new observer in your <code>App/Observers</code> directory. If this directory does not exist, Artisan will create it for you. Your fresh observer will look like the following:</p>
+<pre><code>&lt;?php
+
+namespace App\Observers;
+
+use App\Models\User;
+
+class UserObserver
+{
+    /**
+     * Handle the User "created" event.
+     *
+     * @param  \App\Models\User  $user
+     * @return void
+     */
+    public function created(User $user)
+    {
+        //
+    }
+
+    /**
+     * Handle the User "updated" event.
+     *
+     * @param  \App\Models\User  $user
+     * @return void
+     */
+    public function updated(User $user)
+    {
+        //
+    }
+
+    /**
+     * Handle the User "deleted" event.
+     *
+     * @param  \App\Models\User  $user
+     * @return void
+     */
+    public function deleted(User $user)
+    {
+        //
+    }
+
+    /**
+     * Handle the User "forceDeleted" event.
+     *
+     * @param  \App\Models\User  $user
+     * @return void
+     */
+    public function forceDeleted(User $user)
+    {
+        //
+    }
+}</code></pre>
+<p>To register an observer, you need to call the <code>observe</code> method on the model you wish to observe. You may register observers in the <code>boot</code> method of your application's <code>App\Providers\EventServiceProvider</code> service provider:</p>
+<pre><code>use App\Models\User;
+use App\Observers\UserObserver;
+
+/**
+ * Register any events for your application.
+ *
+ * @return void
+ */
+public function boot()
+{
+    User::observe(UserObserver::class);
+}</code></pre>
+<blockquote>
+<p>{tip} There are additional events an observer can listen to, such as <code>saving</code> and <code>retrieved</code>. These events are described within the <a href="#events">events</a> documentation.</p>
+</blockquote>
+<p><a name="observers-and-database-transactions"></a></p>
+<h4 id="observers-and-database-transactions">Observers &amp; Database Transactions</h4>
+<p>When models are being created within a database transaction, you may want to instruct an observer to only execute its event handlers after the database transaction is committed. You may accomplish this by defining an <code>$afterCommit</code> property on the observer. If a database transaction is not in progress, the event handlers will execute immediately:</p>
+<pre><code>&lt;?php
+
+namespace App\Observers;
+
+use App\Models\User;
+
+class UserObserver
+{
+    /**
+     * Handle events after all transactions are committed.
+     *
+     * @var bool
+     */
+    public $afterCommit = true;
+
+    /**
+     * Handle the User "created" event.
+     *
+     * @param  \App\Models\User  $user
+     * @return void
+     */
+    public function created(User $user)
+    {
+        //
+    }
+}</code></pre>
+<p><a name="muting-events"></a></p>
+<h3 id="muting-events">Muting Events</h3>
+<p>You may occasionally need to temporarily &quot;mute&quot; all events fired by a model. You may achieve this using the <code>withoutEvents</code> method. The <code>withoutEvents</code> method accepts a closure as its only argument. Any code executed within this closure will not dispatch model events, and any value returned by the closure will be returned by the <code>withoutEvents</code> method:</p>
+<pre><code>use App\Models\User;
+
+$user = User::withoutEvents(function () use () {
+    User::findOrFail(1)-&gt;delete();
+
+    return User::find(2);
+});</code></pre>
+<p><a name="saving-a-single-model-without-events"></a></p>
+<h4 id="saving-a-single-model-without-events">Saving A Single Model Without Events</h4>
+<p>Sometimes you may wish to &quot;save&quot; a given model without dispatching any events. You may accomplish this using the <code>saveQuietly</code> method:</p>
+<pre><code>$user = User::findOrFail(1);
+
+$user-&gt;name = 'Victoria Faith';
+
+$user-&gt;saveQuietly();</code></pre>
+</div>
+ 
+                                                        <button onclick="topFunction()" id="toTheTop" title="Go to top" class="fixed bottom-5 right-5 h-15 w-15 hidden">
+                                <span class="topChevron"></span>
+                            </button>
+                                                    </section>
+                    </section>
+                </div>
+            </section>
+        </div>
+    </div>
+    <script>
+        mybutton = document.getElementById('toTheTop');
+        window.onscroll = function() {scrollFunction()};
+        function scrollFunction() {
+            carbonAds = document.getElementById('carbonads');
+            if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+                mybutton.style.setProperty('display', 'block', 'important');
+                if (carbonAds) {
+                    carbonAds.classList.add('move-top');
+                }
+            } else {
+                mybutton.style.display = 'none';
+                if (carbonAds) {
+                    carbonAds.classList.remove('move-top');
+                }
+            }
+        }
+        function topFunction() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        }
+    </script>
+
+<footer class="relative z-30 dark:bg-dark-700">
+    <div class="relative z-20 overflow-x-hidden">
+        <div class="relative max-w-screen-2xl mx-auto sm:px-8">
+            <div class="absolute inset-0 flex flex-col px-4 lg:px-12 xl:px-16">
+                <div class="flex-1"></div>
+                <div class="flex-1 bg-gray-100 dark:bg-dark-900"></div>
+            </div>
+            <div class="relative max-w-screen-xl mx-auto px-8">
+                <section class="relative z-10 p-6 bg-white shadow-lg md:flex md:items-center md:p-12 lg:p-16 dark:bg-dark-600">
+                    <div class="content md:pr-12">
+                        <h2 class="text-3xl tracking-tight sm:text-4xl md:mt-4 xl:text-5xl dark:text-gray-200">Become a Laravel Partner</h2>
+                        <p class="mt-3 max-w-xl text-gray-600 sm:mt-5 md:max-w-2xl md:mt-8 md:text-lg dark:text-gray-400">Laravel Partners are elite shops providing top-notch Laravel development and consulting. Each of our partners can help you craft a beautiful, well-architected project.</p>
+                    </div>
+                                             <a class="group relative h-12 inline-flex w-64 border border-red-600 sm:w-56 focus:outline-none mt-8" href="../../index-8.htm">
+    <span class="absolute inset-0 inline-flex items-center justify-center self-stretch px-6 text-white text-center font-medium bg-red-600 ring-1 ring-red-600 ring-offset-1 ring-offset-red-600 transform transition-transform group-hover:-translate-y-1 group-hover:-translate-x-1 group-focus:-translate-y-1 group-focus:-translate-x-1">
+        Our Partners
+    </span>
+</a>
+ 
+                                    </section>
+            </div>
+        </div>
+
+        <div class="max-w-screen-2xl mx-auto px-4 lg:px-12 xl:px-16">
+            <div class="px-8 pb-12 bg-gray-100 xl:px-20 dark:bg-dark-900">
+                <div>
+                    <img class="-mt-2 max-w-4xl w-full transform -translate-x-12 lg:-translate-x-24 xl:-translate-x-40" src="../../img/logotype.min.svg" alt="Laravel" width="114" height="29" loading="lazy">
+                </div>
+                <div class="mt-6 sm:mt-12 md:flex">
+                    <div class="divide-y divide-gray-600 divide-opacity-25 sm:hidden">
+                                                    <div x-data="{ expanded: false }" class="py-4">
+                                <button class="-mx-2 px-2 w-full flex items-center justify-between py-2 font-bold dark:text-gray-200" @click="expanded = ! expanded">
+                                    <span>Highlights</span>
+                                    <span class="transform transition-transform" :class="{ 'rotate-45': expanded }">&plus;</span>
+                                </button>
+                                <div x-show="expanded" x-cloak="" class="py-2 transition transform" x-transition:enter="duration-250 ease-out" x-transition:enter-start="opacity-0 -translate-y-8" x-transition:enter-end="opacity-100" x-transition:leave="duration-250 ease-in" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0 -translate-y-8">
+                                    <ul class="space-y-2 text-gray-600 text-sm dark:text-gray-500">
+                                                                                    <li><a href="/team">Our Team</a></li>
+                                                                                    <li><a href="releases.html">Release Notes</a></li>
+                                                                                    <li><a href="installation.html">Getting Started</a></li>
+                                                                                    <li><a href="routing.html">Routing</a></li>
+                                                                                    <li><a href="blade.html">Blade Templates</a></li>
+                                                                                    <li><a href="authentication.html">Authentication</a></li>
+                                                                                    <li><a href="authorization.html">Authorization</a></li>
+                                                                                    <li><a href="artisan.html">Artisan Console</a></li>
+                                                                                    <li><a href="database.html">Database</a></li>
+                                                                                    <li><a href="eloquent.html">Eloquent ORM</a></li>
+                                                                                    <li><a href="testing.html">Testing</a></li>
+                                                                            </ul>
+                                </div>
+                            </div>
+                                                    <div x-data="{ expanded: false }" class="py-4">
+                                <button class="-mx-2 px-2 w-full flex items-center justify-between py-2 font-bold dark:text-gray-200" @click="expanded = ! expanded">
+                                    <span>Resources</span>
+                                    <span class="transform transition-transform" :class="{ 'rotate-45': expanded }">&plus;</span>
+                                </button>
+                                <div x-show="expanded" x-cloak="" class="py-2 transition transform" x-transition:enter="duration-250 ease-out" x-transition:enter-start="opacity-0 -translate-y-8" x-transition:enter-end="opacity-100" x-transition:leave="duration-250 ease-in" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0 -translate-y-8">
+                                    <ul class="space-y-2 text-gray-600 text-sm dark:text-gray-500">
+                                                                                    <li><a href="../../index-10.htm">Laracasts</a></li>
+                                                                                    <li><a href="../../index-7.htm">Laravel News</a></li>
+                                                                                    <li><a href="../../index-13.htm">Laracon</a></li>
+                                                                                    <li><a href="../../winter-2022/index.htm">Laracon EU</a></li>
+                                                                                    <li><a href="../../index-14.htm">Jobs</a></li>
+                                                                                    <li><a href="../../index-16.htm">Certification</a></li>
+                                                                                    <li><a href="../../discuss.html">Forums</a></li>
+                                                                            </ul>
+                                </div>
+                            </div>
+                                                    <div x-data="{ expanded: false }" class="py-4">
+                                <button class="-mx-2 px-2 w-full flex items-center justify-between py-2 font-bold dark:text-gray-200" @click="expanded = ! expanded">
+                                    <span>Partners</span>
+                                    <span class="transform transition-transform" :class="{ 'rotate-45': expanded }">&plus;</span>
+                                </button>
+                                <div x-show="expanded" x-cloak="" class="py-2 transition transform" x-transition:enter="duration-250 ease-out" x-transition:enter-start="opacity-0 -translate-y-8" x-transition:enter-end="opacity-100" x-transition:leave="duration-250 ease-in" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0 -translate-y-8">
+                                    <ul class="space-y-2 text-gray-600 text-sm dark:text-gray-500">
+                                                                                    <li><a href="../../index-17.htm">Vehikl</a></li>
+                                                                                    <li><a href="../../index-18.htm">Tighten</a></li>
+                                                                                    <li><a href="../../index-19.htm">64 Robots</a></li>
+                                                                                    <li><a href="../../index-20.htm">Kirschbaum</a></li>
+                                                                                    <li><a href="../../services/technologies/laravel/index.htm">Curotec</a></li>
+                                                                                    <li><a href="../../index-21.htm">Jump24</a></li>
+                                                                                    <li><a href="../../index-22.htm">A2 Design</a></li>
+                                                                                    <li><a href="../../app/uploads/2019/08/INTRO-Pitch-I-AY-Tech.pdf?utm_source=laravelpartnersfindoutmore&amp;utm_medium=socialgroups&amp;utm_campaign=tech">ABOUT YOU</a></li>
+                                                                                    <li><a href="../../index-23.htm">Byte 5</a></li>
+                                                                                    <li><a href="../../index-24.htm">Cubet</a></li>
+                                                                                    <li><a href="../../what-we-do/technology-implementation/laravel.html?utm_source=Laravel%20Partner&amp;utm_medium=Sponsorship">Cyber-Duck</a></li>
+                                                                                    <li><a href="../../index-25.htm">DevSquad</a></li>
+                                                                                    <li><a href="../../index-26.htm">Ideil</a></li>
+                                                                                    <li><a href="../../index-27.htm">Romega Software</a></li>
+                                                                                    <li><a href="../../index-28.htm">Worksome</a></li>
+                                                                                    <li><a href="../../index.html?utm_source=laravel&amp;utm_medium=laravel.com&amp;utm_campaign=patreon-sponsors">WebReinvent</a></li>
+                                                                            </ul>
+                                </div>
+                            </div>
+                                                    <div x-data="{ expanded: false }" class="py-4">
+                                <button class="-mx-2 px-2 w-full flex items-center justify-between py-2 font-bold dark:text-gray-200" @click="expanded = ! expanded">
+                                    <span>Ecosystem</span>
+                                    <span class="transform transition-transform" :class="{ 'rotate-45': expanded }">&plus;</span>
+                                </button>
+                                <div x-show="expanded" x-cloak="" class="py-2 transition transform" x-transition:enter="duration-250 ease-out" x-transition:enter-start="opacity-0 -translate-y-8" x-transition:enter-end="opacity-100" x-transition:leave="duration-250 ease-in" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0 -translate-y-8">
+                                    <ul class="space-y-2 text-gray-600 text-sm dark:text-gray-500">
+                                                                                    <li><a href="billing.html">Cashier</a></li>
+                                                                                    <li><a href="dusk.html">Dusk</a></li>
+                                                                                    <li><a href="broadcasting.html">Echo</a></li>
+                                                                                    <li><a href="../../index-3.htm">Envoyer</a></li>
+                                                                                    <li><a href="../../index-2.htm">Forge</a></li>
+                                                                                    <li><a href="homestead.html">Homestead</a></li>
+                                                                                    <li><a href="horizon.html">Horizon</a></li>
+                                                                                    <li><a href="../9.x.html">Lumen</a></li>
+                                                                                    <li><a href="mix.html">Mix</a></li>
+                                                                                    <li><a href="../../index-4.htm">Nova</a></li>
+                                                                                    <li><a href="passport.html">Passport</a></li>
+                                                                                    <li><a href="scout.html">Scout</a></li>
+                                                                                    <li><a href="socialite.html">Socialite</a></li>
+                                                                                    <li><a href="../../index-5.htm">Spark</a></li>
+                                                                                    <li><a href="telescope.html">Telescope</a></li>
+                                                                                    <li><a href="valet.html">Valet</a></li>
+                                                                                    <li><a href="../../index-1.htm">Vapor</a></li>
+                                                                            </ul>
+                                </div>
+                            </div>
+                                            </div>
+                    <div class="hidden sm:grid sm:grid-cols-2 sm:gap-x-4 sm:gap-y-8 md:w-1/2 lg:w-3/4 lg:grid-cols-4">
+                                                    <div>
+                                <span class="font-bold dark:text-gray-200">Highlights</span>
+                                <div class="mt-6">
+                                    <ul class="space-y-3 text-gray-600 text-sm dark:text-gray-500">
+                                                                                    <li>
+                                                <a href="/team" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Our Team</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="releases.html" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Release Notes</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="installation.html" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Getting Started</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="routing.html" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Routing</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="blade.html" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Blade Templates</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="authentication.html" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Authentication</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="authorization.html" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Authorization</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="artisan.html" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Artisan Console</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="database.html" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Database</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="eloquent.html" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Eloquent ORM</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="testing.html" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Testing</a>
+                                            </li>
+                                                                            </ul>
+                                </div>
+                            </div>
+                                                    <div>
+                                <span class="font-bold dark:text-gray-200">Resources</span>
+                                <div class="mt-6">
+                                    <ul class="space-y-3 text-gray-600 text-sm dark:text-gray-500">
+                                                                                    <li>
+                                                <a href="../../index-10.htm" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Laracasts</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="../../index-7.htm" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Laravel News</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="../../index-13.htm" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Laracon</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="../../winter-2022/index.htm" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Laracon EU</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="../../index-14.htm" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Jobs</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="../../index-16.htm" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Certification</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="../../discuss.html" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Forums</a>
+                                            </li>
+                                                                            </ul>
+                                </div>
+                            </div>
+                                                    <div>
+                                <span class="font-bold dark:text-gray-200">Partners</span>
+                                <div class="mt-6">
+                                    <ul class="space-y-3 text-gray-600 text-sm dark:text-gray-500">
+                                                                                    <li>
+                                                <a href="../../index-17.htm" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Vehikl</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="../../index-18.htm" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Tighten</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="../../index-19.htm" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">64 Robots</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="../../index-20.htm" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Kirschbaum</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="../../services/technologies/laravel/index.htm" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Curotec</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="../../index-21.htm" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Jump24</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="../../index-22.htm" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">A2 Design</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="../../app/uploads/2019/08/INTRO-Pitch-I-AY-Tech.pdf?utm_source=laravelpartnersfindoutmore&amp;utm_medium=socialgroups&amp;utm_campaign=tech" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">ABOUT YOU</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="../../index-23.htm" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Byte 5</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="../../index-24.htm" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Cubet</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="../../what-we-do/technology-implementation/laravel.html?utm_source=Laravel%20Partner&amp;utm_medium=Sponsorship" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Cyber-Duck</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="../../index-25.htm" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">DevSquad</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="../../index-26.htm" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Ideil</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="../../index-27.htm" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Romega Software</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="../../index-28.htm" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Worksome</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="../../index.html?utm_source=laravel&amp;utm_medium=laravel.com&amp;utm_campaign=patreon-sponsors" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">WebReinvent</a>
+                                            </li>
+                                                                            </ul>
+                                </div>
+                            </div>
+                                                    <div>
+                                <span class="font-bold dark:text-gray-200">Ecosystem</span>
+                                <div class="mt-6">
+                                    <ul class="space-y-3 text-gray-600 text-sm dark:text-gray-500">
+                                                                                    <li>
+                                                <a href="billing.html" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Cashier</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="dusk.html" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Dusk</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="broadcasting.html" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Echo</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="../../index-3.htm" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Envoyer</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="../../index-2.htm" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Forge</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="homestead.html" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Homestead</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="horizon.html" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Horizon</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="../9.x.html" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Lumen</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="mix.html" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Mix</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="../../index-4.htm" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Nova</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="passport.html" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Passport</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="scout.html" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Scout</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="socialite.html" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Socialite</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="../../index-5.htm" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Spark</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="telescope.html" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Telescope</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="valet.html" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Valet</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="../../index-1.htm" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Vapor</a>
+                                            </li>
+                                                                            </ul>
+                                </div>
+                            </div>
+                                            </div>
+                    <div class="mt-10 max-w-md md:mt-0 md:w-1/2 lg:w-1/4">
+                        <p class="text-xs text-gray-600 sm:text-sm dark:text-gray-500">Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in most web projects.</p>
+                        <p class="mt-6 text-xs text-gray-600 text-opacity-75 sm:text-sm dark:text-gray-500">
+                            Laravel is a Trademark of Taylor Otwell.<br>Copyright &copy; 2011-2022 Laravel LLC.
+                        </p>
+                        <ul class="mt-6 flex items-center space-x-3">
+                            <li>
+                                <a href="../../laravelphp.html">
+                                    <img id="footer__twitter" class="w-6 h-6" src="../../img/social/twitter.min.svg" alt="Twitter" width="24" height="20" loading="lazy">
+                                    <img id="footer__twitter_dark" class="w-6 h-6" src="../../img/social/twitter.dark.min.svg" alt="Twitter" width="24" height="20" loading="lazy">
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../../laravel.html">
+                                    <img id="footer__github" class="w-6 h-6" src="../../img/social/github.min.svg" alt="GitHub" width="24" height="24" loading="lazy">
+                                    <img id="footer__github_dark" class="w-6 h-6" src="../../img/social/github.dark.min.svg" alt="GitHub" width="24" height="24" loading="lazy">
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../../invite/mPZNm7A.html">
+                                    <img id="footer__discord" class="w-6 h-6" src="../../img/social/discord.min.svg" alt="Discord" width="21" height="24" loading="lazy">
+                                    <img id="footer__discord_dark" class="w-6 h-6" src="../../img/social/discord.dark.min.svg" alt="Discord" width="21" height="24" loading="lazy">
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../../laravelphp-1.html">
+                                    <img id="footer__youtube" class="w-6 h-6" src="../../img/social/youtube.min.svg" alt="YouTube" width="169" height="150" loading="lazy">
+                                    <img id="footer__youtube_dark" class="w-6 h-6" src="../../img/social/youtube.dark.min.svg" alt="YouTube" width="169" height="150" loading="lazy">
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="flex justify-center py-6">
+            <a href="../../index.htm" class="logomark">
+                <img class="w-9 h-9" src="../../img/logomark.min.svg" alt="Laravel" width="50" height="52" loading="lazy">
+            </a>
+        </div>
+    </div>
+</footer>
+
+<script>
+    var algolia_app_id = 'ITGXQG9N0J';
+    var algolia_search_key = '29e3498a066622afdacafa73072c548d';
+    var version = '8.x';
+</script>
+
+<script src="../../js/app.js?id=22821ba61048c5ed17c4"></script>
+</body>
+</html>

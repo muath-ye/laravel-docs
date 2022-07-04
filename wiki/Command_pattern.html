@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<title>Command pattern - Wikipedia</title>
+<script>document.documentElement.className="client-js";RLCONF={"wgBreakFrames":false,"wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgRequestId":"13563237-d9c1-4b66-9d0c-464e0f97aaf7","wgCSPNonce":false,"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"Command_pattern","wgTitle":"Command pattern","wgCurRevisionId":1076365119,"wgRevisionId":1076365119,"wgArticleId":164858,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["Articles lacking in-text citations from December 2012","All articles lacking in-text citations","Commons category link from Wikidata","Articles with example C Sharp code","Articles with example Java code","Articles with example JavaScript code",
+"Articles with example Python (programming language) code","Articles with example Ruby code","Articles with example Scala code","Software design patterns"],"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgRelevantPageName":"Command_pattern","wgRelevantArticleId":164858,"wgIsProbablyEditable":true,"wgRelevantPageIsProbablyEditable":true,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgFlaggedRevsParams":{"tags":{"status":{"levels":-1}}},"wgVisualEditor":{"pageLanguageCode":"en","pageLanguageDir":"ltr","pageVariantFallbacks":"en"},"wgMFDisplayWikibaseDescriptions":{"search":true,"nearby":true,"watchlist":true,"tagline":false},"wgWMESchemaEditAttemptStepOversample":false,"wgWMEPageLength":20000,"wgNoticeProject":"wikipedia","wgMediaViewerOnClick":true,"wgMediaViewerEnabledByDefault":true,"wgPopupsFlags":10,"wgULSCurrentAutonym":"English","wgEditSubmitButtonLabelPublish":true,"wgCentralAuthMobileDomain":false,"wgULSPosition":"interlanguage","wgULSisCompactLinksEnabled":true,
+"wgWikibaseItemId":"Q386776","wgGENewcomerTasksGuidanceEnabled":true,"wgGEAskQuestionEnabled":false,"wgGELinkRecommendationsFrontendEnabled":false};RLSTATE={"ext.globalCssJs.user.styles":"ready","site.styles":"ready","user.styles":"ready","ext.globalCssJs.user":"ready","user":"ready","user.options":"loading","ext.cite.styles":"ready","ext.pygments":"ready","skins.vector.styles.legacy":"ready","jquery.makeCollapsible.styles":"ready","ext.visualEditor.desktopArticleTarget.noscript":"ready","ext.wikimediaBadges":"ready","ext.uls.interlanguage":"ready","wikibase.client.init":"ready"};RLPAGEMODULES=["ext.cite.ux-enhancements","site","mediawiki.page.ready","jquery.makeCollapsible","mediawiki.toc","skins.vector.legacy.js","ext.gadget.ReferenceTooltips","ext.gadget.charinsert","ext.gadget.extra-toolbar-buttons","ext.gadget.refToolbar","ext.gadget.switcher","mmv.head","mmv.bootstrap.autostart","ext.visualEditor.desktopArticleTarget.init","ext.visualEditor.targetLoader","ext.eventLogging",
+"ext.wikimediaEvents","ext.navigationTiming","ext.cx.eventlogging.campaigns","ext.centralNotice.geoIP","ext.centralNotice.startUp","ext.centralauth.centralautologin","ext.popups","ext.uls.compactlinks","ext.uls.interface","ext.growthExperiments.SuggestedEditSession"];</script>
+<script>(RLQ=window.RLQ||[]).push(function(){mw.loader.implement("user.options@1i9g4",function($,jQuery,require,module){mw.user.tokens.set({"patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});});});</script>
+<link rel="stylesheet" href="/w/load.php?lang=en&amp;modules=ext.cite.styles%7Cext.pygments%2CwikimediaBadges%7Cext.uls.interlanguage%7Cext.visualEditor.desktopArticleTarget.noscript%7Cjquery.makeCollapsible.styles%7Cskins.vector.styles.legacy%7Cwikibase.client.init&amp;only=styles&amp;skin=vector"/>
+<script async="" src="/w/load.php?lang=en&amp;modules=startup&amp;only=scripts&amp;raw=1&amp;skin=vector"></script>
+<meta name="ResourceLoaderDynamicStyles" content=""/>
+<link rel="stylesheet" href="/w/load.php?lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=vector"/>
+<meta name="generator" content="MediaWiki 1.38.0-wmf.25"/>
+<meta name="referrer" content="origin"/>
+<meta name="referrer" content="origin-when-crossorigin"/>
+<meta name="referrer" content="origin-when-cross-origin"/>
+<meta name="format-detection" content="telephone=no"/>
+<meta property="og:title" content="Command pattern - Wikipedia"/>
+<meta property="og:type" content="website"/>
+<link rel="preconnect" href="//upload.wikimedia.org"/>
+<link rel="alternate" media="only screen and (max-width: 720px)" href="//en.m.wikipedia.org/wiki/Command_pattern"/>
+<link rel="alternate" type="application/x-wiki" title="Edit this page" href="/w/index.php?title=Command_pattern&amp;action=edit"/>
+<link rel="apple-touch-icon" href="/static/apple-touch/wikipedia.png"/>
+<link rel="shortcut icon" href="/static/favicon/wikipedia.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="/w/opensearch_desc.php" title="Wikipedia (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="//en.wikipedia.org/w/api.php?action=rsd"/>
+<link rel="license" href="https://creativecommons.org/licenses/by-sa/3.0/"/>
+<link rel="canonical" href="https://en.wikipedia.org/wiki/Command_pattern"/>
+<link rel="dns-prefetch" href="//meta.wikimedia.org" />
+<link rel="dns-prefetch" href="//login.wikimedia.org"/>
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject mw-editable page-Command_pattern rootpage-Command_pattern skin-vector action-view skin-vector-legacy"><div id="mw-page-base" class="noprint"></div>
+<div id="mw-head-base" class="noprint"></div>
+<div id="content" class="mw-body" role="main">
+	<a id="top"></a>
+	<div id="siteNotice"><!-- CentralNotice --></div>
+	<div class="mw-indicators">
+	</div>
+	<h1 id="firstHeading" class="firstHeading mw-first-heading">Command pattern</h1>
+	<div id="bodyContent" class="vector-body">
+		<div id="siteSub" class="noprint">From Wikipedia, the free encyclopedia</div>
+		<div id="contentSub"></div>
+		<div id="contentSub2"></div>
+		
+		<div id="jump-to-nav"></div>
+		<a class="mw-jump-link" href="#mw-head">Jump to navigation</a>
+		<a class="mw-jump-link" href="#searchInput">Jump to search</a>
+		<div id="mw-content-text" class="mw-body-content mw-content-ltr" lang="en" dir="ltr"><div class="mw-parser-output"><table class="box-No_footnotes plainlinks metadata ambox ambox-style ambox-No_footnotes" role="presentation"><tbody><tr><td class="mbox-image"><div style="width:52px"><img alt="" src="//upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Text_document_with_red_question_mark.svg/40px-Text_document_with_red_question_mark.svg.png" decoding="async" width="40" height="40" srcset="//upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Text_document_with_red_question_mark.svg/60px-Text_document_with_red_question_mark.svg.png 1.5x, //upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Text_document_with_red_question_mark.svg/80px-Text_document_with_red_question_mark.svg.png 2x" data-file-width="48" data-file-height="48" /></div></td><td class="mbox-text"><div class="mbox-text-span">This article includes a <a href="/wiki/Wikipedia:Citing_sources" title="Wikipedia:Citing sources">list of references</a>, related reading or <a href="/wiki/Wikipedia:External_links" title="Wikipedia:External links">external links</a>, <b>but its sources remain unclear because it lacks <a href="/wiki/Wikipedia:Citing_sources#Inline_citations" title="Wikipedia:Citing sources">inline citations</a></b>.<span class="hide-when-compact"> Please help to <a href="/wiki/Wikipedia:WikiProject_Fact_and_Reference_Check" class="mw-redirect" title="Wikipedia:WikiProject Fact and Reference Check">improve</a> this article by <a href="/wiki/Wikipedia:When_to_cite" title="Wikipedia:When to cite">introducing</a> more precise citations.</span>  <span class="date-container"><i>(<span class="date">December 2012</span>)</i></span><span class="hide-when-compact"><i> (<small><a href="/wiki/Help:Maintenance_template_removal" title="Help:Maintenance template removal">Learn how and when to remove this template message</a></small>)</i></span></div></td></tr></tbody></table>
+<p>In <a href="/wiki/Object-oriented_programming" title="Object-oriented programming">object-oriented programming</a>, the <b>command pattern</b> is a <a href="/wiki/Behavioral_pattern" title="Behavioral pattern">behavioral</a> <a href="/wiki/Design_pattern_(computer_science)" class="mw-redirect" title="Design pattern (computer science)">design pattern</a> in which an object is used to <a href="/wiki/Information_hiding" title="Information hiding">encapsulate</a> all information needed to perform an action or trigger an event at a later time. This information includes the method name, the object that owns the method and values for the method parameters.
+</p><p>Four terms always associated with the command pattern are <i>command</i>, <i>receiver</i>, <i>invoker</i> and <i>client</i>. A <i>command</i> object knows about <i>receiver</i> and invokes a method of the receiver. Values for parameters of the receiver method are stored in the command.  The receiver object to execute these methods is also stored in the command object by <a href="/wiki/Object_composition#Aggregation" title="Object composition">aggregation</a>. The <i>receiver</i> then does the work when the <code>execute()</code> method in <i>command</i> is called. An <i>invoker</i> object knows how to execute a command, and optionally does bookkeeping about the command execution. The invoker does not know anything about a concrete command, it knows only about the command <i>interface</i>. Invoker object(s), command objects and receiver objects are held by a <i>client</i> object, the <i>client</i> decides which receiver objects it assigns to the command objects, and which commands it assigns to the invoker. The client decides which commands to execute at which points. To execute a command, it passes the command object to the invoker object.
+</p><p>Using command objects makes it easier to construct general components that need to delegate, sequence or execute method calls at a time of their choosing without the need to know the class of the method or the method parameters. Using an invoker object allows bookkeeping about command executions to be conveniently performed, as well as implementing different modes for commands, which are managed by the invoker object, without the need for the client to be aware of the existence of bookkeeping or modes.
+</p><p>The central ideas of this design pattern closely mirror the semantics of <a href="/wiki/First-class_function" title="First-class function">first-class functions</a> and <a href="/wiki/Higher-order_function" title="Higher-order function">higher-order functions</a> in <a href="/wiki/Functional_programming_language" class="mw-redirect" title="Functional programming language">functional programming languages</a>.  Specifically, the invoker object is a higher-order function of which the command object is a first-class argument.
+</p>
+<div id="toc" class="toc" role="navigation" aria-labelledby="mw-toc-heading"><input type="checkbox" role="button" id="toctogglecheckbox" class="toctogglecheckbox" style="display:none" /><div class="toctitle" lang="en" dir="ltr"><h2 id="mw-toc-heading">Contents</h2><span class="toctogglespan"><label class="toctogglelabel" for="toctogglecheckbox"></label></span></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="#Overview"><span class="tocnumber">1</span> <span class="toctext">Overview</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="#Structure"><span class="tocnumber">2</span> <span class="toctext">Structure</span></a>
+<ul>
+<li class="toclevel-2 tocsection-3"><a href="#UML_class_and_sequence_diagram"><span class="tocnumber">2.1</span> <span class="toctext">UML class and sequence diagram</span></a></li>
+<li class="toclevel-2 tocsection-4"><a href="#UML_class_diagram"><span class="tocnumber">2.2</span> <span class="toctext">UML class diagram</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-5"><a href="#Uses"><span class="tocnumber">3</span> <span class="toctext">Uses</span></a></li>
+<li class="toclevel-1 tocsection-6"><a href="#Terminology"><span class="tocnumber">4</span> <span class="toctext">Terminology</span></a></li>
+<li class="toclevel-1 tocsection-7"><a href="#Example"><span class="tocnumber">5</span> <span class="toctext">Example</span></a></li>
+<li class="toclevel-1 tocsection-8"><a href="#See_also"><span class="tocnumber">6</span> <span class="toctext">See also</span></a></li>
+<li class="toclevel-1 tocsection-9"><a href="#History"><span class="tocnumber">7</span> <span class="toctext">History</span></a></li>
+<li class="toclevel-1 tocsection-10"><a href="#References"><span class="tocnumber">8</span> <span class="toctext">References</span></a></li>
+<li class="toclevel-1 tocsection-11"><a href="#External_links"><span class="tocnumber">9</span> <span class="toctext">External links</span></a></li>
+</ul>
+</div>
+
+<h2><span class="mw-headline" id="Overview">Overview</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Command_pattern&amp;action=edit&amp;section=1" title="Edit section: Overview">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+<p>The command<sup id="cite_ref-GoF_1-0" class="reference"><a href="#cite_note-GoF-1">&#91;1&#93;</a></sup>
+design pattern is one of the twenty-three well-known <i><a href="/wiki/Design_Patterns" title="Design Patterns">GoF design patterns</a></i> that describe how to solve recurring design problems to design flexible and reusable object-oriented software, that is, objects that are easier to implement, change, test, and reuse.
+</p><p>Using the command design pattern can solve these problems:<sup id="cite_ref-2" class="reference"><a href="#cite_note-2">&#91;2&#93;</a></sup>
+</p>
+<ul><li>Coupling the invoker of a request to a particular request should be avoided. That is, hard-wired requests should be avoided.</li>
+<li>It should be possible to configure an object (that invokes a request) with a request.</li></ul>
+<p>Implementing (hard-wiring) a request directly into a class is inflexible because it couples the class to a particular request at compile-time, which makes it impossible to specify a request at run-time.
+</p><p>Using the command design pattern describes the following solution:
+</p>
+<ul><li>Define separate (command) objects that encapsulate a request.</li>
+<li>A class delegates a request to a command object instead of implementing a particular request directly.</li></ul>
+<p>This enables one to configure a class with a command object that is used to perform a request. The class is no longer coupled to a particular request and has no knowledge (is independent) of how the request is carried out.
+</p><p>See also the UML class and sequence diagram below.
+</p>
+<h2><span class="mw-headline" id="Structure">Structure</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Command_pattern&amp;action=edit&amp;section=2" title="Edit section: Structure">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+<h3><span class="mw-headline" id="UML_class_and_sequence_diagram">UML class and sequence diagram</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Command_pattern&amp;action=edit&amp;section=3" title="Edit section: UML class and sequence diagram">edit</a><span class="mw-editsection-bracket">]</span></span></h3>
+<div class="thumb tnone"><div class="thumbinner" style="width:662px;"><a href="/wiki/File:W3sDesign_Command_Design_Pattern_UML.jpg" class="image"><img alt="" src="//upload.wikimedia.org/wikipedia/commons/c/c8/W3sDesign_Command_Design_Pattern_UML.jpg" decoding="async" width="660" height="240" class="thumbimage" data-file-width="660" data-file-height="240" /></a>  <div class="thumbcaption">A sample UML class and sequence diagram for the Command design pattern. <sup id="cite_ref-3" class="reference"><a href="#cite_note-3">&#91;3&#93;</a></sup></div></div></div>
+<p>In the above <a href="/wiki/Unified_Modeling_Language" title="Unified Modeling Language">UML</a> <a href="/wiki/Class_diagram" title="Class diagram">class diagram</a>, the <code>Invoker</code> class doesn't implement a request directly.
+Instead, <code>Invoker</code> refers to the <code>Command</code> interface to perform a request (<code>command.execute()</code>), which makes the <code>Invoker</code> independent of how the request is performed.
+The <code>Command1</code> class implements the <code>Command</code> interface by performing an action on a receiver (<code>receiver1.action1()</code>).
+</p><p>The <a href="/wiki/Unified_Modeling_Language" title="Unified Modeling Language">UML</a> <a href="/wiki/Sequence_diagram" title="Sequence diagram">sequence diagram</a>
+shows the run-time interactions: The <code>Invoker</code> object calls <code>execute()</code> on a <code>Command1</code> object.
+<code>Command1</code> calls <code>action1()</code> on a <code>Receiver1</code> object,
+which performs the request.
+</p>
+<h3><span class="mw-headline" id="UML_class_diagram">UML class diagram</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Command_pattern&amp;action=edit&amp;section=4" title="Edit section: UML class diagram">edit</a><span class="mw-editsection-bracket">]</span></span></h3>
+<div class="center"><div class="thumb tnone"><div class="thumbinner" style="width:702px;"><a href="/wiki/File:Command_pattern.svg" class="image"><img alt="" src="//upload.wikimedia.org/wikipedia/commons/thumb/b/bf/Command_pattern.svg/700px-Command_pattern.svg.png" decoding="async" width="700" height="230" class="thumbimage" srcset="//upload.wikimedia.org/wikipedia/commons/thumb/b/bf/Command_pattern.svg/1050px-Command_pattern.svg.png 1.5x, //upload.wikimedia.org/wikipedia/commons/thumb/b/bf/Command_pattern.svg/1400px-Command_pattern.svg.png 2x" data-file-width="3208" data-file-height="1055" /></a>  <div class="thumbcaption"><div class="magnify"><a href="/wiki/File:Command_pattern.svg" class="internal" title="Enlarge"></a></div>UML diagram of the command pattern</div></div></div></div>
+<h2><span class="mw-headline" id="Uses">Uses</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Command_pattern&amp;action=edit&amp;section=5" title="Edit section: Uses">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+<dl><dt>GUI buttons and menu items</dt>
+<dd>In <a href="/wiki/Swing_(Java)" title="Swing (Java)">Swing</a> and <a href="/wiki/Borland_Delphi" class="mw-redirect" title="Borland Delphi">Borland Delphi</a> programming, an <code><a rel="nofollow" class="external text" href="https://docs.oracle.com/javase/10/docs/api/javax/swing/Action.html">Action</a></code> is a command object. In addition to the ability to perform the desired command, an <style data-mw-deduplicate="TemplateStyles:r886049734">.mw-parser-output .monospaced{font-family:monospace,monospace}</style><span class="monospaced">Action</span> may have an associated icon, keyboard shortcut, tooltip text, and so on. A toolbar button or menu item component may be completely initialized using only the <link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r886049734"/><span class="monospaced">Action</span> object.</dd>
+<dt><a href="/wiki/Macro_(computer_science)" title="Macro (computer science)">Macro</a> recording</dt>
+<dd>If all user actions are represented by command objects, a program can record a sequence of actions simply by keeping a list of the command objects as they are executed. It can then "play back" the same actions by executing the same command objects again in sequence. If the program embeds a scripting engine, each command object can implement a <link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r886049734"/><span class="monospaced">toScript()</span> method, and user actions can then be easily recorded as scripts.</dd>
+<dt><a href="/wiki/Code_mobility" title="Code mobility">Mobile code</a></dt>
+<dd>Using languages such as Java where code can be streamed/slurped from one location to another via URLClassloaders and Codebases the commands can enable new behavior to be delivered to remote locations (EJB Command, Master Worker).</dd>
+<dt>Multi-level <a href="/wiki/Undo" title="Undo">undo</a></dt>
+<dd>If all user actions in a program are implemented as command objects, the program can keep a stack of the most recently executed commands. When the user wants to undo a command, the program simply pops the most recent command object and executes its <link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r886049734"/><span class="monospaced">undo()</span> method.</dd>
+<dt>Networking</dt>
+<dd>It is possible to send whole command objects across the network to be executed on the other machines, for example player actions in computer games.</dd>
+<dt>Parallel processing</dt>
+<dd>Where the commands are written as tasks to a shared resource and executed by many threads in parallel (possibly on remote machines; this variant is often referred to as the Master/Worker pattern)</dd>
+<dt><a href="/wiki/Progress_bar" title="Progress bar">Progress bars</a></dt>
+<dd>Suppose a program has a sequence of commands that it executes in order. If each command object has a <link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r886049734"/><span class="monospaced">getEstimatedDuration()</span> method, the program can easily estimate the total duration. It can show a progress bar that meaningfully reflects how close the program is to completing all the tasks.</dd>
+<dt><a href="/wiki/Thread_pool" title="Thread pool">Thread pools</a></dt>
+<dd>A typical, general-purpose thread pool class might have a public <link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r886049734"/><span class="monospaced">addTask()</span> method that adds a work item to an internal queue of tasks waiting to be done. It maintains a pool of threads that execute commands from the queue. The items in the queue are command objects. Typically these objects implement a common interface such as <link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r886049734"/><span class="monospaced">java.lang.Runnable</span> that allows the thread pool to execute the command even though the thread pool class itself was written without any knowledge of the specific tasks for which it would be used.</dd>
+<dt><a href="/wiki/Database_transaction" title="Database transaction">Transactional</a> behavior</dt>
+<dd>Similar to undo, a database engine or software installer may keep a list of operations that have been or will be performed. Should one of them fail, all others can be reversed or discarded (usually called <i>rollback</i>). For example, if two database tables that refer to each other must be updated, and the second update fails, the transaction can be rolled back, so that the first table does not now contain an invalid reference.</dd>
+<dt><a href="/wiki/Wizard_(software)" title="Wizard (software)">Wizards</a></dt>
+<dd>Often a wizard presents several pages of configuration for a single action that happens only when the user clicks the "Finish" button on the last page. In these cases, a natural way to separate user interface code from application code is to implement the wizard using a command object. The command object is created when the wizard is first displayed. Each wizard page stores its GUI changes in the command object, so the object is populated as the user progresses. "Finish" simply triggers a call to <link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r886049734"/><span class="monospaced">execute()</span>. This way, the command class will work.</dd></dl>
+<h2><span class="mw-headline" id="Terminology">Terminology</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Command_pattern&amp;action=edit&amp;section=6" title="Edit section: Terminology">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+<p>The terminology used to describe command pattern implementations is not consistent and can therefore be confusing.
+This is the result of <a href="/wiki/Ambiguity" title="Ambiguity">ambiguity</a>, the use of <a href="/wiki/Synonyms" class="mw-redirect" title="Synonyms">synonyms</a>, and implementations that may obscure the original pattern by going well beyond it.
+</p>
+<ol><li>Ambiguity.
+<ol><li>The term <b>command</b> is ambiguous. For example, <i>move up, move up</i> may refer to a single (move up) command that should be executed twice, or it may refer to two commands, each of which happens to do the same thing (move up). If the former command is added twice to an undo stack, both items on the stack refer to the same command instance. This may be appropriate when a command can always be undone the same way (e.g. move down). Both the <a href="/wiki/Gang_of_Four_(software)" class="mw-redirect" title="Gang of Four (software)">Gang of Four</a> and the <a href="#Java">Java example below</a> use this interpretation of the term <i>command</i>. On the other hand, if the latter commands are added to an undo stack, the stack refers to two separate objects. This may be appropriate when each object on the stack must contain information that allows the command to be undone. For example, to undo a <i>delete selection</i> command, the object may contain a copy of the deleted text so that it can be re-inserted, if the <i>delete selection</i> command must be undone. Note that using a separate object for each invocation of a command is also an example of the <a href="/wiki/Chain_of_responsibility_pattern" class="mw-redirect" title="Chain of responsibility pattern">chain of responsibility pattern</a>.</li>
+<li>The term <b>execute</b> is also ambiguous. It may refer to running the code identified by the command object's <i>execute</i> method. However, in Microsoft's <a href="/wiki/Windows_Presentation_Foundation" title="Windows Presentation Foundation">Windows Presentation Foundation</a> a command is considered to have been executed when the command's <i>execute</i> method has been invoked, but that does not necessarily mean that the application code has run. That occurs only after some further event processing.</li></ol></li>
+<li>Synonyms and <a href="/wiki/Homonyms" class="mw-redirect" title="Homonyms">homonyms</a>.
+<ol><li><b>Client, Source, Invoker</b>: the button, toolbar button, or menu item clicked, the shortcut key pressed by the user.</li>
+<li><b>Command Object, Routed Command Object, Action Object</b>: a singleton object (e.g. there is only one CopyCommand object), which knows about shortcut keys, button images, command text, etc. related to the command. A source/invoker object calls the Command/Action object's execute/performAction method. The Command/Action object notifies the appropriate source/invoker objects when the availability of a command/action has changed. This allows buttons and menu items to become inactive (grayed out) when a command/action cannot be executed/performed.</li>
+<li><b>Receiver, Target Object</b>: the object that is about to be copied, pasted, moved, etc. The receiver object owns the method that is called by the command's <i>execute</i> method. The receiver is typically also the target object. For example, if the receiver object is a <i>cursor</i> and the method is called <i>moveUp</i>, then one would expect that the cursor is the target of the moveUp action. On the other hand, if the code is defined by the command object itself, the target object will be a different object entirely.</li>
+<li><b>Command Object, routed event arguments, event object</b>: the object that is passed from the source to the Command/Action object, to the Target object to the code that does the work. Each button click or shortcut key results in a new command/event object. Some implementations add more information to the command/event object as it is being passed from one object (e.g. CopyCommand) to another (e.g. document section). Other implementations put command/event objects in other event objects (like a box inside a bigger box) as they move along the line, to avoid naming conflicts. (See also <a href="/wiki/Chain_of_responsibility_pattern" class="mw-redirect" title="Chain of responsibility pattern">chain of responsibility pattern</a>.)</li>
+<li><b>Handler, ExecutedRoutedEventHandler, method, function</b>: the actual code that does the copying, pasting, moving, etc. In some implementations the handler code is part of the command/action object. In other implementations the code is part of the Receiver/Target Object, and in yet other implementations the handler code is kept separate from the other objects.</li>
+<li><b>Command Manager, Undo Manager, Scheduler, Queue, Dispatcher, Invoker</b>: an object that puts command/event objects on an undo stack or redo stack, or that holds on to command/event objects until other objects are ready to act on them, or that routes the command/event objects to the appropriate receiver/target object or handler code.</li></ol></li>
+<li>Implementations that go well beyond the original command pattern.
+<ol><li>Microsoft's <a rel="nofollow" class="external text" href="http://msdn.microsoft.com/en-us/library/ms752308.aspx">Windows Presentation Foundation</a> (WPF), introduces routed commands, which combine the command pattern with event processing. As a result, the command object no longer contains a reference to the target object nor a reference to the application code. Instead, invoking the command object's <i>execute</i> command results in a so-called <i>Executed Routed Event</i> that during the event's tunneling or bubbling may encounter a so-called <i>binding</i> object that identifies the target and the application code, which is executed at that point.</li></ol></li></ol>
+<h2><span class="mw-headline" id="Example">Example</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Command_pattern&amp;action=edit&amp;section=7" title="Edit section: Example">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+<p>Consider a "simple" switch. In this example we configure the Switch with two commands: to turn the light on and to turn the light off.
+</p><p>A benefit of this particular implementation of the command pattern is that the switch can be used with any device, not just a light. The Switch in the following C# implementation turns a light on and off, but the Switch's constructor is able to accept any subclasses of Command for its two parameters. For example, you could configure the Switch to start an engine.
+</p>
+<div class="mw-highlight mw-highlight-lang-csharp mw-content-ltr" dir="ltr"><pre><span></span><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
+
+<span class="k">namespace</span> <span class="nn">CommandPattern</span>
+<span class="p">{</span>    
+    <span class="k">public</span> <span class="k">interface</span> <span class="n">ICommand</span>
+    <span class="p">{</span>
+        <span class="k">void</span> <span class="nf">Execute</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="cm">/* The Invoker class */</span>
+    <span class="k">public</span> <span class="k">class</span> <span class="nc">Switch</span>
+    <span class="p">{</span>
+        <span class="n">ICommand</span> <span class="n">_closedCommand</span><span class="p">;</span>
+        <span class="n">ICommand</span> <span class="n">_openedCommand</span><span class="p">;</span>
+
+        <span class="k">public</span> <span class="nf">Switch</span><span class="p">(</span><span class="n">ICommand</span> <span class="n">closedCommand</span><span class="p">,</span> <span class="n">ICommand</span> <span class="n">openedCommand</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="k">this</span><span class="p">.</span><span class="n">_closedCommand</span> <span class="p">=</span> <span class="n">closedCommand</span><span class="p">;</span>
+            <span class="k">this</span><span class="p">.</span><span class="n">_openedCommand</span> <span class="p">=</span> <span class="n">openedCommand</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="c1">// Close the circuit / power on</span>
+        <span class="k">public</span> <span class="k">void</span> <span class="nf">Close</span><span class="p">()</span>
+        <span class="p">{</span>
+           <span class="k">this</span><span class="p">.</span><span class="n">_closedCommand</span><span class="p">.</span><span class="n">Execute</span><span class="p">();</span>
+        <span class="p">}</span>
+
+        <span class="c1">// Open the circuit / power off</span>
+        <span class="k">public</span> <span class="k">void</span> <span class="nf">Open</span><span class="p">()</span>
+        <span class="p">{</span>
+            <span class="k">this</span><span class="p">.</span><span class="n">_openedCommand</span><span class="p">.</span><span class="n">Execute</span><span class="p">();</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="cm">/* An interface that defines actions that the receiver can perform */</span>
+    <span class="k">public</span> <span class="k">interface</span> <span class="n">ISwitchable</span>
+    <span class="p">{</span>
+        <span class="k">void</span> <span class="nf">PowerOn</span><span class="p">();</span>
+        <span class="k">void</span> <span class="nf">PowerOff</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="cm">/* The Receiver class */</span>
+    <span class="k">public</span> <span class="k">class</span> <span class="nc">Light</span> <span class="p">:</span> <span class="n">ISwitchable</span>
+    <span class="p">{</span>
+        <span class="k">public</span> <span class="k">void</span> <span class="nf">PowerOn</span><span class="p">()</span>
+        <span class="p">{</span>
+            <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;The light is on&quot;</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="k">public</span> <span class="k">void</span> <span class="nf">PowerOff</span><span class="p">()</span>
+        <span class="p">{</span>
+            <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;The light is off&quot;</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="cm">/* The Command for turning on the device - ConcreteCommand #1 */</span>
+    <span class="k">public</span> <span class="k">class</span> <span class="nc">CloseSwitchCommand</span> <span class="p">:</span> <span class="n">ICommand</span>
+    <span class="p">{</span>
+        <span class="k">private</span> <span class="n">ISwitchable</span> <span class="n">_switchable</span><span class="p">;</span>
+
+        <span class="k">public</span> <span class="nf">CloseSwitchCommand</span><span class="p">(</span><span class="n">ISwitchable</span> <span class="n">switchable</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">_switchable</span> <span class="p">=</span> <span class="n">switchable</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="k">public</span> <span class="k">void</span> <span class="nf">Execute</span><span class="p">()</span>
+        <span class="p">{</span>
+            <span class="n">_switchable</span><span class="p">.</span><span class="n">PowerOn</span><span class="p">();</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="cm">/* The Command for turning off the device - ConcreteCommand #2 */</span>
+    <span class="k">public</span> <span class="k">class</span> <span class="nc">OpenSwitchCommand</span> <span class="p">:</span> <span class="n">ICommand</span>
+    <span class="p">{</span>
+        <span class="k">private</span> <span class="n">ISwitchable</span> <span class="n">_switchable</span><span class="p">;</span>
+
+        <span class="k">public</span> <span class="nf">OpenSwitchCommand</span><span class="p">(</span><span class="n">ISwitchable</span> <span class="n">switchable</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">_switchable</span> <span class="p">=</span> <span class="n">switchable</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="k">public</span> <span class="k">void</span> <span class="nf">Execute</span><span class="p">()</span>
+        <span class="p">{</span>
+            <span class="n">_switchable</span><span class="p">.</span><span class="n">PowerOff</span><span class="p">();</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="cm">/* The test class or client */</span>
+    <span class="k">internal</span> <span class="k">class</span> <span class="nc">Program</span>
+    <span class="p">{</span>
+        <span class="k">public</span> <span class="k">static</span> <span class="k">void</span> <span class="nf">Main</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span> <span class="n">arguments</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="kt">string</span> <span class="n">argument</span> <span class="p">=</span> <span class="n">arguments</span><span class="p">.</span><span class="n">Length</span> <span class="p">&gt;</span> <span class="m">0</span> <span class="p">?</span> <span class="n">arguments</span><span class="p">[</span><span class="m">0</span><span class="p">].</span><span class="n">ToUpper</span><span class="p">()</span> <span class="p">:</span> <span class="k">null</span><span class="p">;</span>
+
+            <span class="n">ISwitchable</span> <span class="n">lamp</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Light</span><span class="p">();</span>
+
+            <span class="c1">// Pass reference to the lamp instance to each command</span>
+            <span class="n">ICommand</span> <span class="n">switchClose</span> <span class="p">=</span> <span class="k">new</span> <span class="n">CloseSwitchCommand</span><span class="p">(</span><span class="n">lamp</span><span class="p">);</span>
+            <span class="n">ICommand</span> <span class="n">switchOpen</span> <span class="p">=</span> <span class="k">new</span> <span class="n">OpenSwitchCommand</span><span class="p">(</span><span class="n">lamp</span><span class="p">);</span>
+
+            <span class="c1">// Pass reference to instances of the Command objects to the switch</span>
+            <span class="n">Switch</span> <span class="n">@switch</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Switch</span><span class="p">(</span><span class="n">switchClose</span><span class="p">,</span> <span class="n">switchOpen</span><span class="p">);</span>
+
+            <span class="k">if</span> <span class="p">(</span><span class="n">argument</span> <span class="p">==</span> <span class="s">&quot;ON&quot;</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="c1">// Switch (the Invoker) will invoke Execute() on the command object.</span>
+                <span class="n">@switch</span><span class="p">.</span><span class="n">Close</span><span class="p">();</span>
+            <span class="p">}</span>
+            <span class="k">else</span> <span class="nf">if</span> <span class="p">(</span><span class="n">argument</span> <span class="p">==</span> <span class="s">&quot;OFF&quot;</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="c1">// Switch (the Invoker) will invoke the Execute() on the command object.</span>
+                <span class="n">@switch</span><span class="p">.</span><span class="n">Open</span><span class="p">();</span>
+            <span class="p">}</span>
+            <span class="k">else</span>
+            <span class="p">{</span>
+                <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;Argument \&quot;ON\&quot; or \&quot;OFF\&quot; is required.&quot;</span><span class="p">);</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+<h2><span class="mw-headline" id="See_also">See also</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Command_pattern&amp;action=edit&amp;section=8" title="Edit section: See also">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+<ul><li><a href="/wiki/Batch_queue" class="mw-redirect" title="Batch queue">Batch queue</a></li>
+<li><a href="/wiki/Closure_(computer_science)" class="mw-redirect" title="Closure (computer science)">Closure</a></li>
+<li><a href="/wiki/Command_queue" title="Command queue">Command queue</a></li>
+<li><a href="/wiki/Function_object" title="Function object">Function object</a></li>
+<li><a href="/wiki/Job_scheduler" title="Job scheduler">Job scheduler</a></li>
+<li><a href="/wiki/Model%E2%80%93view%E2%80%93controller" title="Model–view–controller">Model–view–controller</a></li>
+<li><a href="/wiki/Priority_queue" title="Priority queue">Priority queue</a></li>
+<li><a href="/wiki/Software_design_pattern" title="Software design pattern">Software design pattern</a></li>
+<li><a href="/wiki/Gang_of_Four_(software)" class="mw-redirect" title="Gang of Four (software)">GoF – Design Patterns</a></li></ul>
+<h2><span class="mw-headline" id="History">History</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Command_pattern&amp;action=edit&amp;section=9" title="Edit section: History">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+<p>The first published mention of using a Command class to implement interactive systems seems to be a 1985 article by Henry Lieberman.<sup id="cite_ref-4" class="reference"><a href="#cite_note-4">&#91;4&#93;</a></sup> The first published description of a (multiple-level) undo-redo mechanism, using a Command class with <i>execute</i> and <i>undo</i> methods, and a history list, appears to be the first (1988) edition of <a href="/wiki/Bertrand_Meyer" title="Bertrand Meyer">Bertrand Meyer</a>'s book <a href="/wiki/Object-oriented_Software_Construction" class="mw-redirect" title="Object-oriented Software Construction">Object-oriented Software Construction</a>,<sup id="cite_ref-5" class="reference"><a href="#cite_note-5">&#91;5&#93;</a></sup> section 12.2.
+</p>
+<h2><span class="mw-headline" id="References">References</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Command_pattern&amp;action=edit&amp;section=10" title="Edit section: References">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+<style data-mw-deduplicate="TemplateStyles:r1011085734">.mw-parser-output .reflist{font-size:90%;margin-bottom:0.5em;list-style-type:decimal}.mw-parser-output .reflist .references{font-size:100%;margin-bottom:0;list-style-type:inherit}.mw-parser-output .reflist-columns-2{column-width:30em}.mw-parser-output .reflist-columns-3{column-width:25em}.mw-parser-output .reflist-columns{margin-top:0.3em}.mw-parser-output .reflist-columns ol{margin-top:0}.mw-parser-output .reflist-columns li{page-break-inside:avoid;break-inside:avoid-column}.mw-parser-output .reflist-upper-alpha{list-style-type:upper-alpha}.mw-parser-output .reflist-upper-roman{list-style-type:upper-roman}.mw-parser-output .reflist-lower-alpha{list-style-type:lower-alpha}.mw-parser-output .reflist-lower-greek{list-style-type:lower-greek}.mw-parser-output .reflist-lower-roman{list-style-type:lower-roman}</style><div class="reflist">
+<div class="mw-references-wrap"><ol class="references">
+<li id="cite_note-GoF-1"><span class="mw-cite-backlink"><b><a href="#cite_ref-GoF_1-0">^</a></b></span> <span class="reference-text"><style data-mw-deduplicate="TemplateStyles:r1067248974">.mw-parser-output cite.citation{font-style:inherit;word-wrap:break-word}.mw-parser-output .citation q{quotes:"\"""\"""'""'"}.mw-parser-output .citation:target{background-color:rgba(0,127,255,0.133)}.mw-parser-output .id-lock-free a,.mw-parser-output .citation .cs1-lock-free a{background:linear-gradient(transparent,transparent),url("//upload.wikimedia.org/wikipedia/commons/6/65/Lock-green.svg")right 0.1em center/9px no-repeat}.mw-parser-output .id-lock-limited a,.mw-parser-output .id-lock-registration a,.mw-parser-output .citation .cs1-lock-limited a,.mw-parser-output .citation .cs1-lock-registration a{background:linear-gradient(transparent,transparent),url("//upload.wikimedia.org/wikipedia/commons/d/d6/Lock-gray-alt-2.svg")right 0.1em center/9px no-repeat}.mw-parser-output .id-lock-subscription a,.mw-parser-output .citation .cs1-lock-subscription a{background:linear-gradient(transparent,transparent),url("//upload.wikimedia.org/wikipedia/commons/a/aa/Lock-red-alt-2.svg")right 0.1em center/9px no-repeat}.mw-parser-output .cs1-ws-icon a{background:linear-gradient(transparent,transparent),url("//upload.wikimedia.org/wikipedia/commons/4/4c/Wikisource-logo.svg")right 0.1em center/12px no-repeat}.mw-parser-output .cs1-code{color:inherit;background:inherit;border:none;padding:inherit}.mw-parser-output .cs1-hidden-error{display:none;color:#d33}.mw-parser-output .cs1-visible-error{color:#d33}.mw-parser-output .cs1-maint{display:none;color:#3a3;margin-left:0.3em}.mw-parser-output .cs1-format{font-size:95%}.mw-parser-output .cs1-kern-left{padding-left:0.2em}.mw-parser-output .cs1-kern-right{padding-right:0.2em}.mw-parser-output .citation .mw-selflink{font-weight:inherit}</style><cite id="CITEREFErich_GammaRichard_HelmRalph_JohnsonJohn_Vlissides1994" class="citation book cs1">Erich Gamma; Richard Helm; Ralph Johnson; John Vlissides (1994). <span class="cs1-lock-registration" title="Free registration required"><a rel="nofollow" class="external text" href="https://archive.org/details/designpatternsel00gamm/page/233"><i>Design Patterns: Elements of Reusable Object-Oriented Software</i></a></span>. Addison Wesley. pp.&#160;<a rel="nofollow" class="external text" href="https://archive.org/details/designpatternsel00gamm/page/233">233ff</a>. <a href="/wiki/ISBN_(identifier)" class="mw-redirect" title="ISBN (identifier)">ISBN</a>&#160;<a href="/wiki/Special:BookSources/0-201-63361-2" title="Special:BookSources/0-201-63361-2"><bdi>0-201-63361-2</bdi></a>.</cite><span title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&amp;rft.genre=book&amp;rft.btitle=Design+Patterns%3A+Elements+of+Reusable+Object-Oriented+Software&amp;rft.pages=233ff&amp;rft.pub=Addison+Wesley&amp;rft.date=1994&amp;rft.isbn=0-201-63361-2&amp;rft.au=Erich+Gamma&amp;rft.au=Richard+Helm&amp;rft.au=Ralph+Johnson&amp;rft.au=John+Vlissides&amp;rft_id=https%3A%2F%2Farchive.org%2Fdetails%2Fdesignpatternsel00gamm%2Fpage%2F233&amp;rfr_id=info%3Asid%2Fen.wikipedia.org%3ACommand+pattern" class="Z3988"></span></span>
+</li>
+<li id="cite_note-2"><span class="mw-cite-backlink"><b><a href="#cite_ref-2">^</a></b></span> <span class="reference-text"><link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r1067248974"/><cite class="citation web cs1"><a rel="nofollow" class="external text" href="http://w3sdesign.com/?gr=b02&amp;ugr=proble">"The Command design pattern - Problem, Solution, and Applicability"</a>. <i>w3sDesign.com</i><span class="reference-accessdate">. Retrieved <span class="nowrap">2017-08-12</span></span>.</cite><span title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Ajournal&amp;rft.genre=unknown&amp;rft.jtitle=w3sDesign.com&amp;rft.atitle=The+Command+design+pattern+-+Problem%2C+Solution%2C+and+Applicability&amp;rft_id=http%3A%2F%2Fw3sdesign.com%2F%3Fgr%3Db02%26ugr%3Dproble&amp;rfr_id=info%3Asid%2Fen.wikipedia.org%3ACommand+pattern" class="Z3988"></span></span>
+</li>
+<li id="cite_note-3"><span class="mw-cite-backlink"><b><a href="#cite_ref-3">^</a></b></span> <span class="reference-text"><link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r1067248974"/><cite class="citation web cs1"><a rel="nofollow" class="external text" href="http://w3sdesign.com/?gr=b02&amp;ugr=struct">"The Command design pattern - Structure and Collaboration"</a>. <i>w3sDesign.com</i><span class="reference-accessdate">. Retrieved <span class="nowrap">2017-08-12</span></span>.</cite><span title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Ajournal&amp;rft.genre=unknown&amp;rft.jtitle=w3sDesign.com&amp;rft.atitle=The+Command+design+pattern+-+Structure+and+Collaboration&amp;rft_id=http%3A%2F%2Fw3sdesign.com%2F%3Fgr%3Db02%26ugr%3Dstruct&amp;rfr_id=info%3Asid%2Fen.wikipedia.org%3ACommand+pattern" class="Z3988"></span></span>
+</li>
+<li id="cite_note-4"><span class="mw-cite-backlink"><b><a href="#cite_ref-4">^</a></b></span> <span class="reference-text"><link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r1067248974"/><cite id="CITEREFLieberman1985" class="citation journal cs1">Lieberman, Henry (1985). "There's more to menu systems than meets the screen". <i>SIGGRAPH Computer Graphics</i>: 181–189.</cite><span title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Ajournal&amp;rft.genre=article&amp;rft.jtitle=SIGGRAPH+Computer+Graphics&amp;rft.atitle=There%27s+more+to+menu+systems+than+meets+the+screen&amp;rft.pages=181-189&amp;rft.date=1985&amp;rft.aulast=Lieberman&amp;rft.aufirst=Henry&amp;rfr_id=info%3Asid%2Fen.wikipedia.org%3ACommand+pattern" class="Z3988"></span></span>
+</li>
+<li id="cite_note-5"><span class="mw-cite-backlink"><b><a href="#cite_ref-5">^</a></b></span> <span class="reference-text"><link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r1067248974"/><cite id="CITEREFMeyer1988" class="citation book cs1"><a href="/wiki/Bertrand_Meyer" title="Bertrand Meyer">Meyer, Bertrand</a> (1988). <i>Object-Oriented Software Construction</i> (1st&#160;ed.). Prentice-Hall.</cite><span title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&amp;rft.genre=book&amp;rft.btitle=Object-Oriented+Software+Construction&amp;rft.edition=1st&amp;rft.pub=Prentice-Hall&amp;rft.date=1988&amp;rft.aulast=Meyer&amp;rft.aufirst=Bertrand&amp;rfr_id=info%3Asid%2Fen.wikipedia.org%3ACommand+pattern" class="Z3988"></span></span>
+</li>
+</ol></div></div>
+<h2><span class="mw-headline" id="External_links">External links</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Command_pattern&amp;action=edit&amp;section=11" title="Edit section: External links">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+<table role="presentation" class="mbox-small plainlinks sistersitebox" style="background-color:#f9f9f9;border:1px solid #aaa;color:#000">
+<tbody><tr>
+<td class="mbox-image"><img alt="" src="//upload.wikimedia.org/wikipedia/en/thumb/4/4a/Commons-logo.svg/30px-Commons-logo.svg.png" decoding="async" width="30" height="40" class="noviewer" srcset="//upload.wikimedia.org/wikipedia/en/thumb/4/4a/Commons-logo.svg/45px-Commons-logo.svg.png 1.5x, //upload.wikimedia.org/wikipedia/en/thumb/4/4a/Commons-logo.svg/59px-Commons-logo.svg.png 2x" data-file-width="1024" data-file-height="1376" /></td>
+<td class="mbox-text plainlist">Wikimedia Commons has media related to <span style="font-weight: bold; font-style: italic;"><a href="https://commons.wikimedia.org/wiki/Category:Command_pattern" class="extiw" title="commons:Category:Command pattern">Command pattern</a></span>.</td></tr>
+</tbody></table>
+<table role="presentation" class="mbox-small plainlinks sistersitebox" style="background-color:#f9f9f9;border:1px solid #aaa;color:#000">
+<tbody><tr>
+<td class="mbox-image"><img alt="" src="//upload.wikimedia.org/wikipedia/commons/thumb/d/df/Wikibooks-logo-en-noslogan.svg/40px-Wikibooks-logo-en-noslogan.svg.png" decoding="async" width="40" height="40" class="noviewer" srcset="//upload.wikimedia.org/wikipedia/commons/thumb/d/df/Wikibooks-logo-en-noslogan.svg/60px-Wikibooks-logo-en-noslogan.svg.png 1.5x, //upload.wikimedia.org/wikipedia/commons/thumb/d/df/Wikibooks-logo-en-noslogan.svg/80px-Wikibooks-logo-en-noslogan.svg.png 2x" data-file-width="400" data-file-height="400" /></td>
+<td class="mbox-text plainlist">The Wikibook <i><a href="https://en.wikibooks.org/wiki/Computer_Science_Design_Patterns" class="extiw" title="wikibooks:Computer Science Design Patterns">Computer Science Design Patterns</a></i> has a page on the topic of: <i><b><a href="https://en.wikibooks.org/wiki/Computer_Science_Design_Patterns/Command" class="extiw" title="wikibooks:Computer Science Design Patterns/Command">Command implementations in various languages</a></b></i></td></tr>
+</tbody></table>
+<ul><li><a rel="nofollow" class="external text" href="https://wiki.c2.com/?CommandPattern">Command Pattern</a></li>
+<li><a rel="nofollow" class="external text" href="https://www.infoworld.com/article/2077569/java-tip-68--learn-how-to-implement-the-command-pattern-in-java.html">Java Tip 68: Learn how to implement the Command pattern in Java</a></li></ul>
+<div class="navbox-styles nomobile"><style data-mw-deduplicate="TemplateStyles:r1061467846">.mw-parser-output .navbox{box-sizing:border-box;border:1px solid #a2a9b1;width:100%;clear:both;font-size:88%;text-align:center;padding:1px;margin:1em auto 0}.mw-parser-output .navbox .navbox{margin-top:0}.mw-parser-output .navbox+.navbox,.mw-parser-output .navbox+.navbox-styles+.navbox{margin-top:-1px}.mw-parser-output .navbox-inner,.mw-parser-output .navbox-subgroup{width:100%}.mw-parser-output .navbox-group,.mw-parser-output .navbox-title,.mw-parser-output .navbox-abovebelow{padding:0.25em 1em;line-height:1.5em;text-align:center}.mw-parser-output .navbox-group{white-space:nowrap;text-align:right}.mw-parser-output .navbox,.mw-parser-output .navbox-subgroup{background-color:#fdfdfd}.mw-parser-output .navbox-list{line-height:1.5em;border-color:#fdfdfd}.mw-parser-output .navbox-list-with-group{text-align:left;border-left-width:2px;border-left-style:solid}.mw-parser-output tr+tr>.navbox-abovebelow,.mw-parser-output tr+tr>.navbox-group,.mw-parser-output tr+tr>.navbox-image,.mw-parser-output tr+tr>.navbox-list{border-top:2px solid #fdfdfd}.mw-parser-output .navbox-title{background-color:#ccf}.mw-parser-output .navbox-abovebelow,.mw-parser-output .navbox-group,.mw-parser-output .navbox-subgroup .navbox-title{background-color:#ddf}.mw-parser-output .navbox-subgroup .navbox-group,.mw-parser-output .navbox-subgroup .navbox-abovebelow{background-color:#e6e6ff}.mw-parser-output .navbox-even{background-color:#f7f7f7}.mw-parser-output .navbox-odd{background-color:transparent}.mw-parser-output .navbox .hlist td dl,.mw-parser-output .navbox .hlist td ol,.mw-parser-output .navbox .hlist td ul,.mw-parser-output .navbox td.hlist dl,.mw-parser-output .navbox td.hlist ol,.mw-parser-output .navbox td.hlist ul{padding:0.125em 0}.mw-parser-output .navbox .navbar{display:block;font-size:100%}.mw-parser-output .navbox-title .navbar{float:left;text-align:left;margin-right:0.5em}</style></div><div role="navigation" class="navbox" aria-labelledby="Software_design_patterns" style="padding:3px"><table class="nowraplinks mw-collapsible autocollapse navbox-inner" style="border-spacing:0;background:transparent;color:inherit"><tbody><tr><th scope="col" class="navbox-title" colspan="2"><style data-mw-deduplicate="TemplateStyles:r1063604349">.mw-parser-output .navbar{display:inline;font-size:88%;font-weight:normal}.mw-parser-output .navbar-collapse{float:left;text-align:left}.mw-parser-output .navbar-boxtext{word-spacing:0}.mw-parser-output .navbar ul{display:inline-block;white-space:nowrap;line-height:inherit}.mw-parser-output .navbar-brackets::before{margin-right:-0.125em;content:"[ "}.mw-parser-output .navbar-brackets::after{margin-left:-0.125em;content:" ]"}.mw-parser-output .navbar li{word-spacing:-0.125em}.mw-parser-output .navbar a>span,.mw-parser-output .navbar a>abbr{text-decoration:inherit}.mw-parser-output .navbar-mini abbr{font-variant:small-caps;border-bottom:none;text-decoration:none;cursor:inherit}.mw-parser-output .navbar-ct-full{font-size:114%;margin:0 7em}.mw-parser-output .navbar-ct-mini{font-size:114%;margin:0 4em}</style><div class="navbar plainlinks hlist navbar-mini"><ul><li class="nv-view"><a href="/wiki/Template:Design_Patterns_patterns" title="Template:Design Patterns patterns"><abbr title="View this template" style=";;background:none transparent;border:none;box-shadow:none;padding:0;">v</abbr></a></li><li class="nv-talk"><a href="/wiki/Template_talk:Design_Patterns_patterns" title="Template talk:Design Patterns patterns"><abbr title="Discuss this template" style=";;background:none transparent;border:none;box-shadow:none;padding:0;">t</abbr></a></li><li class="nv-edit"><a class="external text" href="https://en.wikipedia.org/w/index.php?title=Template:Design_Patterns_patterns&amp;action=edit"><abbr title="Edit this template" style=";;background:none transparent;border:none;box-shadow:none;padding:0;">e</abbr></a></li></ul></div><div id="Software_design_patterns" style="font-size:114%;margin:0 4em"><a href="/wiki/Software_design_pattern" title="Software design pattern">Software design patterns</a></div></th></tr><tr><th scope="row" class="navbox-group" style="width:1%"><a href="/wiki/Design_Patterns" title="Design Patterns">Gang of Four<br />patterns</a></th><td class="navbox-list-with-group navbox-list navbox-odd hlist" style="width:100%;padding:0"><div style="padding:0 0.25em"></div><table class="nowraplinks navbox-subgroup" style="border-spacing:0"><tbody><tr><th scope="row" class="navbox-group" style="width:1%"><a href="/wiki/Creational_pattern" title="Creational pattern">Creational</a></th><td class="navbox-list-with-group navbox-list navbox-odd" style="width:100%;padding:0"><div style="padding:0 0.25em">
+<ul><li><a href="/wiki/Abstract_factory_pattern" title="Abstract factory pattern">Abstract factory</a></li>
+<li><a href="/wiki/Builder_pattern" title="Builder pattern">Builder</a></li>
+<li><a href="/wiki/Factory_method_pattern" title="Factory method pattern">Factory method</a></li>
+<li><a href="/wiki/Prototype_pattern" title="Prototype pattern">Prototype</a></li>
+<li><a href="/wiki/Singleton_pattern" title="Singleton pattern">Singleton</a></li></ul>
+</div></td></tr><tr><th scope="row" class="navbox-group" style="width:1%"><a href="/wiki/Structural_pattern" title="Structural pattern">Structural</a></th><td class="navbox-list-with-group navbox-list navbox-even" style="width:100%;padding:0"><div style="padding:0 0.25em">
+<ul><li><a href="/wiki/Adapter_pattern" title="Adapter pattern">Adapter</a></li>
+<li><a href="/wiki/Bridge_pattern" title="Bridge pattern">Bridge</a></li>
+<li><a href="/wiki/Composite_pattern" title="Composite pattern">Composite</a></li>
+<li><a href="/wiki/Decorator_pattern" title="Decorator pattern">Decorator</a></li>
+<li><a href="/wiki/Facade_pattern" title="Facade pattern">Facade</a></li>
+<li><a href="/wiki/Flyweight_pattern" title="Flyweight pattern">Flyweight</a></li>
+<li><a href="/wiki/Proxy_pattern" title="Proxy pattern">Proxy</a></li></ul>
+</div></td></tr><tr><th scope="row" class="navbox-group" style="width:1%"><a href="/wiki/Behavioral_pattern" title="Behavioral pattern">Behavioral</a></th><td class="navbox-list-with-group navbox-list navbox-odd" style="width:100%;padding:0"><div style="padding:0 0.25em">
+<ul><li><a href="/wiki/Chain-of-responsibility_pattern" title="Chain-of-responsibility pattern">Chain of responsibility</a></li>
+<li><a class="mw-selflink selflink">Command</a></li>
+<li><a href="/wiki/Interpreter_pattern" title="Interpreter pattern">Interpreter</a></li>
+<li><a href="/wiki/Iterator_pattern" title="Iterator pattern">Iterator</a></li>
+<li><a href="/wiki/Mediator_pattern" title="Mediator pattern">Mediator</a></li>
+<li><a href="/wiki/Memento_pattern" title="Memento pattern">Memento</a></li>
+<li><a href="/wiki/Observer_pattern" title="Observer pattern">Observer</a></li>
+<li><a href="/wiki/State_pattern" title="State pattern">State</a></li>
+<li><a href="/wiki/Strategy_pattern" title="Strategy pattern">Strategy</a></li>
+<li><a href="/wiki/Template_method_pattern" title="Template method pattern">Template method</a></li>
+<li><a href="/wiki/Visitor_pattern" title="Visitor pattern">Visitor</a></li></ul>
+</div></td></tr></tbody></table><div></div></td></tr><tr><th scope="row" class="navbox-group" style="width:1%"><a href="/wiki/Concurrency_pattern" title="Concurrency pattern">Concurrency<br />patterns</a></th><td class="navbox-list-with-group navbox-list navbox-even hlist" style="width:100%;padding:0"><div style="padding:0 0.25em">
+<ul><li><a href="/wiki/Active_object" title="Active object">Active object</a></li>
+<li><a href="/wiki/Balking_pattern" title="Balking pattern">Balking</a></li>
+<li><a href="/wiki/Binding_properties_pattern" title="Binding properties pattern">Binding properties</a></li>
+<li><a href="/wiki/Double-checked_locking" title="Double-checked locking">Double-checked locking</a></li>
+<li><a href="/wiki/Asynchronous_method_invocation" title="Asynchronous method invocation">Event-based asynchronous</a></li>
+<li><a href="/wiki/Guarded_suspension" title="Guarded suspension">Guarded suspension</a></li>
+<li><a href="/wiki/Join-pattern" title="Join-pattern">Join</a></li>
+<li><a href="/wiki/Lock_pattern" class="mw-redirect" title="Lock pattern">Lock</a></li>
+<li><a href="/wiki/Monitor_(synchronization)" title="Monitor (synchronization)">Monitor</a></li>
+<li><a href="/wiki/Proactor_pattern" title="Proactor pattern">Proactor</a></li>
+<li><a href="/wiki/Reactor_pattern" title="Reactor pattern">Reactor</a></li>
+<li><a href="/wiki/Readers%E2%80%93writer_lock" title="Readers–writer lock">Read write lock</a></li>
+<li><a href="/wiki/Scheduler_pattern" class="mw-redirect" title="Scheduler pattern">Scheduler</a></li>
+<li><a href="/wiki/Thread_pool_pattern" class="mw-redirect" title="Thread pool pattern">Thread pool</a></li>
+<li><a href="/wiki/Thread-local_storage" title="Thread-local storage">Thread-local storage</a></li></ul>
+</div></td></tr><tr><th scope="row" class="navbox-group" style="width:1%"><a href="/wiki/Architectural_pattern" title="Architectural pattern">Architectural<br />patterns</a></th><td class="navbox-list-with-group navbox-list navbox-odd hlist" style="width:100%;padding:0"><div style="padding:0 0.25em">
+<ul><li><a href="/wiki/Front_controller" title="Front controller">Front controller</a></li>
+<li><a href="/wiki/Interceptor_pattern" title="Interceptor pattern">Interceptor</a></li>
+<li><a href="/wiki/Model%E2%80%93view%E2%80%93controller" title="Model–view–controller">MVC</a></li>
+<li><a href="/wiki/Action%E2%80%93domain%E2%80%93responder" title="Action–domain–responder">ADR</a></li>
+<li><a href="/wiki/Entity%E2%80%93component%E2%80%93system" class="mw-redirect" title="Entity–component–system">ECS</a></li>
+<li><a href="/wiki/Multitier_architecture" title="Multitier architecture"><i>n</i>-tier</a></li>
+<li><a href="/wiki/Specification_pattern" title="Specification pattern">Specification</a></li>
+<li><a href="/wiki/Publish%E2%80%93subscribe_pattern" title="Publish–subscribe pattern">Publish–subscribe</a></li>
+<li><a href="/wiki/Naked_objects" title="Naked objects">Naked objects</a></li>
+<li><a href="/wiki/Service_locator_pattern" title="Service locator pattern">Service locator</a></li>
+<li><a href="/wiki/Active_record_pattern" title="Active record pattern">Active record</a></li>
+<li><a href="/wiki/Identity_map_pattern" title="Identity map pattern">Identity map</a></li>
+<li><a href="/wiki/Data_access_object" title="Data access object">Data access object</a></li>
+<li><a href="/wiki/Data_transfer_object" title="Data transfer object">Data transfer object</a></li>
+<li><a href="/wiki/Inversion_of_control" title="Inversion of control">Inversion of control</a></li>
+<li><a href="/wiki/JSP_model_2_architecture" title="JSP model 2 architecture">Model 2</a></li></ul>
+</div></td></tr><tr><th scope="row" class="navbox-group" style="width:1%">Other<br />patterns</th><td class="navbox-list-with-group navbox-list navbox-even hlist" style="width:100%;padding:0"><div style="padding:0 0.25em">
+<ul><li><a href="/wiki/Blackboard_design_pattern" class="mw-redirect" title="Blackboard design pattern">Blackboard</a></li>
+<li><a href="/wiki/Business_delegate_pattern" title="Business delegate pattern">Business delegate</a></li>
+<li><a href="/wiki/Composite_entity_pattern" title="Composite entity pattern">Composite entity</a></li>
+<li><a href="/wiki/Dependency_injection" title="Dependency injection">Dependency injection</a></li>
+<li><a href="/wiki/Intercepting_filter_pattern" title="Intercepting filter pattern">Intercepting filter</a></li>
+<li><a href="/wiki/Lazy_loading" title="Lazy loading">Lazy loading</a></li>
+<li><a href="/wiki/Mock_object" title="Mock object">Mock object</a></li>
+<li><a href="/wiki/Null_object_pattern" title="Null object pattern">Null object</a></li>
+<li><a href="/wiki/Object_pool_pattern" title="Object pool pattern">Object pool</a></li>
+<li><a href="/wiki/Servant_(design_pattern)" title="Servant (design pattern)">Servant</a></li>
+<li><a href="/wiki/Twin_pattern" title="Twin pattern">Twin</a></li>
+<li><a href="/wiki/Type_Tunnel_pattern" title="Type Tunnel pattern">Type tunnel</a></li>
+<li><a href="/wiki/Method_chaining" title="Method chaining">Method chaining</a></li>
+<li><a href="/wiki/Delegation_pattern" title="Delegation pattern">Delegation</a></li></ul>
+</div></td></tr><tr><th scope="row" class="navbox-group" style="width:1%">Books</th><td class="navbox-list-with-group navbox-list navbox-odd hlist" style="width:100%;padding:0"><div style="padding:0 0.25em">
+<ul><li><i><a href="/wiki/Design_Patterns" title="Design Patterns">Design Patterns</a></i></li>
+<li><i><a href="/wiki/Enterprise_Integration_Patterns" title="Enterprise Integration Patterns">Enterprise Integration Patterns</a></i></li></ul>
+</div></td></tr><tr><th scope="row" class="navbox-group" style="width:1%">People</th><td class="navbox-list-with-group navbox-list navbox-even hlist" style="width:100%;padding:0"><div style="padding:0 0.25em">
+<ul><li><a href="/wiki/Christopher_Alexander" title="Christopher Alexander">Christopher Alexander</a></li>
+<li><a href="/wiki/Erich_Gamma" title="Erich Gamma">Erich Gamma</a></li>
+<li><a href="/wiki/Ralph_Johnson_(computer_scientist)" title="Ralph Johnson (computer scientist)">Ralph Johnson</a></li>
+<li><a href="/wiki/John_Vlissides" title="John Vlissides">John Vlissides</a></li>
+<li><a href="/wiki/Grady_Booch" title="Grady Booch">Grady Booch</a></li>
+<li><a href="/wiki/Kent_Beck" title="Kent Beck">Kent Beck</a></li>
+<li><a href="/wiki/Ward_Cunningham" title="Ward Cunningham">Ward Cunningham</a></li>
+<li><a href="/wiki/Martin_Fowler_(software_engineer)" title="Martin Fowler (software engineer)">Martin Fowler</a></li>
+<li><a href="/wiki/Robert_C._Martin" title="Robert C. Martin">Robert Martin</a></li>
+<li><a href="/wiki/Jim_Coplien" title="Jim Coplien">Jim Coplien</a></li>
+<li><a href="/wiki/Douglas_C._Schmidt" title="Douglas C. Schmidt">Douglas Schmidt</a></li>
+<li><a href="/wiki/Linda_Rising" title="Linda Rising">Linda Rising</a></li></ul>
+</div></td></tr><tr><th scope="row" class="navbox-group" style="width:1%">Communities</th><td class="navbox-list-with-group navbox-list navbox-odd hlist" style="width:100%;padding:0"><div style="padding:0 0.25em">
+<ul><li><a href="/wiki/The_Hillside_Group" title="The Hillside Group">The Hillside Group</a></li>
+<li><a href="/wiki/Portland_Pattern_Repository" title="Portland Pattern Repository">The Portland Pattern Repository</a></li></ul>
+</div></td></tr></tbody></table></div>
+<!-- 
+NewPP limit report
+Parsed by mw1352
+Cached time: 20220311224125
+Cache expiry: 1814400
+Reduced expiry: false
+Complications: [vary‐revision‐sha1]
+CPU time usage: 0.397 seconds
+Real time usage: 0.509 seconds
+Preprocessor visited node count: 1075/1000000
+Post‐expand include size: 41787/2097152 bytes
+Template argument size: 1540/2097152 bytes
+Highest expansion depth: 14/100
+Expensive parser function count: 1/500
+Unstrip recursion depth: 1/20
+Unstrip post‐expand size: 29230/5000000 bytes
+Lua time usage: 0.212/10.000 seconds
+Lua memory usage: 4968729/52428800 bytes
+Number of Wikibase entities loaded: 0/400
+-->
+<!--
+Transclusion expansion time report (%,ms,calls,template)
+100.00%  411.794      1 -total
+ 34.16%  140.654      1 Template:Reflist
+ 26.23%  108.034      1 Template:Design_Patterns_Patterns
+ 26.06%  107.325      2 Template:Navbox
+ 24.18%   99.579      2 Template:Cite_book
+ 17.55%   72.279      1 Template:No_footnotes
+ 13.39%   55.123      2 Template:Sister_project
+ 12.82%   52.776      1 Template:Commons_category
+ 12.66%   52.149      2 Template:Side_box
+ 11.97%   49.281      1 Template:Ambox
+-->
+
+<!-- Saved in parser cache with key enwiki:pcache:idhash:164858-0!canonical and timestamp 20220311224125 and revision id 1076365119. Serialized with JSON.
+ -->
+</div><noscript><img src="//en.wikipedia.org/wiki/Special:CentralAutoLogin/start?type=1x1" alt="" title="" width="1" height="1" style="border: none; position: absolute;" /></noscript>
+<div class="printfooter">Retrieved from "<a dir="ltr" href="https://en.wikipedia.org/w/index.php?title=Command_pattern&amp;oldid=1076365119">https://en.wikipedia.org/w/index.php?title=Command_pattern&amp;oldid=1076365119</a>"</div></div>
+		<div id="catlinks" class="catlinks" data-mw="interface"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="/wiki/Help:Category" title="Help:Category">Categories</a>: <ul><li><a href="/wiki/Category:Software_design_patterns" title="Category:Software design patterns">Software design patterns</a></li></ul></div><div id="mw-hidden-catlinks" class="mw-hidden-catlinks mw-hidden-cats-hidden">Hidden categories: <ul><li><a href="/wiki/Category:Articles_lacking_in-text_citations_from_December_2012" title="Category:Articles lacking in-text citations from December 2012">Articles lacking in-text citations from December 2012</a></li><li><a href="/wiki/Category:All_articles_lacking_in-text_citations" title="Category:All articles lacking in-text citations">All articles lacking in-text citations</a></li><li><a href="/wiki/Category:Commons_category_link_from_Wikidata" title="Category:Commons category link from Wikidata">Commons category link from Wikidata</a></li><li><a href="/wiki/Category:Articles_with_example_C_Sharp_code" title="Category:Articles with example C Sharp code">Articles with example C Sharp code</a></li><li><a href="/wiki/Category:Articles_with_example_Java_code" title="Category:Articles with example Java code">Articles with example Java code</a></li><li><a href="/wiki/Category:Articles_with_example_JavaScript_code" title="Category:Articles with example JavaScript code">Articles with example JavaScript code</a></li><li><a href="/wiki/Category:Articles_with_example_Python_(programming_language)_code" title="Category:Articles with example Python (programming language) code">Articles with example Python (programming language) code</a></li><li><a href="/wiki/Category:Articles_with_example_Ruby_code" title="Category:Articles with example Ruby code">Articles with example Ruby code</a></li><li><a href="/wiki/Category:Articles_with_example_Scala_code" title="Category:Articles with example Scala code">Articles with example Scala code</a></li></ul></div></div>
+	</div>
+</div>
+<div id='mw-data-after-content'>
+	<div class="read-more-container"></div>
+</div>
+
+<div id="mw-navigation">
+	<h2>Navigation menu</h2>
+	<div id="mw-head">
+		
+<nav id="p-personal" class="mw-portlet mw-portlet-personal vector-user-menu-legacy vector-menu" aria-labelledby="p-personal-label" role="navigation" 
+	 >
+	<label id="p-personal-label" aria-label="" class="vector-menu-heading">
+		<span class="vector-menu-heading-label">Personal tools</span>
+	</label>
+	<div class="vector-menu-content">
+		
+		<ul class="vector-menu-content-list"><li id="pt-anonuserpage" class="mw-list-item"><span>Not logged in</span></li><li id="pt-anontalk" class="mw-list-item"><a href="/wiki/Special:MyTalk" title="Discussion about edits from this IP address [n]" accesskey="n"><span>Talk</span></a></li><li id="pt-anoncontribs" class="mw-list-item"><a href="/wiki/Special:MyContributions" title="A list of edits made from this IP address [y]" accesskey="y"><span>Contributions</span></a></li><li id="pt-createaccount" class="mw-list-item"><a href="/w/index.php?title=Special:CreateAccount&amp;returnto=Command+pattern" title="You are encouraged to create an account and log in; however, it is not mandatory"><span>Create account</span></a></li><li id="pt-login" class="mw-list-item"><a href="/w/index.php?title=Special:UserLogin&amp;returnto=Command+pattern" title="You&#039;re encouraged to log in; however, it&#039;s not mandatory. [o]" accesskey="o"><span>Log in</span></a></li></ul>
+		
+	</div>
+</nav>
+
+		<div id="left-navigation">
+			
+<nav id="p-namespaces" class="mw-portlet mw-portlet-namespaces vector-menu vector-menu-tabs" aria-labelledby="p-namespaces-label" role="navigation" 
+	 >
+	<label id="p-namespaces-label" aria-label="" class="vector-menu-heading">
+		<span class="vector-menu-heading-label">Namespaces</span>
+	</label>
+	<div class="vector-menu-content">
+		
+		<ul class="vector-menu-content-list"><li id="ca-nstab-main" class="selected mw-list-item"><a href="/wiki/Command_pattern" title="View the content page [c]" accesskey="c"><span>Article</span></a></li><li id="ca-talk" class="mw-list-item"><a href="/wiki/Talk:Command_pattern" rel="discussion" title="Discuss improvements to the content page [t]" accesskey="t"><span>Talk</span></a></li></ul>
+		
+	</div>
+</nav>
+
+			
+<nav id="p-variants" class="mw-portlet mw-portlet-variants emptyPortlet vector-menu-dropdown-noicon vector-menu vector-menu-dropdown" aria-labelledby="p-variants-label" role="navigation" 
+	 >
+	<input type="checkbox"
+		id="p-variants-checkbox"
+		role="button"
+		aria-haspopup="true"
+		data-event-name="ui.dropdown-p-variants"
+		class="vector-menu-checkbox" aria-labelledby="p-variants-label" />
+	<label id="p-variants-label" aria-label="Change language variant" class="vector-menu-heading">
+		<span class="vector-menu-heading-label">English</span>
+			<span class="vector-menu-checkbox-expanded">expanded</span>
+			<span class="vector-menu-checkbox-collapsed">collapsed</span>
+	</label>
+	<div class="vector-menu-content">
+		
+		<ul class="vector-menu-content-list"></ul>
+		
+	</div>
+</nav>
+
+		</div>
+		<div id="right-navigation">
+			
+<nav id="p-views" class="mw-portlet mw-portlet-views vector-menu vector-menu-tabs" aria-labelledby="p-views-label" role="navigation" 
+	 >
+	<label id="p-views-label" aria-label="" class="vector-menu-heading">
+		<span class="vector-menu-heading-label">Views</span>
+	</label>
+	<div class="vector-menu-content">
+		
+		<ul class="vector-menu-content-list"><li id="ca-view" class="selected mw-list-item"><a href="/wiki/Command_pattern"><span>Read</span></a></li><li id="ca-edit" class="mw-list-item"><a href="/w/index.php?title=Command_pattern&amp;action=edit" title="Edit this page [e]" accesskey="e"><span>Edit</span></a></li><li id="ca-history" class="mw-list-item"><a href="/w/index.php?title=Command_pattern&amp;action=history" title="Past revisions of this page [h]" accesskey="h"><span>View history</span></a></li></ul>
+		
+	</div>
+</nav>
+
+			
+<nav id="p-cactions" class="mw-portlet mw-portlet-cactions emptyPortlet vector-menu-dropdown-noicon vector-menu vector-menu-dropdown" aria-labelledby="p-cactions-label" role="navigation"  title="More options"
+	 >
+	<input type="checkbox"
+		id="p-cactions-checkbox"
+		role="button"
+		aria-haspopup="true"
+		data-event-name="ui.dropdown-p-cactions"
+		class="vector-menu-checkbox" aria-labelledby="p-cactions-label" />
+	<label id="p-cactions-label" aria-label="" class="vector-menu-heading">
+		<span class="vector-menu-heading-label">More</span>
+			<span class="vector-menu-checkbox-expanded">expanded</span>
+			<span class="vector-menu-checkbox-collapsed">collapsed</span>
+	</label>
+	<div class="vector-menu-content">
+		
+		<ul class="vector-menu-content-list"></ul>
+		
+	</div>
+</nav>
+
+			
+<div id="p-search" role="search" class="vector-search-box-vue  vector-search-box-show-thumbnail vector-search-box-auto-expand-width vector-search-box">
+	<div>
+			<h3 >
+				<label for="searchInput">Search</label>
+			</h3>
+		<form action="/w/index.php" id="searchform"
+			class="vector-search-box-form">
+			<div id="simpleSearch"
+				class="vector-search-box-inner"
+				 data-search-loc="header-navigation">
+				<input class="vector-search-box-input"
+					 type="search" name="search" placeholder="Search Wikipedia" aria-label="Search Wikipedia" autocapitalize="sentences" title="Search Wikipedia [f]" accesskey="f" id="searchInput"
+				/>
+				<input type="hidden" name="title" value="Special:Search"/>
+				<input id="mw-searchButton"
+					 class="searchButton mw-fallbackSearchButton" type="submit" name="fulltext" title="Search Wikipedia for this text" value="Search" />
+				<input id="searchButton"
+					 class="searchButton" type="submit" name="go" title="Go to a page with this exact name if it exists" value="Go" />
+			</div>
+		</form>
+	</div>
+</div>
+
+		</div>
+	</div>
+	
+
+<div id="mw-panel">
+	<div id="p-logo" role="banner">
+		<a class="mw-wiki-logo" href="/wiki/Main_Page"
+			title="Visit the main page"></a>
+	</div>
+	
+<nav id="p-navigation" class="mw-portlet mw-portlet-navigation vector-menu vector-menu-portal portal" aria-labelledby="p-navigation-label" role="navigation" 
+	 >
+	<label id="p-navigation-label" aria-label="" class="vector-menu-heading">
+		<span class="vector-menu-heading-label">Navigation</span>
+	</label>
+	<div class="vector-menu-content">
+		
+		<ul class="vector-menu-content-list"><li id="n-mainpage-description" class="mw-list-item"><a href="/wiki/Main_Page" icon="home" title="Visit the main page [z]" accesskey="z"><span>Main page</span></a></li><li id="n-contents" class="mw-list-item"><a href="/wiki/Wikipedia:Contents" title="Guides to browsing Wikipedia"><span>Contents</span></a></li><li id="n-currentevents" class="mw-list-item"><a href="/wiki/Portal:Current_events" title="Articles related to current events"><span>Current events</span></a></li><li id="n-randompage" class="mw-list-item"><a href="/wiki/Special:Random" icon="die" title="Visit a randomly selected article [x]" accesskey="x"><span>Random article</span></a></li><li id="n-aboutsite" class="mw-list-item"><a href="/wiki/Wikipedia:About" title="Learn about Wikipedia and how it works"><span>About Wikipedia</span></a></li><li id="n-contactpage" class="mw-list-item"><a href="//en.wikipedia.org/wiki/Wikipedia:Contact_us" title="How to contact Wikipedia"><span>Contact us</span></a></li><li id="n-sitesupport" class="mw-list-item"><a href="https://donate.wikimedia.org/wiki/Special:FundraiserRedirector?utm_source=donate&amp;utm_medium=sidebar&amp;utm_campaign=C13_en.wikipedia.org&amp;uselang=en" title="Support us by donating to the Wikimedia Foundation"><span>Donate</span></a></li></ul>
+		
+	</div>
+</nav>
+
+	
+<nav id="p-interaction" class="mw-portlet mw-portlet-interaction vector-menu vector-menu-portal portal" aria-labelledby="p-interaction-label" role="navigation" 
+	 >
+	<label id="p-interaction-label" aria-label="" class="vector-menu-heading">
+		<span class="vector-menu-heading-label">Contribute</span>
+	</label>
+	<div class="vector-menu-content">
+		
+		<ul class="vector-menu-content-list"><li id="n-help" class="mw-list-item"><a href="/wiki/Help:Contents" icon="help" title="Guidance on how to use and edit Wikipedia"><span>Help</span></a></li><li id="n-introduction" class="mw-list-item"><a href="/wiki/Help:Introduction" title="Learn how to edit Wikipedia"><span>Learn to edit</span></a></li><li id="n-portal" class="mw-list-item"><a href="/wiki/Wikipedia:Community_portal" title="The hub for editors"><span>Community portal</span></a></li><li id="n-recentchanges" class="mw-list-item"><a href="/wiki/Special:RecentChanges" icon="recentChanges" title="A list of recent changes to Wikipedia [r]" accesskey="r"><span>Recent changes</span></a></li><li id="n-upload" class="mw-list-item"><a href="/wiki/Wikipedia:File_Upload_Wizard" title="Add images or other media for use on Wikipedia"><span>Upload file</span></a></li></ul>
+		
+	</div>
+</nav>
+
+<nav id="p-tb" class="mw-portlet mw-portlet-tb vector-menu vector-menu-portal portal" aria-labelledby="p-tb-label" role="navigation" 
+	 >
+	<label id="p-tb-label" aria-label="" class="vector-menu-heading">
+		<span class="vector-menu-heading-label">Tools</span>
+	</label>
+	<div class="vector-menu-content">
+		
+		<ul class="vector-menu-content-list"><li id="t-whatlinkshere" class="mw-list-item"><a href="/wiki/Special:WhatLinksHere/Command_pattern" title="List of all English Wikipedia pages containing links to this page [j]" accesskey="j"><span>What links here</span></a></li><li id="t-recentchangeslinked" class="mw-list-item"><a href="/wiki/Special:RecentChangesLinked/Command_pattern" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k"><span>Related changes</span></a></li><li id="t-upload" class="mw-list-item"><a href="/wiki/Wikipedia:File_Upload_Wizard" title="Upload files [u]" accesskey="u"><span>Upload file</span></a></li><li id="t-specialpages" class="mw-list-item"><a href="/wiki/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q"><span>Special pages</span></a></li><li id="t-permalink" class="mw-list-item"><a href="/w/index.php?title=Command_pattern&amp;oldid=1076365119" title="Permanent link to this revision of this page"><span>Permanent link</span></a></li><li id="t-info" class="mw-list-item"><a href="/w/index.php?title=Command_pattern&amp;action=info" title="More information about this page"><span>Page information</span></a></li><li id="t-cite" class="mw-list-item"><a href="/w/index.php?title=Special:CiteThisPage&amp;page=Command_pattern&amp;id=1076365119&amp;wpFormIdentifier=titleform" title="Information on how to cite this page"><span>Cite this page</span></a></li><li id="t-wikibase" class="mw-list-item"><a href="https://www.wikidata.org/wiki/Special:EntityPage/Q386776" title="Structured data on this page hosted by Wikidata [g]" accesskey="g"><span>Wikidata item</span></a></li></ul>
+		
+	</div>
+</nav>
+
+<nav id="p-coll-print_export" class="mw-portlet mw-portlet-coll-print_export vector-menu vector-menu-portal portal" aria-labelledby="p-coll-print_export-label" role="navigation" 
+	 >
+	<label id="p-coll-print_export-label" aria-label="" class="vector-menu-heading">
+		<span class="vector-menu-heading-label">Print/export</span>
+	</label>
+	<div class="vector-menu-content">
+		
+		<ul class="vector-menu-content-list"><li id="coll-download-as-rl" class="mw-list-item"><a href="/w/index.php?title=Special:DownloadAsPdf&amp;page=Command_pattern&amp;action=show-download-screen" title="Download this page as a PDF file"><span>Download as PDF</span></a></li><li id="t-print" class="mw-list-item"><a href="/w/index.php?title=Command_pattern&amp;printable=yes" title="Printable version of this page [p]" accesskey="p"><span>Printable version</span></a></li></ul>
+		
+	</div>
+</nav>
+
+<nav id="p-wikibase-otherprojects" class="mw-portlet mw-portlet-wikibase-otherprojects vector-menu vector-menu-portal portal" aria-labelledby="p-wikibase-otherprojects-label" role="navigation" 
+	 >
+	<label id="p-wikibase-otherprojects-label" aria-label="" class="vector-menu-heading">
+		<span class="vector-menu-heading-label">In other projects</span>
+	</label>
+	<div class="vector-menu-content">
+		
+		<ul class="vector-menu-content-list"><li class="wb-otherproject-link wb-otherproject-commons mw-list-item"><a href="https://commons.wikimedia.org/wiki/Category:Command_pattern" hreflang="en"><span>Wikimedia Commons</span></a></li><li class="wb-otherproject-link wb-otherproject-wikibooks mw-list-item"><a href="https://en.wikibooks.org/wiki/Computer_Science_Design_Patterns/Command" hreflang="en"><span>Wikibooks</span></a></li></ul>
+		
+	</div>
+</nav>
+
+	
+<nav id="p-lang" class="mw-portlet mw-portlet-lang vector-menu vector-menu-portal portal" aria-labelledby="p-lang-label" role="navigation" 
+	 >
+	<label id="p-lang-label" aria-label="" class="vector-menu-heading">
+		<span class="vector-menu-heading-label">Languages</span>
+	</label>
+	<div class="vector-menu-content">
+		
+		<ul class="vector-menu-content-list"><li class="interlanguage-link interwiki-bg mw-list-item"><a href="https://bg.wikipedia.org/wiki/%D0%9A%D0%BE%D0%BC%D0%B0%D0%BD%D0%B4%D0%B0_(%D1%88%D0%B0%D0%B1%D0%BB%D0%BE%D0%BD)" title="Команда (шаблон) – Bulgarian" lang="bg" hreflang="bg" class="interlanguage-link-target"><span>Български</span></a></li><li class="interlanguage-link interwiki-cs mw-list-item"><a href="https://cs.wikipedia.org/wiki/Command" title="Command – Czech" lang="cs" hreflang="cs" class="interlanguage-link-target"><span>Čeština</span></a></li><li class="interlanguage-link interwiki-de mw-list-item"><a href="https://de.wikipedia.org/wiki/Kommando_(Entwurfsmuster)" title="Kommando (Entwurfsmuster) – German" lang="de" hreflang="de" class="interlanguage-link-target"><span>Deutsch</span></a></li><li class="interlanguage-link interwiki-es mw-list-item"><a href="https://es.wikipedia.org/wiki/Command_(patr%C3%B3n_de_dise%C3%B1o)" title="Command (patrón de diseño) – Spanish" lang="es" hreflang="es" class="interlanguage-link-target"><span>Español</span></a></li><li class="interlanguage-link interwiki-fa mw-list-item"><a href="https://fa.wikipedia.org/wiki/%D8%A7%D9%84%DA%AF%D9%88%DB%8C_%D9%81%D8%B1%D9%85%D8%A7%D9%86" title="الگوی فرمان – Persian" lang="fa" hreflang="fa" class="interlanguage-link-target"><span>فارسی</span></a></li><li class="interlanguage-link interwiki-fr mw-list-item"><a href="https://fr.wikipedia.org/wiki/Commande_(patron_de_conception)" title="Commande (patron de conception) – French" lang="fr" hreflang="fr" class="interlanguage-link-target"><span>Français</span></a></li><li class="interlanguage-link interwiki-gl mw-list-item"><a href="https://gl.wikipedia.org/wiki/Comando_(padr%C3%B3n_de_dese%C3%B1o)" title="Comando (padrón de deseño) – Galician" lang="gl" hreflang="gl" class="interlanguage-link-target"><span>Galego</span></a></li><li class="interlanguage-link interwiki-ko mw-list-item"><a href="https://ko.wikipedia.org/wiki/%EC%BB%A4%EB%A7%A8%EB%93%9C_%ED%8C%A8%ED%84%B4" title="커맨드 패턴 – Korean" lang="ko" hreflang="ko" class="interlanguage-link-target"><span>한국어</span></a></li><li class="interlanguage-link interwiki-hy mw-list-item"><a href="https://hy.wikipedia.org/wiki/%D5%80%D6%80%D5%A1%D5%B4%D5%A1%D5%B6_(%D5%B6%D5%A1%D5%AD%D5%A1%D5%A3%D5%AE%D5%B4%D5%A1%D5%B6_%D5%B1%D6%87%D5%A1%D5%B6%D5%B4%D5%B8%D6%82%D5%B7)" title="Հրաման (նախագծման ձևանմուշ) – Armenian" lang="hy" hreflang="hy" class="interlanguage-link-target"><span>Հայերեն</span></a></li><li class="interlanguage-link interwiki-it mw-list-item"><a href="https://it.wikipedia.org/wiki/Command_pattern" title="Command pattern – Italian" lang="it" hreflang="it" class="interlanguage-link-target"><span>Italiano</span></a></li><li class="interlanguage-link interwiki-he mw-list-item"><a href="https://he.wikipedia.org/wiki/%D7%AA%D7%91%D7%A0%D7%99%D7%AA_Command" title="תבנית Command – Hebrew" lang="he" hreflang="he" class="interlanguage-link-target"><span>עברית</span></a></li><li class="interlanguage-link interwiki-hu mw-list-item"><a href="https://hu.wikipedia.org/wiki/Parancs_programtervez%C3%A9si_minta" title="Parancs programtervezési minta – Hungarian" lang="hu" hreflang="hu" class="interlanguage-link-target"><span>Magyar</span></a></li><li class="interlanguage-link interwiki-nl mw-list-item"><a href="https://nl.wikipedia.org/wiki/Commandopatroon" title="Commandopatroon – Dutch" lang="nl" hreflang="nl" class="interlanguage-link-target"><span>Nederlands</span></a></li><li class="interlanguage-link interwiki-ja mw-list-item"><a href="https://ja.wikipedia.org/wiki/Command_%E3%83%91%E3%82%BF%E3%83%BC%E3%83%B3" title="Command パターン – Japanese" lang="ja" hreflang="ja" class="interlanguage-link-target"><span>日本語</span></a></li><li class="interlanguage-link interwiki-pl mw-list-item"><a href="https://pl.wikipedia.org/wiki/Polecenie_(wzorzec_projektowy)" title="Polecenie (wzorzec projektowy) – Polish" lang="pl" hreflang="pl" class="interlanguage-link-target"><span>Polski</span></a></li><li class="interlanguage-link interwiki-pt mw-list-item"><a href="https://pt.wikipedia.org/wiki/Command" title="Command – Portuguese" lang="pt" hreflang="pt" class="interlanguage-link-target"><span>Português</span></a></li><li class="interlanguage-link interwiki-ru mw-list-item"><a href="https://ru.wikipedia.org/wiki/%D0%9A%D0%BE%D0%BC%D0%B0%D0%BD%D0%B4%D0%B0_(%D1%88%D0%B0%D0%B1%D0%BB%D0%BE%D0%BD_%D0%BF%D1%80%D0%BE%D0%B5%D0%BA%D1%82%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D1%8F)" title="Команда (шаблон проектирования) – Russian" lang="ru" hreflang="ru" class="interlanguage-link-target"><span>Русский</span></a></li><li class="interlanguage-link interwiki-sv mw-list-item"><a href="https://sv.wikipedia.org/wiki/Kommando_(designm%C3%B6nster)" title="Kommando (designmönster) – Swedish" lang="sv" hreflang="sv" class="interlanguage-link-target"><span>Svenska</span></a></li><li class="interlanguage-link interwiki-uk mw-list-item"><a href="https://uk.wikipedia.org/wiki/%D0%9A%D0%BE%D0%BC%D0%B0%D0%BD%D0%B4%D0%B0_(%D1%88%D0%B0%D0%B1%D0%BB%D0%BE%D0%BD_%D0%BF%D1%80%D0%BE%D1%94%D0%BA%D1%82%D1%83%D0%B2%D0%B0%D0%BD%D0%BD%D1%8F)" title="Команда (шаблон проєктування) – Ukrainian" lang="uk" hreflang="uk" class="interlanguage-link-target"><span>Українська</span></a></li><li class="interlanguage-link interwiki-zh mw-list-item"><a href="https://zh.wikipedia.org/wiki/%E5%91%BD%E4%BB%A4%E6%A8%A1%E5%BC%8F" title="命令模式 – Chinese" lang="zh" hreflang="zh" class="interlanguage-link-target"><span>中文</span></a></li></ul>
+		<div class="after-portlet after-portlet-lang"><span class="wb-langlinks-edit wb-langlinks-link"><a href="https://www.wikidata.org/wiki/Special:EntityPage/Q386776#sitelinks-wikipedia" title="Edit interlanguage links" class="wbc-editpage">Edit links</a></span></div>
+	</div>
+</nav>
+
+</div>
+
+</div>
+
+<footer id="footer" class="mw-footer" role="contentinfo" >
+	<ul id="footer-info">
+	<li id="footer-info-lastmod"> This page was last edited on 10 March 2022, at 19:18<span class="anonymous-show">&#160;(UTC)</span>.</li>
+	<li id="footer-info-copyright">Text is available under the <a rel="license" href="//en.wikipedia.org/wiki/Wikipedia:Text_of_Creative_Commons_Attribution-ShareAlike_3.0_Unported_License">Creative Commons Attribution-ShareAlike License 3.0</a><a rel="license" href="//creativecommons.org/licenses/by-sa/3.0/" style="display:none;"></a>;
+additional terms may apply.  By using this site, you agree to the <a href="//foundation.wikimedia.org/wiki/Terms_of_Use">Terms of Use</a> and <a href="//foundation.wikimedia.org/wiki/Privacy_policy">Privacy Policy</a>. Wikipedia® is a registered trademark of the <a href="//www.wikimediafoundation.org/">Wikimedia Foundation, Inc.</a>, a non-profit organization.</li>
+</ul>
+
+	<ul id="footer-places">
+	<li id="footer-places-privacy"><a href="https://foundation.wikimedia.org/wiki/Privacy_policy" class="extiw" title="wmf:Privacy policy">Privacy policy</a></li>
+	<li id="footer-places-about"><a href="/wiki/Wikipedia:About" title="Wikipedia:About">About Wikipedia</a></li>
+	<li id="footer-places-disclaimer"><a href="/wiki/Wikipedia:General_disclaimer" title="Wikipedia:General disclaimer">Disclaimers</a></li>
+	<li id="footer-places-contact"><a href="//en.wikipedia.org/wiki/Wikipedia:Contact_us">Contact Wikipedia</a></li>
+	<li id="footer-places-mobileview"><a href="//en.m.wikipedia.org/w/index.php?title=Command_pattern&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li>
+	<li id="footer-places-developers"><a href="https://www.mediawiki.org/wiki/Special:MyLanguage/How_to_contribute">Developers</a></li>
+	<li id="footer-places-statslink"><a href="https://stats.wikimedia.org/#/en.wikipedia.org">Statistics</a></li>
+	<li id="footer-places-cookiestatement"><a href="https://foundation.wikimedia.org/wiki/Cookie_statement">Cookie statement</a></li>
+</ul>
+
+	<ul id="footer-icons" class="noprint">
+	<li id="footer-copyrightico"><a href="https://wikimediafoundation.org/"><img src="/static/images/footer/wikimedia-button.png" srcset="/static/images/footer/wikimedia-button-1.5x.png 1.5x, /static/images/footer/wikimedia-button-2x.png 2x" width="88" height="31" alt="Wikimedia Foundation" loading="lazy" /></a></li>
+	<li id="footer-poweredbyico"><a href="https://www.mediawiki.org/"><img src="/static/images/footer/poweredby_mediawiki_88x31.png" alt="Powered by MediaWiki" srcset="/static/images/footer/poweredby_mediawiki_132x47.png 1.5x, /static/images/footer/poweredby_mediawiki_176x62.png 2x" width="88" height="31" loading="lazy"/></a></li>
+</ul>
+
+</footer>
+
+<script>(RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgPageParseReport":{"limitreport":{"cputime":"0.397","walltime":"0.509","ppvisitednodes":{"value":1075,"limit":1000000},"postexpandincludesize":{"value":41787,"limit":2097152},"templateargumentsize":{"value":1540,"limit":2097152},"expansiondepth":{"value":14,"limit":100},"expensivefunctioncount":{"value":1,"limit":500},"unstrip-depth":{"value":1,"limit":20},"unstrip-size":{"value":29230,"limit":5000000},"entityaccesscount":{"value":0,"limit":400},"timingprofile":["100.00%  411.794      1 -total"," 34.16%  140.654      1 Template:Reflist"," 26.23%  108.034      1 Template:Design_Patterns_Patterns"," 26.06%  107.325      2 Template:Navbox"," 24.18%   99.579      2 Template:Cite_book"," 17.55%   72.279      1 Template:No_footnotes"," 13.39%   55.123      2 Template:Sister_project"," 12.82%   52.776      1 Template:Commons_category"," 12.66%   52.149      2 Template:Side_box"," 11.97%   49.281      1 Template:Ambox"]},"scribunto":{"limitreport-timeusage":{"value":"0.212","limit":"10.000"},"limitreport-memusage":{"value":4968729,"limit":52428800}},"cachereport":{"origin":"mw1352","timestamp":"20220311224125","ttl":1814400,"transientcontent":false}}});});</script>
+<script type="application/ld+json">{"@context":"https:\/\/schema.org","@type":"Article","name":"Command pattern","url":"https:\/\/en.wikipedia.org\/wiki\/Command_pattern","sameAs":"http:\/\/www.wikidata.org\/entity\/Q386776","mainEntity":"http:\/\/www.wikidata.org\/entity\/Q386776","author":{"@type":"Organization","name":"Contributors to Wikimedia projects"},"publisher":{"@type":"Organization","name":"Wikimedia Foundation, Inc.","logo":{"@type":"ImageObject","url":"https:\/\/www.wikimedia.org\/static\/images\/wmf-hor-googpub.png"}},"datePublished":"2003-01-03T20:42:05Z","dateModified":"2022-03-10T19:18:06Z","headline":"behavioral design pattern"}</script>
+<script>(RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":174,"wgHostname":"mw1330"});});</script>
+</body>
+</html>

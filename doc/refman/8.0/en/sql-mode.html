@@ -1,0 +1,2199 @@
+<!DOCTYPE html>
+<html lang="en" class="svg no-js">
+<head>
+    <meta charset="utf-8" />
+    <!--[if IE ]>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" />
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="Language" content="en">
+
+    <title>MySQL :: MySQL 8.0 Reference Manual :: 5.1.11 Server SQL Modes</title>
+    <link rel="stylesheet" media="all" href="https://labs.mysql.com/common/css/main-20220311.min.css" />
+            <link rel="stylesheet" media="all" href="https://labs.mysql.com/common/css/docs-20220311.min.css" />
+    
+    
+    <link rel="stylesheet" media="print" href="https://labs.mysql.com/common/css/print-20220311.min.css" />
+
+    
+    
+    
+    
+            <link rel="contents" href="index.html" title="MySQL 8.0 Reference Manual" />
+<link rel="start" href="index.html" title="MySQL 8.0 Reference Manual" />
+<link rel="prev" href="server-status-variables.html" title="5.1.10 Server Status Variables" />
+<link rel="next" href="connection-management.html?ff=nopfpls" title="5.1.12 Connection Management" />
+<link rel="up" href="mysqld-server.html" title="5.1 The MySQL Server" />
+
+    
+    <link rel="shortcut icon" href="https://labs.mysql.com/common/themes/sakila/favicon.ico" />
+    <script async="async" type="text/javascript" src='https://consent.truste.com/notice?domain=oracle.com&c=teconsent&js=bb&noticeType=bb&text=true&cdn=1&pcookie&gtm=1' crossorigin></script>
+    <script src="https://www.oracle.com/assets/truste-oraclelib.js"></script>
+    <script>(function(H){ H.className=H.className.replace(/\bno-js\b/,'js') })(document.documentElement)</script>
+    <script src="https://labs.mysql.com/common/js/site-20220216.min.js"></script>
+
+    
+    
+    <!--[if lt IE 9]>
+        <script src="https://labs.mysql.com/common/js/polyfills/html5shiv-printshiv-3.7.2.min.js"></script>
+        <script src="https://labs.mysql.com/common/js/polyfills/respond-1.4.2.min.js"></script>
+    <![endif]-->
+        <!--[if IE 9]>
+        <style>#docs-sidebar-toc { box-sizing: content-box; }</style>
+    <![endif]-->
+        </head>
+
+<body class="no-sidebar full-page dev">
+<a class="skip-main" href="#main">Skip to Main Content</a>
+<div class="page-wrapper">
+    <header>
+
+                        <a href="https://dev.mysql.com/" aria-label="MySQL Home" title="MySQL" id="l1-home-link"></a>
+        
+        <div id="l1-nav-container">
+            <div id="l1-line1">
+                <div id="l1-lhs">
+                    <div id="l1-slogan">
+                        The world's most popular open source database
+                    </div>
+                    <div id="l1-search-box">
+                        <form id="l1-search-form" method="get" action="https://www.oracle.com/search/results">
+                        <input type="hidden" name="cat" value="mysql" />
+                        <input type="hidden" name="Ntk" value="SI-ALL5" />
+                        <input id="l1-search-input" type="search" class="icon-search" placeholder="Search" aria-label="Search" name="Ntt" />
+                        </form>
+                    </div>
+                    <div id="l1-auth-links">
+                        <nav aria-label="Contact/Login Navigation" role="navigation">
+                            <a href="https://www.mysql.com/about/contact/"><b>Contact MySQL</b></a>
+                            <span id="l1-contact-separator">&nbsp;|&nbsp;</span>
+                            <span id="l1-contact-separator-br"><br /></span>
+                                                             <a href="https://dev.mysql.com/auth/login/?dest=https%3A%2F%2Fdev.mysql.com%2Fdoc%2Frefman%2F8.0%2Fen%2Fsql-mode.html">Login</a> &nbsp;|&nbsp;
+                                 <a href="https://dev.mysql.com/auth/register/">Register</a>
+                                                    </nav>
+                    </div>
+                </div>
+            </div>
+            <div id="l1-line2">
+                <nav aria-label="Primary Navigation" role="navigation">
+                    <ul id="l1-nav">
+                        <li>
+                            <a href="https://www.mysql.com/"><!-- <span class="icon-sakila"></span>  -->MySQL.com</a>
+                        </li><li>
+                            <a href="https://www.mysql.com/downloads/"><!-- <span class="icon-download-thin"></span>  -->Downloads</a>
+                        </li><li class="active">
+                            <a href="/doc/"><!-- <span class="icon-books"></span>  -->Documentation</a>
+                        </li><li>
+                            <a href="/"><!-- <span class="icon-code"></span>  -->Developer Zone</a>
+                        </li>                    </ul>
+                </nav>
+                <div class="social-icons">
+                    <nav aria-label="Social Navigation" role="navigation">
+                        <a aria-label="Join us on Facebook" title="Join us on Facebook" href="http://www.facebook.com/mysql"><span class="icon-facebook"></span></a>
+                        <a aria-label="Follow us on Twitter" title="Follow us on Twitter" href="https://twitter.com/mysql"><span class="icon-twitter"></span></a>
+                        <a aria-label="Follow us on LinkedIn" title="Follow us on LinkedIn" href="https://www.linkedin.com/company/mysql"><span class="icon-linkedin"></span></a>
+                        <a aria-label="Visit our YouTube channel" title="Visit our YouTube channel" href="http://www.youtube.com/mysqlchannel"><span class="icon-youtube"></span></a>
+                    </nav>
+                </div>
+            </div>
+        </div>
+        <div id="sub-header">
+            <div id="l2-nav-container">
+                <div id="l2-nav-toggle">
+                    <span class="icon-three-bars"></span>
+                </div>
+                                                                                        <a class="button nav-button-3" href="/"><span class="icon-code"></span> Developer Zone</a>
+                                                                                                                                    <a class="button nav-button-2" href="https://www.mysql.com/downloads/"><span class="icon-download-thin"></span> Downloads</a>
+                                                                                                <a class="button nav-button-1" href="https://www.mysql.com/"><span class="icon-sakila"></span> MySQL.com</a>
+                                                                        <div id="l2-search-toggle">
+                    <span class="icon-search"></span>
+                </div>
+                <div id="l2-site-icon">
+                                                                                                                                                                                                    <span class="icon-books"></span>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        </div>
+                <div id="l1-section-title">
+                    <span id="l1-section-label">
+                        <a href="/doc/">Documentation</a>
+                    </span>
+                </div>
+                <nav aria-label="Secondary Navigation" role="navigation">
+                    
+
+<ul id="l2-nav">
+            	<li class="active"><a class="active " href="/doc/refman/en/">MySQL Server</a>
+    			</li>
+	        	<li class=""><a  href="/doc/index-enterprise.html">MySQL Enterprise</a>
+    			</li>
+	        	<li class=""><a  href="/doc/workbench/en/">Workbench</a>
+    			</li>
+	        	<li class=""><a  href="/doc/mysql-shell/en/mysql-innodb-cluster.html">InnoDB Cluster</a>
+    			</li>
+	        	<li class=""><a  href="/doc/index-cluster.html">MySQL NDB Cluster</a>
+    			</li>
+	        	<li class=""><a  href="/doc/index-connectors.html">Connectors</a>
+    			</li>
+	        	<li class=" last"><a  href="/doc/index-other.html">More</a>
+    			</li>
+	                        <li class="other-section"><a href="https://www.mysql.com/">MySQL.com</a></li>
+                            <li class="other-section"><a href="https://www.mysql.com/downloads/">Downloads</a></li>
+                                        <li class="other-section"><a href="/">Developer Zone</a></li>
+            </ul>
+                </nav>
+            </div>
+            <div id="l3-search-container"></div>
+            <div id="top-orange"><span id="section-nav">Section Menu: &nbsp; </span></div>
+        </div>
+    </header>
+        <div id="page">
+                        <div role="main" id="main" tabindex="-1">
+
+            
+                
+            
+<div>
+    <div id="docs-sidebar-toc" class="">
+    <div id="docs-toc-inner">
+        <div class="docs-sidebar-header" id="docs-nav-header">
+            <a class="docs-show-hide-nav" id="docs-hide-nav" href="" title="Hide Sidebar" aria-label="Hide Sidebar"><span class="icon-arrow-small-left"></span></a>
+            <div class="docs-nav-links">
+                                    
+    <a href="server-status-variables.html"
+        aria-label="Previous" title="Previous: Server Status Variables"><span
+        class="icon-chevron-left"></span></a>
+<a href="index.html" aria-label="Start" title="Start"><span class="icon-book-open"></span></a>
+        <a aria-label="Up" href="mysqld-server.html" title="Up: The MySQL Server"><span class="icon-chevron-up"></span></a>
+    <a href="connection-management.html" aria-label="Next"
+        title="Next: Connection Management"><span
+        class="icon-chevron-right"></span></a>
+                            </div>
+        </div>
+                    
+<div id="docs-sidebar-search-container">
+    <div id="docs-sidebar-search-box">
+        <form method="get" action="/doc/search/">
+            <input type="hidden" name="d" id="d" value="201" />
+            <input type="hidden" name="p" id="p" value="1" />
+            <input type="text" name="q" id="q" title="Search this Manual"
+                value="Search this Manual"
+                style="color: #bbb;"
+                onfocus="if(this.value == 'Search this Manual') {this.value='';this.style.color='#555';}"
+                onblur="if(this.value == '') {this.value='Search this Manual';this.style.color='#bbb';}" />
+
+            <button class="docs-sidebar-search-btn" aria-label="Search" title="Search" type="submit">
+                <span class="icon-search"></span>
+            </button>
+        </form>
+    </div>
+</div>
+                <div class="docs-sidebar-nav">
+            <a class="docs-icon-home" href="/doc/"><span class="icon-home"></span>Documentation Home</a><hr />
+            <div class="docs-sidebar-mtitle">MySQL 8.0 Reference Manual</div>
+            <nav class="doctoc" id="doc-201">
+                                    
+    <ul>
+            <li>
+            <div><div class="docs-sidebar-nav-icon"><span class="icon-dot"></span></div><div class="docs-sidebar-nav-link"><a href="preface.html">Preface and Legal Notices</a></div></div>                    </li>
+            <li>
+            <div><div class="docs-sidebar-nav-icon"><a class="expandable " aria-label="Subnav" href=""><span class="icon-chevron-right"></span></a></div><div class="docs-sidebar-nav-link"><a href="introduction.html">General Information</a></div></div>                        <div class="docs-submenu hidden">
+                            </div>
+                    </li>
+            <li>
+            <div><div class="docs-sidebar-nav-icon"><a class="expandable " aria-label="Subnav" href=""><span class="icon-chevron-right"></span></a></div><div class="docs-sidebar-nav-link"><a href="installing.html">Installing and Upgrading MySQL</a></div></div>                        <div class="docs-submenu hidden">
+                            </div>
+                    </li>
+            <li>
+            <div><div class="docs-sidebar-nav-icon"><a class="expandable " aria-label="Subnav" href=""><span class="icon-chevron-right"></span></a></div><div class="docs-sidebar-nav-link"><a href="tutorial.html">Tutorial</a></div></div>                        <div class="docs-submenu hidden">
+                            </div>
+                    </li>
+            <li>
+            <div><div class="docs-sidebar-nav-icon"><a class="expandable " aria-label="Subnav" href=""><span class="icon-chevron-right"></span></a></div><div class="docs-sidebar-nav-link"><a href="programs.html">MySQL Programs</a></div></div>                        <div class="docs-submenu hidden">
+                            </div>
+                    </li>
+            <li>
+            <div><div class="docs-sidebar-nav-icon"><a class="expandable  loaded" aria-label="Subnav" href=""><span class="icon-chevron-down"></span></a></div><div class="docs-sidebar-nav-link"><a href="server-administration.html">MySQL Server Administration</a></div></div>                        <div class="docs-submenu">
+                                    
+    <ul>
+            <li>
+            <div><div class="docs-sidebar-nav-icon"><a class="expandable  loaded" aria-label="Subnav" href=""><span class="icon-chevron-down"></span></a></div><div class="docs-sidebar-nav-link"><a href="mysqld-server.html">The MySQL Server</a></div></div>                        <div class="docs-submenu">
+                                    
+    <ul>
+            <li>
+            <div><div class="docs-sidebar-nav-icon"><span class="icon-dot"></span></div><div class="docs-sidebar-nav-link"><a href="server-configuration.html">Configuring the Server</a></div></div>                    </li>
+            <li>
+            <div><div class="docs-sidebar-nav-icon"><span class="icon-dot"></span></div><div class="docs-sidebar-nav-link"><a href="server-configuration-defaults.html">Server Configuration Defaults</a></div></div>                    </li>
+            <li>
+            <div><div class="docs-sidebar-nav-icon"><span class="icon-dot"></span></div><div class="docs-sidebar-nav-link"><a href="server-configuration-validation.html">Server Configuration Validation</a></div></div>                    </li>
+            <li>
+            <div><div class="docs-sidebar-nav-icon"><span class="icon-dot"></span></div><div class="docs-sidebar-nav-link"><a href="server-option-variable-reference.html">Server Option, System Variable, and Status Variable Reference</a></div></div>                    </li>
+            <li>
+            <div><div class="docs-sidebar-nav-icon"><span class="icon-dot"></span></div><div class="docs-sidebar-nav-link"><a href="server-system-variable-reference.html">Server System Variable Reference</a></div></div>                    </li>
+            <li>
+            <div><div class="docs-sidebar-nav-icon"><span class="icon-dot"></span></div><div class="docs-sidebar-nav-link"><a href="server-status-variable-reference.html">Server Status Variable Reference</a></div></div>                    </li>
+            <li>
+            <div><div class="docs-sidebar-nav-icon"><span class="icon-dot"></span></div><div class="docs-sidebar-nav-link"><a href="server-options.html">Server Command Options</a></div></div>                    </li>
+            <li>
+            <div><div class="docs-sidebar-nav-icon"><span class="icon-dot"></span></div><div class="docs-sidebar-nav-link"><a href="server-system-variables.html">Server System Variables</a></div></div>                    </li>
+            <li>
+            <div><div class="docs-sidebar-nav-icon"><a class="expandable  loaded" aria-label="Subnav" href=""><span class="icon-chevron-right"></span></a></div><div class="docs-sidebar-nav-link"><a href="using-system-variables.html">Using System Variables</a></div></div>                        <div class="docs-submenu hidden">
+                                    
+    <ul>
+            <li>
+            <div><div class="docs-sidebar-nav-icon"><span class="icon-dot"></span></div><div class="docs-sidebar-nav-link"><a href="system-variable-privileges.html">System Variable Privileges</a></div></div>                    </li>
+            <li>
+            <div><div class="docs-sidebar-nav-icon"><span class="icon-dot"></span></div><div class="docs-sidebar-nav-link"><a href="dynamic-system-variables.html">Dynamic System Variables</a></div></div>                    </li>
+            <li>
+            <div><div class="docs-sidebar-nav-icon"><span class="icon-dot"></span></div><div class="docs-sidebar-nav-link"><a href="persisted-system-variables.html">Persisted System Variables</a></div></div>                    </li>
+            <li>
+            <div><div class="docs-sidebar-nav-icon"><span class="icon-dot"></span></div><div class="docs-sidebar-nav-link"><a href="nonpersistible-system-variables.html">Nonpersistible and Persist-Restricted System Variables</a></div></div>                    </li>
+            <li>
+            <div><div class="docs-sidebar-nav-icon"><span class="icon-dot"></span></div><div class="docs-sidebar-nav-link"><a href="structured-system-variables.html">Structured System Variables</a></div></div>                    </li>
+        </ul>
+                            </div>
+                    </li>
+            <li>
+            <div><div class="docs-sidebar-nav-icon"><span class="icon-dot"></span></div><div class="docs-sidebar-nav-link"><a href="server-status-variables.html">Server Status Variables</a></div></div>                    </li>
+            <li>
+            <div><div class="docs-sidebar-nav-icon"><span class="icon-dot"></span></div><div class="docs-sidebar-nav-link current"><a href="sql-mode.html">Server SQL Modes</a></div></div>                    </li>
+            <li>
+            <div><div class="docs-sidebar-nav-icon"><a class="expandable  loaded" aria-label="Subnav" href=""><span class="icon-chevron-right"></span></a></div><div class="docs-sidebar-nav-link"><a href="connection-management.html">Connection Management</a></div></div>                        <div class="docs-submenu hidden">
+                                    
+    <ul>
+            <li>
+            <div><div class="docs-sidebar-nav-icon"><span class="icon-dot"></span></div><div class="docs-sidebar-nav-link"><a href="connection-interfaces.html">Connection Interfaces</a></div></div>                    </li>
+            <li>
+            <div><div class="docs-sidebar-nav-icon"><span class="icon-dot"></span></div><div class="docs-sidebar-nav-link"><a href="administrative-connection-interface.html">Administrative Connection Management</a></div></div>                    </li>
+            <li>
+            <div><div class="docs-sidebar-nav-icon"><span class="icon-dot"></span></div><div class="docs-sidebar-nav-link"><a href="host-cache.html">DNS Lookups and the Host Cache</a></div></div>                    </li>
+        </ul>
+                            </div>
+                    </li>
+            <li>
+            <div><div class="docs-sidebar-nav-icon"><a class="expandable  loaded" aria-label="Subnav" href=""><span class="icon-chevron-right"></span></a></div><div class="docs-sidebar-nav-link"><a href="ipv6-support.html">IPv6 Support</a></div></div>                        <div class="docs-submenu hidden">
+                                    
+    <ul>
+            <li>
+            <div><div class="docs-sidebar-nav-icon"><span class="icon-dot"></span></div><div class="docs-sidebar-nav-link"><a href="ipv6-system-support.html">Verifying System Support for IPv6</a></div></div>                    </li>
+            <li>
+            <div><div class="docs-sidebar-nav-icon"><span class="icon-dot"></span></div><div class="docs-sidebar-nav-link"><a href="ipv6-server-config.html">Configuring the MySQL Server to Permit IPv6 Connections</a></div></div>                    </li>
+            <li>
+            <div><div class="docs-sidebar-nav-icon"><span class="icon-dot"></span></div><div class="docs-sidebar-nav-link"><a href="ipv6-local-connections.html">Connecting Using the IPv6 Local Host Address</a></div></div>                    </li>
+            <li>
+            <div><div class="docs-sidebar-nav-icon"><span class="icon-dot"></span></div><div class="docs-sidebar-nav-link"><a href="ipv6-remote-connections.html">Connecting Using IPv6 Nonlocal Host Addresses</a></div></div>                    </li>
+            <li>
+            <div><div class="docs-sidebar-nav-icon"><span class="icon-dot"></span></div><div class="docs-sidebar-nav-link"><a href="ipv6-brokers.html">Obtaining an IPv6 Address from a Broker</a></div></div>                    </li>
+        </ul>
+                            </div>
+                    </li>
+            <li>
+            <div><div class="docs-sidebar-nav-icon"><span class="icon-dot"></span></div><div class="docs-sidebar-nav-link"><a href="network-namespace-support.html">Network Namespace Support</a></div></div>                    </li>
+            <li>
+            <div><div class="docs-sidebar-nav-icon"><span class="icon-dot"></span></div><div class="docs-sidebar-nav-link"><a href="time-zone-support.html">MySQL Server Time Zone Support</a></div></div>                    </li>
+            <li>
+            <div><div class="docs-sidebar-nav-icon"><span class="icon-dot"></span></div><div class="docs-sidebar-nav-link"><a href="resource-groups.html">Resource Groups</a></div></div>                    </li>
+            <li>
+            <div><div class="docs-sidebar-nav-icon"><span class="icon-dot"></span></div><div class="docs-sidebar-nav-link"><a href="server-side-help-support.html">Server-Side Help Support</a></div></div>                    </li>
+            <li>
+            <div><div class="docs-sidebar-nav-icon"><span class="icon-dot"></span></div><div class="docs-sidebar-nav-link"><a href="session-state-tracking.html">Server Tracking of Client Session State</a></div></div>                    </li>
+            <li>
+            <div><div class="docs-sidebar-nav-icon"><span class="icon-dot"></span></div><div class="docs-sidebar-nav-link"><a href="server-shutdown.html">The Server Shutdown Process</a></div></div>                    </li>
+        </ul>
+                            </div>
+                    </li>
+            <li>
+            <div><div class="docs-sidebar-nav-icon"><span class="icon-dot"></span></div><div class="docs-sidebar-nav-link"><a href="data-directory.html">The MySQL Data Directory</a></div></div>                    </li>
+            <li>
+            <div><div class="docs-sidebar-nav-icon"><span class="icon-dot"></span></div><div class="docs-sidebar-nav-link"><a href="system-schema.html">The mysql System Schema</a></div></div>                    </li>
+            <li>
+            <div><div class="docs-sidebar-nav-icon"><a class="expandable  loaded" aria-label="Subnav" href=""><span class="icon-chevron-right"></span></a></div><div class="docs-sidebar-nav-link"><a href="server-logs.html">MySQL Server Logs</a></div></div>                        <div class="docs-submenu hidden">
+                                    
+    <ul>
+            <li>
+            <div><div class="docs-sidebar-nav-icon"><span class="icon-dot"></span></div><div class="docs-sidebar-nav-link"><a href="log-destinations.html">Selecting General Query Log and Slow Query Log Output Destinations</a></div></div>                    </li>
+            <li>
+            <div><div class="docs-sidebar-nav-icon"><a class="expandable  loaded" aria-label="Subnav" href=""><span class="icon-chevron-right"></span></a></div><div class="docs-sidebar-nav-link"><a href="error-log.html">The Error Log</a></div></div>                        <div class="docs-submenu hidden">
+                                    
+    <ul>
+            <li>
+            <div><div class="docs-sidebar-nav-icon"><span class="icon-dot"></span></div><div class="docs-sidebar-nav-link"><a href="error-log-configuration.html">Error Log Configuration</a></div></div>                    </li>
+            <li>
+            <div><div class="docs-sidebar-nav-icon"><span class="icon-dot"></span></div><div class="docs-sidebar-nav-link"><a href="error-log-destination-configuration.html">Default Error Log Destination Configuration</a></div></div>                    </li>
+            <li>
+            <div><div class="docs-sidebar-nav-icon"><span class="icon-dot"></span></div><div class="docs-sidebar-nav-link"><a href="error-log-event-fields.html">Error Event Fields</a></div></div>                    </li>
+            <li>
+            <div><div class="docs-sidebar-nav-icon"><span class="icon-dot"></span></div><div class="docs-sidebar-nav-link"><a href="error-log-filtering.html">Types of Error Log Filtering</a></div></div>                    </li>
+            <li>
+            <div><div class="docs-sidebar-nav-icon"><span class="icon-dot"></span></div><div class="docs-sidebar-nav-link"><a href="error-log-priority-based-filtering.html">Priority-Based Error Log Filtering (log_filter_internal)</a></div></div>                    </li>
+            <li>
+            <div><div class="docs-sidebar-nav-icon"><span class="icon-dot"></span></div><div class="docs-sidebar-nav-link"><a href="error-log-rule-based-filtering.html">Rule-Based Error Log Filtering (log_filter_dragnet)</a></div></div>                    </li>
+            <li>
+            <div><div class="docs-sidebar-nav-icon"><span class="icon-dot"></span></div><div class="docs-sidebar-nav-link"><a href="error-log-json.html">Error Logging in JSON Format</a></div></div>                    </li>
+            <li>
+            <div><div class="docs-sidebar-nav-icon"><span class="icon-dot"></span></div><div class="docs-sidebar-nav-link"><a href="error-log-syslog.html">Error Logging to the System Log</a></div></div>                    </li>
+            <li>
+            <div><div class="docs-sidebar-nav-icon"><span class="icon-dot"></span></div><div class="docs-sidebar-nav-link"><a href="error-log-format.html">Error Log Output Format</a></div></div>                    </li>
+            <li>
+            <div><div class="docs-sidebar-nav-icon"><span class="icon-dot"></span></div><div class="docs-sidebar-nav-link"><a href="error-log-rotation.html">Error Log File Flushing and Renaming</a></div></div>                    </li>
+        </ul>
+                            </div>
+                    </li>
+            <li>
+            <div><div class="docs-sidebar-nav-icon"><span class="icon-dot"></span></div><div class="docs-sidebar-nav-link"><a href="query-log.html">The General Query Log</a></div></div>                    </li>
+            <li>
+            <div><div class="docs-sidebar-nav-icon"><a class="expandable  loaded" aria-label="Subnav" href=""><span class="icon-chevron-right"></span></a></div><div class="docs-sidebar-nav-link"><a href="binary-log.html">The Binary Log</a></div></div>                        <div class="docs-submenu hidden">
+                                    
+    <ul>
+            <li>
+            <div><div class="docs-sidebar-nav-icon"><span class="icon-dot"></span></div><div class="docs-sidebar-nav-link"><a href="binary-log-formats.html">Binary Logging Formats</a></div></div>                    </li>
+            <li>
+            <div><div class="docs-sidebar-nav-icon"><span class="icon-dot"></span></div><div class="docs-sidebar-nav-link"><a href="binary-log-setting.html">Setting The Binary Log Format</a></div></div>                    </li>
+            <li>
+            <div><div class="docs-sidebar-nav-icon"><span class="icon-dot"></span></div><div class="docs-sidebar-nav-link"><a href="binary-log-mixed.html">Mixed Binary Logging Format</a></div></div>                    </li>
+            <li>
+            <div><div class="docs-sidebar-nav-icon"><span class="icon-dot"></span></div><div class="docs-sidebar-nav-link"><a href="binary-log-mysql-database.html">Logging Format for Changes to mysql Database Tables</a></div></div>                    </li>
+            <li>
+            <div><div class="docs-sidebar-nav-icon"><span class="icon-dot"></span></div><div class="docs-sidebar-nav-link"><a href="binary-log-transaction-compression.html">Binary Log Transaction Compression</a></div></div>                    </li>
+        </ul>
+                            </div>
+                    </li>
+            <li>
+            <div><div class="docs-sidebar-nav-icon"><span class="icon-dot"></span></div><div class="docs-sidebar-nav-link"><a href="slow-query-log.html">The Slow Query Log</a></div></div>                    </li>
+            <li>
+            <div><div class="docs-sidebar-nav-icon"><span class="icon-dot"></span></div><div class="docs-sidebar-nav-link"><a href="log-file-maintenance.html">Server Log Maintenance</a></div></div>                    </li>
+        </ul>
+                            </div>
+                    </li>
+            <li>
+            <div><div class="docs-sidebar-nav-icon"><a class="expandable  loaded" aria-label="Subnav" href=""><span class="icon-chevron-right"></span></a></div><div class="docs-sidebar-nav-link"><a href="components.html">MySQL Components</a></div></div>                        <div class="docs-submenu hidden">
+                                    
+    <ul>
+            <li>
+            <div><div class="docs-sidebar-nav-icon"><span class="icon-dot"></span></div><div class="docs-sidebar-nav-link"><a href="component-loading.html">Installing and Uninstalling Components</a></div></div>                    </li>
+            <li>
+            <div><div class="docs-sidebar-nav-icon"><span class="icon-dot"></span></div><div class="docs-sidebar-nav-link"><a href="obtaining-component-information.html">Obtaining Component Information</a></div></div>                    </li>
+            <li>
+            <div><div class="docs-sidebar-nav-icon"><span class="icon-dot"></span></div><div class="docs-sidebar-nav-link"><a href="error-log-components.html">Error Log Components</a></div></div>                    </li>
+            <li>
+            <div><div class="docs-sidebar-nav-icon"><span class="icon-dot"></span></div><div class="docs-sidebar-nav-link"><a href="query-attribute-components.html">Query Attribute Components</a></div></div>                    </li>
+        </ul>
+                            </div>
+                    </li>
+            <li>
+            <div><div class="docs-sidebar-nav-icon"><a class="expandable  loaded" aria-label="Subnav" href=""><span class="icon-chevron-right"></span></a></div><div class="docs-sidebar-nav-link"><a href="server-plugins.html">MySQL Server Plugins</a></div></div>                        <div class="docs-submenu hidden">
+                                    
+    <ul>
+            <li>
+            <div><div class="docs-sidebar-nav-icon"><span class="icon-dot"></span></div><div class="docs-sidebar-nav-link"><a href="plugin-loading.html">Installing and Uninstalling Plugins</a></div></div>                    </li>
+            <li>
+            <div><div class="docs-sidebar-nav-icon"><span class="icon-dot"></span></div><div class="docs-sidebar-nav-link"><a href="obtaining-plugin-information.html">Obtaining Server Plugin Information</a></div></div>                    </li>
+            <li>
+            <div><div class="docs-sidebar-nav-icon"><a class="expandable  loaded" aria-label="Subnav" href=""><span class="icon-chevron-right"></span></a></div><div class="docs-sidebar-nav-link"><a href="thread-pool.html">MySQL Enterprise Thread Pool</a></div></div>                        <div class="docs-submenu hidden">
+                                    
+    <ul>
+            <li>
+            <div><div class="docs-sidebar-nav-icon"><span class="icon-dot"></span></div><div class="docs-sidebar-nav-link"><a href="thread-pool-elements.html">Thread Pool Elements</a></div></div>                    </li>
+            <li>
+            <div><div class="docs-sidebar-nav-icon"><span class="icon-dot"></span></div><div class="docs-sidebar-nav-link"><a href="thread-pool-installation.html">Thread Pool Installation</a></div></div>                    </li>
+            <li>
+            <div><div class="docs-sidebar-nav-icon"><span class="icon-dot"></span></div><div class="docs-sidebar-nav-link"><a href="thread-pool-operation.html">Thread Pool Operation</a></div></div>                    </li>
+            <li>
+            <div><div class="docs-sidebar-nav-icon"><span class="icon-dot"></span></div><div class="docs-sidebar-nav-link"><a href="thread-pool-tuning.html">Thread Pool Tuning</a></div></div>                    </li>
+        </ul>
+                            </div>
+                    </li>
+            <li>
+            <div><div class="docs-sidebar-nav-icon"><a class="expandable  loaded" aria-label="Subnav" href=""><span class="icon-chevron-right"></span></a></div><div class="docs-sidebar-nav-link"><a href="rewriter-query-rewrite-plugin.html">The Rewriter Query Rewrite Plugin</a></div></div>                        <div class="docs-submenu hidden">
+                                    
+    <ul>
+            <li>
+            <div><div class="docs-sidebar-nav-icon"><span class="icon-dot"></span></div><div class="docs-sidebar-nav-link"><a href="rewriter-query-rewrite-plugin-installation.html">Installing or Uninstalling the Rewriter Query Rewrite Plugin</a></div></div>                    </li>
+            <li>
+            <div><div class="docs-sidebar-nav-icon"><span class="icon-dot"></span></div><div class="docs-sidebar-nav-link"><a href="rewriter-query-rewrite-plugin-usage.html">Using the Rewriter Query Rewrite Plugin</a></div></div>                    </li>
+            <li>
+            <div><div class="docs-sidebar-nav-icon"><span class="icon-dot"></span></div><div class="docs-sidebar-nav-link"><a href="rewriter-query-rewrite-plugin-reference.html">Rewriter Query Rewrite Plugin Reference</a></div></div>                    </li>
+        </ul>
+                            </div>
+                    </li>
+            <li>
+            <div><div class="docs-sidebar-nav-icon"><a class="expandable  loaded" aria-label="Subnav" href=""><span class="icon-chevron-right"></span></a></div><div class="docs-sidebar-nav-link"><a href="ddl-rewriter.html">The ddl_rewriter Plugin</a></div></div>                        <div class="docs-submenu hidden">
+                                    
+    <ul>
+            <li>
+            <div><div class="docs-sidebar-nav-icon"><span class="icon-dot"></span></div><div class="docs-sidebar-nav-link"><a href="ddl-rewriter-installation.html">Installing or Uninstalling ddl_rewriter</a></div></div>                    </li>
+            <li>
+            <div><div class="docs-sidebar-nav-icon"><span class="icon-dot"></span></div><div class="docs-sidebar-nav-link"><a href="ddl-rewriter-options.html">ddl_rewriter Plugin Options</a></div></div>                    </li>
+        </ul>
+                            </div>
+                    </li>
+            <li>
+            <div><div class="docs-sidebar-nav-icon"><a class="expandable  loaded" aria-label="Subnav" href=""><span class="icon-chevron-right"></span></a></div><div class="docs-sidebar-nav-link"><a href="version-tokens.html">Version Tokens</a></div></div>                        <div class="docs-submenu hidden">
+                                    
+    <ul>
+            <li>
+            <div><div class="docs-sidebar-nav-icon"><span class="icon-dot"></span></div><div class="docs-sidebar-nav-link"><a href="version-tokens-elements.html">Version Tokens Elements</a></div></div>                    </li>
+            <li>
+            <div><div class="docs-sidebar-nav-icon"><span class="icon-dot"></span></div><div class="docs-sidebar-nav-link"><a href="version-tokens-installation.html">Installing or Uninstalling Version Tokens</a></div></div>                    </li>
+            <li>
+            <div><div class="docs-sidebar-nav-icon"><span class="icon-dot"></span></div><div class="docs-sidebar-nav-link"><a href="version-tokens-usage.html">Using Version Tokens</a></div></div>                    </li>
+            <li>
+            <div><div class="docs-sidebar-nav-icon"><span class="icon-dot"></span></div><div class="docs-sidebar-nav-link"><a href="version-tokens-reference.html">Version Tokens Reference</a></div></div>                    </li>
+        </ul>
+                            </div>
+                    </li>
+            <li>
+            <div><div class="docs-sidebar-nav-icon"><a class="expandable  loaded" aria-label="Subnav" href=""><span class="icon-chevron-right"></span></a></div><div class="docs-sidebar-nav-link"><a href="clone-plugin.html">The Clone Plugin</a></div></div>                        <div class="docs-submenu hidden">
+                                    
+    <ul>
+            <li>
+            <div><div class="docs-sidebar-nav-icon"><span class="icon-dot"></span></div><div class="docs-sidebar-nav-link"><a href="clone-plugin-installation.html">Installing the Clone Plugin</a></div></div>                    </li>
+            <li>
+            <div><div class="docs-sidebar-nav-icon"><span class="icon-dot"></span></div><div class="docs-sidebar-nav-link"><a href="clone-plugin-local.html">Cloning Data Locally</a></div></div>                    </li>
+            <li>
+            <div><div class="docs-sidebar-nav-icon"><span class="icon-dot"></span></div><div class="docs-sidebar-nav-link"><a href="clone-plugin-remote.html">Cloning Remote Data</a></div></div>                    </li>
+            <li>
+            <div><div class="docs-sidebar-nav-icon"><span class="icon-dot"></span></div><div class="docs-sidebar-nav-link"><a href="clone-plugin-concurrent-ddl.html">Cloning and Concurrent DDL</a></div></div>                    </li>
+            <li>
+            <div><div class="docs-sidebar-nav-icon"><span class="icon-dot"></span></div><div class="docs-sidebar-nav-link"><a href="clone-plugin-encrypted-data.html">Cloning Encrypted Data</a></div></div>                    </li>
+            <li>
+            <div><div class="docs-sidebar-nav-icon"><span class="icon-dot"></span></div><div class="docs-sidebar-nav-link"><a href="clone-plugin-compressed-data.html">Cloning Compressed Data</a></div></div>                    </li>
+            <li>
+            <div><div class="docs-sidebar-nav-icon"><span class="icon-dot"></span></div><div class="docs-sidebar-nav-link"><a href="clone-plugin-replication.html">Cloning for Replication</a></div></div>                    </li>
+            <li>
+            <div><div class="docs-sidebar-nav-icon"><span class="icon-dot"></span></div><div class="docs-sidebar-nav-link"><a href="clone-plugin-directories.html">Directories and Files Created During a Cloning Operation</a></div></div>                    </li>
+            <li>
+            <div><div class="docs-sidebar-nav-icon"><span class="icon-dot"></span></div><div class="docs-sidebar-nav-link"><a href="clone-plugin-failure-handling.html">Remote Cloning Operation Failure Handling</a></div></div>                    </li>
+            <li>
+            <div><div class="docs-sidebar-nav-icon"><span class="icon-dot"></span></div><div class="docs-sidebar-nav-link"><a href="clone-plugin-monitoring.html">Monitoring Cloning Operations</a></div></div>                    </li>
+            <li>
+            <div><div class="docs-sidebar-nav-icon"><span class="icon-dot"></span></div><div class="docs-sidebar-nav-link"><a href="clone-plugin-stop.html">Stopping a Cloning Operation</a></div></div>                    </li>
+            <li>
+            <div><div class="docs-sidebar-nav-icon"><span class="icon-dot"></span></div><div class="docs-sidebar-nav-link"><a href="clone-plugin-option-variable-reference.html">Clone System Variable Reference</a></div></div>                    </li>
+            <li>
+            <div><div class="docs-sidebar-nav-icon"><span class="icon-dot"></span></div><div class="docs-sidebar-nav-link"><a href="clone-plugin-options-variables.html">Clone System Variables</a></div></div>                    </li>
+            <li>
+            <div><div class="docs-sidebar-nav-icon"><span class="icon-dot"></span></div><div class="docs-sidebar-nav-link"><a href="clone-plugin-limitations.html">Clone Plugin Limitations</a></div></div>                    </li>
+        </ul>
+                            </div>
+                    </li>
+            <li>
+            <div><div class="docs-sidebar-nav-icon"><span class="icon-dot"></span></div><div class="docs-sidebar-nav-link"><a href="daemon-keyring-proxy-plugin.html">The Keyring Proxy Bridge Plugin</a></div></div>                    </li>
+            <li>
+            <div><div class="docs-sidebar-nav-icon"><a class="expandable  loaded" aria-label="Subnav" href=""><span class="icon-chevron-right"></span></a></div><div class="docs-sidebar-nav-link"><a href="plugin-services.html">MySQL Plugin Services</a></div></div>                        <div class="docs-submenu hidden">
+                                    
+    <ul>
+            <li>
+            <div><div class="docs-sidebar-nav-icon"><span class="icon-dot"></span></div><div class="docs-sidebar-nav-link"><a href="locking-service.html">The Locking Service</a></div></div>                    </li>
+            <li>
+            <div><div class="docs-sidebar-nav-icon"><span class="icon-dot"></span></div><div class="docs-sidebar-nav-link"><a href="keyring-service.html">The Keyring Service</a></div></div>                    </li>
+        </ul>
+                            </div>
+                    </li>
+        </ul>
+                            </div>
+                    </li>
+            <li>
+            <div><div class="docs-sidebar-nav-icon"><a class="expandable  loaded" aria-label="Subnav" href=""><span class="icon-chevron-right"></span></a></div><div class="docs-sidebar-nav-link"><a href="server-loadable-functions.html">MySQL Server Loadable Functions</a></div></div>                        <div class="docs-submenu hidden">
+                                    
+    <ul>
+            <li>
+            <div><div class="docs-sidebar-nav-icon"><span class="icon-dot"></span></div><div class="docs-sidebar-nav-link"><a href="function-loading.html">Installing and Uninstalling Loadable Functions</a></div></div>                    </li>
+            <li>
+            <div><div class="docs-sidebar-nav-icon"><span class="icon-dot"></span></div><div class="docs-sidebar-nav-link"><a href="obtaining-loadable-function-information.html">Obtaining Information About Loadable Functions</a></div></div>                    </li>
+        </ul>
+                            </div>
+                    </li>
+            <li>
+            <div><div class="docs-sidebar-nav-icon"><a class="expandable  loaded" aria-label="Subnav" href=""><span class="icon-chevron-right"></span></a></div><div class="docs-sidebar-nav-link"><a href="multiple-servers.html">Running Multiple MySQL Instances on One Machine</a></div></div>                        <div class="docs-submenu hidden">
+                                    
+    <ul>
+            <li>
+            <div><div class="docs-sidebar-nav-icon"><span class="icon-dot"></span></div><div class="docs-sidebar-nav-link"><a href="multiple-data-directories.html">Setting Up Multiple Data Directories</a></div></div>                    </li>
+            <li>
+            <div><div class="docs-sidebar-nav-icon"><a class="expandable  loaded" aria-label="Subnav" href=""><span class="icon-chevron-right"></span></a></div><div class="docs-sidebar-nav-link"><a href="multiple-windows-servers.html">Running Multiple MySQL Instances on Windows</a></div></div>                        <div class="docs-submenu hidden">
+                                    
+    <ul>
+            <li>
+            <div><div class="docs-sidebar-nav-icon"><span class="icon-dot"></span></div><div class="docs-sidebar-nav-link"><a href="multiple-windows-command-line-servers.html">Starting Multiple MySQL Instances at the Windows Command Line</a></div></div>                    </li>
+            <li>
+            <div><div class="docs-sidebar-nav-icon"><span class="icon-dot"></span></div><div class="docs-sidebar-nav-link"><a href="multiple-windows-services.html">Starting Multiple MySQL Instances as Windows Services</a></div></div>                    </li>
+        </ul>
+                            </div>
+                    </li>
+            <li>
+            <div><div class="docs-sidebar-nav-icon"><span class="icon-dot"></span></div><div class="docs-sidebar-nav-link"><a href="multiple-unix-servers.html">Running Multiple MySQL Instances on Unix</a></div></div>                    </li>
+            <li>
+            <div><div class="docs-sidebar-nav-icon"><span class="icon-dot"></span></div><div class="docs-sidebar-nav-link"><a href="multiple-server-clients.html">Using Client Programs in a Multiple-Server Environment</a></div></div>                    </li>
+        </ul>
+                            </div>
+                    </li>
+            <li>
+            <div><div class="docs-sidebar-nav-icon"><a class="expandable  loaded" aria-label="Subnav" href=""><span class="icon-chevron-right"></span></a></div><div class="docs-sidebar-nav-link"><a href="debugging-mysql.html">Debugging MySQL</a></div></div>                        <div class="docs-submenu hidden">
+                                    
+    <ul>
+            <li>
+            <div><div class="docs-sidebar-nav-icon"><a class="expandable  loaded" aria-label="Subnav" href=""><span class="icon-chevron-right"></span></a></div><div class="docs-sidebar-nav-link"><a href="debugging-server.html">Debugging a MySQL Server</a></div></div>                        <div class="docs-submenu hidden">
+                                    
+    <ul>
+            <li>
+            <div><div class="docs-sidebar-nav-icon"><span class="icon-dot"></span></div><div class="docs-sidebar-nav-link"><a href="compiling-for-debugging.html">Compiling MySQL for Debugging</a></div></div>                    </li>
+            <li>
+            <div><div class="docs-sidebar-nav-icon"><span class="icon-dot"></span></div><div class="docs-sidebar-nav-link"><a href="making-trace-files.html">Creating Trace Files</a></div></div>                    </li>
+            <li>
+            <div><div class="docs-sidebar-nav-icon"><span class="icon-dot"></span></div><div class="docs-sidebar-nav-link"><a href="making-windows-dumps.html">Using WER with PDB to create a Windows crashdump</a></div></div>                    </li>
+            <li>
+            <div><div class="docs-sidebar-nav-icon"><span class="icon-dot"></span></div><div class="docs-sidebar-nav-link"><a href="using-gdb-on-mysqld.html">Debugging mysqld under gdb</a></div></div>                    </li>
+            <li>
+            <div><div class="docs-sidebar-nav-icon"><span class="icon-dot"></span></div><div class="docs-sidebar-nav-link"><a href="using-stack-trace.html">Using a Stack Trace</a></div></div>                    </li>
+            <li>
+            <div><div class="docs-sidebar-nav-icon"><span class="icon-dot"></span></div><div class="docs-sidebar-nav-link"><a href="using-log-files.html">Using Server Logs to Find Causes of Errors in mysqld</a></div></div>                    </li>
+            <li>
+            <div><div class="docs-sidebar-nav-icon"><span class="icon-dot"></span></div><div class="docs-sidebar-nav-link"><a href="reproducible-test-case.html">Making a Test Case If You Experience Table Corruption</a></div></div>                    </li>
+        </ul>
+                            </div>
+                    </li>
+            <li>
+            <div><div class="docs-sidebar-nav-icon"><span class="icon-dot"></span></div><div class="docs-sidebar-nav-link"><a href="debugging-client.html">Debugging a MySQL Client</a></div></div>                    </li>
+            <li>
+            <div><div class="docs-sidebar-nav-icon"><span class="icon-dot"></span></div><div class="docs-sidebar-nav-link"><a href="lock-order-tool.html">The LOCK_ORDER Tool</a></div></div>                    </li>
+            <li>
+            <div><div class="docs-sidebar-nav-icon"><span class="icon-dot"></span></div><div class="docs-sidebar-nav-link"><a href="dbug-package.html">The DBUG Package</a></div></div>                    </li>
+        </ul>
+                            </div>
+                    </li>
+        </ul>
+                            </div>
+                    </li>
+            <li>
+            <div><div class="docs-sidebar-nav-icon"><a class="expandable " aria-label="Subnav" href=""><span class="icon-chevron-right"></span></a></div><div class="docs-sidebar-nav-link"><a href="security.html">Security</a></div></div>                        <div class="docs-submenu hidden">
+                            </div>
+                    </li>
+            <li>
+            <div><div class="docs-sidebar-nav-icon"><a class="expandable " aria-label="Subnav" href=""><span class="icon-chevron-right"></span></a></div><div class="docs-sidebar-nav-link"><a href="backup-and-recovery.html">Backup and Recovery</a></div></div>                        <div class="docs-submenu hidden">
+                            </div>
+                    </li>
+            <li>
+            <div><div class="docs-sidebar-nav-icon"><a class="expandable " aria-label="Subnav" href=""><span class="icon-chevron-right"></span></a></div><div class="docs-sidebar-nav-link"><a href="optimization.html">Optimization</a></div></div>                        <div class="docs-submenu hidden">
+                            </div>
+                    </li>
+            <li>
+            <div><div class="docs-sidebar-nav-icon"><a class="expandable " aria-label="Subnav" href=""><span class="icon-chevron-right"></span></a></div><div class="docs-sidebar-nav-link"><a href="language-structure.html">Language Structure</a></div></div>                        <div class="docs-submenu hidden">
+                            </div>
+                    </li>
+            <li>
+            <div><div class="docs-sidebar-nav-icon"><a class="expandable " aria-label="Subnav" href=""><span class="icon-chevron-right"></span></a></div><div class="docs-sidebar-nav-link"><a href="charset.html">Character Sets, Collations, Unicode</a></div></div>                        <div class="docs-submenu hidden">
+                            </div>
+                    </li>
+            <li>
+            <div><div class="docs-sidebar-nav-icon"><a class="expandable " aria-label="Subnav" href=""><span class="icon-chevron-right"></span></a></div><div class="docs-sidebar-nav-link"><a href="data-types.html">Data Types</a></div></div>                        <div class="docs-submenu hidden">
+                            </div>
+                    </li>
+            <li>
+            <div><div class="docs-sidebar-nav-icon"><a class="expandable " aria-label="Subnav" href=""><span class="icon-chevron-right"></span></a></div><div class="docs-sidebar-nav-link"><a href="functions.html">Functions and Operators</a></div></div>                        <div class="docs-submenu hidden">
+                            </div>
+                    </li>
+            <li>
+            <div><div class="docs-sidebar-nav-icon"><a class="expandable " aria-label="Subnav" href=""><span class="icon-chevron-right"></span></a></div><div class="docs-sidebar-nav-link"><a href="sql-statements.html">SQL Statements</a></div></div>                        <div class="docs-submenu hidden">
+                            </div>
+                    </li>
+            <li>
+            <div><div class="docs-sidebar-nav-icon"><a class="expandable " aria-label="Subnav" href=""><span class="icon-chevron-right"></span></a></div><div class="docs-sidebar-nav-link"><a href="data-dictionary.html">MySQL Data Dictionary</a></div></div>                        <div class="docs-submenu hidden">
+                            </div>
+                    </li>
+            <li>
+            <div><div class="docs-sidebar-nav-icon"><a class="expandable " aria-label="Subnav" href=""><span class="icon-chevron-right"></span></a></div><div class="docs-sidebar-nav-link"><a href="innodb-storage-engine.html">The InnoDB Storage Engine</a></div></div>                        <div class="docs-submenu hidden">
+                            </div>
+                    </li>
+            <li>
+            <div><div class="docs-sidebar-nav-icon"><a class="expandable " aria-label="Subnav" href=""><span class="icon-chevron-right"></span></a></div><div class="docs-sidebar-nav-link"><a href="storage-engines.html">Alternative Storage Engines</a></div></div>                        <div class="docs-submenu hidden">
+                            </div>
+                    </li>
+            <li>
+            <div><div class="docs-sidebar-nav-icon"><a class="expandable " aria-label="Subnav" href=""><span class="icon-chevron-right"></span></a></div><div class="docs-sidebar-nav-link"><a href="replication.html">Replication</a></div></div>                        <div class="docs-submenu hidden">
+                            </div>
+                    </li>
+            <li>
+            <div><div class="docs-sidebar-nav-icon"><a class="expandable " aria-label="Subnav" href=""><span class="icon-chevron-right"></span></a></div><div class="docs-sidebar-nav-link"><a href="group-replication.html">Group Replication</a></div></div>                        <div class="docs-submenu hidden">
+                            </div>
+                    </li>
+            <li>
+            <div><div class="docs-sidebar-nav-icon"><span class="icon-dot"></span></div><div class="docs-sidebar-nav-link"><a href="mysql-shell-userguide.html">MySQL Shell</a></div></div>                    </li>
+            <li>
+            <div><div class="docs-sidebar-nav-icon"><a class="expandable " aria-label="Subnav" href=""><span class="icon-chevron-right"></span></a></div><div class="docs-sidebar-nav-link"><a href="document-store.html">Using MySQL as a Document Store</a></div></div>                        <div class="docs-submenu hidden">
+                            </div>
+                    </li>
+            <li>
+            <div><div class="docs-sidebar-nav-icon"><span class="icon-dot"></span></div><div class="docs-sidebar-nav-link"><a href="mysql-innodb-cluster-introduction.html">InnoDB Cluster</a></div></div>                    </li>
+            <li>
+            <div><div class="docs-sidebar-nav-icon"><span class="icon-dot"></span></div><div class="docs-sidebar-nav-link"><a href="mysql-innodb-replicaset-introduction.html">InnoDB ReplicaSet</a></div></div>                    </li>
+            <li>
+            <div><div class="docs-sidebar-nav-icon"><a class="expandable " aria-label="Subnav" href=""><span class="icon-chevron-right"></span></a></div><div class="docs-sidebar-nav-link"><a href="mysql-cluster.html">MySQL NDB Cluster 8.0</a></div></div>                        <div class="docs-submenu hidden">
+                            </div>
+                    </li>
+            <li>
+            <div><div class="docs-sidebar-nav-icon"><a class="expandable " aria-label="Subnav" href=""><span class="icon-chevron-right"></span></a></div><div class="docs-sidebar-nav-link"><a href="partitioning.html">Partitioning</a></div></div>                        <div class="docs-submenu hidden">
+                            </div>
+                    </li>
+            <li>
+            <div><div class="docs-sidebar-nav-icon"><a class="expandable " aria-label="Subnav" href=""><span class="icon-chevron-right"></span></a></div><div class="docs-sidebar-nav-link"><a href="stored-objects.html">Stored Objects</a></div></div>                        <div class="docs-submenu hidden">
+                            </div>
+                    </li>
+            <li>
+            <div><div class="docs-sidebar-nav-icon"><a class="expandable " aria-label="Subnav" href=""><span class="icon-chevron-right"></span></a></div><div class="docs-sidebar-nav-link"><a href="information-schema.html">INFORMATION_SCHEMA Tables</a></div></div>                        <div class="docs-submenu hidden">
+                            </div>
+                    </li>
+            <li>
+            <div><div class="docs-sidebar-nav-icon"><a class="expandable " aria-label="Subnav" href=""><span class="icon-chevron-right"></span></a></div><div class="docs-sidebar-nav-link"><a href="performance-schema.html">MySQL Performance Schema</a></div></div>                        <div class="docs-submenu hidden">
+                            </div>
+                    </li>
+            <li>
+            <div><div class="docs-sidebar-nav-icon"><a class="expandable " aria-label="Subnav" href=""><span class="icon-chevron-right"></span></a></div><div class="docs-sidebar-nav-link"><a href="sys-schema.html">MySQL sys Schema</a></div></div>                        <div class="docs-submenu hidden">
+                            </div>
+                    </li>
+            <li>
+            <div><div class="docs-sidebar-nav-icon"><a class="expandable " aria-label="Subnav" href=""><span class="icon-chevron-right"></span></a></div><div class="docs-sidebar-nav-link"><a href="connectors-apis.html">Connectors and APIs</a></div></div>                        <div class="docs-submenu hidden">
+                            </div>
+                    </li>
+            <li>
+            <div><div class="docs-sidebar-nav-icon"><a class="expandable " aria-label="Subnav" href=""><span class="icon-chevron-right"></span></a></div><div class="docs-sidebar-nav-link"><a href="mysql-enterprise.html">MySQL Enterprise Edition</a></div></div>                        <div class="docs-submenu hidden">
+                            </div>
+                    </li>
+            <li>
+            <div><div class="docs-sidebar-nav-icon"><span class="icon-dot"></span></div><div class="docs-sidebar-nav-link"><a href="workbench.html">MySQL Workbench</a></div></div>                    </li>
+            <li>
+            <div><div class="docs-sidebar-nav-icon"><a class="expandable " aria-label="Subnav" href=""><span class="icon-chevron-right"></span></a></div><div class="docs-sidebar-nav-link"><a href="mysql-oci-marketplace.html">MySQL on the OCI Marketplace</a></div></div>                        <div class="docs-submenu hidden">
+                            </div>
+                    </li>
+            <li>
+            <div><div class="docs-sidebar-nav-icon"><a class="expandable " aria-label="Subnav" href=""><span class="icon-chevron-right"></span></a></div><div class="docs-sidebar-nav-link"><a href="faqs.html">MySQL 8.0 Frequently Asked Questions</a></div></div>                        <div class="docs-submenu hidden">
+                            </div>
+                    </li>
+            <li>
+            <div><div class="docs-sidebar-nav-icon"><a class="expandable " aria-label="Subnav" href=""><span class="icon-chevron-right"></span></a></div><div class="docs-sidebar-nav-link"><a href="error-handling.html">Error Messages and Common Problems</a></div></div>                        <div class="docs-submenu hidden">
+                            </div>
+                    </li>
+            <li>
+            <div><div class="docs-sidebar-nav-icon"><a class="expandable " aria-label="Subnav" href=""><span class="icon-chevron-right"></span></a></div><div class="docs-sidebar-nav-link"><a href="indexes.html">Indexes</a></div></div>                        <div class="docs-submenu hidden">
+                            </div>
+                    </li>
+            <li>
+            <div><div class="docs-sidebar-nav-icon"><span class="icon-dot"></span></div><div class="docs-sidebar-nav-link"><a href="glossary.html">MySQL Glossary</a></div></div>                    </li>
+        </ul>
+                            </nav>
+        </div>
+
+        
+<a class="docs-sidebar-section" href=""><span class="icon-related"></span>
+    <span class="text">Related Documentation</span></a>
+<div class="docs-sidebar-accordian open">
+    <div class="text">
+        <a href="/doc/relnotes/mysql/8.0/en/">MySQL 8.0 Release Notes</a><br />
+        <a href="/doc/dev/mysql-server/latest/">MySQL 8.0 Source Code Documentation</a><br />
+        </div>
+</div>
+
+    <a class="docs-sidebar-section" href=""><span class="icon-download-thin"></span>
+        <span class="text">
+            Download
+                            this Manual
+                    </span>
+    </a>
+    <div class="docs-sidebar-accordian open">
+        <div class="text">
+                        <a href="https://downloads.mysql.com/docs/refman-8.0-en.pdf">PDF (US Ltr)</a>
+            - 42.3Mb<br />
+                        <a href="https://downloads.mysql.com/docs/refman-8.0-en.a4.pdf">PDF (A4)</a>
+            - 42.4Mb<br />
+                        <a href="https://downloads.mysql.com/docs/refman-8.0-en.man-gpl.tar.gz">Man Pages (TGZ)</a>
+            - 269.0Kb<br />
+                        <a href="https://downloads.mysql.com/docs/refman-8.0-en.man-gpl.zip">Man Pages (Zip)</a>
+            - 378.8Kb<br />
+                        <a href="https://downloads.mysql.com/docs/mysql-8.0.info.gz">Info (Gzip)</a>
+            - 4.1Mb<br />
+                        <a href="https://downloads.mysql.com/docs/mysql-8.0.info.zip">Info (Zip)</a>
+            - 4.1Mb<br />
+                    </div>
+    </div>
+
+<a class="docs-sidebar-section" href=""><span class="icon-book"></span>
+    <span class="text">Excerpts from this Manual</span></a>
+<div class="docs-sidebar-accordian">
+    <div class="text">
+                <a href="/doc/mysql-backup-excerpt/8.0/en/">MySQL Backup and Recovery</a><br />
+                <a href="/doc/mysql-g11n-excerpt/8.0/en/">MySQL Globalization</a><br />
+                <a href="/doc/mysql-infoschema-excerpt/8.0/en/">MySQL Information Schema</a><br />
+                <a href="/doc/mysql-installation-excerpt/8.0/en/">MySQL Installation Guide</a><br />
+                <a href="/doc/mysql-security-excerpt/8.0/en/">Security in MySQL</a><br />
+                <a href="/doc/mysql-startstop-excerpt/8.0/en/">Starting and Stopping MySQL</a><br />
+                <a href="/doc/mysql-linuxunix-excerpt/8.0/en/">MySQL and Linux/Unix</a><br />
+                <a href="/doc/mysql-windows-excerpt/8.0/en/">MySQL and Windows</a><br />
+                <a href="/doc/mysql-macos-excerpt/8.0/en/">MySQL and macOS</a><br />
+                <a href="/doc/mysql-solaris-excerpt/8.0/en/">MySQL and Solaris</a><br />
+                <a href="/doc/mysql-sourcebuild-excerpt/8.0/en/">Building MySQL from Source</a><br />
+                <a href="/doc/mysql-reslimits-excerpt/8.0/en/">MySQL Restrictions and Limitations</a><br />
+                <a href="/doc/mysql-partitioning-excerpt/8.0/en/">MySQL Partitioning</a><br />
+                <a href="/doc/mysql-tutorial-excerpt/8.0/en/">MySQL Tutorial</a><br />
+                <a href="/doc/mysql-perfschema-excerpt/8.0/en/">MySQL Performance Schema</a><br />
+                <a href="/doc/mysql-replication-excerpt/8.0/en/">MySQL Replication</a><br />
+                <a href="/doc/mysql-repo-excerpt/8.0/en/">Using the MySQL Yum Repository</a><br />
+                <a href="/doc/mysql-cluster-excerpt/8.0/en/">MySQL NDB Cluster 8.0</a><br />
+            </div>
+</div>
+
+        <br /><span id="wkr"><br /></span>
+    </div>
+    </div>
+
+    <div id="docs-main" class="has-toc">
+    <div id="docs-main-inner">
+
+                <div class="right" id="docs-version-nav">
+            <a href="" id="docs-version-nav-toggle">version 8.0
+            <span class="icon-chevron-down"></span></a>
+            <div id="docs-version-list">
+                                                                                            <a                         href="/doc/refman/5.7/en/sql-mode.html">
+                        5.7
+                                            </a><br />
+                                                                            <a                         href="/doc/refman/5.6/en/sql-mode.html">
+                        5.6
+                                            </a><br />
+                                                                        <div id="docs-version-nav-lang">
+                                                                                                                                                    <a                                     href="/doc/refman/8.0/ja/sql-mode.html">
+                                    8.0&nbsp;
+                                                                            Japanese
+                                                                    </a><br />
+                                                            <a                                     href="/doc/refman/5.6/ja/sql-mode.html">
+                                    5.6&nbsp;
+                                                                            Japanese
+                                                                    </a><br />
+                                                                                            </div>
+                            </div>
+        </div>
+        
+        <div id="docs-show-nav" class="left hidden" style="margin-right: 15px;">
+            <a class="docs-show-hide-nav" href="" aria-label="Show Sidebar"
+                title="Show Sidebar"><span class="icon-arrow-small-right"></span></a>
+        </div>
+
+                        <div id="docs-breadcrumbs">
+            <a href="/doc/refman/8.0/en/">MySQL 8.0 Reference Manual</a> &nbsp;/&nbsp;
+                            <span id="breadcrumbs-link"><a href="" id="show-breadcrumbs">...</a> &nbsp;/&nbsp;</span>
+                <span class="hidden" id="hidden-breadcrumbs">
+                                                        <a href="server-administration.html">MySQL Server Administration</a> &nbsp;/&nbsp;
+                                                            <a href="mysqld-server.html">The MySQL Server</a> &nbsp;/&nbsp;
+                                                                                        </span>
+                                        Server SQL Modes
+                                    </div>
+        
+        <div id="docs-body">
+        
+<div class="section">
+<div class="titlepage">
+<div>
+<div>
+<h3 class="title"><a name="sql-mode"></a>5.1.11 Server SQL Modes</h3>
+
+</div>
+
+</div>
+
+</div>
+<a class="indexterm" name="idm44983607815232"></a><p>
+      The MySQL server can operate in different SQL modes, and can apply
+      these modes differently for different clients, depending on the
+      value of the <a class="link" href="server-system-variables.html#sysvar_sql_mode"><code class="literal">sql_mode</code></a> system
+      variable. DBAs can set the global SQL mode to match site server
+      operating requirements, and each application can set its session
+      SQL mode to its own requirements.
+    </p><p>
+      Modes affect the SQL syntax MySQL supports and the data validation
+      checks it performs. This makes it easier to use MySQL in different
+      environments and to use MySQL together with other database
+      servers.
+</p>
+<div class="itemizedlist">
+<ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p><a class="xref" href="sql-mode.html#sql-mode-setting" title="Setting the SQL Mode">Setting the SQL Mode</a></p></li><li class="listitem"><p><a class="xref" href="sql-mode.html#sql-mode-important" title="The Most Important SQL Modes">The Most Important SQL Modes</a></p></li><li class="listitem"><p><a class="xref" href="sql-mode.html#sql-mode-full" title="Full List of SQL Modes">Full List of SQL Modes</a></p></li><li class="listitem"><p><a class="xref" href="sql-mode.html#sql-mode-combo" title="Combination SQL Modes">Combination SQL Modes</a></p></li><li class="listitem"><p><a class="xref" href="sql-mode.html#sql-mode-strict" title="Strict SQL Mode">Strict SQL Mode</a></p></li><li class="listitem"><p><a class="xref" href="sql-mode.html#ignore-strict-comparison" title="Comparison of the IGNORE Keyword and Strict SQL Mode">Comparison of the IGNORE Keyword and Strict SQL Mode</a></p></li></ul>
+</div>
+<p>
+      For answers to questions often asked about server SQL modes in
+      MySQL, see <a class="xref" href="faqs-sql-modes.html" title="A.3 MySQL 8.0 FAQ: Server SQL Mode">Section A.3, “MySQL 8.0 FAQ: Server SQL Mode”</a>.
+    </p><p>
+      When working with <code class="literal">InnoDB</code> tables, consider also
+      the <a class="link" href="innodb-parameters.html#sysvar_innodb_strict_mode"><code class="literal">innodb_strict_mode</code></a> system
+      variable. It enables additional error checks for
+      <code class="literal">InnoDB</code> tables.
+</p>
+<div class="simplesect">
+
+<div class="titlepage">
+<div>
+
+<div class="simple">
+<h4 class="title"><a name="sql-mode-setting"></a>Setting the SQL Mode</h4>
+</div>
+</div>
+</div>
+<p>
+        The default SQL mode in MySQL 8.0 includes these
+        modes: <a class="link" href="sql-mode.html#sqlmode_only_full_group_by"><code class="literal">ONLY_FULL_GROUP_BY</code></a>,
+        <a class="link" href="sql-mode.html#sqlmode_strict_trans_tables"><code class="literal">STRICT_TRANS_TABLES</code></a>,
+        <a class="link" href="sql-mode.html#sqlmode_no_zero_in_date"><code class="literal">NO_ZERO_IN_DATE</code></a>,
+        <a class="link" href="sql-mode.html#sqlmode_no_zero_date"><code class="literal">NO_ZERO_DATE</code></a>,
+        <a class="link" href="sql-mode.html#sqlmode_error_for_division_by_zero"><code class="literal">ERROR_FOR_DIVISION_BY_ZERO</code></a>,
+        and <a class="link" href="sql-mode.html#sqlmode_no_engine_substitution"><code class="literal">NO_ENGINE_SUBSTITUTION</code></a>.
+      </p><p>
+        To set the SQL mode at server startup, use the
+        <a class="link" href="server-options.html#option_mysqld_sql-mode"><code class="option">--sql-mode="<em class="replaceable"><code>modes</code></em>"</code></a>
+        option on the command line, or
+        <a class="link" href="server-options.html#option_mysqld_sql-mode"><code class="option">sql-mode="<em class="replaceable"><code>modes</code></em>"</code></a>
+        in an option file such as <code class="filename">my.cnf</code> (Unix
+        operating systems) or <code class="filename">my.ini</code> (Windows).
+        <em class="replaceable"><code>modes</code></em> is a list of different modes
+        separated by commas. To clear the SQL mode explicitly, set it to
+        an empty string using
+        <a class="link" href="server-options.html#option_mysqld_sql-mode"><code class="option">--sql-mode=""</code></a> on the command
+        line, or <a class="link" href="server-options.html#option_mysqld_sql-mode"><code class="option">sql-mode=""</code></a> in an option
+        file.
+</p>
+<div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+
+<div class="admon-title">
+Note
+</div>
+<p>
+          MySQL installation programs may configure the SQL mode during
+          the installation process.
+        </p><p>
+          If the SQL mode differs from the default or from what you
+          expect, check for a setting in an option file that the server
+          reads at startup.
+</p>
+</div>
+<p>
+        To change the SQL mode at runtime, set the global or session
+        <a class="link" href="server-system-variables.html#sysvar_sql_mode"><code class="literal">sql_mode</code></a> system variable using
+        a <a class="link" href="set-variable.html" title="13.7.6.1 SET Syntax for Variable Assignment"><code class="literal">SET</code></a>
+        statement:
+      </p><pre class="programlisting copytoclipboard language-sql"><code class="language-sql">SET GLOBAL sql_mode = '<em class="replaceable">modes</em>';
+SET SESSION sql_mode = '<em class="replaceable">modes</em>';</code></pre><p>
+        Setting the <code class="literal">GLOBAL</code> variable requires the
+        <a class="link" href="privileges-provided.html#priv_system-variables-admin"><code class="literal">SYSTEM_VARIABLES_ADMIN</code></a> privilege
+        (or the deprecated <a class="link" href="privileges-provided.html#priv_super"><code class="literal">SUPER</code></a>
+        privilege) and affects the operation of all clients that connect
+        from that time on. Setting the <code class="literal">SESSION</code>
+        variable affects only the current client. Each client can change
+        its session <a class="link" href="server-system-variables.html#sysvar_sql_mode"><code class="literal">sql_mode</code></a> value at
+        any time.
+      </p><p>
+        To determine the current global or session
+        <a class="link" href="server-system-variables.html#sysvar_sql_mode"><code class="literal">sql_mode</code></a> setting, select its
+        value:
+      </p><pre class="programlisting copytoclipboard language-sql"><code class="language-sql">SELECT @@GLOBAL.sql_mode;
+SELECT @@SESSION.sql_mode;</code></pre>
+<div class="important" style="margin-left: 0.5in; margin-right: 0.5in;">
+
+<div class="admon-title">
+Important
+</div>
+<p><b>SQL mode and user-defined partitioning. </b>
+            Changing the server SQL mode after creating and inserting
+            data into partitioned tables can cause major changes in the
+            behavior of such tables, and could lead to loss or
+            corruption of data. It is strongly recommended that you
+            never change the SQL mode once you have created tables
+            employing user-defined partitioning.
+          </p><p>
+          When replicating partitioned tables, differing SQL modes on
+          the source and replica can also lead to problems. For best
+          results, you should always use the same server SQL mode on the
+          source and replica.
+        </p><p>
+          For more information, see
+          <a class="xref" href="partitioning-limitations.html" title="24.6 Restrictions and Limitations on Partitioning">Section 24.6, “Restrictions and Limitations on Partitioning”</a>.
+</p>
+</div>
+
+</div>
+<div class="simplesect">
+<div class="titlepage">
+<div>
+<div class="simple">
+<h4 class="title"><a name="sql-mode-important"></a>The Most Important SQL Modes</h4>
+
+</div>
+
+</div>
+
+</div>
+<p>
+        The most important <a class="link" href="server-system-variables.html#sysvar_sql_mode"><code class="literal">sql_mode</code></a>
+        values are probably these:
+</p>
+<div class="itemizedlist">
+<ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+            <a class="indexterm" name="idm44983607761056"></a>
+
+            <a class="indexterm" name="idm44983607759984"></a>
+
+            <a class="link" href="sql-mode.html#sqlmode_ansi"><code class="literal">ANSI</code></a>
+          </p><p>
+            This mode changes syntax and behavior to conform more
+            closely to standard SQL. It is one of the special
+            <a class="link" href="sql-mode.html#sql-mode-combo" title="Combination SQL Modes">combination modes</a>
+            listed at the end of this section.
+          </p></li><li class="listitem"><p>
+            <a class="indexterm" name="idm44983607754928"></a>
+
+            <a class="indexterm" name="idm44983607753840"></a>
+
+            <a class="link" href="sql-mode.html#sqlmode_strict_trans_tables"><code class="literal">STRICT_TRANS_TABLES</code></a>
+          </p><p>
+            If a value could not be inserted as given into a
+            transactional table, abort the statement. For a
+            nontransactional table, abort the statement if the value
+            occurs in a single-row statement or the first row of a
+            multiple-row statement. More details are given later in this
+            section.
+          </p></li><li class="listitem"><p>
+            <a class="indexterm" name="idm44983607749536"></a>
+
+            <a class="indexterm" name="idm44983607748464"></a>
+
+            <a class="link" href="sql-mode.html#sqlmode_traditional"><code class="literal">TRADITIONAL</code></a>
+          </p><p>
+            Make MySQL behave like a <span class="quote">“<span class="quote">traditional</span>”</span> SQL
+            database system. A simple description of this mode is
+            <span class="quote">“<span class="quote">give an error instead of a warning</span>”</span> when
+            inserting an incorrect value into a column. It is one of the
+            special <a class="link" href="sql-mode.html#sql-mode-combo" title="Combination SQL Modes">combination
+            modes</a> listed at the end of this section.
+</p>
+<div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+
+<div class="admon-title">
+Note
+</div>
+<p>
+              With <a class="link" href="sql-mode.html#sqlmode_traditional"><code class="literal">TRADITIONAL</code></a> mode
+              enabled, an <a class="link" href="insert.html" title="13.2.6 INSERT Statement"><code class="literal">INSERT</code></a> or
+              <a class="link" href="update.html" title="13.2.13 UPDATE Statement"><code class="literal">UPDATE</code></a> aborts as soon as an
+              error occurs. If you are using a nontransactional storage
+              engine, this may not be what you want because data changes
+              made prior to the error may not be rolled back, resulting
+              in a <span class="quote">“<span class="quote">partially done</span>”</span> update.
+</p>
+</div>
+</li></ul>
+</div>
+<a class="indexterm" name="idm44983607737872"></a><a class="indexterm" name="idm44983607736800"></a><p>
+        When this manual refers to <span class="quote">“<span class="quote">strict mode,</span>”</span> it means
+        a mode with either or both
+        <a class="link" href="sql-mode.html#sqlmode_strict_trans_tables"><code class="literal">STRICT_TRANS_TABLES</code></a> or
+        <a class="link" href="sql-mode.html#sqlmode_strict_all_tables"><code class="literal">STRICT_ALL_TABLES</code></a> enabled.
+</p>
+</div>
+<div class="simplesect">
+<div class="titlepage">
+<div>
+<div class="simple">
+<h4 class="title"><a name="sql-mode-full"></a>Full List of SQL Modes</h4>
+
+</div>
+
+</div>
+
+</div>
+<p>
+        The following list describes all supported SQL modes:
+</p>
+<div class="itemizedlist">
+<ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p><a name="sqlmode_allow_invalid_dates"></a>
+            <a class="link" href="sql-mode.html#sqlmode_allow_invalid_dates"><code class="literal">ALLOW_INVALID_DATES</code></a>
+          </p><a class="indexterm" name="idm44983607727312"></a><a class="indexterm" name="idm44983607726272"></a><p>
+            Do not perform full checking of dates. Check only that the
+            month is in the range from 1 to 12 and the day is in the
+            range from 1 to 31. This may be useful for Web applications
+            that obtain year, month, and day in three different fields
+            and store exactly what the user inserted, without date
+            validation. This mode applies to
+            <a class="link" href="datetime.html" title="11.2.2 The DATE, DATETIME, and TIMESTAMP Types"><code class="literal">DATE</code></a> and
+            <a class="link" href="datetime.html" title="11.2.2 The DATE, DATETIME, and TIMESTAMP Types"><code class="literal">DATETIME</code></a> columns. It does not
+            apply <a class="link" href="datetime.html" title="11.2.2 The DATE, DATETIME, and TIMESTAMP Types"><code class="literal">TIMESTAMP</code></a> columns,
+            which always require a valid date.
+          </p><p>
+            With <a class="link" href="sql-mode.html#sqlmode_allow_invalid_dates"><code class="literal">ALLOW_INVALID_DATES</code></a>
+            disabled, the server requires that month and day values be
+            legal, and not merely in the range 1 to 12 and 1 to 31,
+            respectively. With strict mode disabled, invalid dates such
+            as <code class="literal">'2004-04-31'</code> are converted to
+            <code class="literal">'0000-00-00'</code> and a warning is generated.
+            With strict mode enabled, invalid dates generate an error.
+            To permit such dates, enable
+            <a class="link" href="sql-mode.html#sqlmode_allow_invalid_dates"><code class="literal">ALLOW_INVALID_DATES</code></a>.
+          </p></li><li class="listitem"><p><a name="sqlmode_ansi_quotes"></a>
+            <a class="link" href="sql-mode.html#sqlmode_ansi_quotes"><code class="literal">ANSI_QUOTES</code></a>
+          </p><a class="indexterm" name="idm44983607713104"></a><a class="indexterm" name="idm44983607712032"></a><p>
+            Treat <code class="literal">"</code> as an identifier quote character
+            (like the <code class="literal">`</code> quote character) and not as a
+            string quote character. You can still use
+            <code class="literal">`</code> to quote identifiers with this mode
+            enabled. With <a class="link" href="sql-mode.html#sqlmode_ansi_quotes"><code class="literal">ANSI_QUOTES</code></a>
+            enabled, you cannot use double quotation marks to quote
+            literal strings because they are interpreted as identifiers.
+          </p></li><li class="listitem"><p><a name="sqlmode_error_for_division_by_zero"></a>
+            <a class="link" href="sql-mode.html#sqlmode_error_for_division_by_zero"><code class="literal">ERROR_FOR_DIVISION_BY_ZERO</code></a>
+          </p><a class="indexterm" name="idm44983607704096"></a><a class="indexterm" name="idm44983607703008"></a><p>
+            The
+            <a class="link" href="sql-mode.html#sqlmode_error_for_division_by_zero"><code class="literal">ERROR_FOR_DIVISION_BY_ZERO</code></a>
+            mode affects handling of division by zero, which includes
+            <a class="link" href="mathematical-functions.html#function_mod"><code class="literal">MOD(<em class="replaceable"><code>N</code></em>,0)</code></a>.
+            For data-change operations
+            (<a class="link" href="insert.html" title="13.2.6 INSERT Statement"><code class="literal">INSERT</code></a>,
+            <a class="link" href="update.html" title="13.2.13 UPDATE Statement"><code class="literal">UPDATE</code></a>), its effect also
+            depends on whether strict SQL mode is enabled.
+</p>
+<div class="itemizedlist">
+<ul class="itemizedlist" style="list-style-type: circle; "><li class="listitem"><p>
+                If this mode is not enabled, division by zero inserts
+                <code class="literal">NULL</code> and produces no warning.
+              </p></li><li class="listitem"><p>
+                If this mode is enabled, division by zero inserts
+                <code class="literal">NULL</code> and produces a warning.
+              </p></li><li class="listitem"><p>
+                If this mode and strict mode are enabled, division by
+                zero produces an error, unless <code class="literal">IGNORE</code>
+                is given as well. For <code class="literal">INSERT IGNORE</code>
+                and <code class="literal">UPDATE IGNORE</code>, division by zero
+                inserts <code class="literal">NULL</code> and produces a warning.
+</p></li></ul>
+</div>
+<p>
+            For <a class="link" href="select.html" title="13.2.10 SELECT Statement"><code class="literal">SELECT</code></a>, division by zero
+            returns <code class="literal">NULL</code>. Enabling
+            <a class="link" href="sql-mode.html#sqlmode_error_for_division_by_zero"><code class="literal">ERROR_FOR_DIVISION_BY_ZERO</code></a>
+            causes a warning to be produced as well, regardless of
+            whether strict mode is enabled.
+          </p><p>
+            <a class="link" href="sql-mode.html#sqlmode_error_for_division_by_zero"><code class="literal">ERROR_FOR_DIVISION_BY_ZERO</code></a>
+            is deprecated.
+            <a class="link" href="sql-mode.html#sqlmode_error_for_division_by_zero"><code class="literal">ERROR_FOR_DIVISION_BY_ZERO</code></a>
+            is not part of strict mode, but should be used in
+            conjunction with strict mode and is enabled by default. A
+            warning occurs if
+            <a class="link" href="sql-mode.html#sqlmode_error_for_division_by_zero"><code class="literal">ERROR_FOR_DIVISION_BY_ZERO</code></a>
+            is enabled without also enabling strict mode or vice versa.
+          </p><p>
+            Because
+            <a class="link" href="sql-mode.html#sqlmode_error_for_division_by_zero"><code class="literal">ERROR_FOR_DIVISION_BY_ZERO</code></a>
+            is deprecated, you should expect it to be removed in a
+            future MySQL release as a separate mode name and its effect
+            included in the effects of strict SQL mode.
+          </p></li><li class="listitem"><p><a name="sqlmode_high_not_precedence"></a>
+            <a class="link" href="sql-mode.html#sqlmode_high_not_precedence"><code class="literal">HIGH_NOT_PRECEDENCE</code></a>
+          </p><a class="indexterm" name="idm44983607675264"></a><a class="indexterm" name="idm44983607674224"></a><p>
+            The precedence of the <a class="link" href="logical-operators.html#operator_not"><code class="literal">NOT</code></a>
+            operator is such that expressions such as <code class="literal">NOT a
+            BETWEEN b AND c</code> are parsed as <code class="literal">NOT (a
+            BETWEEN b AND c)</code>. In some older versions of MySQL,
+            the expression was parsed as <code class="literal">(NOT a) BETWEEN b AND
+            c</code>. The old higher-precedence behavior can be
+            obtained by enabling the
+            <a class="link" href="sql-mode.html#sqlmode_high_not_precedence"><code class="literal">HIGH_NOT_PRECEDENCE</code></a> SQL
+            mode.
+          </p><pre class="programlisting copytoclipboard language-sql"><code class="language-sql">mysql&gt; SET sql_mode = '';
+mysql&gt; SELECT NOT 1 BETWEEN -5 AND 5;
+        -&gt; 0
+mysql&gt; SET sql_mode = 'HIGH_NOT_PRECEDENCE';
+mysql&gt; SELECT NOT 1 BETWEEN -5 AND 5;
+        -&gt; 1</code></pre></li><li class="listitem"><p><a name="sqlmode_ignore_space"></a>
+            <a class="link" href="sql-mode.html#sqlmode_ignore_space"><code class="literal">IGNORE_SPACE</code></a>
+          </p><a class="indexterm" name="idm44983607661248"></a><a class="indexterm" name="idm44983607660176"></a><p>
+            Permit spaces between a function name and the
+            <code class="literal">(</code> character. This causes built-in
+            function names to be treated as reserved words. As a result,
+            identifiers that are the same as function names must be
+            quoted as described in <a class="xref" href="identifiers.html" title="9.2 Schema Object Names">Section 9.2, “Schema Object Names”</a>. For
+            example, because there is a
+            <a class="link" href="aggregate-functions.html#function_count"><code class="literal">COUNT()</code></a> function, the use of
+            <code class="literal">count</code> as a table name in the following
+            statement causes an error:
+          </p><pre class="programlisting copytoclipboard language-sql"><code class="language-sql">mysql&gt; CREATE TABLE count (i INT);
+ERROR 1064 (42000): You have an error in your SQL syntax</code></pre><p>
+            The table name should be quoted:
+          </p><pre class="programlisting copytoclipboard language-sql"><code class="language-sql">mysql&gt; CREATE TABLE `count` (i INT);
+Query OK, 0 rows affected (0.00 sec)</code></pre><p>
+            The <a class="link" href="sql-mode.html#sqlmode_ignore_space"><code class="literal">IGNORE_SPACE</code></a> SQL mode
+            applies to built-in functions, not to loadable functions or
+            stored functions. It is always permissible to have spaces
+            after a loadable function or stored function name,
+            regardless of whether
+            <a class="link" href="sql-mode.html#sqlmode_ignore_space"><code class="literal">IGNORE_SPACE</code></a> is enabled.
+          </p><p>
+            For further discussion of
+            <a class="link" href="sql-mode.html#sqlmode_ignore_space"><code class="literal">IGNORE_SPACE</code></a>, see
+            <a class="xref" href="function-resolution.html" title="9.2.5 Function Name Parsing and Resolution">Section 9.2.5, “Function Name Parsing and Resolution”</a>.
+          </p></li><li class="listitem"><p><a name="sqlmode_no_auto_value_on_zero"></a>
+            <a class="link" href="sql-mode.html#sqlmode_no_auto_value_on_zero"><code class="literal">NO_AUTO_VALUE_ON_ZERO</code></a>
+          </p><a class="indexterm" name="idm44983607642752"></a><a class="indexterm" name="idm44983607641712"></a><p>
+            <a class="link" href="sql-mode.html#sqlmode_no_auto_value_on_zero"><code class="literal">NO_AUTO_VALUE_ON_ZERO</code></a>
+            affects handling of <code class="literal">AUTO_INCREMENT</code>
+            columns. Normally, you generate the next sequence number for
+            the column by inserting either <code class="literal">NULL</code> or
+            <code class="literal">0</code> into it.
+            <a class="link" href="sql-mode.html#sqlmode_no_auto_value_on_zero"><code class="literal">NO_AUTO_VALUE_ON_ZERO</code></a>
+            suppresses this behavior for <code class="literal">0</code> so that
+            only <code class="literal">NULL</code> generates the next sequence
+            number.
+          </p><p>
+            This mode can be useful if <code class="literal">0</code> has been
+            stored in a table's <code class="literal">AUTO_INCREMENT</code>
+            column. (Storing <code class="literal">0</code> is not a recommended
+            practice, by the way.) For example, if you dump the table
+            with <a class="link" href="mysqldump.html" title="4.5.4 mysqldump — A Database Backup Program"><span class="command"><strong>mysqldump</strong></span></a> and then reload it, MySQL
+            normally generates new sequence numbers when it encounters
+            the <code class="literal">0</code> values, resulting in a table with
+            contents different from the one that was dumped. Enabling
+            <a class="link" href="sql-mode.html#sqlmode_no_auto_value_on_zero"><code class="literal">NO_AUTO_VALUE_ON_ZERO</code></a>
+            before reloading the dump file solves this problem. For this
+            reason, <a class="link" href="mysqldump.html" title="4.5.4 mysqldump — A Database Backup Program"><span class="command"><strong>mysqldump</strong></span></a> automatically includes
+            in its output a statement that enables
+            <a class="link" href="sql-mode.html#sqlmode_no_auto_value_on_zero"><code class="literal">NO_AUTO_VALUE_ON_ZERO</code></a>.
+          </p></li><li class="listitem"><p><a name="sqlmode_no_backslash_escapes"></a>
+            <a class="link" href="sql-mode.html#sqlmode_no_backslash_escapes"><code class="literal">NO_BACKSLASH_ESCAPES</code></a>
+          </p><a class="indexterm" name="idm44983607622176"></a><a class="indexterm" name="idm44983607621136"></a><p>
+            Enabling this mode disables the use of the backslash
+            character (<code class="literal">\</code>) as an escape character
+            within strings and identifiers. With this mode enabled,
+            backslash becomes an ordinary character like any other, and
+            the default escape sequence for
+            <a class="link" href="string-comparison-functions.html#operator_like"><code class="literal">LIKE</code></a> expressions is changed so
+            that no escape character is used.
+          </p></li><li class="listitem"><p><a name="sqlmode_no_dir_in_create"></a>
+            <a class="link" href="sql-mode.html#sqlmode_no_dir_in_create"><code class="literal">NO_DIR_IN_CREATE</code></a>
+          </p><a class="indexterm" name="idm44983607614272"></a><a class="indexterm" name="idm44983607613232"></a><p>
+            When creating a table, ignore all <code class="literal">INDEX
+            DIRECTORY</code> and <code class="literal">DATA DIRECTORY</code>
+            directives. This option is useful on replica servers.
+          </p></li><li class="listitem"><p><a name="sqlmode_no_engine_substitution"></a>
+            <a class="link" href="sql-mode.html#sqlmode_no_engine_substitution"><code class="literal">NO_ENGINE_SUBSTITUTION</code></a>
+          </p><a class="indexterm" name="idm44983607607328"></a><a class="indexterm" name="idm44983607606288"></a><p>
+            Control automatic substitution of the default storage engine
+            when a statement such as <a class="link" href="create-table.html" title="13.1.20 CREATE TABLE Statement"><code class="literal">CREATE
+            TABLE</code></a> or <a class="link" href="alter-table.html" title="13.1.9 ALTER TABLE Statement"><code class="literal">ALTER
+            TABLE</code></a> specifies a storage engine that is disabled
+            or not compiled in.
+          </p><p>
+            By default,
+            <a class="link" href="sql-mode.html#sqlmode_no_engine_substitution"><code class="literal">NO_ENGINE_SUBSTITUTION</code></a> is
+            enabled.
+          </p><p>
+            Because storage engines can be pluggable at runtime,
+            unavailable engines are treated the same way:
+          </p><p>
+            With
+            <a class="link" href="sql-mode.html#sqlmode_no_engine_substitution"><code class="literal">NO_ENGINE_SUBSTITUTION</code></a>
+            disabled, for <a class="link" href="create-table.html" title="13.1.20 CREATE TABLE Statement"><code class="literal">CREATE TABLE</code></a>
+            the default engine is used and a warning occurs if the
+            desired engine is unavailable. For
+            <a class="link" href="alter-table.html" title="13.1.9 ALTER TABLE Statement"><code class="literal">ALTER TABLE</code></a>, a warning occurs
+            and the table is not altered.
+          </p><p>
+            With
+            <a class="link" href="sql-mode.html#sqlmode_no_engine_substitution"><code class="literal">NO_ENGINE_SUBSTITUTION</code></a>
+            enabled, an error occurs and the table is not created or
+            altered if the desired engine is unavailable.
+          </p></li><li class="listitem"><p><a name="sqlmode_no_unsigned_subtraction"></a>
+            <a class="link" href="sql-mode.html#sqlmode_no_unsigned_subtraction"><code class="literal">NO_UNSIGNED_SUBTRACTION</code></a>
+          </p><a class="indexterm" name="idm44983607590720"></a><a class="indexterm" name="idm44983607589680"></a><p>
+            Subtraction between integer values, where one is of type
+            <code class="literal">UNSIGNED</code>, produces an unsigned result by
+            default. If the result would otherwise have been negative,
+            an error results:
+          </p><pre class="programlisting copytoclipboard language-sql"><code class="language-sql">mysql&gt; SET sql_mode = '';
+Query OK, 0 rows affected (0.00 sec)
+
+mysql&gt; SELECT CAST(0 AS UNSIGNED) - 1;
+ERROR 1690 (22003): BIGINT UNSIGNED value is out of range in '(cast(0 as unsigned) - 1)'</code></pre><p>
+            If the
+            <a class="link" href="sql-mode.html#sqlmode_no_unsigned_subtraction"><code class="literal">NO_UNSIGNED_SUBTRACTION</code></a>
+            SQL mode is enabled, the result is negative:
+          </p><pre class="programlisting copytoclipboard language-sql"><code class="language-sql">mysql&gt; SET sql_mode = 'NO_UNSIGNED_SUBTRACTION';
+mysql&gt; SELECT CAST(0 AS UNSIGNED) - 1;
++-------------------------+
+| CAST(0 AS UNSIGNED) - 1 |
++-------------------------+
+|                      -1 |
++-------------------------+</code></pre><p>
+            If the result of such an operation is used to update an
+            <code class="literal">UNSIGNED</code> integer column, the result is
+            clipped to the maximum value for the column type, or clipped
+            to 0 if
+            <a class="link" href="sql-mode.html#sqlmode_no_unsigned_subtraction"><code class="literal">NO_UNSIGNED_SUBTRACTION</code></a> is
+            enabled. With strict SQL mode enabled, an error occurs and
+            the column remains unchanged.
+          </p><p>
+            When
+            <a class="link" href="sql-mode.html#sqlmode_no_unsigned_subtraction"><code class="literal">NO_UNSIGNED_SUBTRACTION</code></a> is
+            enabled, the subtraction result is signed, <span class="emphasis"><em>even if
+            any operand is unsigned</em></span>. For example, compare the
+            type of column <code class="literal">c2</code> in table
+            <code class="literal">t1</code> with that of column
+            <code class="literal">c2</code> in table <code class="literal">t2</code>:
+          </p><pre class="programlisting copytoclipboard language-sql"><code class="language-sql">mysql&gt; SET sql_mode='';
+mysql&gt; CREATE TABLE test (c1 BIGINT UNSIGNED NOT NULL);
+mysql&gt; CREATE TABLE t1 SELECT c1 - 1 AS c2 FROM test;
+mysql&gt; DESCRIBE t1;
++-------+---------------------+------+-----+---------+-------+
+| Field | Type                | Null | Key | Default | Extra |
++-------+---------------------+------+-----+---------+-------+
+| c2    | bigint(21) unsigned | NO   |     | 0       |       |
++-------+---------------------+------+-----+---------+-------+
+
+mysql&gt; SET sql_mode='NO_UNSIGNED_SUBTRACTION';
+mysql&gt; CREATE TABLE t2 SELECT c1 - 1 AS c2 FROM test;
+mysql&gt; DESCRIBE t2;
++-------+------------+------+-----+---------+-------+
+| Field | Type       | Null | Key | Default | Extra |
++-------+------------+------+-----+---------+-------+
+| c2    | bigint(21) | NO   |     | 0       |       |
++-------+------------+------+-----+---------+-------+</code></pre><p>
+            This means that <code class="literal">BIGINT UNSIGNED</code> is not
+            100% usable in all contexts. See
+            <a class="xref" href="cast-functions.html" title="12.11 Cast Functions and Operators">Section 12.11, “Cast Functions and Operators”</a>.
+          </p></li><li class="listitem"><p><a name="sqlmode_no_zero_date"></a>
+            <a class="link" href="sql-mode.html#sqlmode_no_zero_date"><code class="literal">NO_ZERO_DATE</code></a>
+          </p><a class="indexterm" name="idm44983607560656"></a><a class="indexterm" name="idm44983607559584"></a><p>
+            The <a class="link" href="sql-mode.html#sqlmode_no_zero_date"><code class="literal">NO_ZERO_DATE</code></a> mode
+            affects whether the server permits
+            <code class="literal">'0000-00-00'</code> as a valid date. Its effect
+            also depends on whether strict SQL mode is enabled.
+</p>
+<div class="itemizedlist">
+<ul class="itemizedlist" style="list-style-type: circle; "><li class="listitem"><p>
+                If this mode is not enabled,
+                <code class="literal">'0000-00-00'</code> is permitted and inserts
+                produce no warning.
+              </p></li><li class="listitem"><p>
+                If this mode is enabled, <code class="literal">'0000-00-00'</code>
+                is permitted and inserts produce a warning.
+              </p></li><li class="listitem"><p>
+                If this mode and strict mode are enabled,
+                <code class="literal">'0000-00-00'</code> is not permitted and
+                inserts produce an error, unless
+                <code class="literal">IGNORE</code> is given as well. For
+                <code class="literal">INSERT IGNORE</code> and <code class="literal">UPDATE
+                IGNORE</code>, <code class="literal">'0000-00-00'</code> is
+                permitted and inserts produce a warning.
+</p></li></ul>
+</div>
+<p>
+            <a class="link" href="sql-mode.html#sqlmode_no_zero_date"><code class="literal">NO_ZERO_DATE</code></a> is
+            deprecated. <a class="link" href="sql-mode.html#sqlmode_no_zero_date"><code class="literal">NO_ZERO_DATE</code></a>
+            is not part of strict mode, but should be used in
+            conjunction with strict mode and is enabled by default. A
+            warning occurs if
+            <a class="link" href="sql-mode.html#sqlmode_no_zero_date"><code class="literal">NO_ZERO_DATE</code></a> is enabled
+            without also enabling strict mode or vice versa.
+          </p><p>
+            Because <a class="link" href="sql-mode.html#sqlmode_no_zero_date"><code class="literal">NO_ZERO_DATE</code></a> is
+            deprecated, you should expect it to be removed in a future
+            MySQL release as a separate mode name and its effect
+            included in the effects of strict SQL mode.
+          </p></li><li class="listitem"><p><a name="sqlmode_no_zero_in_date"></a>
+            <a class="link" href="sql-mode.html#sqlmode_no_zero_in_date"><code class="literal">NO_ZERO_IN_DATE</code></a>
+          </p><a class="indexterm" name="idm44983607538880"></a><a class="indexterm" name="idm44983607537792"></a><p>
+            The <a class="link" href="sql-mode.html#sqlmode_no_zero_in_date"><code class="literal">NO_ZERO_IN_DATE</code></a> mode
+            affects whether the server permits dates in which the year
+            part is nonzero but the month or day part is 0. (This mode
+            affects dates such as <code class="literal">'2010-00-01'</code> or
+            <code class="literal">'2010-01-00'</code>, but not
+            <code class="literal">'0000-00-00'</code>. To control whether the
+            server permits <code class="literal">'0000-00-00'</code>, use the
+            <a class="link" href="sql-mode.html#sqlmode_no_zero_date"><code class="literal">NO_ZERO_DATE</code></a> mode.) The
+            effect of <a class="link" href="sql-mode.html#sqlmode_no_zero_in_date"><code class="literal">NO_ZERO_IN_DATE</code></a>
+            also depends on whether strict SQL mode is enabled.
+</p>
+<div class="itemizedlist">
+<ul class="itemizedlist" style="list-style-type: circle; "><li class="listitem"><p>
+                If this mode is not enabled, dates with zero parts are
+                permitted and inserts produce no warning.
+              </p></li><li class="listitem"><p>
+                If this mode is enabled, dates with zero parts are
+                inserted as <code class="literal">'0000-00-00'</code> and produce
+                a warning.
+              </p></li><li class="listitem"><p>
+                If this mode and strict mode are enabled, dates with
+                zero parts are not permitted and inserts produce an
+                error, unless <code class="literal">IGNORE</code> is given as
+                well. For <code class="literal">INSERT IGNORE</code> and
+                <code class="literal">UPDATE IGNORE</code>, dates with zero parts
+                are inserted as <code class="literal">'0000-00-00'</code> and
+                produce a warning.
+</p></li></ul>
+</div>
+<p>
+            <a class="link" href="sql-mode.html#sqlmode_no_zero_in_date"><code class="literal">NO_ZERO_IN_DATE</code></a> is
+            deprecated.
+            <a class="link" href="sql-mode.html#sqlmode_no_zero_in_date"><code class="literal">NO_ZERO_IN_DATE</code></a> is not
+            part of strict mode, but should be used in conjunction with
+            strict mode and is enabled by default. A warning occurs if
+            <a class="link" href="sql-mode.html#sqlmode_no_zero_in_date"><code class="literal">NO_ZERO_IN_DATE</code></a> is enabled
+            without also enabling strict mode or vice versa.
+          </p><p>
+            Because <a class="link" href="sql-mode.html#sqlmode_no_zero_in_date"><code class="literal">NO_ZERO_IN_DATE</code></a> is
+            deprecated, you should expect it to be removed in a future
+            MySQL release as a separate mode name and its effect
+            included in the effects of strict SQL mode.
+          </p></li><li class="listitem"><p><a name="sqlmode_only_full_group_by"></a>
+            <a class="link" href="sql-mode.html#sqlmode_only_full_group_by"><code class="literal">ONLY_FULL_GROUP_BY</code></a>
+          </p><a class="indexterm" name="idm44983607513488"></a><a class="indexterm" name="idm44983607512448"></a><a class="indexterm" name="idm44983607510960"></a><p>
+            Reject queries for which the select list,
+            <code class="literal">HAVING</code> condition, or <code class="literal">ORDER
+            BY</code> list refer to nonaggregated columns that are
+            neither named in the <code class="literal">GROUP BY</code> clause nor
+            are functionally dependent on (uniquely determined by)
+            <code class="literal">GROUP BY</code> columns.
+          </p><p>
+            A MySQL extension to standard SQL permits references in the
+            <code class="literal">HAVING</code> clause to aliased expressions in
+            the select list. The <code class="literal">HAVING</code> clause can
+            refer to aliases regardless of whether
+            <a class="link" href="sql-mode.html#sqlmode_only_full_group_by"><code class="literal">ONLY_FULL_GROUP_BY</code></a> is
+            enabled.
+          </p><p>
+            For additional discussion and examples, see
+            <a class="xref" href="group-by-handling.html" title="12.20.3 MySQL Handling of GROUP BY">Section 12.20.3, “MySQL Handling of GROUP BY”</a>.
+          </p></li><li class="listitem"><p><a name="sqlmode_pad_char_to_full_length"></a>
+            <a class="link" href="sql-mode.html#sqlmode_pad_char_to_full_length"><code class="literal">PAD_CHAR_TO_FULL_LENGTH</code></a>
+          </p><a class="indexterm" name="idm44983607499504"></a><a class="indexterm" name="idm44983607498464"></a><p>
+            By default, trailing spaces are trimmed from
+            <a class="link" href="char.html" title="11.3.2 The CHAR and VARCHAR Types"><code class="literal">CHAR</code></a> column values on
+            retrieval. If
+            <a class="link" href="sql-mode.html#sqlmode_pad_char_to_full_length"><code class="literal">PAD_CHAR_TO_FULL_LENGTH</code></a> is
+            enabled, trimming does not occur and retrieved
+            <a class="link" href="char.html" title="11.3.2 The CHAR and VARCHAR Types"><code class="literal">CHAR</code></a> values are padded to
+            their full length. This mode does not apply to
+            <a class="link" href="char.html" title="11.3.2 The CHAR and VARCHAR Types"><code class="literal">VARCHAR</code></a> columns, for which
+            trailing spaces are retained on retrieval.
+</p>
+<div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+
+<div class="admon-title">
+Note
+</div>
+<p>
+              As of MySQL 8.0.13,
+              <a class="link" href="sql-mode.html#sqlmode_pad_char_to_full_length"><code class="literal">PAD_CHAR_TO_FULL_LENGTH</code></a>
+              is deprecated. Expect it to be removed in a future version
+              of MySQL.
+</p>
+</div>
+<pre class="programlisting copytoclipboard language-sql"><code class="language-sql">mysql&gt; CREATE TABLE t1 (c1 CHAR(10));
+Query OK, 0 rows affected (0.37 sec)
+
+mysql&gt; INSERT INTO t1 (c1) VALUES('xy');
+Query OK, 1 row affected (0.01 sec)
+
+mysql&gt; SET sql_mode = '';
+Query OK, 0 rows affected (0.00 sec)
+
+mysql&gt; SELECT c1, CHAR_LENGTH(c1) FROM t1;
++------+-----------------+
+| c1   | CHAR_LENGTH(c1) |
++------+-----------------+
+| xy   |               2 |
++------+-----------------+
+1 row in set (0.00 sec)
+
+mysql&gt; SET sql_mode = 'PAD_CHAR_TO_FULL_LENGTH';
+Query OK, 0 rows affected (0.00 sec)
+
+mysql&gt; SELECT c1, CHAR_LENGTH(c1) FROM t1;
++------------+-----------------+
+| c1         | CHAR_LENGTH(c1) |
++------------+-----------------+
+| xy         |              10 |
++------------+-----------------+
+1 row in set (0.00 sec)</code></pre></li><li class="listitem"><p><a name="sqlmode_pipes_as_concat"></a>
+            <a class="link" href="sql-mode.html#sqlmode_pipes_as_concat"><code class="literal">PIPES_AS_CONCAT</code></a>
+          </p><a class="indexterm" name="idm44983607480544"></a><a class="indexterm" name="idm44983607479456"></a><p>
+            Treat <a class="link" href="logical-operators.html#operator_or"><code class="literal">||</code></a> as a
+            string concatenation operator (same as
+            <a class="link" href="string-functions.html#function_concat"><code class="literal">CONCAT()</code></a>) rather than as a
+            synonym for <a class="link" href="logical-operators.html#operator_or"><code class="literal">OR</code></a>.
+          </p></li><li class="listitem"><p><a name="sqlmode_real_as_float"></a>
+            <a class="link" href="sql-mode.html#sqlmode_real_as_float"><code class="literal">REAL_AS_FLOAT</code></a>
+          </p><a class="indexterm" name="idm44983607471264"></a><a class="indexterm" name="idm44983607470192"></a><p>
+            Treat <a class="link" href="floating-point-types.html" title="11.1.4 Floating-Point Types (Approximate Value) - FLOAT, DOUBLE"><code class="literal">REAL</code></a> as a synonym for
+            <a class="link" href="floating-point-types.html" title="11.1.4 Floating-Point Types (Approximate Value) - FLOAT, DOUBLE"><code class="literal">FLOAT</code></a>. By default, MySQL
+            treats <a class="link" href="floating-point-types.html" title="11.1.4 Floating-Point Types (Approximate Value) - FLOAT, DOUBLE"><code class="literal">REAL</code></a> as a synonym for
+            <a class="link" href="floating-point-types.html" title="11.1.4 Floating-Point Types (Approximate Value) - FLOAT, DOUBLE"><code class="literal">DOUBLE</code></a>.
+          </p></li><li class="listitem"><p><a name="sqlmode_strict_all_tables"></a>
+            <a class="link" href="sql-mode.html#sqlmode_strict_all_tables"><code class="literal">STRICT_ALL_TABLES</code></a>
+          </p><a class="indexterm" name="idm44983607460864"></a><a class="indexterm" name="idm44983607459824"></a><p>
+            Enable strict SQL mode for all storage engines. Invalid data
+            values are rejected. For details, see
+            <a class="xref" href="sql-mode.html#sql-mode-strict" title="Strict SQL Mode">Strict SQL Mode</a>.
+          </p></li><li class="listitem"><p><a name="sqlmode_strict_trans_tables"></a>
+            <a class="link" href="sql-mode.html#sqlmode_strict_trans_tables"><code class="literal">STRICT_TRANS_TABLES</code></a>
+          </p><a class="indexterm" name="idm44983607454672"></a><a class="indexterm" name="idm44983607453632"></a><p>
+            Enable strict SQL mode for transactional storage engines,
+            and when possible for nontransactional storage engines. For
+            details, see <a class="xref" href="sql-mode.html#sql-mode-strict" title="Strict SQL Mode">Strict SQL Mode</a>.
+          </p></li><li class="listitem"><p><a name="sqlmode_time_truncate_fractional"></a>
+            <a class="link" href="sql-mode.html#sqlmode_time_truncate_fractional"><code class="literal">TIME_TRUNCATE_FRACTIONAL</code></a>
+          </p><a class="indexterm" name="idm44983607448240"></a><a class="indexterm" name="idm44983607447152"></a><p>
+            Control whether rounding or truncation occurs when inserting
+            a <a class="link" href="time.html" title="11.2.3 The TIME Type"><code class="literal">TIME</code></a>,
+            <a class="link" href="datetime.html" title="11.2.2 The DATE, DATETIME, and TIMESTAMP Types"><code class="literal">DATE</code></a>, or
+            <a class="link" href="datetime.html" title="11.2.2 The DATE, DATETIME, and TIMESTAMP Types"><code class="literal">TIMESTAMP</code></a> value with a
+            fractional seconds part into a column having the same type
+            but fewer fractional digits. The default behavior is to use
+            rounding. If this mode is enabled, truncation occurs
+            instead. The following sequence of statements illustrates
+            the difference:
+          </p><pre class="programlisting copytoclipboard language-sql"><code class="language-sql">CREATE TABLE t (id INT, tval TIME(1));
+SET sql_mode='';
+INSERT INTO t (id, tval) VALUES(1, 1.55);
+SET sql_mode='TIME_TRUNCATE_FRACTIONAL';
+INSERT INTO t (id, tval) VALUES(2, 1.55);</code></pre><p>
+            The resulting table contents look like this, where the first
+            value has been subject to rounding and the second to
+            truncation:
+          </p><pre class="programlisting copytoclipboard language-sql"><code class="language-sql">mysql&gt; SELECT id, tval FROM t ORDER BY id;
++------+------------+
+| id   | tval       |
++------+------------+
+|    1 | 00:00:01.6 |
+|    2 | 00:00:01.5 |
++------+------------+</code></pre><p>
+            See also <a class="xref" href="fractional-seconds.html" title="11.2.6 Fractional Seconds in Time Values">Section 11.2.6, “Fractional Seconds in Time Values”</a>.
+</p></li></ul>
+</div>
+
+</div>
+<div class="simplesect">
+<div class="titlepage">
+<div>
+<div class="simple">
+<h4 class="title"><a name="sql-mode-combo"></a>Combination SQL Modes</h4>
+
+</div>
+
+</div>
+
+</div>
+<p>
+        The following special modes are provided as shorthand for
+        combinations of mode values from the preceding list.
+</p>
+<div class="itemizedlist">
+<ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p><a name="sqlmode_ansi"></a>
+            <a class="link" href="sql-mode.html#sqlmode_ansi"><code class="literal">ANSI</code></a>
+          </p><a class="indexterm" name="idm44983607431840"></a><a class="indexterm" name="idm44983607430768"></a><p>
+            Equivalent to
+            <a class="link" href="sql-mode.html#sqlmode_real_as_float"><code class="literal">REAL_AS_FLOAT</code></a>,
+            <a class="link" href="sql-mode.html#sqlmode_pipes_as_concat"><code class="literal">PIPES_AS_CONCAT</code></a>,
+            <a class="link" href="sql-mode.html#sqlmode_ansi_quotes"><code class="literal">ANSI_QUOTES</code></a>,
+            <a class="link" href="sql-mode.html#sqlmode_ignore_space"><code class="literal">IGNORE_SPACE</code></a>, and
+            <a class="link" href="sql-mode.html#sqlmode_only_full_group_by"><code class="literal">ONLY_FULL_GROUP_BY</code></a>.
+          </p><p>
+            <a class="link" href="sql-mode.html#sqlmode_ansi"><code class="literal">ANSI</code></a> mode also causes the
+            server to return an error for queries where a set function
+            <em class="replaceable"><code>S</code></em> with an outer reference
+            <code class="literal"><em class="replaceable"><code>S</code></em>(<em class="replaceable"><code>outer_ref</code></em>)</code>
+            cannot be aggregated in the outer query against which the
+            outer reference has been resolved. This is such a query:
+          </p><pre class="programlisting copytoclipboard language-sql one-line"><code class="language-sql">SELECT * FROM t1 WHERE t1.a IN (SELECT MAX(t1.b) FROM t2 WHERE ...);</code></pre><p>
+            Here, <a class="link" href="aggregate-functions.html#function_max"><code class="literal">MAX(t1.b)</code></a> cannot
+            aggregated in the outer query because it appears in the
+            <code class="literal">WHERE</code> clause of that query. Standard SQL
+            requires an error in this situation. If
+            <a class="link" href="sql-mode.html#sqlmode_ansi"><code class="literal">ANSI</code></a> mode is not enabled,
+            the server treats
+            <code class="literal"><em class="replaceable"><code>S</code></em>(<em class="replaceable"><code>outer_ref</code></em>)</code>
+            in such queries the same way that it would interpret
+            <code class="literal"><em class="replaceable"><code>S</code></em>(<em class="replaceable"><code>const</code></em>)</code>.
+          </p><p>
+            See <a class="xref" href="compatibility.html" title="1.7 MySQL Standards Compliance">Section 1.7, “MySQL Standards Compliance”</a>.
+          </p></li><li class="listitem"><p><a name="sqlmode_traditional"></a>
+            <a class="link" href="sql-mode.html#sqlmode_traditional"><code class="literal">TRADITIONAL</code></a>
+          </p><a class="indexterm" name="idm44983607407920"></a><a class="indexterm" name="idm44983607406848"></a><p>
+            <a class="link" href="sql-mode.html#sqlmode_traditional"><code class="literal">TRADITIONAL</code></a> is equivalent
+            to <a class="link" href="sql-mode.html#sqlmode_strict_trans_tables"><code class="literal">STRICT_TRANS_TABLES</code></a>,
+            <a class="link" href="sql-mode.html#sqlmode_strict_all_tables"><code class="literal">STRICT_ALL_TABLES</code></a>,
+            <a class="link" href="sql-mode.html#sqlmode_no_zero_in_date"><code class="literal">NO_ZERO_IN_DATE</code></a>,
+            <a class="link" href="sql-mode.html#sqlmode_no_zero_date"><code class="literal">NO_ZERO_DATE</code></a>,
+            <a class="link" href="sql-mode.html#sqlmode_error_for_division_by_zero"><code class="literal">ERROR_FOR_DIVISION_BY_ZERO</code></a>,
+            and
+            <a class="link" href="sql-mode.html#sqlmode_no_engine_substitution"><code class="literal">NO_ENGINE_SUBSTITUTION</code></a>.
+</p></li></ul>
+</div>
+
+</div>
+<div class="simplesect">
+<div class="titlepage">
+<div>
+<div class="simple">
+<h4 class="title"><a name="sql-mode-strict"></a>Strict SQL Mode</h4>
+
+</div>
+
+</div>
+
+</div>
+<p>
+        Strict mode controls how MySQL handles invalid or missing values
+        in data-change statements such as
+        <a class="link" href="insert.html" title="13.2.6 INSERT Statement"><code class="literal">INSERT</code></a> or
+        <a class="link" href="update.html" title="13.2.13 UPDATE Statement"><code class="literal">UPDATE</code></a>. A value can be invalid
+        for several reasons. For example, it might have the wrong data
+        type for the column, or it might be out of range. A value is
+        missing when a new row to be inserted does not contain a value
+        for a non-<code class="literal">NULL</code> column that has no explicit
+        <code class="literal">DEFAULT</code> clause in its definition. (For a
+        <code class="literal">NULL</code> column, <code class="literal">NULL</code> is
+        inserted if the value is missing.) Strict mode also affects DDL
+        statements such as <a class="link" href="create-table.html" title="13.1.20 CREATE TABLE Statement"><code class="literal">CREATE TABLE</code></a>.
+      </p><p>
+        If strict mode is not in effect, MySQL inserts adjusted values
+        for invalid or missing values and produces warnings (see
+        <a class="xref" href="show-warnings.html" title="13.7.7.42 SHOW WARNINGS Statement">Section 13.7.7.42, “SHOW WARNINGS Statement”</a>). In strict mode, you can
+        produce this behavior by using
+        <a class="link" href="insert.html" title="13.2.6 INSERT Statement"><code class="literal">INSERT IGNORE</code></a>
+        or <a class="link" href="update.html" title="13.2.13 UPDATE Statement"><code class="literal">UPDATE
+        IGNORE</code></a>.
+      </p><p>
+        For statements such as <a class="link" href="select.html" title="13.2.10 SELECT Statement"><code class="literal">SELECT</code></a>
+        that do not change data, invalid values generate a warning in
+        strict mode, not an error.
+      </p><p>
+        Strict mode produces an error for attempts to create a key that
+        exceeds the maximum key length. When strict mode is not enabled,
+        this results in a warning and truncation of the key to the
+        maximum key length.
+      </p><p>
+        Strict mode does not affect whether foreign key constraints are
+        checked. <a class="link" href="server-system-variables.html#sysvar_foreign_key_checks"><code class="literal">foreign_key_checks</code></a> can
+        be used for that. (See
+        <a class="xref" href="server-system-variables.html" title="5.1.8 Server System Variables">Section 5.1.8, “Server System Variables”</a>.)
+      </p><p>
+        Strict SQL mode is in effect if either
+        <a class="link" href="sql-mode.html#sqlmode_strict_all_tables"><code class="literal">STRICT_ALL_TABLES</code></a> or
+        <a class="link" href="sql-mode.html#sqlmode_strict_trans_tables"><code class="literal">STRICT_TRANS_TABLES</code></a> is
+        enabled, although the effects of these modes differ somewhat:
+</p>
+<div class="itemizedlist">
+<ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+            For transactional tables, an error occurs for invalid or
+            missing values in a data-change statement when either
+            <a class="link" href="sql-mode.html#sqlmode_strict_all_tables"><code class="literal">STRICT_ALL_TABLES</code></a> or
+            <a class="link" href="sql-mode.html#sqlmode_strict_trans_tables"><code class="literal">STRICT_TRANS_TABLES</code></a> is
+            enabled. The statement is aborted and rolled back.
+          </p></li><li class="listitem"><p>
+            For nontransactional tables, the behavior is the same for
+            either mode if the bad value occurs in the first row to be
+            inserted or updated: The statement is aborted and the table
+            remains unchanged. If the statement inserts or modifies
+            multiple rows and the bad value occurs in the second or
+            later row, the result depends on which strict mode is
+            enabled:
+</p>
+<div class="itemizedlist">
+<ul class="itemizedlist" style="list-style-type: circle; "><li class="listitem"><p>
+                For <a class="link" href="sql-mode.html#sqlmode_strict_all_tables"><code class="literal">STRICT_ALL_TABLES</code></a>,
+                MySQL returns an error and ignores the rest of the rows.
+                However, because the earlier rows have been inserted or
+                updated, the result is a partial update. To avoid this,
+                use single-row statements, which can be aborted without
+                changing the table.
+              </p></li><li class="listitem"><p>
+                For
+                <a class="link" href="sql-mode.html#sqlmode_strict_trans_tables"><code class="literal">STRICT_TRANS_TABLES</code></a>,
+                MySQL converts an invalid value to the closest valid
+                value for the column and inserts the adjusted value. If
+                a value is missing, MySQL inserts the implicit default
+                value for the column data type. In either case, MySQL
+                generates a warning rather than an error and continues
+                processing the statement. Implicit defaults are
+                described in <a class="xref" href="data-type-defaults.html" title="11.6 Data Type Default Values">Section 11.6, “Data Type Default Values”</a>.
+</p></li></ul>
+</div>
+</li></ul>
+</div>
+<p>
+        Strict mode affects handling of division by zero, zero dates,
+        and zeros in dates as follows:
+</p>
+<div class="itemizedlist">
+<ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+            Strict mode affects handling of division by zero, which
+            includes
+            <a class="link" href="mathematical-functions.html#function_mod"><code class="literal">MOD(<em class="replaceable"><code>N</code></em>,0)</code></a>:
+          </p><p>
+            For data-change operations
+            (<a class="link" href="insert.html" title="13.2.6 INSERT Statement"><code class="literal">INSERT</code></a>,
+            <a class="link" href="update.html" title="13.2.13 UPDATE Statement"><code class="literal">UPDATE</code></a>):
+</p>
+<div class="itemizedlist">
+<ul class="itemizedlist" style="list-style-type: circle; "><li class="listitem"><p>
+                If strict mode is not enabled, division by zero inserts
+                <code class="literal">NULL</code> and produces no warning.
+              </p></li><li class="listitem"><p>
+                If strict mode is enabled, division by zero produces an
+                error, unless <code class="literal">IGNORE</code> is given as
+                well. For <code class="literal">INSERT IGNORE</code> and
+                <code class="literal">UPDATE IGNORE</code>, division by zero
+                inserts <code class="literal">NULL</code> and produces a warning.
+</p></li></ul>
+</div>
+<p>
+            For <a class="link" href="select.html" title="13.2.10 SELECT Statement"><code class="literal">SELECT</code></a>, division by zero
+            returns <code class="literal">NULL</code>. Enabling strict mode causes
+            a warning to be produced as well.
+          </p></li><li class="listitem"><p>
+            Strict mode affects whether the server permits
+            <code class="literal">'0000-00-00'</code> as a valid date:
+</p>
+<div class="itemizedlist">
+<ul class="itemizedlist" style="list-style-type: circle; "><li class="listitem"><p>
+                If strict mode is not enabled,
+                <code class="literal">'0000-00-00'</code> is permitted and inserts
+                produce no warning.
+              </p></li><li class="listitem"><p>
+                If strict mode is enabled,
+                <code class="literal">'0000-00-00'</code> is not permitted and
+                inserts produce an error, unless
+                <code class="literal">IGNORE</code> is given as well. For
+                <code class="literal">INSERT IGNORE</code> and <code class="literal">UPDATE
+                IGNORE</code>, <code class="literal">'0000-00-00'</code> is
+                permitted and inserts produce a warning.
+</p></li></ul>
+</div>
+</li><li class="listitem"><p>
+            Strict mode affects whether the server permits dates in
+            which the year part is nonzero but the month or day part is
+            0 (dates such as <code class="literal">'2010-00-01'</code> or
+            <code class="literal">'2010-01-00'</code>):
+</p>
+<div class="itemizedlist">
+<ul class="itemizedlist" style="list-style-type: circle; "><li class="listitem"><p>
+                If strict mode is not enabled, dates with zero parts are
+                permitted and inserts produce no warning.
+              </p></li><li class="listitem"><p>
+                If strict mode is enabled, dates with zero parts are not
+                permitted and inserts produce an error, unless
+                <code class="literal">IGNORE</code> is given as well. For
+                <code class="literal">INSERT IGNORE</code> and <code class="literal">UPDATE
+                IGNORE</code>, dates with zero parts are inserted as
+                <code class="literal">'0000-00-00'</code> (which is considered
+                valid with <code class="literal">IGNORE</code>) and produce a
+                warning.
+</p></li></ul>
+</div>
+</li></ul>
+</div>
+<p>
+        For more information about strict mode with respect to
+        <code class="literal">IGNORE</code>, see
+        <a class="xref" href="sql-mode.html#ignore-strict-comparison" title="Comparison of the IGNORE Keyword and Strict SQL Mode">Comparison of the IGNORE Keyword and Strict SQL Mode</a>.
+      </p><p>
+        Strict mode affects handling of division by zero, zero dates,
+        and zeros in dates in conjunction with the
+        <a class="link" href="sql-mode.html#sqlmode_error_for_division_by_zero"><code class="literal">ERROR_FOR_DIVISION_BY_ZERO</code></a>,
+        <a class="link" href="sql-mode.html#sqlmode_no_zero_date"><code class="literal">NO_ZERO_DATE</code></a>, and
+        <a class="link" href="sql-mode.html#sqlmode_no_zero_in_date"><code class="literal">NO_ZERO_IN_DATE</code></a> modes.
+</p>
+</div>
+<div class="simplesect">
+<div class="titlepage">
+<div>
+<div class="simple">
+<h4 class="title"><a name="ignore-strict-comparison"></a>Comparison of the IGNORE Keyword and Strict SQL Mode</h4>
+
+</div>
+
+</div>
+
+</div>
+<p>
+        This section compares the effect on statement execution of the
+        <code class="literal">IGNORE</code> keyword (which downgrades errors to
+        warnings) and strict SQL mode (which upgrades warnings to
+        errors). It describes which statements they affect, and which
+        errors they apply to.
+      </p><p>
+        The following table presents a summary comparison of statement
+        behavior when the default is to produce an error versus a
+        warning. An example of when the default is to produce an error
+        is inserting a <code class="literal">NULL</code> into a <code class="literal">NOT
+        NULL</code> column. An example of when the default is to
+        produce a warning is inserting a value of the wrong data type
+        into a column (such as inserting the string
+        <code class="literal">'abc'</code> into an integer column).
+</p>
+<div class="informaltable">
+<table summary="Comparison of statement behavior when the default is to produce an error versus a warning."><col style="width: 33%"><col style="width: 33%"><col style="width: 33%"><thead><tr>
+            <th scope="col">Operational Mode</th>
+            <th scope="col">When Statement Default is Error</th>
+            <th scope="col">When Statement Default is Warning</th>
+          </tr></thead><tbody><tr>
+            <th scope="row">Without <code class="literal">IGNORE</code> or strict SQL mode</th>
+            <td>Error</td>
+            <td>Warning</td>
+          </tr><tr>
+            <th scope="row">With <code class="literal">IGNORE</code></th>
+            <td>Warning</td>
+            <td>Warning (same as without <code class="literal">IGNORE</code> or strict SQL mode)</td>
+          </tr><tr>
+            <th scope="row">With strict SQL mode</th>
+            <td>Error (same as without <code class="literal">IGNORE</code> or strict SQL mode)</td>
+            <td>Error</td>
+          </tr><tr>
+            <th scope="row">With <code class="literal">IGNORE</code> and strict SQL mode</th>
+            <td>Warning</td>
+            <td>Warning</td>
+</tr></tbody></table>
+</div>
+<p>
+        One conclusion to draw from the table is that when the
+        <code class="literal">IGNORE</code> keyword and strict SQL mode are both
+        in effect, <code class="literal">IGNORE</code> takes precedence. This
+        means that, although <code class="literal">IGNORE</code> and strict SQL
+        mode can be considered to have opposite effects on error
+        handling, they do not cancel when used together.
+</p>
+<div class="itemizedlist">
+<ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p><a class="xref" href="sql-mode.html#ignore-effect-on-execution" title="The Effect of IGNORE on Statement Execution">The Effect of IGNORE on Statement Execution</a></p></li><li class="listitem"><p><a class="xref" href="sql-mode.html#strict-sql-mode-effect-on-execution" title="The Effect of Strict SQL Mode on Statement Execution">The Effect of Strict SQL Mode on Statement Execution</a></p></li></ul>
+</div>
+<h5><a name="ignore-effect-on-execution"></a>The Effect of IGNORE on Statement Execution</h5>
+<p>
+        Several statements in MySQL support an optional
+        <code class="literal">IGNORE</code> keyword. This keyword causes the
+        server to downgrade certain types of errors and generate
+        warnings instead. For a multiple-row statement, downgrading an
+        error to a warning may enable a row to be processed. Otherwise,
+        <code class="literal">IGNORE</code> causes the statement to skip to the
+        next row instead of aborting. (For nonignorable errors, an error
+        occurs regardless of the <code class="literal">IGNORE</code> keyword.)
+      </p><p>
+        Example: If the table <code class="literal">t</code> has a primary key
+        column <code class="literal">i</code> containing unique values, attempting
+        to insert the same value of <code class="literal">i</code> into multiple
+        rows normally produces a duplicate-key error:
+      </p><pre class="programlisting copytoclipboard language-sql"><code class="language-sql">mysql&gt; CREATE TABLE t (i INT NOT NULL PRIMARY KEY);
+mysql&gt; INSERT INTO t (i) VALUES(1),(1);
+ERROR 1062 (23000): Duplicate entry '1' for key 't.PRIMARY'</code></pre><p>
+        With <code class="literal">IGNORE</code>, the row containing the duplicate
+        key still is not inserted, but a warning occurs instead of an
+        error:
+      </p><pre class="programlisting copytoclipboard language-sql"><code class="language-sql">mysql&gt; INSERT IGNORE INTO t (i) VALUES(1),(1);
+Query OK, 1 row affected, 1 warning (0.01 sec)
+Records: 2  Duplicates: 1  Warnings: 1
+
+mysql&gt; SHOW WARNINGS;
++---------+------+-----------------------------------------+
+| Level   | Code | Message                                 |
++---------+------+-----------------------------------------+
+| Warning | 1062 | Duplicate entry '1' for key 't.PRIMARY' |
++---------+------+-----------------------------------------+
+1 row in set (0.00 sec)</code></pre><p>
+        Example: If the table <code class="literal">t2</code> has a <code class="literal">NOT
+        NULL</code> column <code class="literal">id</code>, attempting to
+        insert <code class="literal">NULL</code> produces an error in strict SQL
+        mode:
+      </p><pre class="programlisting copytoclipboard language-sql"><code class="language-sql">mysql&gt; CREATE TABLE t2 (id INT NOT NULL);
+mysql&gt; INSERT INTO t2 (id) VALUES(1),(NULL),(3);
+ERROR 1048 (23000): Column 'id' cannot be null
+mysql&gt; SELECT * FROM t2;
+Empty set (0.00 sec)</code></pre><p>
+        If the SQL mode is not strict, <code class="literal">IGNORE</code> causes
+        the <code class="literal">NULL</code> to be inserted as the column
+        implicit default (0 in this case), which enables the row to be
+        handled without skipping it:
+      </p><pre class="programlisting copytoclipboard language-sql"><code class="language-sql">mysql&gt; INSERT INTO t2 (id) VALUES(1),(NULL),(3);
+mysql&gt; SELECT * FROM t2;
++----+
+| id |
++----+
+|  1 |
+|  0 |
+|  3 |
++----+</code></pre><p>
+        These statements support the <code class="literal">IGNORE</code> keyword:
+</p>
+<div class="itemizedlist">
+<ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+            <a class="link" href="create-table.html" title="13.1.20 CREATE TABLE Statement"><code class="literal">CREATE TABLE
+            ... SELECT</code></a>: <code class="literal">IGNORE</code> does not
+            apply to the <a class="link" href="create-table.html" title="13.1.20 CREATE TABLE Statement"><code class="literal">CREATE TABLE</code></a> or
+            <a class="link" href="select.html" title="13.2.10 SELECT Statement"><code class="literal">SELECT</code></a> parts of the statement
+            but to inserts into the table of rows produced by the
+            <a class="link" href="select.html" title="13.2.10 SELECT Statement"><code class="literal">SELECT</code></a>. Rows that duplicate
+            an existing row on a unique key value are discarded.
+          </p></li><li class="listitem"><p>
+            <a class="link" href="delete.html" title="13.2.2 DELETE Statement"><code class="literal">DELETE</code></a>:
+            <code class="literal">IGNORE</code> causes MySQL to ignore errors
+            during the process of deleting rows.
+          </p></li><li class="listitem"><p>
+            <a class="link" href="insert.html" title="13.2.6 INSERT Statement"><code class="literal">INSERT</code></a>: With
+            <code class="literal">IGNORE</code>, rows that duplicate an existing
+            row on a unique key value are discarded. Rows set to values
+            that would cause data conversion errors are set to the
+            closest valid values instead.
+          </p><p>
+            <a class="indexterm" name="idm44983607253488"></a>
+
+            For partitioned tables where no partition matching a given
+            value is found, <code class="literal">IGNORE</code> causes the insert
+            operation to fail silently for rows containing the unmatched
+            value.
+          </p></li><li class="listitem"><p>
+            <a class="link" href="load-data.html" title="13.2.7 LOAD DATA Statement"><code class="literal">LOAD DATA</code></a>,
+            <a class="link" href="load-xml.html" title="13.2.8 LOAD XML Statement"><code class="literal">LOAD XML</code></a>: With
+            <code class="literal">IGNORE</code>, rows that duplicate an existing
+            row on a unique key value are discarded.
+          </p></li><li class="listitem"><p>
+            <a class="link" href="update.html" title="13.2.13 UPDATE Statement"><code class="literal">UPDATE</code></a>: With
+            <code class="literal">IGNORE</code>, rows for which duplicate-key
+            conflicts occur on a unique key value are not updated. Rows
+            updated to values that would cause data conversion errors
+            are updated to the closest valid values instead.
+</p></li></ul>
+</div>
+<p>
+        The <code class="literal">IGNORE</code> keyword applies to the following
+        ignorable errors:
+      </p><pre class="programlisting copytoclipboard language-simple"><code class="language-simple">ER_BAD_NULL_ERROR
+ER_DUP_ENTRY
+ER_DUP_ENTRY_WITH_KEY_NAME
+ER_DUP_KEY
+ER_NO_PARTITION_FOR_GIVEN_VALUE
+ER_NO_PARTITION_FOR_GIVEN_VALUE_SILENT
+ER_NO_REFERENCED_ROW_2
+ER_ROW_DOES_NOT_MATCH_GIVEN_PARTITION_SET
+ER_ROW_IS_REFERENCED_2
+ER_SUBQUERY_NO_1_ROW
+ER_VIEW_CHECK_FAILED</code></pre>
+<h5><a name="strict-sql-mode-effect-on-execution"></a>The Effect of Strict SQL Mode on Statement Execution</h5>
+<p>
+        The MySQL server can operate in different SQL modes, and can
+        apply these modes differently for different clients, depending
+        on the value of the <a class="link" href="server-system-variables.html#sysvar_sql_mode"><code class="literal">sql_mode</code></a>
+        system variable. In <span class="quote">“<span class="quote">strict</span>”</span> SQL mode, the server
+        upgrades certain warnings to errors.
+      </p><p>
+        For example, in non-strict SQL mode, inserting the string
+        <code class="literal">'abc'</code> into an integer column results in
+        conversion of the value to 0 and a warning:
+      </p><pre class="programlisting copytoclipboard language-sql"><code class="language-sql">mysql&gt; SET sql_mode = '';
+Query OK, 0 rows affected (0.00 sec)
+
+mysql&gt; INSERT INTO t (i) VALUES('abc');
+Query OK, 1 row affected, 1 warning (0.01 sec)
+
+mysql&gt; SHOW WARNINGS;
++---------+------+--------------------------------------------------------+
+| Level   | Code | Message                                                |
++---------+------+--------------------------------------------------------+
+| Warning | 1366 | Incorrect integer value: 'abc' for column 'i' at row 1 |
++---------+------+--------------------------------------------------------+
+1 row in set (0.00 sec)</code></pre><p>
+        In strict SQL mode, the invalid value is rejected with an error:
+      </p><pre class="programlisting copytoclipboard language-sql"><code class="language-sql">mysql&gt; SET sql_mode = 'STRICT_ALL_TABLES';
+Query OK, 0 rows affected (0.00 sec)
+
+mysql&gt; INSERT INTO t (i) VALUES('abc');
+ERROR 1366 (HY000): Incorrect integer value: 'abc' for column 'i' at row 1</code></pre><p>
+        For more information about possible settings of the
+        <a class="link" href="server-system-variables.html#sysvar_sql_mode"><code class="literal">sql_mode</code></a> system variable, see
+        <a class="xref" href="sql-mode.html" title="5.1.11 Server SQL Modes">Section 5.1.11, “Server SQL Modes”</a>.
+      </p><p>
+        Strict SQL mode applies to the following statements under
+        conditions for which some value might be out of range or an
+        invalid row is inserted into or deleted from a table:
+</p>
+<div class="itemizedlist">
+<ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+            <a class="link" href="alter-table.html" title="13.1.9 ALTER TABLE Statement"><code class="literal">ALTER TABLE</code></a>
+          </p></li><li class="listitem"><p>
+            <a class="link" href="create-table.html" title="13.1.20 CREATE TABLE Statement"><code class="literal">CREATE TABLE</code></a>
+          </p></li><li class="listitem"><p>
+            <a class="link" href="create-table.html" title="13.1.20 CREATE TABLE Statement"><code class="literal">CREATE TABLE
+            ... SELECT</code></a>
+          </p></li><li class="listitem"><p>
+            <a class="link" href="delete.html" title="13.2.2 DELETE Statement"><code class="literal">DELETE</code></a> (both single table and
+            multiple table)
+          </p></li><li class="listitem"><p>
+            <a class="link" href="insert.html" title="13.2.6 INSERT Statement"><code class="literal">INSERT</code></a>
+          </p></li><li class="listitem"><p>
+            <a class="link" href="load-data.html" title="13.2.7 LOAD DATA Statement"><code class="literal">LOAD DATA</code></a>
+          </p></li><li class="listitem"><p>
+            <a class="link" href="load-xml.html" title="13.2.8 LOAD XML Statement"><code class="literal">LOAD XML</code></a>
+          </p></li><li class="listitem"><p>
+            <a class="link" href="select.html" title="13.2.10 SELECT Statement"><code class="literal">SELECT
+            SLEEP()</code></a>
+          </p></li><li class="listitem"><p>
+            <a class="link" href="update.html" title="13.2.13 UPDATE Statement"><code class="literal">UPDATE</code></a> (both single table and
+            multiple table)
+</p></li></ul>
+</div>
+<p>
+        Within stored programs, individual statements of the types just
+        listed execute in strict SQL mode if the program was defined
+        while strict mode was in effect.
+      </p><p>
+        Strict SQL mode applies to the following errors, which represent
+        a class of errors in which an input value is either invalid or
+        missing. A value is invalid if it has the wrong data type for
+        the column or might be out of range. A value is missing if a new
+        row to be inserted does not contain a value for a <code class="literal">NOT
+        NULL</code> column that has no explicit
+        <code class="literal">DEFAULT</code> clause in its definition.
+      </p><pre class="programlisting copytoclipboard language-simple"><code class="language-simple">ER_BAD_NULL_ERROR
+ER_CUT_VALUE_GROUP_CONCAT
+ER_DATA_TOO_LONG
+ER_DATETIME_FUNCTION_OVERFLOW
+ER_DIVISION_BY_ZERO
+ER_INVALID_ARGUMENT_FOR_LOGARITHM
+ER_NO_DEFAULT_FOR_FIELD
+ER_NO_DEFAULT_FOR_VIEW_FIELD
+ER_TOO_LONG_KEY
+ER_TRUNCATED_WRONG_VALUE
+ER_TRUNCATED_WRONG_VALUE_FOR_FIELD
+ER_WARN_DATA_OUT_OF_RANGE
+ER_WARN_NULL_TO_NOTNULL
+ER_WARN_TOO_FEW_RECORDS
+ER_WRONG_ARGUMENTS
+ER_WRONG_VALUE_FOR_TYPE
+WARN_DATA_TRUNCATED</code></pre>
+<div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+
+<div class="admon-title">
+Note
+</div>
+<p>
+          Because continued MySQL development defines new errors, there
+          may be errors not in the preceding list to which strict SQL
+          mode applies.
+</p>
+</div>
+
+</div>
+
+</div>
+<br />
+        </div>
+
+                <div id="docs-in-page-nav-container">
+            <div id="docs-in-page-nav">
+                
+    <a href="server-status-variables.html"
+        aria-label="Previous" title="Previous: Server Status Variables"><span
+        class="icon-chevron-left"></span> PREV</a> &nbsp;
+<a href="index.html" aria-label="Start" title="Start"> HOME</a> &nbsp;
+        <a aria-label="Up" href="mysqld-server.html" title="Up: The MySQL Server"> UP</a> &nbsp;
+    <a href="connection-management.html" aria-label="Next"
+        title="Next: Connection Management">NEXT <span
+        class="icon-chevron-right"></span></a>
+            </div>
+        </div>
+        
+         <div id="docs-body-extra">
+             
+<a class="docs-sidebar-section" href=""><span class="icon-related"></span>
+    <span class="text">Related Documentation</span></a>
+<div class="docs-sidebar-accordian">
+    <div class="text">
+        <a href="/doc/relnotes/mysql/8.0/en/">MySQL 8.0 Release Notes</a><br />
+        <a href="/doc/dev/mysql-server/latest/">MySQL 8.0 Source Code Documentation</a><br />
+        </div>
+</div>
+
+    <a class="docs-sidebar-section" href=""><span class="icon-download-thin"></span>
+        <span class="text">
+            Download
+                            this Manual
+                    </span>
+    </a>
+    <div class="docs-sidebar-accordian">
+        <div class="text">
+                        <a href="https://downloads.mysql.com/docs/refman-8.0-en.pdf">PDF (US Ltr)</a>
+            - 42.3Mb<br />
+                        <a href="https://downloads.mysql.com/docs/refman-8.0-en.a4.pdf">PDF (A4)</a>
+            - 42.4Mb<br />
+                        <a href="https://downloads.mysql.com/docs/refman-8.0-en.man-gpl.tar.gz">Man Pages (TGZ)</a>
+            - 269.0Kb<br />
+                        <a href="https://downloads.mysql.com/docs/refman-8.0-en.man-gpl.zip">Man Pages (Zip)</a>
+            - 378.8Kb<br />
+                        <a href="https://downloads.mysql.com/docs/mysql-8.0.info.gz">Info (Gzip)</a>
+            - 4.1Mb<br />
+                        <a href="https://downloads.mysql.com/docs/mysql-8.0.info.zip">Info (Zip)</a>
+            - 4.1Mb<br />
+                    </div>
+    </div>
+
+<a class="docs-sidebar-section" href=""><span class="icon-book"></span>
+    <span class="text">Excerpts from this Manual</span></a>
+<div class="docs-sidebar-accordian">
+    <div class="text">
+                <a href="/doc/mysql-backup-excerpt/8.0/en/">MySQL Backup and Recovery</a><br />
+                <a href="/doc/mysql-g11n-excerpt/8.0/en/">MySQL Globalization</a><br />
+                <a href="/doc/mysql-infoschema-excerpt/8.0/en/">MySQL Information Schema</a><br />
+                <a href="/doc/mysql-installation-excerpt/8.0/en/">MySQL Installation Guide</a><br />
+                <a href="/doc/mysql-security-excerpt/8.0/en/">Security in MySQL</a><br />
+                <a href="/doc/mysql-startstop-excerpt/8.0/en/">Starting and Stopping MySQL</a><br />
+                <a href="/doc/mysql-linuxunix-excerpt/8.0/en/">MySQL and Linux/Unix</a><br />
+                <a href="/doc/mysql-windows-excerpt/8.0/en/">MySQL and Windows</a><br />
+                <a href="/doc/mysql-macos-excerpt/8.0/en/">MySQL and macOS</a><br />
+                <a href="/doc/mysql-solaris-excerpt/8.0/en/">MySQL and Solaris</a><br />
+                <a href="/doc/mysql-sourcebuild-excerpt/8.0/en/">Building MySQL from Source</a><br />
+                <a href="/doc/mysql-reslimits-excerpt/8.0/en/">MySQL Restrictions and Limitations</a><br />
+                <a href="/doc/mysql-partitioning-excerpt/8.0/en/">MySQL Partitioning</a><br />
+                <a href="/doc/mysql-tutorial-excerpt/8.0/en/">MySQL Tutorial</a><br />
+                <a href="/doc/mysql-perfschema-excerpt/8.0/en/">MySQL Performance Schema</a><br />
+                <a href="/doc/mysql-replication-excerpt/8.0/en/">MySQL Replication</a><br />
+                <a href="/doc/mysql-repo-excerpt/8.0/en/">Using the MySQL Yum Repository</a><br />
+                <a href="/doc/mysql-cluster-excerpt/8.0/en/">MySQL NDB Cluster 8.0</a><br />
+            </div>
+</div>
+         </div>
+
+              </div>
+     </div>
+
+</div>
+
+<script>
+$(function() {
+    var doc = new $.doc({ 'mobile': $.browser.mobile, 'docId': 1, 'highlight': true });
+});
+</script>
+    
+
+            
+        </div>
+    </div>
+
+    <footer class="collapsed">
+        <div id="footer-bottom">
+                                    <div id="footer-collapse">
+                <a href="" id="expand-footer"
+                    aria-label="Expand Footer"
+                    title="Expand Footer"><span
+                    class="icon-plus-square"></span></a>
+            </div>
+                        <div class="footer-contact">
+                <div id="footer-contact-icon" style="display: none;">
+                    <span class="icon-call-phone"></span>
+                </div>
+                <div id="footer-contact-numbers" style="display: none;">
+                    <strong>Contact MySQL Sales</strong><br/>
+                    USA/Canada: +1-866-221-0634 &nbsp;
+                    (<a href="https://www.mysql.com/about/contact/phone/" class="darker-blue">More Countries &raquo;</a>)
+                </div>
+                <div id="footer-contact-copyright" style="display: inline-block;">
+                    <a href="http://www.oracle.com/" aria-label="Oracle" title="Oracle"><span class="oracle-logo"></span></a>
+                    &nbsp; &copy; 2022, Oracle Corporation and/or its affiliates
+                </div>
+            </div>
+            <div class="social-icons">
+                <a aria-label="Join us on Facebook" title="Join us on Facebook" href="http://www.facebook.com/mysql"><span class="icon-facebook-square"></span></a>
+                <a aria-label="Follow us on Twitter" title="Follow us on Twitter" href="https://twitter.com/mysql"><span class="icon-twitter-square"></span></a>
+                <a aria-label="Follow us on LinkedIn" title="Follow us on LinkedIn" href="https://www.linkedin.com/company/mysql"><span class="icon-linkedin-square"></span></a>
+                <a aria-label="Visit our YouTube channel" title="Visit our YouTube channel" href="http://www.youtube.com/mysqlchannel"><span class="icon-youtube-square"></span></a>
+            </div>
+            <br class="clear" />
+        </div>
+        <div id="footer-links">
+
+            <div id="site-footer-links">
+                <div id="footer-nav"></div>
+
+                <div class="links">
+                    <ul>
+                        <li class="top"><a href="https://www.mysql.com/products/">Products</a></li>
+                        <li><a href="https://www.mysql.com/cloud/">MySQL Database Service</a></li>
+                        <li><a href="https://www.mysql.com/products/enterprise/">MySQL Enterprise Edition</a></li>
+                        <li><a href="https://www.mysql.com/products/standard/">MySQL Standard Edition</a></li>
+                        <li><a href="https://www.mysql.com/products/classic/">MySQL Classic Edition</a></li>
+                        <li><a href="https://www.mysql.com/products/cluster/">MySQL Cluster CGE</a></li>
+                        <li><a href="https://www.mysql.com/oem/">MySQL Embedded (OEM/ISV)</a></li>
+                    </ul>
+                </div>
+
+                <div class="links">
+                    <ul>
+                        <li class="top"><a href="https://www.mysql.com/services/">Services</a></li>
+                        <li><a href="https://www.mysql.com/training/">Training</a></li>
+                        <li><a href="https://www.mysql.com/certification/">Certification</a></li>
+                        <li><a href="https://www.mysql.com/consulting/">Consulting</a></li>
+                        <li><a href="https://www.mysql.com/support/">Support</a></li>
+                    </ul>
+                </div>
+
+                <div class="links">
+                    <ul>
+                        <li class="top"><a href="https://www.mysql.com/downloads/">Downloads</a></li>
+                        <li><a href="https://dev.mysql.com/downloads/mysql/">MySQL Community Server</a></li>
+                        <li><a href="https://dev.mysql.com/downloads/cluster/">MySQL NDB Cluster</a></li>
+                        <li><a href="https://dev.mysql.com/downloads/shell/">MySQL Shell</a></li>
+                        <li><a href="https://dev.mysql.com/downloads/router/">MySQL Router</a></li>
+                        <li><a href="https://dev.mysql.com/downloads/workbench/">MySQL Workbench</a></li>
+                    </ul>
+                </div>
+
+                <div class="links">
+                    <ul>
+                        <li class="top"><a href="https://dev.mysql.com/doc/">Documentation</a></li>
+                        <li><a href="https://dev.mysql.com/doc/refman/en/">MySQL Reference Manual</a></li>
+                        <li><a href="https://dev.mysql.com/doc/workbench/en/">MySQL Workbench</a></li>
+                        <li><a href="https://dev.mysql.com/doc/index-cluster.html">MySQL NDB Cluster</a></li>
+                        <li><a href="https://dev.mysql.com/doc/index-connectors.html">MySQL Connectors</a></li>
+                        <li><a href="https://dev.mysql.com/doc/#topic">Topic Guides</a></li>
+                    </ul>
+                </div>
+
+                <div class="links">
+                    <ul>
+                        <li class="top"><a href="https://www.mysql.com/about/">About MySQL</a></li>
+                        <li><a href="https://www.mysql.com/about/contact/">Contact Us</a></li>
+                        <li><a href="https://blogs.oracle.com/mysql/">Blogs</a></li>
+                                                                        <li><a href="https://www.mysql.com/buy-mysql/">How to Buy</a></li>
+                        <li><a href="https://www.mysql.com/partners/">Partners</a></li>
+                        <li><a href="https://www.mysql.com/about/jobs/">Job Opportunities</a></li>
+                        <li><a href="https://www.mysql.com/sitemap.html">Site Map</a></li>
+                    </ul>
+                </div>
+
+                            </div>
+
+            <div id="footer-logo">
+                <a href="http://www.oracle.com/" aria-label="Oracle" title="Oracle"><span class="oracle-logo"></span></a>
+                &nbsp; &copy; 2022, Oracle Corporation and/or its affiliates
+                <div class="footer-legal-links">
+                    <a href="https://www.mysql.com/about/legal/">Legal Policies</a> |
+                    <a href="http://www.oracle.com/us/legal/privacy/index.htm">Your Privacy Rights</a> |
+                    <a href="http://www.oracle.com/us/legal/terms/index.html">Terms of Use</a> |
+                    <a href="http://www.oracle.com/us/legal/third-party-trademarks/index.html">Trademark Policy</a> |
+                    <a href="http://www.oracle.com/technetwork/community/oca-486395.html">Contributor Agreement</a> |
+                    <div id="teconsent"></div>
+                </div>
+            </div>
+
+        </div>
+    </footer>
+</div>
+
+            <script>
+    if ((oracle.truste.api.getGdprConsentDecision().consentDecision) &&
+            (oracle.truste.api.getGdprConsentDecision().consentDecision.indexOf(0) != -1 ||
+             oracle.truste.api.getGdprConsentDecision().consentDecision.indexOf(2) != -1) )
+    {
+        document.write('<script src="https://labs.mysql.com/common/js/metrics/s_code_remote.js"><\/script>');
+        document.write('<script type="text/javascript" async src="//c.oracleinfinity.io/acs/account/wh3g12c3gg/js/mysql/odc.js?_ora.context=analytics:production"><\/script>');
+    }
+    </script>
+
+        
+    
+</body>
+</html>

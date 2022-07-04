@@ -1,0 +1,968 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>PHP: ArrayObject - Manual </title>
+
+ <link rel="shortcut icon" href="https://www.php.net/favicon.ico">
+ <link rel="search" type="application/opensearchdescription+xml" href="http://php.net/phpnetimprovedsearch.src" title="Add PHP.net search">
+ <link rel="alternate" type="application/atom+xml" href="https://www.php.net/releases/feed.php" title="PHP Release feed">
+ <link rel="alternate" type="application/atom+xml" href="https://www.php.net/feed.atom" title="PHP: Hypertext Preprocessor">
+
+ <link rel="canonical" href="https://www.php.net/manual/en/class.arrayobject.php">
+ <link rel="shorturl" href="https://www.php.net/arrayobject">
+ <link rel="alternate" href="https://www.php.net/arrayobject" hreflang="x-default">
+
+ <link rel="contents" href="https://www.php.net/manual/en/index.php">
+ <link rel="index" href="https://www.php.net/manual/en/spl.misc.php">
+ <link rel="prev" href="https://www.php.net/manual/en/spl.misc.php">
+ <link rel="next" href="https://www.php.net/manual/en/arrayobject.append.php">
+
+ <link rel="alternate" href="https://www.php.net/manual/en/class.arrayobject.php" hreflang="en">
+ <link rel="alternate" href="https://www.php.net/manual/pt_BR/class.arrayobject.php" hreflang="pt_BR">
+ <link rel="alternate" href="https://www.php.net/manual/zh/class.arrayobject.php" hreflang="zh">
+ <link rel="alternate" href="https://www.php.net/manual/fr/class.arrayobject.php" hreflang="fr">
+ <link rel="alternate" href="https://www.php.net/manual/de/class.arrayobject.php" hreflang="de">
+ <link rel="alternate" href="https://www.php.net/manual/ja/class.arrayobject.php" hreflang="ja">
+ <link rel="alternate" href="https://www.php.net/manual/ru/class.arrayobject.php" hreflang="ru">
+ <link rel="alternate" href="https://www.php.net/manual/es/class.arrayobject.php" hreflang="es">
+ <link rel="alternate" href="https://www.php.net/manual/tr/class.arrayobject.php" hreflang="tr">
+
+<link rel="stylesheet" type="text/css" href="/cached.php?t=1639034403&amp;f=/fonts/Fira/fira.css" media="screen">
+<link rel="stylesheet" type="text/css" href="/cached.php?t=1539765004&amp;f=/fonts/Font-Awesome/css/fontello.css" media="screen">
+<link rel="stylesheet" type="text/css" href="/cached.php?t=1606338002&amp;f=/styles/theme-base.css" media="screen">
+<link rel="stylesheet" type="text/css" href="/cached.php?t=1647366004&amp;f=/styles/theme-medium.css" media="screen">
+
+ <!--[if lte IE 7]>
+ <link rel="stylesheet" type="text/css" href="https://www.php.net/styles/workarounds.ie7.css" media="screen">
+ <![endif]-->
+
+ <!--[if lte IE 8]>
+ <script>
+  window.brokenIE = true;
+ </script>
+ <![endif]-->
+
+ <!--[if lte IE 9]>
+ <link rel="stylesheet" type="text/css" href="https://www.php.net/styles/workarounds.ie9.css" media="screen">
+ <![endif]-->
+
+ <!--[if IE]>
+ <script src="https://www.php.net/js/ext/html5.js"></script>
+ <![endif]-->
+
+ <base href="https://www.php.net/manual/en/class.arrayobject.php">
+
+
+</head>
+<body class="docs ">
+
+<nav id="head-nav" class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <a href="/" class="brand"><img src="/images/logos/php-logo.svg" width="48" height="24" alt="php"></a>
+    <div id="mainmenu-toggle-overlay"></div>
+    <input type="checkbox" id="mainmenu-toggle">
+    <ul class="nav">
+      <li class=""><a href="/downloads">Downloads</a></li>
+      <li class="active"><a href="/docs.php">Documentation</a></li>
+      <li class=""><a href="/get-involved" >Get Involved</a></li>
+      <li class=""><a href="/support">Help</a></li>
+      <li class="">
+        <a href="/releases/8.1/index.php">
+          <img src="/images/php8/logo_php8_1.svg" alt="php8.1" height="22" width="60">
+        </a>
+      </li>
+    </ul>
+    <form class="navbar-search" id="topsearch" action="/search.php">
+      <input type="hidden" name="show" value="quickref">
+      <input type="search" name="pattern" class="search-query" placeholder="Search" accesskey="s">
+    </form>
+  </div>
+  <div id="flash-message"></div>
+</nav>
+<div class="headsup"><a href='/index.php#id2022-03-17-1'>PHP 8.0.17 Released!</a></div>
+<nav id="trick"><div><dl>
+<dt><a href='/manual/en/getting-started.php'>Getting Started</a></dt>
+	<dd><a href='/manual/en/introduction.php'>Introduction</a></dd>
+	<dd><a href='/manual/en/tutorial.php'>A simple tutorial</a></dd>
+<dt><a href='/manual/en/langref.php'>Language Reference</a></dt>
+	<dd><a href='/manual/en/language.basic-syntax.php'>Basic syntax</a></dd>
+	<dd><a href='/manual/en/language.types.php'>Types</a></dd>
+	<dd><a href='/manual/en/language.variables.php'>Variables</a></dd>
+	<dd><a href='/manual/en/language.constants.php'>Constants</a></dd>
+	<dd><a href='/manual/en/language.expressions.php'>Expressions</a></dd>
+	<dd><a href='/manual/en/language.operators.php'>Operators</a></dd>
+	<dd><a href='/manual/en/language.control-structures.php'>Control Structures</a></dd>
+	<dd><a href='/manual/en/language.functions.php'>Functions</a></dd>
+	<dd><a href='/manual/en/language.oop5.php'>Classes and Objects</a></dd>
+	<dd><a href='/manual/en/language.namespaces.php'>Namespaces</a></dd>
+	<dd><a href='/manual/en/language.enumerations.php'>Enumerations</a></dd>
+	<dd><a href='/manual/en/language.errors.php'>Errors</a></dd>
+	<dd><a href='/manual/en/language.exceptions.php'>Exceptions</a></dd>
+	<dd><a href='/manual/en/language.fibers.php'>Fibers</a></dd>
+	<dd><a href='/manual/en/language.generators.php'>Generators</a></dd>
+	<dd><a href='/manual/en/language.attributes.php'>Attributes</a></dd>
+	<dd><a href='/manual/en/language.references.php'>References Explained</a></dd>
+	<dd><a href='/manual/en/reserved.variables.php'>Predefined Variables</a></dd>
+	<dd><a href='/manual/en/reserved.exceptions.php'>Predefined Exceptions</a></dd>
+	<dd><a href='/manual/en/reserved.interfaces.php'>Predefined Interfaces and Classes</a></dd>
+	<dd><a href='/manual/en/context.php'>Context options and parameters</a></dd>
+	<dd><a href='/manual/en/wrappers.php'>Supported Protocols and Wrappers</a></dd>
+</dl>
+<dl>
+<dt><a href='/manual/en/security.php'>Security</a></dt>
+	<dd><a href='/manual/en/security.intro.php'>Introduction</a></dd>
+	<dd><a href='/manual/en/security.general.php'>General considerations</a></dd>
+	<dd><a href='/manual/en/security.cgi-bin.php'>Installed as CGI binary</a></dd>
+	<dd><a href='/manual/en/security.apache.php'>Installed as an Apache module</a></dd>
+	<dd><a href='/manual/en/security.sessions.php'>Session Security</a></dd>
+	<dd><a href='/manual/en/security.filesystem.php'>Filesystem Security</a></dd>
+	<dd><a href='/manual/en/security.database.php'>Database Security</a></dd>
+	<dd><a href='/manual/en/security.errors.php'>Error Reporting</a></dd>
+	<dd><a href='/manual/en/security.variables.php'>User Submitted Data</a></dd>
+	<dd><a href='/manual/en/security.hiding.php'>Hiding PHP</a></dd>
+	<dd><a href='/manual/en/security.current.php'>Keeping Current</a></dd>
+<dt><a href='/manual/en/features.php'>Features</a></dt>
+	<dd><a href='/manual/en/features.http-auth.php'>HTTP authentication with PHP</a></dd>
+	<dd><a href='/manual/en/features.cookies.php'>Cookies</a></dd>
+	<dd><a href='/manual/en/features.sessions.php'>Sessions</a></dd>
+	<dd><a href='/manual/en/features.xforms.php'>Dealing with XForms</a></dd>
+	<dd><a href='/manual/en/features.file-upload.php'>Handling file uploads</a></dd>
+	<dd><a href='/manual/en/features.remote-files.php'>Using remote files</a></dd>
+	<dd><a href='/manual/en/features.connection-handling.php'>Connection handling</a></dd>
+	<dd><a href='/manual/en/features.persistent-connections.php'>Persistent Database Connections</a></dd>
+	<dd><a href='/manual/en/features.commandline.php'>Command line usage</a></dd>
+	<dd><a href='/manual/en/features.gc.php'>Garbage Collection</a></dd>
+	<dd><a href='/manual/en/features.dtrace.php'>DTrace Dynamic Tracing</a></dd>
+</dl>
+<dl>
+<dt><a href='/manual/en/funcref.php'>Function Reference</a></dt>
+	<dd><a href='/manual/en/refs.basic.php.php'>Affecting PHP's Behaviour</a></dd>
+	<dd><a href='/manual/en/refs.utilspec.audio.php'>Audio Formats Manipulation</a></dd>
+	<dd><a href='/manual/en/refs.remote.auth.php'>Authentication Services</a></dd>
+	<dd><a href='/manual/en/refs.utilspec.cmdline.php'>Command Line Specific Extensions</a></dd>
+	<dd><a href='/manual/en/refs.compression.php'>Compression and Archive Extensions</a></dd>
+	<dd><a href='/manual/en/refs.crypto.php'>Cryptography Extensions</a></dd>
+	<dd><a href='/manual/en/refs.database.php'>Database Extensions</a></dd>
+	<dd><a href='/manual/en/refs.calendar.php'>Date and Time Related Extensions</a></dd>
+	<dd><a href='/manual/en/refs.fileprocess.file.php'>File System Related Extensions</a></dd>
+	<dd><a href='/manual/en/refs.international.php'>Human Language and Character Encoding Support</a></dd>
+	<dd><a href='/manual/en/refs.utilspec.image.php'>Image Processing and Generation</a></dd>
+	<dd><a href='/manual/en/refs.remote.mail.php'>Mail Related Extensions</a></dd>
+	<dd><a href='/manual/en/refs.math.php'>Mathematical Extensions</a></dd>
+	<dd><a href='/manual/en/refs.utilspec.nontext.php'>Non-Text MIME Output</a></dd>
+	<dd><a href='/manual/en/refs.fileprocess.process.php'>Process Control Extensions</a></dd>
+	<dd><a href='/manual/en/refs.basic.other.php'>Other Basic Extensions</a></dd>
+	<dd><a href='/manual/en/refs.remote.other.php'>Other Services</a></dd>
+	<dd><a href='/manual/en/refs.search.php'>Search Engine Extensions</a></dd>
+	<dd><a href='/manual/en/refs.utilspec.server.php'>Server Specific Extensions</a></dd>
+	<dd><a href='/manual/en/refs.basic.session.php'>Session Extensions</a></dd>
+	<dd><a href='/manual/en/refs.basic.text.php'>Text Processing</a></dd>
+	<dd><a href='/manual/en/refs.basic.vartype.php'>Variable and Type Related Extensions</a></dd>
+	<dd><a href='/manual/en/refs.webservice.php'>Web Services</a></dd>
+	<dd><a href='/manual/en/refs.utilspec.windows.php'>Windows Only Extensions</a></dd>
+	<dd><a href='/manual/en/refs.xml.php'>XML Manipulation</a></dd>
+	<dd><a href='/manual/en/refs.ui.php'>GUI Extensions</a></dd>
+</dl>
+<dl>
+<dt>Keyboard Shortcuts</dt><dt>?</dt>
+<dd>This help</dd>
+<dt>j</dt>
+<dd>Next menu item</dd>
+<dt>k</dt>
+<dd>Previous menu item</dd>
+<dt>g p</dt>
+<dd>Previous man page</dd>
+<dt>g n</dt>
+<dd>Next man page</dd>
+<dt>G</dt>
+<dd>Scroll to bottom</dd>
+<dt>g g</dt>
+<dd>Scroll to top</dd>
+<dt>g h</dt>
+<dd>Goto homepage</dd>
+<dt>g s</dt>
+<dd>Goto search<br>(current page)</dd>
+<dt>/</dt>
+<dd>Focus search box</dd>
+</dl></div></nav>
+<div id="goto">
+    <div class="search">
+         <div class="text"></div>
+         <div class="results"><ul></ul></div>
+   </div>
+</div>
+
+  <div id="breadcrumbs" class="clearfix">
+    <div id="breadcrumbs-inner">
+          <div class="next">
+        <a href="arrayobject.append.php">
+          ArrayObject::append &raquo;
+        </a>
+      </div>
+              <div class="prev">
+        <a href="spl.misc.php">
+          &laquo; Miscellaneous Classes and Interfaces        </a>
+      </div>
+          <ul>
+            <li><a href='index.php'>PHP Manual</a></li>      <li><a href='funcref.php'>Function Reference</a></li>      <li><a href='refs.basic.other.php'>Other Basic Extensions</a></li>      <li><a href='book.spl.php'>SPL</a></li>      <li><a href='spl.misc.php'>Miscellaneous Classes and Interfaces</a></li>      </ul>
+    </div>
+  </div>
+
+
+
+
+<div id="layout" class="clearfix">
+  <section id="layout-content">
+  <div class="page-tools">
+    <div class="change-language">
+      <form action="/manual/change.php" method="get" id="changelang" name="changelang">
+        <fieldset>
+          <label for="changelang-langs">Change language:</label>
+          <select onchange="document.changelang.submit()" name="page" id="changelang-langs">
+            <option value='en/class.arrayobject.php' selected="selected">English</option>
+            <option value='pt_BR/class.arrayobject.php'>Brazilian Portuguese</option>
+            <option value='zh/class.arrayobject.php'>Chinese (Simplified)</option>
+            <option value='fr/class.arrayobject.php'>French</option>
+            <option value='de/class.arrayobject.php'>German</option>
+            <option value='ja/class.arrayobject.php'>Japanese</option>
+            <option value='ru/class.arrayobject.php'>Russian</option>
+            <option value='es/class.arrayobject.php'>Spanish</option>
+            <option value='tr/class.arrayobject.php'>Turkish</option>
+            <option value="help-translate.php">Other</option>
+          </select>
+        </fieldset>
+      </form>
+    </div>
+    <div class="edit-bug">
+      <a href="https://github.com/php/doc-en/blob/master/reference/spl/arrayobject.xml">Submit a Pull Request</a>
+      <a href="https://github.com/php/doc-en/issues/new?body=From%20manual%20page:%20https:%2F%2Fphp.net%2Fclass.arrayobject%0A%0A---">Report a Bug</a>
+    </div>
+  </div><div id="class.arrayobject" class="reference">
+ <h1 class="title">The ArrayObject class</h1>
+ 
+ 
+ <div class="partintro"><p class="verinfo">(PHP 5, PHP 7, PHP 8)</p>
+ 
+
+  <div class="section" id="arrayobject.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="para">
+    This class allows objects to work as arrays.
+   </p>
+  </div>
+
+ 
+  <div class="section" id="arrayobject.synopsis">
+   <h2 class="title">Class synopsis</h2>
+ 
+
+   <div class="classsynopsis">
+    <div class="ooclass">
+     
+    </div>
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+      <span class="modifier">class</span> <strong class="classname">ArrayObject</strong>
+     </span>
+
+     <span class="oointerface"><span class="modifier">implements</span> 
+       <a href="class.iteratoraggregate.php" class="interfacename">IteratorAggregate</a></span><span class="oointerface">,  <a href="class.arrayaccess.php" class="interfacename">ArrayAccess</a></span><span class="oointerface">,  <a href="class.serializable.php" class="interfacename">Serializable</a></span><span class="oointerface">,  <a href="class.countable.php" class="interfacename">Countable</a></span> {</div>
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Constants */</div>
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">int</span>
+      <var class="fieldsynopsis_varname"><a href="class.arrayobject.php#arrayobject.constants.std-prop-list"><var class="varname">STD_PROP_LIST</var></a></var><span class="initializer"> = 1</span>;</div>
+
+    <div class="fieldsynopsis"><span class="modifier">const</span>
+     <span class="type">int</span>
+      <var class="fieldsynopsis_varname"><a href="class.arrayobject.php#arrayobject.constants.array-as-props"><var class="varname">ARRAY_AS_PROPS</var></a></var><span class="initializer"> = 2</span>;</div>
+
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Methods */</div>
+    <div class="constructorsynopsis dc-description">
+   <span class="modifier">public</span> <span class="methodname"><a href="arrayobject.construct.php" class="methodname">__construct</a></span>(<span class="methodparam"><span class="type"><span class="type">array</span>|<span class="type">object</span></span> <code class="parameter">$array</code><span class="initializer"> = []</span></span>, <span class="methodparam"><span class="type">int</span> <code class="parameter">$flags</code><span class="initializer"> = 0</span></span>, <span class="methodparam"><span class="type">string</span> <code class="parameter">$iteratorClass</code><span class="initializer"> = ArrayIterator::class</span></span>)</div>
+
+    <div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><a href="arrayobject.append.php" class="methodname">append</a></span>(<span class="methodparam"><span class="type"><a href="language.types.declarations.php#language.types.declarations.mixed" class="type mixed">mixed</a></span> <code class="parameter">$value</code></span>): <span class="type"><span class="type void">void</span></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><a href="arrayobject.asort.php" class="methodname">asort</a></span>(<span class="methodparam"><span class="type">int</span> <code class="parameter">$flags</code><span class="initializer"> = <strong><code>SORT_REGULAR</code></strong></span></span>): <span class="type">bool</span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><a href="arrayobject.count.php" class="methodname">count</a></span>(): <span class="type">int</span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><a href="arrayobject.exchangearray.php" class="methodname">exchangeArray</a></span>(<span class="methodparam"><span class="type"><span class="type">array</span>|<span class="type">object</span></span> <code class="parameter">$array</code></span>): <span class="type">array</span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><a href="arrayobject.getarraycopy.php" class="methodname">getArrayCopy</a></span>(): <span class="type">array</span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><a href="arrayobject.getflags.php" class="methodname">getFlags</a></span>(): <span class="type">int</span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><a href="arrayobject.getiterator.php" class="methodname">getIterator</a></span>(): <span class="type"><a href="class.iterator.php" class="type Iterator">Iterator</a></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><a href="arrayobject.getiteratorclass.php" class="methodname">getIteratorClass</a></span>(): <span class="type">string</span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><a href="arrayobject.ksort.php" class="methodname">ksort</a></span>(<span class="methodparam"><span class="type">int</span> <code class="parameter">$flags</code><span class="initializer"> = <strong><code>SORT_REGULAR</code></strong></span></span>): <span class="type">bool</span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><a href="arrayobject.natcasesort.php" class="methodname">natcasesort</a></span>(): <span class="type">bool</span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><a href="arrayobject.natsort.php" class="methodname">natsort</a></span>(): <span class="type">bool</span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><a href="arrayobject.offsetexists.php" class="methodname">offsetExists</a></span>(<span class="methodparam"><span class="type"><a href="language.types.declarations.php#language.types.declarations.mixed" class="type mixed">mixed</a></span> <code class="parameter">$key</code></span>): <span class="type">bool</span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><a href="arrayobject.offsetget.php" class="methodname">offsetGet</a></span>(<span class="methodparam"><span class="type"><a href="language.types.declarations.php#language.types.declarations.mixed" class="type mixed">mixed</a></span> <code class="parameter">$key</code></span>): <span class="type"><a href="language.types.declarations.php#language.types.declarations.mixed" class="type mixed">mixed</a></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><a href="arrayobject.offsetset.php" class="methodname">offsetSet</a></span>(<span class="methodparam"><span class="type"><a href="language.types.declarations.php#language.types.declarations.mixed" class="type mixed">mixed</a></span> <code class="parameter">$key</code></span>, <span class="methodparam"><span class="type"><a href="language.types.declarations.php#language.types.declarations.mixed" class="type mixed">mixed</a></span> <code class="parameter">$value</code></span>): <span class="type"><span class="type void">void</span></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><a href="arrayobject.offsetunset.php" class="methodname">offsetUnset</a></span>(<span class="methodparam"><span class="type"><a href="language.types.declarations.php#language.types.declarations.mixed" class="type mixed">mixed</a></span> <code class="parameter">$key</code></span>): <span class="type"><span class="type void">void</span></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><a href="arrayobject.serialize.php" class="methodname">serialize</a></span>(): <span class="type">string</span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><a href="arrayobject.setflags.php" class="methodname">setFlags</a></span>(<span class="methodparam"><span class="type">int</span> <code class="parameter">$flags</code></span>): <span class="type"><span class="type void">void</span></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><a href="arrayobject.setiteratorclass.php" class="methodname">setIteratorClass</a></span>(<span class="methodparam"><span class="type">string</span> <code class="parameter">$iteratorClass</code></span>): <span class="type"><span class="type void">void</span></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><a href="arrayobject.uasort.php" class="methodname">uasort</a></span>(<span class="methodparam"><span class="type"><a href="language.types.callable.php" class="type callable">callable</a></span> <code class="parameter">$callback</code></span>): <span class="type">bool</span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><a href="arrayobject.uksort.php" class="methodname">uksort</a></span>(<span class="methodparam"><span class="type"><a href="language.types.callable.php" class="type callable">callable</a></span> <code class="parameter">$callback</code></span>): <span class="type">bool</span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="methodname"><a href="arrayobject.unserialize.php" class="methodname">unserialize</a></span>(<span class="methodparam"><span class="type">string</span> <code class="parameter">$data</code></span>): <span class="type"><span class="type void">void</span></span></div>
+
+   }</div>
+ 
+  </div>
+ 
+  <div class="section" id="arrayobject.constants">
+   <h2 class="title">Predefined Constants</h2>
+   <div class="section" id="arrayobject.constants.flags">
+    <h2 class="title">ArrayObject Flags</h2>
+    <dl>
+
+     
+      <dt id="arrayobject.constants.std-prop-list"><strong><code>ArrayObject::STD_PROP_LIST</code></strong></dt>
+
+      <dd>
+
+       <p class="para">Properties of the object have their normal functionality when accessed as list (var_dump, foreach, etc.).</p>
+      </dd>
+
+     
+
+     
+      <dt id="arrayobject.constants.array-as-props"><strong><code>ArrayObject::ARRAY_AS_PROPS</code></strong></dt>
+
+      <dd>
+
+       <p class="para">Entries can be accessed as properties (read and write).</p>
+      </dd>
+
+     
+    </dl>
+
+   </div>
+  </div>
+  
+
+ 
+ </div>
+ 
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+<h2>Table of Contents</h2><ul class="chunklist chunklist_reference"><li><a href="arrayobject.append.php">ArrayObject::append</a> — Appends the value</li><li><a href="arrayobject.asort.php">ArrayObject::asort</a> — Sort the entries by value</li><li><a href="arrayobject.construct.php">ArrayObject::__construct</a> — Construct a new array object</li><li><a href="arrayobject.count.php">ArrayObject::count</a> — Get the number of public properties in the ArrayObject</li><li><a href="arrayobject.exchangearray.php">ArrayObject::exchangeArray</a> — Exchange the array for another one</li><li><a href="arrayobject.getarraycopy.php">ArrayObject::getArrayCopy</a> — Creates a copy of the ArrayObject</li><li><a href="arrayobject.getflags.php">ArrayObject::getFlags</a> — Gets the behavior flags</li><li><a href="arrayobject.getiterator.php">ArrayObject::getIterator</a> — Create a new iterator from an ArrayObject instance</li><li><a href="arrayobject.getiteratorclass.php">ArrayObject::getIteratorClass</a> — Gets the iterator classname for the ArrayObject</li><li><a href="arrayobject.ksort.php">ArrayObject::ksort</a> — Sort the entries by key</li><li><a href="arrayobject.natcasesort.php">ArrayObject::natcasesort</a> — Sort an array using a case insensitive &quot;natural order&quot; algorithm</li><li><a href="arrayobject.natsort.php">ArrayObject::natsort</a> — Sort entries using a &quot;natural order&quot; algorithm</li><li><a href="arrayobject.offsetexists.php">ArrayObject::offsetExists</a> — Returns whether the requested index exists</li><li><a href="arrayobject.offsetget.php">ArrayObject::offsetGet</a> — Returns the value at the specified index</li><li><a href="arrayobject.offsetset.php">ArrayObject::offsetSet</a> — Sets the value at the specified index to newval</li><li><a href="arrayobject.offsetunset.php">ArrayObject::offsetUnset</a> — Unsets the value at the specified index</li><li><a href="arrayobject.serialize.php">ArrayObject::serialize</a> — Serialize an ArrayObject</li><li><a href="arrayobject.setflags.php">ArrayObject::setFlags</a> — Sets the behavior flags</li><li><a href="arrayobject.setiteratorclass.php">ArrayObject::setIteratorClass</a> — Sets the iterator classname for the ArrayObject</li><li><a href="arrayobject.uasort.php">ArrayObject::uasort</a> — Sort the entries with a user-defined comparison function and maintain key association</li><li><a href="arrayobject.uksort.php">ArrayObject::uksort</a> — Sort the entries by keys using a user-defined comparison function</li><li><a href="arrayobject.unserialize.php">ArrayObject::unserialize</a> — Unserialize an ArrayObject</li></ul>
+</div>
+
+<section id="usernotes">
+ <div class="head">
+  <span class="action"><a href="/manual/add-note.php?sect=class.arrayobject&amp;redirect=https://www.php.net/manual/en/class.arrayobject.php"><img src='/images/notes-add@2x.png' alt='add a note' width='12' height='12'> <small>add a note</small></a></span>
+  <h3 class="title">User Contributed Notes <span class="count">22 notes</span></h3>
+ </div><div id="allnotes">
+  <div class="note" id="107079">  <div class="votes">
+    <div id="Vu107079">
+    <a href="/manual/vote-note.php?id=107079&amp;page=class.arrayobject&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd107079">
+    <a href="/manual/vote-note.php?id=107079&amp;page=class.arrayobject&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V107079" title="75% like this...">
+    83
+    </div>
+  </div>
+  <a href="#107079" class="name">
+  <strong class="user"><em>php5 dot man at lightning dot hu</em></strong></a><a class="genanchor" href="#107079"> &para;</a><div class="date" title="2012-01-05 08:24"><strong>10 years ago</strong></div>
+  <div class="text" id="Hcom107079">
+<div class="phpcode"><code><span class="html">
+As you know ArrayObject is not an array so you can't use the built in array functions. Here's a trick around that:<br /><br />Extend the ArrayObject class with your own and implement this magic method:<br /><br /><span class="default">&lt;?php<br />&nbsp; &nbsp; </span><span class="keyword">public function </span><span class="default">__call</span><span class="keyword">(</span><span class="default">$func</span><span class="keyword">, </span><span class="default">$argv</span><span class="keyword">)<br />&nbsp; &nbsp; {<br />&nbsp; &nbsp; &nbsp; &nbsp; if (!</span><span class="default">is_callable</span><span class="keyword">(</span><span class="default">$func</span><span class="keyword">) || </span><span class="default">substr</span><span class="keyword">(</span><span class="default">$func</span><span class="keyword">, </span><span class="default">0</span><span class="keyword">, </span><span class="default">6</span><span class="keyword">) !== </span><span class="string">'array_'</span><span class="keyword">)<br />&nbsp; &nbsp; &nbsp; &nbsp; {<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; throw new </span><span class="default">BadMethodCallException</span><span class="keyword">(</span><span class="default">__CLASS__</span><span class="keyword">.</span><span class="string">'-&gt;'</span><span class="keyword">.</span><span class="default">$func</span><span class="keyword">);<br />&nbsp; &nbsp; &nbsp; &nbsp; }<br />&nbsp; &nbsp; &nbsp; &nbsp; return </span><span class="default">call_user_func_array</span><span class="keyword">(</span><span class="default">$func</span><span class="keyword">, </span><span class="default">array_merge</span><span class="keyword">(array(</span><span class="default">$this</span><span class="keyword">-&gt;</span><span class="default">getArrayCopy</span><span class="keyword">()), </span><span class="default">$argv</span><span class="keyword">));<br />&nbsp; &nbsp; }<br /></span><span class="default">?&gt;<br /></span><br />Now you can do this with any array_* function:<br /><span class="default">&lt;?php<br />$yourObject</span><span class="keyword">-&gt;</span><span class="default">array_keys</span><span class="keyword">();<br /></span><span class="default">?&gt;<br /></span>- Don't forget to ommit the first parameter - it's automatic!<br /><br />Note: You might want to write your own functions if you're working with large sets of data.</span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="112949">  <div class="votes">
+    <div id="Vu112949">
+    <a href="/manual/vote-note.php?id=112949&amp;page=class.arrayobject&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd112949">
+    <a href="/manual/vote-note.php?id=112949&amp;page=class.arrayobject&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V112949" title="87% like this...">
+    30
+    </div>
+  </div>
+  <a href="#112949" class="name">
+  <strong class="user"><em>rwn dot gallego at gmail dot com</em></strong></a><a class="genanchor" href="#112949"> &para;</a><div class="date" title="2013-08-11 09:30"><strong>8 years ago</strong></div>
+  <div class="text" id="Hcom112949">
+<div class="phpcode"><code><span class="html">
+There is a better explanation about the ArrayObject flags (STD_PROP_LIST and ARRAY_AS_PROPS) right here: <br /><br /><a href="http://stackoverflow.com/a/16619183/1019305" rel="nofollow" target="_blank">http://stackoverflow.com/a/16619183/1019305</a><br /><br />Thanks to JayTaph</span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="87964">  <div class="votes">
+    <div id="Vu87964">
+    <a href="/manual/vote-note.php?id=87964&amp;page=class.arrayobject&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd87964">
+    <a href="/manual/vote-note.php?id=87964&amp;page=class.arrayobject&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V87964" title="83% like this...">
+    8
+    </div>
+  </div>
+  <a href="#87964" class="name">
+  <strong class="user"><em>deminy at deminy dot net</em></strong></a><a class="genanchor" href="#87964"> &para;</a><div class="date" title="2009-01-02 01:31"><strong>13 years ago</strong></div>
+  <div class="text" id="Hcom87964">
+<div class="phpcode"><code><span class="html">
+Generally variable $this can't be used as an array within an object context. For example, following code piece would cause a fatal error:<br /><br /><span class="default">&lt;?php<br /></span><span class="keyword">class </span><span class="default">TestThis </span><span class="keyword">{<br />&nbsp; &nbsp; public function </span><span class="default">__set</span><span class="keyword">(</span><span class="default">$name</span><span class="keyword">, </span><span class="default">$val</span><span class="keyword">) {<br />&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="default">$this</span><span class="keyword">[</span><span class="default">$name</span><span class="keyword">] = </span><span class="default">$val</span><span class="keyword">;<br />&nbsp; &nbsp; }<br /><br />&nbsp; &nbsp; public function </span><span class="default">__get</span><span class="keyword">(</span><span class="default">$name</span><span class="keyword">) {<br />&nbsp; &nbsp; &nbsp; &nbsp; return </span><span class="default">$this</span><span class="keyword">[</span><span class="default">$name</span><span class="keyword">];<br />&nbsp; &nbsp; }<br />}<br /><br /></span><span class="default">$obj </span><span class="keyword">= new </span><span class="default">TestThis</span><span class="keyword">();<br /></span><span class="default">$obj</span><span class="keyword">-&gt;</span><span class="default">a </span><span class="keyword">= </span><span class="string">'aaa'</span><span class="keyword">;<br />echo </span><span class="default">$obj</span><span class="keyword">-&gt;</span><span class="default">a </span><span class="keyword">. </span><span class="string">"\n"</span><span class="keyword">;<br /></span><span class="default">?&gt;<br /></span><br />But things are different when $this is used in an ArrayObject object. e.g., following code piece are valid:<br /><br /><span class="default">&lt;?php<br /></span><span class="keyword">class </span><span class="default">TestArrayObject </span><span class="keyword">extends </span><span class="default">ArrayObject </span><span class="keyword">{&nbsp; &nbsp; <br />&nbsp; &nbsp; public function </span><span class="default">__set</span><span class="keyword">(</span><span class="default">$name</span><span class="keyword">, </span><span class="default">$val</span><span class="keyword">) {<br />&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="default">$this</span><span class="keyword">[</span><span class="default">$name</span><span class="keyword">] = </span><span class="default">$val</span><span class="keyword">;<br />&nbsp; &nbsp; }<br /><br />&nbsp; &nbsp; public function </span><span class="default">__get</span><span class="keyword">(</span><span class="default">$name</span><span class="keyword">) {<br />&nbsp; &nbsp; &nbsp; &nbsp; return </span><span class="default">$this</span><span class="keyword">[</span><span class="default">$name</span><span class="keyword">];<br />&nbsp; &nbsp; }<br />}<br /><br /></span><span class="default">$obj </span><span class="keyword">= new </span><span class="default">TestArrayObject</span><span class="keyword">();<br /></span><span class="default">$obj</span><span class="keyword">-&gt;</span><span class="default">a </span><span class="keyword">= </span><span class="string">'aaa'</span><span class="keyword">;<br />echo </span><span class="default">$obj</span><span class="keyword">-&gt;</span><span class="default">a </span><span class="keyword">. </span><span class="string">"\n"</span><span class="keyword">;<br /></span><span class="default">?&gt;</span>
+</span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="105481">  <div class="votes">
+    <div id="Vu105481">
+    <a href="/manual/vote-note.php?id=105481&amp;page=class.arrayobject&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd105481">
+    <a href="/manual/vote-note.php?id=105481&amp;page=class.arrayobject&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V105481" title="71% like this...">
+    25
+    </div>
+  </div>
+  <a href="#105481" class="name">
+  <strong class="user"><em>MarkAndrewSlade at gmail dot com</em></strong></a><a class="genanchor" href="#105481"> &para;</a><div class="date" title="2011-08-21 06:05"><strong>10 years ago</strong></div>
+  <div class="text" id="Hcom105481">
+<div class="phpcode"><code><span class="html">
+I found the description of STD_PROP_LIST a bit vague, so I put together a simple demonstration to show its behavior:<br /><br /><span class="default">&lt;?php&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; <br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <br />$a </span><span class="keyword">= new </span><span class="default">ArrayObject</span><span class="keyword">(array(), </span><span class="default">ArrayObject</span><span class="keyword">::</span><span class="default">STD_PROP_LIST</span><span class="keyword">);<br />&nbsp; &nbsp; </span><span class="default">$a</span><span class="keyword">[</span><span class="string">'arr'</span><span class="keyword">] = </span><span class="string">'array data'</span><span class="keyword">;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; <br />&nbsp; &nbsp; </span><span class="default">$a</span><span class="keyword">-&gt;</span><span class="default">prop </span><span class="keyword">= </span><span class="string">'prop data'</span><span class="keyword">;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; <br /></span><span class="default">$b </span><span class="keyword">= new </span><span class="default">ArrayObject</span><span class="keyword">();&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; <br />&nbsp; &nbsp; </span><span class="default">$b</span><span class="keyword">[</span><span class="string">'arr'</span><span class="keyword">] = </span><span class="string">'array data'</span><span class="keyword">;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; <br />&nbsp; &nbsp; </span><span class="default">$b</span><span class="keyword">-&gt;</span><span class="default">prop </span><span class="keyword">= </span><span class="string">'prop data'</span><span class="keyword">;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; <br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <br /></span><span class="comment">// ArrayObject Object&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; <br />// (&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <br />//&nbsp; &nbsp; &nbsp; [prop] =&gt; prop data&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; <br />// )&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <br /></span><span class="default">print_r</span><span class="keyword">(</span><span class="default">$a</span><span class="keyword">);&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <br /></span><span class="comment">// ArrayObject Object&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; <br />// (&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <br />//&nbsp; &nbsp; &nbsp; [arr] =&gt; array data&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; <br />// )&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <br /></span><span class="default">print_r</span><span class="keyword">(</span><span class="default">$b</span><span class="keyword">);&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <br /></span><span class="default">?&gt;</span>
+</span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="123572">  <div class="votes">
+    <div id="Vu123572">
+    <a href="/manual/vote-note.php?id=123572&amp;page=class.arrayobject&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd123572">
+    <a href="/manual/vote-note.php?id=123572&amp;page=class.arrayobject&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V123572" title="80% like this...">
+    3
+    </div>
+  </div>
+  <a href="#123572" class="name">
+  <strong class="user"><em>fatindeed at hotmail dot com</em></strong></a><a class="genanchor" href="#123572"> &para;</a><div class="date" title="2019-01-31 07:28"><strong>3 years ago</strong></div>
+  <div class="text" id="Hcom123572">
+<div class="phpcode"><code><span class="html">
+class RecursiveArrayObject extends \ArrayObject<br />{<br />&nbsp; &nbsp; public function __construct($input = array())<br />&nbsp; &nbsp; {<br />&nbsp; &nbsp; &nbsp; &nbsp; $data = array();<br />&nbsp; &nbsp; &nbsp; &nbsp; foreach ($input as $key =&gt; $value) {<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; if (is_array($value)) {<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; $value = new self($value);<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; $data[$key] = $value;<br />&nbsp; &nbsp; &nbsp; &nbsp; }<br />&nbsp; &nbsp; &nbsp; &nbsp; parent::__construct($data, \ArrayObject::ARRAY_AS_PROPS);<br />&nbsp; &nbsp; }<br />}<br /><br />$company = new RecursiveArrayObject(array(<br />&nbsp; &nbsp; 'ceo' =&gt; array(<br />&nbsp; &nbsp; &nbsp; &nbsp; 'id' =&gt; 1,<br />&nbsp; &nbsp; &nbsp; &nbsp; 'name' =&gt; 'tony',<br />&nbsp; &nbsp; &nbsp; &nbsp; 'age' =&gt; 36<br />&nbsp; &nbsp; ),<br />&nbsp; &nbsp; 'coo' =&gt; array(<br />&nbsp; &nbsp; &nbsp; &nbsp; 'id' =&gt; 2,<br />&nbsp; &nbsp; &nbsp; &nbsp; 'name' =&gt; 'matt',<br />&nbsp; &nbsp; &nbsp; &nbsp; 'age' =&gt; 35<br />&nbsp; &nbsp; ),<br />&nbsp; &nbsp; 'cto' =&gt; array(<br />&nbsp; &nbsp; &nbsp; &nbsp; 'id' =&gt; 3,<br />&nbsp; &nbsp; &nbsp; &nbsp; 'name' =&gt; 'james',<br />&nbsp; &nbsp; &nbsp; &nbsp; 'age' =&gt; 35<br />&nbsp; &nbsp; )<br />));<br /><br />var_dump($company-&gt;cto-&gt;name); // string(5) "james"<br />var_dump($company['coo']['name']); // string(4) "matt"</span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="116162">  <div class="votes">
+    <div id="Vu116162">
+    <a href="/manual/vote-note.php?id=116162&amp;page=class.arrayobject&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd116162">
+    <a href="/manual/vote-note.php?id=116162&amp;page=class.arrayobject&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V116162" title="76% like this...">
+    9
+    </div>
+  </div>
+  <a href="#116162" class="name">
+  <strong class="user"><em>Gilles A</em></strong></a><a class="genanchor" href="#116162"> &para;</a><div class="date" title="2014-11-17 01:51"><strong>7 years ago</strong></div>
+  <div class="text" id="Hcom116162">
+<div class="phpcode"><code><span class="html">
+// Example STD_PROP_LIST and ARRAY_AS_PROP combined<br /><span class="default">&lt;?php<br />$ao </span><span class="keyword">= new </span><span class="default">ArrayObject</span><span class="keyword">();<br /></span><span class="default">$ao </span><span class="keyword">-&gt;</span><span class="default">setFlags</span><span class="keyword">(</span><span class="default">ArrayObject</span><span class="keyword">::</span><span class="default">STD_PROP_LIST</span><span class="keyword">|</span><span class="default">ArrayObject</span><span class="keyword">::</span><span class="default">ARRAY_AS_PROPS</span><span class="keyword">);<br /><br /></span><span class="default">$ao</span><span class="keyword">-&gt;</span><span class="default">prop </span><span class="keyword">= </span><span class="string">'prop data'</span><span class="keyword">;<br /></span><span class="default">$ao</span><span class="keyword">[</span><span class="string">'arr'</span><span class="keyword">] = </span><span class="string">'array data'</span><span class="keyword">;<br /><br /></span><span class="default">print_r</span><span class="keyword">(</span><span class="default">$ao</span><span class="keyword">);<br /><br /></span><span class="default">?&gt;<br /></span><br />// Result<br /><br />ArrayObject Object<br />(<br />&nbsp; &nbsp; [storage:ArrayObject:private] =&amp;gt; Array<br />&nbsp; &nbsp; &nbsp; &nbsp; (<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [prop] =&gt; prop data<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [arr] =&gt; array data<br />&nbsp; &nbsp; &nbsp; &nbsp; )<br /><br />)</span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="102747">  <div class="votes">
+    <div id="Vu102747">
+    <a href="/manual/vote-note.php?id=102747&amp;page=class.arrayobject&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd102747">
+    <a href="/manual/vote-note.php?id=102747&amp;page=class.arrayobject&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V102747" title="72% like this...">
+    13
+    </div>
+  </div>
+  <a href="#102747" class="name">
+  <strong class="user"><em>rob at tdd dot org dot uk</em></strong></a><a class="genanchor" href="#102747"> &para;</a><div class="date" title="2011-03-03 04:38"><strong>11 years ago</strong></div>
+  <div class="text" id="Hcom102747">
+<div class="phpcode"><code><span class="html">
+I don't believe the same performance is true since PHP 5.3. Using the same fill, read_key and foreach approach on both native arrays and ArrayObjects with 10000 keys I get the following<br /><br />PHP 5.2<br /><br />array() fill&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; 0.013101<br />array() read&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; 0.008685<br />array() foreach&nbsp; &nbsp; &nbsp; 0.004319<br />ArrayObject fill&nbsp; &nbsp;&nbsp; 0.014136<br />ArrayObject read&nbsp; &nbsp;&nbsp; 0.010003<br />ArrayObject foreach&nbsp; 3.454612<br /><br />PHP 5.3<br /><br />array() fill&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; 0.010395<br />array() read&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; 0.005933<br />array() foreach&nbsp; &nbsp; &nbsp; 0.001903<br />ArrayObject fill&nbsp; &nbsp;&nbsp; 0.010598<br />ArrayObject read&nbsp; &nbsp;&nbsp; 0.006387<br />ArrayObject foreach&nbsp; 0.003451<br /><br />This was the code I used for both, an array or ArrayObject is passed into each of the functions. Again PEAR::Benchmark was used to get the results.<br /><br /><span class="default">&lt;?php<br /></span><span class="keyword">require_once </span><span class="string">'Benchmark/Timer.php'</span><span class="keyword">;<br /><br /></span><span class="default">define</span><span class="keyword">(</span><span class="string">'KEYS'</span><span class="keyword">, </span><span class="default">10000</span><span class="keyword">);<br /><br />function </span><span class="default">fill</span><span class="keyword">(&amp;</span><span class="default">$arr</span><span class="keyword">) {<br />&nbsp; &nbsp; for (</span><span class="default">$i </span><span class="keyword">= </span><span class="default">1</span><span class="keyword">; </span><span class="default">$i </span><span class="keyword">&lt;= </span><span class="default">KEYS</span><span class="keyword">; </span><span class="default">$i</span><span class="keyword">++) {<br />&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="default">$arr</span><span class="keyword">[</span><span class="string">'key-' </span><span class="keyword">. </span><span class="default">$i</span><span class="keyword">] = </span><span class="default">$i</span><span class="keyword">;<br />&nbsp; &nbsp; }<br />}<br /><br />function </span><span class="default">read_key</span><span class="keyword">(&amp;</span><span class="default">$arr</span><span class="keyword">) {<br />&nbsp; &nbsp; for (</span><span class="default">$i </span><span class="keyword">= </span><span class="default">1</span><span class="keyword">; </span><span class="default">$i </span><span class="keyword">&lt;= </span><span class="default">KEYS</span><span class="keyword">; </span><span class="default">$i</span><span class="keyword">++) {<br />&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="default">$v </span><span class="keyword">= </span><span class="default">$arr</span><span class="keyword">[</span><span class="string">'key-' </span><span class="keyword">. </span><span class="default">$i</span><span class="keyword">];<br />&nbsp; &nbsp; }<br />}<br /><br />function </span><span class="default">fe</span><span class="keyword">(&amp;</span><span class="default">$arr</span><span class="keyword">) {<br />&nbsp; &nbsp; foreach (</span><span class="default">$arr </span><span class="keyword">as </span><span class="default">$key </span><span class="keyword">=&gt; </span><span class="default">$value</span><span class="keyword">) {<br />&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="default">$v </span><span class="keyword">= </span><span class="default">$value</span><span class="keyword">;<br />&nbsp; &nbsp; }<br />}<br /></span><span class="default">?&gt;</span>
+</span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="103508">  <div class="votes">
+    <div id="Vu103508">
+    <a href="/manual/vote-note.php?id=103508&amp;page=class.arrayobject&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd103508">
+    <a href="/manual/vote-note.php?id=103508&amp;page=class.arrayobject&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V103508" title="68% like this...">
+    8
+    </div>
+  </div>
+  <a href="#103508" class="name">
+  <strong class="user"><em>sfinktah at php dot spamtrak dot org</em></strong></a><a class="genanchor" href="#103508"> &para;</a><div class="date" title="2011-04-17 12:27"><strong>10 years ago</strong></div>
+  <div class="text" id="Hcom103508">
+<div class="phpcode"><code><span class="html">
+If you plan to derive your own class from ArrayObject, and&nbsp; wish to maintain complete ArrayObject functionality (such as being able to cast to an array), it is necessary to use ArrayObject's own private property "storage".<br /><br />Since that is impossible to do directly, you must use ArrayObject's offset{Set,Get,Exists,Unset} methods to manipulate it indirectly.<br /><br />As a side benefit, this means you inherit all the iteration and other functions in complete working order.<br /><br />This may sound obvious to someone who has never implemented their own ArrayObject class...&nbsp; but it is far from so.<br /><br /><span class="default">&lt;?php<br /><br /></span><span class="keyword">class </span><span class="default">MyArrayObject </span><span class="keyword">extends </span><span class="default">ArrayObject </span><span class="keyword">{<br />&nbsp; &nbsp; &nbsp; &nbsp; static </span><span class="default">$debugLevel </span><span class="keyword">= </span><span class="default">2</span><span class="keyword">;<br /><br />&nbsp; &nbsp; &nbsp; &nbsp; static public function </span><span class="default">sdprintf</span><span class="keyword">() {<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; if (static::</span><span class="default">$debugLevel </span><span class="keyword">&gt; </span><span class="default">1</span><span class="keyword">) {<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="default">call_user_func_array</span><span class="keyword">(</span><span class="string">"printf"</span><span class="keyword">, </span><span class="default">func_get_args</span><span class="keyword">());<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }<br />&nbsp; &nbsp; &nbsp; &nbsp; }<br /><br />&nbsp; &nbsp; &nbsp; &nbsp; public function </span><span class="default">offsetGet</span><span class="keyword">(</span><span class="default">$name</span><span class="keyword">) { <br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="default">self</span><span class="keyword">::</span><span class="default">sdprintf</span><span class="keyword">(</span><span class="string">"%s(%s)\n"</span><span class="keyword">, </span><span class="default">__FUNCTION__</span><span class="keyword">, </span><span class="default">implode</span><span class="keyword">(</span><span class="string">","</span><span class="keyword">, </span><span class="default">func_get_args</span><span class="keyword">()));<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return </span><span class="default">call_user_func_array</span><span class="keyword">(array(</span><span class="default">parent</span><span class="keyword">, </span><span class="default">__FUNCTION__</span><span class="keyword">), </span><span class="default">func_get_args</span><span class="keyword">());<br />&nbsp; &nbsp; &nbsp; &nbsp; }<br />&nbsp; &nbsp; &nbsp; &nbsp; public function </span><span class="default">offsetSet</span><span class="keyword">(</span><span class="default">$name</span><span class="keyword">, </span><span class="default">$value</span><span class="keyword">) { <br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="default">self</span><span class="keyword">::</span><span class="default">sdprintf</span><span class="keyword">(</span><span class="string">"%s(%s)\n"</span><span class="keyword">, </span><span class="default">__FUNCTION__</span><span class="keyword">, </span><span class="default">implode</span><span class="keyword">(</span><span class="string">","</span><span class="keyword">, </span><span class="default">func_get_args</span><span class="keyword">()));<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return </span><span class="default">call_user_func_array</span><span class="keyword">(array(</span><span class="default">parent</span><span class="keyword">, </span><span class="default">__FUNCTION__</span><span class="keyword">), </span><span class="default">func_get_args</span><span class="keyword">());<br />&nbsp; &nbsp; &nbsp; &nbsp; }<br />&nbsp; &nbsp; &nbsp; &nbsp; public function </span><span class="default">offsetExists</span><span class="keyword">(</span><span class="default">$name</span><span class="keyword">) { <br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="default">self</span><span class="keyword">::</span><span class="default">sdprintf</span><span class="keyword">(</span><span class="string">"%s(%s)\n"</span><span class="keyword">, </span><span class="default">__FUNCTION__</span><span class="keyword">, </span><span class="default">implode</span><span class="keyword">(</span><span class="string">","</span><span class="keyword">, </span><span class="default">func_get_args</span><span class="keyword">()));<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return </span><span class="default">call_user_func_array</span><span class="keyword">(array(</span><span class="default">parent</span><span class="keyword">, </span><span class="default">__FUNCTION__</span><span class="keyword">), </span><span class="default">func_get_args</span><span class="keyword">());<br />&nbsp; &nbsp; &nbsp; &nbsp; }<br />&nbsp; &nbsp; &nbsp; &nbsp; public function </span><span class="default">offsetUnset</span><span class="keyword">(</span><span class="default">$name</span><span class="keyword">) { <br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="default">self</span><span class="keyword">::</span><span class="default">sdprintf</span><span class="keyword">(</span><span class="string">"%s(%s)\n"</span><span class="keyword">, </span><span class="default">__FUNCTION__</span><span class="keyword">, </span><span class="default">implode</span><span class="keyword">(</span><span class="string">","</span><span class="keyword">, </span><span class="default">func_get_args</span><span class="keyword">()));<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return </span><span class="default">call_user_func_array</span><span class="keyword">(array(</span><span class="default">parent</span><span class="keyword">, </span><span class="default">__FUNCTION__</span><span class="keyword">), </span><span class="default">func_get_args</span><span class="keyword">());<br />&nbsp; &nbsp; &nbsp; &nbsp; }<br />}<br /><br /></span><span class="default">$mao </span><span class="keyword">= new </span><span class="default">MyArrayObject</span><span class="keyword">();<br /></span><span class="default">$mao</span><span class="keyword">[</span><span class="string">"name"</span><span class="keyword">] = </span><span class="string">"bob"</span><span class="keyword">;<br /></span><span class="default">$mao</span><span class="keyword">[</span><span class="string">"friend"</span><span class="keyword">] = </span><span class="string">"jane"</span><span class="keyword">;<br /></span><span class="default">print_r</span><span class="keyword">((array)</span><span class="default">$mao</span><span class="keyword">);<br /><br /></span><span class="comment">/* Output:<br /> <br />offsetSet(name,bob)<br />offsetSet(friend,jane)<br />Array<br />(<br />&nbsp; &nbsp; [name] =&gt; bob<br />&nbsp; &nbsp; [friend] =&gt; jane<br />)&nbsp; &nbsp; &nbsp;&nbsp; */<br /></span><span class="default">?&gt;<br /></span><br />If you wish to use the "Array as Properties" flag, you simply need to include this in your constructor: <br /><br /><span class="default">&lt;?php parent</span><span class="keyword">::</span><span class="default">setFlags</span><span class="keyword">(</span><span class="default">parent</span><span class="keyword">::</span><span class="default">ARRAY_AS_PROPS</span><span class="keyword">); </span><span class="default">?&gt;<br /></span><br />This will allow you to do things such as the below example, without overriding __get or __set .<br /><br /><span class="default">&lt;?php<br />$mao</span><span class="keyword">-&gt;</span><span class="default">name </span><span class="keyword">= </span><span class="string">"Phil"</span><span class="keyword">;<br />echo </span><span class="default">$mao</span><span class="keyword">[</span><span class="string">"name"</span><span class="keyword">];&nbsp;&nbsp; </span><span class="comment">/* Outputs "Phil" */<br /></span><span class="default">?&gt;</span>
+</span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="93100">  <div class="votes">
+    <div id="Vu93100">
+    <a href="/manual/vote-note.php?id=93100&amp;page=class.arrayobject&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd93100">
+    <a href="/manual/vote-note.php?id=93100&amp;page=class.arrayobject&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V93100" title="70% like this...">
+    4
+    </div>
+  </div>
+  <a href="#93100" class="name">
+  <strong class="user"><em>danbettles at yahoo dot co dot uk</em></strong></a><a class="genanchor" href="#93100"> &para;</a><div class="date" title="2009-08-23 08:56"><strong>12 years ago</strong></div>
+  <div class="text" id="Hcom93100">
+<div class="phpcode"><code><span class="html">
+To implement array-style appending (e.g. "$object[] = 'foo';") in your own class implementing the ArrayAccess _interface_, all you need do is check if the key passed to your implementation of offsetSet() is NULL.&nbsp; Something like the following.<br /><br /><span class="default">&lt;?php<br /><br /></span><span class="keyword">class </span><span class="default">MyArrayObject </span><span class="keyword">implements </span><span class="default">ArrayAccess </span><span class="keyword">{<br /><br />&nbsp; &nbsp; </span><span class="comment">/**<br />&nbsp; &nbsp;&nbsp; * @var array<br />&nbsp; &nbsp;&nbsp; */<br />&nbsp; &nbsp; </span><span class="keyword">private </span><span class="default">$aValue</span><span class="keyword">;<br /><br />&nbsp; &nbsp; </span><span class="comment">// ...<br /><br />&nbsp; &nbsp; /**<br />&nbsp; &nbsp;&nbsp; * @see ArrayAccess::offsetSet()<br />&nbsp; &nbsp;&nbsp; */<br />&nbsp; &nbsp; </span><span class="keyword">public function </span><span class="default">offsetSet </span><span class="keyword">(</span><span class="default">$p_key</span><span class="keyword">, </span><span class="default">$p_value</span><span class="keyword">) {<br />&nbsp; &nbsp; &nbsp; &nbsp; if (</span><span class="default">is_null</span><span class="keyword">(</span><span class="default">$p_key</span><span class="keyword">)) {<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="default">$this</span><span class="keyword">-&gt;</span><span class="default">aValue</span><span class="keyword">[] = </span><span class="default">$p_value</span><span class="keyword">;<br />&nbsp; &nbsp; &nbsp; &nbsp; }<br />&nbsp; &nbsp; &nbsp; &nbsp; else {<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="default">$this</span><span class="keyword">-&gt;</span><span class="default">aValue</span><span class="keyword">[</span><span class="default">$p_key</span><span class="keyword">] = </span><span class="default">$p_value</span><span class="keyword">;<br />&nbsp; &nbsp; &nbsp; &nbsp; }<br />&nbsp; &nbsp; }<br /><br />&nbsp; &nbsp; </span><span class="comment">// ...<br /></span><span class="keyword">}<br /></span><span class="default">?&gt;</span>
+</span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="125849">  <div class="votes">
+    <div id="Vu125849">
+    <a href="/manual/vote-note.php?id=125849&amp;page=class.arrayobject&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd125849">
+    <a href="/manual/vote-note.php?id=125849&amp;page=class.arrayobject&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V125849" title="66% like this...">
+    1
+    </div>
+  </div>
+  <a href="#125849" class="name">
+  <strong class="user"><em>hello at rayfung dot hk</em></strong></a><a class="genanchor" href="#125849"> &para;</a><div class="date" title="2021-02-22 01:38"><strong>1 year ago</strong></div>
+  <div class="text" id="Hcom125849">
+<div class="phpcode"><code><span class="html">
+If you want to use built-in array function with ArrayObject, store the iterator instance and return the value as reference in offsetGet.<br /><br /><span class="default">&lt;?php<br /></span><span class="keyword">class </span><span class="default">Collection </span><span class="keyword">extends \</span><span class="default">ArrayObject </span><span class="keyword">{<br />&nbsp; &nbsp; public function </span><span class="default">__construct</span><span class="keyword">(array </span><span class="default">$data </span><span class="keyword">= [])<br />&nbsp; &nbsp; {<br />&nbsp; &nbsp; &nbsp; &nbsp; if (!\</span><span class="default">is_array</span><span class="keyword">(</span><span class="default">$data</span><span class="keyword">) &amp;&amp; !\</span><span class="default">array_key_exists</span><span class="keyword">(</span><span class="string">'ArrayAccess'</span><span class="keyword">, </span><span class="default">class_implements</span><span class="keyword">(</span><span class="default">$data</span><span class="keyword">))) {<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="default">$data </span><span class="keyword">= [</span><span class="default">$data</span><span class="keyword">];<br />&nbsp; &nbsp; &nbsp; &nbsp; }<br /><br />&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="default">$this</span><span class="keyword">-&gt;</span><span class="default">iterator </span><span class="keyword">= </span><span class="default">$this</span><span class="keyword">-&gt;</span><span class="default">getIterator</span><span class="keyword">();<br />&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="default">parent</span><span class="keyword">::</span><span class="default">__construct</span><span class="keyword">(</span><span class="default">$data</span><span class="keyword">);<br />&nbsp; &nbsp; }<br /><br />&nbsp; &nbsp; public function &amp;</span><span class="default">offsetGet</span><span class="keyword">(</span><span class="default">$index</span><span class="keyword">)<br />&nbsp; &nbsp; {<br />&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="default">$value </span><span class="keyword">= &amp;</span><span class="default">$this</span><span class="keyword">-&gt;</span><span class="default">iterator</span><span class="keyword">[</span><span class="default">$index</span><span class="keyword">] ?? </span><span class="default">null</span><span class="keyword">;<br /><br />&nbsp; &nbsp; &nbsp; &nbsp; return </span><span class="default">$value</span><span class="keyword">;<br />&nbsp; &nbsp; }<br />}<br /></span><span class="default">?&gt;</span>
+</span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="122444">  <div class="votes">
+    <div id="Vu122444">
+    <a href="/manual/vote-note.php?id=122444&amp;page=class.arrayobject&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd122444">
+    <a href="/manual/vote-note.php?id=122444&amp;page=class.arrayobject&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V122444" title="63% like this...">
+    3
+    </div>
+  </div>
+  <a href="#122444" class="name">
+  <strong class="user"><em>rudie</em></strong></a><a class="genanchor" href="#122444"> &para;</a><div class="date" title="2018-02-26 02:08"><strong>4 years ago</strong></div>
+  <div class="text" id="Hcom122444">
+<div class="phpcode"><code><span class="html">
+If you want numerical ArrayObject objects to play nice with json_encode(), implement JsonSerializable:<br /><br />class JsonSerializableArrayObject extends ArrayObject implements JsonSerializable {<br />&nbsp; &nbsp; function jsonSerialize() {<br />&nbsp; &nbsp; &nbsp; &nbsp; return $this-&gt;getArrayCopy();<br />&nbsp; &nbsp; }<br />}<br /><br />For assoc ArrayObject objects this isn't neccesary, but for numerical arrays it is, otherwise they will be formatted like<br /><br />{"0":"jaap","1":"karel"}<br /><br />instead of<br /><br />["jaap","karel"]</span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="85002">  <div class="votes">
+    <div id="Vu85002">
+    <a href="/manual/vote-note.php?id=85002&amp;page=class.arrayobject&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd85002">
+    <a href="/manual/vote-note.php?id=85002&amp;page=class.arrayobject&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V85002" title="66% like this...">
+    1
+    </div>
+  </div>
+  <a href="#85002" class="name">
+  <strong class="user"><em>Anonymous</em></strong></a><a class="genanchor" href="#85002"> &para;</a><div class="date" title="2008-08-09 06:17"><strong>13 years ago</strong></div>
+  <div class="text" id="Hcom85002">
+<div class="phpcode"><code><span class="html">
+Too bad the Array functions [1] are not available on this object… otherwise I would be using it all the time.<br /><br />[1] <a href="http://nl.php.net/manual/en/ref.array.php" rel="nofollow" target="_blank">http://nl.php.net/manual/en/ref.array.php</a></span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="122712">  <div class="votes">
+    <div id="Vu122712">
+    <a href="/manual/vote-note.php?id=122712&amp;page=class.arrayobject&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd122712">
+    <a href="/manual/vote-note.php?id=122712&amp;page=class.arrayobject&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V122712" title="62% like this...">
+    2
+    </div>
+  </div>
+  <a href="#122712" class="name">
+  <strong class="user"><em>Vuong Nguyen</em></strong></a><a class="genanchor" href="#122712"> &para;</a><div class="date" title="2018-05-08 03:52"><strong>3 years ago</strong></div>
+  <div class="text" id="Hcom122712">
+<div class="phpcode"><code><span class="html">
+You can easily realise that ArrayObject can use various functions as they are in ArrayIterator to iterate an object-as-a-array. However, you need to "activate" these function (rewind, valid, next and so on...) by using getIterator() first. Actually this function inherits from Iterator Aggregate interface.<br /><br />Take a look at the following basic example. The results are the same:<br /><br /><span class="default">&lt;?php<br /><br />$array </span><span class="keyword">= [</span><span class="default">1</span><span class="keyword">, </span><span class="default">2</span><span class="keyword">, </span><span class="default">3</span><span class="keyword">, </span><span class="default">4</span><span class="keyword">];<br /></span><span class="default">$a </span><span class="keyword">= new </span><span class="default">ArrayObject</span><span class="keyword">(</span><span class="default">$array</span><span class="keyword">);<br /></span><span class="default">$b </span><span class="keyword">= new </span><span class="default">ArrayIterator</span><span class="keyword">(</span><span class="default">$array</span><span class="keyword">);<br /><br /></span><span class="default">$iterator </span><span class="keyword">= </span><span class="default">$a</span><span class="keyword">-&gt;</span><span class="default">getIterator</span><span class="keyword">();<br /><br />for(</span><span class="default">$iterator</span><span class="keyword">-&gt;</span><span class="default">rewind</span><span class="keyword">(); </span><span class="default">$iterator</span><span class="keyword">-&gt;</span><span class="default">valid</span><span class="keyword">(); </span><span class="default">$iterator</span><span class="keyword">-&gt;</span><span class="default">next</span><span class="keyword">()){<br />&nbsp; &nbsp; echo </span><span class="default">$iterator</span><span class="keyword">-&gt;</span><span class="default">current</span><span class="keyword">()*</span><span class="default">2</span><span class="keyword">;<br />&nbsp; &nbsp; <br />}<br /><br />for(</span><span class="default">$b</span><span class="keyword">-&gt;</span><span class="default">rewind</span><span class="keyword">(); </span><span class="default">$b</span><span class="keyword">-&gt;</span><span class="default">valid</span><span class="keyword">(); </span><span class="default">$b</span><span class="keyword">-&gt;</span><span class="default">next</span><span class="keyword">()){<br />&nbsp; &nbsp; echo </span><span class="default">$b</span><span class="keyword">-&gt;</span><span class="default">current</span><span class="keyword">()*</span><span class="default">2</span><span class="keyword">; <br />&nbsp; &nbsp; <br />}<br /><br /></span><span class="comment">//Resulst are the same 2468 AND 2468</span>
+</span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="118872">  <div class="votes">
+    <div id="Vu118872">
+    <a href="/manual/vote-note.php?id=118872&amp;page=class.arrayobject&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd118872">
+    <a href="/manual/vote-note.php?id=118872&amp;page=class.arrayobject&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V118872" title="53% like this...">
+    1
+    </div>
+  </div>
+  <a href="#118872" class="name">
+  <strong class="user"><em>Mahmoud Elnezamy</em></strong></a><a class="genanchor" href="#118872"> &para;</a><div class="date" title="2016-02-19 01:36"><strong>6 years ago</strong></div>
+  <div class="text" id="Hcom118872">
+<div class="phpcode"><code><span class="html">
+<span class="default">&lt;?php<br /></span><span class="keyword">class </span><span class="default">Prototype </span><span class="keyword">extends </span><span class="default">ArrayObject<br /></span><span class="keyword">{<br />&nbsp; &nbsp; private </span><span class="default">$___class </span><span class="keyword">= </span><span class="default">null</span><span class="keyword">;<br />&nbsp; &nbsp; <br />&nbsp; &nbsp; public function </span><span class="default">__get</span><span class="keyword">(</span><span class="default">$key</span><span class="keyword">)<br />&nbsp; &nbsp; {<br />&nbsp; &nbsp; &nbsp; &nbsp; return </span><span class="default">$this</span><span class="keyword">[</span><span class="default">$key</span><span class="keyword">];<br />&nbsp; &nbsp; }<br /><br />&nbsp; &nbsp; public function </span><span class="default">__set</span><span class="keyword">(</span><span class="default">$key</span><span class="keyword">, </span><span class="default">$value</span><span class="keyword">)<br />&nbsp; &nbsp; {<br />&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="default">$this</span><span class="keyword">[</span><span class="default">$key</span><span class="keyword">] =&nbsp; </span><span class="default">$value</span><span class="keyword">;<br />&nbsp; &nbsp; }<br />&nbsp; &nbsp; <br />&nbsp; &nbsp; public function </span><span class="default">__call</span><span class="keyword">(</span><span class="default">$key</span><span class="keyword">, </span><span class="default">$args</span><span class="keyword">)<br />&nbsp; &nbsp; {<br />&nbsp; &nbsp; &nbsp; &nbsp; if(</span><span class="default">is_object</span><span class="keyword">(</span><span class="default">$this</span><span class="keyword">-&gt;</span><span class="default">___class</span><span class="keyword">) &amp;&amp; </span><span class="default">is_callable</span><span class="keyword">([</span><span class="default">$this</span><span class="keyword">-&gt;</span><span class="default">___class</span><span class="keyword">, </span><span class="default">$key</span><span class="keyword">])){<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return </span><span class="default">call_user_func_array</span><span class="keyword">([</span><span class="default">$this</span><span class="keyword">-&gt;</span><span class="default">___class</span><span class="keyword">, </span><span class="default">$key</span><span class="keyword">],</span><span class="default">$args</span><span class="keyword">);<br />&nbsp; &nbsp; &nbsp; &nbsp; }<br />&nbsp; &nbsp; &nbsp; &nbsp; return </span><span class="default">is_callable</span><span class="keyword">(</span><span class="default">$c </span><span class="keyword">= </span><span class="default">$this</span><span class="keyword">-&gt;</span><span class="default">__get</span><span class="keyword">(</span><span class="default">$key</span><span class="keyword">)) ? </span><span class="default">call_user_func_array</span><span class="keyword">(</span><span class="default">$c</span><span class="keyword">, </span><span class="default">$args</span><span class="keyword">) : </span><span class="default">null</span><span class="keyword">;<br />&nbsp; &nbsp; }<br /><br />&nbsp; &nbsp; public function </span><span class="default">importObj</span><span class="keyword">(</span><span class="default">$class</span><span class="keyword">,&nbsp; </span><span class="default">$array </span><span class="keyword">= []){<br />&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="default">$this</span><span class="keyword">-&gt;</span><span class="default">___class </span><span class="keyword">= </span><span class="default">$class</span><span class="keyword">;<br />&nbsp; &nbsp; &nbsp; &nbsp; if(</span><span class="default">count</span><span class="keyword">(</span><span class="default">$array</span><span class="keyword">) &gt; </span><span class="default">0</span><span class="keyword">){<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="default">$this</span><span class="keyword">-&gt;</span><span class="default">import</span><span class="keyword">(</span><span class="default">$array</span><span class="keyword">);<br />&nbsp; &nbsp; &nbsp; &nbsp; }<br />&nbsp; &nbsp; &nbsp; &nbsp; return </span><span class="default">$this</span><span class="keyword">;<br />&nbsp; &nbsp; }<br /><br />&nbsp; &nbsp; public function </span><span class="default">import</span><span class="keyword">(</span><span class="default">$input</span><span class="keyword">)<br />&nbsp; &nbsp; {<br />&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="default">$this</span><span class="keyword">-&gt;</span><span class="default">exchangeArray</span><span class="keyword">(</span><span class="default">$input</span><span class="keyword">);<br />&nbsp; &nbsp; &nbsp; &nbsp; return </span><span class="default">$this</span><span class="keyword">;<br />&nbsp; &nbsp; }<br /><br />&nbsp; &nbsp; public function </span><span class="default">export</span><span class="keyword">()<br />&nbsp; &nbsp; {<br />&nbsp; &nbsp; &nbsp; &nbsp; return </span><span class="default">$this</span><span class="keyword">-&gt;</span><span class="default">objectToArray</span><span class="keyword">(</span><span class="default">$this</span><span class="keyword">-&gt;</span><span class="default">getArrayCopy</span><span class="keyword">());<br />&nbsp; &nbsp; }<br /><br />&nbsp; &nbsp; public function </span><span class="default">objectToArray </span><span class="keyword">(</span><span class="default">$object</span><span class="keyword">) {<br />&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="default">$o </span><span class="keyword">= [];<br />&nbsp; &nbsp; &nbsp; &nbsp; foreach (</span><span class="default">$object </span><span class="keyword">as </span><span class="default">$key </span><span class="keyword">=&gt; </span><span class="default">$value</span><span class="keyword">) {<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; </span><span class="default">$o</span><span class="keyword">[</span><span class="default">$key</span><span class="keyword">] = </span><span class="default">is_object</span><span class="keyword">(</span><span class="default">$value</span><span class="keyword">) ? (array) </span><span class="default">$value</span><span class="keyword">: </span><span class="default">$value</span><span class="keyword">;<br />&nbsp; &nbsp; &nbsp; &nbsp; }<br />&nbsp; &nbsp; &nbsp; &nbsp; return </span><span class="default">$o</span><span class="keyword">;<br />&nbsp; &nbsp; }<br /><br />}<br /><br />class </span><span class="default">user</span><span class="keyword">{<br />&nbsp; &nbsp; public </span><span class="default">$name </span><span class="keyword">= </span><span class="string">'Mahmoud Elnezamy'</span><span class="keyword">;<br />&nbsp; &nbsp; public function </span><span class="default">getName</span><span class="keyword">(){<br />&nbsp; &nbsp; &nbsp; &nbsp; return </span><span class="string">'You Name is ' </span><span class="keyword">. </span><span class="default">$this</span><span class="keyword">-&gt;</span><span class="default">name</span><span class="keyword">;<br />&nbsp; &nbsp; }<br />}<br /><br /></span><span class="comment">//usage you can import object with some array<br /><br /></span><span class="default">$add </span><span class="keyword">= [</span><span class="string">'age' </span><span class="keyword">=&gt; </span><span class="string">'27'</span><span class="keyword">, </span><span class="string">'country' </span><span class="keyword">=&gt; </span><span class="string">'Egypt'</span><span class="keyword">];<br /></span><span class="default">$user </span><span class="keyword">= new </span><span class="default">user</span><span class="keyword">;<br /></span><span class="default">$Prototype </span><span class="keyword">= new </span><span class="default">Prototype</span><span class="keyword">;<br /></span><span class="default">$Prototype</span><span class="keyword">-&gt;</span><span class="default">importObj</span><span class="keyword">(</span><span class="default">$user</span><span class="keyword">, </span><span class="default">$add</span><span class="keyword">);<br /></span><span class="comment">//print_r($Prototype);<br /><br /></span><span class="keyword">echo </span><span class="default">$Prototype</span><span class="keyword">-&gt;</span><span class="default">getName</span><span class="keyword">().</span><span class="string">' '</span><span class="keyword">;<br />echo </span><span class="default">$Prototype</span><span class="keyword">-&gt;</span><span class="default">age</span><span class="keyword">.</span><span class="string">' '</span><span class="keyword">;<br />echo </span><span class="default">$Prototype</span><span class="keyword">-&gt;</span><span class="default">country</span><span class="keyword">;</span>
+</span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="126811">  <div class="votes">
+    <div id="Vu126811">
+    <a href="/manual/vote-note.php?id=126811&amp;page=class.arrayobject&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd126811">
+    <a href="/manual/vote-note.php?id=126811&amp;page=class.arrayobject&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V126811" title="100% like this...">
+    1
+    </div>
+  </div>
+  <a href="#126811" class="name">
+  <strong class="user"><em>bub at gmail dot com</em></strong></a><a class="genanchor" href="#126811"> &para;</a><div class="date" title="2022-01-30 01:07"><strong>1 month ago</strong></div>
+  <div class="text" id="Hcom126811">
+<div class="phpcode"><code><span class="html">
+If you need the last key of your collection use:<br /><span class="default">&lt;?php<br />array_key_last</span><span class="keyword">(</span><span class="default">$this</span><span class="keyword">-&gt;</span><span class="default">getArrayCopy</span><span class="keyword">())<br /></span><span class="default">?&gt;<br /></span><br />In an extending class it could look like:<br /><span class="default">&lt;?php<br /></span><span class="keyword">class </span><span class="default">Collection </span><span class="keyword">extends </span><span class="default">ArrayObject<br /></span><span class="keyword">{<br />&nbsp; &nbsp; public function </span><span class="default">lastKey</span><span class="keyword">(): </span><span class="default">int<br />&nbsp; &nbsp; </span><span class="keyword">{<br />&nbsp; &nbsp; &nbsp; &nbsp; return </span><span class="default">array_key_last</span><span class="keyword">(</span><span class="default">$this</span><span class="keyword">-&gt;</span><span class="default">getArrayCopy</span><span class="keyword">());<br />&nbsp; &nbsp; }<br />}<br /></span><span class="default">?&gt;<br /></span><br />If you want to use any type safe collection:<br /><span class="default">&lt;?php<br /></span><span class="keyword">class </span><span class="default">BookCollection </span><span class="keyword">extends </span><span class="default">Collection<br /></span><span class="keyword">{<br />&nbsp; &nbsp; public function </span><span class="default">add</span><span class="keyword">(</span><span class="default">Book $book</span><span class="keyword">) : </span><span class="default">void<br />&nbsp; &nbsp; </span><span class="keyword">{<br />&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="default">$this</span><span class="keyword">-&gt;</span><span class="default">offsetSet</span><span class="keyword">(</span><span class="default">$book</span><span class="keyword">-&gt;</span><span class="default">id</span><span class="keyword">, </span><span class="default">$book</span><span class="keyword">);<br />&nbsp; &nbsp; }<br /><br />&nbsp; &nbsp; </span><span class="comment">// note the return type "Book"<br />&nbsp; &nbsp; </span><span class="keyword">public function </span><span class="default">get</span><span class="keyword">(</span><span class="default">int $bookId</span><span class="keyword">) : </span><span class="default">Book <br />&nbsp; &nbsp; </span><span class="keyword">{<br />&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="default">$this</span><span class="keyword">-&gt;</span><span class="default">offsetGet</span><span class="keyword">(</span><span class="default">$bookId</span><span class="keyword">);<br />&nbsp; &nbsp; }<br />}<br /></span><span class="default">?&gt;</span>
+</span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="126041">  <div class="votes">
+    <div id="Vu126041">
+    <a href="/manual/vote-note.php?id=126041&amp;page=class.arrayobject&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd126041">
+    <a href="/manual/vote-note.php?id=126041&amp;page=class.arrayobject&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V126041" title="100% like this...">
+    1
+    </div>
+  </div>
+  <a href="#126041" class="name">
+  <strong class="user"><em>lsrzj at yahoo dot com</em></strong></a><a class="genanchor" href="#126041"> &para;</a><div class="date" title="2021-04-26 12:31"><strong>10 months ago</strong></div>
+  <div class="text" id="Hcom126041">
+<div class="phpcode"><code><span class="html">
+Differences between STD_PROP_LIST and ARRAY_AS_PROPS<br /><br /><span class="default">&lt;?php<br />$a </span><span class="keyword">= new </span><span class="default">ArrayObject</span><span class="keyword">([], </span><span class="default">ArrayObject</span><span class="keyword">::</span><span class="default">STD_PROP_LIST</span><span class="keyword">);<br /></span><span class="default">$a</span><span class="keyword">[</span><span class="string">'arr'</span><span class="keyword">] = </span><span class="string">'Array data'</span><span class="keyword">;<br /></span><span class="default">$a</span><span class="keyword">-&gt;</span><span class="default">prop </span><span class="keyword">= </span><span class="string">'Prop data'</span><span class="keyword">;<br /><br /></span><span class="default">$b </span><span class="keyword">= new </span><span class="default">ArrayObject</span><span class="keyword">([], </span><span class="default">ArrayObject</span><span class="keyword">::</span><span class="default">ARRAY_AS_PROPS</span><span class="keyword">);<br /></span><span class="default">$b</span><span class="keyword">[</span><span class="string">'arr'</span><span class="keyword">] = </span><span class="string">'Array data'</span><span class="keyword">;<br /></span><span class="default">$b</span><span class="keyword">-&gt;</span><span class="default">prop </span><span class="keyword">= </span><span class="string">'Prop data'</span><span class="keyword">;<br /><br /></span><span class="default">print_r</span><span class="keyword">(</span><span class="default">$a</span><span class="keyword">);<br /></span><span class="comment">/* Output<br /><br />ArrayObject Object<br />(<br />&nbsp; &nbsp; [prop] =&gt; Prop data<br />&nbsp; &nbsp; [storage:ArrayObject:private] =&gt; Array<br />&nbsp; &nbsp; &nbsp; &nbsp; (<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [arr] =&gt; Array data<br />&nbsp; &nbsp; &nbsp; &nbsp; )<br /><br />)*/<br /><br /></span><span class="default">print_r</span><span class="keyword">(</span><span class="default">$b</span><span class="keyword">);<br /></span><span class="comment">/* Output<br /><br />ArrayObject Object<br />(<br />&nbsp; &nbsp; [storage:ArrayObject:private] =&gt; Array<br />&nbsp; &nbsp; &nbsp; &nbsp; (<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [arr] =&gt; Array data<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [prop] =&gt; Prop data<br />&nbsp; &nbsp; &nbsp; &nbsp; )<br /><br />)*/<br /><br /></span><span class="default">?&gt;</span>
+</span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="124976">  <div class="votes">
+    <div id="Vu124976">
+    <a href="/manual/vote-note.php?id=124976&amp;page=class.arrayobject&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd124976">
+    <a href="/manual/vote-note.php?id=124976&amp;page=class.arrayobject&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V124976" title="0% like this...">
+    -1
+    </div>
+  </div>
+  <a href="#124976" class="name">
+  <strong class="user"><em>ke dot chankrisna168 at gmail dot com</em></strong></a><a class="genanchor" href="#124976"> &para;</a><div class="date" title="2020-05-05 02:59"><strong>1 year ago</strong></div>
+  <div class="text" id="Hcom124976">
+<div class="phpcode"><code><span class="html">
+function map_of_array(array $element, $callable)<br />{<br />&nbsp; &nbsp; foreach ($element as $key =&gt; $value) {<br />&nbsp; &nbsp; &nbsp; &nbsp; $callable($key, $value);<br />&nbsp; &nbsp; }<br />}<br /><br />Usage: <br /><br />$key_values = ["name" =&gt; "krisna", "level" =&gt; 10];<br /><br />map_of_array($key_values, function ($key, $value) {<br />&nbsp; &nbsp; &nbsp; echo "\n", $key, "=", $value;<br />});<br /><br />Result:<br /><br />name=krisna<br />level=10</span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="85553">  <div class="votes">
+    <div id="Vu85553">
+    <a href="/manual/vote-note.php?id=85553&amp;page=class.arrayobject&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd85553">
+    <a href="/manual/vote-note.php?id=85553&amp;page=class.arrayobject&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V85553" title="50% like this...">
+    0
+    </div>
+  </div>
+  <a href="#85553" class="name">
+  <strong class="user"><em>dave at csixty4 dot com</em></strong></a><a class="genanchor" href="#85553"> &para;</a><div class="date" title="2008-09-05 08:28"><strong>13 years ago</strong></div>
+  <div class="text" id="Hcom85553">
+<div class="phpcode"><code><span class="html">
+If you want to use array functions on an ArrayObject, why not use iterator_to_array() to get a standard PHP array?&nbsp; Do your operations on that array, then instantiate a new ArrayObject, passing it the array.<br /><br />This might be a little slow on large ArrayObjects, but you'd have access to all of the array functions.</span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="110558">  <div class="votes">
+    <div id="Vu110558">
+    <a href="/manual/vote-note.php?id=110558&amp;page=class.arrayobject&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd110558">
+    <a href="/manual/vote-note.php?id=110558&amp;page=class.arrayobject&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V110558" title="45% like this...">
+    -1
+    </div>
+  </div>
+  <a href="#110558" class="name">
+  <strong class="user"><em>mehea</em></strong></a><a class="genanchor" href="#110558"> &para;</a><div class="date" title="2012-11-06 10:28"><strong>9 years ago</strong></div>
+  <div class="text" id="Hcom110558">
+<div class="phpcode"><code><span class="html">
+Long story short b/c arrays by default are passed by value, if you pass an array to a function, the function works on a copy of the array while the original array remains unaltered by the function.<br /><br />You may cause a change to the array to be reflected in the original array by having the function return the altered array and assign it to the variable for the original array, as follows:<br /><br /><span class="default">&lt;?php<br /></span><span class="keyword">function </span><span class="default">my_array_modify</span><span class="keyword">(</span><span class="default">$data</span><span class="keyword">) { <br />&nbsp; &nbsp; </span><span class="default">$data</span><span class="keyword">[</span><span class="string">'b'</span><span class="keyword">] = </span><span class="default">2</span><span class="keyword">;<br />&nbsp; &nbsp; return </span><span class="default">$data</span><span class="keyword">;&nbsp; &nbsp;&nbsp; <br />} <br /><br /></span><span class="default">$regularArray </span><span class="keyword">= array(); <br /><br /></span><span class="default">$regularArray</span><span class="keyword">[</span><span class="string">'a'</span><span class="keyword">] = </span><span class="default">1</span><span class="keyword">; <br /> <br /></span><span class="default">$regularArray </span><span class="keyword">= </span><span class="default">my_array_modify</span><span class="keyword">(</span><span class="default">$regularArray</span><span class="keyword">); <br /><br /></span><span class="default">var_dump</span><span class="keyword">(</span><span class="default">$regularArray</span><span class="keyword">[</span><span class="string">'b'</span><span class="keyword">]); </span><span class="comment">// 2 <br /></span><span class="default">?&gt;<br /></span><br />Or, you may explicitly pass the array by reference in which case there is no need for the function to return the array since the change will have effected the original array, as follows:<br /><br /><span class="default">&lt;?php<br /></span><span class="keyword">function </span><span class="default">my_arrayref_modify</span><span class="keyword">(&amp;</span><span class="default">$data</span><span class="keyword">) { <br />&nbsp; &nbsp; </span><span class="default">$data</span><span class="keyword">[</span><span class="string">'bb'</span><span class="keyword">] = </span><span class="default">22</span><span class="keyword">;<br />} <br /></span><span class="default">my_arrayref_modify</span><span class="keyword">(</span><span class="default">$regularArray</span><span class="keyword">);<br /></span><span class="default">var_dump</span><span class="keyword">(</span><span class="default">$regularArray</span><span class="keyword">[</span><span class="string">'bb'</span><span class="keyword">]); </span><span class="comment">// 22<br /></span><span class="default">?&gt;</span>
+</span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="105005">  <div class="votes">
+    <div id="Vu105005">
+    <a href="/manual/vote-note.php?id=105005&amp;page=class.arrayobject&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd105005">
+    <a href="/manual/vote-note.php?id=105005&amp;page=class.arrayobject&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V105005" title="40% like this...">
+    -1
+    </div>
+  </div>
+  <a href="#105005" class="name">
+  <strong class="user"><em>marijn at sensimedia dot nl</em></strong></a><a class="genanchor" href="#105005"> &para;</a><div class="date" title="2011-07-21 12:34"><strong>10 years ago</strong></div>
+  <div class="text" id="Hcom105005">
+<div class="phpcode"><code><span class="html">
+A gotcha that is indeed mentioned in the manual, but isn't readily obvious and just cost me half an hour:<br /><br />Objects implementing the Serializable interface do NOT get __sleep and __wakeup called; instead, they use serialize and unserialize methods, respectively (why, I don't know, but whatever - I'm sure there's a reason).<br /><br />Hence, I was trying to serialize a database resultset in an object extending ArrayObject, and needed to fix some stuff regarding database resources on serialize. Took me a while to figure out __sleep wasn't getting called because ArrayObjects implements Serialize...<br /><br />Presumably the ArrayObject internally implements the serialize/unserialize methods (in a trivial manner), hence the error wasn't apparent immediately (i.e., no fatal error was thrown) and I'd been trying to track why my objects didn't get serialized (they were of course) instead of renaming and fixing the methods.</span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="90371">  <div class="votes">
+    <div id="Vu90371">
+    <a href="/manual/vote-note.php?id=90371&amp;page=class.arrayobject&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd90371">
+    <a href="/manual/vote-note.php?id=90371&amp;page=class.arrayobject&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V90371" title="40% like this...">
+    -1
+    </div>
+  </div>
+  <a href="#90371" class="name">
+  <strong class="user"><em>skrebbel at gmail dot com</em></strong></a><a class="genanchor" href="#90371"> &para;</a><div class="date" title="2009-04-18 03:25"><strong>12 years ago</strong></div>
+  <div class="text" id="Hcom90371">
+<div class="phpcode"><code><span class="html">
+According to my benchmarks, doing foreach() on an ArrayObject is significantly slower than doing so on a vanilla array(). However, inserting keys and retrieving them is almost the same speed.<br /><br />So, if performance is important, consider not using ArrayObject or descendant classes when you're iterating over its values a lot.<br /><br />These are my timing results, using PEAR::Benchmark:<br /><br />ArrayObject fill&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 0.01441502571106&nbsp; &nbsp; <br />ArrayObject read_key&nbsp; &nbsp; &nbsp; &nbsp; 0.018320083618164&nbsp; &nbsp; <br />ArrayObject read_foreach&nbsp; &nbsp; 2.1559031009674&nbsp; &nbsp; <br /><br />array() fill&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 0.012364864349365&nbsp; &nbsp; <br />array() read_key&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 0.013092041015625&nbsp; &nbsp; <br />array() read_foreach&nbsp; &nbsp; &nbsp; &nbsp; 0.011217832565308&nbsp; &nbsp; <br /><br />In all cases, 'fill()' inserts 10000 numbers at string keys, 'read_key()' reads all of those values by referencing the keys, and 'read_foreach()' does the same by walking through the array(object) with foreach().<br /><br />As you can see, filling or reading from an ArrayObject by key is only 10% to 15% slower, but doing a foreach() is 200 times as costly. I am not sure what the cause of this may be.</span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="86823">  <div class="votes">
+    <div id="Vu86823">
+    <a href="/manual/vote-note.php?id=86823&amp;page=class.arrayobject&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd86823">
+    <a href="/manual/vote-note.php?id=86823&amp;page=class.arrayobject&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V86823" title="40% like this...">
+    -2
+    </div>
+  </div>
+  <a href="#86823" class="name">
+  <strong class="user"><em>Venelin Vulkov</em></strong></a><a class="genanchor" href="#86823"> &para;</a><div class="date" title="2008-11-05 01:09"><strong>13 years ago</strong></div>
+  <div class="text" id="Hcom86823">
+<div class="phpcode"><code><span class="html">
+Simple example of usage : <br /><br /><span class="default">&lt;?php<br /><br />$array </span><span class="keyword">= array(</span><span class="string">'Buck'</span><span class="keyword">,</span><span class="string">'Jerry'</span><span class="keyword">,</span><span class="string">'Tomas'</span><span class="keyword">);<br /><br /></span><span class="default">$arrayObject </span><span class="keyword">= new </span><span class="default">ArrayObject</span><span class="keyword">(</span><span class="default">$array</span><span class="keyword">);<br /></span><span class="comment">// Add new element<br /></span><span class="default">$arrayObject</span><span class="keyword">-&gt;</span><span class="default">append</span><span class="keyword">(</span><span class="string">'Tweety'</span><span class="keyword">);<br /><br /></span><span class="comment">// We are getting the iterator of the object<br /></span><span class="default">$iterator </span><span class="keyword">= </span><span class="default">$arrayObject</span><span class="keyword">-&gt;</span><span class="default">getIterator</span><span class="keyword">();<br /><br /></span><span class="comment">// Simple while loop<br /></span><span class="keyword">while (</span><span class="default">$iterator</span><span class="keyword">-&gt;</span><span class="default">valid</span><span class="keyword">()) {<br />&nbsp; &nbsp; echo </span><span class="default">$iterator</span><span class="keyword">-&gt;</span><span class="default">current</span><span class="keyword">() . </span><span class="string">"\n"</span><span class="keyword">;<br />&nbsp; &nbsp; </span><span class="default">$iterator</span><span class="keyword">-&gt;</span><span class="default">next</span><span class="keyword">();<br />}<br /><br /></span><span class="comment">/* Outputs */<br /></span><span class="default">Buck<br />Jerry<br />Tomas<br />Tweety<br /><br />?&gt;<br /></span><br />Note that not all the public methods of this class are documented here .<br />( Which includes a lot sorting methods ) .<br /><br />Regards</span>
+</code></div>
+  </div>
+ </div></div>
+
+ <div class="foot"><a href="/manual/add-note.php?sect=class.arrayobject&amp;redirect=https://www.php.net/manual/en/class.arrayobject.php"><img src='/images/notes-add@2x.png' alt='add a note' width='12' height='12'> <small>add a note</small></a></div>
+</section>    </section><!-- layout-content -->
+        <aside class='layout-menu'>
+
+        <ul class='parent-menu-list'>
+                                    <li>
+                <a href="spl.misc.php">Miscellaneous Classes and Interfaces</a>
+
+                                    <ul class='child-menu-list'>
+
+                                                <li class="current">
+                            <a href="class.arrayobject.php" title="ArrayObject">ArrayObject</a>
+                        </li>
+                                                <li class="">
+                            <a href="class.splobserver.php" title="SplObserver">SplObserver</a>
+                        </li>
+                                                <li class="">
+                            <a href="class.splsubject.php" title="SplSubject">SplSubject</a>
+                        </li>
+                        
+                    </ul>
+                
+            </li>
+                        
+                    </ul>
+    </aside>
+
+
+  </div><!-- layout -->
+
+  <footer>
+    <div class="container footer-content">
+      <div class="row-fluid">
+      <ul class="footmenu">
+        <li><a href="/copyright.php">Copyright &copy; 2001-2022 The PHP Group</a></li>
+        <li><a href="/my.php">My PHP.net</a></li>
+        <li><a href="/contact.php">Contact</a></li>
+        <li><a href="/sites.php">Other PHP.net sites</a></li>
+        <li><a href="/privacy.php">Privacy policy</a></li>
+        <li><a href="https://github.com/php/web-php/blob/master/manual%2Fen%2Fclass.arrayobject.php">View Source</a></li>
+      </ul>
+      </div>
+    </div>
+  </footer>
+
+    
+ <!-- External and third party libraries. -->
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" integrity="sha384-aBL3Lzi6c9LNDGvpHkZrrm3ZVsIwohDD7CDozL0pk8FwCrfmV7H9w8j3L7ikEv6h" crossorigin="anonymous"></script>
+<script src="/cached.php?t=1421837618&amp;f=/js/ext/modernizr.js"></script>
+<script src="/cached.php?t=1421837618&amp;f=/js/ext/hogan-2.0.0.min.js"></script>
+<script src="/cached.php?t=1421837618&amp;f=/js/ext/typeahead.min.js"></script>
+<script src="/cached.php?t=1421837618&amp;f=/js/ext/mousetrap.min.js"></script>
+<script src="/cached.php?t=1421837618&amp;f=/js/search.js"></script>
+<script src="/cached.php?t=1637324403&amp;f=/js/common.js"></script>
+
+<a id="toTop" href="javascript:;"><span id="toTopHover"></span><img width="40" height="40" alt="To Top" src="/images/to-top@2x.png"></a>
+
+</body>
+</html>

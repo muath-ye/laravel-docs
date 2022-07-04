@@ -1,0 +1,473 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
+    <title>Roadrunner: a high-performance PHP application server</title>
+
+    <link rel="preload" href="/resources/main.min.css?1.0.0" as="style"/>
+
+    <meta name="twitter:title" value="RoadRunner : a high-performance PHP application server"/>
+    <meta name="twitter:description" value="RoadRunner is a high-performance PHP application server, load-balancer, and process manager written in Golang."/>
+    <meta name="twitter:site" value="@spiralscout"/>
+    <meta name="twitter:image" value="https://roadrunner.dev/logo.png"/>
+    <meta name="twitter:card" value="RoadRunner is a high-performance PHP application server, load-balancer, and process manager written in Golang."/>
+
+
+    <meta name="Description" content="RoadRunner is a high-performance PHP application server, load-balancer, and process manager written in Golang."/>
+    <meta name="Keywords" content="golang, php, high-performance, application server, load-balancer, workers"/>
+    <meta property="og:title" content="RoadRunner : a high-performance PHP application server"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:url" content="https://roadrunner.dev"/>
+    <meta property="og:image" content="https://roadrunner.dev/logo.png"/>
+    <meta property="og:description" content="RoadRunner is a high-performance PHP application server, load-balancer, and process manager written in Golang."/>
+    <meta name="theme-color" content="#FFFFFF"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="default"/>
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300i,400,500i,700i" rel="stylesheet"/>
+    <link href="/resources/main.min.css?1.0.0" rel="stylesheet"/>
+    <!-- Google Tag Manager -->
+    <script type="text/plain" data-cookiescript="accepted" data-cookiecategory="targeting">
+        (function (w, d, s, l, i) {
+            w[l] = w[l] || [];
+            w[l].push({
+                'gtm.start':
+                    new Date().getTime(), event: 'gtm.js'
+            });
+            var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+            j.async = true;
+            j.src =
+                'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+            f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-KZF4S37');
+    </script>
+    <!-- End Google Tag Manager -->
+    <script type="text/javascript" src="//google.com/recaptcha/api.js?render=6Le2tlIbAAAAAJ0992-ztMZWEWfp8hD9y38Hes6w"></script>
+</head>
+<body class="">
+<!-- Google Tag Manager (noscript) -->
+<noscript>
+    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KZF4S37" height="0" width="0" style="display:none;visibility:hidden" data-cookiescript="accepted"></iframe>
+</noscript>
+<!-- End Google Tag Manager (noscript) -->
+<header class="header fixed-top">
+    <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-light">
+                        <div class="navbar-brand">
+                <a href="/">
+                    <i class="icon icon-logo mr-1 mr-lg-2 align-top"></i>RoadRunner
+                </a>
+                <a href="https://spiralscout.com/" class="font-size-sm text-muted d-none d-sm-inline ml-3" target="_blank">by Spiral Scout</a>
+            </div>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav align-items-lg-center ml-auto">
+                    <li class="nav-item ">
+                        <a class="nav-link" href="/features">
+                            <span class="link-underlined">Features</span>
+                        </a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="/docs">
+                            <span class="link-underlined">Documentation</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://github.com/spiral/roadrunner" target="_blank">
+                            <i class="icon icon-github"></i>
+                        </a>
+                    </li>
+                    <li class="nav-item position-relative">
+                        <div class="header-search-bar js-search-box">
+                            <form action="/search" method="get" role="search">
+                                <input type="search" name="q" value="" placeholder="Search..." class="form-control form-input"/>
+                                <button type="submit" class="d-none"></button>
+                            </form>
+                        </div>
+                        <button type="button" class="btn nav-link btn-search-toggle js-search-toggle">
+                            <i class="icon icon-search font-size-lg"></i>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+</header>
+
+<main class="main">
+    
+    <section class="hero-section bd-gradient">
+        <div class="container">
+            <div class="row no-gutters justify-content-center align-items-center">
+                <div class="col-md-6 text-left text-white">
+                    <h1 class="text-white">Modernizing PHP Applications with Golang</h1>
+                    <p>RoadRunner is a high-performance PHP application server, load-balancer, and process manager
+                        written in Golang.</p>
+                    <div class="d-flex flex-column flex-sm-row align-items-center mt-sm-3 mt-md-6">
+                        <a href="https://github.com/spiral/roadrunner" class="btn btn-success btn-min-width mr-sm-4" target="_blank">
+                            <i class="icon icon-github font-size-lg"></i>GitHub
+                        </a>
+                        <div class="mt-4 mt-sm-2">
+                            <a class="github-button" href="https://github.com/spiral/roadrunner" data-show-count="true" data-size="large" aria-label="Star spiral/roadrunner on GitHub">
+                                Star
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 d-none d-md-block hero-image">
+                    <img class="mw-100" src="assets/illustration_section.png" srcset="assets/illustration_section.png 1x, assets/illustration_section@2x.png 2x" alt=""/>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="bg-gradient-light">
+        <section class="info-section">
+            <div class="container">
+                <div class="px-3 py-4 info-block bg-white shadowed-block">
+                    <div class="row">
+                        <div class="col-md-6 col-lg-4 p-4 p-lg-5 text-left">
+                            <div class="img-wrapper d-flex align-items-center">
+                                <img class="mw-100 mh-100" src="assets/01.svg" alt="Production Ready" title="Production Ready"/>
+                            </div>
+                            <h3>Production Ready</h3>
+                            <p>
+                                RoadRunner can be installed and used in production right away for even the biggest
+                                applications under constant load.
+                            </p>
+                        </div>
+                        <div class="col-md-6 col-lg-4 p-4 p-lg-5 text-left">
+                            <div class="img-wrapper d-flex align-items-center">
+                                <img class="mw-100 mh-100" src="assets/02.svg" alt="High Performance" title="High Performance"/>
+                            </div>
+                            <h3>High Performance</h3>
+                            <p>
+                                RoadRunner utilizes goroutines and the multi-threading capabilities of Golang to bring
+                                maximum performance to PHP applications.
+                            </p>
+                        </div>
+                        <div class="col-md-6 col-lg-4 p-4 p-lg-5 text-left">
+                            <div class="img-wrapper d-flex align-items-center">
+                                <img class="mw-100 mh-100" src="assets/03.svg" alt="Works Everywhere" title="Works Everywhere"/>
+                            </div>
+                            <h3>Works Everywhere</h3>
+                            <p>
+                                You can download or compile RoadRunner binaries that work on Mac OS, Windows, Linux,
+                                FreeBSD, and ARM.
+                            </p>
+                        </div>
+                        <div class="col-md-6 col-lg-4 p-4 p-lg-5 text-left">
+                            <div class="img-wrapper d-flex align-items-center">
+                                <img class="mw-100 mh-100" src="assets/04.svg" alt="Golang Extensions" title="Golang Extensions"/>
+                            </div>
+                            <h3>Golang Extensions</h3>
+                            <p>
+                                RoadRunner provides a flexible framework that allows you to integrate any Golang
+                                library with your application using Goridge RPC protocol.
+                            </p>
+                        </div>
+                        <div class="col-md-6 col-lg-4 p-4 p-lg-5 text-left">
+                            <div class="img-wrapper d-flex align-items-center">
+                                <img class="mw-100 mh-100" src="assets/05.svg" alt="Rich Error Management" title="Rich Error Management"/>
+                            </div>
+                            <h3>Rich Error Management</h3>
+                            <p>
+                                RoadRunner supports effective application, server and protocol error handling. You can
+                                also connect custom handlers or reporters like Sentry, Prometheus, etc.
+                            </p>
+                        </div>
+                        <div class="col-md-6 col-lg-4 p-4 p-lg-5 text-left">
+                            <div class="img-wrapper d-flex align-items-center">
+                                <img class="mw-100 mh-100" src="assets/06.svg" alt="HTTP/2, gRPC, PSR-7" title="HTTP/2, gRPC, PSR-7"/>
+                            </div>
+                            <h3>HTTP/2, gRPC, PSR-7</h3>
+                            <p>
+                                RoadRunner offers a versatile foundation library that allows for running your
+                                application under HTTP/2, gRPC, Queue, etc.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="instructions-section pt-1 pb-7">
+            <div class="container">
+                <h2>How to install RoadRunner</h2>
+                <p>A simple guide to using RoadRunner</p>
+                <div class="shadowed-block mt-5 text-left">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="nav flex-column nav-pills bg-light" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                                <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">INSTALL</a>
+                                <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">CREATE PHP
+                                    WORKERS</a>
+                                <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">CONFIGURE</a>
+                                <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">RUN</a>
+                            </div>
+                        </div>
+                        <div class="col-md-8 py-2">
+                            <div class="tab-content py-4 pl-2 pr-5" id="v-pills-tabContent">
+                                <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+                                    <p>
+                                        RoadRunner can be compiled on Linux, OSX, Windows and other 64 bit environments
+                                        as the only requirement is Go.
+                                    </p>
+                                    <p class="mb-1">To build:</p>
+                                    <code class="d-block mb-3 bg-dark">$ make</code>
+
+                                    <p class="mb-1">To test:</p>
+                                    <code class="d-block mb-3 bg-dark">$ make test</code>
+
+                                    <p>Or download RoadRunner binaries from the <a href="https://github.com/spiral/roadrunner/releases"><strong>release
+                                                page</strong></a>.
+                                    </p>
+                                </div>
+                                <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+                                    <p>
+                                        Create a PHP worker using the following <a href="/docs/php-worker"><strong>guide</strong></a>.
+                                    </p>
+                                    <pre>
+                                    <code class="d-block mb-3 bg-dark language-php">while ($req = $psr7->acceptRequest()) {
+        $resp = new \Zend\Diactoros\Response();
+        $resp->getBody()->write("hello world");
+        $psr7->respond($resp);
+}</code></pre>
+                                </div>
+                                <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
+                                    <p>
+                                        To write a configuration file explaining how RoadRunner should run your
+                                        application:
+                                    </p>
+                                    <code class="d-block mb-3 bg-dark">http:<br/>address: :8080<br/>workers:<br/>command: "php psr-worker.php"<br/>pool:<br/>numWorkers: 4</code>
+                                </div>
+                                <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
+                                    <p>Run your application by simply invoking:</p>
+                                    <code class="d-block mb-3 bg-dark">$ ./rr serve -v -d</code>
+
+                                    <p>You can view your workers and their memory consumption using:</p>
+                                    <code class="d-block mb-3 bg-dark">$ ./rr http:workers -i</code>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <section class="contacts-section bd-gradient">
+        <div class="container">
+            <h2 class="text-white">Companies using RoadRunner</h2>
+            <div class="d-flex flex-wrap justify-content-center justify-content-lg-between align-items-center clients-block">
+                <div class="img-wrapper">
+                    <img src="assets/illustration_section.png" srcset="assets/consensus.png 1x, assets/consensus@2x.png 2x" alt=""/>
+                </div>
+                <div class="img-wrapper">
+                    <img src="assets/unilog.png" srcset="assets/unilog.png 1x, assets/unilog@2x.png 2x" alt=""/></div>
+                <div class="img-wrapper">
+                    <img src="assets/drew.png" srcset="assets/drew.png 1x, assets/drew@2x.png 2x" alt=""/>
+                </div>
+                <div class="img-wrapper">
+                    <img src="assets/elearningbros.png" srcset="assets/elearningbros.png 1x, assets/elearningbros@2x.png 2x" alt=""/>
+                </div>
+                <div class="img-wrapper">
+                    <img src="assets/public_works.png" srcset="assets/public_works.png 1x, assets/public_works@2x.png 2x" alt=""/>
+                </div>
+            </div>
+            <div class="contact-form-block shadowed-block">
+                <h4 class="mb-4">Contact us</h4>
+                <form action="/signup/contact" data-success="Thank you for contacting us! We will respond shortly." data-error="Something went wrong" class="text-left js-validate">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="control-label" for="name">Name</label>
+                                <div class="controls">
+                                    <input type="text" id="name" name="name" class="form-control form-input" placeholder="Your name" data-error="Please enter your name."/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="control-label" for="email">
+                                    Email
+                                </label>
+                                <div class="controls">
+                                    <input type="email" inputmode="email" id="email" name="email" class="form-control form-input" placeholder="Your email" data-error="Please enter your email."/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="control-label" for="message">
+                                    Message
+                                </label>
+                                <textarea id="message" name="message" class="form-control" placeholder="Type your message here…" data-error="Please enter your message."></textarea>
+                            </div>
+                            <input id="captcha" type="hidden" name="captcha"/>
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-min-width btn-success" onclick="generateToken()">
+                                    <i class="icon icon-submit"></i>Submit
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+    <section class="section section--light">
+         <div class="container">
+             <div class="section__wrapper">
+                 <div class="advantage">
+                     <h2 class="advantage__heading">Meet other Spiral Scout products</h2>
+                     <p class="advantage__brief">
+                         Explore new ways to speed up your projects
+                     </p>
+                 </div>
+                 <div class="tile__group">
+                     <div class="tile">
+                         <div class="tile__header">
+                             <div class="tile__icon tile__icon--framework"></div>
+                             <h3 class="tile__title">Spiral Framework</h3>
+                         </div>
+                         <div class="tile__content">
+                             <div class="tile__subtitle">High-Performance PHP/Go Framework</div>
+                             <div class="tile__text">
+                                 Born out of real-world software development projects, Spiral Framework is a modern PHP framework designed to power faster, cleaner, superior software development.
+                             </div>
+                         </div>
+                         <div class="tile__action">
+                             <a class="btn btn-success" href="https://spiral.dev">Learn More</a>
+                         </div>
+                     </div>
+                     <div class="tile">
+                         <div class="tile__header">
+                             <div class="tile__icon tile__icon--cycleorm"></div>
+                             <h3 class="tile__title">Cycle ORM</h3>
+                         </div>
+                         <div class="tile__content">
+                             <div class="tile__subtitle">DataMapper ORM and Data Modelling engine</div>
+                             <div class="tile__text">
+                                 The ORM provides flexible configuration options to model datasets, a powerful query builder, and supports dynamic mapping schemas.
+                             </div>
+                         </div>
+                         <div class="tile__action">
+                             <a class="btn btn-success" href="https://cycle-orm.dev">Learn More</a>
+                         </div>
+                     </div>
+                 </div>
+             </div>
+         </div>
+    </section>
+
+</main>
+<footer class="footer">
+    <div class="footer-top">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="row">
+                        <div class="col-sm-6 d-flex flex-column text-center text-lg-left">
+                            <a href="/" class="d-flex align-items-center justify-content-center justify-content-lg-start font-size-lg footer-logo">
+                                <i class="icon icon-logo mr-2"></i>
+                                RoadRunner
+                            </a>
+                            <div>
+                                <p class="font-size-sm text-muted">Our Sponsor:</p>
+                                <a href="https://spiralscout.com/" target="_blank">
+                                    <img src="/assets/spiralscout-logo.svg" class="d-inline-block align-top" alt="Spiral Scout"/>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 d-flex flex-column text-center text-lg-left pt-4 pt-sm-2 pl-md-6 with-borders">
+                            <p class="title">Product</p>
+                            <a href="/features"><span class="link-underlined">Features</span></a>
+                            <a href="/docs"><span class="link-underlined">Documentation</span></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 d-flex flex-column text-center text-lg-left pt-4 pt-lg-2 pl-lg-6">
+                    <p class="title">INTERESTED IN RECEIVING OCCASIONAL NEWS ABOUT ROADRUNNER?</p>
+                    <p>Enter your email for updates. No spam.</p>
+                    <form action="/signup/subscribe" data-success="You have been successfully subscribed" data-error="Something went wrong" class="text-left js-validate">
+                        <div class="form-group mb-0">
+                            <div class="controls">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <i class="icon icon-mail"></i>
+                                    </div>
+                                    <input type="email" inputmode="email" id="subscribe-email" name="email" class="form-control form-input" placeholder="Email" data-error="Please, enter your email."/>
+                                    <div class="input-group-append">
+                                        <button type="submit" class="btn btn-link text-uppercase">
+                                            Subscribe
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="bg-light text-center p-3">
+        &copy; 2022 RoadRunner
+    </div>
+    <div class="font-size-sm bg-light text-center p-0 pb-3">
+        This site is protected by reCAPTCHA and the Google
+        <a href="https://policies.google.com/privacy">Privacy Policy</a> and
+        <a href="https://policies.google.com/terms">Terms of Service</a> apply.
+    </div>
+</footer>
+
+
+
+    <script src="/resources/main.min.js?1.0.0"></script>
+    
+        <script type="text/plain" data-cookiescript="accepted" data-cookiecategory="targeting">
+            _linkedin_partner_id = "1856988";
+            window._linkedin_data_partner_ids = window._linkedin_data_partner_ids || [];
+            window._linkedin_data_partner_ids.push(_linkedin_partner_id);
+        </script>
+        <script type="text/plain" data-cookiescript="accepted" data-cookiecategory="targeting">
+            (function () {
+                    var s = document.getElementsByTagName("script")[0];
+                    var b = document.createElement("script");
+                    b.type = "text/javascript";
+                    b.async = true;
+                    b.src = "https://snap.licdn.com/li.lms-analytics/insight.min.js";
+                    s.parentNode.insertBefore(b, s);
+                }
+            )();
+        </script>
+        <noscript>
+            <img height="1" width="1" style="display:none;" alt="" src="https://px.ads.linkedin.com/collect/?pid=1856988&fmt=gif" data-cookiescript="accepted"/>
+        </noscript>
+    
+
+    <!-- Start Cookie Script // https://cookie-script.com/account.html -->
+        <script type="text/javascript" charset="UTF-8" src="//eu.cookie-script.com/s/1baa247e45084c57a8a36247b4640cff.js"></script>
+    <!-- End Cookie Script -->
+
+    <script>
+        function generateToken() {
+            grecaptcha.ready(function () {
+                grecaptcha.execute('6Le2tlIbAAAAAJ0992-ztMZWEWfp8hD9y38Hes6w').then(function (token) {
+                    document.getElementsByName('captcha')[0].value = token;
+                });
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            generateToken();
+            setInterval(generateToken, 90000);
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,422 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Spies &mdash; Mockery Docs 1.0-alpha documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script async="async" type="text/javascript" src="https://assets.readthedocs.org/static/javascript/readthedocs-doc-embed.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Creating Partial Mocks" href="partial_mocks.html" />
+    <link rel="prev" title="Alternative shouldReceive Syntax" href="alternative_should_receive_syntax.html" /> 
+
+<!-- RTD Extra Head -->
+
+<link rel="stylesheet" href="https://assets.readthedocs.org/static/css/readthedocs-doc-embed.css" type="text/css" />
+
+<script type="application/json" id="READTHEDOCS_DATA">{"ad_free": false, "api_host": "https://readthedocs.org", "build_date": "2022-01-20T13:18:57Z", "builder": "sphinx", "canonical_url": null, "commit": "c10a5f6e", "docroot": "/docs/", "features": {"docsearch_disabled": false}, "global_analytics_code": "UA-17997319-1", "language": "en", "page": "reference/spies", "programming_language": "php", "project": "mockery-docs", "proxied_api_host": "/_", "source_suffix": ".rst", "subprojects": {}, "theme": "sphinx_rtd_theme", "user_analytics_code": "", "version": "latest"}</script>
+
+<!--
+Using this variable directly instead of using `JSON.parse` is deprecated.
+The READTHEDOCS_DATA global variable will be removed in the future.
+-->
+<script type="text/javascript">
+READTHEDOCS_DATA = JSON.parse(document.getElementById('READTHEDOCS_DATA').innerHTML);
+</script>
+
+<script type="text/javascript" src="https://assets.readthedocs.org/static/javascript/readthedocs-analytics.js" async="async"></script>
+
+<!-- end RTD <extrahead> -->
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Mockery Docs
+          
+
+          
+          </a>
+
+          
+            
+            
+            
+              <div class="version">
+                latest
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/index.html">Getting Started</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="creating_test_doubles.html">Creating Test Doubles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="expectations.html">Expectation Declarations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="argument_validation.html">Argument Validation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alternative_should_receive_syntax.html">Alternative shouldReceive Syntax</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Spies</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#spies-reference">Spies Reference</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#alternative-shouldreceive-syntax">Alternative shouldReceive syntax</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="partial_mocks.html">Creating Partial Mocks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="protected_methods.html">Mocking Protected Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="public_properties.html">Mocking Public Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="public_static_properties.html">Mocking Public Static Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pass_by_reference_behaviours.html">Preserving Pass-By-Reference Method Parameter Behaviour</a></li>
+<li class="toctree-l2"><a class="reference internal" href="demeter_chains.html">Mocking Demeter Chains And Fluent Interfaces</a></li>
+<li class="toctree-l2"><a class="reference internal" href="final_methods_classes.html">Dealing with Final Classes/Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="magic_methods.html">PHP Magic Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="phpunit_integration.html">PHPUnit Integration</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../mockery/index.html">Mockery</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../cookbook/index.html">Cookbook</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Mockery Docs</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Reference</a> &raquo;</li>
+        
+      <li>Spies</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            
+              <a href="https://github.com/padraic/mockery/blob/master/docs/reference/spies.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="spies">
+<span id="index-0"></span><h1>Spies<a class="headerlink" href="#spies" title="Permalink to this headline">¶</a></h1>
+<p>Spies are a type of test doubles, but they differ from stubs or mocks in that,
+that the spies record any interaction between the spy and the System Under Test
+(SUT), and allow us to make assertions against those interactions after the fact.</p>
+<p>Creating a spy means we don’t have to set up expectations for every method call
+the double might receive during the test, some of which may not be relevant to
+the current test. A spy allows us to make assertions about the calls we care
+about for this test only, reducing the chances of over-specification and making
+our tests more clear.</p>
+<p>Spies also allow us to follow the more familiar Arrange-Act-Assert or
+Given-When-Then style within our tests. With mocks, we have to follow a less
+familiar style, something along the lines of Arrange-Expect-Act-Assert, where
+we have to tell our mocks what to expect before we act on the sut, then assert
+that those expectations where met:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="c1">// arrange</span>
+<span class="nv">$mock</span> <span class="o">=</span> <span class="nx">\Mockery</span><span class="o">::</span><span class="na">mock</span><span class="p">(</span><span class="s1">&#39;MyDependency&#39;</span><span class="p">);</span>
+<span class="nv">$sut</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">MyClass</span><span class="p">(</span><span class="nv">$mock</span><span class="p">);</span>
+
+<span class="c1">// expect</span>
+<span class="nv">$mock</span><span class="o">-&gt;</span><span class="na">shouldReceive</span><span class="p">(</span><span class="s1">&#39;foo&#39;</span><span class="p">)</span>
+    <span class="o">-&gt;</span><span class="na">once</span><span class="p">()</span>
+    <span class="o">-&gt;</span><span class="na">with</span><span class="p">(</span><span class="s1">&#39;bar&#39;</span><span class="p">);</span>
+
+<span class="c1">// act</span>
+<span class="nv">$sut</span><span class="o">-&gt;</span><span class="na">callFoo</span><span class="p">();</span>
+
+<span class="c1">// assert</span>
+<span class="nx">\Mockery</span><span class="o">::</span><span class="na">close</span><span class="p">();</span>
+</pre></div>
+</div>
+<p>Spies allow us to skip the expect part and move the assertion to after we have
+acted on the SUT, usually making our tests more readable:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="c1">// arrange</span>
+<span class="nv">$spy</span> <span class="o">=</span> <span class="nx">\Mockery</span><span class="o">::</span><span class="na">spy</span><span class="p">(</span><span class="s1">&#39;MyDependency&#39;</span><span class="p">);</span>
+<span class="nv">$sut</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">MyClass</span><span class="p">(</span><span class="nv">$spy</span><span class="p">);</span>
+
+<span class="c1">// act</span>
+<span class="nv">$sut</span><span class="o">-&gt;</span><span class="na">callFoo</span><span class="p">();</span>
+
+<span class="c1">// assert</span>
+<span class="nv">$spy</span><span class="o">-&gt;</span><span class="na">shouldHaveReceived</span><span class="p">()</span>
+    <span class="o">-&gt;</span><span class="na">foo</span><span class="p">()</span>
+    <span class="o">-&gt;</span><span class="na">with</span><span class="p">(</span><span class="s1">&#39;bar&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>On the other hand, spies are far less restrictive than mocks, meaning tests are
+usually less precise, as they let us get away with more. This is usually a
+good thing, they should only be as precise as they need to be, but while spies
+make our tests more intent-revealing, they do tend to reveal less about the
+design of the SUT. If we’re having to setup lots of expectations for a mock,
+in lots of different tests, our tests are trying to tell us something - the SUT
+is doing too much and probably should be refactored. We don’t get this with
+spies, they simply ignore the calls that aren’t relevant to them.</p>
+<p>Another downside to using spies is debugging. When a mock receives a call that
+it wasn’t expecting, it immediately throws an exception (failing fast), giving
+us a nice stack trace or possibly even invoking our debugger.  With spies, we’re
+simply asserting calls were made after the fact, so if the wrong calls were made,
+we don’t have quite the same just in time context we have with the mocks.</p>
+<p>Finally, if we need to define a return value for our test double, we can’t do
+that with a spy, only with a mock object.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This documentation page is an adaption of the blog post titled
+<a class="reference external" href="https://davedevelopment.co.uk/2014/10/09/mockery-spies.html">“Mockery Spies”</a>,
+published by Dave Marshall on his blog. Dave is the original author of spies
+in Mockery.</p>
+</div>
+<div class="section" id="spies-reference">
+<h2>Spies Reference<a class="headerlink" href="#spies-reference" title="Permalink to this headline">¶</a></h2>
+<p>To verify that a method was called on a spy, we use the <code class="docutils literal notranslate"><span class="pre">shouldHaveReceived()</span></code>
+method:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="nv">$spy</span><span class="o">-&gt;</span><span class="na">shouldHaveReceived</span><span class="p">(</span><span class="s1">&#39;foo&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>To verify that a method was <strong>not</strong> called on a spy, we use the
+<code class="docutils literal notranslate"><span class="pre">shouldNotHaveReceived()</span></code> method:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="nv">$spy</span><span class="o">-&gt;</span><span class="na">shouldNotHaveReceived</span><span class="p">(</span><span class="s1">&#39;foo&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>We can also do argument matching with spies:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="nv">$spy</span><span class="o">-&gt;</span><span class="na">shouldHaveReceived</span><span class="p">(</span><span class="s1">&#39;foo&#39;</span><span class="p">)</span>
+    <span class="o">-&gt;</span><span class="na">with</span><span class="p">(</span><span class="s1">&#39;bar&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Argument matching is also possible by passing in an array of arguments to
+match:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="nv">$spy</span><span class="o">-&gt;</span><span class="na">shouldHaveReceived</span><span class="p">(</span><span class="s1">&#39;foo&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;bar&#39;</span><span class="p">]);</span>
+</pre></div>
+</div>
+<p>Although when verifying a method was not called, the argument matching can only
+be done by supplying the array of arguments as the 2nd argument to the
+<code class="docutils literal notranslate"><span class="pre">shouldNotHaveReceived()</span></code> method:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="nv">$spy</span><span class="o">-&gt;</span><span class="na">shouldNotHaveReceived</span><span class="p">(</span><span class="s1">&#39;foo&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;bar&#39;</span><span class="p">]);</span>
+</pre></div>
+</div>
+<p>This is due to Mockery’s internals.</p>
+<p>Finally, when expecting calls that should have been received, we can also verify
+the number of calls:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="nv">$spy</span><span class="o">-&gt;</span><span class="na">shouldHaveReceived</span><span class="p">(</span><span class="s1">&#39;foo&#39;</span><span class="p">)</span>
+    <span class="o">-&gt;</span><span class="na">with</span><span class="p">(</span><span class="s1">&#39;bar&#39;</span><span class="p">)</span>
+    <span class="o">-&gt;</span><span class="na">twice</span><span class="p">();</span>
+</pre></div>
+</div>
+<div class="section" id="alternative-shouldreceive-syntax">
+<h3>Alternative shouldReceive syntax<a class="headerlink" href="#alternative-shouldreceive-syntax" title="Permalink to this headline">¶</a></h3>
+<p>As of Mockery 1.0.0, we support calling methods as we would call any PHP method,
+and not as string arguments to Mockery <code class="docutils literal notranslate"><span class="pre">should*</span></code> methods.</p>
+<p>In cases of spies, this only applies to the <code class="docutils literal notranslate"><span class="pre">shouldHaveReceived()</span></code> method:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="nv">$spy</span><span class="o">-&gt;</span><span class="na">shouldHaveReceived</span><span class="p">()</span>
+    <span class="o">-&gt;</span><span class="na">foo</span><span class="p">(</span><span class="s1">&#39;bar&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>We can set expectation on number of calls as well:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="nv">$spy</span><span class="o">-&gt;</span><span class="na">shouldHaveReceived</span><span class="p">()</span>
+    <span class="o">-&gt;</span><span class="na">foo</span><span class="p">(</span><span class="s1">&#39;bar&#39;</span><span class="p">)</span>
+    <span class="o">-&gt;</span><span class="na">twice</span><span class="p">();</span>
+</pre></div>
+</div>
+<p>Unfortunately, due to limitations we can’t support the same syntax for the
+<code class="docutils literal notranslate"><span class="pre">shouldNotHaveReceived()</span></code> method.</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="partial_mocks.html" class="btn btn-neutral float-right" title="Creating Partial Mocks" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="alternative_should_receive_syntax.html" class="btn btn-neutral float-left" title="Alternative shouldReceive Syntax" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright Pádraic Brady, Dave Marshall and contributors
+      
+        <span class="commit">
+          Revision <code>c10a5f6e</code>.
+        </span>
+      
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="/en/latest/">latest</a></dd>
+        
+          <dd><a href="/en/stable/">stable</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="//docs.mockery.io/_/downloads/en/latest/htmlzip/">html</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="//readthedocs.org/projects/mockery-docs/?fromdocs=mockery-docs">Project Home</a>
+          </dd>
+          <dd>
+            <a href="//readthedocs.org/builds/mockery-docs/?fromdocs=mockery-docs">Builds</a>
+          </dd>
+      </dl>
+      <hr/>
+      Free document hosting provided by <a href="http://www.readthedocs.org">Read the Docs</a>.
+
+    </div>
+  </div>
+
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+   
+
+</body>
+</html>

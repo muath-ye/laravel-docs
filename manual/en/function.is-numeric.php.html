@@ -1,0 +1,1349 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>PHP: is_numeric - Manual </title>
+
+ <link rel="shortcut icon" href="https://www.php.net/favicon.ico">
+ <link rel="search" type="application/opensearchdescription+xml" href="http://php.net/phpnetimprovedsearch.src" title="Add PHP.net search">
+ <link rel="alternate" type="application/atom+xml" href="https://www.php.net/releases/feed.php" title="PHP Release feed">
+ <link rel="alternate" type="application/atom+xml" href="https://www.php.net/feed.atom" title="PHP: Hypertext Preprocessor">
+
+ <link rel="canonical" href="https://www.php.net/manual/en/function.is-numeric.php">
+ <link rel="shorturl" href="https://www.php.net/is-numeric">
+ <link rel="alternate" href="https://www.php.net/is-numeric" hreflang="x-default">
+
+ <link rel="contents" href="https://www.php.net/manual/en/index.php">
+ <link rel="index" href="https://www.php.net/manual/en/ref.var.php">
+ <link rel="prev" href="https://www.php.net/manual/en/function.is-null.php">
+ <link rel="next" href="https://www.php.net/manual/en/function.is-object.php">
+
+ <link rel="alternate" href="https://www.php.net/manual/en/function.is-numeric.php" hreflang="en">
+ <link rel="alternate" href="https://www.php.net/manual/pt_BR/function.is-numeric.php" hreflang="pt_BR">
+ <link rel="alternate" href="https://www.php.net/manual/zh/function.is-numeric.php" hreflang="zh">
+ <link rel="alternate" href="https://www.php.net/manual/fr/function.is-numeric.php" hreflang="fr">
+ <link rel="alternate" href="https://www.php.net/manual/de/function.is-numeric.php" hreflang="de">
+ <link rel="alternate" href="https://www.php.net/manual/ja/function.is-numeric.php" hreflang="ja">
+ <link rel="alternate" href="https://www.php.net/manual/ru/function.is-numeric.php" hreflang="ru">
+ <link rel="alternate" href="https://www.php.net/manual/es/function.is-numeric.php" hreflang="es">
+ <link rel="alternate" href="https://www.php.net/manual/tr/function.is-numeric.php" hreflang="tr">
+
+<link rel="stylesheet" type="text/css" href="/cached.php?t=1639034403&amp;f=/fonts/Fira/fira.css" media="screen">
+<link rel="stylesheet" type="text/css" href="/cached.php?t=1539765004&amp;f=/fonts/Font-Awesome/css/fontello.css" media="screen">
+<link rel="stylesheet" type="text/css" href="/cached.php?t=1606338002&amp;f=/styles/theme-base.css" media="screen">
+<link rel="stylesheet" type="text/css" href="/cached.php?t=1647366004&amp;f=/styles/theme-medium.css" media="screen">
+
+ <!--[if lte IE 7]>
+ <link rel="stylesheet" type="text/css" href="https://www.php.net/styles/workarounds.ie7.css" media="screen">
+ <![endif]-->
+
+ <!--[if lte IE 8]>
+ <script>
+  window.brokenIE = true;
+ </script>
+ <![endif]-->
+
+ <!--[if lte IE 9]>
+ <link rel="stylesheet" type="text/css" href="https://www.php.net/styles/workarounds.ie9.css" media="screen">
+ <![endif]-->
+
+ <!--[if IE]>
+ <script src="https://www.php.net/js/ext/html5.js"></script>
+ <![endif]-->
+
+ <base href="https://www.php.net/manual/en/function.is-numeric.php">
+
+
+</head>
+<body class="docs ">
+
+<nav id="head-nav" class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <a href="/" class="brand"><img src="/images/logos/php-logo.svg" width="48" height="24" alt="php"></a>
+    <div id="mainmenu-toggle-overlay"></div>
+    <input type="checkbox" id="mainmenu-toggle">
+    <ul class="nav">
+      <li class=""><a href="/downloads">Downloads</a></li>
+      <li class="active"><a href="/docs.php">Documentation</a></li>
+      <li class=""><a href="/get-involved" >Get Involved</a></li>
+      <li class=""><a href="/support">Help</a></li>
+      <li class="">
+        <a href="/releases/8.1/index.php">
+          <img src="/images/php8/logo_php8_1.svg" alt="php8.1" height="22" width="60">
+        </a>
+      </li>
+    </ul>
+    <form class="navbar-search" id="topsearch" action="/search.php">
+      <input type="hidden" name="show" value="quickref">
+      <input type="search" name="pattern" class="search-query" placeholder="Search" accesskey="s">
+    </form>
+  </div>
+  <div id="flash-message"></div>
+</nav>
+<div class="headsup"><a href='/index.php#id2022-03-17-1'>PHP 8.0.17 Released!</a></div>
+<nav id="trick"><div><dl>
+<dt><a href='/manual/en/getting-started.php'>Getting Started</a></dt>
+	<dd><a href='/manual/en/introduction.php'>Introduction</a></dd>
+	<dd><a href='/manual/en/tutorial.php'>A simple tutorial</a></dd>
+<dt><a href='/manual/en/langref.php'>Language Reference</a></dt>
+	<dd><a href='/manual/en/language.basic-syntax.php'>Basic syntax</a></dd>
+	<dd><a href='/manual/en/language.types.php'>Types</a></dd>
+	<dd><a href='/manual/en/language.variables.php'>Variables</a></dd>
+	<dd><a href='/manual/en/language.constants.php'>Constants</a></dd>
+	<dd><a href='/manual/en/language.expressions.php'>Expressions</a></dd>
+	<dd><a href='/manual/en/language.operators.php'>Operators</a></dd>
+	<dd><a href='/manual/en/language.control-structures.php'>Control Structures</a></dd>
+	<dd><a href='/manual/en/language.functions.php'>Functions</a></dd>
+	<dd><a href='/manual/en/language.oop5.php'>Classes and Objects</a></dd>
+	<dd><a href='/manual/en/language.namespaces.php'>Namespaces</a></dd>
+	<dd><a href='/manual/en/language.enumerations.php'>Enumerations</a></dd>
+	<dd><a href='/manual/en/language.errors.php'>Errors</a></dd>
+	<dd><a href='/manual/en/language.exceptions.php'>Exceptions</a></dd>
+	<dd><a href='/manual/en/language.fibers.php'>Fibers</a></dd>
+	<dd><a href='/manual/en/language.generators.php'>Generators</a></dd>
+	<dd><a href='/manual/en/language.attributes.php'>Attributes</a></dd>
+	<dd><a href='/manual/en/language.references.php'>References Explained</a></dd>
+	<dd><a href='/manual/en/reserved.variables.php'>Predefined Variables</a></dd>
+	<dd><a href='/manual/en/reserved.exceptions.php'>Predefined Exceptions</a></dd>
+	<dd><a href='/manual/en/reserved.interfaces.php'>Predefined Interfaces and Classes</a></dd>
+	<dd><a href='/manual/en/context.php'>Context options and parameters</a></dd>
+	<dd><a href='/manual/en/wrappers.php'>Supported Protocols and Wrappers</a></dd>
+</dl>
+<dl>
+<dt><a href='/manual/en/security.php'>Security</a></dt>
+	<dd><a href='/manual/en/security.intro.php'>Introduction</a></dd>
+	<dd><a href='/manual/en/security.general.php'>General considerations</a></dd>
+	<dd><a href='/manual/en/security.cgi-bin.php'>Installed as CGI binary</a></dd>
+	<dd><a href='/manual/en/security.apache.php'>Installed as an Apache module</a></dd>
+	<dd><a href='/manual/en/security.sessions.php'>Session Security</a></dd>
+	<dd><a href='/manual/en/security.filesystem.php'>Filesystem Security</a></dd>
+	<dd><a href='/manual/en/security.database.php'>Database Security</a></dd>
+	<dd><a href='/manual/en/security.errors.php'>Error Reporting</a></dd>
+	<dd><a href='/manual/en/security.variables.php'>User Submitted Data</a></dd>
+	<dd><a href='/manual/en/security.hiding.php'>Hiding PHP</a></dd>
+	<dd><a href='/manual/en/security.current.php'>Keeping Current</a></dd>
+<dt><a href='/manual/en/features.php'>Features</a></dt>
+	<dd><a href='/manual/en/features.http-auth.php'>HTTP authentication with PHP</a></dd>
+	<dd><a href='/manual/en/features.cookies.php'>Cookies</a></dd>
+	<dd><a href='/manual/en/features.sessions.php'>Sessions</a></dd>
+	<dd><a href='/manual/en/features.xforms.php'>Dealing with XForms</a></dd>
+	<dd><a href='/manual/en/features.file-upload.php'>Handling file uploads</a></dd>
+	<dd><a href='/manual/en/features.remote-files.php'>Using remote files</a></dd>
+	<dd><a href='/manual/en/features.connection-handling.php'>Connection handling</a></dd>
+	<dd><a href='/manual/en/features.persistent-connections.php'>Persistent Database Connections</a></dd>
+	<dd><a href='/manual/en/features.commandline.php'>Command line usage</a></dd>
+	<dd><a href='/manual/en/features.gc.php'>Garbage Collection</a></dd>
+	<dd><a href='/manual/en/features.dtrace.php'>DTrace Dynamic Tracing</a></dd>
+</dl>
+<dl>
+<dt><a href='/manual/en/funcref.php'>Function Reference</a></dt>
+	<dd><a href='/manual/en/refs.basic.php.php'>Affecting PHP's Behaviour</a></dd>
+	<dd><a href='/manual/en/refs.utilspec.audio.php'>Audio Formats Manipulation</a></dd>
+	<dd><a href='/manual/en/refs.remote.auth.php'>Authentication Services</a></dd>
+	<dd><a href='/manual/en/refs.utilspec.cmdline.php'>Command Line Specific Extensions</a></dd>
+	<dd><a href='/manual/en/refs.compression.php'>Compression and Archive Extensions</a></dd>
+	<dd><a href='/manual/en/refs.crypto.php'>Cryptography Extensions</a></dd>
+	<dd><a href='/manual/en/refs.database.php'>Database Extensions</a></dd>
+	<dd><a href='/manual/en/refs.calendar.php'>Date and Time Related Extensions</a></dd>
+	<dd><a href='/manual/en/refs.fileprocess.file.php'>File System Related Extensions</a></dd>
+	<dd><a href='/manual/en/refs.international.php'>Human Language and Character Encoding Support</a></dd>
+	<dd><a href='/manual/en/refs.utilspec.image.php'>Image Processing and Generation</a></dd>
+	<dd><a href='/manual/en/refs.remote.mail.php'>Mail Related Extensions</a></dd>
+	<dd><a href='/manual/en/refs.math.php'>Mathematical Extensions</a></dd>
+	<dd><a href='/manual/en/refs.utilspec.nontext.php'>Non-Text MIME Output</a></dd>
+	<dd><a href='/manual/en/refs.fileprocess.process.php'>Process Control Extensions</a></dd>
+	<dd><a href='/manual/en/refs.basic.other.php'>Other Basic Extensions</a></dd>
+	<dd><a href='/manual/en/refs.remote.other.php'>Other Services</a></dd>
+	<dd><a href='/manual/en/refs.search.php'>Search Engine Extensions</a></dd>
+	<dd><a href='/manual/en/refs.utilspec.server.php'>Server Specific Extensions</a></dd>
+	<dd><a href='/manual/en/refs.basic.session.php'>Session Extensions</a></dd>
+	<dd><a href='/manual/en/refs.basic.text.php'>Text Processing</a></dd>
+	<dd><a href='/manual/en/refs.basic.vartype.php'>Variable and Type Related Extensions</a></dd>
+	<dd><a href='/manual/en/refs.webservice.php'>Web Services</a></dd>
+	<dd><a href='/manual/en/refs.utilspec.windows.php'>Windows Only Extensions</a></dd>
+	<dd><a href='/manual/en/refs.xml.php'>XML Manipulation</a></dd>
+	<dd><a href='/manual/en/refs.ui.php'>GUI Extensions</a></dd>
+</dl>
+<dl>
+<dt>Keyboard Shortcuts</dt><dt>?</dt>
+<dd>This help</dd>
+<dt>j</dt>
+<dd>Next menu item</dd>
+<dt>k</dt>
+<dd>Previous menu item</dd>
+<dt>g p</dt>
+<dd>Previous man page</dd>
+<dt>g n</dt>
+<dd>Next man page</dd>
+<dt>G</dt>
+<dd>Scroll to bottom</dd>
+<dt>g g</dt>
+<dd>Scroll to top</dd>
+<dt>g h</dt>
+<dd>Goto homepage</dd>
+<dt>g s</dt>
+<dd>Goto search<br>(current page)</dd>
+<dt>/</dt>
+<dd>Focus search box</dd>
+</dl></div></nav>
+<div id="goto">
+    <div class="search">
+         <div class="text"></div>
+         <div class="results"><ul></ul></div>
+   </div>
+</div>
+
+  <div id="breadcrumbs" class="clearfix">
+    <div id="breadcrumbs-inner">
+          <div class="next">
+        <a href="function.is-object.php">
+          is_object &raquo;
+        </a>
+      </div>
+              <div class="prev">
+        <a href="function.is-null.php">
+          &laquo; is_null        </a>
+      </div>
+          <ul>
+            <li><a href='index.php'>PHP Manual</a></li>      <li><a href='funcref.php'>Function Reference</a></li>      <li><a href='refs.basic.vartype.php'>Variable and Type Related Extensions</a></li>      <li><a href='book.var.php'>Variable handling</a></li>      <li><a href='ref.var.php'>Variable handling Functions</a></li>      </ul>
+    </div>
+  </div>
+
+
+
+
+<div id="layout" class="clearfix">
+  <section id="layout-content">
+  <div class="page-tools">
+    <div class="change-language">
+      <form action="/manual/change.php" method="get" id="changelang" name="changelang">
+        <fieldset>
+          <label for="changelang-langs">Change language:</label>
+          <select onchange="document.changelang.submit()" name="page" id="changelang-langs">
+            <option value='en/function.is-numeric.php' selected="selected">English</option>
+            <option value='pt_BR/function.is-numeric.php'>Brazilian Portuguese</option>
+            <option value='zh/function.is-numeric.php'>Chinese (Simplified)</option>
+            <option value='fr/function.is-numeric.php'>French</option>
+            <option value='de/function.is-numeric.php'>German</option>
+            <option value='ja/function.is-numeric.php'>Japanese</option>
+            <option value='ru/function.is-numeric.php'>Russian</option>
+            <option value='es/function.is-numeric.php'>Spanish</option>
+            <option value='tr/function.is-numeric.php'>Turkish</option>
+            <option value="help-translate.php">Other</option>
+          </select>
+        </fieldset>
+      </form>
+    </div>
+    <div class="edit-bug">
+      <a href="https://github.com/php/doc-en/blob/master/reference/var/functions/is-numeric.xml">Submit a Pull Request</a>
+      <a href="https://github.com/php/doc-en/issues/new?body=From%20manual%20page:%20https:%2F%2Fphp.net%2Ffunction.is-numeric%0A%0A---">Report a Bug</a>
+    </div>
+  </div><div id="function.is-numeric" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">is_numeric</h1>
+  <p class="verinfo">(PHP 4, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">is_numeric</span> &mdash; <span class="dc-title">
+   Finds whether a variable is a number or a numeric string
+  </span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-function.is-numeric-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>is_numeric</strong></span>(<span class="methodparam"><span class="type"><a href="language.types.declarations.php#language.types.declarations.mixed" class="type mixed">mixed</a></span> <code class="parameter">$value</code></span>): <span class="type">bool</span></div>
+
+  <p class="para rdfs-comment">
+   Determines if the given variable is a number or a
+   <a href="language.types.numeric-strings.php" class="link">numeric string</a>.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.is-numeric-parameters">
+  <h3 class="title">Parameters</h3>
+  <p class="para">
+   <dl>
+    
+     <dt>
+<code class="parameter">value</code></dt>
+
+     <dd>
+
+      <p class="para">
+       The variable being evaluated.
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.is-numeric-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   Returns <strong><code>true</code></strong> if <code class="parameter">value</code> is a number or a
+   <a href="language.types.numeric-strings.php" class="link">numeric string</a>,
+   <strong><code>false</code></strong> otherwise.
+  </p>
+ </div>
+
+
+ <div class="refsect1 changelog" id="refsect1-function.is-numeric-changelog">
+  <h3 class="title">Changelog</h3>
+  <table class="doctable informaltable">
+   
+    <thead>
+     <tr>
+      <th>Version</th>
+      <th>Description</th>
+     </tr>
+
+    </thead>
+
+    <tbody class="tbody">
+     <tr>
+      <td>8.0.0</td>
+      <td>
+       Numeric strings ending with whitespace (<code class="literal">&quot;42 &quot;</code>) will now
+       return <strong><code>true</code></strong>. Previously, <strong><code>false</code></strong> was return instead.
+      </td>
+     </tr>
+
+    </tbody>
+   
+  </table>
+
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.is-numeric-examples">
+  <h3 class="title">Examples</h3>
+  <p class="para">
+   <div class="example" id="example-5233">
+    <p><strong>Example #1 <span class="function"><strong>is_numeric()</strong></span> examples</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$tests&nbsp;</span><span style="color: #007700">=&nbsp;array(<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">"42"</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">1337</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">0x539</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">02471</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">0b10100111001</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">1337e0</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">"0x539"</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">"02471"</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">"0b10100111001"</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">"1337e0"</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">"not&nbsp;numeric"</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;array(),<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">9.1</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">null</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">''</span><span style="color: #007700">,<br />);<br /><br />foreach&nbsp;(</span><span style="color: #0000BB">$tests&nbsp;</span><span style="color: #007700">as&nbsp;</span><span style="color: #0000BB">$element</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(</span><span style="color: #0000BB">is_numeric</span><span style="color: #007700">(</span><span style="color: #0000BB">$element</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">var_export</span><span style="color: #007700">(</span><span style="color: #0000BB">$element</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">true</span><span style="color: #007700">)&nbsp;.&nbsp;</span><span style="color: #DD0000">"&nbsp;is&nbsp;numeric"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">var_export</span><span style="color: #007700">(</span><span style="color: #0000BB">$element</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">true</span><span style="color: #007700">)&nbsp;.&nbsp;</span><span style="color: #DD0000">"&nbsp;is&nbsp;NOT&nbsp;numeric"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>The above example will output:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+&#039;42&#039; is numeric
+1337 is numeric
+1337 is numeric
+1337 is numeric
+1337 is numeric
+1337.0 is numeric
+&#039;0x539&#039; is NOT numeric
+&#039;02471&#039; is numeric
+&#039;0b10100111001&#039; is NOT numeric
+&#039;1337e0&#039; is numeric
+&#039;not numeric&#039; is NOT numeric
+array (
+) is NOT numeric
+9.1 is numeric
+NULL is NOT numeric
+&#039;&#039; is NOT numeric
+</pre></div>
+    </div>
+   </div>
+  </p>
+
+  <p class="para">
+   <div class="example" id="example-5234">
+    <p><strong>Example #2 <span class="function"><strong>is_numeric()</strong></span> with whitespace</strong></p>
+    <div class="example-contents">
+     <div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$tests&nbsp;</span><span style="color: #007700">=&nbsp;[<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">"&nbsp;42"</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">"42&nbsp;"</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">" 9001"</span><span style="color: #007700">,&nbsp;</span><span style="color: #FF8000">//&nbsp;non-breaking&nbsp;space<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">"9001 "</span><span style="color: #007700">,&nbsp;</span><span style="color: #FF8000">//&nbsp;non-breaking&nbsp;space<br /></span><span style="color: #007700">];<br /><br />foreach&nbsp;(</span><span style="color: #0000BB">$tests&nbsp;</span><span style="color: #007700">as&nbsp;</span><span style="color: #0000BB">$element</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(</span><span style="color: #0000BB">is_numeric</span><span style="color: #007700">(</span><span style="color: #0000BB">$element</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">var_export</span><span style="color: #007700">(</span><span style="color: #0000BB">$element</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">true</span><span style="color: #007700">)&nbsp;.&nbsp;</span><span style="color: #DD0000">"&nbsp;is&nbsp;numeric"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">var_export</span><span style="color: #007700">(</span><span style="color: #0000BB">$element</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">true</span><span style="color: #007700">)&nbsp;.&nbsp;</span><span style="color: #DD0000">"&nbsp;is&nbsp;NOT&nbsp;numeric"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>Output of the above example in PHP 8:</p></div>
+    <div class="example-contents screen">
+     <div class="cdata"><pre>
+&#039; 42&#039; is numeric
+&#039;42 &#039; is numeric
+&#039; 9001&#039; is NOT numeric
+&#039;9001 &#039; is NOT numeric
+</pre></div>
+    </div>
+    <div class="example-contents"><p>Output of the above example in PHP 7:</p></div>
+    <div class="example-contents screen">
+     <div class="cdata"><pre>
+&#039; 42&#039; is numeric
+&#039;42 &#039; is NOT numeric
+&#039; 9001&#039; is NOT numeric
+&#039;9001 &#039; is NOT numeric
+</pre></div>
+    </div>
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.is-numeric-seealso">
+  <h3 class="title">See Also</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><a href="language.types.numeric-strings.php" class="link">Numeric strings</a></li>
+    <li class="member"><span class="function"><a href="function.ctype-digit.php" class="function" rel="rdfs-seeAlso">ctype_digit()</a> - Check for numeric character(s)</span></li>
+    <li class="member"><span class="function"><a href="function.is-bool.php" class="function" rel="rdfs-seeAlso">is_bool()</a> - Finds out whether a variable is a boolean</span></li>
+    <li class="member"><span class="function"><a href="function.is-null.php" class="function" rel="rdfs-seeAlso">is_null()</a> - Finds whether a variable is null</span></li>
+    <li class="member"><span class="function"><a href="function.is-float.php" class="function" rel="rdfs-seeAlso">is_float()</a> - Finds whether the type of a variable is float</span></li>
+    <li class="member"><span class="function"><a href="function.is-int.php" class="function" rel="rdfs-seeAlso">is_int()</a> - Find whether the type of a variable is integer</span></li>
+    <li class="member"><span class="function"><a href="function.is-string.php" class="function" rel="rdfs-seeAlso">is_string()</a> - Find whether the type of a variable is string</span></li>
+    <li class="member"><span class="function"><a href="function.is-object.php" class="function" rel="rdfs-seeAlso">is_object()</a> - Finds whether a variable is an object</span></li>
+    <li class="member"><span class="function"><a href="function.is-array.php" class="function" rel="rdfs-seeAlso">is_array()</a> - Finds whether a variable is an array</span></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div>
+<section id="usernotes">
+ <div class="head">
+  <span class="action"><a href="/manual/add-note.php?sect=function.is-numeric&amp;redirect=https://www.php.net/manual/en/function.is-numeric.php"><img src='/images/notes-add@2x.png' alt='add a note' width='12' height='12'> <small>add a note</small></a></span>
+  <h3 class="title">User Contributed Notes <span class="count">40 notes</span></h3>
+ </div><div id="allnotes">
+  <div class="note" id="107326">  <div class="votes">
+    <div id="Vu107326">
+    <a href="/manual/vote-note.php?id=107326&amp;page=function.is-numeric&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd107326">
+    <a href="/manual/vote-note.php?id=107326&amp;page=function.is-numeric&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V107326" title="71% like this...">
+    114
+    </div>
+  </div>
+  <a href="#107326" class="name">
+  <strong class="user"><em>dave dot marr at gmail dot com</em></strong></a><a class="genanchor" href="#107326"> &para;</a><div class="date" title="2012-01-31 04:30"><strong>10 years ago</strong></div>
+  <div class="text" id="Hcom107326">
+<div class="phpcode"><code><span class="html">
+If you want the numerical value of a string, this will return a float or int value:<br /><br /><span class="default">&lt;?php<br /></span><span class="keyword">function </span><span class="default">get_numeric</span><span class="keyword">(</span><span class="default">$val</span><span class="keyword">) {<br />&nbsp; if (</span><span class="default">is_numeric</span><span class="keyword">(</span><span class="default">$val</span><span class="keyword">)) {<br />&nbsp; &nbsp; return </span><span class="default">$val </span><span class="keyword">+ </span><span class="default">0</span><span class="keyword">;<br />&nbsp; }<br />&nbsp; return </span><span class="default">0</span><span class="keyword">;<br />}<br /></span><span class="default">?&gt;<br /></span><br />Example:<br /><span class="default">&lt;?php<br />get_numeric</span><span class="keyword">(</span><span class="string">'3'</span><span class="keyword">); </span><span class="comment">// int(3)<br /></span><span class="default">get_numeric</span><span class="keyword">(</span><span class="string">'1.2'</span><span class="keyword">); </span><span class="comment">// float(1.2)<br /></span><span class="default">get_numeric</span><span class="keyword">(</span><span class="string">'3.0'</span><span class="keyword">); </span><span class="comment">// float(3)<br /></span><span class="default">?&gt;</span>
+</span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="102011">  <div class="votes">
+    <div id="Vu102011">
+    <a href="/manual/vote-note.php?id=102011&amp;page=function.is-numeric&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd102011">
+    <a href="/manual/vote-note.php?id=102011&amp;page=function.is-numeric&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V102011" title="72% like this...">
+    80
+    </div>
+  </div>
+  <a href="#102011" class="name">
+  <strong class="user"><em>sobolanx at gmail dot com</em></strong></a><a class="genanchor" href="#102011"> &para;</a><div class="date" title="2011-01-22 03:55"><strong>11 years ago</strong></div>
+  <div class="text" id="Hcom102011">
+<div class="phpcode"><code><span class="html">
+Note that the function accepts extremely big numbers and correctly evaluates them.<br /><br />For example:<br /><br /><span class="default">&lt;?php<br />&nbsp; &nbsp; $v </span><span class="keyword">= </span><span class="default">is_numeric </span><span class="keyword">(</span><span class="string">'58635272821786587286382824657568871098287278276543219876543'</span><span class="keyword">) ? </span><span class="default">true </span><span class="keyword">: </span><span class="default">false</span><span class="keyword">;<br />&nbsp; &nbsp; <br />&nbsp; &nbsp; </span><span class="default">var_dump </span><span class="keyword">(</span><span class="default">$v</span><span class="keyword">);<br /></span><span class="default">?&gt;<br /></span><br />The above script will output:<br /><br />bool(true)<br /><br />So this function is not intimidated by super-big numbers. I hope this helps someone.<br /><br />PS: Also note that if you write is_numeric (45thg), this will generate a parse error (since the parameter is not enclosed between apostrophes or double quotes). Keep this in mind when you use this function.</span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="101766">  <div class="votes">
+    <div id="Vu101766">
+    <a href="/manual/vote-note.php?id=101766&amp;page=function.is-numeric&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd101766">
+    <a href="/manual/vote-note.php?id=101766&amp;page=function.is-numeric&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V101766" title="72% like this...">
+    52
+    </div>
+  </div>
+  <a href="#101766" class="name">
+  <strong class="user"><em>Martyn Ranyard</em></strong></a><a class="genanchor" href="#101766"> &para;</a><div class="date" title="2011-01-10 04:14"><strong>11 years ago</strong></div>
+  <div class="text" id="Hcom101766">
+<div class="phpcode"><code><span class="html">
+The documentation does not clarify what happens if you the input is an empty string - it correctly returns false in my experience.&nbsp; Useful to state these odd cases, for when you see code that checks for an empty string and is_numeric, you can tell it's a waste of a comparison.</span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="120584">  <div class="votes">
+    <div id="Vu120584">
+    <a href="/manual/vote-note.php?id=120584&amp;page=function.is-numeric&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd120584">
+    <a href="/manual/vote-note.php?id=120584&amp;page=function.is-numeric&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V120584" title="74% like this...">
+    25
+    </div>
+  </div>
+  <a href="#120584" class="name">
+  <strong class="user"><em>tanguy_barsik at hotmail dot com</em></strong></a><a class="genanchor" href="#120584"> &para;</a><div class="date" title="2017-02-03 03:22"><strong>5 years ago</strong></div>
+  <div class="text" id="Hcom120584">
+<div class="phpcode"><code><span class="html">
+for strings, it return true only if float number has a dot<br /><br />is_numeric( '42.1' )//true<br />is_numeric( '42,1' )//false</span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="114285">  <div class="votes">
+    <div id="Vu114285">
+    <a href="/manual/vote-note.php?id=114285&amp;page=function.is-numeric&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd114285">
+    <a href="/manual/vote-note.php?id=114285&amp;page=function.is-numeric&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V114285" title="70% like this...">
+    10
+    </div>
+  </div>
+  <a href="#114285" class="name">
+  <strong class="user"><em>charlike dot mike at mail dot bg</em></strong></a><a class="genanchor" href="#114285"> &para;</a><div class="date" title="2014-02-03 04:24"><strong>8 years ago</strong></div>
+  <div class="text" id="Hcom114285">
+<div class="phpcode"><code><span class="html">
+I think that is best check solution if u want to create real calculator for example :)<br /><br /><span class="default">&lt;?php<br /></span><span class="keyword">function </span><span class="default">is_number</span><span class="keyword">(</span><span class="default">$var</span><span class="keyword">)<br />{<br />&nbsp; &nbsp; if (</span><span class="default">$var </span><span class="keyword">== (string) (float) </span><span class="default">$var</span><span class="keyword">) {<br />&nbsp; &nbsp; &nbsp; &nbsp; return (bool) </span><span class="default">is_numeric</span><span class="keyword">(</span><span class="default">$var</span><span class="keyword">);<br />&nbsp; &nbsp; }<br />&nbsp; &nbsp; if (</span><span class="default">$var </span><span class="keyword">&gt;= </span><span class="default">0 </span><span class="keyword">&amp;&amp; </span><span class="default">is_string</span><span class="keyword">(</span><span class="default">$var</span><span class="keyword">) &amp;&amp; !</span><span class="default">is_float</span><span class="keyword">(</span><span class="default">$var</span><span class="keyword">)) {<br />&nbsp; &nbsp; &nbsp; &nbsp; return (bool) </span><span class="default">ctype_digit</span><span class="keyword">(</span><span class="default">$var</span><span class="keyword">);<br />&nbsp; &nbsp; }<br />&nbsp; &nbsp; return (bool) </span><span class="default">is_numeric</span><span class="keyword">(</span><span class="default">$var</span><span class="keyword">);<br />}<br /><br /></span><span class="default">is_number</span><span class="keyword">(</span><span class="default">12</span><span class="keyword">); </span><span class="comment">// true<br /></span><span class="default">is_number</span><span class="keyword">(-</span><span class="default">12</span><span class="keyword">); </span><span class="comment">// true<br /></span><span class="default">is_number</span><span class="keyword">(-</span><span class="default">12.2</span><span class="keyword">); </span><span class="comment">// true<br /></span><span class="default">is_number</span><span class="keyword">(</span><span class="string">"12"</span><span class="keyword">); </span><span class="comment">// true<br /></span><span class="default">is_number</span><span class="keyword">(</span><span class="string">"-124.3"</span><span class="keyword">); </span><span class="comment">// true<br /></span><span class="default">is_number</span><span class="keyword">(</span><span class="default">0.8</span><span class="keyword">); </span><span class="comment">// true<br /></span><span class="default">is_number</span><span class="keyword">(</span><span class="string">"0.8"</span><span class="keyword">); </span><span class="comment">// true<br /></span><span class="default">is_number</span><span class="keyword">(</span><span class="default">0</span><span class="keyword">); </span><span class="comment">// true<br /></span><span class="default">is_number</span><span class="keyword">(</span><span class="string">"0"</span><span class="keyword">); </span><span class="comment">// true<br /></span><span class="default">is_number</span><span class="keyword">(</span><span class="default">NULL</span><span class="keyword">); </span><span class="comment">// false<br /></span><span class="default">is_number</span><span class="keyword">(</span><span class="default">true</span><span class="keyword">); </span><span class="comment">// false<br /></span><span class="default">is_number</span><span class="keyword">(</span><span class="default">false</span><span class="keyword">); </span><span class="comment">// false<br /></span><span class="default">is_number</span><span class="keyword">(</span><span class="string">"324jdas32"</span><span class="keyword">); </span><span class="comment">// false<br /></span><span class="default">is_number</span><span class="keyword">(</span><span class="string">"123-"</span><span class="keyword">); </span><span class="comment">// false<br /></span><span class="default">is_number</span><span class="keyword">(</span><span class="default">1e7</span><span class="keyword">); </span><span class="comment">// true<br /></span><span class="default">is_number</span><span class="keyword">(</span><span class="string">"1e7"</span><span class="keyword">); </span><span class="comment">// true<br /></span><span class="default">is_number</span><span class="keyword">(</span><span class="default">0x155</span><span class="keyword">); </span><span class="comment">// true<br /></span><span class="default">is_number</span><span class="keyword">(</span><span class="string">"0x155"</span><span class="keyword">); </span><span class="comment">// false<br /></span><span class="default">?&gt;</span>
+</span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="72601">  <div class="votes">
+    <div id="Vu72601">
+    <a href="/manual/vote-note.php?id=72601&amp;page=function.is-numeric&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd72601">
+    <a href="/manual/vote-note.php?id=72601&amp;page=function.is-numeric&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V72601" title="66% like this...">
+    19
+    </div>
+  </div>
+  <a href="#72601" class="name">
+  <strong class="user"><em>Stephen</em></strong></a><a class="genanchor" href="#72601"> &para;</a><div class="date" title="2007-01-25 09:31"><strong>15 years ago</strong></div>
+  <div class="text" id="Hcom72601">
+<div class="phpcode"><code><span class="html">
+The documentation is not completely precise here. is_numeric will also return true if the number begins with a decimal point&nbsp; and/or a space, provided a number follows (rather than a letter or punctuation). So, it doesn't necessarily have to start with a digit.</span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="55240">  <div class="votes">
+    <div id="Vu55240">
+    <a href="/manual/vote-note.php?id=55240&amp;page=function.is-numeric&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd55240">
+    <a href="/manual/vote-note.php?id=55240&amp;page=function.is-numeric&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V55240" title="63% like this...">
+    13
+    </div>
+  </div>
+  <a href="#55240" class="name">
+  <strong class="user"><em>sebu</em></strong></a><a class="genanchor" href="#55240"> &para;</a><div class="date" title="2005-07-28 04:37"><strong>16 years ago</strong></div>
+  <div class="text" id="Hcom55240">
+<div class="phpcode"><code><span class="html">
+Referring to previous post "Be aware if you use is_numeric() or is_float() after using set_locale(LC_ALL,'lang') or set_locale(LC_NUMERIC,'lang')":<br /><br />This is totally wrong!<br /><br />This was the example code:<br /><br />-----<br />&nbsp; set_locale(LC_NUMERIC,'fr');<br />&nbsp; is_numeric(12.25); // Return False<br />&nbsp; is_numeric(12,25); // Return True<br />&nbsp; is_float(12.25); //Return False<br />&nbsp; is_float(12,25); //Return True<br />-----<br /><br />This is nonsense!<br /><br />- set_locale() does not exist, you must use setlocale() instead<br />- you have to enclose 12,25 with quotes; otherwise PHP will think that <br />the function gets _two_ arguments: 12 and 25 (depending on PHP version and setup you may additionally get a PHP warning)<br />- if you don't enclose 12,25 with quotes the first argument will be the inspected value (12), the second value (25) is discarded. And is_numeric(12) and is_float(12) is always TRUE<br /><br />Corrected Example:<br /><br />----<br />&nbsp; setlocale(LC_NUMERIC,'fr');<br />&nbsp; is_numeric(12.25); // Return True<br />&nbsp; is_numeric("12,25"); // Return False<br />&nbsp; is_float(12.25); //Return True<br />&nbsp; is_float("12,25"); //Return False<br />----<br /><br />Remarks:<br />- is_float(12.25) is _always_ TRUE, 12.25 is a PHP language construct (a "value") and the way PHP interpretes files is definitely _not_ affected by the locale<br />- is_float("12,25") is _always_ FALSE, since is_float (other than is_numeric): if the argument is a string then is_float() always returns FALSE since it does a strict check for floats<br /><br />And the corrected example shows: you get the _same_ results for every possible locale, is_numeric() does not depend on the locale.</span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="24981">  <div class="votes">
+    <div id="Vu24981">
+    <a href="/manual/vote-note.php?id=24981&amp;page=function.is-numeric&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd24981">
+    <a href="/manual/vote-note.php?id=24981&amp;page=function.is-numeric&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V24981" title="65% like this...">
+    7
+    </div>
+  </div>
+  <a href="#24981" class="name">
+  <strong class="user"><em>eagleflyer2 at lycos dot com</em></strong></a><a class="genanchor" href="#24981"> &para;</a><div class="date" title="2002-09-06 01:02"><strong>19 years ago</strong></div>
+  <div class="text" id="Hcom24981">
+<div class="phpcode"><code><span class="html">
+Hi !<br />Many of you may have experienced that the 'is_numeric' function seems to fail always when form entries are checked against their variable type. So the function seems to return&nbsp; 'false' even if the form entry was aparently a number or numeric string.<br /><br />The solution is pretty simple and no subroutines or fancy operations are necessary to make the 'is_numeric' function usable for form entry checks:<br /><br />Simply strip off all (invisible) characters that may be sent along with the value when submitting a form entry.<br /><br />Just use the 'trim' function before 'is_numeric'.<br /><br />Example:<br /><br />$variable = trim($variable);<br />if (is_numeric($variable)<br />{...#do something#...}<br />else<br />{...#do something else#...}</span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="69053">  <div class="votes">
+    <div id="Vu69053">
+    <a href="/manual/vote-note.php?id=69053&amp;page=function.is-numeric&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd69053">
+    <a href="/manual/vote-note.php?id=69053&amp;page=function.is-numeric&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V69053" title="62% like this...">
+    9
+    </div>
+  </div>
+  <a href="#69053" class="name">
+  <strong class="user"><em>moskalyuk at gmail dot com</em></strong></a><a class="genanchor" href="#69053"> &para;</a><div class="date" title="2006-08-21 10:18"><strong>15 years ago</strong></div>
+  <div class="text" id="Hcom69053">
+<div class="phpcode"><code><span class="html">
+is_numeric fails on the hex values greater than LONG_MAX, so having a large hex value parsed through is_numeric would result in FALSE being returned even though the value is a valid hex number</span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="29396">  <div class="votes">
+    <div id="Vu29396">
+    <a href="/manual/vote-note.php?id=29396&amp;page=function.is-numeric&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd29396">
+    <a href="/manual/vote-note.php?id=29396&amp;page=function.is-numeric&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V29396" title="62% like this...">
+    7
+    </div>
+  </div>
+  <a href="#29396" class="name">
+  <strong class="user"><em>andi_nrw at hotmail dot com</em></strong></a><a class="genanchor" href="#29396"> &para;</a><div class="date" title="2003-02-12 08:25"><strong>19 years ago</strong></div>
+  <div class="text" id="Hcom29396">
+<div class="phpcode"><code><span class="html">
+<span class="default">&lt;?php<br /></span><span class="comment">/* This function is not useful if you want<br />to check that someone has filled in only<br />numbers into a form because for example<br />4e4 and 444 are both "numeric".<br /><br />I used a regular expression for this problem<br />and it works pretty good. Maybe it is a good<br />idea to write a function and then to use it.<br /><br />$input_number = "444"; // Answer 1 <br />$input_number = "44 "; // Answer 2<br />$input_number = "4 4"; // Answer 2<br />$input_number = "4e4"; // Answer 2 <br />$input_number = "e44"; // Answer 2<br />$input_number = "e4e"; // Answer 2<br />$input_number = "abc"; // Answer 2<br />*/<br /></span><span class="default">$input_number </span><span class="keyword">= </span><span class="string">"444"</span><span class="keyword">;<br /><br />if (</span><span class="default">preg_match </span><span class="keyword">(</span><span class="string">"/^([0-9]+)$/"</span><span class="keyword">, </span><span class="default">$input_number</span><span class="keyword">)) {<br />&nbsp; &nbsp;&nbsp; print </span><span class="string">"Answer 1"</span><span class="keyword">;<br />} else {<br />&nbsp; &nbsp;&nbsp; print </span><span class="string">"Answer 2"</span><span class="keyword">;<br />}<br /></span><span class="default">?&gt;</span>
+</span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="119140">  <div class="votes">
+    <div id="Vu119140">
+    <a href="/manual/vote-note.php?id=119140&amp;page=function.is-numeric&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd119140">
+    <a href="/manual/vote-note.php?id=119140&amp;page=function.is-numeric&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V119140" title="60% like this...">
+    5
+    </div>
+  </div>
+  <a href="#119140" class="name">
+  <strong class="user"><em>Vasiliy Makogon</em></strong></a><a class="genanchor" href="#119140"> &para;</a><div class="date" title="2016-04-08 08:22"><strong>5 years ago</strong></div>
+  <div class="text" id="Hcom119140">
+<div class="phpcode"><code><span class="html">
+If you want detect integer of float values, which presents as pure int or float, and presents as string values, use this functions:<br /><br /><span class="default">&lt;?php<br /></span><span class="keyword">function </span><span class="default">isInteger</span><span class="keyword">(</span><span class="default">$val</span><span class="keyword">)<br />{<br />&nbsp; &nbsp; if (!</span><span class="default">is_scalar</span><span class="keyword">(</span><span class="default">$val</span><span class="keyword">) || </span><span class="default">is_bool</span><span class="keyword">(</span><span class="default">$val</span><span class="keyword">)) {<br />&nbsp; &nbsp; &nbsp; &nbsp; return </span><span class="default">false</span><span class="keyword">;<br />&nbsp; &nbsp; }<br />&nbsp; &nbsp; if (</span><span class="default">is_float</span><span class="keyword">(</span><span class="default">$val </span><span class="keyword">+ </span><span class="default">0</span><span class="keyword">) &amp;&amp; (</span><span class="default">$val </span><span class="keyword">+ </span><span class="default">0</span><span class="keyword">) &gt; </span><span class="default">PHP_INT_MAX</span><span class="keyword">) {<br />&nbsp; &nbsp; &nbsp; &nbsp; return </span><span class="default">false</span><span class="keyword">;<br />&nbsp; &nbsp; }<br />&nbsp; &nbsp; return </span><span class="default">is_float</span><span class="keyword">(</span><span class="default">$val</span><span class="keyword">) ? </span><span class="default">false </span><span class="keyword">: </span><span class="default">preg_match</span><span class="keyword">(</span><span class="string">'~^((?:\+|-)?[0-9]+)$~'</span><span class="keyword">, </span><span class="default">$val</span><span class="keyword">);<br />}<br /><br />function </span><span class="default">isFloat</span><span class="keyword">(</span><span class="default">$val</span><span class="keyword">)<br />{<br />&nbsp; &nbsp; if (!</span><span class="default">is_scalar</span><span class="keyword">(</span><span class="default">$val</span><span class="keyword">)) {<br />&nbsp; &nbsp; &nbsp; &nbsp; return </span><span class="default">false</span><span class="keyword">;<br />&nbsp; &nbsp; }<br />&nbsp; &nbsp; return </span><span class="default">is_float</span><span class="keyword">(</span><span class="default">$val </span><span class="keyword">+ </span><span class="default">0</span><span class="keyword">);<br />}<br /><br />foreach ([<br />&nbsp; &nbsp; </span><span class="string">'11111111111111111'</span><span class="keyword">, </span><span class="default">11111111111111111</span><span class="keyword">, </span><span class="comment">// &gt; PHP_INT_MAX - presents in PHP as float<br />&nbsp; &nbsp; </span><span class="default">1</span><span class="keyword">, </span><span class="string">'10'</span><span class="keyword">, </span><span class="string">'+1'</span><span class="keyword">, </span><span class="string">'1.1'</span><span class="keyword">, </span><span class="default">1.1</span><span class="keyword">, </span><span class="default">.2</span><span class="keyword">, </span><span class="default">2.</span><span class="keyword">, </span><span class="string">'.2'</span><span class="keyword">, </span><span class="string">'2.'</span><span class="keyword">,<br />&nbsp; &nbsp; </span><span class="string">'-2.'</span><span class="keyword">, </span><span class="string">'-.2'</span><span class="keyword">, </span><span class="default">null</span><span class="keyword">, [], </span><span class="default">true</span><span class="keyword">, </span><span class="default">false</span><span class="keyword">, </span><span class="string">'string'<br /></span><span class="keyword">] as </span><span class="default">$value</span><span class="keyword">) {<br />&nbsp; &nbsp; echo </span><span class="default">$value </span><span class="keyword">. </span><span class="string">':' </span><span class="keyword">. </span><span class="default">gettype</span><span class="keyword">(</span><span class="default">$value</span><span class="keyword">) . </span><span class="string">' is Integer? - '&nbsp; </span><span class="keyword">. (</span><span class="default">isInteger</span><span class="keyword">(</span><span class="default">$value</span><span class="keyword">) ? </span><span class="string">'yes' </span><span class="keyword">: </span><span class="string">'no'</span><span class="keyword">) . </span><span class="default">PHP_EOL</span><span class="keyword">;<br />&nbsp; &nbsp; echo </span><span class="default">$value </span><span class="keyword">. </span><span class="string">':' </span><span class="keyword">. </span><span class="default">gettype</span><span class="keyword">(</span><span class="default">$value</span><span class="keyword">) . </span><span class="string">' is Float? - '&nbsp; </span><span class="keyword">. (</span><span class="default">isFloat</span><span class="keyword">(</span><span class="default">$value</span><span class="keyword">) ? </span><span class="string">'yes' </span><span class="keyword">: </span><span class="string">'no'</span><span class="keyword">) . </span><span class="default">PHP_EOL</span><span class="keyword">;<br />}<br /></span><span class="default">?&gt;<br /></span><br />Output:<br /><br />11111111111111111:string is Integer? - no<br />11111111111111111:string is Float? - yes<br />1,1111111111111E+16:double is Integer? - no<br />1,1111111111111E+16:double is Float? - yes<br />1:integer is Integer? - yes<br />1:integer is Float? - no<br />10:string is Integer? - yes<br />10:string is Float? - no<br />+1:string is Integer? - yes<br />+1:string is Float? - no<br />1.1:string is Integer? - no<br />1.1:string is Float? - yes<br />1,1:double is Integer? - no<br />1,1:double is Float? - yes<br />0,2:double is Integer? - no<br />0,2:double is Float? - yes<br />2:double is Integer? - no<br />2:double is Float? - yes<br />.2:string is Integer? - no<br />.2:string is Float? - yes<br />2.:string is Integer? - no<br />2.:string is Float? - yes<br />-2.:string is Integer? - no<br />-2.:string is Float? - yes<br />-.2:string is Integer? - no<br />-.2:string is Float? - yes<br />:NULL is Integer? - no<br />:NULL is Float? - no<br />Array:array is Integer? - no<br />Array:array is Float? - no<br />1:boolean is Integer? - no<br />1:boolean is Float? - no<br />:boolean is Integer? - no<br />:boolean is Float? - no<br />string:string is Integer? - no<br />string:string is Float? - no</span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="47491">  <div class="votes">
+    <div id="Vu47491">
+    <a href="/manual/vote-note.php?id=47491&amp;page=function.is-numeric&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd47491">
+    <a href="/manual/vote-note.php?id=47491&amp;page=function.is-numeric&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V47491" title="61% like this...">
+    7
+    </div>
+  </div>
+  <a href="#47491" class="name">
+  <strong class="user"><em>mdallaire at virtuelcom dot com</em></strong></a><a class="genanchor" href="#47491"> &para;</a><div class="date" title="2004-11-17 04:23"><strong>17 years ago</strong></div>
+  <div class="text" id="Hcom47491">
+<div class="phpcode"><code><span class="html">
+Sometimes, we need to have no letters in the number and is_numeric does not quit the job.<br />You can try it this ways to make sure of the number format:<br /><br />&nbsp; &nbsp; function new_is_unsigned_float($val) {<br />&nbsp; &nbsp; &nbsp; &nbsp; $val=str_replace(" ","",trim($val));<br />&nbsp; &nbsp; &nbsp; &nbsp; return eregi("^([0-9])+([\.|,]([0-9])*)?$",$val);<br />&nbsp; &nbsp; }<br /><br />&nbsp; &nbsp; function new_is_unsigned_integer($val) {<br />&nbsp; &nbsp; &nbsp; &nbsp; $val=str_replace(" ","",trim($val));<br />&nbsp; &nbsp; &nbsp; &nbsp; return eregi("^([0-9])+$",$val);<br />&nbsp; &nbsp; }<br /><br />&nbsp; &nbsp; function new_is_signed_float($val) {<br />&nbsp; &nbsp; &nbsp; &nbsp; $val=str_replace(" ","",trim($val));<br />&nbsp; &nbsp; &nbsp; &nbsp; return eregi("^-?([0-9])+([\.|,]([0-9])*)?$",$val);<br />&nbsp; &nbsp; }<br /><br />&nbsp; &nbsp; function new_is_signed_integer($val) {<br />&nbsp; &nbsp; &nbsp; &nbsp; $val=str_replace(" ","",trim($val));<br />&nbsp; &nbsp; &nbsp; &nbsp; return eregi("^-?([0-9])+$",$val);<br />&nbsp; &nbsp; }<br /><br />It returns 1 if okay and returns nothing "" if it's bad number formating.</span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="55316">  <div class="votes">
+    <div id="Vu55316">
+    <a href="/manual/vote-note.php?id=55316&amp;page=function.is-numeric&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd55316">
+    <a href="/manual/vote-note.php?id=55316&amp;page=function.is-numeric&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V55316" title="60% like this...">
+    6
+    </div>
+  </div>
+  <a href="#55316" class="name">
+  <strong class="user"><em>namik at hub-cafe dot net</em></strong></a><a class="genanchor" href="#55316"> &para;</a><div class="date" title="2005-07-29 06:11"><strong>16 years ago</strong></div>
+  <div class="text" id="Hcom55316">
+<div class="phpcode"><code><span class="html">
+I needed a number_suffix function that takes numbers with thousand seperators (using number_format() function).&nbsp; Note that this doesn't properly handle decimals.<br /><br />Example:<br /><span class="default">&lt;?= number_suffix</span><span class="keyword">(</span><span class="string">'1,021'</span><span class="keyword">) </span><span class="default">?&gt;</span> returns: 1,021st<br /><br />Also, increasing the range above the condition statements increases efficiency.&nbsp; That's almost 20% of the numbers between 0 and 100 that get to end early.<br /><br />&lt;?<br />&nbsp; function number_suffix($number)<br />&nbsp; {<br />&nbsp; &nbsp; // Validate and translate our input<br />&nbsp; &nbsp; if ( is_numeric($number) )<br />&nbsp; &nbsp; {<br />&nbsp; &nbsp; &nbsp; // Get the last two digits (only once)<br />&nbsp; &nbsp; &nbsp; $n = $number % 100;<br />&nbsp; &nbsp; } else {<br />&nbsp; &nbsp;&nbsp; // If the last two characters are numbers<br />&nbsp; &nbsp;&nbsp; if ( preg_match( '/[0-9]?[0-9]$/', $number, $matches ) )<br />&nbsp; &nbsp;&nbsp; {<br />&nbsp; &nbsp; &nbsp;&nbsp; // Return the last one or two digits<br />&nbsp; &nbsp; &nbsp;&nbsp; $n = array_pop($matches);<br />&nbsp; &nbsp;&nbsp; } else {<br />&nbsp; &nbsp; &nbsp;&nbsp; // Return the string, we can add a suffix to it<br />&nbsp; &nbsp; &nbsp;&nbsp; return $number;<br />&nbsp; &nbsp;&nbsp; }<br />&nbsp; &nbsp; }<br />&nbsp; &nbsp; // Skip the switch for as many numbers as possible.<br />&nbsp; &nbsp; if ( $n &gt; 3 &amp;&amp; $n &lt; 21 )<br />&nbsp; &nbsp; &nbsp; return $number . 'th';<br /><br />&nbsp; &nbsp; // Determine the suffix for numbers ending in 1, 2 or 3, otherwise add a 'th'<br />&nbsp; &nbsp; switch ( $n % 10 )<br />&nbsp; &nbsp; {<br />&nbsp; &nbsp; &nbsp; case '1': return $number . 'st';<br />&nbsp; &nbsp; &nbsp; case '2': return $number . 'nd';<br />&nbsp; &nbsp; &nbsp; case '3': return $number . 'rd';<br />&nbsp; &nbsp; &nbsp; default:&nbsp; return $number . 'th';<br />&nbsp; &nbsp; }<br />&nbsp; }<br />?&gt;</span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="74142">  <div class="votes">
+    <div id="Vu74142">
+    <a href="/manual/vote-note.php?id=74142&amp;page=function.is-numeric&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd74142">
+    <a href="/manual/vote-note.php?id=74142&amp;page=function.is-numeric&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V74142" title="61% like this...">
+    4
+    </div>
+  </div>
+  <a href="#74142" class="name">
+  <strong class="user"><em>Elwin van Huissteden</em></strong></a><a class="genanchor" href="#74142"> &para;</a><div class="date" title="2007-03-27 04:05"><strong>14 years ago</strong></div>
+  <div class="text" id="Hcom74142">
+<div class="phpcode"><code><span class="html">
+To James holwell:<br /><br />Maybe your function was more strickt, but profides FALSE to any numeric string that wasnt written in the English/American notition. To enable a person to use the both the English/American and the rest of the world's way:<br /><br /><span class="default">&lt;?php<br />&nbsp; </span><span class="keyword">function </span><span class="default">my_is_numeric</span><span class="keyword">(</span><span class="default">$value</span><span class="keyword">)<br />&nbsp; {<br />&nbsp;&nbsp; return (</span><span class="default">preg_match </span><span class="keyword">(</span><span class="string">"/\A(-){0, 1}([0-9]+)((,|.)[0-9]{3, 3})*((,|.)[0-9]){0, 1}([0-9]*)\z/" </span><span class="keyword">,</span><span class="default">$value</span><span class="keyword">) == </span><span class="default">1</span><span class="keyword">);<br />&nbsp; }<br /></span><span class="default">?&gt;<br /></span><br />Other than that, i'd recommend using yours, if it works (i havent tested either yours or mine)<br />By using mine, there might be a slight chance to not being able to do calculations with the numeric string if it's not the English/American way.<br /><br />(*Note: <br />-the E/A way of writing 1 million (with decimal for 1/50): 1,000,000.02<br />-the global way of writing 1 million (with decimal for 1/50): 1.000.000,02</span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="59691">  <div class="votes">
+    <div id="Vu59691">
+    <a href="/manual/vote-note.php?id=59691&amp;page=function.is-numeric&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd59691">
+    <a href="/manual/vote-note.php?id=59691&amp;page=function.is-numeric&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V59691" title="60% like this...">
+    7
+    </div>
+  </div>
+  <a href="#59691" class="name">
+  <strong class="user"><em>andrea dot vacondio at gmail dot com</em></strong></a><a class="genanchor" href="#59691"> &para;</a><div class="date" title="2005-12-13 07:52"><strong>16 years ago</strong></div>
+  <div class="text" id="Hcom59691">
+<div class="phpcode"><code><span class="html">
+Two simple functions using is_numeric:<br /><br /><span class="default">&lt;?php<br /><br /> </span><span class="keyword">function </span><span class="default">is_odd</span><span class="keyword">(</span><span class="default">$num</span><span class="keyword">){<br />&nbsp; &nbsp;&nbsp; return (</span><span class="default">is_numeric</span><span class="keyword">(</span><span class="default">$num</span><span class="keyword">)&amp;(</span><span class="default">$num</span><span class="keyword">&amp;</span><span class="default">1</span><span class="keyword">));<br /> }<br /> <br /> function </span><span class="default">is_even</span><span class="keyword">(</span><span class="default">$num</span><span class="keyword">){<br />&nbsp; &nbsp;&nbsp; return (</span><span class="default">is_numeric</span><span class="keyword">(</span><span class="default">$num</span><span class="keyword">)&amp;(!(</span><span class="default">$num</span><span class="keyword">&amp;</span><span class="default">1</span><span class="keyword">)));<br /> }<br /><br /> </span><span class="comment">//examples<br /></span><span class="keyword">echo </span><span class="string">"1: odd? "</span><span class="keyword">.(</span><span class="default">is_odd</span><span class="keyword">(</span><span class="default">1</span><span class="keyword">)? </span><span class="string">"TRUE"</span><span class="keyword">: </span><span class="string">"FALSE"</span><span class="keyword">).</span><span class="string">"&lt;br /&gt;"</span><span class="keyword">; <br /></span><span class="comment">//is_numeric(0) returns true <br /></span><span class="keyword">echo </span><span class="string">"0: odd? "</span><span class="keyword">.(</span><span class="default">is_odd</span><span class="keyword">(</span><span class="default">0</span><span class="keyword">)? </span><span class="string">"TRUE"</span><span class="keyword">: </span><span class="string">"FALSE"</span><span class="keyword">).</span><span class="string">"&lt;br /&gt;"</span><span class="keyword">; <br />echo </span><span class="string">"6: odd? "</span><span class="keyword">.(</span><span class="default">is_odd</span><span class="keyword">(</span><span class="default">6</span><span class="keyword">)? </span><span class="string">"TRUE"</span><span class="keyword">: </span><span class="string">"FALSE"</span><span class="keyword">).</span><span class="string">"&lt;br /&gt;"</span><span class="keyword">; <br />echo </span><span class="string">"\"italy\": odd? "</span><span class="keyword">.(</span><span class="default">is_odd</span><span class="keyword">(</span><span class="string">"italy"</span><span class="keyword">)? </span><span class="string">"TRUE"</span><span class="keyword">: </span><span class="string">"FALSE"</span><span class="keyword">).</span><span class="string">"&lt;br /&gt;"</span><span class="keyword">;<br />echo </span><span class="string">"null: odd? "</span><span class="keyword">.(</span><span class="default">is_odd</span><span class="keyword">(</span><span class="default">null</span><span class="keyword">)? </span><span class="string">"TRUE"</span><span class="keyword">: </span><span class="string">"FALSE"</span><span class="keyword">).</span><span class="string">"&lt;br /&gt;&lt;br /&gt;"</span><span class="keyword">; <br />echo </span><span class="string">"1: even? "</span><span class="keyword">.(</span><span class="default">is_even</span><span class="keyword">(</span><span class="default">1</span><span class="keyword">)? </span><span class="string">"TRUE"</span><span class="keyword">: </span><span class="string">"FALSE"</span><span class="keyword">).</span><span class="string">"&lt;br /&gt;"</span><span class="keyword">;&nbsp; <br />echo </span><span class="string">"0: even? "</span><span class="keyword">.(</span><span class="default">is_even</span><span class="keyword">(</span><span class="default">0</span><span class="keyword">)? </span><span class="string">"TRUE"</span><span class="keyword">: </span><span class="string">"FALSE"</span><span class="keyword">).</span><span class="string">"&lt;br /&gt;"</span><span class="keyword">; <br />echo </span><span class="string">"6: even? "</span><span class="keyword">.(</span><span class="default">is_even</span><span class="keyword">(</span><span class="default">6</span><span class="keyword">)? </span><span class="string">"TRUE"</span><span class="keyword">: </span><span class="string">"FALSE"</span><span class="keyword">).</span><span class="string">"&lt;br /&gt;"</span><span class="keyword">; <br />echo </span><span class="string">"\"italy\": even? "</span><span class="keyword">.(</span><span class="default">is_even</span><span class="keyword">(</span><span class="string">"italy"</span><span class="keyword">)? </span><span class="string">"TRUE"</span><span class="keyword">: </span><span class="string">"FALSE"</span><span class="keyword">).</span><span class="string">"&lt;br /&gt;"</span><span class="keyword">;&nbsp; <br />echo </span><span class="string">"null: even? "</span><span class="keyword">.(</span><span class="default">is_even</span><span class="keyword">(</span><span class="default">null</span><span class="keyword">)? </span><span class="string">"TRUE"</span><span class="keyword">: </span><span class="string">"FALSE"</span><span class="keyword">).</span><span class="string">"&lt;br /&gt;"</span><span class="keyword">; <br /><br /></span><span class="default">?&gt;<br /></span>And here is the result:<br />1: odd? TRUE<br />0: odd? FALSE<br />6: odd? FALSE<br />"italy": odd? FALSE<br />null: odd? FALSE<br /><br />1: even? FALSE<br />0: even? TRUE<br />6: even? TRUE<br />"italy": even? FALSE<br />null: even? FALSE</span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="68338">  <div class="votes">
+    <div id="Vu68338">
+    <a href="/manual/vote-note.php?id=68338&amp;page=function.is-numeric&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd68338">
+    <a href="/manual/vote-note.php?id=68338&amp;page=function.is-numeric&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V68338" title="60% like this...">
+    6
+    </div>
+  </div>
+  <a href="#68338" class="name">
+  <strong class="user"><em>rontarrant at NO_SPAMsympatico dot ca</em></strong></a><a class="genanchor" href="#68338"> &para;</a><div class="date" title="2006-07-23 07:15"><strong>15 years ago</strong></div>
+  <div class="text" id="Hcom68338">
+<div class="phpcode"><code><span class="html">
+Here's an even simpler pair of functions for finding out if a number is odd or even:<br /><br />function IS_ODD($number) { return($number &amp; 1); }<br /><br />function IS_EVEN($number) { return(!($number &amp; 1)); }<br /><br />Test:<br />$myNumber = 151;<br /><br />if(IS_ODD($myNumber))<br />&nbsp; &nbsp; echo("number is odd\n");<br />else<br />&nbsp; &nbsp; echo("number is NOT odd\n");<br /><br />if(IS_even($myNumber))<br />&nbsp; &nbsp; echo("number is even\n");<br />else<br />&nbsp; &nbsp; echo("number is NOT even\n");<br /><br />Results:<br />number is odd<br />number is NOT even</span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="39078">  <div class="votes">
+    <div id="Vu39078">
+    <a href="/manual/vote-note.php?id=39078&amp;page=function.is-numeric&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd39078">
+    <a href="/manual/vote-note.php?id=39078&amp;page=function.is-numeric&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V39078" title="61% like this...">
+    4
+    </div>
+  </div>
+  <a href="#39078" class="name">
+  <strong class="user"><em>joe at kewlmail dot net</em></strong></a><a class="genanchor" href="#39078"> &para;</a><div class="date" title="2004-01-16 03:12"><strong>18 years ago</strong></div>
+  <div class="text" id="Hcom39078">
+<div class="phpcode"><code><span class="html">
+Here is a simple function that I found usefull for filtering user input into numbers. Basically, it attempts to fix fat fingering. For example:<br /><br />$userString = "$654.4r5";<br /><br />function numpass_filter($userString){&nbsp; <br />&nbsp; &nbsp; $money = explode(".", $userString);<br />&nbsp; &nbsp; //now $money[0] = "$645" and $money[1] = "4r5"<br /><br />&nbsp; &nbsp; //next remove all characters save 0 though 9<br />&nbsp; &nbsp; //in both elements of the array<br />&nbsp; &nbsp; $dollars = eregi_replace("[^0-9]", null, $money[0]);<br />&nbsp; &nbsp; $cents = eregi_replace("[^0-9]", null, $money[1]);<br /><br />&nbsp; &nbsp; //if there was a decimal in the original string, put it back<br />&nbsp; &nbsp; if((string)$cents!=null){<br />&nbsp; &nbsp; &nbsp; &nbsp; $cents = "." . $cents;<br />&nbsp; &nbsp; }<br /><br />&nbsp;&nbsp; $result = $dollars . $cents;<br /><br />&nbsp; &nbsp; return($result);<br />}<br /><br />The output in this case would be '654.45'.<br />Please note that this function will work properly unless the user fat fingers an extra decimal in the wrong place.</span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="34804">  <div class="votes">
+    <div id="Vu34804">
+    <a href="/manual/vote-note.php?id=34804&amp;page=function.is-numeric&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd34804">
+    <a href="/manual/vote-note.php?id=34804&amp;page=function.is-numeric&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V34804" title="61% like this...">
+    4
+    </div>
+  </div>
+  <a href="#34804" class="name">
+  <strong class="user"><em>stew_wilde at hotmail dot com</em></strong></a><a class="genanchor" href="#34804"> &para;</a><div class="date" title="2003-08-07 01:25"><strong>18 years ago</strong></div>
+  <div class="text" id="Hcom34804">
+<div class="phpcode"><code><span class="html">
+When using the exec() function in php to execute anther php script, any command line arguments passed the script will lose their type association, regardless of whether they are numeric or not, the same seems to hold true for strings as well.<br /><br />ie : two scripts test.php:<br /><br /><span class="default">&lt;?php<br />$val </span><span class="keyword">= </span><span class="default">trim</span><span class="keyword">(</span><span class="default">$argv</span><span class="keyword">[</span><span class="default">1</span><span class="keyword">]);<br />echo </span><span class="default">is_string</span><span class="keyword">(</span><span class="default">$val</span><span class="keyword">);<br /></span><span class="default">?&gt;<br /></span><br />and testwrapper.php:<br /><br /><span class="default">&lt;?php<br />$tmp </span><span class="keyword">= </span><span class="default">5</span><span class="keyword">;<br /></span><span class="default">exec</span><span class="keyword">(</span><span class="string">"php ./test.php "</span><span class="keyword">.</span><span class="default">$tmp</span><span class="keyword">);<br /></span><span class="default">?&gt;<br /></span><br />Executing testwrapper.php on the command line will echo nothing (ie false), and false will be returned regardless of any escaping of parameters or other such attempts to overcome this.&nbsp; The solution then is to explicitly cast $val in test.php to be an int and then is_numeric will work.&nbsp; But as stated the same test was performed using a string for $val and the is_string() function and the same thing occurs.&nbsp; Not the end of the world, but something to be aware of :)</span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="92425">  <div class="votes">
+    <div id="Vu92425">
+    <a href="/manual/vote-note.php?id=92425&amp;page=function.is-numeric&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd92425">
+    <a href="/manual/vote-note.php?id=92425&amp;page=function.is-numeric&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V92425" title="60% like this...">
+    4
+    </div>
+  </div>
+  <a href="#92425" class="name">
+  <strong class="user"><em>Kiam</em></strong></a><a class="genanchor" href="#92425"> &para;</a><div class="date" title="2009-07-23 11:02"><strong>12 years ago</strong></div>
+  <div class="text" id="Hcom92425">
+<div class="phpcode"><code><span class="html">
+empty(trim($test, '+-.,0123456789')) doesn't assure you $test contains a number. It returns TRUE also for a string containing ".+1234.56", which is not a valid number.</span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="55615">  <div class="votes">
+    <div id="Vu55615">
+    <a href="/manual/vote-note.php?id=55615&amp;page=function.is-numeric&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd55615">
+    <a href="/manual/vote-note.php?id=55615&amp;page=function.is-numeric&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V55615" title="59% like this...">
+    6
+    </div>
+  </div>
+  <a href="#55615" class="name">
+  <strong class="user"><em>jamespam at hotmail dot com</em></strong></a><a class="genanchor" href="#55615"> &para;</a><div class="date" title="2005-08-08 02:31"><strong>16 years ago</strong></div>
+  <div class="text" id="Hcom55615">
+<div class="phpcode"><code><span class="html">
+Here's a function to determine if a variable represents a whole number:<br /><br />function is_whole_number($var){<br />&nbsp; return (is_numeric($var)&amp;&amp;(intval($var)==floatval($var)));<br />}<br /><br />just simple stuff...<br />is_whole_number(2.00000000001); will return false<br />is_whole_number(2.00000000000); will return true</span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="37717">  <div class="votes">
+    <div id="Vu37717">
+    <a href="/manual/vote-note.php?id=37717&amp;page=function.is-numeric&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd37717">
+    <a href="/manual/vote-note.php?id=37717&amp;page=function.is-numeric&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V37717" title="60% like this...">
+    4
+    </div>
+  </div>
+  <a href="#37717" class="name">
+  <strong class="user"><em>kouber at saparev dot com</em></strong></a><a class="genanchor" href="#37717"> &para;</a><div class="date" title="2003-11-24 03:05"><strong>18 years ago</strong></div>
+  <div class="text" id="Hcom37717">
+<div class="phpcode"><code><span class="html">
+Note that this function is not appropriate to check if "is_numeric" for very long strings. In fact, everything passed to this function is converted to long and then to a double. Anything greater than approximately 1.8e308 is too large for a double, so it becomes infinity, i.e. FALSE. What that means is that, for each string with more than 308 characters, is_numeric() will return FALSE, even if all chars are digits.<br /><br />However, this behaviour is platform-specific.<br /><br /><a href="http://www.php.net/manual/en/language.types.float.php" rel="nofollow" target="_blank">http://www.php.net/manual/en/language.types.float.php</a><br /><br />In such a case, it is suitable to use regular expressions:<br /><br />function is_numeric_big($s=0) {<br />&nbsp; return preg_match('/^-?\d+$/', $s);<br />}</span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="99876">  <div class="votes">
+    <div id="Vu99876">
+    <a href="/manual/vote-note.php?id=99876&amp;page=function.is-numeric&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd99876">
+    <a href="/manual/vote-note.php?id=99876&amp;page=function.is-numeric&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V99876" title="58% like this...">
+    5
+    </div>
+  </div>
+  <a href="#99876" class="name">
+  <strong class="user"><em>Nitrogen</em></strong></a><a class="genanchor" href="#99876"> &para;</a><div class="date" title="2010-09-11 10:40"><strong>11 years ago</strong></div>
+  <div class="text" id="Hcom99876">
+<div class="phpcode"><code><span class="html">
+I find it a little weird that people are having issues with ordinal numbers, it's pretty easy..<br />Notes are in the commenting, check out the example outputs.<br /><br /><span class="default">&lt;?php<br /><br /></span><span class="keyword">function </span><span class="default">ordinal</span><span class="keyword">(</span><span class="default">$i</span><span class="keyword">=</span><span class="string">''</span><span class="keyword">) {<br />&nbsp; </span><span class="comment">// a temporary value we can change, and keep the original value.<br />&nbsp; </span><span class="default">$o</span><span class="keyword">=</span><span class="default">$i</span><span class="keyword">;<br /><br />&nbsp; </span><span class="comment">// suffixes = 0th, 1st, 2nd, third == zeroth, first, second, third<br />&nbsp; </span><span class="default">$s</span><span class="keyword">=array(</span><span class="string">'th'</span><span class="keyword">,</span><span class="string">'st'</span><span class="keyword">,</span><span class="string">'nd'</span><span class="keyword">,</span><span class="string">'rd'</span><span class="keyword">);<br /><br />&nbsp; </span><span class="comment">// if input just so happens to be a string, we check to make sure it<br />&nbsp; // still holds a numeric value and only acquire the last 2 numbers.<br />&nbsp; // if it's not a string, nor an integer, we freak out and say no.<br />&nbsp; </span><span class="keyword">if(!</span><span class="default">is_int</span><span class="keyword">(</span><span class="default">$o</span><span class="keyword">))<br />&nbsp; &nbsp; if(</span><span class="default">ctype_digit</span><span class="keyword">(</span><span class="default">$o</span><span class="keyword">))<br />&nbsp; &nbsp; &nbsp; </span><span class="default">$o</span><span class="keyword">=(int)</span><span class="default">substr</span><span class="keyword">(</span><span class="default">$o</span><span class="keyword">,-</span><span class="default">2</span><span class="keyword">,</span><span class="default">2</span><span class="keyword">);<br />&nbsp; &nbsp; else<br />&nbsp; &nbsp; &nbsp; return(</span><span class="default">false</span><span class="keyword">);<br /><br />&nbsp; </span><span class="comment">// basically, if $o is between 11 and 19, we use 'th'<br />&nbsp; // otherwise we use the last digit and if it's over<br />&nbsp; // 4 then we use 0 (for the $s array index).<br />&nbsp; </span><span class="keyword">return(</span><span class="default">$i</span><span class="keyword">.</span><span class="default">$s</span><span class="keyword">[(</span><span class="default">$o</span><span class="keyword">%</span><span class="default">100</span><span class="keyword">&gt;</span><span class="default">10</span><span class="keyword">&amp;&amp;</span><span class="default">$o</span><span class="keyword">%</span><span class="default">100</span><span class="keyword">&lt;</span><span class="default">20</span><span class="keyword">)?</span><span class="default">0</span><span class="keyword">:(</span><span class="default">$o</span><span class="keyword">%</span><span class="default">10</span><span class="keyword">&lt;</span><span class="default">4</span><span class="keyword">?</span><span class="default">$o</span><span class="keyword">%</span><span class="default">10</span><span class="keyword">:</span><span class="default">0</span><span class="keyword">)]);<br />}<br /><br /></span><span class="default">var_dump</span><span class="keyword">(</span><span class="default">ordinal</span><span class="keyword">(</span><span class="default">5</span><span class="keyword">));<br /><br /></span><span class="comment">/* Example Outputs of ordinal():<br />&nbsp; 0th, 1st, 2nd, 3rd, 4th, ..., 9th,<br />&nbsp; 10th, 11th, 12th, 13th, 14th, ..., 19th,<br />&nbsp; 110th, 111th, ..., 199th, 200th, 201st.<br /><br />&nbsp; ordinal('-1'); returns false because ctype_digit hates anything that<br />&nbsp; isn't strictly 0 through 9 and '-' trips it to false.<br /><br />&nbsp; ordinal('asdf'); returns false for the exact same reason.<br /><br />&nbsp; ordinal(); returns false because it's blank.<br /><br />&nbsp; signed integers on a 32-bit system (and the same issue on a 64-bit<br />&nbsp; system using 0x7FFFFFFFFFFFFFFF because of two's compliment,<br />&nbsp; anything higher will become a negative number):<br />&nbsp; ordinal(0x7FFFFFFF&nbsp; ); returns 2147483647th (which is correct)<br />&nbsp; ordinal(0x7FFFFFFF+1); returns false.<br />*/<br /><br /></span><span class="default">?&gt;</span>
+</span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="114061">  <div class="votes">
+    <div id="Vu114061">
+    <a href="/manual/vote-note.php?id=114061&amp;page=function.is-numeric&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd114061">
+    <a href="/manual/vote-note.php?id=114061&amp;page=function.is-numeric&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V114061" title="56% like this...">
+    4
+    </div>
+  </div>
+  <a href="#114061" class="name">
+  <strong class="user"><em>ben at chico dot com</em></strong></a><a class="genanchor" href="#114061"> &para;</a><div class="date" title="2014-01-07 11:20"><strong>8 years ago</strong></div>
+  <div class="text" id="Hcom114061">
+<div class="phpcode"><code><span class="html">
+Apparently NAN (Not A Number) is a number for the sake of is_numeric(). <br /><br /><span class="default">&lt;?php <br /></span><span class="keyword">echo </span><span class="string">"is "</span><span class="keyword">; <br />if (!</span><span class="default">is_numeric</span><span class="keyword">(</span><span class="default">NAN</span><span class="keyword">)) <br /> echo </span><span class="string">"not "</span><span class="keyword">; <br /> echo </span><span class="string">"a number"</span><span class="keyword">; <br /></span><span class="default">?&gt;</span> <br /><br />Outputs "is a number". So something that is NOT a number (by defintion) is a number...</span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="42083">  <div class="votes">
+    <div id="Vu42083">
+    <a href="/manual/vote-note.php?id=42083&amp;page=function.is-numeric&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd42083">
+    <a href="/manual/vote-note.php?id=42083&amp;page=function.is-numeric&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V42083" title="55% like this...">
+    1
+    </div>
+  </div>
+  <a href="#42083" class="name">
+  <strong class="user"><em>renimar no spam at nospam yahoo dot com</em></strong></a><a class="genanchor" href="#42083"> &para;</a><div class="date" title="2004-05-03 12:54"><strong>17 years ago</strong></div>
+  <div class="text" id="Hcom42083">
+<div class="phpcode"><code><span class="html">
+A little function to ordinalize numbers using is_numeric() and accounting for the numbers in the teens.<br /><br /><span class="default">&lt;?php<br /></span><span class="keyword">function </span><span class="default">ordinalize</span><span class="keyword">(</span><span class="default">$num</span><span class="keyword">) {<br /><br />&nbsp; &nbsp; &nbsp; &nbsp; if (!</span><span class="default">is_numeric</span><span class="keyword">(</span><span class="default">$num</span><span class="keyword">))<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return </span><span class="default">$num</span><span class="keyword">;<br /><br />&nbsp; &nbsp; &nbsp; &nbsp; if (</span><span class="default">$num </span><span class="keyword">&gt;= </span><span class="default">11 </span><span class="keyword">and </span><span class="default">$num </span><span class="keyword">&lt;= </span><span class="default">19</span><span class="keyword">)<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return </span><span class="default">$num</span><span class="keyword">.</span><span class="string">"th"</span><span class="keyword">;<br />&nbsp; &nbsp; &nbsp; &nbsp; elseif ( </span><span class="default">$num </span><span class="keyword">% </span><span class="default">10 </span><span class="keyword">== </span><span class="default">1 </span><span class="keyword">)<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return </span><span class="default">$num</span><span class="keyword">.</span><span class="string">"st"</span><span class="keyword">;<br />&nbsp; &nbsp; &nbsp; &nbsp; elseif ( </span><span class="default">$num </span><span class="keyword">% </span><span class="default">10 </span><span class="keyword">== </span><span class="default">2 </span><span class="keyword">)<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return </span><span class="default">$num</span><span class="keyword">.</span><span class="string">"nd"</span><span class="keyword">;<br />&nbsp; &nbsp; &nbsp; &nbsp; elseif ( </span><span class="default">$num </span><span class="keyword">% </span><span class="default">10 </span><span class="keyword">== </span><span class="default">3 </span><span class="keyword">)<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return </span><span class="default">$num</span><span class="keyword">.</span><span class="string">"rd"</span><span class="keyword">;<br />&nbsp; &nbsp; &nbsp; &nbsp; else<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return </span><span class="default">$num</span><span class="keyword">.</span><span class="string">"th"</span><span class="keyword">;<br /><br />}<br /><br /></span><span class="comment">// Demo<br /></span><span class="keyword">for (</span><span class="default">$i</span><span class="keyword">=</span><span class="default">1</span><span class="keyword">; </span><span class="default">$i</span><span class="keyword">&lt;=</span><span class="default">25</span><span class="keyword">; </span><span class="default">$i</span><span class="keyword">++) {<br />&nbsp; &nbsp; &nbsp; &nbsp; print </span><span class="default">ordinalize</span><span class="keyword">(</span><span class="default">$i</span><span class="keyword">) . </span><span class="string">" "</span><span class="keyword">;<br />}<br /><br /></span><span class="comment">// The loop returns:<br />// 1st 2nd 3rd 4th 5th 6th 7th 8th 9th 10th 11th 12th <br />// 13th 14th 15th 16th 17th 18th 19th 20th 21st 22nd <br />// 23rd 24th 25th <br /><br /></span><span class="default">?&gt;</span>
+</span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="118080">  <div class="votes">
+    <div id="Vu118080">
+    <a href="/manual/vote-note.php?id=118080&amp;page=function.is-numeric&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd118080">
+    <a href="/manual/vote-note.php?id=118080&amp;page=function.is-numeric&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V118080" title="53% like this...">
+    1
+    </div>
+  </div>
+  <a href="#118080" class="name">
+  <strong class="user"><em>lihatskiym at gmail dot com</em></strong></a><a class="genanchor" href="#118080"> &para;</a><div class="date" title="2015-09-30 11:26"><strong>6 years ago</strong></div>
+  <div class="text" id="Hcom118080">
+<div class="phpcode"><code><span class="html">
+Check that value is whole numeric or is whole integer.<br /><span class="default">&lt;?php<br /></span><span class="keyword">function </span><span class="default">whole_numeric</span><span class="keyword">(</span><span class="default">$val</span><span class="keyword">)<br />{<br />&nbsp; &nbsp; if (</span><span class="default">is_numeric</span><span class="keyword">(</span><span class="default">$val</span><span class="keyword">)<br />&nbsp; &nbsp; &nbsp; &nbsp; &amp;&amp; </span><span class="default">floor</span><span class="keyword">(</span><span class="default">$val</span><span class="keyword">) == </span><span class="default">$val</span><span class="keyword">)<br />&nbsp; &nbsp; {<br />&nbsp; &nbsp; &nbsp; &nbsp; if ((string)</span><span class="default">$val </span><span class="keyword">=== (string)</span><span class="default">0</span><span class="keyword">)<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return </span><span class="default">true</span><span class="keyword">;<br />&nbsp; &nbsp; &nbsp; &nbsp; elseif(</span><span class="default">ltrim</span><span class="keyword">((string)</span><span class="default">$val</span><span class="keyword">, </span><span class="string">'0'</span><span class="keyword">) === (string)</span><span class="default">$val</span><span class="keyword">)<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return </span><span class="default">true</span><span class="keyword">;<br />&nbsp; &nbsp; }<br /><br />&nbsp; &nbsp; return </span><span class="default">false</span><span class="keyword">;<br />}<br /><br />function </span><span class="default">whole_int</span><span class="keyword">(</span><span class="default">$val</span><span class="keyword">)<br />{<br />&nbsp; &nbsp; </span><span class="default">$val </span><span class="keyword">= </span><span class="default">strval</span><span class="keyword">(</span><span class="default">$val</span><span class="keyword">);<br />&nbsp; &nbsp; </span><span class="default">$val </span><span class="keyword">= </span><span class="default">str_replace</span><span class="keyword">(</span><span class="string">'-'</span><span class="keyword">, </span><span class="string">''</span><span class="keyword">, </span><span class="default">$val</span><span class="keyword">);<br /><br />&nbsp; &nbsp; if (</span><span class="default">ctype_digit</span><span class="keyword">(</span><span class="default">$val</span><span class="keyword">))<br />&nbsp; &nbsp; {<br />&nbsp; &nbsp; &nbsp; &nbsp; if (</span><span class="default">$val </span><span class="keyword">=== (string)</span><span class="default">0</span><span class="keyword">)<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return </span><span class="default">true</span><span class="keyword">;<br />&nbsp; &nbsp; &nbsp; &nbsp; elseif(</span><span class="default">ltrim</span><span class="keyword">(</span><span class="default">$val</span><span class="keyword">, </span><span class="string">'0'</span><span class="keyword">) === </span><span class="default">$val</span><span class="keyword">)<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return </span><span class="default">true</span><span class="keyword">;<br />&nbsp; &nbsp; }<br /><br />&nbsp; &nbsp; return </span><span class="default">false</span><span class="keyword">;<br />}<br /></span><span class="default">?&gt;<br /></span><br />Result will be like this:<br /><br /><span class="default">&lt;?php<br />whole_numeric</span><span class="keyword">(</span><span class="string">'-1.0'</span><span class="keyword">);&nbsp; </span><span class="comment">// true<br /></span><span class="default">whole_numeric</span><span class="keyword">(</span><span class="default">0</span><span class="keyword">);&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="comment">// true<br /></span><span class="default">whole_numeric</span><span class="keyword">(</span><span class="string">'0'</span><span class="keyword">);&nbsp; &nbsp; &nbsp; </span><span class="comment">// true<br /></span><span class="default">whole_numeric</span><span class="keyword">(</span><span class="string">'00'</span><span class="keyword">);&nbsp; &nbsp;&nbsp; </span><span class="comment">// false<br /></span><span class="default">whole_numeric</span><span class="keyword">(</span><span class="default">1</span><span class="keyword">);&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="comment">// true<br /></span><span class="default">whole_numeric</span><span class="keyword">(</span><span class="string">'1'</span><span class="keyword">);&nbsp; &nbsp; &nbsp; </span><span class="comment">// true<br /></span><span class="default">whole_numeric</span><span class="keyword">(</span><span class="string">'1.0'</span><span class="keyword">);&nbsp; &nbsp; </span><span class="comment">// true<br /></span><span class="default">whole_numeric</span><span class="keyword">(</span><span class="string">'1,0'</span><span class="keyword">);&nbsp; &nbsp; </span><span class="comment">// false<br /></span><span class="default">whole_numeric</span><span class="keyword">(</span><span class="string">'1.2'</span><span class="keyword">);&nbsp; &nbsp; </span><span class="comment">// false<br /></span><span class="default">whole_numeric</span><span class="keyword">(</span><span class="string">'001'</span><span class="keyword">);&nbsp; &nbsp; </span><span class="comment">// false<br /></span><span class="default">whole_numeric</span><span class="keyword">(array()); </span><span class="comment">// false<br /><br /></span><span class="default">whole_int</span><span class="keyword">(</span><span class="string">'-1.0'</span><span class="keyword">);&nbsp; &nbsp; </span><span class="comment">// false<br /></span><span class="default">whole_int</span><span class="keyword">(</span><span class="string">'-1'</span><span class="keyword">);&nbsp; &nbsp; &nbsp;&nbsp; </span><span class="comment">// true<br /></span><span class="default">whole_int</span><span class="keyword">(</span><span class="default">0</span><span class="keyword">);&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="comment">// true<br /></span><span class="default">whole_int</span><span class="keyword">(</span><span class="string">'0'</span><span class="keyword">);&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="comment">// true<br /></span><span class="default">whole_int</span><span class="keyword">(</span><span class="string">'00'</span><span class="keyword">);&nbsp; &nbsp; &nbsp; </span><span class="comment">// false<br /></span><span class="default">whole_int</span><span class="keyword">(</span><span class="default">1</span><span class="keyword">);&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="comment">// true<br /></span><span class="default">whole_int</span><span class="keyword">(</span><span class="string">'1'</span><span class="keyword">);&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; </span><span class="comment">// true<br /></span><span class="default">whole_int</span><span class="keyword">(</span><span class="string">'1.0'</span><span class="keyword">);&nbsp; &nbsp; &nbsp; </span><span class="comment">// false<br /></span><span class="default">whole_int</span><span class="keyword">(</span><span class="string">'1.2'</span><span class="keyword">);&nbsp; &nbsp; &nbsp; </span><span class="comment">// false<br /></span><span class="default">whole_int</span><span class="keyword">(</span><span class="string">'001'</span><span class="keyword">);&nbsp; &nbsp;&nbsp; </span><span class="comment">// false<br /></span><span class="default">whole_int</span><span class="keyword">(array()); </span><span class="comment">// false<br /></span><span class="default">?&gt;</span>
+</span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="109083">  <div class="votes">
+    <div id="Vu109083">
+    <a href="/manual/vote-note.php?id=109083&amp;page=function.is-numeric&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd109083">
+    <a href="/manual/vote-note.php?id=109083&amp;page=function.is-numeric&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V109083" title="52% like this...">
+    1
+    </div>
+  </div>
+  <a href="#109083" class="name">
+  <strong class="user"><em>jeffvanhees at gmail dot com</em></strong></a><a class="genanchor" href="#109083"> &para;</a><div class="date" title="2012-06-19 05:20"><strong>9 years ago</strong></div>
+  <div class="text" id="Hcom109083">
+<div class="phpcode"><code><span class="html">
+Function for checking all the values in an array for being numeric:<br /><br /><span class="default">&lt;?php<br /></span><span class="keyword">function </span><span class="default">is_numeric_array</span><span class="keyword">(</span><span class="default">$array</span><span class="keyword">) {<br />&nbsp; &nbsp; foreach (</span><span class="default">$array </span><span class="keyword">as </span><span class="default">$key </span><span class="keyword">=&gt; </span><span class="default">$value</span><span class="keyword">) {<br />&nbsp; &nbsp; &nbsp; &nbsp; if (!</span><span class="default">is_numeric</span><span class="keyword">(</span><span class="default">$value</span><span class="keyword">)) return </span><span class="default">false</span><span class="keyword">;<br />&nbsp; &nbsp; }<br />&nbsp; &nbsp; return </span><span class="default">true</span><span class="keyword">;<br />}<br /><br /></span><span class="default">$array_not_numeric </span><span class="keyword">= array(</span><span class="string">'1'</span><span class="keyword">, </span><span class="string">'2'</span><span class="keyword">, </span><span class="default">3</span><span class="keyword">, </span><span class="string">'a'</span><span class="keyword">); </span><span class="comment">// returns false<br /></span><span class="default">$array_numeric </span><span class="keyword">= array(</span><span class="string">'1'</span><span class="keyword">, </span><span class="string">'2'</span><span class="keyword">, </span><span class="default">3</span><span class="keyword">, </span><span class="default">4</span><span class="keyword">); </span><span class="comment">// returns true<br /></span><span class="default">?&gt;</span>
+</span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="121690">  <div class="votes">
+    <div id="Vu121690">
+    <a href="/manual/vote-note.php?id=121690&amp;page=function.is-numeric&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd121690">
+    <a href="/manual/vote-note.php?id=121690&amp;page=function.is-numeric&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V121690" title="100% like this...">
+    2
+    </div>
+  </div>
+  <a href="#121690" class="name">
+  <strong class="user"><em>za at byza dot it</em></strong></a><a class="genanchor" href="#121690"> &para;</a><div class="date" title="2017-09-26 02:21"><strong>4 years ago</strong></div>
+  <div class="text" id="Hcom121690">
+<div class="phpcode"><code><span class="html">
+To check if a numeric string is a valid integer or float number:<br /><br />function is_valid_number($a) {<br />&nbsp;&nbsp; return $a==(float)$a &amp;&amp; strlen($a)==strlen((float)$a);<br />}<br /><br />This returns false for "0012345" and true for "0.12345"</span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="125896">  <div class="votes">
+    <div id="Vu125896">
+    <a href="/manual/vote-note.php?id=125896&amp;page=function.is-numeric&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd125896">
+    <a href="/manual/vote-note.php?id=125896&amp;page=function.is-numeric&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V125896" title="no votes...">
+    0
+    </div>
+  </div>
+  <a href="#125896" class="name">
+  <strong class="user"><em>rds88</em></strong></a><a class="genanchor" href="#125896"> &para;</a><div class="date" title="2021-03-10 01:46"><strong>1 year ago</strong></div>
+  <div class="text" id="Hcom125896">
+<div class="phpcode"><code><span class="html">
+Notice that not only are leading spaces valid, but pretty much all whitespace characters and any combination thereof seems to be valid.<br /><br />Examples (999 is the actual number), verified in PHP 7.3.x:<br /><br />%09999 - a leading horizontal tabulator followed by the number<br />%20999 - a leading space followed by the number<br />%09%20999 - a leading tab, followed by a space, followed by the number</span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="123455">  <div class="votes">
+    <div id="Vu123455">
+    <a href="/manual/vote-note.php?id=123455&amp;page=function.is-numeric&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd123455">
+    <a href="/manual/vote-note.php?id=123455&amp;page=function.is-numeric&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V123455" title="100% like this...">
+    1
+    </div>
+  </div>
+  <a href="#123455" class="name">
+  <strong class="user"><em>Ray.Paseur sometimes uses Gmail</em></strong></a><a class="genanchor" href="#123455"> &para;</a><div class="date" title="2018-12-19 08:50"><strong>3 years ago</strong></div>
+  <div class="text" id="Hcom123455">
+<div class="phpcode"><code><span class="html">
+intval() appears to be helpful with hex strings:<br /><br /><span class="default">&lt;?php </span><span class="comment">// is_hex_numeric.php<br />/**<br /> * PHP 7.0.0+ Strings in hexadecimal (e.g. 0xf4c3b00c) notation<br /> * are no longer regarded as numeric strings, i.e. is_numeric() returns FALSE now.<br /> * See: <a href="http://php.net/manual/en/function.intval.php" rel="nofollow" target="_blank">http://php.net/manual/en/function.intval.php</a><br /> */<br /></span><span class="default">error_reporting</span><span class="keyword">(</span><span class="default">E_ALL</span><span class="keyword">);<br /><br /></span><span class="default">var_dump</span><span class="keyword">( </span><span class="default">PHP_VERSION </span><span class="keyword">);&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="comment">// string(6) "7.1.25"<br /></span><span class="default">var_dump</span><span class="keyword">( </span><span class="default">PHP_INT_SIZE </span><span class="keyword">);&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; </span><span class="comment">// int(8)<br /><br /></span><span class="default">$x </span><span class="keyword">= </span><span class="default">0xf4c3b00c</span><span class="keyword">;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="comment">// --&gt; Assignment of hex value<br /></span><span class="default">var_dump</span><span class="keyword">(</span><span class="default">$x</span><span class="keyword">);&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; </span><span class="comment">// int(4106465292)<br /></span><span class="default">var_dump</span><span class="keyword">( </span><span class="default">is_numeric</span><span class="keyword">(</span><span class="default">$x</span><span class="keyword">) );&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; </span><span class="comment">// bool(true)<br /><br /></span><span class="default">$y </span><span class="keyword">= </span><span class="string">'0x' </span><span class="keyword">. </span><span class="default">dechex</span><span class="keyword">(</span><span class="default">$x</span><span class="keyword">);&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; </span><span class="comment">// --&gt; Convert hex value to a string<br /></span><span class="default">var_dump</span><span class="keyword">(</span><span class="default">$y</span><span class="keyword">);&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; </span><span class="comment">// string(10) "0xf4c3b00c"<br /></span><span class="default">var_dump</span><span class="keyword">( </span><span class="default">is_numeric</span><span class="keyword">(</span><span class="default">$y</span><span class="keyword">) );&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; </span><span class="comment">// bool(false)<br /><br /></span><span class="default">$z </span><span class="keyword">= </span><span class="default">intval</span><span class="keyword">(</span><span class="default">$y</span><span class="keyword">, </span><span class="default">0</span><span class="keyword">);&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; </span><span class="comment">// --&gt; intval() with base zero recognizes hex notation<br /></span><span class="default">var_dump</span><span class="keyword">(</span><span class="default">$z</span><span class="keyword">);&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; </span><span class="comment">// int(4106465292)<br /></span><span class="default">var_dump</span><span class="keyword">( </span><span class="default">is_numeric</span><span class="keyword">(</span><span class="default">$z</span><span class="keyword">) );&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; </span><span class="comment">// bool(true)<br /></span><span class="default">var_dump</span><span class="keyword">(</span><span class="default">$x </span><span class="keyword">== </span><span class="default">$z</span><span class="keyword">);&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; </span><span class="comment">// bool(true)</span>
+</span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="123633">  <div class="votes">
+    <div id="Vu123633">
+    <a href="/manual/vote-note.php?id=123633&amp;page=function.is-numeric&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd123633">
+    <a href="/manual/vote-note.php?id=123633&amp;page=function.is-numeric&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V123633" title="50% like this...">
+    0
+    </div>
+  </div>
+  <a href="#123633" class="name">
+  <strong class="user"><em>sandreas</em></strong></a><a class="genanchor" href="#123633"> &para;</a><div class="date" title="2019-02-21 10:48"><strong>3 years ago</strong></div>
+  <div class="text" id="Hcom123633">
+<div class="phpcode"><code><span class="html">
+Note that strings with leading zeros containing only digits also return true on check with is_numeric, although they might be not a valid number. Example:<br /><br /><span class="default">&lt;?php<br />$x </span><span class="keyword">= 009; </span><span class="comment">// this is invalid php code, 009 is not octal<br /></span><span class="default">$y </span><span class="keyword">= </span><span class="default">007</span><span class="keyword">; </span><span class="comment">// this is valid php code, 007 is octal<br /></span><span class="default">$z </span><span class="keyword">= </span><span class="default">01.12</span><span class="keyword">; </span><span class="comment">// this also is valid php code<br /><br /></span><span class="default">var_dump</span><span class="keyword">(</span><span class="default">is_numeric</span><span class="keyword">(</span><span class="string">"009"</span><span class="keyword">)); </span><span class="comment">// outputs true<br /></span><span class="default">var_dump</span><span class="keyword">(</span><span class="default">is_numeric</span><span class="keyword">(</span><span class="string">"007"</span><span class="keyword">)); </span><span class="comment">// outputs true<br /></span><span class="default">var_dump</span><span class="keyword">(</span><span class="default">is_numeric</span><span class="keyword">(</span><span class="string">"00.12"</span><span class="keyword">)); </span><span class="comment">// outputs true<br /></span><span class="default">?&gt;</span>
+</span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="122710">  <div class="votes">
+    <div id="Vu122710">
+    <a href="/manual/vote-note.php?id=122710&amp;page=function.is-numeric&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd122710">
+    <a href="/manual/vote-note.php?id=122710&amp;page=function.is-numeric&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V122710" title="50% like this...">
+    0
+    </div>
+  </div>
+  <a href="#122710" class="name">
+  <strong class="user"><em>phil at kiwilimon dot com</em></strong></a><a class="genanchor" href="#122710"> &para;</a><div class="date" title="2018-05-07 04:43"><strong>3 years ago</strong></div>
+  <div class="text" id="Hcom122710">
+<div class="phpcode"><code><span class="html">
+There is another not documented big difference between PHP 5 and PHP 7:<br />is_numeric("45 "); // with a space at the end<br />will return true on PHP 5 and false on PHP 7</span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="120598">  <div class="votes">
+    <div id="Vu120598">
+    <a href="/manual/vote-note.php?id=120598&amp;page=function.is-numeric&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd120598">
+    <a href="/manual/vote-note.php?id=120598&amp;page=function.is-numeric&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V120598" title="50% like this...">
+    0
+    </div>
+  </div>
+  <a href="#120598" class="name">
+  <strong class="user"><em>cottton</em></strong></a><a class="genanchor" href="#120598"> &para;</a><div class="date" title="2017-02-05 02:20"><strong>5 years ago</strong></div>
+  <div class="text" id="Hcom120598">
+<div class="phpcode"><code><span class="html">
+As of <a href="http://php.net/manual/de/function.is-numeric.php#111709" rel="nofollow" target="_blank">http://php.net/manual/de/function.is-numeric.php#111709</a><br />' 12345' is considered numeric.<br /><br />BUT '12345 ' NOT.<br /><br />Test:<br /><span class="default">&lt;?php<br /></span><span class="keyword">foreach (<br />&nbsp; &nbsp; [<br />&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="string">' 12345'</span><span class="keyword">,<br />&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="string">'12345 '</span><span class="keyword">,<br />&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="string">' 12345 '</span><span class="keyword">,<br />&nbsp; &nbsp; ] as </span><span class="default">$value<br /><br /></span><span class="keyword">) {<br />&nbsp; &nbsp; echo </span><span class="string">"'</span><span class="keyword">{</span><span class="default">$value</span><span class="keyword">}</span><span class="string">'\t" </span><span class="keyword">. </span><span class="default">var_export</span><span class="keyword">(</span><span class="default">is_numeric</span><span class="keyword">(</span><span class="default">$value</span><span class="keyword">), </span><span class="default">true</span><span class="keyword">) . </span><span class="default">PHP_EOL</span><span class="keyword">;<br />}<br /></span><span class="comment">/**<br /> * Output:<br /> *<br /> *&nbsp; ' 12345'&nbsp; &nbsp; &nbsp; &nbsp; true<br /> *&nbsp; '12345 '&nbsp; &nbsp; &nbsp; &nbsp; false<br /> *&nbsp; ' 12345 '&nbsp; &nbsp; &nbsp;&nbsp; false<br /> */<br /></span><span class="default">?&gt;</span>
+</span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="117552">  <div class="votes">
+    <div id="Vu117552">
+    <a href="/manual/vote-note.php?id=117552&amp;page=function.is-numeric&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd117552">
+    <a href="/manual/vote-note.php?id=117552&amp;page=function.is-numeric&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V117552" title="50% like this...">
+    0
+    </div>
+  </div>
+  <a href="#117552" class="name">
+  <strong class="user"><em>Tim Robert-Fitzgerald</em></strong></a><a class="genanchor" href="#117552"> &para;</a><div class="date" title="2015-06-26 11:17"><strong>6 years ago</strong></div>
+  <div class="text" id="Hcom117552">
+<div class="phpcode"><code><span class="html">
+Be careful when using `is_numeric()` to validate user input and protect against SQL injection. According to wiki.hashphp.org, <br /><br />"Many people reach for is_numeric() thinking this is a good approach, and it will seem to work just fine. However the problem with is_numeric() isn't that it can't detect an integer, it is that it detects a lot more than just integers. All of the following are valid numbers to is_numeric():<br /><br />- 1<br />- 1.123<br />- 0xFF<br />- +0123.45e6<br /><br />See the problem? If we really want just an integer, this function is too broad."<br /><br />Source: <a href="http://wiki.hashphp.org/Validation#Why_is_numeric.28.29_is_bad" rel="nofollow" target="_blank">http://wiki.hashphp.org/Validation#Why_is_numeric.28.29_is_bad</a></span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="124130">  <div class="votes">
+    <div id="Vu124130">
+    <a href="/manual/vote-note.php?id=124130&amp;page=function.is-numeric&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd124130">
+    <a href="/manual/vote-note.php?id=124130&amp;page=function.is-numeric&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V124130" title="0% like this...">
+    -2
+    </div>
+  </div>
+  <a href="#124130" class="name">
+  <strong class="user"><em>orcinus</em></strong></a><a class="genanchor" href="#124130"> &para;</a><div class="date" title="2019-08-22 09:37"><strong>2 years ago</strong></div>
+  <div class="text" id="Hcom124130">
+<div class="phpcode"><code><span class="html">
+This page is a hot mess.<br /><br />The changes note states:<br /><br />“7.0.0&nbsp; &nbsp; Strings in hexadecimal (e.g. 0xf4c3b00c) notation are no longer regarded as numeric strings, i.e. is_numeric() returns FALSE now.”<br /><br />Meanwhile, the description says:<br /><br />“Hexadecimal (e.g. 0xf4c3b00c) *and binary* (e.g. 0b10100111001) notation is not allowed.”<br /><br />And finally, the examples section claims both are TRUE for is_binary.<br />What the hell?</span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="107222">  <div class="votes">
+    <div id="Vu107222">
+    <a href="/manual/vote-note.php?id=107222&amp;page=function.is-numeric&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd107222">
+    <a href="/manual/vote-note.php?id=107222&amp;page=function.is-numeric&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V107222" title="50% like this...">
+    0
+    </div>
+  </div>
+  <a href="#107222" class="name">
+  <strong class="user"><em>akam at akameng dor com</em></strong></a><a class="genanchor" href="#107222"> &para;</a><div class="date" title="2012-01-22 09:22"><strong>10 years ago</strong></div>
+  <div class="text" id="Hcom107222">
+<div class="phpcode"><code><span class="html">
+<span class="default">&lt;?php<br />$d </span><span class="keyword">= @</span><span class="default">$_GET</span><span class="keyword">[</span><span class="string">'d'</span><span class="keyword">];<br /><br /></span><span class="comment">/*<br />assuming that passing value of d in the mysql<br />$sql = "select * from books where bookid = '$d' "<br />*/<br /><br />/*<br />now check if $d is numeric?<br />*/<br /><br /></span><span class="keyword">if(!</span><span class="default">is_numeric</span><span class="keyword">(</span><span class="default">$d</span><span class="keyword">)){<br /> </span><span class="default">$d </span><span class="keyword">= </span><span class="default">preg_replace</span><span class="keyword">(</span><span class="string">"/[^0-9]+/"</span><span class="keyword">, </span><span class="string">""</span><span class="keyword">, </span><span class="default">$d</span><span class="keyword">);<br />}<br />echo </span><span class="string">"Cleared value: </span><span class="default">$d</span><span class="string"> \n&lt;br /&gt;Original Vlaue:"</span><span class="keyword">.@</span><span class="default">$_GET</span><span class="keyword">[</span><span class="string">'d'</span><span class="keyword">];<br /></span><span class="comment">//then using clear value of $d in the mysql query<br /></span><span class="default">$sql </span><span class="keyword">= </span><span class="string">"select * from books where bookid = '</span><span class="default">$d</span><span class="string">' "</span><span class="keyword">;<br /></span><span class="default">?&gt;<br /></span>Example:<br />?d=52;d;s;s'2233l'[[22<br /><br />Outpt:<br /><br />Cleared value: 52223322<br />Original Vlaue:52;d;s;s'2233l'[[22</span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="92247">  <div class="votes">
+    <div id="Vu92247">
+    <a href="/manual/vote-note.php?id=92247&amp;page=function.is-numeric&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd92247">
+    <a href="/manual/vote-note.php?id=92247&amp;page=function.is-numeric&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V92247" title="50% like this...">
+    0
+    </div>
+  </div>
+  <a href="#92247" class="name">
+  <strong class="user"><em>codeslinger at compsalot dot com</em></strong></a><a class="genanchor" href="#92247"> &para;</a><div class="date" title="2009-07-15 01:34"><strong>12 years ago</strong></div>
+  <div class="text" id="Hcom92247">
+<div class="phpcode"><code><span class="html">
+if speed is important, the liberal use of regex should be avoided, especially complex ones like those here.<br /><br />For most purposes, this will be sufficient and has the advantages of both speed and clarity.<br /><br />$BoolResult = empty(trim($Test, '+-.,0123456789'));<br /><br />If the $Test contains any character that is not a valid part of a number the remaining string will not be empty.<br /><br />if you want to be more restrictive of the '+-'&nbsp; then you can use a separate trim for that and nest it.&nbsp; Keep in mind that some notations pt the sign to the right of the number instead of to the left.&nbsp; Depending upon your specific application you can also choose to ignore spaces and allow for 'e' notation.<br /><br />I also use this approach when testing for other character sets such as Hex.</span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="88041">  <div class="votes">
+    <div id="Vu88041">
+    <a href="/manual/vote-note.php?id=88041&amp;page=function.is-numeric&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd88041">
+    <a href="/manual/vote-note.php?id=88041&amp;page=function.is-numeric&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V88041" title="50% like this...">
+    0
+    </div>
+  </div>
+  <a href="#88041" class="name">
+  <strong class="user"><em>Magnus Deininger, dma05 at web dot de</em></strong></a><a class="genanchor" href="#88041"> &para;</a><div class="date" title="2009-01-07 06:01"><strong>13 years ago</strong></div>
+  <div class="text" id="Hcom88041">
+<div class="phpcode"><code><span class="html">
+regarding the global vs. american numeral notations, it should be noted that at least in japanese, numbers aren't grouped with an extra symbol every three digits, but rather every four digits (for example 1,0000 instead of 10.000). also nadim's regexen are slightly suboptimal at one point having an unescaped '.' operator, and the whole thing could easily be combined into a single regex (speed and all).<br /><br />adjustments:<br /><br /><span class="default">&lt;?php<br />$eng_or_world </span><span class="keyword">= </span><span class="default">preg_match<br />&nbsp; </span><span class="keyword">(</span><span class="string">'/^[+-]?'</span><span class="keyword">. </span><span class="comment">// start marker and sign prefix<br />&nbsp; </span><span class="string">'(((([0-9]+)|([0-9]{1,4}(,[0-9]{3,4})+)))?(\\.[0-9])?([0-9]*)|'</span><span class="keyword">. </span><span class="comment">// american<br />&nbsp; </span><span class="string">'((([0-9]+)|([0-9]{1,4}(\\.[0-9]{3,4})+)))?(,[0-9])?([0-9]*))'</span><span class="keyword">. </span><span class="comment">// world<br />&nbsp; </span><span class="string">'(e[0-9]+)?'</span><span class="keyword">. </span><span class="comment">// exponent<br />&nbsp; </span><span class="string">'$/'</span><span class="keyword">, </span><span class="comment">// end marker<br />&nbsp; </span><span class="default">$str</span><span class="keyword">) == </span><span class="default">1</span><span class="keyword">;<br /></span><span class="default">?&gt;<br /></span><br />i'm sure this still isn't optimal, but it should also cover japanese-style numerals and it fixed a couple of other issues with the other regexen. it also allows for an exponent suffix, the pre-decimal digits are optional and it enforces using either grouped or ungrouped integer parts. should be easier to trim to your liking too.</span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="111709">  <div class="votes">
+    <div id="Vu111709">
+    <a href="/manual/vote-note.php?id=111709&amp;page=function.is-numeric&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd111709">
+    <a href="/manual/vote-note.php?id=111709&amp;page=function.is-numeric&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V111709" title="46% like this...">
+    -1
+    </div>
+  </div>
+  <a href="#111709" class="name">
+  <strong class="user"><em>jsnell at e-normous dot com</em></strong></a><a class="genanchor" href="#111709"> &para;</a><div class="date" title="2013-03-19 09:38"><strong>8 years ago</strong></div>
+  <div class="text" id="Hcom111709">
+<div class="phpcode"><code><span class="html">
+Note that this function handles leading spaces differently than is_int(), is_float(), is_real(), is_long(), and is_double().<br /><br />is_numeric(" 12345") = true<br />is_int(" 12345") = false<br />is_float(" 12345") = false<br />is_real(" 12345") = false<br />is_long(" 12345") = false<br />is_double(" 12345") = false</span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="74013">  <div class="votes">
+    <div id="Vu74013">
+    <a href="/manual/vote-note.php?id=74013&amp;page=function.is-numeric&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd74013">
+    <a href="/manual/vote-note.php?id=74013&amp;page=function.is-numeric&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V74013" title="35% like this...">
+    -4
+    </div>
+  </div>
+  <a href="#74013" class="name">
+  <strong class="user"><em>james.holwell( at )exeter.ox.ac.uk</em></strong></a><a class="genanchor" href="#74013"> &para;</a><div class="date" title="2007-03-20 02:07"><strong>14 years ago</strong></div>
+  <div class="text" id="Hcom74013">
+<div class="phpcode"><code><span class="html">
+In reply to www.kigoobe.com, a more strict expression is<br /><br /><span class="default">&lt;?php<br />&nbsp; </span><span class="keyword">function </span><span class="default">my_is_numeric</span><span class="keyword">(</span><span class="default">$value</span><span class="keyword">)<br />&nbsp; {<br />&nbsp; &nbsp; return (</span><span class="default">preg_match </span><span class="keyword">(</span><span class="string">"/^(-){0,1}([0-9]+)(,[0-9][0-9][0-9])*([.][0-9]){0,1}([0-9]*)$/"</span><span class="keyword">, </span><span class="default">$value</span><span class="keyword">) == </span><span class="default">1</span><span class="keyword">);<br />&nbsp; }<br /></span><span class="default">?&gt;<br /></span><br />This will not match strings like -6,77.8,8 which are matched by the below expression, and instead requires a single decimal point, with at least one character following, and only permits comma-separation when the right hand side is a triplet.</span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="118549">  <div class="votes">
+    <div id="Vu118549">
+    <a href="/manual/vote-note.php?id=118549&amp;page=function.is-numeric&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd118549">
+    <a href="/manual/vote-note.php?id=118549&amp;page=function.is-numeric&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V118549" title="33% like this...">
+    -2
+    </div>
+  </div>
+  <a href="#118549" class="name">
+  <strong class="user"><em>vikramverma214 at gmail dot com</em></strong></a><a class="genanchor" href="#118549"> &para;</a><div class="date" title="2015-12-26 06:24"><strong>6 years ago</strong></div>
+  <div class="text" id="Hcom118549">
+<div class="phpcode"><code><span class="html">
+check if given string is mobile number<br /><br />function filterNumber($str)<br />&nbsp; &nbsp; &nbsp; &nbsp; {<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; //remove non number<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; $count = strlen($str);<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; $newNumber = "";<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; for($i = 0; $i&lt;$count; $i++)<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; {<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; if(is_numeric($str[$i]))<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; $newNumber .= $str[$i];<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }<br /><br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; //removes leading 0s<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; $newNumber = ltrim($newNumber, '0');<br /><br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; //remove 91 in starting, 91 is specific to Indian Numbers<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; if(strlen($newNumber) == 12)<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; {<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; if(substr($newNumber, 0, 2) == '91')<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; $newNumber = substr($newNumber, 2);<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }<br /><br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; //final check for length 10<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; if(strlen($newNumber) != 10 )<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return null;<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; else<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return $newNumber;<br />&nbsp; &nbsp; &nbsp; &nbsp; }</span>
+</code></div>
+  </div>
+ </div></div>
+
+ <div class="foot"><a href="/manual/add-note.php?sect=function.is-numeric&amp;redirect=https://www.php.net/manual/en/function.is-numeric.php"><img src='/images/notes-add@2x.png' alt='add a note' width='12' height='12'> <small>add a note</small></a></div>
+</section>    </section><!-- layout-content -->
+        <aside class='layout-menu'>
+
+        <ul class='parent-menu-list'>
+                                    <li>
+                <a href="ref.var.php">Variable handling Functions</a>
+
+                                    <ul class='child-menu-list'>
+
+                                                <li class="">
+                            <a href="function.boolval.php" title="boolval">boolval</a>
+                        </li>
+                                                <li class="">
+                            <a href="function.debug-zval-dump.php" title="debug_&#8203;zval_&#8203;dump">debug_&#8203;zval_&#8203;dump</a>
+                        </li>
+                                                <li class="">
+                            <a href="function.doubleval.php" title="doubleval">doubleval</a>
+                        </li>
+                                                <li class="">
+                            <a href="function.empty.php" title="empty">empty</a>
+                        </li>
+                                                <li class="">
+                            <a href="function.floatval.php" title="floatval">floatval</a>
+                        </li>
+                                                <li class="">
+                            <a href="function.get-debug-type.php" title="get_&#8203;debug_&#8203;type">get_&#8203;debug_&#8203;type</a>
+                        </li>
+                                                <li class="">
+                            <a href="function.get-defined-vars.php" title="get_&#8203;defined_&#8203;vars">get_&#8203;defined_&#8203;vars</a>
+                        </li>
+                                                <li class="">
+                            <a href="function.get-resource-id.php" title="get_&#8203;resource_&#8203;id">get_&#8203;resource_&#8203;id</a>
+                        </li>
+                                                <li class="">
+                            <a href="function.get-resource-type.php" title="get_&#8203;resource_&#8203;type">get_&#8203;resource_&#8203;type</a>
+                        </li>
+                                                <li class="">
+                            <a href="function.gettype.php" title="gettype">gettype</a>
+                        </li>
+                                                <li class="">
+                            <a href="function.intval.php" title="intval">intval</a>
+                        </li>
+                                                <li class="">
+                            <a href="function.is-array.php" title="is_&#8203;array">is_&#8203;array</a>
+                        </li>
+                                                <li class="">
+                            <a href="function.is-bool.php" title="is_&#8203;bool">is_&#8203;bool</a>
+                        </li>
+                                                <li class="">
+                            <a href="function.is-callable.php" title="is_&#8203;callable">is_&#8203;callable</a>
+                        </li>
+                                                <li class="">
+                            <a href="function.is-countable.php" title="is_&#8203;countable">is_&#8203;countable</a>
+                        </li>
+                                                <li class="">
+                            <a href="function.is-double.php" title="is_&#8203;double">is_&#8203;double</a>
+                        </li>
+                                                <li class="">
+                            <a href="function.is-float.php" title="is_&#8203;float">is_&#8203;float</a>
+                        </li>
+                                                <li class="">
+                            <a href="function.is-int.php" title="is_&#8203;int">is_&#8203;int</a>
+                        </li>
+                                                <li class="">
+                            <a href="function.is-integer.php" title="is_&#8203;integer">is_&#8203;integer</a>
+                        </li>
+                                                <li class="">
+                            <a href="function.is-iterable.php" title="is_&#8203;iterable">is_&#8203;iterable</a>
+                        </li>
+                                                <li class="">
+                            <a href="function.is-long.php" title="is_&#8203;long">is_&#8203;long</a>
+                        </li>
+                                                <li class="">
+                            <a href="function.is-null.php" title="is_&#8203;null">is_&#8203;null</a>
+                        </li>
+                                                <li class="current">
+                            <a href="function.is-numeric.php" title="is_&#8203;numeric">is_&#8203;numeric</a>
+                        </li>
+                                                <li class="">
+                            <a href="function.is-object.php" title="is_&#8203;object">is_&#8203;object</a>
+                        </li>
+                                                <li class="">
+                            <a href="function.is-real.php" title="is_&#8203;real">is_&#8203;real</a>
+                        </li>
+                                                <li class="">
+                            <a href="function.is-resource.php" title="is_&#8203;resource">is_&#8203;resource</a>
+                        </li>
+                                                <li class="">
+                            <a href="function.is-scalar.php" title="is_&#8203;scalar">is_&#8203;scalar</a>
+                        </li>
+                                                <li class="">
+                            <a href="function.is-string.php" title="is_&#8203;string">is_&#8203;string</a>
+                        </li>
+                                                <li class="">
+                            <a href="function.isset.php" title="isset">isset</a>
+                        </li>
+                                                <li class="">
+                            <a href="function.print-r.php" title="print_&#8203;r">print_&#8203;r</a>
+                        </li>
+                                                <li class="">
+                            <a href="function.serialize.php" title="serialize">serialize</a>
+                        </li>
+                                                <li class="">
+                            <a href="function.settype.php" title="settype">settype</a>
+                        </li>
+                                                <li class="">
+                            <a href="function.strval.php" title="strval">strval</a>
+                        </li>
+                                                <li class="">
+                            <a href="function.unserialize.php" title="unserialize">unserialize</a>
+                        </li>
+                                                <li class="">
+                            <a href="function.unset.php" title="unset">unset</a>
+                        </li>
+                                                <li class="">
+                            <a href="function.var-dump.php" title="var_&#8203;dump">var_&#8203;dump</a>
+                        </li>
+                                                <li class="">
+                            <a href="function.var-export.php" title="var_&#8203;export">var_&#8203;export</a>
+                        </li>
+                        
+                    </ul>
+                
+            </li>
+                        
+                    </ul>
+    </aside>
+
+
+  </div><!-- layout -->
+
+  <footer>
+    <div class="container footer-content">
+      <div class="row-fluid">
+      <ul class="footmenu">
+        <li><a href="/copyright.php">Copyright &copy; 2001-2022 The PHP Group</a></li>
+        <li><a href="/my.php">My PHP.net</a></li>
+        <li><a href="/contact.php">Contact</a></li>
+        <li><a href="/sites.php">Other PHP.net sites</a></li>
+        <li><a href="/privacy.php">Privacy policy</a></li>
+        <li><a href="https://github.com/php/web-php/blob/master/manual%2Fen%2Ffunction.is-numeric.php">View Source</a></li>
+      </ul>
+      </div>
+    </div>
+  </footer>
+
+    
+ <!-- External and third party libraries. -->
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" integrity="sha384-aBL3Lzi6c9LNDGvpHkZrrm3ZVsIwohDD7CDozL0pk8FwCrfmV7H9w8j3L7ikEv6h" crossorigin="anonymous"></script>
+<script src="/cached.php?t=1421837618&amp;f=/js/ext/modernizr.js"></script>
+<script src="/cached.php?t=1421837618&amp;f=/js/ext/hogan-2.0.0.min.js"></script>
+<script src="/cached.php?t=1421837618&amp;f=/js/ext/typeahead.min.js"></script>
+<script src="/cached.php?t=1421837618&amp;f=/js/ext/mousetrap.min.js"></script>
+<script src="/cached.php?t=1421837618&amp;f=/js/search.js"></script>
+<script src="/cached.php?t=1637324403&amp;f=/js/common.js"></script>
+
+<a id="toTop" href="javascript:;"><span id="toTopHover"></span><img width="40" height="40" alt="To Top" src="/images/to-top@2x.png"></a>
+
+</body>
+</html>

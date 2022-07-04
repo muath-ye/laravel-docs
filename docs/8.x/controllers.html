@@ -1,0 +1,1507 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Controllers - Laravel - The PHP Framework For Web Artisans</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+        <link rel="canonical" href="controllers.html">
+    
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="../../img/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../../img/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../../img/favicon/favicon-16x16.png">
+    <link rel="manifest" href="../../img/favicon/site.webmanifest">
+    <link rel="mask-icon" href="../../img/favicon/safari-pinned-tab.svg" color="#ff2d20">
+    <link rel="shortcut icon" href="../../img/favicon/favicon.ico">
+    <meta name="msapplication-TileColor" content="#ff2d20">
+    <meta name="msapplication-config" content="/img/favicon/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
+    
+    <link rel="stylesheet" href="../../assets/css/ins2wgm.css">
+    <link rel="stylesheet" type="text/css" href="../../css/app.css?id=e59564080d0a323bcdb7">
+
+    <script>
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+        if (localStorage.theme === 'system') {
+            if (e.matches) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+        }
+    });
+
+    function updateTheme() {
+        if (!('theme' in localStorage)) {
+            localStorage.theme = 'system';
+        }
+
+        switch (localStorage.theme) {
+            case 'system':
+                if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                    document.documentElement.classList.add('dark');
+                } else {
+                    document.documentElement.classList.remove('dark');
+                }
+                document.documentElement.setAttribute('color-theme', 'system');
+                break;
+
+            case 'dark':
+                document.documentElement.classList.add('dark');
+                document.documentElement.setAttribute('color-theme', 'dark');
+                break;
+
+            case 'light':
+                document.documentElement.classList.remove('dark');
+                document.documentElement.setAttribute('color-theme', 'light');
+                break;
+        }
+    }
+
+    updateTheme();
+</script>
+</head>
+<body x-data="{
+        navIsOpen: false,
+        searchIsOpen: false,
+        search: '',
+    }" class="language-php h-full w-full font-sans text-gray-900 antialiased">
+
+     <a id="skip-to-content-link" href="#main-content" class="absolute bg-gray-100 px-4 py-2 top-3 left-3 text-gray-700 shadow-xl">
+    Skip to content
+</a>
+ 
+    <div class="relative overflow-auto dark:bg-dark-700" id="docsScreen">
+        <div class="relative lg:flex lg:items-start">
+            <aside x-init="init()" x-data="{
+                    navIsOpen: false,
+                    init() {
+                        this.$watch('navIsOpen', (val) => {
+                            if (val) {
+                                document.body.classList.add('overflow-hidden');
+                            } else {
+                                document.body.classList.remove('overflow-hidden');
+                            }
+                        });
+                    }
+                }" class="hidden fixed top-0 bottom-0 left-0 z-20 h-full w-16 flex flex-col bg-gradient-to-b from-gray-100 to-white transition-all duration-300 overflow-hidden lg:sticky lg:w-80 lg:flex-shrink-0 lg:flex lg:justify-end lg:items-end 2xl:max-w-lg 2xl:w-full dark:from-dark-800 dark:to-dark-700" :class="{ 'w-64': navIsOpen }" @click.away="navIsOpen = false" @keydown.window.escape="navIsOpen = false">
+                <div class="relative min-h-0 flex-1 flex flex-col xl:w-80">
+                    <a href="../../index.htm" class="flex items-center py-8 px-4 lg:px-8 xl:px-16">
+                        <img class="w-8 h-8 flex-shrink-0 transition-all duration-300 lg:w-12 lg:h-12" :class="{ 'w-12 h-12': navIsOpen }" src="../../img/logomark.min.svg" alt="Laravel" width="50" height="52">
+                        <img x-show="navIsOpen" x-cloak="" class="ml-4 transition-all duration-300 lg:hidden" x-transition:enter="duration-250 ease-out" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" x-transition:leave="duration-250 ease-in" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0" src="../../img/logotype.min.svg" alt="Laravel" width="114" height="29">
+                        <img src="../../img/logotype.min.svg" alt="Laravel" class="hidden ml-4 lg:block" width="114" height="29">
+                    </a>
+                    <div class="overflow-y-auto overflow-x-hidden px-4 lg:overflow-hidden lg:px-8 xl:px-16">
+                        <nav x-show="navIsOpen" x-cloak="" class="mt-4 lg:hidden">
+                            <div class="docs_sidebar">
+                                <ul>
+<li>
+<h2>Prologue</h2>
+<ul>
+<li><a href="releases.html">Release Notes</a></li>
+<li><a href="upgrade.html">Upgrade Guide</a></li>
+<li><a href="contributions.html">Contribution Guide</a></li>
+</ul>
+</li>
+<li>
+<h2>Getting Started</h2>
+<ul>
+<li><a href="installation.html">Installation</a></li>
+<li><a href="configuration.html">Configuration</a></li>
+<li><a href="structure.html">Directory Structure</a></li>
+<li><a href="starter-kits.html">Starter Kits</a></li>
+<li><a href="deployment.html">Deployment</a></li>
+</ul>
+</li>
+<li>
+<h2>Architecture Concepts</h2>
+<ul>
+<li><a href="lifecycle.html">Request Lifecycle</a></li>
+<li><a href="container.html">Service Container</a></li>
+<li><a href="providers.html">Service Providers</a></li>
+<li><a href="facades.html">Facades</a></li>
+</ul>
+</li>
+<li>
+<h2>The Basics</h2>
+<ul>
+<li><a href="routing.html">Routing</a></li>
+<li><a href="middleware.html">Middleware</a></li>
+<li><a href="csrf.html">CSRF Protection</a></li>
+<li><a href="controllers.html">Controllers</a></li>
+<li><a href="requests.html">Requests</a></li>
+<li><a href="responses.html">Responses</a></li>
+<li><a href="views.html">Views</a></li>
+<li><a href="blade.html">Blade Templates</a></li>
+<li><a href="urls.html">URL Generation</a></li>
+<li><a href="session.html">Session</a></li>
+<li><a href="validation.html">Validation</a></li>
+<li><a href="errors.html">Error Handling</a></li>
+<li><a href="logging.html">Logging</a></li>
+</ul>
+</li>
+<li>
+<h2>Digging Deeper</h2>
+<ul>
+<li><a href="artisan.html">Artisan Console</a></li>
+<li><a href="broadcasting.html">Broadcasting</a></li>
+<li><a href="cache.html">Cache</a></li>
+<li><a href="collections.html">Collections</a></li>
+<li><a href="mix.html">Compiling Assets</a></li>
+<li><a href="contracts.html">Contracts</a></li>
+<li><a href="events.html">Events</a></li>
+<li><a href="filesystem.html">File Storage</a></li>
+<li><a href="helpers.html">Helpers</a></li>
+<li><a href="http-client.html">HTTP Client</a></li>
+<li><a href="localization.html">Localization</a></li>
+<li><a href="mail.html">Mail</a></li>
+<li><a href="notifications.html">Notifications</a></li>
+<li><a href="packages.html">Package Development</a></li>
+<li><a href="queues.html">Queues</a></li>
+<li><a href="rate-limiting.html">Rate Limiting</a></li>
+<li><a href="scheduling.html">Task Scheduling</a></li>
+</ul>
+</li>
+<li>
+<h2>Security</h2>
+<ul>
+<li><a href="authentication.html">Authentication</a></li>
+<li><a href="authorization.html">Authorization</a></li>
+<li><a href="verification.html">Email Verification</a></li>
+<li><a href="encryption.html">Encryption</a></li>
+<li><a href="hashing.html">Hashing</a></li>
+<li><a href="passwords.html">Password Reset</a></li>
+</ul>
+</li>
+<li>
+<h2>Database</h2>
+<ul>
+<li><a href="database.html">Getting Started</a></li>
+<li><a href="queries.html">Query Builder</a></li>
+<li><a href="pagination.html">Pagination</a></li>
+<li><a href="migrations.html">Migrations</a></li>
+<li><a href="seeding.html">Seeding</a></li>
+<li><a href="redis.html">Redis</a></li>
+</ul>
+</li>
+<li>
+<h2>Eloquent ORM</h2>
+<ul>
+<li><a href="eloquent.html">Getting Started</a></li>
+<li><a href="eloquent-relationships.html">Relationships</a></li>
+<li><a href="eloquent-collections.html">Collections</a></li>
+<li><a href="eloquent-mutators.html">Mutators / Casts</a></li>
+<li><a href="eloquent-resources.html">API Resources</a></li>
+<li><a href="eloquent-serialization.html">Serialization</a></li>
+</ul>
+</li>
+<li>
+<h2>Testing</h2>
+<ul>
+<li><a href="testing.html">Getting Started</a></li>
+<li><a href="http-tests.html">HTTP Tests</a></li>
+<li><a href="console-tests.html">Console Tests</a></li>
+<li><a href="dusk.html">Browser Tests</a></li>
+<li><a href="database-testing.html">Database</a></li>
+<li><a href="mocking.html">Mocking</a></li>
+</ul>
+</li>
+<li>
+<h2>Packages</h2>
+<ul>
+<li><a href="starter-kits.html#laravel-breeze">Breeze</a></li>
+<li><a href="billing.html">Cashier (Stripe)</a></li>
+<li><a href="cashier-paddle.html">Cashier (Paddle)</a></li>
+<li><a href="dusk.html">Dusk</a></li>
+<li><a href="envoy.html">Envoy</a></li>
+<li><a href="fortify.html">Fortify</a></li>
+<li><a href="homestead.html">Homestead</a></li>
+<li><a href="horizon.html">Horizon</a></li>
+<li><a href="../../index-6.htm">Jetstream</a></li>
+<li><a href="octane.html">Octane</a></li>
+<li><a href="passport.html">Passport</a></li>
+<li><a href="sail.html">Sail</a></li>
+<li><a href="sanctum.html">Sanctum</a></li>
+<li><a href="scout.html">Scout</a></li>
+<li><a href="socialite.html">Socialite</a></li>
+<li><a href="telescope.html">Telescope</a></li>
+<li><a href="valet.html">Valet</a></li>
+</ul>
+</li>
+<li><a href="/api/8.x">API Documentation</a></li>
+</ul>
+                            </div>
+                        </nav>
+                        <nav id="indexed-nav" class="hidden lg:block lg:mt-4">
+                            <div class="docs_sidebar">
+                                <ul>
+<li>
+<h2>Prologue</h2>
+<ul>
+<li><a href="releases.html">Release Notes</a></li>
+<li><a href="upgrade.html">Upgrade Guide</a></li>
+<li><a href="contributions.html">Contribution Guide</a></li>
+</ul>
+</li>
+<li>
+<h2>Getting Started</h2>
+<ul>
+<li><a href="installation.html">Installation</a></li>
+<li><a href="configuration.html">Configuration</a></li>
+<li><a href="structure.html">Directory Structure</a></li>
+<li><a href="starter-kits.html">Starter Kits</a></li>
+<li><a href="deployment.html">Deployment</a></li>
+</ul>
+</li>
+<li>
+<h2>Architecture Concepts</h2>
+<ul>
+<li><a href="lifecycle.html">Request Lifecycle</a></li>
+<li><a href="container.html">Service Container</a></li>
+<li><a href="providers.html">Service Providers</a></li>
+<li><a href="facades.html">Facades</a></li>
+</ul>
+</li>
+<li>
+<h2>The Basics</h2>
+<ul>
+<li><a href="routing.html">Routing</a></li>
+<li><a href="middleware.html">Middleware</a></li>
+<li><a href="csrf.html">CSRF Protection</a></li>
+<li><a href="controllers.html">Controllers</a></li>
+<li><a href="requests.html">Requests</a></li>
+<li><a href="responses.html">Responses</a></li>
+<li><a href="views.html">Views</a></li>
+<li><a href="blade.html">Blade Templates</a></li>
+<li><a href="urls.html">URL Generation</a></li>
+<li><a href="session.html">Session</a></li>
+<li><a href="validation.html">Validation</a></li>
+<li><a href="errors.html">Error Handling</a></li>
+<li><a href="logging.html">Logging</a></li>
+</ul>
+</li>
+<li>
+<h2>Digging Deeper</h2>
+<ul>
+<li><a href="artisan.html">Artisan Console</a></li>
+<li><a href="broadcasting.html">Broadcasting</a></li>
+<li><a href="cache.html">Cache</a></li>
+<li><a href="collections.html">Collections</a></li>
+<li><a href="mix.html">Compiling Assets</a></li>
+<li><a href="contracts.html">Contracts</a></li>
+<li><a href="events.html">Events</a></li>
+<li><a href="filesystem.html">File Storage</a></li>
+<li><a href="helpers.html">Helpers</a></li>
+<li><a href="http-client.html">HTTP Client</a></li>
+<li><a href="localization.html">Localization</a></li>
+<li><a href="mail.html">Mail</a></li>
+<li><a href="notifications.html">Notifications</a></li>
+<li><a href="packages.html">Package Development</a></li>
+<li><a href="queues.html">Queues</a></li>
+<li><a href="rate-limiting.html">Rate Limiting</a></li>
+<li><a href="scheduling.html">Task Scheduling</a></li>
+</ul>
+</li>
+<li>
+<h2>Security</h2>
+<ul>
+<li><a href="authentication.html">Authentication</a></li>
+<li><a href="authorization.html">Authorization</a></li>
+<li><a href="verification.html">Email Verification</a></li>
+<li><a href="encryption.html">Encryption</a></li>
+<li><a href="hashing.html">Hashing</a></li>
+<li><a href="passwords.html">Password Reset</a></li>
+</ul>
+</li>
+<li>
+<h2>Database</h2>
+<ul>
+<li><a href="database.html">Getting Started</a></li>
+<li><a href="queries.html">Query Builder</a></li>
+<li><a href="pagination.html">Pagination</a></li>
+<li><a href="migrations.html">Migrations</a></li>
+<li><a href="seeding.html">Seeding</a></li>
+<li><a href="redis.html">Redis</a></li>
+</ul>
+</li>
+<li>
+<h2>Eloquent ORM</h2>
+<ul>
+<li><a href="eloquent.html">Getting Started</a></li>
+<li><a href="eloquent-relationships.html">Relationships</a></li>
+<li><a href="eloquent-collections.html">Collections</a></li>
+<li><a href="eloquent-mutators.html">Mutators / Casts</a></li>
+<li><a href="eloquent-resources.html">API Resources</a></li>
+<li><a href="eloquent-serialization.html">Serialization</a></li>
+</ul>
+</li>
+<li>
+<h2>Testing</h2>
+<ul>
+<li><a href="testing.html">Getting Started</a></li>
+<li><a href="http-tests.html">HTTP Tests</a></li>
+<li><a href="console-tests.html">Console Tests</a></li>
+<li><a href="dusk.html">Browser Tests</a></li>
+<li><a href="database-testing.html">Database</a></li>
+<li><a href="mocking.html">Mocking</a></li>
+</ul>
+</li>
+<li>
+<h2>Packages</h2>
+<ul>
+<li><a href="starter-kits.html#laravel-breeze">Breeze</a></li>
+<li><a href="billing.html">Cashier (Stripe)</a></li>
+<li><a href="cashier-paddle.html">Cashier (Paddle)</a></li>
+<li><a href="dusk.html">Dusk</a></li>
+<li><a href="envoy.html">Envoy</a></li>
+<li><a href="fortify.html">Fortify</a></li>
+<li><a href="homestead.html">Homestead</a></li>
+<li><a href="horizon.html">Horizon</a></li>
+<li><a href="../../index-6.htm">Jetstream</a></li>
+<li><a href="octane.html">Octane</a></li>
+<li><a href="passport.html">Passport</a></li>
+<li><a href="sail.html">Sail</a></li>
+<li><a href="sanctum.html">Sanctum</a></li>
+<li><a href="scout.html">Scout</a></li>
+<li><a href="socialite.html">Socialite</a></li>
+<li><a href="telescope.html">Telescope</a></li>
+<li><a href="valet.html">Valet</a></li>
+</ul>
+</li>
+<li><a href="/api/8.x">API Documentation</a></li>
+</ul>
+                            </div>
+                        </nav>
+
+                        
+                        
+                        
+                                            </div>
+                    <div class="sticky bottom-0 flex-1 flex flex-col justify-end lg:hidden">
+                        <div class="py-4 px-4 bg-white">
+                            <button class="relative ml-1 w-6 h-6 text-red-600 lg:hidden focus:outline-none focus:shadow-outline" aria-label="Menu" @click.prevent="navIsOpen = !navIsOpen">
+                                <svg x-show.transition.opacity="! navIsOpen" class="absolute inset-0 w-6 h-6" viewbox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+                                <svg x-show.transition.opacity="navIsOpen" x-cloak="" class="absolute inset-0 w-6 h-6" viewbox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+
+            <header class="lg:hidden" @keydown.window.escape="navIsOpen = false" @click.away="navIsOpen = false">
+                <div class="relative mx-auto w-full py-10 bg-white transition duration-200 dark:bg-dark-700">
+                    <div class="mx-auto px-8 sm:px-16 flex items-center justify-between">
+                        <a href="../../index.htm" class="flex items-center">
+                            <img class="" src="../../img/logomark.min.svg" alt="Laravel">
+                            <img class="hidden ml-5 sm:block" src="../../img/logotype.min.svg" alt="Laravel">
+                        </a>
+                        <div class="flex-1 flex items-center justify-end">
+                            <button id="header__sun" onclick="toSystemMode()" title="Switch to system theme" class="relative w-10 h-10 focus:outline-none focus:shadow-outline text-gray-500">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-sun" width="24" height="24" viewbox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                    <circle cx="12" cy="12" r="4"></circle>
+                                    <path d="M3 12h1m8 -9v1m8 8h1m-9 8v1m-6.4 -15.4l.7 .7m12.1 -.7l-.7 .7m0 11.4l.7 .7m-12.1 -.7l-.7 .7"></path>
+                                 </svg>
+                            </button>
+                            <button id="header__moon" onclick="toLightMode()" title="Switch to light mode" class="relative w-10 h-10 focus:outline-none focus:shadow-outline text-gray-500">
+                                <svg style="width:24px;height:24px" viewbox="0 0 24 24">
+                                    <path fill="currentColor" d="M17.75,4.09L15.22,6.03L16.13,9.09L13.5,7.28L10.87,9.09L11.78,6.03L9.25,4.09L12.44,4L13.5,1L14.56,4L17.75,4.09M21.25,11L19.61,12.25L20.2,14.23L18.5,13.06L16.8,14.23L17.39,12.25L15.75,11L17.81,10.95L18.5,9L19.19,10.95L21.25,11M18.97,15.95C19.8,15.87 20.69,17.05 20.16,17.8C19.84,18.25 19.5,18.67 19.08,19.07C15.17,23 8.84,23 4.94,19.07C1.03,15.17 1.03,8.83 4.94,4.93C5.34,4.53 5.76,4.17 6.21,3.85C6.96,3.32 8.14,4.21 8.06,5.04C7.79,7.9 8.75,10.87 10.95,13.06C13.14,15.26 16.1,16.22 18.97,15.95M17.33,17.97C14.5,17.81 11.7,16.64 9.53,14.5C7.36,12.31 6.2,9.5 6.04,6.68C3.23,9.82 3.34,14.64 6.35,17.66C9.37,20.67 14.19,20.78 17.33,17.97Z"></path>
+                                </svg>
+                            </button>
+                            <button id="header__indeterminate" onclick="toDarkMode()" title="Switch to dark mode" class="relative w-10 h-10 focus:outline-none focus:shadow-outline text-gray-500">
+                                <svg style="width:24px;height:24px" viewbox="0 0 24 24">
+                                    <path fill="currentColor" d="M12 2A10 10 0 0 0 2 12A10 10 0 0 0 12 22A10 10 0 0 0 22 12A10 10 0 0 0 12 2M12 4A8 8 0 0 1 20 12A8 8 0 0 1 12 20V4Z"></path>
+                                </svg>
+                            </button>
+                            <button class="ml-2 relative w-10 h-10 p-2 text-red-600 lg:hidden focus:outline-none focus:shadow-outline" aria-label="Menu" @click.prevent="navIsOpen = !navIsOpen">
+                                <svg x-show.transition.opacity="! navIsOpen" class="absolute inset-0 mt-2 ml-2 w-6 h-6" viewbox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+                                <svg x-show.transition.opacity="navIsOpen" x-cloak="" class="absolute inset-0 mt-2 ml-2 w-6 h-6" viewbox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                            </button>
+                        </div>
+                    </div>
+                    <span :class="{ 'shadow-sm': navIsOpen }" class="absolute inset-0 z-20 pointer-events-none"></span>
+                </div>
+                <div x-show="navIsOpen" x-transition:enter="duration-150" x-transition:leave="duration-100 ease-in" x-cloak="">
+                    <nav x-show="navIsOpen" x-cloak="" class="absolute w-full transform origin-top shadow-sm z-10" x-transition:enter="duration-150 ease-out" x-transition:enter-start="opacity-0 -translate-y-8 scale-75" x-transition:enter-end="opacity-100 scale-100" x-transition:leave="duration-100 ease-in" x-transition:leave-start="opacity-100 scale-100" x-transition:leave-end="opacity-0 -translate-y-8 scale-75">
+                        <div class="relative p-8 bg-white docs_sidebar dark:bg-dark-600">
+                            <ul>
+<li>
+<h2>Prologue</h2>
+<ul>
+<li><a href="releases.html">Release Notes</a></li>
+<li><a href="upgrade.html">Upgrade Guide</a></li>
+<li><a href="contributions.html">Contribution Guide</a></li>
+</ul>
+</li>
+<li>
+<h2>Getting Started</h2>
+<ul>
+<li><a href="installation.html">Installation</a></li>
+<li><a href="configuration.html">Configuration</a></li>
+<li><a href="structure.html">Directory Structure</a></li>
+<li><a href="starter-kits.html">Starter Kits</a></li>
+<li><a href="deployment.html">Deployment</a></li>
+</ul>
+</li>
+<li>
+<h2>Architecture Concepts</h2>
+<ul>
+<li><a href="lifecycle.html">Request Lifecycle</a></li>
+<li><a href="container.html">Service Container</a></li>
+<li><a href="providers.html">Service Providers</a></li>
+<li><a href="facades.html">Facades</a></li>
+</ul>
+</li>
+<li>
+<h2>The Basics</h2>
+<ul>
+<li><a href="routing.html">Routing</a></li>
+<li><a href="middleware.html">Middleware</a></li>
+<li><a href="csrf.html">CSRF Protection</a></li>
+<li><a href="controllers.html">Controllers</a></li>
+<li><a href="requests.html">Requests</a></li>
+<li><a href="responses.html">Responses</a></li>
+<li><a href="views.html">Views</a></li>
+<li><a href="blade.html">Blade Templates</a></li>
+<li><a href="urls.html">URL Generation</a></li>
+<li><a href="session.html">Session</a></li>
+<li><a href="validation.html">Validation</a></li>
+<li><a href="errors.html">Error Handling</a></li>
+<li><a href="logging.html">Logging</a></li>
+</ul>
+</li>
+<li>
+<h2>Digging Deeper</h2>
+<ul>
+<li><a href="artisan.html">Artisan Console</a></li>
+<li><a href="broadcasting.html">Broadcasting</a></li>
+<li><a href="cache.html">Cache</a></li>
+<li><a href="collections.html">Collections</a></li>
+<li><a href="mix.html">Compiling Assets</a></li>
+<li><a href="contracts.html">Contracts</a></li>
+<li><a href="events.html">Events</a></li>
+<li><a href="filesystem.html">File Storage</a></li>
+<li><a href="helpers.html">Helpers</a></li>
+<li><a href="http-client.html">HTTP Client</a></li>
+<li><a href="localization.html">Localization</a></li>
+<li><a href="mail.html">Mail</a></li>
+<li><a href="notifications.html">Notifications</a></li>
+<li><a href="packages.html">Package Development</a></li>
+<li><a href="queues.html">Queues</a></li>
+<li><a href="rate-limiting.html">Rate Limiting</a></li>
+<li><a href="scheduling.html">Task Scheduling</a></li>
+</ul>
+</li>
+<li>
+<h2>Security</h2>
+<ul>
+<li><a href="authentication.html">Authentication</a></li>
+<li><a href="authorization.html">Authorization</a></li>
+<li><a href="verification.html">Email Verification</a></li>
+<li><a href="encryption.html">Encryption</a></li>
+<li><a href="hashing.html">Hashing</a></li>
+<li><a href="passwords.html">Password Reset</a></li>
+</ul>
+</li>
+<li>
+<h2>Database</h2>
+<ul>
+<li><a href="database.html">Getting Started</a></li>
+<li><a href="queries.html">Query Builder</a></li>
+<li><a href="pagination.html">Pagination</a></li>
+<li><a href="migrations.html">Migrations</a></li>
+<li><a href="seeding.html">Seeding</a></li>
+<li><a href="redis.html">Redis</a></li>
+</ul>
+</li>
+<li>
+<h2>Eloquent ORM</h2>
+<ul>
+<li><a href="eloquent.html">Getting Started</a></li>
+<li><a href="eloquent-relationships.html">Relationships</a></li>
+<li><a href="eloquent-collections.html">Collections</a></li>
+<li><a href="eloquent-mutators.html">Mutators / Casts</a></li>
+<li><a href="eloquent-resources.html">API Resources</a></li>
+<li><a href="eloquent-serialization.html">Serialization</a></li>
+</ul>
+</li>
+<li>
+<h2>Testing</h2>
+<ul>
+<li><a href="testing.html">Getting Started</a></li>
+<li><a href="http-tests.html">HTTP Tests</a></li>
+<li><a href="console-tests.html">Console Tests</a></li>
+<li><a href="dusk.html">Browser Tests</a></li>
+<li><a href="database-testing.html">Database</a></li>
+<li><a href="mocking.html">Mocking</a></li>
+</ul>
+</li>
+<li>
+<h2>Packages</h2>
+<ul>
+<li><a href="starter-kits.html#laravel-breeze">Breeze</a></li>
+<li><a href="billing.html">Cashier (Stripe)</a></li>
+<li><a href="cashier-paddle.html">Cashier (Paddle)</a></li>
+<li><a href="dusk.html">Dusk</a></li>
+<li><a href="envoy.html">Envoy</a></li>
+<li><a href="fortify.html">Fortify</a></li>
+<li><a href="homestead.html">Homestead</a></li>
+<li><a href="horizon.html">Horizon</a></li>
+<li><a href="../../index-6.htm">Jetstream</a></li>
+<li><a href="octane.html">Octane</a></li>
+<li><a href="passport.html">Passport</a></li>
+<li><a href="sail.html">Sail</a></li>
+<li><a href="sanctum.html">Sanctum</a></li>
+<li><a href="scout.html">Scout</a></li>
+<li><a href="socialite.html">Socialite</a></li>
+<li><a href="telescope.html">Telescope</a></li>
+<li><a href="valet.html">Valet</a></li>
+</ul>
+</li>
+<li><a href="/api/8.x">API Documentation</a></li>
+</ul>
+                        </div>
+                    </nav>
+                </div>
+            </header>
+
+            <section class="flex-1 dark:bg-dark-700">
+                <div class="max-w-screen-lg px-8 sm:px-16 lg:px-24">
+                    <div class="flex flex-col items-end lg:mt-8 lg:flex-row-reverse">
+                        <div class="hidden lg:flex items-center justify-center ml-8">
+                            <button id="header__sun" onclick="toSystemMode()" title="Switch to system theme" class="relative w-10 h-10 focus:outline-none focus:shadow-outline text-gray-500">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-sun" width="24" height="24" viewbox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                    <circle cx="12" cy="12" r="4"></circle>
+                                    <path d="M3 12h1m8 -9v1m8 8h1m-9 8v1m-6.4 -15.4l.7 .7m12.1 -.7l-.7 .7m0 11.4l.7 .7m-12.1 -.7l-.7 .7"></path>
+                                 </svg>
+                            </button>
+                            <button id="header__moon" onclick="toLightMode()" title="Switch to light mode" class="relative w-10 h-10 focus:outline-none focus:shadow-outline text-gray-500">
+                                <svg style="width:24px;height:24px" viewbox="0 0 24 24">
+                                    <path fill="currentColor" d="M17.75,4.09L15.22,6.03L16.13,9.09L13.5,7.28L10.87,9.09L11.78,6.03L9.25,4.09L12.44,4L13.5,1L14.56,4L17.75,4.09M21.25,11L19.61,12.25L20.2,14.23L18.5,13.06L16.8,14.23L17.39,12.25L15.75,11L17.81,10.95L18.5,9L19.19,10.95L21.25,11M18.97,15.95C19.8,15.87 20.69,17.05 20.16,17.8C19.84,18.25 19.5,18.67 19.08,19.07C15.17,23 8.84,23 4.94,19.07C1.03,15.17 1.03,8.83 4.94,4.93C5.34,4.53 5.76,4.17 6.21,3.85C6.96,3.32 8.14,4.21 8.06,5.04C7.79,7.9 8.75,10.87 10.95,13.06C13.14,15.26 16.1,16.22 18.97,15.95M17.33,17.97C14.5,17.81 11.7,16.64 9.53,14.5C7.36,12.31 6.2,9.5 6.04,6.68C3.23,9.82 3.34,14.64 6.35,17.66C9.37,20.67 14.19,20.78 17.33,17.97Z"></path>
+                                </svg>
+                            </button>
+                            <button id="header__indeterminate" onclick="toDarkMode()" title="Switch to dark mode" class="relative w-10 h-10 focus:outline-none focus:shadow-outline text-gray-500">
+                                <svg style="width:24px;height:24px" viewbox="0 0 24 24">
+                                    <path fill="currentColor" d="M12 2A10 10 0 0 0 2 12A10 10 0 0 0 12 22A10 10 0 0 0 22 12A10 10 0 0 0 12 2M12 4A8 8 0 0 1 20 12A8 8 0 0 1 12 20V4Z"></path>
+                                </svg>
+                            </button>
+                        </div>
+                        <div class="w-full lg:w-64 lg:pl-12">
+                            <div>
+                                <label class="text-gray-600 text-xs tracking-widest uppercase dark:text-gray-500" for="version-switch">Version</label>
+                                <div x-data="" class="relative w-full bg-white border-b border-gray-600 border-opacity-50 transition-all duration-500 focus-within:border-gray-600 dark:bg-gray-800">
+                                    <select id="version-switcher" aria-label="Laravel version" class="appearance-none flex-1 w-full px-0 py-1 placeholder-gray-900 tracking-wide bg-white focus:outline-none dark:bg-dark-700 dark:text-gray-400 dark:placeholder-gray-500" @change="window.location = $event.target.value">
+                                                                                    <option value="http://laravel.test/docs/muathye/controllers">Muathye</option>
+                                                                                    <option value="http://laravel.test/docs/master/controllers">Master</option>
+                                                                                    <option selected="" value="http://laravel.test/docs/8.x/controllers">8.x</option>
+                                                                                    <option value="http://laravel.test/docs/7.x/controllers">7.x</option>
+                                                                                    <option value="http://laravel.test/docs/6.x/controllers">6.x</option>
+                                                                                    <option value="http://laravel.test/docs/5.8/controllers">5.8</option>
+                                                                                    <option value="http://laravel.test/docs/5.7/controllers">5.7</option>
+                                                                                    <option value="http://laravel.test/docs/5.6/controllers">5.6</option>
+                                                                                    <option value="http://laravel.test/docs/5.5/controllers">5.5</option>
+                                                                                    <option value="http://laravel.test/docs/5.4/controllers">5.4</option>
+                                                                                    <option value="http://laravel.test/docs/5.3/controllers">5.3</option>
+                                                                                    <option value="http://laravel.test/docs/5.2/controllers">5.2</option>
+                                                                                    <option value="http://laravel.test/docs/5.1/controllers">5.1</option>
+                                                                                    <option value="http://laravel.test/docs/5.0/controllers">5.0</option>
+                                                                                    <option value="http://laravel.test/docs/4.2/controllers">4.2</option>
+                                                                            </select>
+                                    <img class="absolute inset-y-0 right-0 mt-2.5 w-2.5 h-2.5 text-gray-900 pointer-events-none" id="docs_search__version_arrow" src="../../img/icons/drop_arrow.min.svg" alt="">
+                                    <img class="absolute inset-y-0 right-0 mt-2.5 w-2.5 h-2.5 text-gray-900 pointer-events-none" id="docs_search__version_arrow_dark" src="../../img/icons/drop_arrow.dark.min.svg" alt="">
+                                </div>
+                            </div>
+                        </div>
+                        <div x-data="searchComponent()" x-init="init()" class="relative mt-8 flex justify-end w-full lg:mt-0">
+                            <div class="relative w-full border-b border-gray-600 border-opacity-50 overflow-hidden transition-all duration-500 focus-within:border-gray-600" @click="searchIsOpen = true" @click.away="clear" @keydown.window.escape="clear" @keydown.window="handleSlashKey">
+                                <svg class="absolute inset-y-0 left-0 mt-1 w-5 h-5 text-gray-900 pointer-events-none dark:text-gray-500" fill="none" viewbox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                                <input x-model.debouce.200ms="search" x-ref="searchInput" class="flex-1 w-full pl-8 pr-4 py-1 placeholder-gray-900 tracking-wide bg-white focus:outline-none dark:bg-dark-700 dark:text-gray-400 dark:placeholder-gray-500" placeholder="Search Docs (Press '/')" aria-label="Search in the documentation" @keydown.arrow-up.prevent="focusPreviousResult()" @keydown.arrow-down.prevent="focusNextResult()">
+                            </div>
+                            <div x-show="hits.length" x-cloak="" class="absolute w-full mt-8 pt-px divide-y divide-gray-200 shadow-sm z-30 dark:divide-dark-500">
+    <template x-for="(hit, index) in hits" :key="index">
+        <a :id="'search-result-' + index" :href="hit.url" class="search-result block px-4 py-3 bg-gray-100 transition-colors duration-200 hover:bg-gray-200 focus:outline-none focus:bg-gray-200 dark:bg-dark-600 dark:text-gray-400 dark:focus:bg-dark-500 dark:hover:bg-dark-500" @keydown.arrow-up.prevent="focusPreviousResult(index)" @keydown.arrow-down.prevent="focusNextResult(index)">
+            <div x-show="hit._highlightResult.hierarchy.lvl0" class="text-sm font-medium" x-html="hit._highlightResult.hierarchy.lvl0 ? hit._highlightResult.hierarchy.lvl0.value : ''"></div>
+            <div class="mt-2">
+                <div x-show="hit._highlightResult.hierarchy.lvl1" class="text-sm">
+                    <span class="text-red-600 opacity-75">#</span> <span x-html="hit._highlightResult.hierarchy.lvl1 ? hit._highlightResult.hierarchy.lvl1.value : ''"></span>
+                </div>
+
+                <div x-show="hit._highlightResult.hierarchy.lvl2" class="text-sm">
+                    > <span x-html="hit._highlightResult.hierarchy.lvl2 ? hit._highlightResult.hierarchy.lvl2.value : ''"></span>
+                </div>
+
+                <div x-show="hit._highlightResult.hierarchy.lvl3" class="text-sm">
+                    > <span x-html="hit._highlightResult.hierarchy.lvl3 ? hit._highlightResult.hierarchy.lvl3.value : ''"></span>
+                </div>
+
+                <div x-show="hit._highlightResult.hierarchy.lvl4" class="text-sm">
+                    > <span x-html="hit._highlightResult.hierarchy.lvl4 ? hit._highlightResult.hierarchy.lvl4.value : ''"></span>
+                </div>
+
+                <div x-show="hit._highlightResult.hierarchy.lvl5" class="text-sm">
+                    > <span x-html="hit._highlightResult.hierarchy.lvl5 ? hit._highlightResult.hierarchy.lvl5.value : ''"></span>
+                </div>
+            </div>
+        </a>
+    </template>
+	<div class="bg-gray-100 flex justify-end dark:bg-dark-600 dark:text-gray-400">
+		<a class="px-4 py-2 inline-block" target="_blank" href="../../index-9.htm?utm_source=laravel&utm_medium=link&utm_campaign=laravel_documentation_search">
+            <img width="105" src="../../img/icons/algolia.min.svg" id="docs_search__algolia" alt="Algolia">
+            <img width="105" src="../../img/icons/algolia.dark.min.svg" id="docs_search__algolia_dark" alt="Algolia">
+		</a>
+	</div>
+</div>
+
+<div x-show="search && ! hits.length" x-cloak="" class="absolute w-full mt-8 pt-px divide-y divide-gray-200 shadow-sm z-30 dark:divide-dark-500">
+	<div class="px-4 py-2 bg-gray-100 dark:bg-dark-600 dark:text-gray-400">
+		<div class="text-sm" x-text="`We didn't find any result for '${search}'. Sorry!`"></div>
+	</div>
+	<div class="bg-gray-100 flex justify-end dark:bg-dark-600 dark:text-gray-400">
+		<a class="px-4 py-2 inline-block" target="_blank" href="../../index-9.htm?utm_source=laravel&utm_medium=link&utm_campaign=laravel_documentation_search">
+            <img width="105" src="../../img/icons/algolia.min.svg" id="docs_search__algolia" alt="Algolia">
+            <img width="105" src="../../img/icons/algolia.dark.min.svg" id="docs_search__algolia_dark" alt="Algolia">
+		</a>
+	</div>
+</div>
+                        </div>
+                    </div>
+
+                    <section class="mt-8 md:mt-16">
+                        <section class="docs_main max-w-prose">
+                            
+                                                         <div id="main-content">
+    <h1>Controllers</h1>
+<ul>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#writing-controllers">Writing Controllers</a>
+<ul>
+<li><a href="#basic-controllers">Basic Controllers</a></li>
+<li><a href="#single-action-controllers">Single Action Controllers</a></li>
+</ul></li>
+<li><a href="#controller-middleware">Controller Middleware</a></li>
+<li><a href="#resource-controllers">Resource Controllers</a>
+<ul>
+<li><a href="#restful-partial-resource-routes">Partial Resource Routes</a></li>
+<li><a href="#restful-nested-resources">Nested Resources</a></li>
+<li><a href="#restful-naming-resource-routes">Naming Resource Routes</a></li>
+<li><a href="#restful-naming-resource-route-parameters">Naming Resource Route Parameters</a></li>
+<li><a href="#restful-scoping-resource-routes">Scoping Resource Routes</a></li>
+<li><a href="#restful-localizing-resource-uris">Localizing Resource URIs</a></li>
+<li><a href="#restful-supplementing-resource-controllers">Supplementing Resource Controllers</a></li>
+</ul></li>
+<li><a href="#dependency-injection-and-controllers">Dependency Injection &amp; Controllers</a></li>
+</ul>
+<p><a name="introduction"></a></p>
+<h2 id="introduction">Introduction</h2>
+<p>Instead of defining all of your request handling logic as closures in your route files, you may wish to organize this behavior using &quot;controller&quot; classes. Controllers can group related request handling logic into a single class. For example, a <code>UserController</code> class might handle all incoming requests related to users, including showing, creating, updating, and deleting users. By default, controllers are stored in the <code>app/Http/Controllers</code> directory.</p>
+<p><a name="writing-controllers"></a></p>
+<h2 id="writing-controllers">Writing Controllers</h2>
+<p><a name="basic-controllers"></a></p>
+<h3 id="basic-controllers">Basic Controllers</h3>
+<p>Let's take a look at an example of a basic controller. Note that the controller extends the base controller class included with Laravel: <code>App\Http\Controllers\Controller</code>:</p>
+<pre><code>&lt;?php
+
+namespace App\Http\Controllers;
+
+use App\Http\Controllers\Controller;
+use App\Models\User;
+
+class UserController extends Controller
+{
+    /**
+     * Show the profile for a given user.
+     *
+     * @param  int  $id
+     * @return \Illuminate\View\View
+     */
+    public function show($id)
+    {
+        return view('user.profile', [
+            'user' =&gt; User::findOrFail($id)
+        ]);
+    }
+}</code></pre>
+<p>You can define a route to this controller method like so:</p>
+<pre><code>use App\Http\Controllers\UserController;
+
+Route::get('/user/{id}', [UserController::class, 'show']);</code></pre>
+<p>When an incoming request matches the specified route URI, the <code>show</code> method on the <code>App\Http\Controllers\UserController</code> class will be invoked and the route parameters will be passed to the method.</p>
+<blockquote>
+<p>{tip} Controllers are not <strong>required</strong> to extend a base class. However, you will not have access to convenient features such as the <code>middleware</code> and <code>authorize</code> methods.</p>
+</blockquote>
+<p><a name="single-action-controllers"></a></p>
+<h3 id="single-action-controllers">Single Action Controllers</h3>
+<p>If a controller action is particularly complex, you might find it convenient to dedicate an entire controller class to that single action. To accomplish this, you may define a single <code>__invoke</code> method within the controller:</p>
+<pre><code>&lt;?php
+
+namespace App\Http\Controllers;
+
+use App\Http\Controllers\Controller;
+use App\Models\User;
+
+class ProvisionServer extends Controller
+{
+    /**
+     * Provision a new web server.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function __invoke()
+    {
+        // ...
+    }
+}</code></pre>
+<p>When registering routes for single action controllers, you do not need to specify a controller method. Instead, you may simply pass the name of the controller to the router:</p>
+<pre><code>use App\Http\Controllers\ProvisionServer;
+
+Route::post('/server', ProvisionServer::class);</code></pre>
+<p>You may generate an invokable controller by using the <code>--invokable</code> option of the <code>make:controller</code> Artisan command:</p>
+<pre><code>php artisan make:controller ProvisionServer --invokable</code></pre>
+<blockquote>
+<p>{tip} Controller stubs may be customized using <a href="artisan.html#stub-customization">stub publishing</a>.</p>
+</blockquote>
+<p><a name="controller-middleware"></a></p>
+<h2 id="controller-middleware">Controller Middleware</h2>
+<p><a href="middleware.html">Middleware</a> may be assigned to the controller's routes in your route files:</p>
+<pre><code>Route::get('profile', [UserController::class, 'show'])-&gt;middleware('auth');</code></pre>
+<p>Or, you may find it convenient to specify middleware within your controller's constructor. Using the <code>middleware</code> method within your controller's constructor, you can assign middleware to the controller's actions:</p>
+<pre><code>class UserController extends Controller
+{
+    /**
+     * Instantiate a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this-&gt;middleware('auth');
+        $this-&gt;middleware('log')-&gt;only('index');
+        $this-&gt;middleware('subscribed')-&gt;except('store');
+    }
+}</code></pre>
+<p>Controllers also allow you to register middleware using a closure. This provides a convenient way to define an inline middleware for a single controller without defining an entire middleware class:</p>
+<pre><code>$this-&gt;middleware(function ($request, $next) {
+    return $next($request);
+});</code></pre>
+<p><a name="resource-controllers"></a></p>
+<h2 id="resource-controllers">Resource Controllers</h2>
+<p>If you think of each Eloquent model in your application as a &quot;resource&quot;, it is typical to perform the same sets of actions against each resource in your application. For example, imagine your application contains a <code>Photo</code> model and a <code>Movie</code> model. It is likely that users can create, read, update, or delete these resources.</p>
+<p>Because of this common use case, Laravel resource routing assigns the typical create, read, update, and delete (&quot;CRUD&quot;) routes to a controller with a single line of code. To get started, we can use the <code>make:controller</code> Artisan command's <code>--resource</code> option to quickly create a controller to handle these actions:</p>
+<pre><code>php artisan make:controller PhotoController --resource</code></pre>
+<p>This command will generate a controller at <code>app/Http/Controllers/PhotoController.php</code>. The controller will contain a method for each of the available resource operations. Next, you may register a resource route that points to the controller:</p>
+<pre><code>use App\Http\Controllers\PhotoController;
+
+Route::resource('photos', PhotoController::class);</code></pre>
+<p>This single route declaration creates multiple routes to handle a variety of actions on the resource. The generated controller will already have methods stubbed for each of these actions. Remember, you can always get a quick overview of your application's routes by running the <code>route:list</code> Artisan command.</p>
+<p>You may even register many resource controllers at once by passing an array to the <code>resources</code> method:</p>
+<pre><code>Route::resources([
+    'photos' =&gt; PhotoController::class,
+    'posts' =&gt; PostController::class,
+]);</code></pre>
+<p><a name="actions-handled-by-resource-controller"></a></p>
+<h4 id="actions-handled-by-resource-controller">Actions Handled By Resource Controller</h4>
+<table>
+<thead>
+<tr>
+<th>Verb</th>
+<th>URI</th>
+<th>Action</th>
+<th>Route Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GET</td>
+<td><code>/photos</code></td>
+<td>index</td>
+<td>photos.index</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/photos/create</code></td>
+<td>create</td>
+<td>photos.create</td>
+</tr>
+<tr>
+<td>POST</td>
+<td><code>/photos</code></td>
+<td>store</td>
+<td>photos.store</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/photos/{photo}</code></td>
+<td>show</td>
+<td>photos.show</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/photos/{photo}/edit</code></td>
+<td>edit</td>
+<td>photos.edit</td>
+</tr>
+<tr>
+<td>PUT/PATCH</td>
+<td><code>/photos/{photo}</code></td>
+<td>update</td>
+<td>photos.update</td>
+</tr>
+<tr>
+<td>DELETE</td>
+<td><code>/photos/{photo}</code></td>
+<td>destroy</td>
+<td>photos.destroy</td>
+</tr>
+</tbody>
+</table>
+<p><a name="customizing-missing-model-behavior"></a></p>
+<h4 id="customizing-missing-model-behavior">Customizing Missing Model Behavior</h4>
+<p>Typically, a 404 HTTP response will be generated if an implicitly bound resource model is not found. However, you may customize this behavior by calling the <code>missing</code> method when defining your resource route. The <code>missing</code> method accepts a closure that will be invoked if an implicitly bound model can not be found for any of the resource's routes:</p>
+<pre><code>use App\Http\Controllers\PhotoController;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
+
+Route::resource('photos', PhotoController::class)
+        -&gt;missing(function (Request $request) {
+            return Redirect::route('photos.index');
+        });</code></pre>
+<p><a name="specifying-the-resource-model"></a></p>
+<h4 id="specifying-the-resource-model">Specifying The Resource Model</h4>
+<p>If you are using <a href="routing.html#route-model-binding">route model binding</a> and would like the resource controller's methods to type-hint a model instance, you may use the <code>--model</code> option when generating the controller:</p>
+<pre><code>php artisan make:controller PhotoController --model=Photo --resource</code></pre>
+<p><a name="generating-form-requests"></a></p>
+<h4 id="generating-form-requests">Generating Form Requests</h4>
+<p>You may provide the <code>--requests</code> option when generating a resource controller to instruct Artisan to generate <a href="validation.html#form-request-validation">form request classes</a> for the controller's storage and update methods:</p>
+<pre><code>php artisan make:controller PhotoController --model=Photo --resource --requests</code></pre>
+<p><a name="restful-partial-resource-routes"></a></p>
+<h3 id="restful-partial-resource-routes">Partial Resource Routes</h3>
+<p>When declaring a resource route, you may specify a subset of actions the controller should handle instead of the full set of default actions:</p>
+<pre><code>use App\Http\Controllers\PhotoController;
+
+Route::resource('photos', PhotoController::class)-&gt;only([
+    'index', 'show'
+]);
+
+Route::resource('photos', PhotoController::class)-&gt;except([
+    'create', 'store', 'update', 'destroy'
+]);</code></pre>
+<p><a name="api-resource-routes"></a></p>
+<h4 id="api-resource-routes">API Resource Routes</h4>
+<p>When declaring resource routes that will be consumed by APIs, you will commonly want to exclude routes that present HTML templates such as <code>create</code> and <code>edit</code>. For convenience, you may use the <code>apiResource</code> method to automatically exclude these two routes:</p>
+<pre><code>use App\Http\Controllers\PhotoController;
+
+Route::apiResource('photos', PhotoController::class);</code></pre>
+<p>You may register many API resource controllers at once by passing an array to the <code>apiResources</code> method:</p>
+<pre><code>use App\Http\Controllers\PhotoController;
+use App\Http\Controllers\PostController;
+
+Route::apiResources([
+    'photos' =&gt; PhotoController::class,
+    'posts' =&gt; PostController::class,
+]);</code></pre>
+<p>To quickly generate an API resource controller that does not include the <code>create</code> or <code>edit</code> methods, use the <code>--api</code> switch when executing the <code>make:controller</code> command:</p>
+<pre><code>php artisan make:controller PhotoController --api</code></pre>
+<p><a name="restful-nested-resources"></a></p>
+<h3 id="restful-nested-resources">Nested Resources</h3>
+<p>Sometimes you may need to define routes to a nested resource. For example, a photo resource may have multiple comments that may be attached to the photo. To nest the resource controllers, you may use &quot;dot&quot; notation in your route declaration:</p>
+<pre><code>use App\Http\Controllers\PhotoCommentController;
+
+Route::resource('photos.comments', PhotoCommentController::class);</code></pre>
+<p>This route will register a nested resource that may be accessed with URIs like the following:</p>
+<pre><code>/photos/{photo}/comments/{comment}</code></pre>
+<p><a name="scoping-nested-resources"></a></p>
+<h4 id="scoping-nested-resources">Scoping Nested Resources</h4>
+<p>Laravel's <a href="routing.html#implicit-model-binding-scoping">implicit model binding</a> feature can automatically scope nested bindings such that the resolved child model is confirmed to belong to the parent model. By using the <code>scoped</code> method when defining your nested resource, you may enable automatic scoping as well as instruct Laravel which field the child resource should be retrieved by. For more information on how to accomplish this, please see the documentation on <a href="#restful-scoping-resource-routes">scoping resource routes</a>.</p>
+<p><a name="shallow-nesting"></a></p>
+<h4 id="shallow-nesting">Shallow Nesting</h4>
+<p>Often, it is not entirely necessary to have both the parent and the child IDs within a URI since the child ID is already a unique identifier. When using unique identifiers such as auto-incrementing primary keys to identify your models in URI segments, you may choose to use &quot;shallow nesting&quot;:</p>
+<pre><code>use App\Http\Controllers\CommentController;
+
+Route::resource('photos.comments', CommentController::class)-&gt;shallow();</code></pre>
+<p>This route definition will define the following routes:</p>
+<table>
+<thead>
+<tr>
+<th>Verb</th>
+<th>URI</th>
+<th>Action</th>
+<th>Route Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GET</td>
+<td><code>/photos/{photo}/comments</code></td>
+<td>index</td>
+<td>photos.comments.index</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/photos/{photo}/comments/create</code></td>
+<td>create</td>
+<td>photos.comments.create</td>
+</tr>
+<tr>
+<td>POST</td>
+<td><code>/photos/{photo}/comments</code></td>
+<td>store</td>
+<td>photos.comments.store</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/comments/{comment}</code></td>
+<td>show</td>
+<td>comments.show</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/comments/{comment}/edit</code></td>
+<td>edit</td>
+<td>comments.edit</td>
+</tr>
+<tr>
+<td>PUT/PATCH</td>
+<td><code>/comments/{comment}</code></td>
+<td>update</td>
+<td>comments.update</td>
+</tr>
+<tr>
+<td>DELETE</td>
+<td><code>/comments/{comment}</code></td>
+<td>destroy</td>
+<td>comments.destroy</td>
+</tr>
+</tbody>
+</table>
+<p><a name="restful-naming-resource-routes"></a></p>
+<h3 id="restful-naming-resource-routes">Naming Resource Routes</h3>
+<p>By default, all resource controller actions have a route name; however, you can override these names by passing a <code>names</code> array with your desired route names:</p>
+<pre><code>use App\Http\Controllers\PhotoController;
+
+Route::resource('photos', PhotoController::class)-&gt;names([
+    'create' =&gt; 'photos.build'
+]);</code></pre>
+<p><a name="restful-naming-resource-route-parameters"></a></p>
+<h3 id="restful-naming-resource-route-parameters">Naming Resource Route Parameters</h3>
+<p>By default, <code>Route::resource</code> will create the route parameters for your resource routes based on the &quot;singularized&quot; version of the resource name. You can easily override this on a per resource basis using the <code>parameters</code> method. The array passed into the <code>parameters</code> method should be an associative array of resource names and parameter names:</p>
+<pre><code>use App\Http\Controllers\AdminUserController;
+
+Route::resource('users', AdminUserController::class)-&gt;parameters([
+    'users' =&gt; 'admin_user'
+]);</code></pre>
+<p>The example above generates the following URI for the resource's <code>show</code> route:</p>
+<pre><code>/users/{admin_user}</code></pre>
+<p><a name="restful-scoping-resource-routes"></a></p>
+<h3 id="restful-scoping-resource-routes">Scoping Resource Routes</h3>
+<p>Laravel's <a href="routing.html#implicit-model-binding-scoping">scoped implicit model binding</a> feature can automatically scope nested bindings such that the resolved child model is confirmed to belong to the parent model. By using the <code>scoped</code> method when defining your nested resource, you may enable automatic scoping as well as instruct Laravel which field the child resource should be retrieved by:</p>
+<pre><code>use App\Http\Controllers\PhotoCommentController;
+
+Route::resource('photos.comments', PhotoCommentController::class)-&gt;scoped([
+    'comment' =&gt; 'slug',
+]);</code></pre>
+<p>This route will register a scoped nested resource that may be accessed with URIs like the following:</p>
+<pre><code>/photos/{photo}/comments/{comment:slug}</code></pre>
+<p>When using a custom keyed implicit binding as a nested route parameter, Laravel will automatically scope the query to retrieve the nested model by its parent using conventions to guess the relationship name on the parent. In this case, it will be assumed that the <code>Photo</code> model has a relationship named <code>comments</code> (the plural of the route parameter name) which can be used to retrieve the <code>Comment</code> model.</p>
+<p><a name="restful-localizing-resource-uris"></a></p>
+<h3 id="restful-localizing-resource-uris">Localizing Resource URIs</h3>
+<p>By default, <code>Route::resource</code> will create resource URIs using English verbs. If you need to localize the <code>create</code> and <code>edit</code> action verbs, you may use the <code>Route::resourceVerbs</code> method. This may be done at the beginning of the <code>boot</code> method within your application's <code>App\Providers\RouteServiceProvider</code>:</p>
+<pre><code>/**
+ * Define your route model bindings, pattern filters, etc.
+ *
+ * @return void
+ */
+public function boot()
+{
+    Route::resourceVerbs([
+        'create' =&gt; 'crear',
+        'edit' =&gt; 'editar',
+    ]);
+
+    // ...
+}</code></pre>
+<p>Once the verbs have been customized, a resource route registration such as <code>Route::resource('fotos', PhotoController::class)</code> will produce the following URIs:</p>
+<pre><code>/fotos/crear
+
+/fotos/{foto}/editar</code></pre>
+<p><a name="restful-supplementing-resource-controllers"></a></p>
+<h3 id="restful-supplementing-resource-controllers">Supplementing Resource Controllers</h3>
+<p>If you need to add additional routes to a resource controller beyond the default set of resource routes, you should define those routes before your call to the <code>Route::resource</code> method; otherwise, the routes defined by the <code>resource</code> method may unintentionally take precedence over your supplemental routes:</p>
+<pre><code>use App\Http\Controller\PhotoController;
+
+Route::get('/photos/popular', [PhotoController::class, 'popular']);
+Route::resource('photos', PhotoController::class);</code></pre>
+<blockquote>
+<p>{tip} Remember to keep your controllers focused. If you find yourself routinely needing methods outside of the typical set of resource actions, consider splitting your controller into two, smaller controllers.</p>
+</blockquote>
+<p><a name="dependency-injection-and-controllers"></a></p>
+<h2 id="dependency-injection-and-controllers">Dependency Injection &amp; Controllers</h2>
+<p><a name="constructor-injection"></a></p>
+<h4 id="constructor-injection">Constructor Injection</h4>
+<p>The Laravel <a href="container.html">service container</a> is used to resolve all Laravel controllers. As a result, you are able to type-hint any dependencies your controller may need in its constructor. The declared dependencies will automatically be resolved and injected into the controller instance:</p>
+<pre><code>&lt;?php
+
+namespace App\Http\Controllers;
+
+use App\Repositories\UserRepository;
+
+class UserController extends Controller
+{
+    /**
+     * The user repository instance.
+     */
+    protected $users;
+
+    /**
+     * Create a new controller instance.
+     *
+     * @param  \App\Repositories\UserRepository  $users
+     * @return void
+     */
+    public function __construct(UserRepository $users)
+    {
+        $this-&gt;users = $users;
+    }
+}</code></pre>
+<p><a name="method-injection"></a></p>
+<h4 id="method-injection">Method Injection</h4>
+<p>In addition to constructor injection, you may also type-hint dependencies on your controller's methods. A common use-case for method injection is injecting the <code>Illuminate\Http\Request</code> instance into your controller methods:</p>
+<pre><code>&lt;?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+
+class UserController extends Controller
+{
+    /**
+     * Store a new user.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        $name = $request-&gt;name;
+
+        //
+    }
+}</code></pre>
+<p>If your controller method is also expecting input from a route parameter, list your route arguments after your other dependencies. For example, if your route is defined like so:</p>
+<pre><code>use App\Http\Controllers\UserController;
+
+Route::put('/user/{id}', [UserController::class, 'update']);</code></pre>
+<p>You may still type-hint the <code>Illuminate\Http\Request</code> and access your <code>id</code> parameter by defining your controller method as follows:</p>
+<pre><code>&lt;?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+
+class UserController extends Controller
+{
+    /**
+     * Update the given user.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  string  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        //
+    }
+}</code></pre>
+</div>
+ 
+                                                        <button onclick="topFunction()" id="toTheTop" title="Go to top" class="fixed bottom-5 right-5 h-15 w-15 hidden">
+                                <span class="topChevron"></span>
+                            </button>
+                                                    </section>
+                    </section>
+                </div>
+            </section>
+        </div>
+    </div>
+    <script>
+        mybutton = document.getElementById('toTheTop');
+        window.onscroll = function() {scrollFunction()};
+        function scrollFunction() {
+            carbonAds = document.getElementById('carbonads');
+            if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+                mybutton.style.setProperty('display', 'block', 'important');
+                if (carbonAds) {
+                    carbonAds.classList.add('move-top');
+                }
+            } else {
+                mybutton.style.display = 'none';
+                if (carbonAds) {
+                    carbonAds.classList.remove('move-top');
+                }
+            }
+        }
+        function topFunction() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        }
+    </script>
+
+<footer class="relative z-30 dark:bg-dark-700">
+    <div class="relative z-20 overflow-x-hidden">
+        <div class="relative max-w-screen-2xl mx-auto sm:px-8">
+            <div class="absolute inset-0 flex flex-col px-4 lg:px-12 xl:px-16">
+                <div class="flex-1"></div>
+                <div class="flex-1 bg-gray-100 dark:bg-dark-900"></div>
+            </div>
+            <div class="relative max-w-screen-xl mx-auto px-8">
+                <section class="relative z-10 p-6 bg-white shadow-lg md:flex md:items-center md:p-12 lg:p-16 dark:bg-dark-600">
+                    <div class="content md:pr-12">
+                        <h2 class="text-3xl tracking-tight sm:text-4xl md:mt-4 xl:text-5xl dark:text-gray-200">Become a Laravel Partner</h2>
+                        <p class="mt-3 max-w-xl text-gray-600 sm:mt-5 md:max-w-2xl md:mt-8 md:text-lg dark:text-gray-400">Laravel Partners are elite shops providing top-notch Laravel development and consulting. Each of our partners can help you craft a beautiful, well-architected project.</p>
+                    </div>
+                                             <a class="group relative h-12 inline-flex w-64 border border-red-600 sm:w-56 focus:outline-none mt-8" href="../../index-8.htm">
+    <span class="absolute inset-0 inline-flex items-center justify-center self-stretch px-6 text-white text-center font-medium bg-red-600 ring-1 ring-red-600 ring-offset-1 ring-offset-red-600 transform transition-transform group-hover:-translate-y-1 group-hover:-translate-x-1 group-focus:-translate-y-1 group-focus:-translate-x-1">
+        Our Partners
+    </span>
+</a>
+ 
+                                    </section>
+            </div>
+        </div>
+
+        <div class="max-w-screen-2xl mx-auto px-4 lg:px-12 xl:px-16">
+            <div class="px-8 pb-12 bg-gray-100 xl:px-20 dark:bg-dark-900">
+                <div>
+                    <img class="-mt-2 max-w-4xl w-full transform -translate-x-12 lg:-translate-x-24 xl:-translate-x-40" src="../../img/logotype.min.svg" alt="Laravel" width="114" height="29" loading="lazy">
+                </div>
+                <div class="mt-6 sm:mt-12 md:flex">
+                    <div class="divide-y divide-gray-600 divide-opacity-25 sm:hidden">
+                                                    <div x-data="{ expanded: false }" class="py-4">
+                                <button class="-mx-2 px-2 w-full flex items-center justify-between py-2 font-bold dark:text-gray-200" @click="expanded = ! expanded">
+                                    <span>Highlights</span>
+                                    <span class="transform transition-transform" :class="{ 'rotate-45': expanded }">&plus;</span>
+                                </button>
+                                <div x-show="expanded" x-cloak="" class="py-2 transition transform" x-transition:enter="duration-250 ease-out" x-transition:enter-start="opacity-0 -translate-y-8" x-transition:enter-end="opacity-100" x-transition:leave="duration-250 ease-in" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0 -translate-y-8">
+                                    <ul class="space-y-2 text-gray-600 text-sm dark:text-gray-500">
+                                                                                    <li><a href="/team">Our Team</a></li>
+                                                                                    <li><a href="releases.html">Release Notes</a></li>
+                                                                                    <li><a href="installation.html">Getting Started</a></li>
+                                                                                    <li><a href="routing.html">Routing</a></li>
+                                                                                    <li><a href="blade.html">Blade Templates</a></li>
+                                                                                    <li><a href="authentication.html">Authentication</a></li>
+                                                                                    <li><a href="authorization.html">Authorization</a></li>
+                                                                                    <li><a href="artisan.html">Artisan Console</a></li>
+                                                                                    <li><a href="database.html">Database</a></li>
+                                                                                    <li><a href="eloquent.html">Eloquent ORM</a></li>
+                                                                                    <li><a href="testing.html">Testing</a></li>
+                                                                            </ul>
+                                </div>
+                            </div>
+                                                    <div x-data="{ expanded: false }" class="py-4">
+                                <button class="-mx-2 px-2 w-full flex items-center justify-between py-2 font-bold dark:text-gray-200" @click="expanded = ! expanded">
+                                    <span>Resources</span>
+                                    <span class="transform transition-transform" :class="{ 'rotate-45': expanded }">&plus;</span>
+                                </button>
+                                <div x-show="expanded" x-cloak="" class="py-2 transition transform" x-transition:enter="duration-250 ease-out" x-transition:enter-start="opacity-0 -translate-y-8" x-transition:enter-end="opacity-100" x-transition:leave="duration-250 ease-in" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0 -translate-y-8">
+                                    <ul class="space-y-2 text-gray-600 text-sm dark:text-gray-500">
+                                                                                    <li><a href="../../index-10.htm">Laracasts</a></li>
+                                                                                    <li><a href="../../index-7.htm">Laravel News</a></li>
+                                                                                    <li><a href="../../index-13.htm">Laracon</a></li>
+                                                                                    <li><a href="../../winter-2022/index.htm">Laracon EU</a></li>
+                                                                                    <li><a href="../../index-14.htm">Jobs</a></li>
+                                                                                    <li><a href="../../index-16.htm">Certification</a></li>
+                                                                                    <li><a href="../../discuss.html">Forums</a></li>
+                                                                            </ul>
+                                </div>
+                            </div>
+                                                    <div x-data="{ expanded: false }" class="py-4">
+                                <button class="-mx-2 px-2 w-full flex items-center justify-between py-2 font-bold dark:text-gray-200" @click="expanded = ! expanded">
+                                    <span>Partners</span>
+                                    <span class="transform transition-transform" :class="{ 'rotate-45': expanded }">&plus;</span>
+                                </button>
+                                <div x-show="expanded" x-cloak="" class="py-2 transition transform" x-transition:enter="duration-250 ease-out" x-transition:enter-start="opacity-0 -translate-y-8" x-transition:enter-end="opacity-100" x-transition:leave="duration-250 ease-in" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0 -translate-y-8">
+                                    <ul class="space-y-2 text-gray-600 text-sm dark:text-gray-500">
+                                                                                    <li><a href="../../index-17.htm">Vehikl</a></li>
+                                                                                    <li><a href="../../index-18.htm">Tighten</a></li>
+                                                                                    <li><a href="../../index-19.htm">64 Robots</a></li>
+                                                                                    <li><a href="../../index-20.htm">Kirschbaum</a></li>
+                                                                                    <li><a href="../../services/technologies/laravel/index.htm">Curotec</a></li>
+                                                                                    <li><a href="../../index-21.htm">Jump24</a></li>
+                                                                                    <li><a href="../../index-22.htm">A2 Design</a></li>
+                                                                                    <li><a href="../../app/uploads/2019/08/INTRO-Pitch-I-AY-Tech.pdf?utm_source=laravelpartnersfindoutmore&amp;utm_medium=socialgroups&amp;utm_campaign=tech">ABOUT YOU</a></li>
+                                                                                    <li><a href="../../index-23.htm">Byte 5</a></li>
+                                                                                    <li><a href="../../index-24.htm">Cubet</a></li>
+                                                                                    <li><a href="../../what-we-do/technology-implementation/laravel.html?utm_source=Laravel%20Partner&amp;utm_medium=Sponsorship">Cyber-Duck</a></li>
+                                                                                    <li><a href="../../index-25.htm">DevSquad</a></li>
+                                                                                    <li><a href="../../index-26.htm">Ideil</a></li>
+                                                                                    <li><a href="../../index-27.htm">Romega Software</a></li>
+                                                                                    <li><a href="../../index-28.htm">Worksome</a></li>
+                                                                                    <li><a href="../../index.html?utm_source=laravel&amp;utm_medium=laravel.com&amp;utm_campaign=patreon-sponsors">WebReinvent</a></li>
+                                                                            </ul>
+                                </div>
+                            </div>
+                                                    <div x-data="{ expanded: false }" class="py-4">
+                                <button class="-mx-2 px-2 w-full flex items-center justify-between py-2 font-bold dark:text-gray-200" @click="expanded = ! expanded">
+                                    <span>Ecosystem</span>
+                                    <span class="transform transition-transform" :class="{ 'rotate-45': expanded }">&plus;</span>
+                                </button>
+                                <div x-show="expanded" x-cloak="" class="py-2 transition transform" x-transition:enter="duration-250 ease-out" x-transition:enter-start="opacity-0 -translate-y-8" x-transition:enter-end="opacity-100" x-transition:leave="duration-250 ease-in" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0 -translate-y-8">
+                                    <ul class="space-y-2 text-gray-600 text-sm dark:text-gray-500">
+                                                                                    <li><a href="billing.html">Cashier</a></li>
+                                                                                    <li><a href="dusk.html">Dusk</a></li>
+                                                                                    <li><a href="broadcasting.html">Echo</a></li>
+                                                                                    <li><a href="../../index-3.htm">Envoyer</a></li>
+                                                                                    <li><a href="../../index-2.htm">Forge</a></li>
+                                                                                    <li><a href="homestead.html">Homestead</a></li>
+                                                                                    <li><a href="horizon.html">Horizon</a></li>
+                                                                                    <li><a href="../9.x.html">Lumen</a></li>
+                                                                                    <li><a href="mix.html">Mix</a></li>
+                                                                                    <li><a href="../../index-4.htm">Nova</a></li>
+                                                                                    <li><a href="passport.html">Passport</a></li>
+                                                                                    <li><a href="scout.html">Scout</a></li>
+                                                                                    <li><a href="socialite.html">Socialite</a></li>
+                                                                                    <li><a href="../../index-5.htm">Spark</a></li>
+                                                                                    <li><a href="telescope.html">Telescope</a></li>
+                                                                                    <li><a href="valet.html">Valet</a></li>
+                                                                                    <li><a href="../../index-1.htm">Vapor</a></li>
+                                                                            </ul>
+                                </div>
+                            </div>
+                                            </div>
+                    <div class="hidden sm:grid sm:grid-cols-2 sm:gap-x-4 sm:gap-y-8 md:w-1/2 lg:w-3/4 lg:grid-cols-4">
+                                                    <div>
+                                <span class="font-bold dark:text-gray-200">Highlights</span>
+                                <div class="mt-6">
+                                    <ul class="space-y-3 text-gray-600 text-sm dark:text-gray-500">
+                                                                                    <li>
+                                                <a href="/team" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Our Team</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="releases.html" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Release Notes</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="installation.html" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Getting Started</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="routing.html" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Routing</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="blade.html" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Blade Templates</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="authentication.html" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Authentication</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="authorization.html" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Authorization</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="artisan.html" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Artisan Console</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="database.html" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Database</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="eloquent.html" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Eloquent ORM</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="testing.html" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Testing</a>
+                                            </li>
+                                                                            </ul>
+                                </div>
+                            </div>
+                                                    <div>
+                                <span class="font-bold dark:text-gray-200">Resources</span>
+                                <div class="mt-6">
+                                    <ul class="space-y-3 text-gray-600 text-sm dark:text-gray-500">
+                                                                                    <li>
+                                                <a href="../../index-10.htm" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Laracasts</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="../../index-7.htm" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Laravel News</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="../../index-13.htm" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Laracon</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="../../winter-2022/index.htm" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Laracon EU</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="../../index-14.htm" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Jobs</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="../../index-16.htm" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Certification</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="../../discuss.html" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Forums</a>
+                                            </li>
+                                                                            </ul>
+                                </div>
+                            </div>
+                                                    <div>
+                                <span class="font-bold dark:text-gray-200">Partners</span>
+                                <div class="mt-6">
+                                    <ul class="space-y-3 text-gray-600 text-sm dark:text-gray-500">
+                                                                                    <li>
+                                                <a href="../../index-17.htm" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Vehikl</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="../../index-18.htm" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Tighten</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="../../index-19.htm" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">64 Robots</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="../../index-20.htm" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Kirschbaum</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="../../services/technologies/laravel/index.htm" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Curotec</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="../../index-21.htm" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Jump24</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="../../index-22.htm" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">A2 Design</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="../../app/uploads/2019/08/INTRO-Pitch-I-AY-Tech.pdf?utm_source=laravelpartnersfindoutmore&amp;utm_medium=socialgroups&amp;utm_campaign=tech" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">ABOUT YOU</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="../../index-23.htm" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Byte 5</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="../../index-24.htm" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Cubet</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="../../what-we-do/technology-implementation/laravel.html?utm_source=Laravel%20Partner&amp;utm_medium=Sponsorship" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Cyber-Duck</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="../../index-25.htm" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">DevSquad</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="../../index-26.htm" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Ideil</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="../../index-27.htm" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Romega Software</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="../../index-28.htm" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Worksome</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="../../index.html?utm_source=laravel&amp;utm_medium=laravel.com&amp;utm_campaign=patreon-sponsors" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">WebReinvent</a>
+                                            </li>
+                                                                            </ul>
+                                </div>
+                            </div>
+                                                    <div>
+                                <span class="font-bold dark:text-gray-200">Ecosystem</span>
+                                <div class="mt-6">
+                                    <ul class="space-y-3 text-gray-600 text-sm dark:text-gray-500">
+                                                                                    <li>
+                                                <a href="billing.html" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Cashier</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="dusk.html" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Dusk</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="broadcasting.html" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Echo</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="../../index-3.htm" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Envoyer</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="../../index-2.htm" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Forge</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="homestead.html" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Homestead</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="horizon.html" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Horizon</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="../9.x.html" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Lumen</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="mix.html" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Mix</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="../../index-4.htm" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Nova</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="passport.html" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Passport</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="scout.html" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Scout</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="socialite.html" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Socialite</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="../../index-5.htm" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Spark</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="telescope.html" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Telescope</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="valet.html" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Valet</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="../../index-1.htm" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Vapor</a>
+                                            </li>
+                                                                            </ul>
+                                </div>
+                            </div>
+                                            </div>
+                    <div class="mt-10 max-w-md md:mt-0 md:w-1/2 lg:w-1/4">
+                        <p class="text-xs text-gray-600 sm:text-sm dark:text-gray-500">Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in most web projects.</p>
+                        <p class="mt-6 text-xs text-gray-600 text-opacity-75 sm:text-sm dark:text-gray-500">
+                            Laravel is a Trademark of Taylor Otwell.<br>Copyright &copy; 2011-2022 Laravel LLC.
+                        </p>
+                        <ul class="mt-6 flex items-center space-x-3">
+                            <li>
+                                <a href="../../laravelphp.html">
+                                    <img id="footer__twitter" class="w-6 h-6" src="../../img/social/twitter.min.svg" alt="Twitter" width="24" height="20" loading="lazy">
+                                    <img id="footer__twitter_dark" class="w-6 h-6" src="../../img/social/twitter.dark.min.svg" alt="Twitter" width="24" height="20" loading="lazy">
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../../laravel.html">
+                                    <img id="footer__github" class="w-6 h-6" src="../../img/social/github.min.svg" alt="GitHub" width="24" height="24" loading="lazy">
+                                    <img id="footer__github_dark" class="w-6 h-6" src="../../img/social/github.dark.min.svg" alt="GitHub" width="24" height="24" loading="lazy">
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../../invite/mPZNm7A.html">
+                                    <img id="footer__discord" class="w-6 h-6" src="../../img/social/discord.min.svg" alt="Discord" width="21" height="24" loading="lazy">
+                                    <img id="footer__discord_dark" class="w-6 h-6" src="../../img/social/discord.dark.min.svg" alt="Discord" width="21" height="24" loading="lazy">
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../../laravelphp-1.html">
+                                    <img id="footer__youtube" class="w-6 h-6" src="../../img/social/youtube.min.svg" alt="YouTube" width="169" height="150" loading="lazy">
+                                    <img id="footer__youtube_dark" class="w-6 h-6" src="../../img/social/youtube.dark.min.svg" alt="YouTube" width="169" height="150" loading="lazy">
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="flex justify-center py-6">
+            <a href="../../index.htm" class="logomark">
+                <img class="w-9 h-9" src="../../img/logomark.min.svg" alt="Laravel" width="50" height="52" loading="lazy">
+            </a>
+        </div>
+    </div>
+</footer>
+
+<script>
+    var algolia_app_id = 'ITGXQG9N0J';
+    var algolia_search_key = '29e3498a066622afdacafa73072c548d';
+    var version = '8.x';
+</script>
+
+<script src="../../js/app.js?id=22821ba61048c5ed17c4"></script>
+</body>
+</html>

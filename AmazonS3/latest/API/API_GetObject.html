@@ -1,0 +1,1180 @@
+<!DOCTYPE html>
+    <html xmlns="http://www.w3.org/1999/xhtml" ng-app="AWSDocsDocPageApp"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>GetObject - Amazon Simple Storage Service</title><meta name="viewport" content="width=device-width,initial-scale=1" /><meta name="assets_root" content="/assets" /><meta name="target_state" content="API_GetObject" /><meta name="default_state" content="API_GetObject" /><link rel="icon" type="image/ico" href="/assets/images/favicon.ico" /><link rel="shortcut icon" type="image/ico" href="/assets/images/favicon.ico" /><link rel="canonical" href="https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetObject.html" /><meta name="description" content="Retrieves objects from Amazon S3. To use GET , you must have READ access to the object. If you grant READ access to the anonymous user, you can return the object without using an authorization header." /><meta name="deployment_region" content="IAD" /><meta name="product" content="Amazon Simple Storage Service" /><meta name="guide" content="API Reference" /><meta name="abstract" content="Explains how to use the Amazon S3 API to store data in the cloud." /><meta name="guide-locale" content="en_us" /><meta name="tocs" content="toc-contents.json" /><meta name="feedback-item" content="S3" /><meta name="this_doc_product" content="Amazon Simple Storage Service" /><meta name="this_doc_guide" content="API Reference" /><link href="/assets/css/vendor4.css?version=2021.12.02" rel="stylesheet" /><link href="/assets/css/awsdocs-common.css?version=2021.12.02" rel="stylesheet" /><script type="text/javascript" src="/assets/js/vendor3.js?version=2021.12.02" defer=""></script><script type="text/javascript" src="/assets/js/vendor4.js?version=2021.12.02" defer=""></script><script type="text/javascript" src="/assets/js/vendor1.js?version=2021.12.02" defer=""></script><script type="text/javascript" src="/assets/js/awsdocs-common.js?version=2021.12.02" defer=""></script><script type="text/javascript" src="/assets/js/awsdocs-doc-app.js?version=2021.12.02" defer=""></script></head><body ng-csp="no-unsafe-eval" class="awsdocs awsui"><div class="awsdocs-container"><awsdocs-header></awsdocs-header><awsui-app-layout id="app-layout" class="awsui-util-no-gutters" ng-controller="ContentController as $ctrl" header-selector="awsdocs-header" navigation-hide="false" navigation-width="$ctrl.navWidth" navigation-open="$ctrl.navOpen" navigation-change="$ctrl.onNavChange($event)" tools-hide="$ctrl.hideTools" tools-width="$ctrl.toolsWidth" tools-open="$ctrl.toolsOpen" tools-change="$ctrl.onToolsChange($event)"><div id="guide-toc" dom-region="navigation"><awsdocs-toc></awsdocs-toc></div><div id="main-column" dom-region="content" tabindex="-1"><awsdocs-view class="awsdocs-view"><div id="awsdocs-content"><head><title>GetObject - Amazon Simple Storage Service</title><meta name="pdf" content="s3-api.pdf#API_GetObject" /><meta name="forums" content="http://forums.aws.amazon.com/forum.jspa?forumID=24" /><meta name="feedback" content="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=S3&amp;topic_url=http://docs.aws.amazon.com/en_us/AmazonS3/latest/API/API_GetObject.html" /><meta name="feedback-yes" content="feedbackyes.html?topic_url=http://docs.aws.amazon.com/en_us/AmazonS3/latest/API/API_GetObject.html" /><meta name="feedback-no" content="feedbackno.html?topic_url=http://docs.aws.amazon.com/en_us/AmazonS3/latest/API/API_GetObject.html" /><meta name="keywords" content="API,requests,GetObject" /></head><body><div id="main"><div style="display: none"><a href="s3-api.pdf#API_GetObject" target="_blank" rel="noopener noreferrer" title="Open PDF"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="http://aws.amazon.com">AWS</a><a href="/index.html">Documentation</a><a href="/s3/index.html">Amazon Simple Storage Service (S3)</a><a href="Welcome.html">API Reference</a></div><div id="page-toc-src"><a href="#API_GetObject_RequestSyntax">Request Syntax</a><a href="#API_GetObject_RequestParameters">URI Request Parameters</a><a href="#API_GetObject_RequestBody">Request Body</a><a href="#API_GetObject_ResponseSyntax">Response Syntax</a><a href="#API_GetObject_ResponseElements">Response Elements</a><a href="#API_GetObject_Examples">Examples</a><a href="#API_GetObject_SeeAlso">See Also</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="API_GetObject">GetObject</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>Retrieves objects from Amazon S3. To use <code class="code">GET</code>, you must have <code class="code">READ</code>
+         access to the object. If you grant <code class="code">READ</code> access to the anonymous user, you can
+         return the object without using an authorization header.</p><p>An Amazon S3 bucket has no directory hierarchy such as you would find in a typical computer
+         file system. You can, however, create a logical hierarchy by using object key names that
+         imply a folder structure. For example, instead of naming an object <code class="code">sample.jpg</code>,
+         you can name it <code class="code">photos/2006/February/sample.jpg</code>.</p><p>To get an object from such a logical hierarchy, specify the full key name for the object
+         in the <code class="code">GET</code> operation. For a virtual hosted-style request example, if you have
+         the object <code class="code">photos/2006/February/sample.jpg</code>, specify the resource as
+            <code class="code">/photos/2006/February/sample.jpg</code>. For a path-style request example, if you
+         have the object <code class="code">photos/2006/February/sample.jpg</code> in the bucket named
+            <code class="code">examplebucket</code>, specify the resource as
+            <code class="code">/examplebucket/photos/2006/February/sample.jpg</code>. For more information about
+         request types, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/VirtualHosting.html#VirtualHostingSpecifyBucket">HTTP Host Header Bucket Specification</a>.</p><p>For more information about returning the ACL of an object, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetObjectAcl.html">GetObjectAcl</a>.</p><p>If the object you are retrieving is stored in the S3 Glacier or
+         S3 Glacier Deep Archive storage class, or S3 Intelligent-Tiering Archive or
+         S3 Intelligent-Tiering Deep Archive tiers, before you can retrieve the object you must first restore a
+         copy using <a href="https://docs.aws.amazon.com/AmazonS3/latest/API/API_RestoreObject.html">RestoreObject</a>. Otherwise, this action returns an
+            <code class="code">InvalidObjectStateError</code> error. For information about restoring archived
+         objects, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/restoring-objects.html">Restoring Archived
+            Objects</a>.</p><p>Encryption request headers, like <code class="code">x-amz-server-side-encryption</code>, should not
+         be sent for GET requests if your object uses server-side encryption with KMS keys (SSE-KMS) 
+         or server-side encryption with Amazon S3–managed encryption keys (SSE-S3). If your
+         object does use these types of keys, you’ll get an HTTP 400 BadRequest error.</p><p>If you encrypt an object by using server-side encryption with customer-provided
+         encryption keys (SSE-C) when you store the object in Amazon S3, then when you GET the object,
+         you must use the following headers:</p><div class="itemizedlist">
+             
+             
+             
+         <ul class="itemizedlist" type="disc"><li class="listitem">
+               <p>x-amz-server-side-encryption-customer-algorithm</p>
+            </li><li class="listitem">
+               <p>x-amz-server-side-encryption-customer-key</p>
+            </li><li class="listitem">
+               <p>x-amz-server-side-encryption-customer-key-MD5</p>
+            </li></ul></div><p>For more information about SSE-C, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/ServerSideEncryptionCustomerKeys.html">Server-Side Encryption (Using
+            Customer-Provided Encryption Keys)</a>.</p><p>Assuming you have the relevant permission to read object tags, the response also returns the
+            <code class="code">x-amz-tagging-count</code> header that provides the count of number of tags
+         associated with the object. You can use <a href="https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetObjectTagging.html">GetObjectTagging</a> to retrieve
+         the tag set associated with an object.</p><p>
+            <b>Permissions</b>
+         </p><p>You need the relevant read object (or version) permission for this operation. For more
+         information, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/using-with-s3-actions.html">Specifying Permissions
+            in a Policy</a>. If the object you request does not exist, the error Amazon S3 returns
+         depends on whether you also have the <code class="code">s3:ListBucket</code> permission.</p><div class="itemizedlist">
+             
+             
+         <ul class="itemizedlist" type="disc"><li class="listitem">
+               <p>If you have the <code class="code">s3:ListBucket</code> permission on the bucket, Amazon S3 will
+               return an HTTP status code 404 ("no such key") error.</p>
+            </li><li class="listitem">
+               <p>If you don’t have the <code class="code">s3:ListBucket</code> permission, Amazon S3 will return an
+               HTTP status code 403 ("access denied") error.</p>
+            </li></ul></div><p>
+            <b>Versioning</b>
+         </p><p>By default, the GET action returns the current version of an object. To return a
+         different version, use the <code class="code">versionId</code> subresource.</p><div class="awsdocs-note"><div class="awsdocs-note-title"><awsui-icon name="status-info" variant="link"></awsui-icon><span>Note</span></div><div class="awsdocs-note-text"><div class="itemizedlist">
+                
+                
+            <ul class="itemizedlist" type="disc"><li class="listitem">
+                  <p>
+                    If you supply a <code class="code">versionId</code>, you need the <code class="code">s3:GetObjectVersion</code> permission to
+                    access a specific version of an object. If you request a specific version, you do not need to have
+                    the <code class="code">s3:GetObject</code> permission.
+                </p>
+               </li><li class="listitem">
+                  <p>If the current version of the object is a delete marker, Amazon S3 behaves as if the
+                  object was deleted and includes <code class="code">x-amz-delete-marker: true</code> in the
+                  response.</p>
+               </li></ul></div></div></div><p>For more information about versioning, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketVersioning.html">PutBucketVersioning</a>. </p><p>
+            <b>Overriding Response Header Values</b>
+         </p><p>There are times when you want to override certain response header values in a GET
+         response. For example, you might override the <code class="code">Content-Disposition</code> response
+         header value in your GET request.</p><p>You can override values for a set of response headers using the following query
+         parameters. These response header values are sent only on a successful request, that is,
+         when status code 200 OK is returned. The set of headers you can override using these
+         parameters is a subset of the headers that Amazon S3 accepts when you create an object. The
+         response headers that you can override for the GET response are <code class="code">Content-Type</code>,
+            <code class="code">Content-Language</code>, <code class="code">Expires</code>, <code class="code">Cache-Control</code>,
+            <code class="code">Content-Disposition</code>, and <code class="code">Content-Encoding</code>. To override these
+         header values in the GET response, you use the following request parameters.</p><div class="awsdocs-note"><div class="awsdocs-note-title"><awsui-icon name="status-info" variant="link"></awsui-icon><span>Note</span></div><div class="awsdocs-note-text"><p>You must sign the request, either using an Authorization header or a presigned URL,
+            when using these parameters. They cannot be used with an unsigned (anonymous)
+            request.</p></div></div><div class="itemizedlist">
+             
+             
+             
+             
+             
+             
+         <ul class="itemizedlist" type="disc"><li class="listitem">
+               <p>
+                  <code class="code">response-content-type</code>
+               </p>
+            </li><li class="listitem">
+               <p>
+                  <code class="code">response-content-language</code>
+               </p>
+            </li><li class="listitem">
+               <p>
+                  <code class="code">response-expires</code>
+               </p>
+            </li><li class="listitem">
+               <p>
+                  <code class="code">response-cache-control</code>
+               </p>
+            </li><li class="listitem">
+               <p>
+                  <code class="code">response-content-disposition</code>
+               </p>
+            </li><li class="listitem">
+               <p>
+                  <code class="code">response-content-encoding</code>
+               </p>
+            </li></ul></div><p>
+            <b>Additional Considerations about Request Headers</b>
+         </p><p>If both of the <code class="code">If-Match</code> and <code class="code">If-Unmodified-Since</code> headers are
+         present in the request as follows: <code class="code">If-Match</code> condition evaluates to
+            <code class="code">true</code>, and; <code class="code">If-Unmodified-Since</code> condition evaluates to
+            <code class="code">false</code>; then, S3 returns 200 OK and the data requested. </p><p>If both of the <code class="code">If-None-Match</code> and <code class="code">If-Modified-Since</code> headers are
+         present in the request as follows:<code class="code"> If-None-Match</code> condition evaluates to
+            <code class="code">false</code>, and; <code class="code">If-Modified-Since</code> condition evaluates to
+            <code class="code">true</code>; then, S3 returns 304 Not Modified response code.</p><p>For more information about conditional requests, see <a href="https://tools.ietf.org/html/rfc7232" rel="noopener noreferrer" target="_blank"><span>RFC 7232</span><awsui-icon class="awsdocs-link-icon" name="external"></awsui-icon></a>.</p><p>The following operations are related to <code class="code">GetObject</code>:</p><div class="itemizedlist">
+             
+             
+
+         <ul class="itemizedlist" type="disc"><li class="listitem">
+               <p>
+                  <a href="https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListBuckets.html">ListBuckets</a>
+               </p>
+            </li><li class="listitem">
+               <p>
+                  <a href="https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetObjectAcl.html">GetObjectAcl</a>
+               </p>
+            </li></ul></div>
+      <h2 id="API_GetObject_RequestSyntax">Request Syntax</h2>
+      <pre class="programlisting"><div class="code-btn-container"></div><code class="nohighlight">GET /<code class="replaceable">Key+</code>?partNumber=<code class="replaceable">PartNumber</code>&amp;response-cache-control=<code class="replaceable">ResponseCacheControl</code>&amp;response-content-disposition=<code class="replaceable">ResponseContentDisposition</code>&amp;response-content-encoding=<code class="replaceable">ResponseContentEncoding</code>&amp;response-content-language=<code class="replaceable">ResponseContentLanguage</code>&amp;response-content-type=<code class="replaceable">ResponseContentType</code>&amp;response-expires=<code class="replaceable">ResponseExpires</code>&amp;versionId=<code class="replaceable">VersionId</code> HTTP/1.1
+Host: <code class="replaceable">Bucket</code>.s3.amazonaws.com
+If-Match: <code class="replaceable">IfMatch</code>
+If-Modified-Since: <code class="replaceable">IfModifiedSince</code>
+If-None-Match: <code class="replaceable">IfNoneMatch</code>
+If-Unmodified-Since: <code class="replaceable">IfUnmodifiedSince</code>
+Range: <code class="replaceable">Range</code>
+x-amz-server-side-encryption-customer-algorithm: <code class="replaceable">SSECustomerAlgorithm</code>
+x-amz-server-side-encryption-customer-key: <code class="replaceable">SSECustomerKey</code>
+x-amz-server-side-encryption-customer-key-MD5: <code class="replaceable">SSECustomerKeyMD5</code>
+x-amz-request-payer: <code class="replaceable">RequestPayer</code>
+x-amz-expected-bucket-owner: <code class="replaceable">ExpectedBucketOwner</code>
+x-amz-checksum-mode: <code class="replaceable">ChecksumMode</code>
+</code></pre>
+    
+      <h2 id="API_GetObject_RequestParameters">URI Request Parameters</h2>
+      <p>The request uses the following URI parameters.</p>
+      <div class="variablelist">
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+      <dl>
+            <dt><a id="AmazonS3-GetObject-request-header-Bucket"></a><span class="term">
+               <b>
+                  <a href="#API_GetObject_RequestSyntax">Bucket</a>
+               </b>
+            </span></dt>
+            <dd>
+               <p>The bucket name containing the object. </p>
+               <p>When using this action with an access point, you must direct requests to the access point hostname. The access point hostname takes the form <em>AccessPointName</em>-<em>AccountId</em>.s3-accesspoint.<em>Region</em>.amazonaws.com. When using this action with an access point through the AWS SDKs, you provide the access point ARN in place of the bucket name. For more information about access point ARNs, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html">Using access points</a> in the <em>Amazon S3 User Guide</em>.</p>
+               <p>When using an Object Lambda access point the hostname takes the form <em>AccessPointName</em>-<em>AccountId</em>.s3-object-lambda.<em>Region</em>.amazonaws.com.</p>
+               <p>When using this action with Amazon S3 on Outposts, you must direct requests to the S3 on Outposts hostname. The S3 on Outposts hostname takes the form <code class="code">
+                     <em>AccessPointName</em>-<em>AccountId</em>.<em>outpostID</em>.s3-outposts.<em>Region</em>.amazonaws.com</code>. When using this action with S3 on Outposts through the AWS SDKs, you provide the Outposts bucket ARN in place of the bucket name. For more information about S3 on Outposts ARNs, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html">Using Amazon S3 on Outposts</a> in the <em>Amazon S3 User Guide</em>.</p>
+               <p>Required: Yes</p>
+            </dd>
+          
+            <dt><a id="AmazonS3-GetObject-request-header-IfMatch"></a><span class="term">
+               <b>
+                  <a href="#API_GetObject_RequestSyntax">If-Match</a>
+               </b>
+            </span></dt>
+            <dd>
+               <p>Return the object only if its entity tag (ETag) is the same as the one specified;
+         otherwise, return a 412 (precondition failed) error.</p>
+            </dd>
+          
+            <dt><a id="AmazonS3-GetObject-request-header-IfModifiedSince"></a><span class="term">
+               <b>
+                  <a href="#API_GetObject_RequestSyntax">If-Modified-Since</a>
+               </b>
+            </span></dt>
+            <dd>
+               <p>Return the object only if it has been modified since the specified time; otherwise,
+         return a 304 (not modified) error.</p>
+            </dd>
+          
+            <dt><a id="AmazonS3-GetObject-request-header-IfNoneMatch"></a><span class="term">
+               <b>
+                  <a href="#API_GetObject_RequestSyntax">If-None-Match</a>
+               </b>
+            </span></dt>
+            <dd>
+               <p>Return the object only if its entity tag (ETag) is different from the one specified;
+         otherwise, return a 304 (not modified) error.</p>
+            </dd>
+          
+            <dt><a id="AmazonS3-GetObject-request-header-IfUnmodifiedSince"></a><span class="term">
+               <b>
+                  <a href="#API_GetObject_RequestSyntax">If-Unmodified-Since</a>
+               </b>
+            </span></dt>
+            <dd>
+               <p>Return the object only if it has not been modified since the specified time; otherwise,
+         return a 412 (precondition failed) error.</p>
+            </dd>
+          
+            <dt><a id="AmazonS3-GetObject-request-uri-Key"></a><span class="term">
+               <b>
+                  <a href="#API_GetObject_RequestSyntax">Key</a>
+               </b>
+            </span></dt>
+            <dd>
+               <p>Key of the object to get.</p>
+               <p>Length Constraints: Minimum length of 1.</p>
+               <p>Required: Yes</p>
+            </dd>
+          
+            <dt><a id="AmazonS3-GetObject-request-querystring-PartNumber"></a><span class="term">
+               <b>
+                  <a href="#API_GetObject_RequestSyntax">partNumber</a>
+               </b>
+            </span></dt>
+            <dd>
+               <p>Part number of the object being read. This is a positive integer between 1 and 10,000.
+         Effectively performs a 'ranged' GET request for the part specified. Useful for downloading
+         just a part of an object.</p>
+            </dd>
+          
+            <dt><a id="AmazonS3-GetObject-request-header-Range"></a><span class="term">
+               <b>
+                  <a href="#API_GetObject_RequestSyntax">Range</a>
+               </b>
+            </span></dt>
+            <dd>
+               <p>Downloads the specified range bytes of an object. For more information about the HTTP
+         Range header, see <a href="https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.35" rel="noopener noreferrer" target="_blank"><span>https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.35</span><awsui-icon class="awsdocs-link-icon" name="external"></awsui-icon></a>.</p>
+               <div class="awsdocs-note"><div class="awsdocs-note-title"><awsui-icon name="status-info" variant="link"></awsui-icon><span>Note</span></div><div class="awsdocs-note-text"><p>Amazon S3 doesn't support retrieving multiple ranges of data per <code class="code">GET</code>
+            request.</p></div></div>
+            </dd>
+          
+            <dt><a id="AmazonS3-GetObject-request-querystring-ResponseCacheControl"></a><span class="term">
+               <b>
+                  <a href="#API_GetObject_RequestSyntax">response-cache-control</a>
+               </b>
+            </span></dt>
+            <dd>
+               <p>Sets the <code class="code">Cache-Control</code> header of the response.</p>
+            </dd>
+          
+            <dt><a id="AmazonS3-GetObject-request-querystring-ResponseContentDisposition"></a><span class="term">
+               <b>
+                  <a href="#API_GetObject_RequestSyntax">response-content-disposition</a>
+               </b>
+            </span></dt>
+            <dd>
+               <p>Sets the <code class="code">Content-Disposition</code> header of the response</p>
+            </dd>
+          
+            <dt><a id="AmazonS3-GetObject-request-querystring-ResponseContentEncoding"></a><span class="term">
+               <b>
+                  <a href="#API_GetObject_RequestSyntax">response-content-encoding</a>
+               </b>
+            </span></dt>
+            <dd>
+               <p>Sets the <code class="code">Content-Encoding</code> header of the response.</p>
+            </dd>
+          
+            <dt><a id="AmazonS3-GetObject-request-querystring-ResponseContentLanguage"></a><span class="term">
+               <b>
+                  <a href="#API_GetObject_RequestSyntax">response-content-language</a>
+               </b>
+            </span></dt>
+            <dd>
+               <p>Sets the <code class="code">Content-Language</code> header of the response.</p>
+            </dd>
+          
+            <dt><a id="AmazonS3-GetObject-request-querystring-ResponseContentType"></a><span class="term">
+               <b>
+                  <a href="#API_GetObject_RequestSyntax">response-content-type</a>
+               </b>
+            </span></dt>
+            <dd>
+               <p>Sets the <code class="code">Content-Type</code> header of the response.</p>
+            </dd>
+          
+            <dt><a id="AmazonS3-GetObject-request-querystring-ResponseExpires"></a><span class="term">
+               <b>
+                  <a href="#API_GetObject_RequestSyntax">response-expires</a>
+               </b>
+            </span></dt>
+            <dd>
+               <p>Sets the <code class="code">Expires</code> header of the response.</p>
+            </dd>
+          
+            <dt><a id="AmazonS3-GetObject-request-querystring-VersionId"></a><span class="term">
+               <b>
+                  <a href="#API_GetObject_RequestSyntax">versionId</a>
+               </b>
+            </span></dt>
+            <dd>
+               <p>VersionId used to reference a specific version of the object.</p>
+            </dd>
+          
+            <dt><a id="AmazonS3-GetObject-request-header-ChecksumMode"></a><span class="term">
+               <b>
+                  <a href="#API_GetObject_RequestSyntax">x-amz-checksum-mode</a>
+               </b>
+            </span></dt>
+            <dd>
+               <p>To retrieve the checksum, this mode must be enabled.</p>
+               <p>Valid Values:<code class="code"> ENABLED</code>
+               </p>
+            </dd>
+          
+            <dt><a id="AmazonS3-GetObject-request-header-ExpectedBucketOwner"></a><span class="term">
+               <b>
+                  <a href="#API_GetObject_RequestSyntax">x-amz-expected-bucket-owner</a>
+               </b>
+            </span></dt>
+            <dd>
+               <p>The account ID of the expected bucket owner. If the bucket is owned by a different account, the request fails with the HTTP status code <code class="code">403 Forbidden</code> (access denied).</p>
+            </dd>
+          
+            <dt><a id="AmazonS3-GetObject-request-header-RequestPayer"></a><span class="term">
+               <b>
+                  <a href="#API_GetObject_RequestSyntax">x-amz-request-payer</a>
+               </b>
+            </span></dt>
+            <dd>
+               <p>Confirms that the requester knows that they will be charged for the request. Bucket
+         owners need not specify this parameter in their requests. For information about downloading
+         objects from Requester Pays buckets, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/ObjectsinRequesterPaysBuckets.html">Downloading Objects in
+            Requester Pays Buckets</a> in the <em>Amazon S3 User Guide</em>.</p>
+               <p>Valid Values:<code class="code"> requester</code>
+               </p>
+            </dd>
+          
+            <dt><a id="AmazonS3-GetObject-request-header-SSECustomerAlgorithm"></a><span class="term">
+               <b>
+                  <a href="#API_GetObject_RequestSyntax">x-amz-server-side-encryption-customer-algorithm</a>
+               </b>
+            </span></dt>
+            <dd>
+               <p>Specifies the algorithm to use to when decrypting the object (for example,
+         AES256).</p>
+            </dd>
+          
+            <dt><a id="AmazonS3-GetObject-request-header-SSECustomerKey"></a><span class="term">
+               <b>
+                  <a href="#API_GetObject_RequestSyntax">x-amz-server-side-encryption-customer-key</a>
+               </b>
+            </span></dt>
+            <dd>
+               <p>Specifies the customer-provided encryption key for Amazon S3 used to encrypt the data. This
+         value is used to decrypt the object when recovering it and must match the one used when 
+         storing the data. The key must be appropriate for use with the algorithm specified in the
+            <code class="code">x-amz-server-side-encryption-customer-algorithm</code> header.</p>
+            </dd>
+          
+            <dt><a id="AmazonS3-GetObject-request-header-SSECustomerKeyMD5"></a><span class="term">
+               <b>
+                  <a href="#API_GetObject_RequestSyntax">x-amz-server-side-encryption-customer-key-MD5</a>
+               </b>
+            </span></dt>
+            <dd>
+               <p>Specifies the 128-bit MD5 digest of the encryption key according to RFC 1321. Amazon S3 uses
+         this header for a message integrity check to ensure that the encryption key was transmitted
+         without error.</p>
+            </dd>
+         </dl></div>
+    
+      <h2 id="API_GetObject_RequestBody">Request Body</h2>
+      <p>The request does not have a request body.</p>
+    
+      <h2 id="API_GetObject_ResponseSyntax">Response Syntax</h2>
+      <pre class="programlisting"><div class="code-btn-container"></div><code class="nohighlight">HTTP/1.1 200
+x-amz-delete-marker: <code class="replaceable">DeleteMarker</code>
+accept-ranges: <code class="replaceable">AcceptRanges</code>
+x-amz-expiration: <code class="replaceable">Expiration</code>
+x-amz-restore: <code class="replaceable">Restore</code>
+Last-Modified: <code class="replaceable">LastModified</code>
+Content-Length: <code class="replaceable">ContentLength</code>
+ETag: <code class="replaceable">ETag</code>
+x-amz-checksum-crc32: <code class="replaceable">ChecksumCRC32</code>
+x-amz-checksum-crc32c: <code class="replaceable">ChecksumCRC32C</code>
+x-amz-checksum-sha1: <code class="replaceable">ChecksumSHA1</code>
+x-amz-checksum-sha256: <code class="replaceable">ChecksumSHA256</code>
+x-amz-missing-meta: <code class="replaceable">MissingMeta</code>
+x-amz-version-id: <code class="replaceable">VersionId</code>
+Cache-Control: <code class="replaceable">CacheControl</code>
+Content-Disposition: <code class="replaceable">ContentDisposition</code>
+Content-Encoding: <code class="replaceable">ContentEncoding</code>
+Content-Language: <code class="replaceable">ContentLanguage</code>
+Content-Range: <code class="replaceable">ContentRange</code>
+Content-Type: <code class="replaceable">ContentType</code>
+Expires: <code class="replaceable">Expires</code>
+x-amz-website-redirect-location: <code class="replaceable">WebsiteRedirectLocation</code>
+x-amz-server-side-encryption: <code class="replaceable">ServerSideEncryption</code>
+x-amz-server-side-encryption-customer-algorithm: <code class="replaceable">SSECustomerAlgorithm</code>
+x-amz-server-side-encryption-customer-key-MD5: <code class="replaceable">SSECustomerKeyMD5</code>
+x-amz-server-side-encryption-aws-kms-key-id: <code class="replaceable">SSEKMSKeyId</code>
+x-amz-server-side-encryption-bucket-key-enabled: <code class="replaceable">BucketKeyEnabled</code>
+x-amz-storage-class: <code class="replaceable">StorageClass</code>
+x-amz-request-charged: <code class="replaceable">RequestCharged</code>
+x-amz-replication-status: <code class="replaceable">ReplicationStatus</code>
+x-amz-mp-parts-count: <code class="replaceable">PartsCount</code>
+x-amz-tagging-count: <code class="replaceable">TagCount</code>
+x-amz-object-lock-mode: <code class="replaceable">ObjectLockMode</code>
+x-amz-object-lock-retain-until-date: <code class="replaceable">ObjectLockRetainUntilDate</code>
+x-amz-object-lock-legal-hold: <code class="replaceable">ObjectLockLegalHoldStatus</code>
+
+<code class="replaceable">Body</code></code></pre>
+    
+      <h2 id="API_GetObject_ResponseElements">Response Elements</h2>
+      <p>If the action is successful, the service sends back an HTTP 200 response.</p>
+      <p>The response returns the following HTTP headers.</p>
+      <div class="variablelist">
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+      <dl>
+            <dt><a id="AmazonS3-GetObject-response-header-AcceptRanges"></a><span class="term">
+               <b>
+                  <a href="#API_GetObject_ResponseSyntax">accept-ranges</a>
+               </b>
+            </span></dt>
+            <dd>
+               <p>Indicates that a range of bytes was specified.</p>
+            </dd>
+          
+            <dt><a id="AmazonS3-GetObject-response-header-CacheControl"></a><span class="term">
+               <b>
+                  <a href="#API_GetObject_ResponseSyntax">Cache-Control</a>
+               </b>
+            </span></dt>
+            <dd>
+               <p>Specifies caching behavior along the request/reply chain.</p>
+            </dd>
+          
+            <dt><a id="AmazonS3-GetObject-response-header-ContentDisposition"></a><span class="term">
+               <b>
+                  <a href="#API_GetObject_ResponseSyntax">Content-Disposition</a>
+               </b>
+            </span></dt>
+            <dd>
+               <p>Specifies presentational information for the object.</p>
+            </dd>
+          
+            <dt><a id="AmazonS3-GetObject-response-header-ContentEncoding"></a><span class="term">
+               <b>
+                  <a href="#API_GetObject_ResponseSyntax">Content-Encoding</a>
+               </b>
+            </span></dt>
+            <dd>
+               <p>Specifies what content encodings have been applied to the object and thus what decoding
+         mechanisms must be applied to obtain the media-type referenced by the Content-Type header
+         field.</p>
+            </dd>
+          
+            <dt><a id="AmazonS3-GetObject-response-header-ContentLanguage"></a><span class="term">
+               <b>
+                  <a href="#API_GetObject_ResponseSyntax">Content-Language</a>
+               </b>
+            </span></dt>
+            <dd>
+               <p>The language the content is in.</p>
+            </dd>
+          
+            <dt><a id="AmazonS3-GetObject-response-header-ContentLength"></a><span class="term">
+               <b>
+                  <a href="#API_GetObject_ResponseSyntax">Content-Length</a>
+               </b>
+            </span></dt>
+            <dd>
+               <p>Size of the body in bytes.</p>
+            </dd>
+          
+            <dt><a id="AmazonS3-GetObject-response-header-ContentRange"></a><span class="term">
+               <b>
+                  <a href="#API_GetObject_ResponseSyntax">Content-Range</a>
+               </b>
+            </span></dt>
+            <dd>
+               <p>The portion of the object returned in the response.</p>
+            </dd>
+          
+            <dt><a id="AmazonS3-GetObject-response-header-ContentType"></a><span class="term">
+               <b>
+                  <a href="#API_GetObject_ResponseSyntax">Content-Type</a>
+               </b>
+            </span></dt>
+            <dd>
+               <p>A standard MIME type describing the format of the object data.</p>
+            </dd>
+          
+            <dt><a id="AmazonS3-GetObject-response-header-ETag"></a><span class="term">
+               <b>
+                  <a href="#API_GetObject_ResponseSyntax">ETag</a>
+               </b>
+            </span></dt>
+            <dd>
+               <p>An entity tag (ETag) is an opaque identifier assigned by a web server to a specific
+         version of a resource found at a URL.</p>
+            </dd>
+          
+            <dt><a id="AmazonS3-GetObject-response-header-Expires"></a><span class="term">
+               <b>
+                  <a href="#API_GetObject_ResponseSyntax">Expires</a>
+               </b>
+            </span></dt>
+            <dd>
+               <p>The date and time at which the object is no longer cacheable.</p>
+            </dd>
+          
+            <dt><a id="AmazonS3-GetObject-response-header-LastModified"></a><span class="term">
+               <b>
+                  <a href="#API_GetObject_ResponseSyntax">Last-Modified</a>
+               </b>
+            </span></dt>
+            <dd>
+               <p>Creation date of the object.</p>
+            </dd>
+          
+            <dt><a id="AmazonS3-GetObject-response-header-ChecksumCRC32"></a><span class="term">
+               <b>
+                  <a href="#API_GetObject_ResponseSyntax">x-amz-checksum-crc32</a>
+               </b>
+            </span></dt>
+            <dd>
+               <p>The base64-encoded, 32-bit CRC32 checksum of the object. This will only be present if it was uploaded
+    with the object. With multipart uploads, this may not be a checksum value of the object. For more information about how checksums are calculated
+    with multipart uploads, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html#large-object-checksums">
+    Checking object integrity</a> in the <em>Amazon S3 User Guide</em>.</p>
+            </dd>
+          
+            <dt><a id="AmazonS3-GetObject-response-header-ChecksumCRC32C"></a><span class="term">
+               <b>
+                  <a href="#API_GetObject_ResponseSyntax">x-amz-checksum-crc32c</a>
+               </b>
+            </span></dt>
+            <dd>
+               <p>The base64-encoded, 32-bit CRC32C checksum of the object. This will only be present if it was uploaded
+    with the object. With multipart uploads, this may not be a checksum value of the object. For more information about how checksums are calculated
+    with multipart uploads, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html#large-object-checksums">
+    Checking object integrity</a> in the <em>Amazon S3 User Guide</em>.</p>
+            </dd>
+          
+            <dt><a id="AmazonS3-GetObject-response-header-ChecksumSHA1"></a><span class="term">
+               <b>
+                  <a href="#API_GetObject_ResponseSyntax">x-amz-checksum-sha1</a>
+               </b>
+            </span></dt>
+            <dd>
+               <p>The base64-encoded, 160-bit SHA-1 digest of the object. This will only be present if it was uploaded
+    with the object. With multipart uploads, this may not be a checksum value of the object. For more information about how checksums are calculated
+    with multipart uploads, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html#large-object-checksums">
+    Checking object integrity</a> in the <em>Amazon S3 User Guide</em>.</p>
+            </dd>
+          
+            <dt><a id="AmazonS3-GetObject-response-header-ChecksumSHA256"></a><span class="term">
+               <b>
+                  <a href="#API_GetObject_ResponseSyntax">x-amz-checksum-sha256</a>
+               </b>
+            </span></dt>
+            <dd>
+               <p>The base64-encoded, 256-bit SHA-256 digest of the object. This will only be present if it was uploaded
+    with the object. With multipart uploads, this may not be a checksum value of the object. For more information about how checksums are calculated
+    with multipart uploads, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html#large-object-checksums">
+    Checking object integrity</a> in the <em>Amazon S3 User Guide</em>.</p>
+            </dd>
+          
+            <dt><a id="AmazonS3-GetObject-response-header-DeleteMarker"></a><span class="term">
+               <b>
+                  <a href="#API_GetObject_ResponseSyntax">x-amz-delete-marker</a>
+               </b>
+            </span></dt>
+            <dd>
+               <p>Specifies whether the object retrieved was (true) or was not (false) a Delete Marker. If
+         false, this response header does not appear in the response.</p>
+            </dd>
+          
+            <dt><a id="AmazonS3-GetObject-response-header-Expiration"></a><span class="term">
+               <b>
+                  <a href="#API_GetObject_ResponseSyntax">x-amz-expiration</a>
+               </b>
+            </span></dt>
+            <dd>
+               <p>If the object expiration is configured (see PUT Bucket lifecycle), the response includes
+         this header. It includes the <code class="code">expiry-date</code> and <code class="code">rule-id</code> key-value
+         pairs providing object expiration information. The value of the <code class="code">rule-id</code> is
+         URL-encoded.</p>
+            </dd>
+          
+            <dt><a id="AmazonS3-GetObject-response-header-MissingMeta"></a><span class="term">
+               <b>
+                  <a href="#API_GetObject_ResponseSyntax">x-amz-missing-meta</a>
+               </b>
+            </span></dt>
+            <dd>
+               <p>This is set to the number of metadata entries not returned in <code class="code">x-amz-meta</code>
+         headers. This can happen if you create metadata using an API like SOAP that supports more
+         flexible metadata than the REST API. For example, using SOAP, you can create metadata whose
+         values are not legal HTTP headers.</p>
+            </dd>
+          
+            <dt><a id="AmazonS3-GetObject-response-header-PartsCount"></a><span class="term">
+               <b>
+                  <a href="#API_GetObject_ResponseSyntax">x-amz-mp-parts-count</a>
+               </b>
+            </span></dt>
+            <dd>
+               <p>The count of parts this object has. This value is only returned if you specify <code class="code">partNumber</code>
+        in your request and the object was uploaded as a multipart upload.</p>
+            </dd>
+          
+            <dt><a id="AmazonS3-GetObject-response-header-ObjectLockLegalHoldStatus"></a><span class="term">
+               <b>
+                  <a href="#API_GetObject_ResponseSyntax">x-amz-object-lock-legal-hold</a>
+               </b>
+            </span></dt>
+            <dd>
+               <p>Indicates whether this object has an active legal hold. This field is only returned if
+         you have permission to view an object's legal hold status. </p>
+               <p>Valid Values:<code class="code"> ON | OFF</code>
+               </p>
+            </dd>
+          
+            <dt><a id="AmazonS3-GetObject-response-header-ObjectLockMode"></a><span class="term">
+               <b>
+                  <a href="#API_GetObject_ResponseSyntax">x-amz-object-lock-mode</a>
+               </b>
+            </span></dt>
+            <dd>
+               <p>The Object Lock mode currently in place for this object.</p>
+               <p>Valid Values:<code class="code"> GOVERNANCE | COMPLIANCE</code>
+               </p>
+            </dd>
+          
+            <dt><a id="AmazonS3-GetObject-response-header-ObjectLockRetainUntilDate"></a><span class="term">
+               <b>
+                  <a href="#API_GetObject_ResponseSyntax">x-amz-object-lock-retain-until-date</a>
+               </b>
+            </span></dt>
+            <dd>
+               <p>The date and time when this object's Object Lock will expire.</p>
+            </dd>
+          
+            <dt><a id="AmazonS3-GetObject-response-header-ReplicationStatus"></a><span class="term">
+               <b>
+                  <a href="#API_GetObject_ResponseSyntax">x-amz-replication-status</a>
+               </b>
+            </span></dt>
+            <dd>
+               <p>Amazon S3 can return this if your request involves a bucket that is either a source or
+         destination in a replication rule.</p>
+               <p>Valid Values:<code class="code"> COMPLETE | PENDING | FAILED | REPLICA</code>
+               </p>
+            </dd>
+          
+            <dt><a id="AmazonS3-GetObject-response-header-RequestCharged"></a><span class="term">
+               <b>
+                  <a href="#API_GetObject_ResponseSyntax">x-amz-request-charged</a>
+               </b>
+            </span></dt>
+            <dd>
+               <p>If present, indicates that the requester was successfully charged for the
+         request.</p>
+               <p>Valid Values:<code class="code"> requester</code>
+               </p>
+            </dd>
+          
+            <dt><a id="AmazonS3-GetObject-response-header-Restore"></a><span class="term">
+               <b>
+                  <a href="#API_GetObject_ResponseSyntax">x-amz-restore</a>
+               </b>
+            </span></dt>
+            <dd>
+               <p>Provides information about object restoration action and expiration time of the
+         restored object copy.</p>
+            </dd>
+          
+            <dt><a id="AmazonS3-GetObject-response-header-ServerSideEncryption"></a><span class="term">
+               <b>
+                  <a href="#API_GetObject_ResponseSyntax">x-amz-server-side-encryption</a>
+               </b>
+            </span></dt>
+            <dd>
+               <p>The server-side encryption algorithm used when storing this object in Amazon S3 (for example,
+         AES256, aws:kms).</p>
+               <p>Valid Values:<code class="code"> AES256 | aws:kms</code>
+               </p>
+            </dd>
+          
+            <dt><a id="AmazonS3-GetObject-response-header-SSEKMSKeyId"></a><span class="term">
+               <b>
+                  <a href="#API_GetObject_ResponseSyntax">x-amz-server-side-encryption-aws-kms-key-id</a>
+               </b>
+            </span></dt>
+            <dd>
+               <p>If present, specifies the ID of the AWS Key Management Service (AWS KMS) symmetric
+         customer managed key that was used for the object.</p>
+            </dd>
+          
+            <dt><a id="AmazonS3-GetObject-response-header-BucketKeyEnabled"></a><span class="term">
+               <b>
+                  <a href="#API_GetObject_ResponseSyntax">x-amz-server-side-encryption-bucket-key-enabled</a>
+               </b>
+            </span></dt>
+            <dd>
+               <p>Indicates whether the object uses an S3 Bucket Key for server-side encryption with AWS KMS (SSE-KMS).</p>
+            </dd>
+          
+            <dt><a id="AmazonS3-GetObject-response-header-SSECustomerAlgorithm"></a><span class="term">
+               <b>
+                  <a href="#API_GetObject_ResponseSyntax">x-amz-server-side-encryption-customer-algorithm</a>
+               </b>
+            </span></dt>
+            <dd>
+               <p>If server-side encryption with a customer-provided encryption key was requested, the
+         response will include this header confirming the encryption algorithm used.</p>
+            </dd>
+          
+            <dt><a id="AmazonS3-GetObject-response-header-SSECustomerKeyMD5"></a><span class="term">
+               <b>
+                  <a href="#API_GetObject_ResponseSyntax">x-amz-server-side-encryption-customer-key-MD5</a>
+               </b>
+            </span></dt>
+            <dd>
+               <p>If server-side encryption with a customer-provided encryption key was requested, the
+         response will include this header to provide round-trip message integrity verification of
+         the customer-provided encryption key.</p>
+            </dd>
+          
+            <dt><a id="AmazonS3-GetObject-response-header-StorageClass"></a><span class="term">
+               <b>
+                  <a href="#API_GetObject_ResponseSyntax">x-amz-storage-class</a>
+               </b>
+            </span></dt>
+            <dd>
+               <p>Provides storage class information of the object. Amazon S3 returns this header for all
+         objects except for S3 Standard storage class objects.</p>
+               <p>Valid Values:<code class="code"> STANDARD | REDUCED_REDUNDANCY | STANDARD_IA | ONEZONE_IA | INTELLIGENT_TIERING | GLACIER | DEEP_ARCHIVE | OUTPOSTS | GLACIER_IR</code>
+               </p>
+            </dd>
+          
+            <dt><a id="AmazonS3-GetObject-response-header-TagCount"></a><span class="term">
+               <b>
+                  <a href="#API_GetObject_ResponseSyntax">x-amz-tagging-count</a>
+               </b>
+            </span></dt>
+            <dd>
+               <p>The number of tags, if any, on the object.</p>
+            </dd>
+          
+            <dt><a id="AmazonS3-GetObject-response-header-VersionId"></a><span class="term">
+               <b>
+                  <a href="#API_GetObject_ResponseSyntax">x-amz-version-id</a>
+               </b>
+            </span></dt>
+            <dd>
+               <p>Version of the object.</p>
+            </dd>
+          
+            <dt><a id="AmazonS3-GetObject-response-header-WebsiteRedirectLocation"></a><span class="term">
+               <b>
+                  <a href="#API_GetObject_ResponseSyntax">x-amz-website-redirect-location</a>
+               </b>
+            </span></dt>
+            <dd>
+               <p>If the bucket is configured as a website, redirects requests for this object to another
+         object in the same bucket or to an external URL. Amazon S3 stores the value of this header in
+         the object metadata.</p>
+            </dd>
+         </dl></div>
+      <p>The following data is returned in binary format by the service.</p>
+       
+         <dt><a id="AmazonS3-GetObject-response-Body"></a><span class="term">
+            <b>
+               <a href="#API_GetObject_ResponseSyntax">Body</a>
+            </b>
+         </span></dt>
+         <dd></dd>
+       
+    
+      <h2 id="API_GetObject_Examples">Examples</h2>
+       
+         <h3 id="API_GetObject_Example_1">Sample Request</h3>
+         <p>The following request returns the object <code class="code">my-image.jpg</code>.</p>
+          
+            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="">
+            GET /my-image.jpg HTTP/1.1
+            Host: bucket.s3.&lt;Region&gt;.amazonaws.com
+            Date: Mon, 3 Oct 2016 22:32:00 GMT
+            Authorization: authorization string
+         </code></pre>
+          
+       
+       
+         <h3 id="API_GetObject_Example_2">Sample Response</h3>
+         <p>This example illustrates one usage of GetObject.</p>
+          
+            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="">
+            HTTP/1.1 200 OK
+            x-amz-id-2: eftixk72aD6Ap51TnqcoF8eFidJG9Z/2mkiDFu8yU9AS1ed4OpIszj7UDNEHGran
+            x-amz-request-id: 318BC8BC148832E5
+            Date: Mon, 3 Oct 2016 22:32:00 GMT
+            Last-Modified: Wed, 12 Oct 2009 17:50:00 GMT
+            ETag: "fba9dede5f27731c9771645a39863328"
+            Content-Length: 434234
+
+           [434234 bytes of object data]
+         </code></pre>
+          
+       
+       
+         <h3 id="API_GetObject_Example_3">Sample Response: Object with associated tags</h3>
+         <p>If the object had tags associated with it, Amazon S3 returns the
+                  <code class="code">x-amz-tagging-count</code> header with tag count.</p>
+          
+            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="">
+            HTTP/1.1 200 OK
+            x-amz-id-2: eftixk72aD6Ap51TnqcoF8eFidJG9Z/2mkiDFu8yU9AS1ed4OpIszj7UDNEHGran
+            x-amz-request-id: 318BC8BC148832E5
+            Date: Mon, 3 Oct 2016 22:32:00 GMT
+            Last-Modified: Wed, 12 Oct 2009 17:50:00 GMT
+            ETag: "fba9dede5f27731c9771645a39863328"
+            Content-Length: 434234
+            x-amz-tagging-count: 2
+
+           [434234 bytes of object data]
+         </code></pre>
+          
+       
+       
+         <h3 id="API_GetObject_Example_4">Sample Response: Object with an expiration</h3>
+         <p>If the object had expiration set using lifecycle configuration, you get the
+               following response with the <code class="code">x-amz-expiration</code> header.</p>
+          
+            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="">
+            HTTP/1.1 200 OK
+            x-amz-id-2: eftixk72aD6Ap51TnqcoF8eFidJG9Z/2mkiDFu8yU9AS1ed4OpIszj7UDNEHGran
+            x-amz-request-id: 318BC8BC148832E5
+            Date: Wed, 28 Oct 2009 22:32:00 GMT
+            Last-Modified: Wed, 12 Oct 2009 17:50:00 GMT
+            x-amz-expiration: expiry-date="Fri, 23 Dec 2012 00:00:00 GMT", rule-id="picture-deletion-rule"
+            ETag: "fba9dede5f27731c9771645a39863328"
+            Content-Length: 434234
+            Content-Type: text/plain
+
+            [434234 bytes of object data]
+         </code></pre>
+          
+       
+       
+         <h3 id="API_GetObject_Example_5">Sample Response if an object is archived in S3 Glacier</h3>
+         <p>If the object you are retrieving is stored in the S3 Glacier or
+               S3 Glacier Deep Archive storage classes you must first restore a copy using
+                  <a href="https://docs.aws.amazon.com/AmazonS3/latest/API/API_RestoreObject.html">RestoreObject</a>. Otherwise, this action returns an
+                  <code class="code">InvalidObjectStateError</code> error.</p>
+          
+            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="">
+            HTTP/1.1 403 Forbidden
+            x-amz-request-id: CD4BD8A1310A11B3
+            x-amz-id-2: m9RDbQU0+RRBTjOUN1ChQ1eqMUnr9dv8b+KP6I2gHfRJZSTSrMCoRP8RtPRzX9mb
+            Content-Type: application/xml
+            Date: Mon, 12 Nov 2012 23:53:21 GMT
+            Server: Amazon S3
+            Content-Length: 231
+
+            &lt;Error&gt;
+              &lt;Code&gt;InvalidObjectState&lt;/Code&gt;
+              &lt;Message&gt;The action is not valid for the object's storage class&lt;/Message&gt;
+              &lt;RequestId&gt;9FEFFF118E15B86F&lt;/RequestId&gt;
+              &lt;HostId&gt;WVQ5kzhiT+oiUfDCOiOYv8W4Tk9eNcxWi/MK+hTS/av34Xy4rBU3zsavf0aaaaa&lt;/HostId&gt;
+            &lt;/Error&gt;
+         </code></pre>
+          
+       
+       
+         <h3 id="API_GetObject_Example_6">Sample Response if an object is archived with S3 Intelligent-Tiering Archive tier</h3>
+         <p>If the object you are retrieving is stored in the S3 Intelligent-Tiering Archive or
+               S3 Intelligent-Tiering Deep Archive tiers, you must first restore a copy using <a href="https://docs.aws.amazon.com/AmazonS3/latest/API/API_RestoreObject.html">RestoreObject</a>. Otherwise, this action returns an
+                  <code class="code">InvalidObjectStateError</code> error. When restoring from Archive Access
+               or Deep Archive Access tiers the response will include <code class="code">StorageClass</code> and
+                  <code class="code">AccessTier</code> elements. Access tier valid values are
+                  <code class="code">ARCHIVE_ACCESS</code> and <code class="code">DEEP_ARCHIVE_ACCESS</code>. There is no
+               syntax change if there is an ongoing restore.</p>
+          
+            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="">
+            HTTP/1.1 403 Forbidden
+            x-amz-request-id: CB6AW8C4332B23B7
+            x-amz-id-2: n3RRfT90+PJDUhut3nhGW2ehfhfNU5f55c+a2ceCC36ab7c7fe3a71Q273b9Q45b1R5
+            Content-Type: application/xml
+            Date: Mon, 12 Nov 2012 23:53:21 GMT
+            Server: Amazon S3
+            Content-Length: 231
+
+            &lt;Error&gt;
+              &lt;Code&gt;InvalidObjectState&lt;/Code&gt;
+              &lt;Message&gt;The action is not valid for the object's access tier&lt;/Message&gt;
+              &lt;StorageClass&gt;INTELLIGENT_TIERING&lt;/StorageClass&gt;
+              &lt;AccessTier&gt;ARCHIVE_ACCESS&lt;/AccessTier&gt;
+              &lt;RequestId&gt;9FEFFF118E15B86F&lt;/RequestId&gt;
+              &lt;HostId&gt;WVQ5kzhiT+oiUfDCOiOYv8W4Tk9eNcxWi/MK+hTS/av34Xy4rBU3zsavf0aaaaa&lt;/HostId&gt;
+            &lt;/Error&gt;
+            </code></pre>
+          
+       
+       
+         <h3 id="API_GetObject_Example_7">Sample Response if the Latest Object Is a Delete Marker</h3>
+         <p>Notice that the delete marker returns a 404 Not Found error.</p>
+          
+            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="">
+            HTTP/1.1 404 Not Found
+            x-amz-request-id: 318BC8BC148832E5
+            x-amz-id-2: eftixk72aD6Ap51Tnqzj7UDNEHGran
+            x-amz-version-id: 3GL4kqtJlcpXroDTDm3vjVBH40Nr8X8g
+            x-amz-delete-marker:  true
+            Date: Wed, 28 Oct 2009 22:32:00 GMT
+            Content-Type: text/plain
+            Connection: close
+            Server: AmazonS3
+         </code></pre>
+          
+       
+       
+         <h3 id="API_GetObject_Example_8">Sample Request: Getting a specified version of an object</h3>
+         <p>The following request returns the specified version of an object.</p>
+          
+            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="">
+            GET /myObject?versionId=3/L4kqtJlcpXroDTDmpUMLUo HTTP/1.1
+            Host: bucket.s3.&lt;Region&gt;.amazonaws.com
+            Date: Wed, 28 Oct 2009 22:32:00 GMT
+            Authorization: authorization string
+         </code></pre>
+          
+       
+       
+         <h3 id="API_GetObject_Example_9">Sample Response: To a versioned object GET request</h3>
+         <p>This example illustrates one usage of GetObject.</p>
+          
+            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="">
+            HTTP/1.1 200 OK
+            x-amz-id-2: eftixk72aD6Ap54OpIszj7UDNEHGran
+            x-amz-request-id: 318BC8BC148832E5
+            Date: Wed, 28 Oct 2009 22:32:00 GMT
+            Last-Modified: Sun, 1 Jan 2006 12:00:00 GMT
+            x-amz-version-id: 3/L4kqtJlcpXroDTDmJ+rmSpXd3QBpUMLUo
+            ETag: "fba9dede5f27731c9771645a39863328"
+            Content-Length: 434234
+            Content-Type: text/plain
+            Connection: close
+            Server: AmazonS3
+            [434234 bytes of object data]
+         </code></pre>
+          
+       
+       
+         <h3 id="API_GetObject_Example_10">Sample Request: Parameters altering response header values</h3>
+         <p>The following request specifies all the query string parameters in a GET request
+               overriding the response header values.</p>
+          
+            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="">
+            GET /Junk3.txt?response-cache-control=No-cache&amp;response-content-disposition=attachment%3B%20filename%3Dtesting.txt&amp;response-content-encoding=x-gzip&amp;response-content-language=mi%2C%20en&amp;response-expires=Thu%2C%2001%20Dec%201994%2016:00:00%20GMT HTTP/1.1
+            x-amz-date: Sun, 19 Dec 2010 01:53:44 GMT
+            Accept: */*
+            Authorization: AWS AKIAIOSFODNN7EXAMPLE:aaStE6nKnw8ihhiIdReoXYlMamW=
+         </code></pre>
+          
+       
+       
+         <h3 id="API_GetObject_Example_11">Sample Response: With overridden response header values</h3>
+         <p>The following request specifies all the query string parameters in a GET request
+               overriding the response header values.</p>
+          
+            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="">
+            HTTP/1.1 200 OK
+            x-amz-id-2: SIidWAK3hK+Il3/Qqiu1ZKEuegzLAAspwsgwnwygb9GgFseeFHL5CII8NXSrfWW2
+            x-amz-request-id: 881B1CBD9DF17WA1
+            Date: Sun, 19 Dec 2010 01:54:01 GMT
+            x-amz-meta-param1: value 1
+            x-amz-meta-param2: value 2
+            Cache-Control: No-cache
+            Content-Language: mi, en
+            Expires: Thu, 01 Dec 1994 16:00:00 GMT
+            Content-Disposition: attachment; filename=testing.txt
+            Content-Encoding: x-gzip
+            Last-Modified: Fri, 17 Dec 2010 18:10:41 GMT
+            ETag: "0332bee1a7bf845f176c5c0d1ae7cf07"
+            Accept-Ranges: bytes
+            Content-Type: text/plain
+            Content-Length: 22
+            Server: AmazonS3
+
+            [object data not shown]
+         </code></pre>
+          
+       
+       
+         <h3 id="API_GetObject_Example_12">Sample Request: Range header</h3>
+         <p>The following request specifies the HTTP Range header to retrieve the first 10
+               bytes of an object. For more information about the HTTP Range header, see <a href="https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.35" rel="noopener noreferrer" target="_blank"><span>https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.35</span><awsui-icon class="awsdocs-link-icon" name="external"></awsui-icon></a>.</p>
+         <div class="awsdocs-note"><div class="awsdocs-note-title"><awsui-icon name="status-info" variant="link"></awsui-icon><span>Note</span></div><div class="awsdocs-note-text"><p>Amazon S3 doesn't support retrieving multiple ranges of data per <code class="code">GET</code>
+                  request.</p></div></div>
+          
+            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="">
+            GET /example-object HTTP/1.1
+            Host: example-bucket.s3.&lt;Region&gt;.amazonaws.com
+            x-amz-date: Fri, 28 Jan 2011 21:32:02 GMT
+            Range: bytes=0-9
+            Authorization: AWS AKIAIOSFODNN7EXAMPLE:Yxg83MZaEgh3OZ3l0rLo5RTX11o=
+            Sample Response with Specified Range of the Object Bytes
+         </code></pre>
+          
+       
+       
+         <h3 id="API_GetObject_Example_13">Sample Response</h3>
+         <p>In the following sample response, note that the header values are set to the
+               values specified in the true request.</p>
+          
+            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="">
+            HTTP/1.1 206 Partial Content
+            x-amz-id-2: MzRISOwyjmnupCzjI1WC06l5TTAzm7/JypPGXLh0OVFGcJaaO3KW/hRAqKOpIEEp
+            x-amz-request-id: 47622117804B3E11
+            Date: Fri, 28 Jan 2011 21:32:09 GMT
+            x-amz-meta-title: the title
+            Last-Modified: Fri, 28 Jan 2011 20:10:32 GMT
+            ETag: "b2419b1e3fd45d596ee22bdf62aaaa2f"
+            Accept-Ranges: bytes
+            Content-Range: bytes 0-9/443
+            Content-Type: text/plain
+            Content-Length: 10
+            Server: AmazonS3
+
+           [10 bytes of object data]
+         </code></pre>
+          
+       
+       
+         <h3 id="API_GetObject_Example_14">Sample: Get an object stored using server-side encryption with customer-provided encryption keys</h3>
+         <p>If an object is stored in Amazon S3 using server-side encryption with customer-provided
+               encryption keys, Amazon S3 needs encryption information so that it can decrypt the object
+               before sending it to you in response to a GET request. You provide the encryption
+               information in your GET request using the relevant headers, as shown in the following
+               example request.</p>
+          
+            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="">
+            GET /example-object HTTP/1.1
+            Host: example-bucket.s3.&lt;Region&gt;.amazonaws.com	
+
+            Accept: */*
+            Authorization:authorization string   
+            Date: Wed, 28 May 2014 19:24:44 +0000   
+            x-amz-server-side-encryption-customer-key:g0lCfA3Dv40jZz5SQJ1ZukLRFqtI5WorC/8SEKEXAMPLE   
+            x-amz-server-side-encryption-customer-key-MD5:ZjQrne1X/iTcskbY2m3example  
+            x-amz-server-side-encryption-customer-algorithm:AES256
+         </code></pre>
+          
+       
+       
+         <h3 id="API_GetObject_Example_15">Sample Response</h3>
+         <p>The following sample response shows some of the response headers Amazon S3 returns.
+               Note that it includes the encryption information in the response.</p>
+          
+            <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"><awsui-icon name="copy"></awsui-icon></div></div><code class="">
+            HTTP/1.1 200 OK
+            x-amz-id-2: ka5jRm8X3N12ZiY29Z989zg2tNSJPMcK+to7jNjxImXBbyChqc6tLAv+sau7Vjzh
+            x-amz-request-id: 195157E3E073D3F9   
+            Date: Wed, 28 May 2014 19:24:45 GMT   
+            Last-Modified: Wed, 28 May 2014 19:21:01 GMT   
+            ETag: "c12022c9a3c6d3a28d29d90933a2b096"   
+            x-amz-server-side-encryption-customer-algorithm: AES256   
+            x-amz-server-side-encryption-customer-key-MD5: ZjQrne1X/iTcskbY2m3example    
+         </code></pre>
+          
+       
+    
+      <h2 id="API_GetObject_SeeAlso">See Also</h2>
+      <p>For more information about using this API in one of the language-specific AWS SDKs, see the following:</p>
+      <div class="itemizedlist">
+          
+          
+          
+          
+          
+          
+          
+          
+          
+      <ul class="itemizedlist" type="disc"><li class="listitem">
+            <p>
+               <a href="https://docs.aws.amazon.com/goto/aws-cli/s3-2006-03-01/GetObject">AWS Command Line Interface</a>
+            </p>
+         </li><li class="listitem">
+            <p>
+               <a href="https://docs.aws.amazon.com/goto/DotNetSDKV3/s3-2006-03-01/GetObject">AWS SDK for .NET</a>
+            </p>
+         </li><li class="listitem">
+            <p>
+               <a href="https://docs.aws.amazon.com/goto/SdkForCpp/s3-2006-03-01/GetObject">AWS SDK for C++</a>
+            </p>
+         </li><li class="listitem">
+            <p>
+               <a href="https://docs.aws.amazon.com/goto/SdkForGoV1/s3-2006-03-01/GetObject">AWS SDK for Go</a>
+            </p>
+         </li><li class="listitem">
+            <p>
+               <a href="https://docs.aws.amazon.com/goto/SdkForJavaV2/s3-2006-03-01/GetObject">AWS SDK for Java V2</a>
+            </p>
+         </li><li class="listitem">
+            <p>
+               <a href="https://docs.aws.amazon.com/goto/AWSJavaScriptSDK/s3-2006-03-01/GetObject">AWS SDK for JavaScript</a>
+            </p>
+         </li><li class="listitem">
+            <p>
+               <a href="https://docs.aws.amazon.com/goto/SdkForPHPV3/s3-2006-03-01/GetObject">AWS SDK for PHP V3</a>
+            </p>
+         </li><li class="listitem">
+            <p>
+               <a href="https://docs.aws.amazon.com/goto/boto3/s3-2006-03-01/GetObject">AWS SDK for Python</a>
+            </p>
+         </li><li class="listitem">
+            <p>
+               <a href="https://docs.aws.amazon.com/goto/SdkForRubyV3/s3-2006-03-01/GetObject">AWS SDK for Ruby V3</a>
+            </p>
+         </li></ul></div>
+   <awsdocs-copyright class="copyright-print"></awsdocs-copyright><awsdocs-thumb-feedback right-edge="{{$ctrl.thumbFeedbackRightEdge}}"></awsdocs-thumb-feedback></div><noscript><div><div><div><div id="js_error_message"><p><img src="https://d1ge0kk1l5kms0.cloudfront.net/images/G/01/webservices/console/warning.png" alt="Warning" /> <strong>Javascript is disabled or is unavailable in your browser.</strong></p><p>To use the Amazon Web Services Documentation, Javascript must be enabled. Please refer to your browser's Help pages for instructions.</p></div></div></div></div></noscript><div id="main-col-footer" class="awsui-util-font-size-0"><div id="doc-conventions"><a target="_top" href="/general/latest/gr/docconventions.html">Document Conventions</a></div><div class="prev-next"><div id="previous" class="prev-link" accesskey="p" href="./API_GetBucketWebsite.html">GetBucketWebsite</div><div id="next" class="next-link" accesskey="n" href="./API_GetObjectAcl.html">GetObjectAcl</div></div></div><awsdocs-page-utilities></awsdocs-page-utilities></div><div id="quick-feedback-yes" style="display: none;"><div class="title">Did this page help you? - Yes</div><div class="content"><p>Thanks for letting us know we're doing a good job!</p><p>If you've got a moment, please tell us what we did right so we can do more of it.</p><p><awsui-button id="fblink" target="_blank" text="Feedback" click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=S3&amp;topic_url=https://docs.aws.amazon.com/en_us/AmazonS3/latest/API/API_GetObject.html"></awsui-button></p></div></div><div id="quick-feedback-no" style="display: none;"><div class="title">Did this page help you? - No</div><div class="content"><p>Thanks for letting us know this page needs work. We're sorry we let you down.</p><p>If you've got a moment, please tell us how we can make the documentation better.</p><p><awsui-button id="fblink" target="_blank" text="Feedback" click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=S3&amp;topic_url=https://docs.aws.amazon.com/en_us/AmazonS3/latest/API/API_GetObject.html"></awsui-button></p></div></div></div></body></div></awsdocs-view><div class="page-loading-indicator" id="page-loading-indicator"><awsui-spinner size="large"></awsui-spinner></div></div><div id="tools-panel" dom-region="tools"><awsdocs-tools-panel id="awsdocs-tools-panel"></awsdocs-tools-panel></div></awsui-app-layout><awsdocs-cookie-banner class="doc-cookie-banner"></awsdocs-cookie-banner></div></body></html>

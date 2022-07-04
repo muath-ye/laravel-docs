@@ -1,0 +1,1656 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Authentication - Laravel - The PHP Framework For Web Artisans</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+        <link rel="canonical" href="authentication.html">
+    
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="../../img/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../../img/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../../img/favicon/favicon-16x16.png">
+    <link rel="manifest" href="../../img/favicon/site.webmanifest">
+    <link rel="mask-icon" href="../../img/favicon/safari-pinned-tab.svg" color="#ff2d20">
+    <link rel="shortcut icon" href="../../img/favicon/favicon.ico">
+    <meta name="msapplication-TileColor" content="#ff2d20">
+    <meta name="msapplication-config" content="/img/favicon/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
+    
+    <link rel="stylesheet" href="../../assets/css/ins2wgm.css">
+    <link rel="stylesheet" type="text/css" href="../../css/app.css?id=e59564080d0a323bcdb7">
+
+    <script>
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+        if (localStorage.theme === 'system') {
+            if (e.matches) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+        }
+    });
+
+    function updateTheme() {
+        if (!('theme' in localStorage)) {
+            localStorage.theme = 'system';
+        }
+
+        switch (localStorage.theme) {
+            case 'system':
+                if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                    document.documentElement.classList.add('dark');
+                } else {
+                    document.documentElement.classList.remove('dark');
+                }
+                document.documentElement.setAttribute('color-theme', 'system');
+                break;
+
+            case 'dark':
+                document.documentElement.classList.add('dark');
+                document.documentElement.setAttribute('color-theme', 'dark');
+                break;
+
+            case 'light':
+                document.documentElement.classList.remove('dark');
+                document.documentElement.setAttribute('color-theme', 'light');
+                break;
+        }
+    }
+
+    updateTheme();
+</script>
+</head>
+<body x-data="{
+        navIsOpen: false,
+        searchIsOpen: false,
+        search: '',
+    }" class="language-php h-full w-full font-sans text-gray-900 antialiased">
+
+     <a id="skip-to-content-link" href="#main-content" class="absolute bg-gray-100 px-4 py-2 top-3 left-3 text-gray-700 shadow-xl">
+    Skip to content
+</a>
+ 
+    <div class="relative overflow-auto dark:bg-dark-700" id="docsScreen">
+        <div class="relative lg:flex lg:items-start">
+            <aside x-init="init()" x-data="{
+                    navIsOpen: false,
+                    init() {
+                        this.$watch('navIsOpen', (val) => {
+                            if (val) {
+                                document.body.classList.add('overflow-hidden');
+                            } else {
+                                document.body.classList.remove('overflow-hidden');
+                            }
+                        });
+                    }
+                }" class="hidden fixed top-0 bottom-0 left-0 z-20 h-full w-16 flex flex-col bg-gradient-to-b from-gray-100 to-white transition-all duration-300 overflow-hidden lg:sticky lg:w-80 lg:flex-shrink-0 lg:flex lg:justify-end lg:items-end 2xl:max-w-lg 2xl:w-full dark:from-dark-800 dark:to-dark-700" :class="{ 'w-64': navIsOpen }" @click.away="navIsOpen = false" @keydown.window.escape="navIsOpen = false">
+                <div class="relative min-h-0 flex-1 flex flex-col xl:w-80">
+                    <a href="../../index.htm" class="flex items-center py-8 px-4 lg:px-8 xl:px-16">
+                        <img class="w-8 h-8 flex-shrink-0 transition-all duration-300 lg:w-12 lg:h-12" :class="{ 'w-12 h-12': navIsOpen }" src="../../img/logomark.min.svg" alt="Laravel" width="50" height="52">
+                        <img x-show="navIsOpen" x-cloak="" class="ml-4 transition-all duration-300 lg:hidden" x-transition:enter="duration-250 ease-out" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" x-transition:leave="duration-250 ease-in" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0" src="../../img/logotype.min.svg" alt="Laravel" width="114" height="29">
+                        <img src="../../img/logotype.min.svg" alt="Laravel" class="hidden ml-4 lg:block" width="114" height="29">
+                    </a>
+                    <div class="overflow-y-auto overflow-x-hidden px-4 lg:overflow-hidden lg:px-8 xl:px-16">
+                        <nav x-show="navIsOpen" x-cloak="" class="mt-4 lg:hidden">
+                            <div class="docs_sidebar">
+                                <ul>
+<li>
+<h2>Prologue</h2>
+<ul>
+<li><a href="releases.html">Release Notes</a></li>
+<li><a href="upgrade.html">Upgrade Guide</a></li>
+<li><a href="contributions.html">Contribution Guide</a></li>
+</ul>
+</li>
+<li>
+<h2>Getting Started</h2>
+<ul>
+<li><a href="installation.html">Installation</a></li>
+<li><a href="configuration.html">Configuration</a></li>
+<li><a href="structure.html">Directory Structure</a></li>
+<li><a href="starter-kits.html">Starter Kits</a></li>
+<li><a href="deployment.html">Deployment</a></li>
+</ul>
+</li>
+<li>
+<h2>Architecture Concepts</h2>
+<ul>
+<li><a href="lifecycle.html">Request Lifecycle</a></li>
+<li><a href="container.html">Service Container</a></li>
+<li><a href="providers.html">Service Providers</a></li>
+<li><a href="facades.html">Facades</a></li>
+</ul>
+</li>
+<li>
+<h2>The Basics</h2>
+<ul>
+<li><a href="routing.html">Routing</a></li>
+<li><a href="middleware.html">Middleware</a></li>
+<li><a href="csrf.html">CSRF Protection</a></li>
+<li><a href="controllers.html">Controllers</a></li>
+<li><a href="requests.html">Requests</a></li>
+<li><a href="responses.html">Responses</a></li>
+<li><a href="views.html">Views</a></li>
+<li><a href="blade.html">Blade Templates</a></li>
+<li><a href="urls.html">URL Generation</a></li>
+<li><a href="session.html">Session</a></li>
+<li><a href="validation.html">Validation</a></li>
+<li><a href="errors.html">Error Handling</a></li>
+<li><a href="logging.html">Logging</a></li>
+</ul>
+</li>
+<li>
+<h2>Digging Deeper</h2>
+<ul>
+<li><a href="artisan.html">Artisan Console</a></li>
+<li><a href="broadcasting.html">Broadcasting</a></li>
+<li><a href="cache.html">Cache</a></li>
+<li><a href="collections.html">Collections</a></li>
+<li><a href="mix.html">Compiling Assets</a></li>
+<li><a href="contracts.html">Contracts</a></li>
+<li><a href="events.html">Events</a></li>
+<li><a href="filesystem.html">File Storage</a></li>
+<li><a href="helpers.html">Helpers</a></li>
+<li><a href="http-client.html">HTTP Client</a></li>
+<li><a href="localization.html">Localization</a></li>
+<li><a href="mail.html">Mail</a></li>
+<li><a href="notifications.html">Notifications</a></li>
+<li><a href="packages.html">Package Development</a></li>
+<li><a href="queues.html">Queues</a></li>
+<li><a href="rate-limiting.html">Rate Limiting</a></li>
+<li><a href="scheduling.html">Task Scheduling</a></li>
+</ul>
+</li>
+<li>
+<h2>Security</h2>
+<ul>
+<li><a href="authentication.html">Authentication</a></li>
+<li><a href="authorization.html">Authorization</a></li>
+<li><a href="verification.html">Email Verification</a></li>
+<li><a href="encryption.html">Encryption</a></li>
+<li><a href="hashing.html">Hashing</a></li>
+<li><a href="passwords.html">Password Reset</a></li>
+</ul>
+</li>
+<li>
+<h2>Database</h2>
+<ul>
+<li><a href="database.html">Getting Started</a></li>
+<li><a href="queries.html">Query Builder</a></li>
+<li><a href="pagination.html">Pagination</a></li>
+<li><a href="migrations.html">Migrations</a></li>
+<li><a href="seeding.html">Seeding</a></li>
+<li><a href="redis.html">Redis</a></li>
+</ul>
+</li>
+<li>
+<h2>Eloquent ORM</h2>
+<ul>
+<li><a href="eloquent.html">Getting Started</a></li>
+<li><a href="eloquent-relationships.html">Relationships</a></li>
+<li><a href="eloquent-collections.html">Collections</a></li>
+<li><a href="eloquent-mutators.html">Mutators / Casts</a></li>
+<li><a href="eloquent-resources.html">API Resources</a></li>
+<li><a href="eloquent-serialization.html">Serialization</a></li>
+</ul>
+</li>
+<li>
+<h2>Testing</h2>
+<ul>
+<li><a href="testing.html">Getting Started</a></li>
+<li><a href="http-tests.html">HTTP Tests</a></li>
+<li><a href="console-tests.html">Console Tests</a></li>
+<li><a href="dusk.html">Browser Tests</a></li>
+<li><a href="database-testing.html">Database</a></li>
+<li><a href="mocking.html">Mocking</a></li>
+</ul>
+</li>
+<li>
+<h2>Packages</h2>
+<ul>
+<li><a href="starter-kits.html#laravel-breeze">Breeze</a></li>
+<li><a href="billing.html">Cashier (Stripe)</a></li>
+<li><a href="cashier-paddle.html">Cashier (Paddle)</a></li>
+<li><a href="dusk.html">Dusk</a></li>
+<li><a href="envoy.html">Envoy</a></li>
+<li><a href="fortify.html">Fortify</a></li>
+<li><a href="homestead.html">Homestead</a></li>
+<li><a href="horizon.html">Horizon</a></li>
+<li><a href="../../index-6.htm">Jetstream</a></li>
+<li><a href="octane.html">Octane</a></li>
+<li><a href="passport.html">Passport</a></li>
+<li><a href="sail.html">Sail</a></li>
+<li><a href="sanctum.html">Sanctum</a></li>
+<li><a href="scout.html">Scout</a></li>
+<li><a href="socialite.html">Socialite</a></li>
+<li><a href="telescope.html">Telescope</a></li>
+<li><a href="valet.html">Valet</a></li>
+</ul>
+</li>
+<li><a href="/api/8.x">API Documentation</a></li>
+</ul>
+                            </div>
+                        </nav>
+                        <nav id="indexed-nav" class="hidden lg:block lg:mt-4">
+                            <div class="docs_sidebar">
+                                <ul>
+<li>
+<h2>Prologue</h2>
+<ul>
+<li><a href="releases.html">Release Notes</a></li>
+<li><a href="upgrade.html">Upgrade Guide</a></li>
+<li><a href="contributions.html">Contribution Guide</a></li>
+</ul>
+</li>
+<li>
+<h2>Getting Started</h2>
+<ul>
+<li><a href="installation.html">Installation</a></li>
+<li><a href="configuration.html">Configuration</a></li>
+<li><a href="structure.html">Directory Structure</a></li>
+<li><a href="starter-kits.html">Starter Kits</a></li>
+<li><a href="deployment.html">Deployment</a></li>
+</ul>
+</li>
+<li>
+<h2>Architecture Concepts</h2>
+<ul>
+<li><a href="lifecycle.html">Request Lifecycle</a></li>
+<li><a href="container.html">Service Container</a></li>
+<li><a href="providers.html">Service Providers</a></li>
+<li><a href="facades.html">Facades</a></li>
+</ul>
+</li>
+<li>
+<h2>The Basics</h2>
+<ul>
+<li><a href="routing.html">Routing</a></li>
+<li><a href="middleware.html">Middleware</a></li>
+<li><a href="csrf.html">CSRF Protection</a></li>
+<li><a href="controllers.html">Controllers</a></li>
+<li><a href="requests.html">Requests</a></li>
+<li><a href="responses.html">Responses</a></li>
+<li><a href="views.html">Views</a></li>
+<li><a href="blade.html">Blade Templates</a></li>
+<li><a href="urls.html">URL Generation</a></li>
+<li><a href="session.html">Session</a></li>
+<li><a href="validation.html">Validation</a></li>
+<li><a href="errors.html">Error Handling</a></li>
+<li><a href="logging.html">Logging</a></li>
+</ul>
+</li>
+<li>
+<h2>Digging Deeper</h2>
+<ul>
+<li><a href="artisan.html">Artisan Console</a></li>
+<li><a href="broadcasting.html">Broadcasting</a></li>
+<li><a href="cache.html">Cache</a></li>
+<li><a href="collections.html">Collections</a></li>
+<li><a href="mix.html">Compiling Assets</a></li>
+<li><a href="contracts.html">Contracts</a></li>
+<li><a href="events.html">Events</a></li>
+<li><a href="filesystem.html">File Storage</a></li>
+<li><a href="helpers.html">Helpers</a></li>
+<li><a href="http-client.html">HTTP Client</a></li>
+<li><a href="localization.html">Localization</a></li>
+<li><a href="mail.html">Mail</a></li>
+<li><a href="notifications.html">Notifications</a></li>
+<li><a href="packages.html">Package Development</a></li>
+<li><a href="queues.html">Queues</a></li>
+<li><a href="rate-limiting.html">Rate Limiting</a></li>
+<li><a href="scheduling.html">Task Scheduling</a></li>
+</ul>
+</li>
+<li>
+<h2>Security</h2>
+<ul>
+<li><a href="authentication.html">Authentication</a></li>
+<li><a href="authorization.html">Authorization</a></li>
+<li><a href="verification.html">Email Verification</a></li>
+<li><a href="encryption.html">Encryption</a></li>
+<li><a href="hashing.html">Hashing</a></li>
+<li><a href="passwords.html">Password Reset</a></li>
+</ul>
+</li>
+<li>
+<h2>Database</h2>
+<ul>
+<li><a href="database.html">Getting Started</a></li>
+<li><a href="queries.html">Query Builder</a></li>
+<li><a href="pagination.html">Pagination</a></li>
+<li><a href="migrations.html">Migrations</a></li>
+<li><a href="seeding.html">Seeding</a></li>
+<li><a href="redis.html">Redis</a></li>
+</ul>
+</li>
+<li>
+<h2>Eloquent ORM</h2>
+<ul>
+<li><a href="eloquent.html">Getting Started</a></li>
+<li><a href="eloquent-relationships.html">Relationships</a></li>
+<li><a href="eloquent-collections.html">Collections</a></li>
+<li><a href="eloquent-mutators.html">Mutators / Casts</a></li>
+<li><a href="eloquent-resources.html">API Resources</a></li>
+<li><a href="eloquent-serialization.html">Serialization</a></li>
+</ul>
+</li>
+<li>
+<h2>Testing</h2>
+<ul>
+<li><a href="testing.html">Getting Started</a></li>
+<li><a href="http-tests.html">HTTP Tests</a></li>
+<li><a href="console-tests.html">Console Tests</a></li>
+<li><a href="dusk.html">Browser Tests</a></li>
+<li><a href="database-testing.html">Database</a></li>
+<li><a href="mocking.html">Mocking</a></li>
+</ul>
+</li>
+<li>
+<h2>Packages</h2>
+<ul>
+<li><a href="starter-kits.html#laravel-breeze">Breeze</a></li>
+<li><a href="billing.html">Cashier (Stripe)</a></li>
+<li><a href="cashier-paddle.html">Cashier (Paddle)</a></li>
+<li><a href="dusk.html">Dusk</a></li>
+<li><a href="envoy.html">Envoy</a></li>
+<li><a href="fortify.html">Fortify</a></li>
+<li><a href="homestead.html">Homestead</a></li>
+<li><a href="horizon.html">Horizon</a></li>
+<li><a href="../../index-6.htm">Jetstream</a></li>
+<li><a href="octane.html">Octane</a></li>
+<li><a href="passport.html">Passport</a></li>
+<li><a href="sail.html">Sail</a></li>
+<li><a href="sanctum.html">Sanctum</a></li>
+<li><a href="scout.html">Scout</a></li>
+<li><a href="socialite.html">Socialite</a></li>
+<li><a href="telescope.html">Telescope</a></li>
+<li><a href="valet.html">Valet</a></li>
+</ul>
+</li>
+<li><a href="/api/8.x">API Documentation</a></li>
+</ul>
+                            </div>
+                        </nav>
+
+                        
+                        
+                        
+                                            </div>
+                    <div class="sticky bottom-0 flex-1 flex flex-col justify-end lg:hidden">
+                        <div class="py-4 px-4 bg-white">
+                            <button class="relative ml-1 w-6 h-6 text-red-600 lg:hidden focus:outline-none focus:shadow-outline" aria-label="Menu" @click.prevent="navIsOpen = !navIsOpen">
+                                <svg x-show.transition.opacity="! navIsOpen" class="absolute inset-0 w-6 h-6" viewbox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+                                <svg x-show.transition.opacity="navIsOpen" x-cloak="" class="absolute inset-0 w-6 h-6" viewbox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+
+            <header class="lg:hidden" @keydown.window.escape="navIsOpen = false" @click.away="navIsOpen = false">
+                <div class="relative mx-auto w-full py-10 bg-white transition duration-200 dark:bg-dark-700">
+                    <div class="mx-auto px-8 sm:px-16 flex items-center justify-between">
+                        <a href="../../index.htm" class="flex items-center">
+                            <img class="" src="../../img/logomark.min.svg" alt="Laravel">
+                            <img class="hidden ml-5 sm:block" src="../../img/logotype.min.svg" alt="Laravel">
+                        </a>
+                        <div class="flex-1 flex items-center justify-end">
+                            <button id="header__sun" onclick="toSystemMode()" title="Switch to system theme" class="relative w-10 h-10 focus:outline-none focus:shadow-outline text-gray-500">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-sun" width="24" height="24" viewbox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                    <circle cx="12" cy="12" r="4"></circle>
+                                    <path d="M3 12h1m8 -9v1m8 8h1m-9 8v1m-6.4 -15.4l.7 .7m12.1 -.7l-.7 .7m0 11.4l.7 .7m-12.1 -.7l-.7 .7"></path>
+                                 </svg>
+                            </button>
+                            <button id="header__moon" onclick="toLightMode()" title="Switch to light mode" class="relative w-10 h-10 focus:outline-none focus:shadow-outline text-gray-500">
+                                <svg style="width:24px;height:24px" viewbox="0 0 24 24">
+                                    <path fill="currentColor" d="M17.75,4.09L15.22,6.03L16.13,9.09L13.5,7.28L10.87,9.09L11.78,6.03L9.25,4.09L12.44,4L13.5,1L14.56,4L17.75,4.09M21.25,11L19.61,12.25L20.2,14.23L18.5,13.06L16.8,14.23L17.39,12.25L15.75,11L17.81,10.95L18.5,9L19.19,10.95L21.25,11M18.97,15.95C19.8,15.87 20.69,17.05 20.16,17.8C19.84,18.25 19.5,18.67 19.08,19.07C15.17,23 8.84,23 4.94,19.07C1.03,15.17 1.03,8.83 4.94,4.93C5.34,4.53 5.76,4.17 6.21,3.85C6.96,3.32 8.14,4.21 8.06,5.04C7.79,7.9 8.75,10.87 10.95,13.06C13.14,15.26 16.1,16.22 18.97,15.95M17.33,17.97C14.5,17.81 11.7,16.64 9.53,14.5C7.36,12.31 6.2,9.5 6.04,6.68C3.23,9.82 3.34,14.64 6.35,17.66C9.37,20.67 14.19,20.78 17.33,17.97Z"></path>
+                                </svg>
+                            </button>
+                            <button id="header__indeterminate" onclick="toDarkMode()" title="Switch to dark mode" class="relative w-10 h-10 focus:outline-none focus:shadow-outline text-gray-500">
+                                <svg style="width:24px;height:24px" viewbox="0 0 24 24">
+                                    <path fill="currentColor" d="M12 2A10 10 0 0 0 2 12A10 10 0 0 0 12 22A10 10 0 0 0 22 12A10 10 0 0 0 12 2M12 4A8 8 0 0 1 20 12A8 8 0 0 1 12 20V4Z"></path>
+                                </svg>
+                            </button>
+                            <button class="ml-2 relative w-10 h-10 p-2 text-red-600 lg:hidden focus:outline-none focus:shadow-outline" aria-label="Menu" @click.prevent="navIsOpen = !navIsOpen">
+                                <svg x-show.transition.opacity="! navIsOpen" class="absolute inset-0 mt-2 ml-2 w-6 h-6" viewbox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+                                <svg x-show.transition.opacity="navIsOpen" x-cloak="" class="absolute inset-0 mt-2 ml-2 w-6 h-6" viewbox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                            </button>
+                        </div>
+                    </div>
+                    <span :class="{ 'shadow-sm': navIsOpen }" class="absolute inset-0 z-20 pointer-events-none"></span>
+                </div>
+                <div x-show="navIsOpen" x-transition:enter="duration-150" x-transition:leave="duration-100 ease-in" x-cloak="">
+                    <nav x-show="navIsOpen" x-cloak="" class="absolute w-full transform origin-top shadow-sm z-10" x-transition:enter="duration-150 ease-out" x-transition:enter-start="opacity-0 -translate-y-8 scale-75" x-transition:enter-end="opacity-100 scale-100" x-transition:leave="duration-100 ease-in" x-transition:leave-start="opacity-100 scale-100" x-transition:leave-end="opacity-0 -translate-y-8 scale-75">
+                        <div class="relative p-8 bg-white docs_sidebar dark:bg-dark-600">
+                            <ul>
+<li>
+<h2>Prologue</h2>
+<ul>
+<li><a href="releases.html">Release Notes</a></li>
+<li><a href="upgrade.html">Upgrade Guide</a></li>
+<li><a href="contributions.html">Contribution Guide</a></li>
+</ul>
+</li>
+<li>
+<h2>Getting Started</h2>
+<ul>
+<li><a href="installation.html">Installation</a></li>
+<li><a href="configuration.html">Configuration</a></li>
+<li><a href="structure.html">Directory Structure</a></li>
+<li><a href="starter-kits.html">Starter Kits</a></li>
+<li><a href="deployment.html">Deployment</a></li>
+</ul>
+</li>
+<li>
+<h2>Architecture Concepts</h2>
+<ul>
+<li><a href="lifecycle.html">Request Lifecycle</a></li>
+<li><a href="container.html">Service Container</a></li>
+<li><a href="providers.html">Service Providers</a></li>
+<li><a href="facades.html">Facades</a></li>
+</ul>
+</li>
+<li>
+<h2>The Basics</h2>
+<ul>
+<li><a href="routing.html">Routing</a></li>
+<li><a href="middleware.html">Middleware</a></li>
+<li><a href="csrf.html">CSRF Protection</a></li>
+<li><a href="controllers.html">Controllers</a></li>
+<li><a href="requests.html">Requests</a></li>
+<li><a href="responses.html">Responses</a></li>
+<li><a href="views.html">Views</a></li>
+<li><a href="blade.html">Blade Templates</a></li>
+<li><a href="urls.html">URL Generation</a></li>
+<li><a href="session.html">Session</a></li>
+<li><a href="validation.html">Validation</a></li>
+<li><a href="errors.html">Error Handling</a></li>
+<li><a href="logging.html">Logging</a></li>
+</ul>
+</li>
+<li>
+<h2>Digging Deeper</h2>
+<ul>
+<li><a href="artisan.html">Artisan Console</a></li>
+<li><a href="broadcasting.html">Broadcasting</a></li>
+<li><a href="cache.html">Cache</a></li>
+<li><a href="collections.html">Collections</a></li>
+<li><a href="mix.html">Compiling Assets</a></li>
+<li><a href="contracts.html">Contracts</a></li>
+<li><a href="events.html">Events</a></li>
+<li><a href="filesystem.html">File Storage</a></li>
+<li><a href="helpers.html">Helpers</a></li>
+<li><a href="http-client.html">HTTP Client</a></li>
+<li><a href="localization.html">Localization</a></li>
+<li><a href="mail.html">Mail</a></li>
+<li><a href="notifications.html">Notifications</a></li>
+<li><a href="packages.html">Package Development</a></li>
+<li><a href="queues.html">Queues</a></li>
+<li><a href="rate-limiting.html">Rate Limiting</a></li>
+<li><a href="scheduling.html">Task Scheduling</a></li>
+</ul>
+</li>
+<li>
+<h2>Security</h2>
+<ul>
+<li><a href="authentication.html">Authentication</a></li>
+<li><a href="authorization.html">Authorization</a></li>
+<li><a href="verification.html">Email Verification</a></li>
+<li><a href="encryption.html">Encryption</a></li>
+<li><a href="hashing.html">Hashing</a></li>
+<li><a href="passwords.html">Password Reset</a></li>
+</ul>
+</li>
+<li>
+<h2>Database</h2>
+<ul>
+<li><a href="database.html">Getting Started</a></li>
+<li><a href="queries.html">Query Builder</a></li>
+<li><a href="pagination.html">Pagination</a></li>
+<li><a href="migrations.html">Migrations</a></li>
+<li><a href="seeding.html">Seeding</a></li>
+<li><a href="redis.html">Redis</a></li>
+</ul>
+</li>
+<li>
+<h2>Eloquent ORM</h2>
+<ul>
+<li><a href="eloquent.html">Getting Started</a></li>
+<li><a href="eloquent-relationships.html">Relationships</a></li>
+<li><a href="eloquent-collections.html">Collections</a></li>
+<li><a href="eloquent-mutators.html">Mutators / Casts</a></li>
+<li><a href="eloquent-resources.html">API Resources</a></li>
+<li><a href="eloquent-serialization.html">Serialization</a></li>
+</ul>
+</li>
+<li>
+<h2>Testing</h2>
+<ul>
+<li><a href="testing.html">Getting Started</a></li>
+<li><a href="http-tests.html">HTTP Tests</a></li>
+<li><a href="console-tests.html">Console Tests</a></li>
+<li><a href="dusk.html">Browser Tests</a></li>
+<li><a href="database-testing.html">Database</a></li>
+<li><a href="mocking.html">Mocking</a></li>
+</ul>
+</li>
+<li>
+<h2>Packages</h2>
+<ul>
+<li><a href="starter-kits.html#laravel-breeze">Breeze</a></li>
+<li><a href="billing.html">Cashier (Stripe)</a></li>
+<li><a href="cashier-paddle.html">Cashier (Paddle)</a></li>
+<li><a href="dusk.html">Dusk</a></li>
+<li><a href="envoy.html">Envoy</a></li>
+<li><a href="fortify.html">Fortify</a></li>
+<li><a href="homestead.html">Homestead</a></li>
+<li><a href="horizon.html">Horizon</a></li>
+<li><a href="../../index-6.htm">Jetstream</a></li>
+<li><a href="octane.html">Octane</a></li>
+<li><a href="passport.html">Passport</a></li>
+<li><a href="sail.html">Sail</a></li>
+<li><a href="sanctum.html">Sanctum</a></li>
+<li><a href="scout.html">Scout</a></li>
+<li><a href="socialite.html">Socialite</a></li>
+<li><a href="telescope.html">Telescope</a></li>
+<li><a href="valet.html">Valet</a></li>
+</ul>
+</li>
+<li><a href="/api/8.x">API Documentation</a></li>
+</ul>
+                        </div>
+                    </nav>
+                </div>
+            </header>
+
+            <section class="flex-1 dark:bg-dark-700">
+                <div class="max-w-screen-lg px-8 sm:px-16 lg:px-24">
+                    <div class="flex flex-col items-end lg:mt-8 lg:flex-row-reverse">
+                        <div class="hidden lg:flex items-center justify-center ml-8">
+                            <button id="header__sun" onclick="toSystemMode()" title="Switch to system theme" class="relative w-10 h-10 focus:outline-none focus:shadow-outline text-gray-500">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-sun" width="24" height="24" viewbox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                    <circle cx="12" cy="12" r="4"></circle>
+                                    <path d="M3 12h1m8 -9v1m8 8h1m-9 8v1m-6.4 -15.4l.7 .7m12.1 -.7l-.7 .7m0 11.4l.7 .7m-12.1 -.7l-.7 .7"></path>
+                                 </svg>
+                            </button>
+                            <button id="header__moon" onclick="toLightMode()" title="Switch to light mode" class="relative w-10 h-10 focus:outline-none focus:shadow-outline text-gray-500">
+                                <svg style="width:24px;height:24px" viewbox="0 0 24 24">
+                                    <path fill="currentColor" d="M17.75,4.09L15.22,6.03L16.13,9.09L13.5,7.28L10.87,9.09L11.78,6.03L9.25,4.09L12.44,4L13.5,1L14.56,4L17.75,4.09M21.25,11L19.61,12.25L20.2,14.23L18.5,13.06L16.8,14.23L17.39,12.25L15.75,11L17.81,10.95L18.5,9L19.19,10.95L21.25,11M18.97,15.95C19.8,15.87 20.69,17.05 20.16,17.8C19.84,18.25 19.5,18.67 19.08,19.07C15.17,23 8.84,23 4.94,19.07C1.03,15.17 1.03,8.83 4.94,4.93C5.34,4.53 5.76,4.17 6.21,3.85C6.96,3.32 8.14,4.21 8.06,5.04C7.79,7.9 8.75,10.87 10.95,13.06C13.14,15.26 16.1,16.22 18.97,15.95M17.33,17.97C14.5,17.81 11.7,16.64 9.53,14.5C7.36,12.31 6.2,9.5 6.04,6.68C3.23,9.82 3.34,14.64 6.35,17.66C9.37,20.67 14.19,20.78 17.33,17.97Z"></path>
+                                </svg>
+                            </button>
+                            <button id="header__indeterminate" onclick="toDarkMode()" title="Switch to dark mode" class="relative w-10 h-10 focus:outline-none focus:shadow-outline text-gray-500">
+                                <svg style="width:24px;height:24px" viewbox="0 0 24 24">
+                                    <path fill="currentColor" d="M12 2A10 10 0 0 0 2 12A10 10 0 0 0 12 22A10 10 0 0 0 22 12A10 10 0 0 0 12 2M12 4A8 8 0 0 1 20 12A8 8 0 0 1 12 20V4Z"></path>
+                                </svg>
+                            </button>
+                        </div>
+                        <div class="w-full lg:w-64 lg:pl-12">
+                            <div>
+                                <label class="text-gray-600 text-xs tracking-widest uppercase dark:text-gray-500" for="version-switch">Version</label>
+                                <div x-data="" class="relative w-full bg-white border-b border-gray-600 border-opacity-50 transition-all duration-500 focus-within:border-gray-600 dark:bg-gray-800">
+                                    <select id="version-switcher" aria-label="Laravel version" class="appearance-none flex-1 w-full px-0 py-1 placeholder-gray-900 tracking-wide bg-white focus:outline-none dark:bg-dark-700 dark:text-gray-400 dark:placeholder-gray-500" @change="window.location = $event.target.value">
+                                                                                    <option value="http://laravel.test/docs/muathye/authentication">Muathye</option>
+                                                                                    <option value="http://laravel.test/docs/master/authentication">Master</option>
+                                                                                    <option selected="" value="http://laravel.test/docs/8.x/authentication">8.x</option>
+                                                                                    <option value="http://laravel.test/docs/7.x/authentication">7.x</option>
+                                                                                    <option value="http://laravel.test/docs/6.x/authentication">6.x</option>
+                                                                                    <option value="http://laravel.test/docs/5.8/authentication">5.8</option>
+                                                                                    <option value="http://laravel.test/docs/5.7/authentication">5.7</option>
+                                                                                    <option value="http://laravel.test/docs/5.6/authentication">5.6</option>
+                                                                                    <option value="http://laravel.test/docs/5.5/authentication">5.5</option>
+                                                                                    <option value="http://laravel.test/docs/5.4/authentication">5.4</option>
+                                                                                    <option value="http://laravel.test/docs/5.3/authentication">5.3</option>
+                                                                                    <option value="http://laravel.test/docs/5.2/authentication">5.2</option>
+                                                                                    <option value="http://laravel.test/docs/5.1/authentication">5.1</option>
+                                                                                    <option value="http://laravel.test/docs/5.0/authentication">5.0</option>
+                                                                                    <option value="http://laravel.test/docs/4.2/authentication">4.2</option>
+                                                                            </select>
+                                    <img class="absolute inset-y-0 right-0 mt-2.5 w-2.5 h-2.5 text-gray-900 pointer-events-none" id="docs_search__version_arrow" src="../../img/icons/drop_arrow.min.svg" alt="">
+                                    <img class="absolute inset-y-0 right-0 mt-2.5 w-2.5 h-2.5 text-gray-900 pointer-events-none" id="docs_search__version_arrow_dark" src="../../img/icons/drop_arrow.dark.min.svg" alt="">
+                                </div>
+                            </div>
+                        </div>
+                        <div x-data="searchComponent()" x-init="init()" class="relative mt-8 flex justify-end w-full lg:mt-0">
+                            <div class="relative w-full border-b border-gray-600 border-opacity-50 overflow-hidden transition-all duration-500 focus-within:border-gray-600" @click="searchIsOpen = true" @click.away="clear" @keydown.window.escape="clear" @keydown.window="handleSlashKey">
+                                <svg class="absolute inset-y-0 left-0 mt-1 w-5 h-5 text-gray-900 pointer-events-none dark:text-gray-500" fill="none" viewbox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                                <input x-model.debouce.200ms="search" x-ref="searchInput" class="flex-1 w-full pl-8 pr-4 py-1 placeholder-gray-900 tracking-wide bg-white focus:outline-none dark:bg-dark-700 dark:text-gray-400 dark:placeholder-gray-500" placeholder="Search Docs (Press '/')" aria-label="Search in the documentation" @keydown.arrow-up.prevent="focusPreviousResult()" @keydown.arrow-down.prevent="focusNextResult()">
+                            </div>
+                            <div x-show="hits.length" x-cloak="" class="absolute w-full mt-8 pt-px divide-y divide-gray-200 shadow-sm z-30 dark:divide-dark-500">
+    <template x-for="(hit, index) in hits" :key="index">
+        <a :id="'search-result-' + index" :href="hit.url" class="search-result block px-4 py-3 bg-gray-100 transition-colors duration-200 hover:bg-gray-200 focus:outline-none focus:bg-gray-200 dark:bg-dark-600 dark:text-gray-400 dark:focus:bg-dark-500 dark:hover:bg-dark-500" @keydown.arrow-up.prevent="focusPreviousResult(index)" @keydown.arrow-down.prevent="focusNextResult(index)">
+            <div x-show="hit._highlightResult.hierarchy.lvl0" class="text-sm font-medium" x-html="hit._highlightResult.hierarchy.lvl0 ? hit._highlightResult.hierarchy.lvl0.value : ''"></div>
+            <div class="mt-2">
+                <div x-show="hit._highlightResult.hierarchy.lvl1" class="text-sm">
+                    <span class="text-red-600 opacity-75">#</span> <span x-html="hit._highlightResult.hierarchy.lvl1 ? hit._highlightResult.hierarchy.lvl1.value : ''"></span>
+                </div>
+
+                <div x-show="hit._highlightResult.hierarchy.lvl2" class="text-sm">
+                    > <span x-html="hit._highlightResult.hierarchy.lvl2 ? hit._highlightResult.hierarchy.lvl2.value : ''"></span>
+                </div>
+
+                <div x-show="hit._highlightResult.hierarchy.lvl3" class="text-sm">
+                    > <span x-html="hit._highlightResult.hierarchy.lvl3 ? hit._highlightResult.hierarchy.lvl3.value : ''"></span>
+                </div>
+
+                <div x-show="hit._highlightResult.hierarchy.lvl4" class="text-sm">
+                    > <span x-html="hit._highlightResult.hierarchy.lvl4 ? hit._highlightResult.hierarchy.lvl4.value : ''"></span>
+                </div>
+
+                <div x-show="hit._highlightResult.hierarchy.lvl5" class="text-sm">
+                    > <span x-html="hit._highlightResult.hierarchy.lvl5 ? hit._highlightResult.hierarchy.lvl5.value : ''"></span>
+                </div>
+            </div>
+        </a>
+    </template>
+	<div class="bg-gray-100 flex justify-end dark:bg-dark-600 dark:text-gray-400">
+		<a class="px-4 py-2 inline-block" target="_blank" href="../../index-9.htm?utm_source=laravel&utm_medium=link&utm_campaign=laravel_documentation_search">
+            <img width="105" src="../../img/icons/algolia.min.svg" id="docs_search__algolia" alt="Algolia">
+            <img width="105" src="../../img/icons/algolia.dark.min.svg" id="docs_search__algolia_dark" alt="Algolia">
+		</a>
+	</div>
+</div>
+
+<div x-show="search && ! hits.length" x-cloak="" class="absolute w-full mt-8 pt-px divide-y divide-gray-200 shadow-sm z-30 dark:divide-dark-500">
+	<div class="px-4 py-2 bg-gray-100 dark:bg-dark-600 dark:text-gray-400">
+		<div class="text-sm" x-text="`We didn't find any result for '${search}'. Sorry!`"></div>
+	</div>
+	<div class="bg-gray-100 flex justify-end dark:bg-dark-600 dark:text-gray-400">
+		<a class="px-4 py-2 inline-block" target="_blank" href="../../index-9.htm?utm_source=laravel&utm_medium=link&utm_campaign=laravel_documentation_search">
+            <img width="105" src="../../img/icons/algolia.min.svg" id="docs_search__algolia" alt="Algolia">
+            <img width="105" src="../../img/icons/algolia.dark.min.svg" id="docs_search__algolia_dark" alt="Algolia">
+		</a>
+	</div>
+</div>
+                        </div>
+                    </div>
+
+                    <section class="mt-8 md:mt-16">
+                        <section class="docs_main max-w-prose">
+                            
+                                                         <div id="main-content">
+    <h1>Authentication</h1>
+<ul>
+<li><a href="#introduction">Introduction</a>
+<ul>
+<li><a href="#starter-kits">Starter Kits</a></li>
+<li><a href="#introduction-database-considerations">Database Considerations</a></li>
+<li><a href="#ecosystem-overview">Ecosystem Overview</a></li>
+</ul></li>
+<li><a href="#authentication-quickstart">Authentication Quickstart</a>
+<ul>
+<li><a href="#install-a-starter-kit">Install A Starter Kit</a></li>
+<li><a href="#retrieving-the-authenticated-user">Retrieving The Authenticated User</a></li>
+<li><a href="#protecting-routes">Protecting Routes</a></li>
+<li><a href="#login-throttling">Login Throttling</a></li>
+</ul></li>
+<li><a href="#authenticating-users">Manually Authenticating Users</a>
+<ul>
+<li><a href="#remembering-users">Remembering Users</a></li>
+<li><a href="#other-authentication-methods">Other Authentication Methods</a></li>
+</ul></li>
+<li><a href="#http-basic-authentication">HTTP Basic Authentication</a>
+<ul>
+<li><a href="#stateless-http-basic-authentication">Stateless HTTP Basic Authentication</a></li>
+</ul></li>
+<li><a href="#logging-out">Logging Out</a>
+<ul>
+<li><a href="#invalidating-sessions-on-other-devices">Invalidating Sessions On Other Devices</a></li>
+</ul></li>
+<li><a href="#password-confirmation">Password Confirmation</a>
+<ul>
+<li><a href="#password-confirmation-configuration">Configuration</a></li>
+<li><a href="#password-confirmation-routing">Routing</a></li>
+<li><a href="#password-confirmation-protecting-routes">Protecting Routes</a></li>
+</ul></li>
+<li><a href="#adding-custom-guards">Adding Custom Guards</a>
+<ul>
+<li><a href="#closure-request-guards">Closure Request Guards</a></li>
+</ul></li>
+<li><a href="#adding-custom-user-providers">Adding Custom User Providers</a>
+<ul>
+<li><a href="#the-user-provider-contract">The User Provider Contract</a></li>
+<li><a href="#the-authenticatable-contract">The Authenticatable Contract</a></li>
+</ul></li>
+<li><a href="socialite.html">Social Authentication</a></li>
+<li><a href="#events">Events</a></li>
+</ul>
+<p><a name="introduction"></a></p>
+<h2 id="introduction">Introduction</h2>
+<p>Many web applications provide a way for their users to authenticate with the application and &quot;login&quot;. Implementing this feature in web applications can be a complex and potentially risky endeavor. For this reason, Laravel strives to give you the tools you need to implement authentication quickly, securely, and easily.</p>
+<p>At its core, Laravel's authentication facilities are made up of &quot;guards&quot; and &quot;providers&quot;. Guards define how users are authenticated for each request. For example, Laravel ships with a <code>session</code> guard which maintains state using session storage and cookies.</p>
+<p>Providers define how users are retrieved from your persistent storage. Laravel ships with support for retrieving users using <a href="eloquent.html">Eloquent</a> and the database query builder. However, you are free to define additional providers as needed for your application.</p>
+<p>Your application's authentication configuration file is located at <code>config/auth.php</code>. This file contains several well-documented options for tweaking the behavior of Laravel's authentication services.</p>
+<blockquote>
+<p>{tip} Guards and providers should not be confused with &quot;roles&quot; and &quot;permissions&quot;. To learn more about authorizing user actions via permissions, please refer to the <a href="authorization.html">authorization</a> documentation.</p>
+</blockquote>
+<p><a name="starter-kits"></a></p>
+<h3 id="starter-kits">Starter Kits</h3>
+<p>Want to get started fast? Install a <a href="starter-kits.html">Laravel application starter kit</a> in a fresh Laravel application. After migrating your database, navigate your browser to <code>/register</code> or any other URL that is assigned to your application. The starter kits will take care of scaffolding your entire authentication system!</p>
+<p><strong>Even if you choose not to use a starter kit in your final Laravel application, installing the <a href="starter-kits.html#laravel-breeze">Laravel Breeze</a> starter kit can be a wonderful opportunity to learn how to implement all of Laravel's authentication functionality in an actual Laravel project.</strong> Since Laravel Breeze creates authentication controllers, routes, and views for you, you can examine the code within these files to learn how Laravel's authentication features may be implemented.</p>
+<p><a name="introduction-database-considerations"></a></p>
+<h3 id="introduction-database-considerations">Database Considerations</h3>
+<p>By default, Laravel includes an <code>App\Models\User</code> <a href="eloquent.html">Eloquent model</a> in your <code>app/Models</code> directory. This model may be used with the default Eloquent authentication driver. If your application is not using Eloquent, you may use the <code>database</code> authentication provider which uses the Laravel query builder.</p>
+<p>When building the database schema for the <code>App\Models\User</code> model, make sure the password column is at least 60 characters in length. Of course, the <code>users</code> table migration that is included in new Laravel applications already creates a column that exceeds this length.</p>
+<p>Also, you should verify that your <code>users</code> (or equivalent) table contains a nullable, string <code>remember_token</code> column of 100 characters. This column will be used to store a token for users that select the &quot;remember me&quot; option when logging into your application. Again, the default <code>users</code> table migration that is included in new Laravel applications already contains this column.</p>
+<p><a name="ecosystem-overview"></a></p>
+<h3 id="ecosystem-overview">Ecosystem Overview</h3>
+<p>Laravel offers several packages related to authentication. Before continuing, we'll review the general authentication ecosystem in Laravel and discuss each package's intended purpose.</p>
+<p>First, consider how authentication works. When using a web browser, a user will provide their username and password via a login form. If these credentials are correct, the application will store information about the authenticated user in the user's <a href="session.html">session</a>. A cookie issued to the browser contains the session ID so that subsequent requests to the application can associate the user with the correct session. After the session cookie is received, the application will retrieve the session data based on the session ID, note that the authentication information has been stored in the session, and will consider the user as &quot;authenticated&quot;.</p>
+<p>When a remote service needs to authenticate to access an API, cookies are not typically used for authentication because there is no web browser. Instead, the remote service sends an API token to the API on each request. The application may validate the incoming token against a table of valid API tokens and &quot;authenticate&quot; the request as being performed by the user associated with that API token.</p>
+<p><a name="laravels-built-in-browser-authentication-services"></a></p>
+<h4 id="laravels-built-in-browser-authentication-services">Laravel's Built-in Browser Authentication Services</h4>
+<p>Laravel includes built-in authentication and session services which are typically accessed via the <code>Auth</code> and <code>Session</code> facades. These features provide cookie-based authentication for requests that are initiated from web browsers. They provide methods that allow you to verify a user's credentials and authenticate the user. In addition, these services will automatically store the proper authentication data in the user's session and issue the user's session cookie. A discussion of how to use these services is contained within this documentation.</p>
+<p><strong>Application Starter Kits</strong></p>
+<p>As discussed in this documentation, you can interact with these authentication services manually to build your application's own authentication layer. However, to help you get started more quickly, we have released <a href="starter-kits.html">free packages</a> that provide robust, modern scaffolding of the entire authentication layer. These packages are <a href="starter-kits.html#laravel-breeze">Laravel Breeze</a>, <a href="starter-kits.html#laravel-jetstream">Laravel Jetstream</a>, and <a href="fortify.html">Laravel Fortify</a>.</p>
+<p><em>Laravel Breeze</em> is a simple, minimal implementation of all of Laravel's authentication features, including login, registration, password reset, email verification, and password confirmation. Laravel Breeze's view layer is comprised of simple <a href="blade.html">Blade templates</a> styled with <a href="../../index-1">Tailwind CSS</a>. To get started, check out the documentation on Laravel's <a href="starter-kits.html">application starter kits</a>.</p>
+<p><em>Laravel Fortify</em> is a headless authentication backend for Laravel that implements many of the features found in this documentation, including cookie-based authentication as well as other features such as two-factor authentication and email verification. Fortify provides the authentication backend for Laravel Jetstream or may be used independently in combination with <a href="sanctum.html">Laravel Sanctum</a> to provide authentication for an SPA that needs to authenticate with Laravel.</p>
+<p><em><a href="../../index-6.htm">Laravel Jetstream</a></em> is a robust application starter kit that consumes and exposes Laravel Fortify's authentication services with a beautiful, modern UI powered by <a href="../../index-1">Tailwind CSS</a>, <a href="../../index-33.htm">Livewire</a>, and / or <a href="../../index-32.htm">Inertia.js</a>. Laravel Jetstream includes optional support for two-factor authentication, team support, browser session management, profile management, and built-in integration with <a href="sanctum.html">Laravel Sanctum</a> to offer API token authentication. Laravel's API authentication offerings are discussed below.</p>
+<p><a name="laravels-api-authentication-services"></a></p>
+<h4 id="laravels-api-authentication-services">Laravel's API Authentication Services</h4>
+<p>Laravel provides two optional packages to assist you in managing API tokens and authenticating requests made with API tokens: <a href="passport.html">Passport</a> and <a href="sanctum.html">Sanctum</a>. Please note that these libraries and Laravel's built-in cookie based authentication libraries are not mutually exclusive. These libraries primarily focus on API token authentication while the built-in authentication services focus on cookie based browser authentication. Many applications will use both Laravel's built-in cookie based authentication services and one of Laravel's API authentication packages.</p>
+<p><strong>Passport</strong></p>
+<p>Passport is an OAuth2 authentication provider, offering a variety of OAuth2 &quot;grant types&quot; which allow you to issue various types of tokens. In general, this is a robust and complex package for API authentication. However, most applications do not require the complex features offered by the OAuth2 spec, which can be confusing for both users and developers. In addition, developers have been historically confused about how to authenticate SPA applications or mobile applications using OAuth2 authentication providers like Passport.</p>
+<p><strong>Sanctum</strong></p>
+<p>In response to the complexity of OAuth2 and developer confusion, we set out to build a simpler, more streamlined authentication package that could handle both first-party web requests from a web browser and API requests via tokens. This goal was realized with the release of <a href="sanctum.html">Laravel Sanctum</a>, which should be considered the preferred and recommended authentication package for applications that will be offering a first-party web UI in addition to an API, or will be powered by a single-page application (SPA) that exists separately from the backend Laravel application, or applications that offer a mobile client.</p>
+<p>Laravel Sanctum is a hybrid web / API authentication package that can manage your application's entire authentication process. This is possible because when Sanctum based applications receive a request, Sanctum will first determine if the request includes a session cookie that references an authenticated session. Sanctum accomplishes this by calling Laravel's built-in authentication services which we discussed earlier. If the request is not being authenticated via a session cookie, Sanctum will inspect the request for an API token. If an API token is present, Sanctum will authenticate the request using that token. To learn more about this process, please consult Sanctum's <a href="sanctum.html#how-it-works">&quot;how it works&quot;</a> documentation.</p>
+<p>Laravel Sanctum is the API package we have chosen to include with the <a href="../../index-6.htm">Laravel Jetstream</a> application starter kit because we believe it is the best fit for the majority of web application's authentication needs.</p>
+<p><a name="summary-choosing-your-stack"></a></p>
+<h4 id="summary-choosing-your-stack">Summary &amp; Choosing Your Stack</h4>
+<p>In summary, if your application will be accessed using a browser and you are building a monolithic Laravel application, your application will use Laravel's built-in authentication services.</p>
+<p>Next, if your application offers an API that will be consumed by third parties, you will choose between <a href="passport.html">Passport</a> or <a href="sanctum.html">Sanctum</a> to provide API token authentication for your application. In general, Sanctum should be preferred when possible since it is a simple, complete solution for API authentication, SPA authentication, and mobile authentication, including support for &quot;scopes&quot; or &quot;abilities&quot;.</p>
+<p>If you are building a single-page application (SPA) that will be powered by a Laravel backend, you should use <a href="sanctum.html">Laravel Sanctum</a>. When using Sanctum, you will either need to <a href="#authenticating-users">manually implement your own backend authentication routes</a> or utilize <a href="fortify.html">Laravel Fortify</a> as a headless authentication backend service that provides routes and controllers for features such as registration, password reset, email verification, and more.</p>
+<p>Passport may be chosen when your application absolutely needs all of the features provided by the OAuth2 specification.</p>
+<p>And, if you would like to get started quickly, we are pleased to recommend <a href="../../index-6.htm">Laravel Jetstream</a> as a quick way to start a new Laravel application that already uses our preferred authentication stack of Laravel's built-in authentication services and Laravel Sanctum.</p>
+<p><a name="authentication-quickstart"></a></p>
+<h2 id="authentication-quickstart">Authentication Quickstart</h2>
+<blockquote>
+<p>{note} This portion of the documentation discusses authenticating users via the <a href="starter-kits.html">Laravel application starter kits</a>, which includes UI scaffolding to help you get started quickly. If you would like to integrate with Laravel's authentication systems directly, check out the documentation on <a href="#authenticating-users">manually authenticating users</a>.</p>
+</blockquote>
+<p><a name="install-a-starter-kit"></a></p>
+<h3 id="install-a-starter-kit">Install A Starter Kit</h3>
+<p>First, you should <a href="starter-kits.html">install a Laravel application starter kit</a>. Our current starter kits, Laravel Breeze and Laravel Jetstream, offer beautifully designed starting points for incorporating authentication into your fresh Laravel application.</p>
+<p>Laravel Breeze is a minimal, simple implementation of all of Laravel's authentication features, including login, registration, password reset, email verification, and password confirmation. Laravel Breeze's view layer is made up of simple <a href="blade.html">Blade templates</a> styled with <a href="../../index-1">Tailwind CSS</a>. Breeze also offers an <a href="../../index-32.htm">Inertia</a> based scaffolding option using Vue or React.</p>
+<p><a href="../../index-6.htm">Laravel Jetstream</a> is a more robust application starter kit that includes support for scaffolding your application with <a href="../../index-33.htm">Livewire</a> or <a href="../../index-32.htm">Inertia.js and Vue</a>. In addition, Jetstream features optional support for two-factor authentication, teams, profile management, browser session management, API support via <a href="sanctum.html">Laravel Sanctum</a>, account deletion, and more.</p>
+<p><a name="retrieving-the-authenticated-user"></a></p>
+<h3 id="retrieving-the-authenticated-user">Retrieving The Authenticated User</h3>
+<p>After installing an authentication starter kit and allowing users to register and authenticate with your application, you will often need to interact with the currently authenticated user. While handling an incoming request, you may access the authenticated user via the <code>Auth</code> facade's <code>user</code> method:</p>
+<pre><code>use Illuminate\Support\Facades\Auth;
+
+// Retrieve the currently authenticated user...
+$user = Auth::user();
+
+// Retrieve the currently authenticated user's ID...
+$id = Auth::id();</code></pre>
+<p>Alternatively, once a user is authenticated, you may access the authenticated user via an <code>Illuminate\Http\Request</code> instance. Remember, type-hinted classes will automatically be injected into your controller methods. By type-hinting the <code>Illuminate\Http\Request</code> object, you may gain convenient access to the authenticated user from any controller method in your application via the request's <code>user</code> method:</p>
+<pre><code>&lt;?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+
+class FlightController extends Controller
+{
+    /**
+     * Update the flight information for an existing flight.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request)
+    {
+        // $request-&gt;user()
+    }
+}</code></pre>
+<p><a name="determining-if-the-current-user-is-authenticated"></a></p>
+<h4 id="determining-if-the-current-user-is-authenticated">Determining If The Current User Is Authenticated</h4>
+<p>To determine if the user making the incoming HTTP request is authenticated, you may use the <code>check</code> method on the <code>Auth</code> facade. This method will return <code>true</code> if the user is authenticated:</p>
+<pre><code>use Illuminate\Support\Facades\Auth;
+
+if (Auth::check()) {
+    // The user is logged in...
+}</code></pre>
+<blockquote>
+<p>{tip} Even though it is possible to determine if a user is authenticated using the <code>check</code> method, you will typically use a middleware to verify that the user is authenticated before allowing the user access to certain routes / controllers. To learn more about this, check out the documentation on <a href="authentication.html#protecting-routes">protecting routes</a>.</p>
+</blockquote>
+<p><a name="protecting-routes"></a></p>
+<h3 id="protecting-routes">Protecting Routes</h3>
+<p><a href="middleware.html">Route middleware</a> can be used to only allow authenticated users to access a given route. Laravel ships with an <code>auth</code> middleware, which references the <code>Illuminate\Auth\Middleware\Authenticate</code> class. Since this middleware is already registered in your application's HTTP kernel, all you need to do is attach the middleware to a route definition:</p>
+<pre><code>Route::get('/flights', function () {
+    // Only authenticated users may access this route...
+})-&gt;middleware('auth');</code></pre>
+<p><a name="redirecting-unauthenticated-users"></a></p>
+<h4 id="redirecting-unauthenticated-users">Redirecting Unauthenticated Users</h4>
+<p>When the <code>auth</code> middleware detects an unauthenticated user, it will redirect the user to the <code>login</code> <a href="routing.html#named-routes">named route</a>. You may modify this behavior by updating the <code>redirectTo</code> function in your application's <code>app/Http/Middleware/Authenticate.php</code> file:</p>
+<pre><code>/**
+ * Get the path the user should be redirected to.
+ *
+ * @param  \Illuminate\Http\Request  $request
+ * @return string
+ */
+protected function redirectTo($request)
+{
+    return route('login');
+}</code></pre>
+<p><a name="specifying-a-guard"></a></p>
+<h4 id="specifying-a-guard">Specifying A Guard</h4>
+<p>When attaching the <code>auth</code> middleware to a route, you may also specify which &quot;guard&quot; should be used to authenticate the user. The guard specified should correspond to one of the keys in the <code>guards</code> array of your <code>auth.php</code> configuration file:</p>
+<pre><code>Route::get('/flights', function () {
+    // Only authenticated users may access this route...
+})-&gt;middleware('auth:admin');</code></pre>
+<p><a name="login-throttling"></a></p>
+<h3 id="login-throttling">Login Throttling</h3>
+<p>If you are using the Laravel Breeze or Laravel Jetstream <a href="starter-kits.html">starter kits</a>, rate limiting will automatically be applied to login attempts. By default, the user will not be able to login for one minute if they fail to provide the correct credentials after several attempts. The throttling is unique to the user's username / email address and their IP address.</p>
+<blockquote>
+<p>{tip} If you would like to rate limit other routes in your application, check out the <a href="routing.html#rate-limiting">rate limiting documentation</a>.</p>
+</blockquote>
+<p><a name="authenticating-users"></a></p>
+<h2 id="authenticating-users">Manually Authenticating Users</h2>
+<p>You are not required to use the authentication scaffolding included with Laravel's <a href="starter-kits.html">application starter kits</a>. If you choose not to use this scaffolding, you will need to manage user authentication using the Laravel authentication classes directly. Don't worry, it's a cinch!</p>
+<p>We will access Laravel's authentication services via the <code>Auth</code> <a href="facades.html">facade</a>, so we'll need to make sure to import the <code>Auth</code> facade at the top of the class. Next, let's check out the <code>attempt</code> method. The <code>attempt</code> method is normally used to handle authentication attempts from your application's &quot;login&quot; form. If authentication is successful, you should regenerate the user's <a href="session.html">session</a> to prevent <a href="../../wiki/Session_fixation.html">session fixation</a>:</p>
+<pre><code>&lt;?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
+class LoginController extends Controller
+{
+    /**
+     * Handle an authentication attempt.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function authenticate(Request $request)
+    {
+        $credentials = $request-&gt;validate([
+            'email' =&gt; ['required', 'email'],
+            'password' =&gt; ['required'],
+        ]);
+
+        if (Auth::attempt($credentials)) {
+            $request-&gt;session()-&gt;regenerate();
+
+            return redirect()-&gt;intended('dashboard');
+        }
+
+        return back()-&gt;withErrors([
+            'email' =&gt; 'The provided credentials do not match our records.',
+        ]);
+    }
+}</code></pre>
+<p>The <code>attempt</code> method accepts an array of key / value pairs as its first argument. The values in the array will be used to find the user in your database table. So, in the example above, the user will be retrieved by the value of the <code>email</code> column. If the user is found, the hashed password stored in the database will be compared with the <code>password</code> value passed to the method via the array. You should not hash the incoming request's <code>password</code> value, since the framework will automatically hash the value before comparing it to the hashed password in the database. An authenticated session will be started for the user if the two hashed passwords match.</p>
+<p>Remember, Laravel's authentication services will retrieve users from your database based on your authentication guard's &quot;provider&quot; configuration. In the default <code>config/auth.php</code> configuration file, the Eloquent user provider is specified and it is instructed to use the <code>App\Models\User</code> model when retrieving users. You may change these values within your configuration file based on the needs of your application.</p>
+<p>The <code>attempt</code> method will return <code>true</code> if authentication was successful. Otherwise, <code>false</code> will be returned.</p>
+<p>The <code>intended</code> method provided by Laravel's redirector will redirect the user to the URL they were attempting to access before being intercepted by the authentication middleware. A fallback URI may be given to this method in case the intended destination is not available.</p>
+<p><a name="specifying-additional-conditions"></a></p>
+<h4 id="specifying-additional-conditions">Specifying Additional Conditions</h4>
+<p>If you wish, you may also add extra query conditions to the authentication query in addition to the user's email and password. To accomplish this, we may simply add the query conditions to the array passed to the <code>attempt</code> method. For example, we may verify that the user is marked as &quot;active&quot;:</p>
+<pre><code>if (Auth::attempt(['email' =&gt; $email, 'password' =&gt; $password, 'active' =&gt; 1])) {
+    // Authentication was successful...
+}</code></pre>
+<blockquote>
+<p>{note} In these examples, <code>email</code> is not a required option, it is merely used as an example. You should use whatever column name corresponds to a &quot;username&quot; in your database table.</p>
+</blockquote>
+<p><a name="accessing-specific-guard-instances"></a></p>
+<h4 id="accessing-specific-guard-instances">Accessing Specific Guard Instances</h4>
+<p>Via the <code>Auth</code> facade's <code>guard</code> method, you may specify which guard instance you would like to utilize when authenticating the user. This allows you to manage authentication for separate parts of your application using entirely separate authenticatable models or user tables.</p>
+<p>The guard name passed to the <code>guard</code> method should correspond to one of the guards configured in your <code>auth.php</code> configuration file:</p>
+<pre><code>if (Auth::guard('admin')-&gt;attempt($credentials)) {
+    // ...
+}</code></pre>
+<p><a name="remembering-users"></a></p>
+<h3 id="remembering-users">Remembering Users</h3>
+<p>Many web applications provide a &quot;remember me&quot; checkbox on their login form. If you would like to provide &quot;remember me&quot; functionality in your application, you may pass a boolean value as the second argument to the <code>attempt</code> method.</p>
+<p>When this value is <code>true</code>, Laravel will keep the user authenticated indefinitely or until they manually logout. Your <code>users</code> table must include the string <code>remember_token</code> column, which will be used to store the &quot;remember me&quot; token. The <code>users</code> table migration included with new Laravel applications already includes this column:</p>
+<pre><code>use Illuminate\Support\Facades\Auth;
+
+if (Auth::attempt(['email' =&gt; $email, 'password' =&gt; $password], $remember)) {
+    // The user is being remembered...
+}</code></pre>
+<p><a name="other-authentication-methods"></a></p>
+<h3 id="other-authentication-methods">Other Authentication Methods</h3>
+<p><a name="authenticate-a-user-instance"></a></p>
+<h4 id="authenticate-a-user-instance">Authenticate A User Instance</h4>
+<p>If you need to set an existing user instance as the currently authenticated user, you may pass the user instance to the <code>Auth</code> facade's <code>login</code> method. The given user instance must be an implementation of the <code>Illuminate\Contracts\Auth\Authenticatable</code> <a href="contracts.html">contract</a>. The <code>App\Models\User</code> model included with Laravel already implements this interface. This method of authentication is useful when you already have a valid user instance, such as directly after a user registers with your application:</p>
+<pre><code>use Illuminate\Support\Facades\Auth;
+
+Auth::login($user);</code></pre>
+<p>You may pass a boolean value as the second argument to the <code>login</code> method. This value indicates if &quot;remember me&quot; functionality is desired for the authenticated session. Remember, this means that the session will be authenticated indefinitely or until the user manually logs out of the application:</p>
+<pre><code>Auth::login($user, $remember = true);</code></pre>
+<p>If needed, you may specify an authentication guard before calling the <code>login</code> method:</p>
+<pre><code>Auth::guard('admin')-&gt;login($user);</code></pre>
+<p><a name="authenticate-a-user-by-id"></a></p>
+<h4 id="authenticate-a-user-by-id">Authenticate A User By ID</h4>
+<p>To authenticate a user using their database record's primary key, you may use the <code>loginUsingId</code> method. This method accepts the primary key of the user you wish to authenticate:</p>
+<pre><code>Auth::loginUsingId(1);</code></pre>
+<p>You may pass a boolean value as the second argument to the <code>loginUsingId</code> method. This value indicates if &quot;remember me&quot; functionality is desired for the authenticated session. Remember, this means that the session will be authenticated indefinitely or until the user manually logs out of the application:</p>
+<pre><code>Auth::loginUsingId(1, $remember = true);</code></pre>
+<p><a name="authenticate-a-user-once"></a></p>
+<h4 id="authenticate-a-user-once">Authenticate A User Once</h4>
+<p>You may use the <code>once</code> method to authenticate a user with the application for a single request. No sessions or cookies will be utilized when calling this method:</p>
+<pre><code>if (Auth::once($credentials)) {
+    //
+}</code></pre>
+<p><a name="http-basic-authentication"></a></p>
+<h2 id="http-basic-authentication">HTTP Basic Authentication</h2>
+<p><a href="../../wiki/Basic_access_authentication.html">HTTP Basic Authentication</a> provides a quick way to authenticate users of your application without setting up a dedicated &quot;login&quot; page. To get started, attach the <code>auth.basic</code> <a href="middleware.html">middleware</a> to a route. The <code>auth.basic</code> middleware is included with the Laravel framework, so you do not need to define it:</p>
+<pre><code>Route::get('/profile', function () {
+    // Only authenticated users may access this route...
+})-&gt;middleware('auth.basic');</code></pre>
+<p>Once the middleware has been attached to the route, you will automatically be prompted for credentials when accessing the route in your browser. By default, the <code>auth.basic</code> middleware will assume the <code>email</code> column on your <code>users</code> database table is the user's &quot;username&quot;.</p>
+<p><a name="a-note-on-fastcgi"></a></p>
+<h4 id="a-note-on-fastcgi">A Note On FastCGI</h4>
+<p>If you are using PHP FastCGI and Apache to serve your Laravel application, HTTP Basic authentication may not work correctly. To correct these problems, the following lines may be added to your application's <code>.htaccess</code> file:</p>
+<pre><code>RewriteCond %{HTTP:Authorization} ^(.+)$
+RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]</code></pre>
+<p><a name="stateless-http-basic-authentication"></a></p>
+<h3 id="stateless-http-basic-authentication">Stateless HTTP Basic Authentication</h3>
+<p>You may also use HTTP Basic Authentication without setting a user identifier cookie in the session. This is primarily helpful if you choose to use HTTP Authentication to authenticate requests to your application's API. To accomplish this, <a href="middleware.html">define a middleware</a> that calls the <code>onceBasic</code> method. If no response is returned by the <code>onceBasic</code> method, the request may be passed further into the application:</p>
+<pre><code>&lt;?php
+
+namespace App\Http\Middleware;
+
+use Illuminate\Support\Facades\Auth;
+
+class AuthenticateOnceWithBasicAuth
+{
+    /**
+     * Handle an incoming request.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \Closure  $next
+     * @return mixed
+     */
+    public function handle($request, $next)
+    {
+        return Auth::onceBasic() ?: $next($request);
+    }
+
+}</code></pre>
+<p>Next, <a href="middleware.html#registering-middleware">register the route middleware</a> and attach it to a route:</p>
+<pre><code>Route::get('/api/user', function () {
+    // Only authenticated users may access this route...
+})-&gt;middleware('auth.basic.once');</code></pre>
+<p><a name="logging-out"></a></p>
+<h2 id="logging-out">Logging Out</h2>
+<p>To manually log users out of your application, you may use the <code>logout</code> method provided by the <code>Auth</code> facade. This will remove the authentication information from the user's session so that subsequent requests are not authenticated.</p>
+<p>In addition to calling the <code>logout</code> method, it is recommended that you invalidate the user's session and regenerate their <a href="csrf.html">CSRF token</a>. After logging the user out, you would typically redirect the user to the root of your application:</p>
+<pre><code>use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
+/**
+ * Log the user out of the application.
+ *
+ * @param  \Illuminate\Http\Request  $request
+ * @return \Illuminate\Http\Response
+ */
+public function logout(Request $request)
+{
+    Auth::logout();
+
+    $request-&gt;session()-&gt;invalidate();
+
+    $request-&gt;session()-&gt;regenerateToken();
+
+    return redirect('/');
+}</code></pre>
+<p><a name="invalidating-sessions-on-other-devices"></a></p>
+<h3 id="invalidating-sessions-on-other-devices">Invalidating Sessions On Other Devices</h3>
+<p>Laravel also provides a mechanism for invalidating and &quot;logging out&quot; a user's sessions that are active on other devices without invalidating the session on their current device. This feature is typically utilized when a user is changing or updating their password and you would like to invalidate sessions on other devices while keeping the current device authenticated.</p>
+<p>Before getting started, you should make sure that the <code>Illuminate\Session\Middleware\AuthenticateSession</code> middleware is present and un-commented in your <code>App\Http\Kernel</code> class' <code>web</code> middleware group:</p>
+<pre><code>'web' =&gt; [
+    // ...
+    \Illuminate\Session\Middleware\AuthenticateSession::class,
+    // ...
+],</code></pre>
+<p>Then, you may use the <code>logoutOtherDevices</code> method provided by the <code>Auth</code> facade. This method requires the user to confirm their current password, which your application should accept through an input form:</p>
+<pre><code>use Illuminate\Support\Facades\Auth;
+
+Auth::logoutOtherDevices($currentPassword);</code></pre>
+<p>When the <code>logoutOtherDevices</code> method is invoked, the user's other sessions will be invalidated entirely, meaning they will be &quot;logged out&quot; of all guards they were previously authenticated by.</p>
+<p><a name="password-confirmation"></a></p>
+<h2 id="password-confirmation">Password Confirmation</h2>
+<p>While building your application, you may occasionally have actions that should require the user to confirm their password before the action is performed or before the user is redirected to a sensitive area of the application. Laravel includes built-in middleware to make this process a breeze. Implementing this feature will require you to define two routes: one route to display a view asking the user to confirm their password and another route to confirm that the password is valid and redirect the user to their intended destination.</p>
+<blockquote>
+<p>{tip} The following documentation discusses how to integrate with Laravel's password confirmation features directly; however, if you would like to get started more quickly, the <a href="starter-kits.html">Laravel application starter kits</a> include support for this feature!</p>
+</blockquote>
+<p><a name="password-confirmation-configuration"></a></p>
+<h3 id="password-confirmation-configuration">Configuration</h3>
+<p>After confirming their password, a user will not be asked to confirm their password again for three hours. However, you may configure the length of time before the user is re-prompted for their password by changing the value of the <code>password_timeout</code> configuration value within your application's <code>config/auth.php</code> configuration file.</p>
+<p><a name="password-confirmation-routing"></a></p>
+<h3 id="password-confirmation-routing">Routing</h3>
+<p><a name="the-password-confirmation-form"></a></p>
+<h4 id="the-password-confirmation-form">The Password Confirmation Form</h4>
+<p>First, we will define a route to display a view that requests the user to confirm their password:</p>
+<pre><code>Route::get('/confirm-password', function () {
+    return view('auth.confirm-password');
+})-&gt;middleware('auth')-&gt;name('password.confirm');</code></pre>
+<p>As you might expect, the view that is returned by this route should have a form containing a <code>password</code> field. In addition, feel free to include text within the view that explains that the user is entering a protected area of the application and must confirm their password.</p>
+<p><a name="confirming-the-password"></a></p>
+<h4 id="confirming-the-password">Confirming The Password</h4>
+<p>Next, we will define a route that will handle the form request from the &quot;confirm password&quot; view. This route will be responsible for validating the password and redirecting the user to their intended destination:</p>
+<pre><code>use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Redirect;
+
+Route::post('/confirm-password', function (Request $request) {
+    if (! Hash::check($request-&gt;password, $request-&gt;user()-&gt;password)) {
+        return back()-&gt;withErrors([
+            'password' =&gt; ['The provided password does not match our records.']
+        ]);
+    }
+
+    $request-&gt;session()-&gt;passwordConfirmed();
+
+    return redirect()-&gt;intended();
+})-&gt;middleware(['auth', 'throttle:6,1'])-&gt;name('password.confirm');</code></pre>
+<p>Before moving on, let's examine this route in more detail. First, the request's <code>password</code> field is determined to actually match the authenticated user's password. If the password is valid, we need to inform Laravel's session that the user has confirmed their password. The <code>passwordConfirmed</code> method will set a timestamp in the user's session that Laravel can use to determine when the user last confirmed their password. Finally, we can redirect the user to their intended destination.</p>
+<p><a name="password-confirmation-protecting-routes"></a></p>
+<h3 id="password-confirmation-protecting-routes">Protecting Routes</h3>
+<p>You should ensure that any route that performs an action which requires recent password confirmation is assigned the <code>password.confirm</code> middleware. This middleware is included with the default installation of Laravel and will automatically store the user's intended destination in the session so that the user may be redirected to that location after confirming their password. After storing the user's intended destination in the session, the middleware will redirect the user to the <code>password.confirm</code> <a href="routing.html#named-routes">named route</a>:</p>
+<pre><code>Route::get('/settings', function () {
+    // ...
+})-&gt;middleware(['password.confirm']);
+
+Route::post('/settings', function () {
+    // ...
+})-&gt;middleware(['password.confirm']);</code></pre>
+<p><a name="adding-custom-guards"></a></p>
+<h2 id="adding-custom-guards">Adding Custom Guards</h2>
+<p>You may define your own authentication guards using the <code>extend</code> method on the <code>Auth</code> facade. You should place your call to the <code>extend</code> method within a <a href="providers.html">service provider</a>. Since Laravel already ships with an <code>AuthServiceProvider</code>, we can place the code in that provider:</p>
+<pre><code>&lt;?php
+
+namespace App\Providers;
+
+use App\Services\Auth\JwtGuard;
+use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
+use Illuminate\Support\Facades\Auth;
+
+class AuthServiceProvider extends ServiceProvider
+{
+    /**
+     * Register any application authentication / authorization services.
+     *
+     * @return void
+     */
+    public function boot()
+    {
+        $this-&gt;registerPolicies();
+
+        Auth::extend('jwt', function ($app, $name, array $config) {
+            // Return an instance of Illuminate\Contracts\Auth\Guard...
+
+            return new JwtGuard(Auth::createUserProvider($config['provider']));
+        });
+    }
+}</code></pre>
+<p>As you can see in the example above, the callback passed to the <code>extend</code> method should return an implementation of <code>Illuminate\Contracts\Auth\Guard</code>. This interface contains a few methods you will need to implement to define a custom guard. Once your custom guard has been defined, you may reference the guard in the <code>guards</code> configuration of your <code>auth.php</code> configuration file:</p>
+<pre><code>'guards' =&gt; [
+    'api' =&gt; [
+        'driver' =&gt; 'jwt',
+        'provider' =&gt; 'users',
+    ],
+],</code></pre>
+<p><a name="closure-request-guards"></a></p>
+<h3 id="closure-request-guards">Closure Request Guards</h3>
+<p>The simplest way to implement a custom, HTTP request based authentication system is by using the <code>Auth::viaRequest</code> method. This method allows you to quickly define your authentication process using a single closure.</p>
+<p>To get started, call the <code>Auth::viaRequest</code> method within the <code>boot</code> method of your <code>AuthServiceProvider</code>. The <code>viaRequest</code> method accepts an authentication driver name as its first argument. This name can be any string that describes your custom guard. The second argument passed to the method should be a closure that receives the incoming HTTP request and returns a user instance or, if authentication fails, <code>null</code>:</p>
+<pre><code>use App\Models\User;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
+/**
+ * Register any application authentication / authorization services.
+ *
+ * @return void
+ */
+public function boot()
+{
+    $this-&gt;registerPolicies();
+
+    Auth::viaRequest('custom-token', function (Request $request) {
+        return User::where('token', $request-&gt;token)-&gt;first();
+    });
+}</code></pre>
+<p>Once your custom authentication driver has been defined, you may configure it as a driver within the <code>guards</code> configuration of your <code>auth.php</code> configuration file:</p>
+<pre><code>'guards' =&gt; [
+    'api' =&gt; [
+        'driver' =&gt; 'custom-token',
+    ],
+],</code></pre>
+<p><a name="adding-custom-user-providers"></a></p>
+<h2 id="adding-custom-user-providers">Adding Custom User Providers</h2>
+<p>If you are not using a traditional relational database to store your users, you will need to extend Laravel with your own authentication user provider. We will use the <code>provider</code> method on the <code>Auth</code> facade to define a custom user provider. The user provider resolver should return an implementation of <code>Illuminate\Contracts\Auth\UserProvider</code>:</p>
+<pre><code>&lt;?php
+
+namespace App\Providers;
+
+use App\Extensions\MongoUserProvider;
+use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
+use Illuminate\Support\Facades\Auth;
+
+class AuthServiceProvider extends ServiceProvider
+{
+    /**
+     * Register any application authentication / authorization services.
+     *
+     * @return void
+     */
+    public function boot()
+    {
+        $this-&gt;registerPolicies();
+
+        Auth::provider('mongo', function ($app, array $config) {
+            // Return an instance of Illuminate\Contracts\Auth\UserProvider...
+
+            return new MongoUserProvider($app-&gt;make('mongo.connection'));
+        });
+    }
+}</code></pre>
+<p>After you have registered the provider using the <code>provider</code> method, you may switch to the new user provider in your <code>auth.php</code> configuration file. First, define a <code>provider</code> that uses your new driver:</p>
+<pre><code>'providers' =&gt; [
+    'users' =&gt; [
+        'driver' =&gt; 'mongo',
+    ],
+],</code></pre>
+<p>Finally, you may reference this provider in your <code>guards</code> configuration:</p>
+<pre><code>'guards' =&gt; [
+    'web' =&gt; [
+        'driver' =&gt; 'session',
+        'provider' =&gt; 'users',
+    ],
+],</code></pre>
+<p><a name="the-user-provider-contract"></a></p>
+<h3 id="the-user-provider-contract">The User Provider Contract</h3>
+<p><code>Illuminate\Contracts\Auth\UserProvider</code> implementations are responsible for fetching an <code>Illuminate\Contracts\Auth\Authenticatable</code> implementation out of a persistent storage system, such as MySQL, MongoDB, etc. These two interfaces allow the Laravel authentication mechanisms to continue functioning regardless of how the user data is stored or what type of class is used to represent the authenticated user:</p>
+<p>Let's take a look at the <code>Illuminate\Contracts\Auth\UserProvider</code> contract:</p>
+<pre><code>&lt;?php
+
+namespace Illuminate\Contracts\Auth;
+
+interface UserProvider
+{
+    public function retrieveById($identifier);
+    public function retrieveByToken($identifier, $token);
+    public function updateRememberToken(Authenticatable $user, $token);
+    public function retrieveByCredentials(array $credentials);
+    public function validateCredentials(Authenticatable $user, array $credentials);
+}</code></pre>
+<p>The <code>retrieveById</code> function typically receives a key representing the user, such as an auto-incrementing ID from a MySQL database. The <code>Authenticatable</code> implementation matching the ID should be retrieved and returned by the method.</p>
+<p>The <code>retrieveByToken</code> function retrieves a user by their unique <code>$identifier</code> and &quot;remember me&quot; <code>$token</code>, typically stored in a database column like <code>remember_token</code>. As with the previous method, the <code>Authenticatable</code> implementation with a matching token value should be returned by this method.</p>
+<p>The <code>updateRememberToken</code> method updates the <code>$user</code> instance's <code>remember_token</code> with the new <code>$token</code>. A fresh token is assigned to users on a successful &quot;remember me&quot; authentication attempt or when the user is logging out.</p>
+<p>The <code>retrieveByCredentials</code> method receives the array of credentials passed to the <code>Auth::attempt</code> method when attempting to authenticate with an application. The method should then &quot;query&quot; the underlying persistent storage for the user matching those credentials. Typically, this method will run a query with a &quot;where&quot; condition that searches for a user record with a &quot;username&quot; matching the value of <code>$credentials['username']</code>. The method should return an implementation of <code>Authenticatable</code>. <strong>This method should not attempt to do any password validation or authentication.</strong></p>
+<p>The <code>validateCredentials</code> method should compare the given <code>$user</code> with the <code>$credentials</code> to authenticate the user. For example, this method will typically use the <code>Hash::check</code> method to compare the value of <code>$user-&gt;getAuthPassword()</code> to the value of <code>$credentials['password']</code>. This method should return <code>true</code> or <code>false</code> indicating whether the password is valid.</p>
+<p><a name="the-authenticatable-contract"></a></p>
+<h3 id="the-authenticatable-contract">The Authenticatable Contract</h3>
+<p>Now that we have explored each of the methods on the <code>UserProvider</code>, let's take a look at the <code>Authenticatable</code> contract. Remember, user providers should return implementations of this interface from the <code>retrieveById</code>, <code>retrieveByToken</code>, and <code>retrieveByCredentials</code> methods:</p>
+<pre><code>&lt;?php
+
+namespace Illuminate\Contracts\Auth;
+
+interface Authenticatable
+{
+    public function getAuthIdentifierName();
+    public function getAuthIdentifier();
+    public function getAuthPassword();
+    public function getRememberToken();
+    public function setRememberToken($value);
+    public function getRememberTokenName();
+}</code></pre>
+<p>This interface is simple. The <code>getAuthIdentifierName</code> method should return the name of the &quot;primary key&quot; field of the user and the <code>getAuthIdentifier</code> method should return the &quot;primary key&quot; of the user. When using a MySQL back-end, this would likely be the auto-incrementing primary key assigned to the user record. The <code>getAuthPassword</code> method should return the user's hashed password.</p>
+<p>This interface allows the authentication system to work with any &quot;user&quot; class, regardless of what ORM or storage abstraction layer you are using. By default, Laravel includes a <code>App\Models\User</code> class in the <code>app/Models</code> directory which implements this interface.</p>
+<p><a name="events"></a></p>
+<h2 id="events">Events</h2>
+<p>Laravel dispatches a variety of <a href="events.html">events</a> during the authentication process. You may attach listeners to these events in your <code>EventServiceProvider</code>:</p>
+<pre><code>/**
+ * The event listener mappings for the application.
+ *
+ * @var array
+ */
+protected $listen = [
+    'Illuminate\Auth\Events\Registered' =&gt; [
+        'App\Listeners\LogRegisteredUser',
+    ],
+
+    'Illuminate\Auth\Events\Attempting' =&gt; [
+        'App\Listeners\LogAuthenticationAttempt',
+    ],
+
+    'Illuminate\Auth\Events\Authenticated' =&gt; [
+        'App\Listeners\LogAuthenticated',
+    ],
+
+    'Illuminate\Auth\Events\Login' =&gt; [
+        'App\Listeners\LogSuccessfulLogin',
+    ],
+
+    'Illuminate\Auth\Events\Failed' =&gt; [
+        'App\Listeners\LogFailedLogin',
+    ],
+
+    'Illuminate\Auth\Events\Validated' =&gt; [
+        'App\Listeners\LogValidated',
+    ],
+
+    'Illuminate\Auth\Events\Verified' =&gt; [
+        'App\Listeners\LogVerified',
+    ],
+
+    'Illuminate\Auth\Events\Logout' =&gt; [
+        'App\Listeners\LogSuccessfulLogout',
+    ],
+
+    'Illuminate\Auth\Events\CurrentDeviceLogout' =&gt; [
+        'App\Listeners\LogCurrentDeviceLogout',
+    ],
+
+    'Illuminate\Auth\Events\OtherDeviceLogout' =&gt; [
+        'App\Listeners\LogOtherDeviceLogout',
+    ],
+
+    'Illuminate\Auth\Events\Lockout' =&gt; [
+        'App\Listeners\LogLockout',
+    ],
+
+    'Illuminate\Auth\Events\PasswordReset' =&gt; [
+        'App\Listeners\LogPasswordReset',
+    ],
+];</code></pre>
+</div>
+ 
+                                                        <button onclick="topFunction()" id="toTheTop" title="Go to top" class="fixed bottom-5 right-5 h-15 w-15 hidden">
+                                <span class="topChevron"></span>
+                            </button>
+                                                    </section>
+                    </section>
+                </div>
+            </section>
+        </div>
+    </div>
+    <script>
+        mybutton = document.getElementById('toTheTop');
+        window.onscroll = function() {scrollFunction()};
+        function scrollFunction() {
+            carbonAds = document.getElementById('carbonads');
+            if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+                mybutton.style.setProperty('display', 'block', 'important');
+                if (carbonAds) {
+                    carbonAds.classList.add('move-top');
+                }
+            } else {
+                mybutton.style.display = 'none';
+                if (carbonAds) {
+                    carbonAds.classList.remove('move-top');
+                }
+            }
+        }
+        function topFunction() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        }
+    </script>
+
+<footer class="relative z-30 dark:bg-dark-700">
+    <div class="relative z-20 overflow-x-hidden">
+        <div class="relative max-w-screen-2xl mx-auto sm:px-8">
+            <div class="absolute inset-0 flex flex-col px-4 lg:px-12 xl:px-16">
+                <div class="flex-1"></div>
+                <div class="flex-1 bg-gray-100 dark:bg-dark-900"></div>
+            </div>
+            <div class="relative max-w-screen-xl mx-auto px-8">
+                <section class="relative z-10 p-6 bg-white shadow-lg md:flex md:items-center md:p-12 lg:p-16 dark:bg-dark-600">
+                    <div class="content md:pr-12">
+                        <h2 class="text-3xl tracking-tight sm:text-4xl md:mt-4 xl:text-5xl dark:text-gray-200">Become a Laravel Partner</h2>
+                        <p class="mt-3 max-w-xl text-gray-600 sm:mt-5 md:max-w-2xl md:mt-8 md:text-lg dark:text-gray-400">Laravel Partners are elite shops providing top-notch Laravel development and consulting. Each of our partners can help you craft a beautiful, well-architected project.</p>
+                    </div>
+                                             <a class="group relative h-12 inline-flex w-64 border border-red-600 sm:w-56 focus:outline-none mt-8" href="../../index-8.htm">
+    <span class="absolute inset-0 inline-flex items-center justify-center self-stretch px-6 text-white text-center font-medium bg-red-600 ring-1 ring-red-600 ring-offset-1 ring-offset-red-600 transform transition-transform group-hover:-translate-y-1 group-hover:-translate-x-1 group-focus:-translate-y-1 group-focus:-translate-x-1">
+        Our Partners
+    </span>
+</a>
+ 
+                                    </section>
+            </div>
+        </div>
+
+        <div class="max-w-screen-2xl mx-auto px-4 lg:px-12 xl:px-16">
+            <div class="px-8 pb-12 bg-gray-100 xl:px-20 dark:bg-dark-900">
+                <div>
+                    <img class="-mt-2 max-w-4xl w-full transform -translate-x-12 lg:-translate-x-24 xl:-translate-x-40" src="../../img/logotype.min.svg" alt="Laravel" width="114" height="29" loading="lazy">
+                </div>
+                <div class="mt-6 sm:mt-12 md:flex">
+                    <div class="divide-y divide-gray-600 divide-opacity-25 sm:hidden">
+                                                    <div x-data="{ expanded: false }" class="py-4">
+                                <button class="-mx-2 px-2 w-full flex items-center justify-between py-2 font-bold dark:text-gray-200" @click="expanded = ! expanded">
+                                    <span>Highlights</span>
+                                    <span class="transform transition-transform" :class="{ 'rotate-45': expanded }">&plus;</span>
+                                </button>
+                                <div x-show="expanded" x-cloak="" class="py-2 transition transform" x-transition:enter="duration-250 ease-out" x-transition:enter-start="opacity-0 -translate-y-8" x-transition:enter-end="opacity-100" x-transition:leave="duration-250 ease-in" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0 -translate-y-8">
+                                    <ul class="space-y-2 text-gray-600 text-sm dark:text-gray-500">
+                                                                                    <li><a href="/team">Our Team</a></li>
+                                                                                    <li><a href="releases.html">Release Notes</a></li>
+                                                                                    <li><a href="installation.html">Getting Started</a></li>
+                                                                                    <li><a href="routing.html">Routing</a></li>
+                                                                                    <li><a href="blade.html">Blade Templates</a></li>
+                                                                                    <li><a href="authentication.html">Authentication</a></li>
+                                                                                    <li><a href="authorization.html">Authorization</a></li>
+                                                                                    <li><a href="artisan.html">Artisan Console</a></li>
+                                                                                    <li><a href="database.html">Database</a></li>
+                                                                                    <li><a href="eloquent.html">Eloquent ORM</a></li>
+                                                                                    <li><a href="testing.html">Testing</a></li>
+                                                                            </ul>
+                                </div>
+                            </div>
+                                                    <div x-data="{ expanded: false }" class="py-4">
+                                <button class="-mx-2 px-2 w-full flex items-center justify-between py-2 font-bold dark:text-gray-200" @click="expanded = ! expanded">
+                                    <span>Resources</span>
+                                    <span class="transform transition-transform" :class="{ 'rotate-45': expanded }">&plus;</span>
+                                </button>
+                                <div x-show="expanded" x-cloak="" class="py-2 transition transform" x-transition:enter="duration-250 ease-out" x-transition:enter-start="opacity-0 -translate-y-8" x-transition:enter-end="opacity-100" x-transition:leave="duration-250 ease-in" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0 -translate-y-8">
+                                    <ul class="space-y-2 text-gray-600 text-sm dark:text-gray-500">
+                                                                                    <li><a href="../../index-10.htm">Laracasts</a></li>
+                                                                                    <li><a href="../../index-7.htm">Laravel News</a></li>
+                                                                                    <li><a href="../../index-13.htm">Laracon</a></li>
+                                                                                    <li><a href="../../winter-2022/index.htm">Laracon EU</a></li>
+                                                                                    <li><a href="../../index-14.htm">Jobs</a></li>
+                                                                                    <li><a href="../../index-16.htm">Certification</a></li>
+                                                                                    <li><a href="../../discuss.html">Forums</a></li>
+                                                                            </ul>
+                                </div>
+                            </div>
+                                                    <div x-data="{ expanded: false }" class="py-4">
+                                <button class="-mx-2 px-2 w-full flex items-center justify-between py-2 font-bold dark:text-gray-200" @click="expanded = ! expanded">
+                                    <span>Partners</span>
+                                    <span class="transform transition-transform" :class="{ 'rotate-45': expanded }">&plus;</span>
+                                </button>
+                                <div x-show="expanded" x-cloak="" class="py-2 transition transform" x-transition:enter="duration-250 ease-out" x-transition:enter-start="opacity-0 -translate-y-8" x-transition:enter-end="opacity-100" x-transition:leave="duration-250 ease-in" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0 -translate-y-8">
+                                    <ul class="space-y-2 text-gray-600 text-sm dark:text-gray-500">
+                                                                                    <li><a href="../../index-17.htm">Vehikl</a></li>
+                                                                                    <li><a href="../../index-18.htm">Tighten</a></li>
+                                                                                    <li><a href="../../index-19.htm">64 Robots</a></li>
+                                                                                    <li><a href="../../index-20.htm">Kirschbaum</a></li>
+                                                                                    <li><a href="../../services/technologies/laravel/index.htm">Curotec</a></li>
+                                                                                    <li><a href="../../index-21.htm">Jump24</a></li>
+                                                                                    <li><a href="../../index-22.htm">A2 Design</a></li>
+                                                                                    <li><a href="../../app/uploads/2019/08/INTRO-Pitch-I-AY-Tech.pdf?utm_source=laravelpartnersfindoutmore&amp;utm_medium=socialgroups&amp;utm_campaign=tech">ABOUT YOU</a></li>
+                                                                                    <li><a href="../../index-23.htm">Byte 5</a></li>
+                                                                                    <li><a href="../../index-24.htm">Cubet</a></li>
+                                                                                    <li><a href="../../what-we-do/technology-implementation/laravel.html?utm_source=Laravel%20Partner&amp;utm_medium=Sponsorship">Cyber-Duck</a></li>
+                                                                                    <li><a href="../../index-25.htm">DevSquad</a></li>
+                                                                                    <li><a href="../../index-26.htm">Ideil</a></li>
+                                                                                    <li><a href="../../index-27.htm">Romega Software</a></li>
+                                                                                    <li><a href="../../index-28.htm">Worksome</a></li>
+                                                                                    <li><a href="../../index.html?utm_source=laravel&amp;utm_medium=laravel.com&amp;utm_campaign=patreon-sponsors">WebReinvent</a></li>
+                                                                            </ul>
+                                </div>
+                            </div>
+                                                    <div x-data="{ expanded: false }" class="py-4">
+                                <button class="-mx-2 px-2 w-full flex items-center justify-between py-2 font-bold dark:text-gray-200" @click="expanded = ! expanded">
+                                    <span>Ecosystem</span>
+                                    <span class="transform transition-transform" :class="{ 'rotate-45': expanded }">&plus;</span>
+                                </button>
+                                <div x-show="expanded" x-cloak="" class="py-2 transition transform" x-transition:enter="duration-250 ease-out" x-transition:enter-start="opacity-0 -translate-y-8" x-transition:enter-end="opacity-100" x-transition:leave="duration-250 ease-in" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0 -translate-y-8">
+                                    <ul class="space-y-2 text-gray-600 text-sm dark:text-gray-500">
+                                                                                    <li><a href="billing.html">Cashier</a></li>
+                                                                                    <li><a href="dusk.html">Dusk</a></li>
+                                                                                    <li><a href="broadcasting.html">Echo</a></li>
+                                                                                    <li><a href="../../index-3.htm">Envoyer</a></li>
+                                                                                    <li><a href="../../index-2.htm">Forge</a></li>
+                                                                                    <li><a href="homestead.html">Homestead</a></li>
+                                                                                    <li><a href="horizon.html">Horizon</a></li>
+                                                                                    <li><a href="../9.x.html">Lumen</a></li>
+                                                                                    <li><a href="mix.html">Mix</a></li>
+                                                                                    <li><a href="../../index-4.htm">Nova</a></li>
+                                                                                    <li><a href="passport.html">Passport</a></li>
+                                                                                    <li><a href="scout.html">Scout</a></li>
+                                                                                    <li><a href="socialite.html">Socialite</a></li>
+                                                                                    <li><a href="../../index-5.htm">Spark</a></li>
+                                                                                    <li><a href="telescope.html">Telescope</a></li>
+                                                                                    <li><a href="valet.html">Valet</a></li>
+                                                                                    <li><a href="../../index-1.htm">Vapor</a></li>
+                                                                            </ul>
+                                </div>
+                            </div>
+                                            </div>
+                    <div class="hidden sm:grid sm:grid-cols-2 sm:gap-x-4 sm:gap-y-8 md:w-1/2 lg:w-3/4 lg:grid-cols-4">
+                                                    <div>
+                                <span class="font-bold dark:text-gray-200">Highlights</span>
+                                <div class="mt-6">
+                                    <ul class="space-y-3 text-gray-600 text-sm dark:text-gray-500">
+                                                                                    <li>
+                                                <a href="/team" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Our Team</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="releases.html" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Release Notes</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="installation.html" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Getting Started</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="routing.html" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Routing</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="blade.html" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Blade Templates</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="authentication.html" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Authentication</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="authorization.html" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Authorization</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="artisan.html" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Artisan Console</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="database.html" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Database</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="eloquent.html" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Eloquent ORM</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="testing.html" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Testing</a>
+                                            </li>
+                                                                            </ul>
+                                </div>
+                            </div>
+                                                    <div>
+                                <span class="font-bold dark:text-gray-200">Resources</span>
+                                <div class="mt-6">
+                                    <ul class="space-y-3 text-gray-600 text-sm dark:text-gray-500">
+                                                                                    <li>
+                                                <a href="../../index-10.htm" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Laracasts</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="../../index-7.htm" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Laravel News</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="../../index-13.htm" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Laracon</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="../../winter-2022/index.htm" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Laracon EU</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="../../index-14.htm" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Jobs</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="../../index-16.htm" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Certification</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="../../discuss.html" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Forums</a>
+                                            </li>
+                                                                            </ul>
+                                </div>
+                            </div>
+                                                    <div>
+                                <span class="font-bold dark:text-gray-200">Partners</span>
+                                <div class="mt-6">
+                                    <ul class="space-y-3 text-gray-600 text-sm dark:text-gray-500">
+                                                                                    <li>
+                                                <a href="../../index-17.htm" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Vehikl</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="../../index-18.htm" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Tighten</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="../../index-19.htm" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">64 Robots</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="../../index-20.htm" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Kirschbaum</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="../../services/technologies/laravel/index.htm" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Curotec</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="../../index-21.htm" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Jump24</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="../../index-22.htm" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">A2 Design</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="../../app/uploads/2019/08/INTRO-Pitch-I-AY-Tech.pdf?utm_source=laravelpartnersfindoutmore&amp;utm_medium=socialgroups&amp;utm_campaign=tech" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">ABOUT YOU</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="../../index-23.htm" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Byte 5</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="../../index-24.htm" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Cubet</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="../../what-we-do/technology-implementation/laravel.html?utm_source=Laravel%20Partner&amp;utm_medium=Sponsorship" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Cyber-Duck</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="../../index-25.htm" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">DevSquad</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="../../index-26.htm" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Ideil</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="../../index-27.htm" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Romega Software</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="../../index-28.htm" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Worksome</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="../../index.html?utm_source=laravel&amp;utm_medium=laravel.com&amp;utm_campaign=patreon-sponsors" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">WebReinvent</a>
+                                            </li>
+                                                                            </ul>
+                                </div>
+                            </div>
+                                                    <div>
+                                <span class="font-bold dark:text-gray-200">Ecosystem</span>
+                                <div class="mt-6">
+                                    <ul class="space-y-3 text-gray-600 text-sm dark:text-gray-500">
+                                                                                    <li>
+                                                <a href="billing.html" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Cashier</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="dusk.html" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Dusk</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="broadcasting.html" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Echo</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="../../index-3.htm" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Envoyer</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="../../index-2.htm" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Forge</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="homestead.html" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Homestead</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="horizon.html" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Horizon</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="../9.x.html" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Lumen</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="mix.html" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Mix</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="../../index-4.htm" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Nova</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="passport.html" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Passport</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="scout.html" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Scout</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="socialite.html" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Socialite</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="../../index-5.htm" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Spark</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="telescope.html" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Telescope</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="valet.html" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Valet</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="../../index-1.htm" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Vapor</a>
+                                            </li>
+                                                                            </ul>
+                                </div>
+                            </div>
+                                            </div>
+                    <div class="mt-10 max-w-md md:mt-0 md:w-1/2 lg:w-1/4">
+                        <p class="text-xs text-gray-600 sm:text-sm dark:text-gray-500">Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in most web projects.</p>
+                        <p class="mt-6 text-xs text-gray-600 text-opacity-75 sm:text-sm dark:text-gray-500">
+                            Laravel is a Trademark of Taylor Otwell.<br>Copyright &copy; 2011-2022 Laravel LLC.
+                        </p>
+                        <ul class="mt-6 flex items-center space-x-3">
+                            <li>
+                                <a href="../../laravelphp.html">
+                                    <img id="footer__twitter" class="w-6 h-6" src="../../img/social/twitter.min.svg" alt="Twitter" width="24" height="20" loading="lazy">
+                                    <img id="footer__twitter_dark" class="w-6 h-6" src="../../img/social/twitter.dark.min.svg" alt="Twitter" width="24" height="20" loading="lazy">
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../../laravel.html">
+                                    <img id="footer__github" class="w-6 h-6" src="../../img/social/github.min.svg" alt="GitHub" width="24" height="24" loading="lazy">
+                                    <img id="footer__github_dark" class="w-6 h-6" src="../../img/social/github.dark.min.svg" alt="GitHub" width="24" height="24" loading="lazy">
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../../invite/mPZNm7A.html">
+                                    <img id="footer__discord" class="w-6 h-6" src="../../img/social/discord.min.svg" alt="Discord" width="21" height="24" loading="lazy">
+                                    <img id="footer__discord_dark" class="w-6 h-6" src="../../img/social/discord.dark.min.svg" alt="Discord" width="21" height="24" loading="lazy">
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../../laravelphp-1.html">
+                                    <img id="footer__youtube" class="w-6 h-6" src="../../img/social/youtube.min.svg" alt="YouTube" width="169" height="150" loading="lazy">
+                                    <img id="footer__youtube_dark" class="w-6 h-6" src="../../img/social/youtube.dark.min.svg" alt="YouTube" width="169" height="150" loading="lazy">
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="flex justify-center py-6">
+            <a href="../../index.htm" class="logomark">
+                <img class="w-9 h-9" src="../../img/logomark.min.svg" alt="Laravel" width="50" height="52" loading="lazy">
+            </a>
+        </div>
+    </div>
+</footer>
+
+<script>
+    var algolia_app_id = 'ITGXQG9N0J';
+    var algolia_search_key = '29e3498a066622afdacafa73072c548d';
+    var version = '8.x';
+</script>
+
+<script src="../../js/app.js?id=22821ba61048c5ed17c4"></script>
+</body>
+</html>

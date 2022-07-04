@@ -1,0 +1,1103 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>PHP: uasort - Manual </title>
+
+ <link rel="shortcut icon" href="https://www.php.net/favicon.ico">
+ <link rel="search" type="application/opensearchdescription+xml" href="http://php.net/phpnetimprovedsearch.src" title="Add PHP.net search">
+ <link rel="alternate" type="application/atom+xml" href="https://www.php.net/releases/feed.php" title="PHP Release feed">
+ <link rel="alternate" type="application/atom+xml" href="https://www.php.net/feed.atom" title="PHP: Hypertext Preprocessor">
+
+ <link rel="canonical" href="https://www.php.net/manual/en/function.uasort.php">
+ <link rel="shorturl" href="https://www.php.net/uasort">
+ <link rel="alternate" href="https://www.php.net/uasort" hreflang="x-default">
+
+ <link rel="contents" href="https://www.php.net/manual/en/index.php">
+ <link rel="index" href="https://www.php.net/manual/en/ref.array.php">
+ <link rel="prev" href="https://www.php.net/manual/en/function.sort.php">
+ <link rel="next" href="https://www.php.net/manual/en/function.uksort.php">
+
+ <link rel="alternate" href="https://www.php.net/manual/en/function.uasort.php" hreflang="en">
+ <link rel="alternate" href="https://www.php.net/manual/pt_BR/function.uasort.php" hreflang="pt_BR">
+ <link rel="alternate" href="https://www.php.net/manual/zh/function.uasort.php" hreflang="zh">
+ <link rel="alternate" href="https://www.php.net/manual/fr/function.uasort.php" hreflang="fr">
+ <link rel="alternate" href="https://www.php.net/manual/de/function.uasort.php" hreflang="de">
+ <link rel="alternate" href="https://www.php.net/manual/ja/function.uasort.php" hreflang="ja">
+ <link rel="alternate" href="https://www.php.net/manual/ru/function.uasort.php" hreflang="ru">
+ <link rel="alternate" href="https://www.php.net/manual/es/function.uasort.php" hreflang="es">
+ <link rel="alternate" href="https://www.php.net/manual/tr/function.uasort.php" hreflang="tr">
+
+<link rel="stylesheet" type="text/css" href="/cached.php?t=1639034403&amp;f=/fonts/Fira/fira.css" media="screen">
+<link rel="stylesheet" type="text/css" href="/cached.php?t=1539765004&amp;f=/fonts/Font-Awesome/css/fontello.css" media="screen">
+<link rel="stylesheet" type="text/css" href="/cached.php?t=1606338002&amp;f=/styles/theme-base.css" media="screen">
+<link rel="stylesheet" type="text/css" href="/cached.php?t=1647366004&amp;f=/styles/theme-medium.css" media="screen">
+
+ <!--[if lte IE 7]>
+ <link rel="stylesheet" type="text/css" href="https://www.php.net/styles/workarounds.ie7.css" media="screen">
+ <![endif]-->
+
+ <!--[if lte IE 8]>
+ <script>
+  window.brokenIE = true;
+ </script>
+ <![endif]-->
+
+ <!--[if lte IE 9]>
+ <link rel="stylesheet" type="text/css" href="https://www.php.net/styles/workarounds.ie9.css" media="screen">
+ <![endif]-->
+
+ <!--[if IE]>
+ <script src="https://www.php.net/js/ext/html5.js"></script>
+ <![endif]-->
+
+ <base href="https://www.php.net/manual/en/function.uasort.php">
+
+
+</head>
+<body class="docs ">
+
+<nav id="head-nav" class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <a href="/" class="brand"><img src="/images/logos/php-logo.svg" width="48" height="24" alt="php"></a>
+    <div id="mainmenu-toggle-overlay"></div>
+    <input type="checkbox" id="mainmenu-toggle">
+    <ul class="nav">
+      <li class=""><a href="/downloads">Downloads</a></li>
+      <li class="active"><a href="/docs.php">Documentation</a></li>
+      <li class=""><a href="/get-involved" >Get Involved</a></li>
+      <li class=""><a href="/support">Help</a></li>
+      <li class="">
+        <a href="/releases/8.1/index.php">
+          <img src="/images/php8/logo_php8_1.svg" alt="php8.1" height="22" width="60">
+        </a>
+      </li>
+    </ul>
+    <form class="navbar-search" id="topsearch" action="/search.php">
+      <input type="hidden" name="show" value="quickref">
+      <input type="search" name="pattern" class="search-query" placeholder="Search" accesskey="s">
+    </form>
+  </div>
+  <div id="flash-message"></div>
+</nav>
+<div class="headsup"><a href='/index.php#id2022-03-17-1'>PHP 8.0.17 Released!</a></div>
+<nav id="trick"><div><dl>
+<dt><a href='/manual/en/getting-started.php'>Getting Started</a></dt>
+	<dd><a href='/manual/en/introduction.php'>Introduction</a></dd>
+	<dd><a href='/manual/en/tutorial.php'>A simple tutorial</a></dd>
+<dt><a href='/manual/en/langref.php'>Language Reference</a></dt>
+	<dd><a href='/manual/en/language.basic-syntax.php'>Basic syntax</a></dd>
+	<dd><a href='/manual/en/language.types.php'>Types</a></dd>
+	<dd><a href='/manual/en/language.variables.php'>Variables</a></dd>
+	<dd><a href='/manual/en/language.constants.php'>Constants</a></dd>
+	<dd><a href='/manual/en/language.expressions.php'>Expressions</a></dd>
+	<dd><a href='/manual/en/language.operators.php'>Operators</a></dd>
+	<dd><a href='/manual/en/language.control-structures.php'>Control Structures</a></dd>
+	<dd><a href='/manual/en/language.functions.php'>Functions</a></dd>
+	<dd><a href='/manual/en/language.oop5.php'>Classes and Objects</a></dd>
+	<dd><a href='/manual/en/language.namespaces.php'>Namespaces</a></dd>
+	<dd><a href='/manual/en/language.enumerations.php'>Enumerations</a></dd>
+	<dd><a href='/manual/en/language.errors.php'>Errors</a></dd>
+	<dd><a href='/manual/en/language.exceptions.php'>Exceptions</a></dd>
+	<dd><a href='/manual/en/language.fibers.php'>Fibers</a></dd>
+	<dd><a href='/manual/en/language.generators.php'>Generators</a></dd>
+	<dd><a href='/manual/en/language.attributes.php'>Attributes</a></dd>
+	<dd><a href='/manual/en/language.references.php'>References Explained</a></dd>
+	<dd><a href='/manual/en/reserved.variables.php'>Predefined Variables</a></dd>
+	<dd><a href='/manual/en/reserved.exceptions.php'>Predefined Exceptions</a></dd>
+	<dd><a href='/manual/en/reserved.interfaces.php'>Predefined Interfaces and Classes</a></dd>
+	<dd><a href='/manual/en/context.php'>Context options and parameters</a></dd>
+	<dd><a href='/manual/en/wrappers.php'>Supported Protocols and Wrappers</a></dd>
+</dl>
+<dl>
+<dt><a href='/manual/en/security.php'>Security</a></dt>
+	<dd><a href='/manual/en/security.intro.php'>Introduction</a></dd>
+	<dd><a href='/manual/en/security.general.php'>General considerations</a></dd>
+	<dd><a href='/manual/en/security.cgi-bin.php'>Installed as CGI binary</a></dd>
+	<dd><a href='/manual/en/security.apache.php'>Installed as an Apache module</a></dd>
+	<dd><a href='/manual/en/security.sessions.php'>Session Security</a></dd>
+	<dd><a href='/manual/en/security.filesystem.php'>Filesystem Security</a></dd>
+	<dd><a href='/manual/en/security.database.php'>Database Security</a></dd>
+	<dd><a href='/manual/en/security.errors.php'>Error Reporting</a></dd>
+	<dd><a href='/manual/en/security.variables.php'>User Submitted Data</a></dd>
+	<dd><a href='/manual/en/security.hiding.php'>Hiding PHP</a></dd>
+	<dd><a href='/manual/en/security.current.php'>Keeping Current</a></dd>
+<dt><a href='/manual/en/features.php'>Features</a></dt>
+	<dd><a href='/manual/en/features.http-auth.php'>HTTP authentication with PHP</a></dd>
+	<dd><a href='/manual/en/features.cookies.php'>Cookies</a></dd>
+	<dd><a href='/manual/en/features.sessions.php'>Sessions</a></dd>
+	<dd><a href='/manual/en/features.xforms.php'>Dealing with XForms</a></dd>
+	<dd><a href='/manual/en/features.file-upload.php'>Handling file uploads</a></dd>
+	<dd><a href='/manual/en/features.remote-files.php'>Using remote files</a></dd>
+	<dd><a href='/manual/en/features.connection-handling.php'>Connection handling</a></dd>
+	<dd><a href='/manual/en/features.persistent-connections.php'>Persistent Database Connections</a></dd>
+	<dd><a href='/manual/en/features.commandline.php'>Command line usage</a></dd>
+	<dd><a href='/manual/en/features.gc.php'>Garbage Collection</a></dd>
+	<dd><a href='/manual/en/features.dtrace.php'>DTrace Dynamic Tracing</a></dd>
+</dl>
+<dl>
+<dt><a href='/manual/en/funcref.php'>Function Reference</a></dt>
+	<dd><a href='/manual/en/refs.basic.php.php'>Affecting PHP's Behaviour</a></dd>
+	<dd><a href='/manual/en/refs.utilspec.audio.php'>Audio Formats Manipulation</a></dd>
+	<dd><a href='/manual/en/refs.remote.auth.php'>Authentication Services</a></dd>
+	<dd><a href='/manual/en/refs.utilspec.cmdline.php'>Command Line Specific Extensions</a></dd>
+	<dd><a href='/manual/en/refs.compression.php'>Compression and Archive Extensions</a></dd>
+	<dd><a href='/manual/en/refs.crypto.php'>Cryptography Extensions</a></dd>
+	<dd><a href='/manual/en/refs.database.php'>Database Extensions</a></dd>
+	<dd><a href='/manual/en/refs.calendar.php'>Date and Time Related Extensions</a></dd>
+	<dd><a href='/manual/en/refs.fileprocess.file.php'>File System Related Extensions</a></dd>
+	<dd><a href='/manual/en/refs.international.php'>Human Language and Character Encoding Support</a></dd>
+	<dd><a href='/manual/en/refs.utilspec.image.php'>Image Processing and Generation</a></dd>
+	<dd><a href='/manual/en/refs.remote.mail.php'>Mail Related Extensions</a></dd>
+	<dd><a href='/manual/en/refs.math.php'>Mathematical Extensions</a></dd>
+	<dd><a href='/manual/en/refs.utilspec.nontext.php'>Non-Text MIME Output</a></dd>
+	<dd><a href='/manual/en/refs.fileprocess.process.php'>Process Control Extensions</a></dd>
+	<dd><a href='/manual/en/refs.basic.other.php'>Other Basic Extensions</a></dd>
+	<dd><a href='/manual/en/refs.remote.other.php'>Other Services</a></dd>
+	<dd><a href='/manual/en/refs.search.php'>Search Engine Extensions</a></dd>
+	<dd><a href='/manual/en/refs.utilspec.server.php'>Server Specific Extensions</a></dd>
+	<dd><a href='/manual/en/refs.basic.session.php'>Session Extensions</a></dd>
+	<dd><a href='/manual/en/refs.basic.text.php'>Text Processing</a></dd>
+	<dd><a href='/manual/en/refs.basic.vartype.php'>Variable and Type Related Extensions</a></dd>
+	<dd><a href='/manual/en/refs.webservice.php'>Web Services</a></dd>
+	<dd><a href='/manual/en/refs.utilspec.windows.php'>Windows Only Extensions</a></dd>
+	<dd><a href='/manual/en/refs.xml.php'>XML Manipulation</a></dd>
+	<dd><a href='/manual/en/refs.ui.php'>GUI Extensions</a></dd>
+</dl>
+<dl>
+<dt>Keyboard Shortcuts</dt><dt>?</dt>
+<dd>This help</dd>
+<dt>j</dt>
+<dd>Next menu item</dd>
+<dt>k</dt>
+<dd>Previous menu item</dd>
+<dt>g p</dt>
+<dd>Previous man page</dd>
+<dt>g n</dt>
+<dd>Next man page</dd>
+<dt>G</dt>
+<dd>Scroll to bottom</dd>
+<dt>g g</dt>
+<dd>Scroll to top</dd>
+<dt>g h</dt>
+<dd>Goto homepage</dd>
+<dt>g s</dt>
+<dd>Goto search<br>(current page)</dd>
+<dt>/</dt>
+<dd>Focus search box</dd>
+</dl></div></nav>
+<div id="goto">
+    <div class="search">
+         <div class="text"></div>
+         <div class="results"><ul></ul></div>
+   </div>
+</div>
+
+  <div id="breadcrumbs" class="clearfix">
+    <div id="breadcrumbs-inner">
+          <div class="next">
+        <a href="function.uksort.php">
+          uksort &raquo;
+        </a>
+      </div>
+              <div class="prev">
+        <a href="function.sort.php">
+          &laquo; sort        </a>
+      </div>
+          <ul>
+            <li><a href='index.php'>PHP Manual</a></li>      <li><a href='funcref.php'>Function Reference</a></li>      <li><a href='refs.basic.vartype.php'>Variable and Type Related Extensions</a></li>      <li><a href='book.array.php'>Arrays</a></li>      <li><a href='ref.array.php'>Array Functions</a></li>      </ul>
+    </div>
+  </div>
+
+
+
+
+<div id="layout" class="clearfix">
+  <section id="layout-content">
+  <div class="page-tools">
+    <div class="change-language">
+      <form action="/manual/change.php" method="get" id="changelang" name="changelang">
+        <fieldset>
+          <label for="changelang-langs">Change language:</label>
+          <select onchange="document.changelang.submit()" name="page" id="changelang-langs">
+            <option value='en/function.uasort.php' selected="selected">English</option>
+            <option value='pt_BR/function.uasort.php'>Brazilian Portuguese</option>
+            <option value='zh/function.uasort.php'>Chinese (Simplified)</option>
+            <option value='fr/function.uasort.php'>French</option>
+            <option value='de/function.uasort.php'>German</option>
+            <option value='ja/function.uasort.php'>Japanese</option>
+            <option value='ru/function.uasort.php'>Russian</option>
+            <option value='es/function.uasort.php'>Spanish</option>
+            <option value='tr/function.uasort.php'>Turkish</option>
+            <option value="help-translate.php">Other</option>
+          </select>
+        </fieldset>
+      </form>
+    </div>
+    <div class="edit-bug">
+      <a href="https://github.com/php/doc-en/blob/master/reference/array/functions/uasort.xml">Submit a Pull Request</a>
+      <a href="https://github.com/php/doc-en/issues/new?body=From%20manual%20page:%20https:%2F%2Fphp.net%2Ffunction.uasort%0A%0A---">Report a Bug</a>
+    </div>
+  </div><div id="function.uasort" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">uasort</h1>
+  <p class="verinfo">(PHP 4, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">uasort</span> &mdash; <span class="dc-title">Sort an array with a user-defined comparison function and maintain index association</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-function.uasort-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>uasort</strong></span>(<span class="methodparam"><span class="type">array</span> <code class="parameter reference">&$array</code></span>, <span class="methodparam"><span class="type"><a href="language.types.callable.php" class="type callable">callable</a></span> <code class="parameter">$callback</code></span>): <span class="type">bool</span></div>
+
+  <p class="para rdfs-comment">
+   Sorts <code class="parameter">array</code> in place such that its keys
+   maintain their correlation with the values they are associated with,
+   using a user-defined comparison function.
+  </p>
+  <p class="para">
+   This is used mainly when sorting associative arrays where the actual
+   element order is significant.
+  </p>
+  <blockquote class="note"><p><strong class="note">Note</strong>: 
+ <p class="para">
+  If two members compare as equal, they retain their original order.
+  Prior to PHP 8.0.0, their relative order in the sorted array was undefined.
+ </p>
+</p></blockquote>
+
+  <blockquote class="note"><p><strong class="note">Note</strong>: 
+ <p class="para">
+    Resets array&#039;s internal pointer to the first element.
+ </p>
+</p></blockquote>
+
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.uasort-parameters">
+  <h3 class="title">Parameters</h3>
+  <p class="para">
+   <dl>
+    
+     <dt>
+<code class="parameter">array</code></dt>
+
+     <dd>
+
+      <p class="para">
+       The input array.
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">callback</code></dt>
+
+     <dd>
+
+      <p class="para">
+       The comparison function must return an integer less than, equal to, or greater than zero if the first argument is considered to be respectively less than, equal to, or greater than the second.
+      </p>
+      <div class="methodsynopsis dc-description"><span class="methodname"><span class="replaceable">callback</span></span>(<span class="methodparam"><span class="type"><a href="language.types.declarations.php#language.types.declarations.mixed" class="type mixed">mixed</a></span> <code class="parameter">$a</code></span>, <span class="methodparam"><span class="type"><a href="language.types.declarations.php#language.types.declarations.mixed" class="type mixed">mixed</a></span> <code class="parameter">$b</code></span>): <span class="type">int</span></div>
+
+     </dd>
+
+    
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.uasort-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   Always returns <strong><code>true</code></strong>.
+  </p>
+ </div>
+
+
+ <div class="refsect1 changelog" id="refsect1-function.uasort-changelog">
+  <h3 class="title">Changelog</h3>
+  <table class="doctable informaltable">
+   
+    <thead>
+     <tr>
+      <th>Version</th>
+      <th>Description</th>
+     </tr>
+
+    </thead>
+
+    <tbody class="tbody">
+     <tr>
+ <td>8.0.0</td>
+ <td>
+  If <code class="parameter">callback</code> expects a parameter to be passed
+  by reference, this function will now emit an <strong><code>E_WARNING</code></strong>.
+ </td>
+</tr>
+
+    </tbody>
+   
+  </table>
+
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.uasort-examples">
+  <h3 class="title">Examples</h3>
+  <p class="para">
+   <div class="example" id="example-5019">
+    <p><strong>Example #1 Basic <span class="function"><strong>uasort()</strong></span> example</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;Comparison&nbsp;function<br /></span><span style="color: #007700">function&nbsp;</span><span style="color: #0000BB">cmp</span><span style="color: #007700">(</span><span style="color: #0000BB">$a</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$b</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(</span><span style="color: #0000BB">$a&nbsp;</span><span style="color: #007700">==&nbsp;</span><span style="color: #0000BB">$b</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;(</span><span style="color: #0000BB">$a&nbsp;</span><span style="color: #007700">&lt;&nbsp;</span><span style="color: #0000BB">$b</span><span style="color: #007700">)&nbsp;?&nbsp;-</span><span style="color: #0000BB">1&nbsp;</span><span style="color: #007700">:&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #FF8000">//&nbsp;Array&nbsp;to&nbsp;be&nbsp;sorted<br /></span><span style="color: #0000BB">$array&nbsp;</span><span style="color: #007700">=&nbsp;array(</span><span style="color: #DD0000">'a'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">4</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'b'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">8</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'c'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;-</span><span style="color: #0000BB">1</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'d'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;-</span><span style="color: #0000BB">9</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'e'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">2</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'f'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">5</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'g'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">3</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'h'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;-</span><span style="color: #0000BB">4</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">$array</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;Sort&nbsp;and&nbsp;print&nbsp;the&nbsp;resulting&nbsp;array<br /></span><span style="color: #0000BB">uasort</span><span style="color: #007700">(</span><span style="color: #0000BB">$array</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'cmp'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">$array</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>The above example will output:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+Array
+(
+    [a] =&gt; 4
+    [b] =&gt; 8
+    [c] =&gt; -1
+    [d] =&gt; -9
+    [e] =&gt; 2
+    [f] =&gt; 5
+    [g] =&gt; 3
+    [h] =&gt; -4
+)
+Array
+(
+    [d] =&gt; -9
+    [h] =&gt; -4
+    [c] =&gt; -1
+    [e] =&gt; 2
+    [g] =&gt; 3
+    [a] =&gt; 4
+    [f] =&gt; 5
+    [b] =&gt; 8
+)
+</pre></div>
+    </div>
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.uasort-seealso">
+  <h3 class="title">See Also</h3>
+  <ul class="simplelist">
+   <li class="member"><span class="function"><a href="function.usort.php" class="function" rel="rdfs-seeAlso">usort()</a> - Sort an array by values using a user-defined comparison function</span></li>
+   <li class="member"><span class="function"><a href="function.uksort.php" class="function" rel="rdfs-seeAlso">uksort()</a> - Sort an array by keys using a user-defined comparison function</span></li>
+   <li class="member">The <a href="array.sorting.php" class="link">comparison of array sorting functions</a></li>
+  </ul>
+ </div>
+
+
+</div>
+<section id="usernotes">
+ <div class="head">
+  <span class="action"><a href="/manual/add-note.php?sect=function.uasort&amp;redirect=https://www.php.net/manual/en/function.uasort.php"><img src='/images/notes-add@2x.png' alt='add a note' width='12' height='12'> <small>add a note</small></a></span>
+  <h3 class="title">User Contributed Notes <span class="count">20 notes</span></h3>
+ </div><div id="allnotes">
+  <div class="note" id="100485">  <div class="votes">
+    <div id="Vu100485">
+    <a href="/manual/vote-note.php?id=100485&amp;page=function.uasort&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd100485">
+    <a href="/manual/vote-note.php?id=100485&amp;page=function.uasort&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V100485" title="87% like this...">
+    144
+    </div>
+  </div>
+  <a href="#100485" class="name">
+  <strong class="user"><em>magikMaker</em></strong></a><a class="genanchor" href="#100485"> &para;</a><div class="date" title="2010-10-19 02:48"><strong>11 years ago</strong></div>
+  <div class="text" id="Hcom100485">
+<div class="phpcode"><code><span class="html">
+a quick reminder on the syntax if you want to use uasort in a Class or Object:<br /><br /><span class="default">&lt;?php<br /><br /></span><span class="comment">// procedural:<br /></span><span class="default">uasort</span><span class="keyword">(</span><span class="default">$collection</span><span class="keyword">, </span><span class="string">'my_sort_function'</span><span class="keyword">);<br /><br /></span><span class="comment">// Object Oriented<br /></span><span class="default">uasort</span><span class="keyword">(</span><span class="default">$collection</span><span class="keyword">, array(</span><span class="default">$this</span><span class="keyword">, </span><span class="string">'mySortMethod'</span><span class="keyword">));<br /><br /></span><span class="comment">// Objet Oriented with static method<br /></span><span class="default">uasort</span><span class="keyword">(</span><span class="default">$collection</span><span class="keyword">, array(</span><span class="string">'self'</span><span class="keyword">, </span><span class="string">'myStaticSortMethod'</span><span class="keyword">));<br /><br /></span><span class="default">?&gt;</span>
+</span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="100961">  <div class="votes">
+    <div id="Vu100961">
+    <a href="/manual/vote-note.php?id=100961&amp;page=function.uasort&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd100961">
+    <a href="/manual/vote-note.php?id=100961&amp;page=function.uasort&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V100961" title="86% like this...">
+    27
+    </div>
+  </div>
+  <a href="#100961" class="name">
+  <strong class="user"><em>yannick dot battail at gmail dot com</em></strong></a><a class="genanchor" href="#100961"> &para;</a><div class="date" title="2010-11-17 06:37"><strong>11 years ago</strong></div>
+  <div class="text" id="Hcom100961">
+<div class="phpcode"><code><span class="html">
+An Example using anonymous function.<br />Anonymous functions make some time the code easier to understand.<br /><span class="default">&lt;?php<br />$fruits </span><span class="keyword">= array(</span><span class="string">'Orange9'</span><span class="keyword">,</span><span class="string">'Orange11'</span><span class="keyword">,</span><span class="string">'Orange10'</span><span class="keyword">,</span><span class="string">'Orange6'</span><span class="keyword">,</span><span class="string">'Orange15'</span><span class="keyword">);<br /></span><span class="default">uasort </span><span class="keyword">( </span><span class="default">$fruits </span><span class="keyword">, function (</span><span class="default">$a</span><span class="keyword">, </span><span class="default">$b</span><span class="keyword">) {<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return </span><span class="default">strnatcmp</span><span class="keyword">(</span><span class="default">$a</span><span class="keyword">,</span><span class="default">$b</span><span class="keyword">); </span><span class="comment">// or other function/code<br />&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="keyword">}<br />&nbsp; &nbsp; );<br /></span><span class="default">print_r</span><span class="keyword">(</span><span class="default">$fruits</span><span class="keyword">);<br /></span><span class="default">?&gt;<br /></span>returns<br />Array<br />(<br />&nbsp; &nbsp; [3] =&gt; Orange6<br />&nbsp; &nbsp; [0] =&gt; Orange9<br />&nbsp; &nbsp; [2] =&gt; Orange10<br />&nbsp; &nbsp; [1] =&gt; Orange11<br />&nbsp; &nbsp; [4] =&gt; Orange15<br />)</span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="114535">  <div class="votes">
+    <div id="Vu114535">
+    <a href="/manual/vote-note.php?id=114535&amp;page=function.uasort&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd114535">
+    <a href="/manual/vote-note.php?id=114535&amp;page=function.uasort&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V114535" title="79% like this...">
+    35
+    </div>
+  </div>
+  <a href="#114535" class="name">
+  <strong class="user"><em>php at clement dot hk</em></strong></a><a class="genanchor" href="#114535"> &para;</a><div class="date" title="2014-03-04 04:00"><strong>8 years ago</strong></div>
+  <div class="text" id="Hcom114535">
+<div class="phpcode"><code><span class="html">
+If you want to keep the order when two members compare as equal, use this.<br /><span class="default">&lt;?php<br /><br /></span><span class="keyword">function </span><span class="default">stable_uasort</span><span class="keyword">(&amp;</span><span class="default">$array</span><span class="keyword">, </span><span class="default">$cmp_function</span><span class="keyword">) {<br />&nbsp; &nbsp; if(</span><span class="default">count</span><span class="keyword">(</span><span class="default">$array</span><span class="keyword">) &lt; </span><span class="default">2</span><span class="keyword">) {<br />&nbsp; &nbsp; &nbsp; &nbsp; return;<br />&nbsp; &nbsp; }<br />&nbsp; &nbsp; </span><span class="default">$halfway </span><span class="keyword">= </span><span class="default">count</span><span class="keyword">(</span><span class="default">$array</span><span class="keyword">) / </span><span class="default">2</span><span class="keyword">;<br />&nbsp; &nbsp; </span><span class="default">$array1 </span><span class="keyword">= </span><span class="default">array_slice</span><span class="keyword">(</span><span class="default">$array</span><span class="keyword">, </span><span class="default">0</span><span class="keyword">, </span><span class="default">$halfway</span><span class="keyword">, </span><span class="default">TRUE</span><span class="keyword">);<br />&nbsp; &nbsp; </span><span class="default">$array2 </span><span class="keyword">= </span><span class="default">array_slice</span><span class="keyword">(</span><span class="default">$array</span><span class="keyword">, </span><span class="default">$halfway</span><span class="keyword">, </span><span class="default">NULL</span><span class="keyword">, </span><span class="default">TRUE</span><span class="keyword">);<br /><br />&nbsp; &nbsp; </span><span class="default">stable_uasort</span><span class="keyword">(</span><span class="default">$array1</span><span class="keyword">, </span><span class="default">$cmp_function</span><span class="keyword">);<br />&nbsp; &nbsp; </span><span class="default">stable_uasort</span><span class="keyword">(</span><span class="default">$array2</span><span class="keyword">, </span><span class="default">$cmp_function</span><span class="keyword">);<br />&nbsp; &nbsp; if(</span><span class="default">call_user_func</span><span class="keyword">(</span><span class="default">$cmp_function</span><span class="keyword">, </span><span class="default">end</span><span class="keyword">(</span><span class="default">$array1</span><span class="keyword">), </span><span class="default">reset</span><span class="keyword">(</span><span class="default">$array2</span><span class="keyword">)) &lt; </span><span class="default">1</span><span class="keyword">) {<br />&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="default">$array </span><span class="keyword">= </span><span class="default">$array1 </span><span class="keyword">+ </span><span class="default">$array2</span><span class="keyword">;<br />&nbsp; &nbsp; &nbsp; &nbsp; return;<br />&nbsp; &nbsp; }<br />&nbsp; &nbsp; </span><span class="default">$array </span><span class="keyword">= array();<br />&nbsp; &nbsp; </span><span class="default">reset</span><span class="keyword">(</span><span class="default">$array1</span><span class="keyword">);<br />&nbsp; &nbsp; </span><span class="default">reset</span><span class="keyword">(</span><span class="default">$array2</span><span class="keyword">);<br />&nbsp; &nbsp; while(</span><span class="default">current</span><span class="keyword">(</span><span class="default">$array1</span><span class="keyword">) &amp;&amp; </span><span class="default">current</span><span class="keyword">(</span><span class="default">$array2</span><span class="keyword">)) {<br />&nbsp; &nbsp; &nbsp; &nbsp; if(</span><span class="default">call_user_func</span><span class="keyword">(</span><span class="default">$cmp_function</span><span class="keyword">, </span><span class="default">current</span><span class="keyword">(</span><span class="default">$array1</span><span class="keyword">), </span><span class="default">current</span><span class="keyword">(</span><span class="default">$array2</span><span class="keyword">)) &lt; </span><span class="default">1</span><span class="keyword">) {<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="default">$array</span><span class="keyword">[</span><span class="default">key</span><span class="keyword">(</span><span class="default">$array1</span><span class="keyword">)] = </span><span class="default">current</span><span class="keyword">(</span><span class="default">$array1</span><span class="keyword">);<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="default">next</span><span class="keyword">(</span><span class="default">$array1</span><span class="keyword">);<br />&nbsp; &nbsp; &nbsp; &nbsp; } else {<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="default">$array</span><span class="keyword">[</span><span class="default">key</span><span class="keyword">(</span><span class="default">$array2</span><span class="keyword">)] = </span><span class="default">current</span><span class="keyword">(</span><span class="default">$array2</span><span class="keyword">);<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="default">next</span><span class="keyword">(</span><span class="default">$array2</span><span class="keyword">);<br />&nbsp; &nbsp; &nbsp; &nbsp; }<br />&nbsp; &nbsp; }<br />&nbsp; &nbsp; while(</span><span class="default">current</span><span class="keyword">(</span><span class="default">$array1</span><span class="keyword">)) {<br />&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="default">$array</span><span class="keyword">[</span><span class="default">key</span><span class="keyword">(</span><span class="default">$array1</span><span class="keyword">)] = </span><span class="default">current</span><span class="keyword">(</span><span class="default">$array1</span><span class="keyword">);<br />&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="default">next</span><span class="keyword">(</span><span class="default">$array1</span><span class="keyword">);<br />&nbsp; &nbsp; }<br />&nbsp; &nbsp; while(</span><span class="default">current</span><span class="keyword">(</span><span class="default">$array2</span><span class="keyword">)) {<br />&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="default">$array</span><span class="keyword">[</span><span class="default">key</span><span class="keyword">(</span><span class="default">$array2</span><span class="keyword">)] = </span><span class="default">current</span><span class="keyword">(</span><span class="default">$array2</span><span class="keyword">);<br />&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="default">next</span><span class="keyword">(</span><span class="default">$array2</span><span class="keyword">);<br />&nbsp; &nbsp; }<br />&nbsp; &nbsp; return;<br />}<br /><br />function </span><span class="default">cmp</span><span class="keyword">(</span><span class="default">$a</span><span class="keyword">, </span><span class="default">$b</span><span class="keyword">) {<br />&nbsp; &nbsp; if(</span><span class="default">$a</span><span class="keyword">[</span><span class="string">'n'</span><span class="keyword">] == </span><span class="default">$b</span><span class="keyword">[</span><span class="string">'n'</span><span class="keyword">]) {<br />&nbsp; &nbsp; &nbsp; &nbsp; return </span><span class="default">0</span><span class="keyword">;<br />&nbsp; &nbsp; }<br />&nbsp; &nbsp; return (</span><span class="default">$a</span><span class="keyword">[</span><span class="string">'n'</span><span class="keyword">] &gt; </span><span class="default">$b</span><span class="keyword">[</span><span class="string">'n'</span><span class="keyword">]) ? -</span><span class="default">1 </span><span class="keyword">: </span><span class="default">1</span><span class="keyword">;<br />}<br /><br /></span><span class="default">$a </span><span class="keyword">= </span><span class="default">$b </span><span class="keyword">= array(<br />&nbsp; &nbsp; </span><span class="string">'a' </span><span class="keyword">=&gt; array(</span><span class="string">"l" </span><span class="keyword">=&gt; </span><span class="string">"A"</span><span class="keyword">, </span><span class="string">"n" </span><span class="keyword">=&gt; </span><span class="default">1</span><span class="keyword">),<br />&nbsp; &nbsp; </span><span class="string">'b' </span><span class="keyword">=&gt; array(</span><span class="string">"l" </span><span class="keyword">=&gt; </span><span class="string">"B"</span><span class="keyword">, </span><span class="string">"n" </span><span class="keyword">=&gt; </span><span class="default">2</span><span class="keyword">),<br />&nbsp; &nbsp; </span><span class="string">'c' </span><span class="keyword">=&gt; array(</span><span class="string">"l" </span><span class="keyword">=&gt; </span><span class="string">"C"</span><span class="keyword">, </span><span class="string">"n" </span><span class="keyword">=&gt; </span><span class="default">1</span><span class="keyword">),<br />&nbsp; &nbsp; </span><span class="string">'d' </span><span class="keyword">=&gt; array(</span><span class="string">"l" </span><span class="keyword">=&gt; </span><span class="string">"D"</span><span class="keyword">, </span><span class="string">"n" </span><span class="keyword">=&gt; </span><span class="default">2</span><span class="keyword">),<br />&nbsp; &nbsp; </span><span class="string">'e' </span><span class="keyword">=&gt; array(</span><span class="string">"l" </span><span class="keyword">=&gt; </span><span class="string">"E"</span><span class="keyword">, </span><span class="string">"n" </span><span class="keyword">=&gt; </span><span class="default">2</span><span class="keyword">),<br />);<br /><br /></span><span class="default">uasort</span><span class="keyword">(</span><span class="default">$a</span><span class="keyword">, </span><span class="string">'cmp'</span><span class="keyword">);<br /></span><span class="default">print_r</span><span class="keyword">(</span><span class="default">$a</span><span class="keyword">);<br /><br /></span><span class="default">stable_uasort</span><span class="keyword">(</span><span class="default">$b</span><span class="keyword">, </span><span class="string">'cmp'</span><span class="keyword">);<br /></span><span class="default">print_r</span><span class="keyword">(</span><span class="default">$b</span><span class="keyword">);<br /></span><span class="default">?&gt;<br /></span><br />returns<br /><br />Array<br />(<br />&nbsp; &nbsp; [e] =&gt; Array<br />&nbsp; &nbsp; &nbsp; &nbsp; (<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [l] =&gt; E<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [n] =&gt; 2<br />&nbsp; &nbsp; &nbsp; &nbsp; )<br /><br />&nbsp; &nbsp; [b] =&gt; Array<br />&nbsp; &nbsp; &nbsp; &nbsp; (<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [l] =&gt; B<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [n] =&gt; 2<br />&nbsp; &nbsp; &nbsp; &nbsp; )<br /><br />&nbsp; &nbsp; [d] =&gt; Array<br />&nbsp; &nbsp; &nbsp; &nbsp; (<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [l] =&gt; D<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [n] =&gt; 2<br />&nbsp; &nbsp; &nbsp; &nbsp; )<br /><br />&nbsp; &nbsp; [c] =&gt; Array<br />&nbsp; &nbsp; &nbsp; &nbsp; (<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [l] =&gt; C<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [n] =&gt; 1<br />&nbsp; &nbsp; &nbsp; &nbsp; )<br /><br />&nbsp; &nbsp; [a] =&gt; Array<br />&nbsp; &nbsp; &nbsp; &nbsp; (<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [l] =&gt; A<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [n] =&gt; 1<br />&nbsp; &nbsp; &nbsp; &nbsp; )<br /><br />)<br />Array<br />(<br />&nbsp; &nbsp; [b] =&gt; Array<br />&nbsp; &nbsp; &nbsp; &nbsp; (<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [l] =&gt; B<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [n] =&gt; 2<br />&nbsp; &nbsp; &nbsp; &nbsp; )<br /><br />&nbsp; &nbsp; [d] =&gt; Array<br />&nbsp; &nbsp; &nbsp; &nbsp; (<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [l] =&gt; D<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [n] =&gt; 2<br />&nbsp; &nbsp; &nbsp; &nbsp; )<br /><br />&nbsp; &nbsp; [e] =&gt; Array<br />&nbsp; &nbsp; &nbsp; &nbsp; (<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [l] =&gt; E<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [n] =&gt; 2<br />&nbsp; &nbsp; &nbsp; &nbsp; )<br /><br />&nbsp; &nbsp; [a] =&gt; Array<br />&nbsp; &nbsp; &nbsp; &nbsp; (<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [l] =&gt; A<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [n] =&gt; 1<br />&nbsp; &nbsp; &nbsp; &nbsp; )<br /><br />&nbsp; &nbsp; [c] =&gt; Array<br />&nbsp; &nbsp; &nbsp; &nbsp; (<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [l] =&gt; C<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [n] =&gt; 1<br />&nbsp; &nbsp; &nbsp; &nbsp; )<br />)<br /><br /><a href="https://bugs.php.net/bug.php?id=53341" rel="nofollow" target="_blank">https://bugs.php.net/bug.php?id=53341</a></span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="121283">  <div class="votes">
+    <div id="Vu121283">
+    <a href="/manual/vote-note.php?id=121283&amp;page=function.uasort&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd121283">
+    <a href="/manual/vote-note.php?id=121283&amp;page=function.uasort&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V121283" title="83% like this...">
+    4
+    </div>
+  </div>
+  <a href="#121283" class="name">
+  <strong class="user"><em>alf at prisguide dot no</em></strong></a><a class="genanchor" href="#121283"> &para;</a><div class="date" title="2017-06-28 11:44"><strong>4 years ago</strong></div>
+  <div class="text" id="Hcom121283">
+<div class="phpcode"><code><span class="html">
+User "php at clement dot hk" already provided a stable uasort function, but I find this wrapper much shorter and easier to understand:<br /><br /><a href="https://github.com/vanderlee/PHP-stable-sort-functions/blob/master/classes/StableSort.php" rel="nofollow" target="_blank">https://github.com/vanderlee/PHP-stable-sort-functions/blob/master/classes/StableSort.php</a><br /><br />function stable_uasort(array &amp;$array, $value_compare_func) {<br />&nbsp; &nbsp; $index = 0;<br />&nbsp; &nbsp; foreach ($array as &amp;$item) {<br />&nbsp; &nbsp; &nbsp; &nbsp; $item = array($index++, $item);<br />&nbsp; &nbsp; }<br />&nbsp; &nbsp; $result = uasort($array, function($a, $b) use($value_compare_func) {<br />&nbsp; &nbsp; &nbsp; &nbsp; $result = call_user_func($value_compare_func, $a[1], $b[1]);<br />&nbsp; &nbsp; &nbsp; &nbsp; return $result == 0 ? $a[0] - $b[0] : $result;<br />&nbsp; &nbsp; });<br />&nbsp; &nbsp; foreach ($array as &amp;$item) {<br />&nbsp; &nbsp; &nbsp; &nbsp; $item = $item[1];<br />&nbsp; &nbsp; }<br />&nbsp; &nbsp; return $result;<br />}</span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="112994">  <div class="votes">
+    <div id="Vu112994">
+    <a href="/manual/vote-note.php?id=112994&amp;page=function.uasort&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd112994">
+    <a href="/manual/vote-note.php?id=112994&amp;page=function.uasort&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V112994" title="83% like this...">
+    4
+    </div>
+  </div>
+  <a href="#112994" class="name">
+  <strong class="user"><em>Anonymous</em></strong></a><a class="genanchor" href="#112994"> &para;</a><div class="date" title="2013-08-15 10:35"><strong>8 years ago</strong></div>
+  <div class="text" id="Hcom112994">
+<div class="phpcode"><code><span class="html">
+//this fix the problem of if any of these sort functions evaluates two members as equal then the order is undefined (the sorting is not stable).<br /><br />$pos=0;<br />foreach($values as $k =&gt; $v)<br />&nbsp; $tosort[$k]=array($v,$pos++);<br />uasort($tosort,function($a, $b) {<br />&nbsp; if($a[0] != $b[0])return ($a[0] &lt; $b[0]) ? -1 : 1;<br />&nbsp; &nbsp; return ($a[1] &lt; $b[1]) ? -1 : 1;}<br />);<br />foreach($tosort as $k =&gt; $v)<br />&nbsp; $values[$k]=$v[0];</span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="83701">  <div class="votes">
+    <div id="Vu83701">
+    <a href="/manual/vote-note.php?id=83701&amp;page=function.uasort&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd83701">
+    <a href="/manual/vote-note.php?id=83701&amp;page=function.uasort&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V83701" title="67% like this...">
+    11
+    </div>
+  </div>
+  <a href="#83701" class="name">
+  <strong class="user"><em>php arobase kochira period com</em></strong></a><a class="genanchor" href="#83701"> &para;</a><div class="date" title="2008-06-08 04:13"><strong>13 years ago</strong></div>
+  <div class="text" id="Hcom83701">
+<div class="phpcode"><code><span class="html">
+Difference between uasort() and usort(), the missing example ...<br /><br /><span class="default">&lt;?php<br />&nbsp; $arr </span><span class="keyword">= array ( </span><span class="default">10 </span><span class="keyword">=&gt; array(</span><span class="string">'id' </span><span class="keyword">=&gt; </span><span class="string">'dix'</span><span class="keyword">,&nbsp; </span><span class="string">'aa' </span><span class="keyword">=&gt; </span><span class="string">'1010'</span><span class="keyword">),<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="default">100 </span><span class="keyword">=&gt; array(</span><span class="string">'id' </span><span class="keyword">=&gt; </span><span class="string">'cent'</span><span class="keyword">, </span><span class="string">'aa' </span><span class="keyword">=&gt; </span><span class="string">'100100'</span><span class="keyword">),<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="default">2 </span><span class="keyword">=&gt; array(</span><span class="string">'id' </span><span class="keyword">=&gt; </span><span class="string">'deux'</span><span class="keyword">, </span><span class="string">'aa' </span><span class="keyword">=&gt; </span><span class="string">'22'</span><span class="keyword">), <br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="default">7 </span><span class="keyword">=&gt; array(</span><span class="string">'id' </span><span class="keyword">=&gt; </span><span class="string">'sept'</span><span class="keyword">, </span><span class="string">'aa' </span><span class="keyword">=&gt; </span><span class="string">'77'</span><span class="keyword">));<br /><br />&nbsp; </span><span class="comment">// id sorting<br />&nbsp; </span><span class="keyword">function </span><span class="default">so </span><span class="keyword">(</span><span class="default">$a</span><span class="keyword">, </span><span class="default">$b</span><span class="keyword">) { return (</span><span class="default">strcmp </span><span class="keyword">(</span><span class="default">$a</span><span class="keyword">[</span><span class="string">'id'</span><span class="keyword">],</span><span class="default">$b</span><span class="keyword">[</span><span class="string">'id'</span><span class="keyword">]));&nbsp; &nbsp; }<br /></span><span class="default">?&gt;<br /></span><br />*** uasort($arr, 'so') output:<br /><br /><span class="default">&lt;?php </span><span class="keyword">Array (<br />&nbsp; &nbsp; [</span><span class="default">100</span><span class="keyword">] =&gt; Array<br />&nbsp; &nbsp; &nbsp; &nbsp; (<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [</span><span class="default">id</span><span class="keyword">] =&gt; </span><span class="default">cent<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="keyword">[</span><span class="default">aa</span><span class="keyword">] =&gt; </span><span class="default">100100<br />&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="keyword">)<br /><br />&nbsp; &nbsp; [</span><span class="default">2</span><span class="keyword">] =&gt; Array<br />&nbsp; &nbsp; &nbsp; &nbsp; (<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [</span><span class="default">id</span><span class="keyword">] =&gt; </span><span class="default">deux<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="keyword">[</span><span class="default">aa</span><span class="keyword">] =&gt; </span><span class="default">22<br />&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="keyword">)<br /><br />&nbsp; &nbsp; [</span><span class="default">10</span><span class="keyword">] =&gt; Array<br />&nbsp; &nbsp; &nbsp; &nbsp; (<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [</span><span class="default">id</span><span class="keyword">] =&gt; </span><span class="default">dix<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="keyword">[</span><span class="default">aa</span><span class="keyword">] =&gt; </span><span class="default">1010<br />&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="keyword">)<br /><br />&nbsp; &nbsp; [</span><span class="default">7</span><span class="keyword">] =&gt; Array<br />&nbsp; &nbsp; &nbsp; &nbsp; (<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [</span><span class="default">id</span><span class="keyword">] =&gt; </span><span class="default">sept<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="keyword">[</span><span class="default">aa</span><span class="keyword">] =&gt; </span><span class="default">77<br />&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="keyword">))</span><span class="default">?&gt;<br /></span><br />*** usort($arr, 'so') output:<br /><br /><span class="default">&lt;?php </span><span class="keyword">Array (<br />&nbsp; &nbsp; [</span><span class="default">0</span><span class="keyword">] =&gt; Array<br />&nbsp; &nbsp; &nbsp; &nbsp; (<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [</span><span class="default">id</span><span class="keyword">] =&gt; </span><span class="default">cent<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="keyword">[</span><span class="default">aa</span><span class="keyword">] =&gt; </span><span class="default">100100<br />&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="keyword">)<br /><br />&nbsp; &nbsp; [</span><span class="default">1</span><span class="keyword">] =&gt; Array<br />&nbsp; &nbsp; &nbsp; &nbsp; (<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [</span><span class="default">id</span><span class="keyword">] =&gt; </span><span class="default">deux<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="keyword">[</span><span class="default">aa</span><span class="keyword">] =&gt; </span><span class="default">22<br />&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="keyword">)<br /><br />&nbsp; &nbsp; [</span><span class="default">2</span><span class="keyword">] =&gt; Array<br />&nbsp; &nbsp; &nbsp; &nbsp; (<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [</span><span class="default">id</span><span class="keyword">] =&gt; </span><span class="default">dix<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="keyword">[</span><span class="default">aa</span><span class="keyword">] =&gt; </span><span class="default">1010<br />&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="keyword">)<br /><br />&nbsp; &nbsp; [</span><span class="default">3</span><span class="keyword">] =&gt; Array<br />&nbsp; &nbsp; &nbsp; &nbsp; (<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [</span><span class="default">id</span><span class="keyword">] =&gt; </span><span class="default">sept<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="keyword">[</span><span class="default">aa</span><span class="keyword">] =&gt; </span><span class="default">77<br />&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="keyword">))</span><span class="default">?&gt;</span>
+</span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="100279">  <div class="votes">
+    <div id="Vu100279">
+    <a href="/manual/vote-note.php?id=100279&amp;page=function.uasort&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd100279">
+    <a href="/manual/vote-note.php?id=100279&amp;page=function.uasort&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V100279" title="60% like this...">
+    7
+    </div>
+  </div>
+  <a href="#100279" class="name">
+  <strong class="user"><em>phire_sk</em></strong></a><a class="genanchor" href="#100279"> &para;</a><div class="date" title="2010-10-05 02:19"><strong>11 years ago</strong></div>
+  <div class="text" id="Hcom100279">
+<div class="phpcode"><code><span class="html">
+I tried using some of the previous built multisorts, but they weren't working as expected.<br /><br />So, I made my own Class, and it seems to work wonderfully.<br /><br />Here is the code:<br /><br /><span class="default">&lt;?php<br /></span><span class="comment">/************************************<br />*&nbsp; &nbsp; Allows sorting multi-dimensional<br />*&nbsp; &nbsp; arrays by a specific key and in<br />*&nbsp; &nbsp; asc or desc order<br />**/<br /></span><span class="keyword">class </span><span class="default">multiSort<br /></span><span class="keyword">{<br />&nbsp; &nbsp; var </span><span class="default">$key</span><span class="keyword">;&nbsp; &nbsp; </span><span class="comment">//key in your array<br /><br />&nbsp; &nbsp; //runs the sort, and returns sorted array<br />&nbsp; &nbsp; </span><span class="keyword">function </span><span class="default">run </span><span class="keyword">(</span><span class="default">$myarray</span><span class="keyword">, </span><span class="default">$key_to_sort</span><span class="keyword">, </span><span class="default">$type_of_sort </span><span class="keyword">= </span><span class="string">''</span><span class="keyword">)<br />&nbsp; &nbsp; {<br />&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="default">$this</span><span class="keyword">-&gt;</span><span class="default">key </span><span class="keyword">= </span><span class="default">$key_to_sort</span><span class="keyword">;<br />&nbsp; &nbsp; &nbsp; &nbsp; <br />&nbsp; &nbsp; &nbsp; &nbsp; if (</span><span class="default">$type_of_sort </span><span class="keyword">== </span><span class="string">'desc'</span><span class="keyword">)<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="default">uasort</span><span class="keyword">(</span><span class="default">$myarray</span><span class="keyword">, array(</span><span class="default">$this</span><span class="keyword">, </span><span class="string">'myreverse_compare'</span><span class="keyword">));<br />&nbsp; &nbsp; &nbsp; &nbsp; else<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="default">uasort</span><span class="keyword">(</span><span class="default">$myarray</span><span class="keyword">, array(</span><span class="default">$this</span><span class="keyword">, </span><span class="string">'mycompare'</span><span class="keyword">));<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <br />&nbsp; &nbsp; &nbsp; &nbsp; return </span><span class="default">$myarray</span><span class="keyword">;<br />&nbsp; &nbsp; }<br />&nbsp; &nbsp; <br />&nbsp; &nbsp; </span><span class="comment">//for ascending order<br />&nbsp; &nbsp; </span><span class="keyword">function </span><span class="default">mycompare</span><span class="keyword">(</span><span class="default">$x</span><span class="keyword">, </span><span class="default">$y</span><span class="keyword">)<br />&nbsp; &nbsp; {<br />&nbsp; &nbsp; &nbsp; &nbsp; if ( </span><span class="default">$x</span><span class="keyword">[</span><span class="default">$this</span><span class="keyword">-&gt;</span><span class="default">key</span><span class="keyword">] == </span><span class="default">$y</span><span class="keyword">[</span><span class="default">$this</span><span class="keyword">-&gt;</span><span class="default">key</span><span class="keyword">] )<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return </span><span class="default">0</span><span class="keyword">;<br />&nbsp; &nbsp; &nbsp; &nbsp; else if ( </span><span class="default">$x</span><span class="keyword">[</span><span class="default">$this</span><span class="keyword">-&gt;</span><span class="default">key</span><span class="keyword">] &lt; </span><span class="default">$y</span><span class="keyword">[</span><span class="default">$this</span><span class="keyword">-&gt;</span><span class="default">key</span><span class="keyword">] )<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return -</span><span class="default">1</span><span class="keyword">;<br />&nbsp; &nbsp; &nbsp; &nbsp; else<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return </span><span class="default">1</span><span class="keyword">;<br />&nbsp; &nbsp; }<br />&nbsp; &nbsp; <br />&nbsp; &nbsp; </span><span class="comment">//for descending order<br />&nbsp; &nbsp; </span><span class="keyword">function </span><span class="default">myreverse_compare</span><span class="keyword">(</span><span class="default">$x</span><span class="keyword">, </span><span class="default">$y</span><span class="keyword">)<br />&nbsp; &nbsp; {<br />&nbsp; &nbsp; &nbsp; &nbsp; if ( </span><span class="default">$x</span><span class="keyword">[</span><span class="default">$this</span><span class="keyword">-&gt;</span><span class="default">key</span><span class="keyword">] == </span><span class="default">$y</span><span class="keyword">[</span><span class="default">$this</span><span class="keyword">-&gt;</span><span class="default">key</span><span class="keyword">] )<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return </span><span class="default">0</span><span class="keyword">;<br />&nbsp; &nbsp; &nbsp; &nbsp; else if ( </span><span class="default">$x</span><span class="keyword">[</span><span class="default">$this</span><span class="keyword">-&gt;</span><span class="default">key</span><span class="keyword">] &gt; </span><span class="default">$y</span><span class="keyword">[</span><span class="default">$this</span><span class="keyword">-&gt;</span><span class="default">key</span><span class="keyword">] )<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return -</span><span class="default">1</span><span class="keyword">;<br />&nbsp; &nbsp; &nbsp; &nbsp; else<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return </span><span class="default">1</span><span class="keyword">;<br />&nbsp; &nbsp; }<br />}<br /></span><span class="default">?&gt;</span>
+</span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="34159">  <div class="votes">
+    <div id="Vu34159">
+    <a href="/manual/vote-note.php?id=34159&amp;page=function.uasort&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd34159">
+    <a href="/manual/vote-note.php?id=34159&amp;page=function.uasort&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V34159" title="60% like this...">
+    2
+    </div>
+  </div>
+  <a href="#34159" class="name">
+  <strong class="user"><em>php at eden2 dot com</em></strong></a><a class="genanchor" href="#34159"> &para;</a><div class="date" title="2003-07-17 04:36"><strong>18 years ago</strong></div>
+  <div class="text" id="Hcom34159">
+<div class="phpcode"><code><span class="html">
+Is it just me, or are the examples below misleading, and actually demonstrating situations that would be more appropriate for usort()?<br /><br />After trying to make sense of the uasort() description, it sounds like it's more for sorting a 1D array like this:<br /><br />"john" =&gt; "$23.12"<br />"tim" =&gt; "$6.50"<br />"bob" =&gt; "$18.54"<br /><br />and getting back:<br /><br />"tim" =&gt; "$6.50"<br />"bob" =&gt; "$18.54"<br />"john" =&gt; $23.12"<br /><br />(assuming, of course, that your sort function is lopping off the $ and evaluating as a number -- which would complicate the use of asort() ;)</span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="15328">  <div class="votes">
+    <div id="Vu15328">
+    <a href="/manual/vote-note.php?id=15328&amp;page=function.uasort&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd15328">
+    <a href="/manual/vote-note.php?id=15328&amp;page=function.uasort&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V15328" title="57% like this...">
+    1
+    </div>
+  </div>
+  <a href="#15328" class="name">
+  <strong class="user"><em>stilgar_cpsNOSPAM at zipmail dot NOSPAMcom dot br</em></strong></a><a class="genanchor" href="#15328"> &para;</a><div class="date" title="2001-09-05 02:30"><strong>20 years ago</strong></div>
+  <div class="text" id="Hcom15328">
+<div class="phpcode"><code><span class="html">
+Use example:<br /><br />$array[0]['Fator1']=7;<br />$array[0]['Fator2']="Name";<br />$array[1]['Fator1']=5;<br />$array[1]['Fator2']="Name";<br />$array[2]['Fator1']=7;<br />$array[2]['Fator2']="NameDiferente";<br />.....<br /><br />We want to order by Fator1, then Fator2, then:<br /><br />function Compare($ar1, $ar2)<br />{<br />&nbsp;&nbsp; if ($ar1['Fator1']&lt;$ar2['Fator1'])<br />&nbsp; &nbsp; &nbsp; return -1;<br />&nbsp;&nbsp; else if ($ar1['Fator1']&gt;$ar2['Fator1'])<br />&nbsp; &nbsp; &nbsp; return 1;<br />&nbsp;&nbsp; if ($ar1['Fator2']&lt;$ar2['Fator2'])<br />&nbsp; &nbsp; &nbsp; return -1;<br />&nbsp;&nbsp; else if ($ar1['Fator2']&gt;$ar2['Fator2'])<br />&nbsp; &nbsp; &nbsp; return 1;<br />&nbsp;&nbsp; return 0;<br />}<br /><br />To sort now, we use:<br /><br />uasort($array, 'Compare');</span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="110678">  <div class="votes">
+    <div id="Vu110678">
+    <a href="/manual/vote-note.php?id=110678&amp;page=function.uasort&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd110678">
+    <a href="/manual/vote-note.php?id=110678&amp;page=function.uasort&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V110678" title="54% like this...">
+    2
+    </div>
+  </div>
+  <a href="#110678" class="name">
+  <strong class="user"><em>iborodikhin at gmail dot com</em></strong></a><a class="genanchor" href="#110678"> &para;</a><div class="date" title="2012-11-22 08:32"><strong>9 years ago</strong></div>
+  <div class="text" id="Hcom110678">
+<div class="phpcode"><code><span class="html">
+To shuffle assoc array preserving keys just do this:<br /><span class="default">&lt;?php uasort</span><span class="keyword">(<br />&nbsp; &nbsp; </span><span class="default">$array</span><span class="keyword">,<br />&nbsp; &nbsp; function (</span><span class="default">$a</span><span class="keyword">, </span><span class="default">$b</span><span class="keyword">) {<br />&nbsp; &nbsp; &nbsp; &nbsp; return </span><span class="default">mt_rand</span><span class="keyword">(</span><span class="default">0</span><span class="keyword">, </span><span class="default">1</span><span class="keyword">) &gt; </span><span class="default">0 </span><span class="keyword">? </span><span class="default">1 </span><span class="keyword">: -</span><span class="default">1</span><span class="keyword">;<br />&nbsp; &nbsp; }<br />); </span><span class="default">?&gt;</span>
+</span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="125471">  <div class="votes">
+    <div id="Vu125471">
+    <a href="/manual/vote-note.php?id=125471&amp;page=function.uasort&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd125471">
+    <a href="/manual/vote-note.php?id=125471&amp;page=function.uasort&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V125471" title="100% like this...">
+    2
+    </div>
+  </div>
+  <a href="#125471" class="name">
+  <strong class="user"><em>woodongwong at gmail dot com</em></strong></a><a class="genanchor" href="#125471"> &para;</a><div class="date" title="2020-10-29 01:38"><strong>1 year ago</strong></div>
+  <div class="text" id="Hcom125471">
+<div class="phpcode"><code><span class="html">
+PHP version &gt;= 7 <br /><br /><span class="default">&lt;?php<br /><br /></span><span class="comment">// Comparison function<br /></span><span class="keyword">function </span><span class="default">cmp</span><span class="keyword">(</span><span class="default">$a</span><span class="keyword">, </span><span class="default">$b</span><span class="keyword">) {<br />&nbsp; &nbsp; return </span><span class="default">$a </span><span class="keyword">&lt;=&gt; </span><span class="default">$b</span><span class="keyword">;<br />}<br /><br /></span><span class="comment">// Array to be sorted<br /></span><span class="default">$array </span><span class="keyword">= [</span><span class="string">'a' </span><span class="keyword">=&gt; </span><span class="default">4</span><span class="keyword">, </span><span class="string">'b' </span><span class="keyword">=&gt; </span><span class="default">8</span><span class="keyword">, </span><span class="string">'c' </span><span class="keyword">=&gt; -</span><span class="default">1</span><span class="keyword">, </span><span class="string">'d' </span><span class="keyword">=&gt; -</span><span class="default">9</span><span class="keyword">, </span><span class="string">'e' </span><span class="keyword">=&gt; </span><span class="default">2</span><span class="keyword">, </span><span class="string">'f' </span><span class="keyword">=&gt; </span><span class="default">5</span><span class="keyword">, </span><span class="string">'g' </span><span class="keyword">=&gt; </span><span class="default">3</span><span class="keyword">, </span><span class="string">'h' </span><span class="keyword">=&gt; -</span><span class="default">4</span><span class="keyword">];<br /></span><span class="default">print_r</span><span class="keyword">(</span><span class="default">$array</span><span class="keyword">);<br /><br /></span><span class="comment">// Sort and print the resulting array<br /></span><span class="default">uasort</span><span class="keyword">(</span><span class="default">$array</span><span class="keyword">, </span><span class="string">'cmp'</span><span class="keyword">);<br /></span><span class="default">print_r</span><span class="keyword">(</span><span class="default">$array</span><span class="keyword">);<br /><br /></span><span class="default">?&gt;<br /></span><br />PHP version &gt;= 7.4<br /><br /><span class="default">&lt;?php<br /><br /></span><span class="comment">// Array to be sorted<br /></span><span class="default">$array </span><span class="keyword">= [</span><span class="string">'a' </span><span class="keyword">=&gt; </span><span class="default">4</span><span class="keyword">, </span><span class="string">'b' </span><span class="keyword">=&gt; </span><span class="default">8</span><span class="keyword">, </span><span class="string">'c' </span><span class="keyword">=&gt; -</span><span class="default">1</span><span class="keyword">, </span><span class="string">'d' </span><span class="keyword">=&gt; -</span><span class="default">9</span><span class="keyword">, </span><span class="string">'e' </span><span class="keyword">=&gt; </span><span class="default">2</span><span class="keyword">, </span><span class="string">'f' </span><span class="keyword">=&gt; </span><span class="default">5</span><span class="keyword">, </span><span class="string">'g' </span><span class="keyword">=&gt; </span><span class="default">3</span><span class="keyword">, </span><span class="string">'h' </span><span class="keyword">=&gt; -</span><span class="default">4</span><span class="keyword">];<br /></span><span class="default">print_r</span><span class="keyword">(</span><span class="default">$array</span><span class="keyword">);<br /><br /></span><span class="comment">// Sort and print the resulting array<br /></span><span class="default">uasort</span><span class="keyword">(</span><span class="default">$array</span><span class="keyword">, </span><span class="default">fn</span><span class="keyword">(</span><span class="default">$a</span><span class="keyword">, </span><span class="default">$b</span><span class="keyword">) =&gt; </span><span class="default">$a </span><span class="keyword">&lt;=&gt; </span><span class="default">$b</span><span class="keyword">);<br /></span><span class="default">print_r</span><span class="keyword">(</span><span class="default">$array</span><span class="keyword">);<br /><br /></span><span class="default">?&gt;</span>
+</span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="126556">  <div class="votes">
+    <div id="Vu126556">
+    <a href="/manual/vote-note.php?id=126556&amp;page=function.uasort&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd126556">
+    <a href="/manual/vote-note.php?id=126556&amp;page=function.uasort&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V126556" title="no votes...">
+    0
+    </div>
+  </div>
+  <a href="#126556" class="name">
+  <strong class="user"><em>tschallacka at lookingout dot com</em></strong></a><a class="genanchor" href="#126556"> &para;</a><div class="date" title="2021-11-04 11:42"><strong>4 months ago</strong></div>
+  <div class="text" id="Hcom126556">
+<div class="phpcode"><code><span class="html">
+php &gt; 7<br /><br />Sorting associative array, by a value of a subarray.<br /><br /><span class="default">&lt;?php<br />uasort</span><span class="keyword">(</span><span class="default">$items</span><span class="keyword">, function (</span><span class="default">$a</span><span class="keyword">, </span><span class="default">$b</span><span class="keyword">) {<br />&nbsp;&nbsp; if (</span><span class="default">$a</span><span class="keyword">[</span><span class="string">'sort_order'</span><span class="keyword">]??</span><span class="default">0 </span><span class="keyword">== </span><span class="default">$b</span><span class="keyword">[</span><span class="string">'sort_order'</span><span class="keyword">]??</span><span class="default">0</span><span class="keyword">) {<br />&nbsp; &nbsp; &nbsp; return </span><span class="default">0</span><span class="keyword">;<br />&nbsp;&nbsp; }<br />&nbsp;&nbsp; return (</span><span class="default">$a</span><span class="keyword">[</span><span class="string">'sort_order'</span><span class="keyword">]??</span><span class="default">0 </span><span class="keyword">&lt; </span><span class="default">$b</span><span class="keyword">[</span><span class="string">'sort_order'</span><span class="keyword">]??</span><span class="default">0</span><span class="keyword">) ? -</span><span class="default">1 </span><span class="keyword">: </span><span class="default">1</span><span class="keyword">;<br />});<br /></span><span class="default">?&gt;</span>
+</span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="126326">  <div class="votes">
+    <div id="Vu126326">
+    <a href="/manual/vote-note.php?id=126326&amp;page=function.uasort&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd126326">
+    <a href="/manual/vote-note.php?id=126326&amp;page=function.uasort&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V126326" title="no votes...">
+    0
+    </div>
+  </div>
+  <a href="#126326" class="name">
+  <strong class="user"><em>JeffZhang</em></strong></a><a class="genanchor" href="#126326"> &para;</a><div class="date" title="2021-08-11 06:39"><strong>7 months ago</strong></div>
+  <div class="text" id="Hcom126326">
+<div class="phpcode"><code><span class="html">
+A stable sort is realized by merging sorting, like "uasort" but stable, and the code is modified based on "mergesort"<br /><br /><span class="default">&lt;?php<br /><br /></span><span class="keyword">function </span><span class="default">uamergesort</span><span class="keyword">(&amp;</span><span class="default">$array</span><span class="keyword">, </span><span class="default">$callback </span><span class="keyword">= </span><span class="string">'strcmp'</span><span class="keyword">) {<br />&nbsp; &nbsp; </span><span class="default">$arraycount </span><span class="keyword">= </span><span class="default">count</span><span class="keyword">(</span><span class="default">$array</span><span class="keyword">);<br />&nbsp; &nbsp; if (</span><span class="default">$arraycount </span><span class="keyword">&lt; </span><span class="default">2</span><span class="keyword">) {<br />&nbsp; &nbsp; &nbsp; &nbsp; return;<br />&nbsp; &nbsp; }<br />&nbsp; &nbsp; </span><span class="default">$halfway </span><span class="keyword">= </span><span class="default">$arraycount </span><span class="keyword">/ </span><span class="default">2</span><span class="keyword">;<br />&nbsp; &nbsp; </span><span class="default">$array1 </span><span class="keyword">= </span><span class="default">array_slice</span><span class="keyword">(</span><span class="default">$array</span><span class="keyword">, </span><span class="default">0</span><span class="keyword">, </span><span class="default">$halfway</span><span class="keyword">, </span><span class="default">true</span><span class="keyword">);<br />&nbsp; &nbsp; </span><span class="default">$array2 </span><span class="keyword">= </span><span class="default">array_slice</span><span class="keyword">(</span><span class="default">$array</span><span class="keyword">, </span><span class="default">$halfway</span><span class="keyword">, </span><span class="default">null</span><span class="keyword">, </span><span class="default">true</span><span class="keyword">);<br />&nbsp; &nbsp; </span><span class="default">$this</span><span class="keyword">-&gt;</span><span class="default">uamergesort</span><span class="keyword">(</span><span class="default">$array1</span><span class="keyword">, </span><span class="default">$callback</span><span class="keyword">);<br />&nbsp; &nbsp; </span><span class="default">$this</span><span class="keyword">-&gt;</span><span class="default">uamergesort</span><span class="keyword">(</span><span class="default">$array2</span><span class="keyword">, </span><span class="default">$callback</span><span class="keyword">);<br /><br />&nbsp; &nbsp; </span><span class="default">$array </span><span class="keyword">= array();<br />&nbsp; &nbsp; </span><span class="default">$ptr1 </span><span class="keyword">= </span><span class="default">$ptr2 </span><span class="keyword">= </span><span class="default">0</span><span class="keyword">;<br />&nbsp; &nbsp; </span><span class="default">$array1keys </span><span class="keyword">= </span><span class="default">array_keys</span><span class="keyword">(</span><span class="default">$array1</span><span class="keyword">);<br />&nbsp; &nbsp; </span><span class="default">$array1 </span><span class="keyword">= </span><span class="default">array_values</span><span class="keyword">(</span><span class="default">$array1</span><span class="keyword">);<br />&nbsp; &nbsp; </span><span class="default">$array2keys </span><span class="keyword">= </span><span class="default">array_keys</span><span class="keyword">(</span><span class="default">$array2</span><span class="keyword">);<br />&nbsp; &nbsp; </span><span class="default">$array2 </span><span class="keyword">= </span><span class="default">array_values</span><span class="keyword">(</span><span class="default">$array2</span><span class="keyword">);<br />&nbsp; &nbsp; </span><span class="default">$array1count </span><span class="keyword">= </span><span class="default">count</span><span class="keyword">(</span><span class="default">$array1</span><span class="keyword">);<br />&nbsp; &nbsp; </span><span class="default">$array2count </span><span class="keyword">= </span><span class="default">count</span><span class="keyword">(</span><span class="default">$array2</span><span class="keyword">);<br />&nbsp; &nbsp; while (</span><span class="default">$ptr1 </span><span class="keyword">&lt; </span><span class="default">$array1count </span><span class="keyword">&amp;&amp; </span><span class="default">$ptr2 </span><span class="keyword">&lt; </span><span class="default">$array2count</span><span class="keyword">) {<br />&nbsp; &nbsp; &nbsp; &nbsp; if (</span><span class="default">call_user_func</span><span class="keyword">(</span><span class="default">$callback</span><span class="keyword">, </span><span class="default">$array1</span><span class="keyword">[</span><span class="default">$ptr1</span><span class="keyword">], </span><span class="default">$array2</span><span class="keyword">[</span><span class="default">$ptr2</span><span class="keyword">]) &lt; </span><span class="default">1</span><span class="keyword">) {<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="default">$array</span><span class="keyword">[</span><span class="default">$array1keys</span><span class="keyword">[</span><span class="default">$ptr1</span><span class="keyword">]] = </span><span class="default">$array1</span><span class="keyword">[</span><span class="default">$ptr1</span><span class="keyword">];<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="default">$ptr1</span><span class="keyword">++;<br />&nbsp; &nbsp; &nbsp; &nbsp; } else {<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="default">$array</span><span class="keyword">[</span><span class="default">$array2keys</span><span class="keyword">[</span><span class="default">$ptr2</span><span class="keyword">]] = </span><span class="default">$array2</span><span class="keyword">[</span><span class="default">$ptr2</span><span class="keyword">];<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="default">$ptr2</span><span class="keyword">++;<br />&nbsp; &nbsp; &nbsp; &nbsp; }<br />&nbsp; &nbsp; }<br />&nbsp; &nbsp; while (</span><span class="default">$ptr1 </span><span class="keyword">&lt; </span><span class="default">$array1count</span><span class="keyword">) {</span><span class="default">$array</span><span class="keyword">[</span><span class="default">$array1keys</span><span class="keyword">[</span><span class="default">$ptr1</span><span class="keyword">]] = </span><span class="default">$array1</span><span class="keyword">[</span><span class="default">$ptr1</span><span class="keyword">]; </span><span class="default">$ptr1</span><span class="keyword">++;}<br />&nbsp; &nbsp; while (</span><span class="default">$ptr2 </span><span class="keyword">&lt; </span><span class="default">$array2count</span><span class="keyword">) {</span><span class="default">$array</span><span class="keyword">[</span><span class="default">$array2keys</span><span class="keyword">[</span><span class="default">$ptr2</span><span class="keyword">]] = </span><span class="default">$array2</span><span class="keyword">[</span><span class="default">$ptr2</span><span class="keyword">]; </span><span class="default">$ptr2</span><span class="keyword">++;}<br /><br />&nbsp; &nbsp; return;<br />}<br /></span><span class="default">?&gt;</span>
+</span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="122855">  <div class="votes">
+    <div id="Vu122855">
+    <a href="/manual/vote-note.php?id=122855&amp;page=function.uasort&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd122855">
+    <a href="/manual/vote-note.php?id=122855&amp;page=function.uasort&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V122855" title="no votes...">
+    0
+    </div>
+  </div>
+  <a href="#122855" class="name">
+  <strong class="user"><em>bpolaszek at gmail dot com</em></strong></a><a class="genanchor" href="#122855"> &para;</a><div class="date" title="2018-06-19 01:47"><strong>3 years ago</strong></div>
+  <div class="text" id="Hcom122855">
+<div class="phpcode"><code><span class="html">
+Keep in mind that PHP sorting functions are not reliable to handle "stable sorting", even since PHP7+.<br />It might work on small arrays, but not on "big" ones (100 items are enough for the stable sorting to fail).<br /><br /><span class="default">&lt;?php<br />$a </span><span class="keyword">= </span><span class="default">array_fill</span><span class="keyword">(</span><span class="default">0</span><span class="keyword">, </span><span class="default">100</span><span class="keyword">, </span><span class="string">'foo'</span><span class="keyword">);<br /></span><span class="default">$b </span><span class="keyword">= </span><span class="default">$a</span><span class="keyword">;<br /></span><span class="default">var_dump</span><span class="keyword">(</span><span class="default">$b </span><span class="keyword">=== </span><span class="default">$a</span><span class="keyword">); </span><span class="comment">// bool(true)<br /><br /></span><span class="default">uasort</span><span class="keyword">(</span><span class="default">$a</span><span class="keyword">, function () {<br />&nbsp; &nbsp; return </span><span class="default">0</span><span class="keyword">; </span><span class="comment">// Consider all items are the same<br /></span><span class="keyword">});<br /><br /></span><span class="default">var_dump</span><span class="keyword">(</span><span class="default">$b </span><span class="keyword">=== </span><span class="default">$a</span><span class="keyword">); </span><span class="comment">// bool(false)<br /></span><span class="default">?&gt;<br /></span><br />To ensure $b === $a, use a 3rd-party stable sorting function:<br /><br /><a href="http://php.net/manual/en/function.uasort.php#121283" rel="nofollow" target="_blank">http://php.net/manual/en/function.uasort.php#121283</a></span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="124826">  <div class="votes">
+    <div id="Vu124826">
+    <a href="/manual/vote-note.php?id=124826&amp;page=function.uasort&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd124826">
+    <a href="/manual/vote-note.php?id=124826&amp;page=function.uasort&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V124826" title="0% like this...">
+    -1
+    </div>
+  </div>
+  <a href="#124826" class="name">
+  <strong class="user"><em>lixuss at gmail dot com</em></strong></a><a class="genanchor" href="#124826"> &para;</a><div class="date" title="2020-03-14 05:35"><strong>2 years ago</strong></div>
+  <div class="text" id="Hcom124826">
+<div class="phpcode"><code><span class="html">
+Here is a bug fix for "php at clement dot hk" stable_uasort(&amp;$array, $cmp_function)<br /><br />The implementation has problems with "0" values, because while() cycle stops on current() returning value "0" which is considered false. The condition must be !== false<br /><br />Just fix those 3 lines:<br /><br />while(current($array1) &amp;&amp; current($array2)) =&gt; while(current($array1)!==false &amp;&amp; current($array2)!==false)<br /><br />while(current($array1)) =&gt; while(current($array1)!==false)<br /><br />while(current($array2)) =&gt; while(current($array1)!==false)</span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="119472">  <div class="votes">
+    <div id="Vu119472">
+    <a href="/manual/vote-note.php?id=119472&amp;page=function.uasort&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd119472">
+    <a href="/manual/vote-note.php?id=119472&amp;page=function.uasort&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V119472" title="50% like this...">
+    0
+    </div>
+  </div>
+  <a href="#119472" class="name">
+  <strong class="user"><em>ayaou dot mohammed at gmail dot com</em></strong></a><a class="genanchor" href="#119472"> &para;</a><div class="date" title="2016-06-15 03:05"><strong>5 years ago</strong></div>
+  <div class="text" id="Hcom119472">
+<div class="phpcode"><code><span class="html">
+// Anonumous functions<br />uasort($collection, array($this, function($a, $b){<br />&nbsp; &nbsp;&nbsp; //logic<br />}));</span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="94883">  <div class="votes">
+    <div id="Vu94883">
+    <a href="/manual/vote-note.php?id=94883&amp;page=function.uasort&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd94883">
+    <a href="/manual/vote-note.php?id=94883&amp;page=function.uasort&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V94883" title="50% like this...">
+    0
+    </div>
+  </div>
+  <a href="#94883" class="name">
+  <strong class="user"><em>paul at webtop-designs dot com</em></strong></a><a class="genanchor" href="#94883"> &para;</a><div class="date" title="2009-11-30 01:40"><strong>12 years ago</strong></div>
+  <div class="text" id="Hcom94883">
+<div class="phpcode"><code><span class="html">
+Just expanding on php arobase kochira period com's method:<br /><br />If you are looking to sort a multi-D array by a specific column and have entries in both upper and lower case, simply drop the entries to lowercase before doing the strcmp.<br /><br /><span class="default">&lt;?php<br />$dirs </span><span class="keyword">= array(<br />&nbsp; array(</span><span class="string">'name' </span><span class="keyword">=&gt; </span><span class="string">'First Folder'</span><span class="keyword">, </span><span class="string">'path' </span><span class="keyword">=&gt; </span><span class="string">'sompath'</span><span class="keyword">),<br />&nbsp; array(</span><span class="string">'name' </span><span class="keyword">=&gt; </span><span class="string">'second folder'</span><span class="keyword">, </span><span class="string">'path' </span><span class="keyword">=&gt; </span><span class="string">'sompath2'</span><span class="keyword">),<br />&nbsp; array(</span><span class="string">'name' </span><span class="keyword">=&gt; </span><span class="string">'Third Folder'</span><span class="keyword">, </span><span class="string">'path' </span><span class="keyword">=&gt; </span><span class="string">'sompath3'</span><span class="keyword">)<br />);<br /><br />function </span><span class="default">so</span><span class="keyword">(</span><span class="default">$a</span><span class="keyword">, </span><span class="default">$b</span><span class="keyword">) { <br />&nbsp; &nbsp; return (</span><span class="default">strcmp </span><span class="keyword">(</span><span class="default">strtolower</span><span class="keyword">(</span><span class="default">$a</span><span class="keyword">[</span><span class="string">'name'</span><span class="keyword">]), </span><span class="default">strtolower</span><span class="keyword">(</span><span class="default">$b</span><span class="keyword">[</span><span class="string">'name'</span><span class="keyword">])));<br />}<br /></span><span class="default">?&gt;</span>
+</span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="25882">  <div class="votes">
+    <div id="Vu25882">
+    <a href="/manual/vote-note.php?id=25882&amp;page=function.uasort&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd25882">
+    <a href="/manual/vote-note.php?id=25882&amp;page=function.uasort&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V25882" title="50% like this...">
+    0
+    </div>
+  </div>
+  <a href="#25882" class="name">
+  <strong class="user"><em>dholmes at jccc d0t net</em></strong></a><a class="genanchor" href="#25882"> &para;</a><div class="date" title="2002-10-09 02:27"><strong>19 years ago</strong></div>
+  <div class="text" id="Hcom25882">
+<div class="phpcode"><code><span class="html">
+Here is a little sort function that actually uses a dynamic callback for usort to do it's thing.<br /><br />It assumes your data is in the form of:<br />&nbsp; &nbsp; $data = array(<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; array('ID'=&gt;'6','LAST'=&gt;'Holmes','FIRST'=&gt;'Dan'),<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; array('ID'=&gt;'1234','LAST'=&gt;'Smith','FIRST'=&gt;'Agent K'),<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; array('ID'=&gt;'2','LAST'=&gt;'Smith','FIRST'=&gt;'Agent J'),<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; array('ID'=&gt;'4','LAST'=&gt;'Barney','FIRST'=&gt;'Bob'));<br /><br />Now, you want to sort on one or more cols, don't you?&nbsp; <br /><br />masort($data, 'LAST,FIRST');<br />or <br />masort($data,array('FIRST','ID'));<br /><br />Of course you could add a bunch to it (like numeric comparison if appropriate, desc/asc, etc) but it works for me.<br /><br />function masort(&amp;$data, $sortby){<br />&nbsp; &nbsp; if(is_array($sortby)){<br />&nbsp; &nbsp; &nbsp; &nbsp; $sortby = join(',',$sortby);<br />&nbsp; &nbsp; }<br /><br />&nbsp; &nbsp; uasort($data,create_function('$a,$b','$skeys = split(\',\',\''.$sortby.'\');<br />&nbsp; &nbsp; &nbsp; &nbsp; foreach($skeys as $key){<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; if( ($c = strcasecmp($a[$key],$b[$key])) != 0 ){<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return($c);<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }<br />&nbsp; &nbsp; &nbsp; &nbsp; }<br />&nbsp; &nbsp; &nbsp; &nbsp; return($c); '));<br />}<br />Notice that I am splitting the string in the comparison function? While this is certainly slower, it was the only way I would find to "pass" and "array".&nbsp; If anyone has a better way, please suggest.&nbsp; Then inside, we (string) compare the values only moving to the next key if the values are the same...and so on, and so on.</span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="106120">  <div class="votes">
+    <div id="Vu106120">
+    <a href="/manual/vote-note.php?id=106120&amp;page=function.uasort&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd106120">
+    <a href="/manual/vote-note.php?id=106120&amp;page=function.uasort&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V106120" title="46% like this...">
+    -1
+    </div>
+  </div>
+  <a href="#106120" class="name">
+  <strong class="user"><em>Said Dashuk</em></strong></a><a class="genanchor" href="#106120"> &para;</a><div class="date" title="2011-10-11 10:33"><strong>10 years ago</strong></div>
+  <div class="text" id="Hcom106120">
+<div class="phpcode"><code><span class="html">
+My simple and effective solution for sort multi-dimensional array by any key:<br /><br /><span class="default">&lt;?php<br /></span><span class="keyword">function </span><span class="default">sort_by_key </span><span class="keyword">(</span><span class="default">$arr</span><span class="keyword">,</span><span class="default">$key</span><span class="keyword">) {<br />&nbsp; &nbsp; global </span><span class="default">$key2sort</span><span class="keyword">;<br />&nbsp; &nbsp; </span><span class="default">$key2sort </span><span class="keyword">= </span><span class="default">$key</span><span class="keyword">;<br />&nbsp; &nbsp; </span><span class="default">uasort</span><span class="keyword">(</span><span class="default">$arr</span><span class="keyword">, </span><span class="string">'sbk'</span><span class="keyword">);<br />&nbsp; &nbsp; return (</span><span class="default">$arr</span><span class="keyword">);<br />}<br />function </span><span class="default">sbk </span><span class="keyword">(</span><span class="default">$a</span><span class="keyword">, </span><span class="default">$b</span><span class="keyword">) {global </span><span class="default">$key2sort</span><span class="keyword">; return (</span><span class="default">strcasecmp </span><span class="keyword">(</span><span class="default">$a</span><span class="keyword">[</span><span class="default">$key2sort</span><span class="keyword">],</span><span class="default">$b</span><span class="keyword">[</span><span class="default">$key2sort</span><span class="keyword">]));}<br /></span><span class="default">?&gt;</span>
+</span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="28360">  <div class="votes">
+    <div id="Vu28360">
+    <a href="/manual/vote-note.php?id=28360&amp;page=function.uasort&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd28360">
+    <a href="/manual/vote-note.php?id=28360&amp;page=function.uasort&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V28360" title="28% like this...">
+    -3
+    </div>
+  </div>
+  <a href="#28360" class="name">
+  <strong class="user"><em>naholyr at yahoo dot fr</em></strong></a><a class="genanchor" href="#28360"> &para;</a><div class="date" title="2003-01-10 09:35"><strong>19 years ago</strong></div>
+  <div class="text" id="Hcom28360">
+<div class="phpcode"><code><span class="html">
+You can sort a multidimensionnal array by any of its key with this function:<br /><br />function multi_sort($array, $key)<br />{<br />&nbsp; $cmp_val="((\$a['$key']&gt;\$b['$key'])?1:<br />&nbsp; &nbsp; ((\$a['$key']==\$b['$key'])?0:-1))";<br />&nbsp; $cmp=create_function('$a, $b', "return $body;");<br />&nbsp; uasort($array, $cmp);<br />&nbsp; return $array;<br />}<br /><br />example:<br />$myarray = array(<br />&nbsp; array("name"=&gt;"kernighan", "language"=&gt;"c"),<br />&nbsp; array("name"=&gt;"lerdorf", "language"=&gt;"php"),<br />&nbsp; array("name"=&gt;"Stroustrup", "language"=&gt;"c++"),<br />&nbsp; array("name"=&gt;"Gosling", "language"=&gt;"java")<br />);<br /><br />multi_sort($myarray, "name") returns:<br />name=Gosling&nbsp; &nbsp; language=java<br />name=Kernighan&nbsp; &nbsp; language=c<br />name=Lerdorf&nbsp; &nbsp; language=php<br />name=Stroustrup&nbsp; &nbsp; language=c++</span>
+</code></div>
+  </div>
+ </div></div>
+
+ <div class="foot"><a href="/manual/add-note.php?sect=function.uasort&amp;redirect=https://www.php.net/manual/en/function.uasort.php"><img src='/images/notes-add@2x.png' alt='add a note' width='12' height='12'> <small>add a note</small></a></div>
+</section>    </section><!-- layout-content -->
+        <aside class='layout-menu'>
+
+        <ul class='parent-menu-list'>
+                                    <li>
+                <a href="ref.array.php">Array Functions</a>
+
+                                    <ul class='child-menu-list'>
+
+                                                <li class="">
+                            <a href="function.array-change-key-case.php" title="array_&#8203;change_&#8203;key_&#8203;case">array_&#8203;change_&#8203;key_&#8203;case</a>
+                        </li>
+                                                <li class="">
+                            <a href="function.array-chunk.php" title="array_&#8203;chunk">array_&#8203;chunk</a>
+                        </li>
+                                                <li class="">
+                            <a href="function.array-column.php" title="array_&#8203;column">array_&#8203;column</a>
+                        </li>
+                                                <li class="">
+                            <a href="function.array-combine.php" title="array_&#8203;combine">array_&#8203;combine</a>
+                        </li>
+                                                <li class="">
+                            <a href="function.array-count-values.php" title="array_&#8203;count_&#8203;values">array_&#8203;count_&#8203;values</a>
+                        </li>
+                                                <li class="">
+                            <a href="function.array-diff-assoc.php" title="array_&#8203;diff_&#8203;assoc">array_&#8203;diff_&#8203;assoc</a>
+                        </li>
+                                                <li class="">
+                            <a href="function.array-diff-key.php" title="array_&#8203;diff_&#8203;key">array_&#8203;diff_&#8203;key</a>
+                        </li>
+                                                <li class="">
+                            <a href="function.array-diff-uassoc.php" title="array_&#8203;diff_&#8203;uassoc">array_&#8203;diff_&#8203;uassoc</a>
+                        </li>
+                                                <li class="">
+                            <a href="function.array-diff-ukey.php" title="array_&#8203;diff_&#8203;ukey">array_&#8203;diff_&#8203;ukey</a>
+                        </li>
+                                                <li class="">
+                            <a href="function.array-diff.php" title="array_&#8203;diff">array_&#8203;diff</a>
+                        </li>
+                                                <li class="">
+                            <a href="function.array-fill-keys.php" title="array_&#8203;fill_&#8203;keys">array_&#8203;fill_&#8203;keys</a>
+                        </li>
+                                                <li class="">
+                            <a href="function.array-fill.php" title="array_&#8203;fill">array_&#8203;fill</a>
+                        </li>
+                                                <li class="">
+                            <a href="function.array-filter.php" title="array_&#8203;filter">array_&#8203;filter</a>
+                        </li>
+                                                <li class="">
+                            <a href="function.array-flip.php" title="array_&#8203;flip">array_&#8203;flip</a>
+                        </li>
+                                                <li class="">
+                            <a href="function.array-intersect-assoc.php" title="array_&#8203;intersect_&#8203;assoc">array_&#8203;intersect_&#8203;assoc</a>
+                        </li>
+                                                <li class="">
+                            <a href="function.array-intersect-key.php" title="array_&#8203;intersect_&#8203;key">array_&#8203;intersect_&#8203;key</a>
+                        </li>
+                                                <li class="">
+                            <a href="function.array-intersect-uassoc.php" title="array_&#8203;intersect_&#8203;uassoc">array_&#8203;intersect_&#8203;uassoc</a>
+                        </li>
+                                                <li class="">
+                            <a href="function.array-intersect-ukey.php" title="array_&#8203;intersect_&#8203;ukey">array_&#8203;intersect_&#8203;ukey</a>
+                        </li>
+                                                <li class="">
+                            <a href="function.array-intersect.php" title="array_&#8203;intersect">array_&#8203;intersect</a>
+                        </li>
+                                                <li class="">
+                            <a href="function.array-is-list.php" title="array_&#8203;is_&#8203;list">array_&#8203;is_&#8203;list</a>
+                        </li>
+                                                <li class="">
+                            <a href="function.array-key-exists.php" title="array_&#8203;key_&#8203;exists">array_&#8203;key_&#8203;exists</a>
+                        </li>
+                                                <li class="">
+                            <a href="function.array-key-first.php" title="array_&#8203;key_&#8203;first">array_&#8203;key_&#8203;first</a>
+                        </li>
+                                                <li class="">
+                            <a href="function.array-key-last.php" title="array_&#8203;key_&#8203;last">array_&#8203;key_&#8203;last</a>
+                        </li>
+                                                <li class="">
+                            <a href="function.array-keys.php" title="array_&#8203;keys">array_&#8203;keys</a>
+                        </li>
+                                                <li class="">
+                            <a href="function.array-map.php" title="array_&#8203;map">array_&#8203;map</a>
+                        </li>
+                                                <li class="">
+                            <a href="function.array-merge-recursive.php" title="array_&#8203;merge_&#8203;recursive">array_&#8203;merge_&#8203;recursive</a>
+                        </li>
+                                                <li class="">
+                            <a href="function.array-merge.php" title="array_&#8203;merge">array_&#8203;merge</a>
+                        </li>
+                                                <li class="">
+                            <a href="function.array-multisort.php" title="array_&#8203;multisort">array_&#8203;multisort</a>
+                        </li>
+                                                <li class="">
+                            <a href="function.array-pad.php" title="array_&#8203;pad">array_&#8203;pad</a>
+                        </li>
+                                                <li class="">
+                            <a href="function.array-pop.php" title="array_&#8203;pop">array_&#8203;pop</a>
+                        </li>
+                                                <li class="">
+                            <a href="function.array-product.php" title="array_&#8203;product">array_&#8203;product</a>
+                        </li>
+                                                <li class="">
+                            <a href="function.array-push.php" title="array_&#8203;push">array_&#8203;push</a>
+                        </li>
+                                                <li class="">
+                            <a href="function.array-rand.php" title="array_&#8203;rand">array_&#8203;rand</a>
+                        </li>
+                                                <li class="">
+                            <a href="function.array-reduce.php" title="array_&#8203;reduce">array_&#8203;reduce</a>
+                        </li>
+                                                <li class="">
+                            <a href="function.array-replace-recursive.php" title="array_&#8203;replace_&#8203;recursive">array_&#8203;replace_&#8203;recursive</a>
+                        </li>
+                                                <li class="">
+                            <a href="function.array-replace.php" title="array_&#8203;replace">array_&#8203;replace</a>
+                        </li>
+                                                <li class="">
+                            <a href="function.array-reverse.php" title="array_&#8203;reverse">array_&#8203;reverse</a>
+                        </li>
+                                                <li class="">
+                            <a href="function.array-search.php" title="array_&#8203;search">array_&#8203;search</a>
+                        </li>
+                                                <li class="">
+                            <a href="function.array-shift.php" title="array_&#8203;shift">array_&#8203;shift</a>
+                        </li>
+                                                <li class="">
+                            <a href="function.array-slice.php" title="array_&#8203;slice">array_&#8203;slice</a>
+                        </li>
+                                                <li class="">
+                            <a href="function.array-splice.php" title="array_&#8203;splice">array_&#8203;splice</a>
+                        </li>
+                                                <li class="">
+                            <a href="function.array-sum.php" title="array_&#8203;sum">array_&#8203;sum</a>
+                        </li>
+                                                <li class="">
+                            <a href="function.array-udiff-assoc.php" title="array_&#8203;udiff_&#8203;assoc">array_&#8203;udiff_&#8203;assoc</a>
+                        </li>
+                                                <li class="">
+                            <a href="function.array-udiff-uassoc.php" title="array_&#8203;udiff_&#8203;uassoc">array_&#8203;udiff_&#8203;uassoc</a>
+                        </li>
+                                                <li class="">
+                            <a href="function.array-udiff.php" title="array_&#8203;udiff">array_&#8203;udiff</a>
+                        </li>
+                                                <li class="">
+                            <a href="function.array-uintersect-assoc.php" title="array_&#8203;uintersect_&#8203;assoc">array_&#8203;uintersect_&#8203;assoc</a>
+                        </li>
+                                                <li class="">
+                            <a href="function.array-uintersect-uassoc.php" title="array_&#8203;uintersect_&#8203;uassoc">array_&#8203;uintersect_&#8203;uassoc</a>
+                        </li>
+                                                <li class="">
+                            <a href="function.array-uintersect.php" title="array_&#8203;uintersect">array_&#8203;uintersect</a>
+                        </li>
+                                                <li class="">
+                            <a href="function.array-unique.php" title="array_&#8203;unique">array_&#8203;unique</a>
+                        </li>
+                                                <li class="">
+                            <a href="function.array-unshift.php" title="array_&#8203;unshift">array_&#8203;unshift</a>
+                        </li>
+                                                <li class="">
+                            <a href="function.array-values.php" title="array_&#8203;values">array_&#8203;values</a>
+                        </li>
+                                                <li class="">
+                            <a href="function.array-walk-recursive.php" title="array_&#8203;walk_&#8203;recursive">array_&#8203;walk_&#8203;recursive</a>
+                        </li>
+                                                <li class="">
+                            <a href="function.array-walk.php" title="array_&#8203;walk">array_&#8203;walk</a>
+                        </li>
+                                                <li class="">
+                            <a href="function.array.php" title="array">array</a>
+                        </li>
+                                                <li class="">
+                            <a href="function.arsort.php" title="arsort">arsort</a>
+                        </li>
+                                                <li class="">
+                            <a href="function.asort.php" title="asort">asort</a>
+                        </li>
+                                                <li class="">
+                            <a href="function.compact.php" title="compact">compact</a>
+                        </li>
+                                                <li class="">
+                            <a href="function.count.php" title="count">count</a>
+                        </li>
+                                                <li class="">
+                            <a href="function.current.php" title="current">current</a>
+                        </li>
+                                                <li class="">
+                            <a href="function.end.php" title="end">end</a>
+                        </li>
+                                                <li class="">
+                            <a href="function.extract.php" title="extract">extract</a>
+                        </li>
+                                                <li class="">
+                            <a href="function.in-array.php" title="in_&#8203;array">in_&#8203;array</a>
+                        </li>
+                                                <li class="">
+                            <a href="function.key-exists.php" title="key_&#8203;exists">key_&#8203;exists</a>
+                        </li>
+                                                <li class="">
+                            <a href="function.key.php" title="key">key</a>
+                        </li>
+                                                <li class="">
+                            <a href="function.krsort.php" title="krsort">krsort</a>
+                        </li>
+                                                <li class="">
+                            <a href="function.ksort.php" title="ksort">ksort</a>
+                        </li>
+                                                <li class="">
+                            <a href="function.list.php" title="list">list</a>
+                        </li>
+                                                <li class="">
+                            <a href="function.natcasesort.php" title="natcasesort">natcasesort</a>
+                        </li>
+                                                <li class="">
+                            <a href="function.natsort.php" title="natsort">natsort</a>
+                        </li>
+                                                <li class="">
+                            <a href="function.next.php" title="next">next</a>
+                        </li>
+                                                <li class="">
+                            <a href="function.pos.php" title="pos">pos</a>
+                        </li>
+                                                <li class="">
+                            <a href="function.prev.php" title="prev">prev</a>
+                        </li>
+                                                <li class="">
+                            <a href="function.range.php" title="range">range</a>
+                        </li>
+                                                <li class="">
+                            <a href="function.reset.php" title="reset">reset</a>
+                        </li>
+                                                <li class="">
+                            <a href="function.rsort.php" title="rsort">rsort</a>
+                        </li>
+                                                <li class="">
+                            <a href="function.shuffle.php" title="shuffle">shuffle</a>
+                        </li>
+                                                <li class="">
+                            <a href="function.sizeof.php" title="sizeof">sizeof</a>
+                        </li>
+                                                <li class="">
+                            <a href="function.sort.php" title="sort">sort</a>
+                        </li>
+                                                <li class="current">
+                            <a href="function.uasort.php" title="uasort">uasort</a>
+                        </li>
+                                                <li class="">
+                            <a href="function.uksort.php" title="uksort">uksort</a>
+                        </li>
+                                                <li class="">
+                            <a href="function.usort.php" title="usort">usort</a>
+                        </li>
+                        
+                    </ul>
+                
+            </li>
+                        
+                        <li>
+                <span class="header">Deprecated</span>
+                <ul class="child-menu-list">
+                                    <li class="">
+                        <a href="function.each.php" title="each">each</a>
+                    </li>
+                                </ul>
+            </li>
+                    </ul>
+    </aside>
+
+
+  </div><!-- layout -->
+
+  <footer>
+    <div class="container footer-content">
+      <div class="row-fluid">
+      <ul class="footmenu">
+        <li><a href="/copyright.php">Copyright &copy; 2001-2022 The PHP Group</a></li>
+        <li><a href="/my.php">My PHP.net</a></li>
+        <li><a href="/contact.php">Contact</a></li>
+        <li><a href="/sites.php">Other PHP.net sites</a></li>
+        <li><a href="/privacy.php">Privacy policy</a></li>
+        <li><a href="https://github.com/php/web-php/blob/master/manual%2Fen%2Ffunction.uasort.php">View Source</a></li>
+      </ul>
+      </div>
+    </div>
+  </footer>
+
+    
+ <!-- External and third party libraries. -->
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" integrity="sha384-aBL3Lzi6c9LNDGvpHkZrrm3ZVsIwohDD7CDozL0pk8FwCrfmV7H9w8j3L7ikEv6h" crossorigin="anonymous"></script>
+<script src="/cached.php?t=1421837618&amp;f=/js/ext/modernizr.js"></script>
+<script src="/cached.php?t=1421837618&amp;f=/js/ext/hogan-2.0.0.min.js"></script>
+<script src="/cached.php?t=1421837618&amp;f=/js/ext/typeahead.min.js"></script>
+<script src="/cached.php?t=1421837618&amp;f=/js/ext/mousetrap.min.js"></script>
+<script src="/cached.php?t=1421837618&amp;f=/js/search.js"></script>
+<script src="/cached.php?t=1637324403&amp;f=/js/common.js"></script>
+
+<a id="toTop" href="javascript:;"><span id="toTopHover"></span><img width="40" height="40" alt="To Top" src="/images/to-top@2x.png"></a>
+
+</body>
+</html>

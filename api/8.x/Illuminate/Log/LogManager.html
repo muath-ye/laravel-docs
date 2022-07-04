@@ -1,0 +1,2557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="index, follow, all" />
+    <title>Illuminate\Log\LogManager | Laravel API</title>
+
+            <link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="../../css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="../../css/doctum.css">
+        <link rel="stylesheet" type="text/css" href="../../fonts/doctum-font.css">
+        <script src="../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../doctum.js"></script>
+        <script async defer src="../../js/bootstrap.min.js"></script>
+        <script async defer src="../../js/autocomplete.min.js"></script>
+        <meta name="MobileOptimized" content="width">
+        <meta name="HandheldFriendly" content="true">
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+
+        <link rel="search"
+          type="application/opensearchdescription+xml"
+          href="https://laravel.com/api/5.5/opensearch.xml"
+          title="Laravel API (5.5)" />
+    <link rel="search"
+          type="application/opensearchdescription+xml"
+          href="https://laravel.com/api/5.8/opensearch.xml"
+          title="Laravel API (5.8)" />
+    <link rel="search"
+          type="application/opensearchdescription+xml"
+          href="https://laravel.com/api/6.x/opensearch.xml"
+          title="Laravel API (6.x)" />
+    <link rel="search"
+          type="application/opensearchdescription+xml"
+          href="https://laravel.com/api/7.x/opensearch.xml"
+          title="Laravel API (7.x)" />
+    <link rel="search"
+          type="application/opensearchdescription+xml"
+          href="https://laravel.com/api/8.x/opensearch.xml"
+          title="Laravel API (8.x)" />
+    <link rel="search"
+          type="application/opensearchdescription+xml"
+          href="https://laravel.com/api/9.x/opensearch.xml"
+          title="Laravel API (9.x)" />
+    <link rel="search"
+          type="application/opensearchdescription+xml"
+          href="https://laravel.com/api/master/opensearch.xml"
+          title="Laravel API (master)" />
+    </head>
+
+    <body id="class" data-name="class:Illuminate_Log_LogManager" data-root-path="../../" data-search-index-url="../../doctum-search.json">
+            <div id="content">
+        <div id="left-column">
+                <div id="control-panel">
+                    <form action="#">
+                <select class="form-control" id="version-switcher" name="version">
+                                            <option
+                            value="../../../5.5/index.html"
+                            data-version="5.5" >Laravel 5.5</option>
+                                            <option
+                            value="../../../5.8/index.html"
+                            data-version="5.8" >Laravel 5.8</option>
+                                            <option
+                            value="../../../6.x/index.html"
+                            data-version="6.x" >Laravel 6.x</option>
+                                            <option
+                            value="../../../7.x/index.html"
+                            data-version="7.x" >Laravel 7.x</option>
+                                            <option
+                            value="../../../8.x/index.html"
+                            data-version="8.x" selected>Laravel 8.x</option>
+                                            <option
+                            value="../../../9.x/index.html"
+                            data-version="9.x" >Laravel 9.x</option>
+                                            <option
+                            value="../../../master/index.html"
+                            data-version="master" >Laravel Dev</option>
+                                    </select>
+            </form>
+                <div class="search-bar hidden" id="search-progress-bar-container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" id="search-progress-bar"
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+        </div>
+        <form id="search-form" action="../../search.html">
+            <span class="icon icon-search"></span>
+            <input name="search"
+                   id="doctum-search-auto-complete"
+                   class="typeahead form-control"
+                   type="search"
+                   placeholder="Search"
+                   spellcheck="false"
+                   autocorrect="off"
+                   autocomplete="off"
+                   autocapitalize="off">
+            <div class="auto-complete-results" id="auto-complete-results"></div>
+        </form>
+    </div>
+
+                <div id="api-tree"></div>
+
+        </div>
+        <div id="right-column">
+                <nav id="site-nav" class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-elements">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../../index.html">Laravel API</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-elements">
+                <ul class="nav navbar-nav">
+                                        <li role="presentation" class="dropdown visible-xs-block visible-sm-block">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#"
+                            role="button" aria-haspopup="true" aria-expanded="false">Versions&nbsp;<span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                        <li ><a href="../../../5.5/index.html" data-version="5.5">Laravel 5.5</a></li>
+                        <li ><a href="../../../5.8/index.html" data-version="5.8">Laravel 5.8</a></li>
+                        <li ><a href="../../../6.x/index.html" data-version="6.x">Laravel 6.x</a></li>
+                        <li ><a href="../../../7.x/index.html" data-version="7.x">Laravel 7.x</a></li>
+                        <li class="active"><a href="../../../8.x/index.html" data-version="8.x">Laravel 8.x</a></li>
+                        <li ><a href="../../../9.x/index.html" data-version="9.x">Laravel 9.x</a></li>
+                        <li ><a href="../../../master/index.html" data-version="master">Laravel Dev</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="../../classes.html">Classes</a></li>
+                    <li><a href="../../namespaces.html">Namespaces</a></li>
+                    <li><a href="../../interfaces.html">Interfaces</a></li>
+                    <li><a href="../../traits.html">Traits</a></li>
+                    <li><a href="../../doc-index.html">Index</a></li>
+                    <li><a href="../../search.html">Search</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+                        <div class="namespace-breadcrumbs">
+            <ol class="breadcrumb">
+                <li><span class="label label-default">class</span></li>
+                        <li><a href="../../Illuminate.html">Illuminate</a></li><li class="backslash">\</li><li><a href="../../Illuminate/Log.html">Log</a></li><li class="backslash">\</li><li>LogManager</li>
+            </ol>
+        </div>
+                <div id="page-content">
+    <div class="page-header">
+        <h1>LogManager    
+            </h1>
+    </div>
+
+    
+    <p>        class
+    <strong>LogManager</strong>        implements        <abbr title="Psr\Log\LoggerInterface">LoggerInterface</abbr>        (<a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Log/LogManager.php">View source</a>)
+</p>
+
+        
+    
+        
+
+            
+                <h2>Traits</h2>
+
+        
+    <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-6">
+                    <a href="../../Illuminate/Log/ParsesLogConfiguration.html"><abbr title="Illuminate\Log\ParsesLogConfiguration">ParsesLogConfiguration</abbr></a>    </div>
+                <div class="col-md-6"></div>
+            </div>
+            </div>
+    
+    
+            <h2>Properties</h2>
+
+            <table class="table table-condensed">
+                    <tr>
+                <td class="type" id="property_levels">
+                                        protected                                        array
+                                                                                
+                                    </td>
+                <td>$levels</td>
+                <td class="last"><p>The Log levels.</p></td>
+                <td><small>from&nbsp;<a href="../../Illuminate/Log/ParsesLogConfiguration.html#property_levels">
+<abbr title="Illuminate\Log\ParsesLogConfiguration">ParsesLogConfiguration</abbr></a></small></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_app">
+                                        protected                                        <a href="../../Illuminate/Contracts/Foundation/Application.html"><abbr title="Illuminate\Contracts\Foundation\Application">Application</abbr></a>
+                                                                                
+                                    </td>
+                <td>$app</td>
+                <td class="last"><p>The application instance.</p></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_channels">
+                                        protected                                        array
+                                                                                
+                                    </td>
+                <td>$channels</td>
+                <td class="last"><p>The array of resolved channels.</p></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_customCreators">
+                                        protected                                        array
+                                                                                
+                                    </td>
+                <td>$customCreators</td>
+                <td class="last"><p>The registered custom driver creators.</p></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_dateFormat">
+                                        protected                                        string
+                                                                                
+                                    </td>
+                <td>$dateFormat</td>
+                <td class="last"><p>The standard date format to use when writing logs.</p></td>
+                <td></td>
+            </tr>
+            </table>
+
+    
+            <h2>Methods</h2>
+
+            <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getFallbackChannelName">getFallbackChannelName</a>()
+        
+                                            <p><p>Get fallback log channel name.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    int
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_level">level</a>(array $config)
+        
+                                            <p><p>Parse the string level into a Monolog constant.</p></p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Illuminate/Log/ParsesLogConfiguration.html#method_level">
+<abbr title="Illuminate\Log\ParsesLogConfiguration">ParsesLogConfiguration</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    int
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_actionLevel">actionLevel</a>(array $config)
+        
+                                            <p><p>Parse the action level from the given configuration.</p></p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Illuminate/Log/ParsesLogConfiguration.html#method_actionLevel">
+<abbr title="Illuminate\Log\ParsesLogConfiguration">ParsesLogConfiguration</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_parseChannel">parseChannel</a>(array $config)
+        
+                                            <p><p>Extract the log channel from the given configuration.</p></p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Illuminate/Log/ParsesLogConfiguration.html#method_parseChannel">
+<abbr title="Illuminate\Log\ParsesLogConfiguration">ParsesLogConfiguration</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method___construct">__construct</a>(<a href="../../Illuminate/Contracts/Foundation/Application.html"><abbr title="Illuminate\Contracts\Foundation\Application">Application</abbr></a> $app)
+        
+                                            <p><p>Create a new Log manager instance.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="Psr\Log\LoggerInterface">LoggerInterface</abbr>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_build">build</a>(array $config)
+        
+                                            <p><p>Build an on-demand log channel.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="Psr\Log\LoggerInterface">LoggerInterface</abbr>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_stack">stack</a>(array $channels, string|null $channel = null)
+        
+                                            <p><p>Create a new, on-demand aggregate logger instance.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="Psr\Log\LoggerInterface">LoggerInterface</abbr>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_channel">channel</a>(string|null $channel = null)
+        
+                                            <p><p>Get a log channel instance.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="Psr\Log\LoggerInterface">LoggerInterface</abbr>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_driver">driver</a>(string|null $driver = null)
+        
+                                            <p><p>Get a log driver instance.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="Psr\Log\LoggerInterface">LoggerInterface</abbr>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_get">get</a>(string $name, array|null $config = null)
+        
+                                            <p><p>Attempt to get the log from the local cache.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../Illuminate/Log/Logger.html"><abbr title="Illuminate\Log\Logger">Logger</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_tap">tap</a>(string $name, <a href="../../Illuminate/Log/Logger.html"><abbr title="Illuminate\Log\Logger">Logger</abbr></a> $logger)
+        
+                                            <p><p>Apply the configured taps for the logger.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_parseTap">parseTap</a>(string $tap)
+        
+                                            <p><p>Parse the given tap class string into a class name and arguments string.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="Psr\Log\LoggerInterface">LoggerInterface</abbr>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_createEmergencyLogger">createEmergencyLogger</a>()
+        
+                                            <p><p>Create an emergency log handler to avoid white screens of death.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="Psr\Log\LoggerInterface">LoggerInterface</abbr>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_resolve">resolve</a>(string $name, array|null $config = null)
+        
+                                            <p><p>Resolve the given log instance by name.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    mixed
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_callCustomCreator">callCustomCreator</a>(array $config)
+        
+                                            <p><p>Call a custom driver creator.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="Psr\Log\LoggerInterface">LoggerInterface</abbr>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_createCustomDriver">createCustomDriver</a>(array $config)
+        
+                                            <p><p>Create a custom log driver instance.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="Psr\Log\LoggerInterface">LoggerInterface</abbr>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_createStackDriver">createStackDriver</a>(array $config)
+        
+                                            <p><p>Create an aggregate log driver instance.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="Psr\Log\LoggerInterface">LoggerInterface</abbr>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_createSingleDriver">createSingleDriver</a>(array $config)
+        
+                                            <p><p>Create an instance of the single file log driver.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="Psr\Log\LoggerInterface">LoggerInterface</abbr>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_createDailyDriver">createDailyDriver</a>(array $config)
+        
+                                            <p><p>Create an instance of the daily file log driver.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="Psr\Log\LoggerInterface">LoggerInterface</abbr>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_createSlackDriver">createSlackDriver</a>(array $config)
+        
+                                            <p><p>Create an instance of the Slack log driver.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="Psr\Log\LoggerInterface">LoggerInterface</abbr>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_createSyslogDriver">createSyslogDriver</a>(array $config)
+        
+                                            <p><p>Create an instance of the syslog log driver.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="Psr\Log\LoggerInterface">LoggerInterface</abbr>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_createErrorlogDriver">createErrorlogDriver</a>(array $config)
+        
+                                            <p><p>Create an instance of the &quot;error log&quot; log driver.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="Psr\Log\LoggerInterface">LoggerInterface</abbr>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_createMonologDriver">createMonologDriver</a>(array $config)
+        
+                                            <p><p>Create an instance of any handler available in Monolog.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_prepareHandlers">prepareHandlers</a>(array $handlers)
+        
+                                            <p><p>Prepare the handlers for usage by Monolog.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="Monolog\Handler\HandlerInterface">HandlerInterface</abbr>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_prepareHandler">prepareHandler</a>(<abbr title="Monolog\Handler\HandlerInterface">HandlerInterface</abbr> $handler, array $config = [])
+        
+                                            <p><p>Prepare the handler for usage by Monolog.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="Monolog\Formatter\FormatterInterface">FormatterInterface</abbr>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_formatter">formatter</a>()
+        
+                                            <p><p>Get a Monolog formatter instance.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_configurationFor">configurationFor</a>(string $name)
+        
+                                            <p><p>Get the log connection configuration.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string|null
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getDefaultDriver">getDefaultDriver</a>()
+        
+                                            <p><p>Get the default log driver name.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_setDefaultDriver">setDefaultDriver</a>(string $name)
+        
+                                            <p><p>Set the default log driver name.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    $this
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_extend">extend</a>(string $driver, <a target="_blank" rel="noopener" href="https://www.php.net/Closure">Closure</a> $callback)
+        
+                                            <p><p>Register a custom driver creator Closure.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    $this
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_forgetChannel">forgetChannel</a>(string|null $driver = null)
+        
+                                            <p><p>Unset the given channel instance.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string|null
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_parseDriver">parseDriver</a>(string|null $driver)
+        
+                                            <p><p>Parse the driver name.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getChannels">getChannels</a>()
+        
+                                            <p><p>Get all of the resolved log channels.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_emergency">emergency</a>(string $message, array $context = [])
+        
+                                            <p><p>System is unusable.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_alert">alert</a>(string $message, array $context = [])
+        
+                                            <p><p>Action must be taken immediately.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_critical">critical</a>(string $message, array $context = [])
+        
+                                            <p><p>Critical conditions.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_error">error</a>(string $message, array $context = [])
+        
+                                            <p><p>Runtime errors that do not require immediate action but should typically
+be logged and monitored.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_warning">warning</a>(string $message, array $context = [])
+        
+                                            <p><p>Exceptional occurrences that are not errors.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_notice">notice</a>(string $message, array $context = [])
+        
+                                            <p><p>Normal but significant events.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_info">info</a>(string $message, array $context = [])
+        
+                                            <p><p>Interesting events.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_debug">debug</a>(string $message, array $context = [])
+        
+                                            <p><p>Detailed debug information.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_log">log</a>(mixed $level, string $message, array $context = [])
+        
+                                            <p><p>Logs with an arbitrary level.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    mixed
+                </div>
+                <div class="col-md-8">
+                    <a href="#method___call">__call</a>(string $method, array $parameters)
+        
+                                            <p><p>Dynamically call the default driver instance.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+            </div>
+
+
+        <h2>Details</h2>
+
+            <div id="method-details">
+                    <div class="method-item">
+                    <h3 id="method_getFallbackChannelName">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Log/LogManager.php#L446">at line 446</a></div>
+        <code>            protected        string
+    <strong>getFallbackChannelName</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Get fallback log channel name.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_level">
+        <div class="location">in <a href="../../Illuminate/Log/ParsesLogConfiguration.html#method_level">
+<abbr title="Illuminate\Log\ParsesLogConfiguration">ParsesLogConfiguration</abbr></a> <a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Log/ParsesLogConfiguration.php#L41">at line 41</a></div>
+        <code>            protected        int
+    <strong>level</strong>(array $config)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Parse the string level into a Monolog constant.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$config</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>int</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a target="_blank" rel="noopener" href="https://www.php.net/InvalidArgumentException">InvalidArgumentException</a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_actionLevel">
+        <div class="location">in <a href="../../Illuminate/Log/ParsesLogConfiguration.html#method_actionLevel">
+<abbr title="Illuminate\Log\ParsesLogConfiguration">ParsesLogConfiguration</abbr></a> <a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Log/ParsesLogConfiguration.php#L58">at line 58</a></div>
+        <code>            protected        int
+    <strong>actionLevel</strong>(array $config)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Parse the action level from the given configuration.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$config</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>int</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_parseChannel">
+        <div class="location">in <a href="../../Illuminate/Log/ParsesLogConfiguration.html#method_parseChannel">
+<abbr title="Illuminate\Log\ParsesLogConfiguration">ParsesLogConfiguration</abbr></a> <a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Log/ParsesLogConfiguration.php#L75">at line 75</a></div>
+        <code>            protected        string
+    <strong>parseChannel</strong>(array $config)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Extract the log channel from the given configuration.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$config</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method___construct">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Log/LogManager.php#L60">at line 60</a></div>
+        <code>                    void
+    <strong>__construct</strong>(<a href="../../Illuminate/Contracts/Foundation/Application.html"><abbr title="Illuminate\Contracts\Foundation\Application">Application</abbr></a> $app)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Create a new Log manager instance.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../Illuminate/Contracts/Foundation/Application.html"><abbr title="Illuminate\Contracts\Foundation\Application">Application</abbr></a></td>
+                <td>$app</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_build">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Log/LogManager.php#L71">at line 71</a></div>
+        <code>                    <abbr title="Psr\Log\LoggerInterface">LoggerInterface</abbr>
+    <strong>build</strong>(array $config)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Build an on-demand log channel.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$config</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="Psr\Log\LoggerInterface">LoggerInterface</abbr></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_stack">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Log/LogManager.php#L85">at line 85</a></div>
+        <code>                    <abbr title="Psr\Log\LoggerInterface">LoggerInterface</abbr>
+    <strong>stack</strong>(array $channels, string|null $channel = null)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Create a new, on-demand aggregate logger instance.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$channels</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string|null</td>
+                <td>$channel</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="Psr\Log\LoggerInterface">LoggerInterface</abbr></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_channel">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Log/LogManager.php#L99">at line 99</a></div>
+        <code>                    <abbr title="Psr\Log\LoggerInterface">LoggerInterface</abbr>
+    <strong>channel</strong>(string|null $channel = null)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Get a log channel instance.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string|null</td>
+                <td>$channel</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="Psr\Log\LoggerInterface">LoggerInterface</abbr></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_driver">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Log/LogManager.php#L110">at line 110</a></div>
+        <code>                    <abbr title="Psr\Log\LoggerInterface">LoggerInterface</abbr>
+    <strong>driver</strong>(string|null $driver = null)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Get a log driver instance.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string|null</td>
+                <td>$driver</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="Psr\Log\LoggerInterface">LoggerInterface</abbr></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_get">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Log/LogManager.php#L122">at line 122</a></div>
+        <code>            protected        <abbr title="Psr\Log\LoggerInterface">LoggerInterface</abbr>
+    <strong>get</strong>(string $name, array|null $config = null)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Attempt to get the log from the local cache.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$name</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array|null</td>
+                <td>$config</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="Psr\Log\LoggerInterface">LoggerInterface</abbr></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_tap">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Log/LogManager.php#L144">at line 144</a></div>
+        <code>            protected        <a href="../../Illuminate/Log/Logger.html"><abbr title="Illuminate\Log\Logger">Logger</abbr></a>
+    <strong>tap</strong>(string $name, <a href="../../Illuminate/Log/Logger.html"><abbr title="Illuminate\Log\Logger">Logger</abbr></a> $logger)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Apply the configured taps for the logger.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$name</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../Illuminate/Log/Logger.html"><abbr title="Illuminate\Log\Logger">Logger</abbr></a></td>
+                <td>$logger</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../Illuminate/Log/Logger.html"><abbr title="Illuminate\Log\Logger">Logger</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_parseTap">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Log/LogManager.php#L161">at line 161</a></div>
+        <code>            protected        array
+    <strong>parseTap</strong>(string $tap)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Parse the given tap class string into a class name and arguments string.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$tap</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_createEmergencyLogger">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Log/LogManager.php#L171">at line 171</a></div>
+        <code>            protected        <abbr title="Psr\Log\LoggerInterface">LoggerInterface</abbr>
+    <strong>createEmergencyLogger</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Create an emergency log handler to avoid white screens of death.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="Psr\Log\LoggerInterface">LoggerInterface</abbr></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_resolve">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Log/LogManager.php#L195">at line 195</a></div>
+        <code>            protected        <abbr title="Psr\Log\LoggerInterface">LoggerInterface</abbr>
+    <strong>resolve</strong>(string $name, array|null $config = null)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Resolve the given log instance by name.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$name</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array|null</td>
+                <td>$config</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="Psr\Log\LoggerInterface">LoggerInterface</abbr></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a target="_blank" rel="noopener" href="https://www.php.net/InvalidArgumentException">InvalidArgumentException</a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_callCustomCreator">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Log/LogManager.php#L222">at line 222</a></div>
+        <code>            protected        mixed
+    <strong>callCustomCreator</strong>(array $config)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Call a custom driver creator.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$config</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>mixed</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_createCustomDriver">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Log/LogManager.php#L233">at line 233</a></div>
+        <code>            protected        <abbr title="Psr\Log\LoggerInterface">LoggerInterface</abbr>
+    <strong>createCustomDriver</strong>(array $config)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Create a custom log driver instance.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$config</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="Psr\Log\LoggerInterface">LoggerInterface</abbr></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_createStackDriver">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Log/LogManager.php#L246">at line 246</a></div>
+        <code>            protected        <abbr title="Psr\Log\LoggerInterface">LoggerInterface</abbr>
+    <strong>createStackDriver</strong>(array $config)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Create an aggregate log driver instance.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$config</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="Psr\Log\LoggerInterface">LoggerInterface</abbr></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_createSingleDriver">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Log/LogManager.php#L277">at line 277</a></div>
+        <code>            protected        <abbr title="Psr\Log\LoggerInterface">LoggerInterface</abbr>
+    <strong>createSingleDriver</strong>(array $config)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Create an instance of the single file log driver.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$config</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="Psr\Log\LoggerInterface">LoggerInterface</abbr></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_createDailyDriver">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Log/LogManager.php#L295">at line 295</a></div>
+        <code>            protected        <abbr title="Psr\Log\LoggerInterface">LoggerInterface</abbr>
+    <strong>createDailyDriver</strong>(array $config)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Create an instance of the daily file log driver.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$config</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="Psr\Log\LoggerInterface">LoggerInterface</abbr></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_createSlackDriver">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Log/LogManager.php#L311">at line 311</a></div>
+        <code>            protected        <abbr title="Psr\Log\LoggerInterface">LoggerInterface</abbr>
+    <strong>createSlackDriver</strong>(array $config)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Create an instance of the Slack log driver.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$config</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="Psr\Log\LoggerInterface">LoggerInterface</abbr></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_createSyslogDriver">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Log/LogManager.php#L335">at line 335</a></div>
+        <code>            protected        <abbr title="Psr\Log\LoggerInterface">LoggerInterface</abbr>
+    <strong>createSyslogDriver</strong>(array $config)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Create an instance of the syslog log driver.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$config</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="Psr\Log\LoggerInterface">LoggerInterface</abbr></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_createErrorlogDriver">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Log/LogManager.php#L351">at line 351</a></div>
+        <code>            protected        <abbr title="Psr\Log\LoggerInterface">LoggerInterface</abbr>
+    <strong>createErrorlogDriver</strong>(array $config)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Create an instance of the &quot;error log&quot; log driver.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$config</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="Psr\Log\LoggerInterface">LoggerInterface</abbr></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_createMonologDriver">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Log/LogManager.php#L369">at line 369</a></div>
+        <code>            protected        <abbr title="Psr\Log\LoggerInterface">LoggerInterface</abbr>
+    <strong>createMonologDriver</strong>(array $config)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Create an instance of any handler available in Monolog.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$config</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="Psr\Log\LoggerInterface">LoggerInterface</abbr></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a target="_blank" rel="noopener" href="https://www.php.net/InvalidArgumentException">InvalidArgumentException</a></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../Illuminate/Contracts/Container/BindingResolutionException.html"><abbr title="Illuminate\Contracts\Container\BindingResolutionException">BindingResolutionException</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_prepareHandlers">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Log/LogManager.php#L394">at line 394</a></div>
+        <code>            protected        array
+    <strong>prepareHandlers</strong>(array $handlers)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Prepare the handlers for usage by Monolog.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$handlers</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_prepareHandler">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Log/LogManager.php#L410">at line 410</a></div>
+        <code>            protected        <abbr title="Monolog\Handler\HandlerInterface">HandlerInterface</abbr>
+    <strong>prepareHandler</strong>(<abbr title="Monolog\Handler\HandlerInterface">HandlerInterface</abbr> $handler, array $config = [])
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Prepare the handler for usage by Monolog.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><abbr title="Monolog\Handler\HandlerInterface">HandlerInterface</abbr></td>
+                <td>$handler</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$config</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="Monolog\Handler\HandlerInterface">HandlerInterface</abbr></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_formatter">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Log/LogManager.php#L434">at line 434</a></div>
+        <code>            protected        <abbr title="Monolog\Formatter\FormatterInterface">FormatterInterface</abbr>
+    <strong>formatter</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Get a Monolog formatter instance.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="Monolog\Formatter\FormatterInterface">FormatterInterface</abbr></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_configurationFor">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Log/LogManager.php#L457">at line 457</a></div>
+        <code>            protected        array
+    <strong>configurationFor</strong>(string $name)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Get the log connection configuration.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$name</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getDefaultDriver">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Log/LogManager.php#L467">at line 467</a></div>
+        <code>                    string|null
+    <strong>getDefaultDriver</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Get the default log driver name.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string|null</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setDefaultDriver">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Log/LogManager.php#L478">at line 478</a></div>
+        <code>                    void
+    <strong>setDefaultDriver</strong>(string $name)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Set the default log driver name.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$name</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_extend">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Log/LogManager.php#L490">at line 490</a></div>
+        <code>                    $this
+    <strong>extend</strong>(string $driver, <a target="_blank" rel="noopener" href="https://www.php.net/Closure">Closure</a> $callback)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Register a custom driver creator Closure.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$driver</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a target="_blank" rel="noopener" href="https://www.php.net/Closure">Closure</a></td>
+                <td>$callback</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>$this</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_forgetChannel">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Log/LogManager.php#L503">at line 503</a></div>
+        <code>                    $this
+    <strong>forgetChannel</strong>(string|null $driver = null)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Unset the given channel instance.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string|null</td>
+                <td>$driver</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>$this</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_parseDriver">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Log/LogManager.php#L518">at line 518</a></div>
+        <code>            protected        string|null
+    <strong>parseDriver</strong>(string|null $driver)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Parse the driver name.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string|null</td>
+                <td>$driver</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string|null</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getChannels">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Log/LogManager.php#L534">at line 534</a></div>
+        <code>                    array
+    <strong>getChannels</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Get all of the resolved log channels.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_emergency">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Log/LogManager.php#L546">at line 546</a></div>
+        <code>                    void
+    <strong>emergency</strong>(string $message, array $context = [])
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>System is unusable.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$message</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$context</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_alert">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Log/LogManager.php#L561">at line 561</a></div>
+        <code>                    void
+    <strong>alert</strong>(string $message, array $context = [])
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Action must be taken immediately.</p></p>                <p><p>Example: Entire website down, database unavailable, etc. This should
+trigger the SMS alerts and wake you up.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$message</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$context</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_critical">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Log/LogManager.php#L575">at line 575</a></div>
+        <code>                    void
+    <strong>critical</strong>(string $message, array $context = [])
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Critical conditions.</p></p>                <p><p>Example: Application component unavailable, unexpected exception.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$message</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$context</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_error">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Log/LogManager.php#L588">at line 588</a></div>
+        <code>                    void
+    <strong>error</strong>(string $message, array $context = [])
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Runtime errors that do not require immediate action but should typically
+be logged and monitored.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$message</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$context</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_warning">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Log/LogManager.php#L603">at line 603</a></div>
+        <code>                    void
+    <strong>warning</strong>(string $message, array $context = [])
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Exceptional occurrences that are not errors.</p></p>                <p><p>Example: Use of deprecated APIs, poor use of an API, undesirable things
+that are not necessarily wrong.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$message</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$context</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_notice">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Log/LogManager.php#L615">at line 615</a></div>
+        <code>                    void
+    <strong>notice</strong>(string $message, array $context = [])
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Normal but significant events.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$message</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$context</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_info">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Log/LogManager.php#L629">at line 629</a></div>
+        <code>                    void
+    <strong>info</strong>(string $message, array $context = [])
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Interesting events.</p></p>                <p><p>Example: User logs in, SQL logs.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$message</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$context</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_debug">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Log/LogManager.php#L641">at line 641</a></div>
+        <code>                    void
+    <strong>debug</strong>(string $message, array $context = [])
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Detailed debug information.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$message</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$context</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_log">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Log/LogManager.php#L654">at line 654</a></div>
+        <code>                    void
+    <strong>log</strong>(mixed $level, string $message, array $context = [])
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Logs with an arbitrary level.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>mixed</td>
+                <td>$level</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$message</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$context</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method___call">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Log/LogManager.php#L666">at line 666</a></div>
+        <code>                    mixed
+    <strong>__call</strong>(string $method, array $parameters)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Dynamically call the default driver instance.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$method</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$parameters</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>mixed</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+            </div>
+
+    
+</div><div id="footer">
+        Generated by <a href="https://github.com/code-lts/doctum">Doctum, a API Documentation generator and fork of Sami</a>.</div></div>
+    </div>
+    </body>
+
+</html>

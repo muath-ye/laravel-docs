@@ -1,0 +1,1655 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="index, follow, all" />
+    <title>Illuminate\Session\SessionManager | Laravel API</title>
+
+            <link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="../../css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="../../css/doctum.css">
+        <link rel="stylesheet" type="text/css" href="../../fonts/doctum-font.css">
+        <script src="../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../doctum.js"></script>
+        <script async defer src="../../js/bootstrap.min.js"></script>
+        <script async defer src="../../js/autocomplete.min.js"></script>
+        <meta name="MobileOptimized" content="width">
+        <meta name="HandheldFriendly" content="true">
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+
+        <link rel="search"
+          type="application/opensearchdescription+xml"
+          href="https://laravel.com/api/5.5/opensearch.xml"
+          title="Laravel API (5.5)" />
+    <link rel="search"
+          type="application/opensearchdescription+xml"
+          href="https://laravel.com/api/5.8/opensearch.xml"
+          title="Laravel API (5.8)" />
+    <link rel="search"
+          type="application/opensearchdescription+xml"
+          href="https://laravel.com/api/6.x/opensearch.xml"
+          title="Laravel API (6.x)" />
+    <link rel="search"
+          type="application/opensearchdescription+xml"
+          href="https://laravel.com/api/7.x/opensearch.xml"
+          title="Laravel API (7.x)" />
+    <link rel="search"
+          type="application/opensearchdescription+xml"
+          href="https://laravel.com/api/8.x/opensearch.xml"
+          title="Laravel API (8.x)" />
+    <link rel="search"
+          type="application/opensearchdescription+xml"
+          href="https://laravel.com/api/9.x/opensearch.xml"
+          title="Laravel API (9.x)" />
+    <link rel="search"
+          type="application/opensearchdescription+xml"
+          href="https://laravel.com/api/master/opensearch.xml"
+          title="Laravel API (master)" />
+    </head>
+
+    <body id="class" data-name="class:Illuminate_Session_SessionManager" data-root-path="../../" data-search-index-url="../../doctum-search.json">
+            <div id="content">
+        <div id="left-column">
+                <div id="control-panel">
+                    <form action="#">
+                <select class="form-control" id="version-switcher" name="version">
+                                            <option
+                            value="../../../5.5/index.html"
+                            data-version="5.5" >Laravel 5.5</option>
+                                            <option
+                            value="../../../5.8/index.html"
+                            data-version="5.8" >Laravel 5.8</option>
+                                            <option
+                            value="../../../6.x/index.html"
+                            data-version="6.x" >Laravel 6.x</option>
+                                            <option
+                            value="../../../7.x/index.html"
+                            data-version="7.x" >Laravel 7.x</option>
+                                            <option
+                            value="../../../8.x/index.html"
+                            data-version="8.x" selected>Laravel 8.x</option>
+                                            <option
+                            value="../../../9.x/index.html"
+                            data-version="9.x" >Laravel 9.x</option>
+                                            <option
+                            value="../../../master/index.html"
+                            data-version="master" >Laravel Dev</option>
+                                    </select>
+            </form>
+                <div class="search-bar hidden" id="search-progress-bar-container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" id="search-progress-bar"
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+        </div>
+        <form id="search-form" action="../../search.html">
+            <span class="icon icon-search"></span>
+            <input name="search"
+                   id="doctum-search-auto-complete"
+                   class="typeahead form-control"
+                   type="search"
+                   placeholder="Search"
+                   spellcheck="false"
+                   autocorrect="off"
+                   autocomplete="off"
+                   autocapitalize="off">
+            <div class="auto-complete-results" id="auto-complete-results"></div>
+        </form>
+    </div>
+
+                <div id="api-tree"></div>
+
+        </div>
+        <div id="right-column">
+                <nav id="site-nav" class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-elements">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../../index.html">Laravel API</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-elements">
+                <ul class="nav navbar-nav">
+                                        <li role="presentation" class="dropdown visible-xs-block visible-sm-block">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#"
+                            role="button" aria-haspopup="true" aria-expanded="false">Versions&nbsp;<span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                        <li ><a href="../../../5.5/index.html" data-version="5.5">Laravel 5.5</a></li>
+                        <li ><a href="../../../5.8/index.html" data-version="5.8">Laravel 5.8</a></li>
+                        <li ><a href="../../../6.x/index.html" data-version="6.x">Laravel 6.x</a></li>
+                        <li ><a href="../../../7.x/index.html" data-version="7.x">Laravel 7.x</a></li>
+                        <li class="active"><a href="../../../8.x/index.html" data-version="8.x">Laravel 8.x</a></li>
+                        <li ><a href="../../../9.x/index.html" data-version="9.x">Laravel 9.x</a></li>
+                        <li ><a href="../../../master/index.html" data-version="master">Laravel Dev</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="../../classes.html">Classes</a></li>
+                    <li><a href="../../namespaces.html">Namespaces</a></li>
+                    <li><a href="../../interfaces.html">Interfaces</a></li>
+                    <li><a href="../../traits.html">Traits</a></li>
+                    <li><a href="../../doc-index.html">Index</a></li>
+                    <li><a href="../../search.html">Search</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+                        <div class="namespace-breadcrumbs">
+            <ol class="breadcrumb">
+                <li><span class="label label-default">class</span></li>
+                        <li><a href="../../Illuminate.html">Illuminate</a></li><li class="backslash">\</li><li><a href="../../Illuminate/Session.html">Session</a></li><li class="backslash">\</li><li>SessionManager</li>
+            </ol>
+        </div>
+                <div id="page-content">
+    <div class="page-header">
+        <h1>SessionManager    
+            </h1>
+    </div>
+
+    
+    <p>        class
+    <strong>SessionManager</strong>        extends <a href="../../Illuminate/Support/Manager.html"><abbr title="Illuminate\Support\Manager">Manager</abbr></a>        (<a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Session/SessionManager.php">View source</a>)
+</p>
+
+        
+    
+        
+
+            
+        
+    
+            <h2>Properties</h2>
+
+            <table class="table table-condensed">
+                    <tr>
+                <td class="type" id="property_container">
+                                        protected                                        <a href="../../Illuminate/Contracts/Container/Container.html"><abbr title="Illuminate\Contracts\Container\Container">Container</abbr></a>
+                                                                                
+                                    </td>
+                <td>$container</td>
+                <td class="last"><p>The container instance.</p></td>
+                <td><small>from&nbsp;<a href="../../Illuminate/Support/Manager.html#property_container">
+<abbr title="Illuminate\Support\Manager">Manager</abbr></a></small></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_config">
+                                        protected                                        <a href="../../Illuminate/Contracts/Config/Repository.html"><abbr title="Illuminate\Contracts\Config\Repository">Repository</abbr></a>
+                                                                                
+                                    </td>
+                <td>$config</td>
+                <td class="last"><p>The configuration repository instance.</p></td>
+                <td><small>from&nbsp;<a href="../../Illuminate/Support/Manager.html#property_config">
+<abbr title="Illuminate\Support\Manager">Manager</abbr></a></small></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_customCreators">
+                                        protected                                        array
+                                                                                
+                                    </td>
+                <td>$customCreators</td>
+                <td class="last"><p>The registered custom driver creators.</p></td>
+                <td><small>from&nbsp;<a href="../../Illuminate/Support/Manager.html#property_customCreators">
+<abbr title="Illuminate\Support\Manager">Manager</abbr></a></small></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_drivers">
+                                        protected                                        array
+                                                                                
+                                    </td>
+                <td>$drivers</td>
+                <td class="last"><p>The array of created &quot;drivers&quot;.</p></td>
+                <td><small>from&nbsp;<a href="../../Illuminate/Support/Manager.html#property_drivers">
+<abbr title="Illuminate\Support\Manager">Manager</abbr></a></small></td>
+            </tr>
+            </table>
+
+    
+            <h2>Methods</h2>
+
+            <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method___construct">__construct</a>(<a href="../../Illuminate/Contracts/Container/Container.html"><abbr title="Illuminate\Contracts\Container\Container">Container</abbr></a> $container)
+        
+                                            <p><p>Create a new manager instance.</p></p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Illuminate/Support/Manager.html#method___construct">
+<abbr title="Illuminate\Support\Manager">Manager</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getDefaultDriver">getDefaultDriver</a>()
+        
+                                            <p><p>Get the default session driver name.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    mixed
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_driver">driver</a>(string|null $driver = null)
+        
+                                            <p><p>Get a driver instance.</p></p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Illuminate/Support/Manager.html#method_driver">
+<abbr title="Illuminate\Support\Manager">Manager</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    mixed
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_createDriver">createDriver</a>(string $driver)
+        
+                                            <p><p>Create a new driver instance.</p></p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Illuminate/Support/Manager.html#method_createDriver">
+<abbr title="Illuminate\Support\Manager">Manager</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    mixed
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_callCustomCreator">callCustomCreator</a>(string $driver)
+        
+                                            <p><p>Call a custom driver creator.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    $this
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_extend">extend</a>(string $driver, <a target="_blank" rel="noopener" href="https://www.php.net/Closure">Closure</a> $callback)
+        
+                                            <p><p>Register a custom driver creator Closure.</p></p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Illuminate/Support/Manager.html#method_extend">
+<abbr title="Illuminate\Support\Manager">Manager</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getDrivers">getDrivers</a>()
+        
+                                            <p><p>Get all of the created &quot;drivers&quot;.</p></p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Illuminate/Support/Manager.html#method_getDrivers">
+<abbr title="Illuminate\Support\Manager">Manager</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../Illuminate/Contracts/Container/Container.html"><abbr title="Illuminate\Contracts\Container\Container">Container</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getContainer">getContainer</a>()
+        
+                                            <p><p>Get the container instance used by the manager.</p></p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Illuminate/Support/Manager.html#method_getContainer">
+<abbr title="Illuminate\Support\Manager">Manager</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    $this
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_setContainer">setContainer</a>(<a href="../../Illuminate/Contracts/Container/Container.html"><abbr title="Illuminate\Contracts\Container\Container">Container</abbr></a> $container)
+        
+                                            <p><p>Set the container instance used by the manager.</p></p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Illuminate/Support/Manager.html#method_setContainer">
+<abbr title="Illuminate\Support\Manager">Manager</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    $this
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_forgetDrivers">forgetDrivers</a>()
+        
+                                            <p><p>Forget all of the resolved driver instances.</p></p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Illuminate/Support/Manager.html#method_forgetDrivers">
+<abbr title="Illuminate\Support\Manager">Manager</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    mixed
+                </div>
+                <div class="col-md-8">
+                    <a href="#method___call">__call</a>(string $method, array $parameters)
+        
+                                            <p><p>Dynamically call the default driver instance.</p></p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Illuminate/Support/Manager.html#method___call">
+<abbr title="Illuminate\Support\Manager">Manager</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../Illuminate/Session/Store.html"><abbr title="Illuminate\Session\Store">Store</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_createNullDriver">createNullDriver</a>()
+        
+                                            <p><p>Create an instance of the &quot;null&quot; session driver.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../Illuminate/Session/Store.html"><abbr title="Illuminate\Session\Store">Store</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_createArrayDriver">createArrayDriver</a>()
+        
+                                            <p><p>Create an instance of the &quot;array&quot; session driver.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../Illuminate/Session/Store.html"><abbr title="Illuminate\Session\Store">Store</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_createCookieDriver">createCookieDriver</a>()
+        
+                                            <p><p>Create an instance of the &quot;cookie&quot; session driver.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../Illuminate/Session/Store.html"><abbr title="Illuminate\Session\Store">Store</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_createFileDriver">createFileDriver</a>()
+        
+                                            <p><p>Create an instance of the file session driver.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../Illuminate/Session/Store.html"><abbr title="Illuminate\Session\Store">Store</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_createNativeDriver">createNativeDriver</a>()
+        
+                                            <p><p>Create an instance of the file session driver.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../Illuminate/Session/Store.html"><abbr title="Illuminate\Session\Store">Store</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_createDatabaseDriver">createDatabaseDriver</a>()
+        
+                                            <p><p>Create an instance of the database session driver.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../Illuminate/Database/Connection.html"><abbr title="Illuminate\Database\Connection">Connection</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getDatabaseConnection">getDatabaseConnection</a>()
+        
+                                            <p><p>Get the database connection for the database driver.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../Illuminate/Session/Store.html"><abbr title="Illuminate\Session\Store">Store</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_createApcDriver">createApcDriver</a>()
+        
+                                            <p><p>Create an instance of the APC session driver.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../Illuminate/Session/Store.html"><abbr title="Illuminate\Session\Store">Store</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_createMemcachedDriver">createMemcachedDriver</a>()
+        
+                                            <p><p>Create an instance of the Memcached session driver.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../Illuminate/Session/Store.html"><abbr title="Illuminate\Session\Store">Store</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_createRedisDriver">createRedisDriver</a>()
+        
+                                            <p><p>Create an instance of the Redis session driver.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../Illuminate/Session/Store.html"><abbr title="Illuminate\Session\Store">Store</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_createDynamodbDriver">createDynamodbDriver</a>()
+        
+                                            <p><p>Create an instance of the DynamoDB session driver.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../Illuminate/Session/Store.html"><abbr title="Illuminate\Session\Store">Store</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_createCacheBased">createCacheBased</a>(string $driver)
+        
+                                            <p><p>Create an instance of a cache driven driver.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../Illuminate/Session/CacheBasedSessionHandler.html"><abbr title="Illuminate\Session\CacheBasedSessionHandler">CacheBasedSessionHandler</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_createCacheHandler">createCacheHandler</a>(string $driver)
+        
+                                            <p><p>Create the cache based session handler instance.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../Illuminate/Session/Store.html"><abbr title="Illuminate\Session\Store">Store</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_buildSession">buildSession</a>(<a target="_blank" rel="noopener" href="https://www.php.net/SessionHandlerInterface">SessionHandlerInterface</a> $handler)
+        
+                                            <p><p>Build the session instance.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../Illuminate/Session/EncryptedStore.html"><abbr title="Illuminate\Session\EncryptedStore">EncryptedStore</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_buildEncryptedSession">buildEncryptedSession</a>(<a target="_blank" rel="noopener" href="https://www.php.net/SessionHandlerInterface">SessionHandlerInterface</a> $handler)
+        
+                                            <p><p>Build the encrypted session instance.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_shouldBlock">shouldBlock</a>()
+        
+                                            <p><p>Determine if requests for the same session should wait for each to finish before executing.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string|null
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_blockDriver">blockDriver</a>()
+        
+                                            <p><p>Get the name of the cache store / driver that should be used to acquire session locks.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getSessionConfig">getSessionConfig</a>()
+        
+                                            <p><p>Get the session configuration.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_setDefaultDriver">setDefaultDriver</a>(string $name)
+        
+                                            <p><p>Set the default session driver name.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+            </div>
+
+
+        <h2>Details</h2>
+
+            <div id="method-details">
+                    <div class="method-item">
+                    <h3 id="method___construct">
+        <div class="location">in <a href="../../Illuminate/Support/Manager.html#method___construct">
+<abbr title="Illuminate\Support\Manager">Manager</abbr></a> <a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Support/Manager.php#L45">at line 45</a></div>
+        <code>                    void
+    <strong>__construct</strong>(<a href="../../Illuminate/Contracts/Container/Container.html"><abbr title="Illuminate\Contracts\Container\Container">Container</abbr></a> $container)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Create a new manager instance.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../Illuminate/Contracts/Container/Container.html"><abbr title="Illuminate\Contracts\Container\Container">Container</abbr></a></td>
+                <td>$container</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getDefaultDriver">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Session/SessionManager.php#L240">at line 240</a></div>
+        <code>                    string
+    <strong>getDefaultDriver</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Get the default session driver name.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_driver">
+        <div class="location">in <a href="../../Illuminate/Support/Manager.html#method_driver">
+<abbr title="Illuminate\Support\Manager">Manager</abbr></a> <a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Support/Manager.php#L66">at line 66</a></div>
+        <code>                    mixed
+    <strong>driver</strong>(string|null $driver = null)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Get a driver instance.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string|null</td>
+                <td>$driver</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>mixed</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a target="_blank" rel="noopener" href="https://www.php.net/InvalidArgumentException">InvalidArgumentException</a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_createDriver">
+        <div class="location">in <a href="../../Illuminate/Support/Manager.html#method_createDriver">
+<abbr title="Illuminate\Support\Manager">Manager</abbr></a> <a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Support/Manager.php#L94">at line 94</a></div>
+        <code>            protected        mixed
+    <strong>createDriver</strong>(string $driver)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Create a new driver instance.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$driver</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>mixed</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a target="_blank" rel="noopener" href="https://www.php.net/InvalidArgumentException">InvalidArgumentException</a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_callCustomCreator">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Session/SessionManager.php#L15">at line 15</a></div>
+        <code>            protected        mixed
+    <strong>callCustomCreator</strong>(string $driver)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Call a custom driver creator.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$driver</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>mixed</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_extend">
+        <div class="location">in <a href="../../Illuminate/Support/Manager.html#method_extend">
+<abbr title="Illuminate\Support\Manager">Manager</abbr></a> <a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Support/Manager.php#L130">at line 130</a></div>
+        <code>                    $this
+    <strong>extend</strong>(string $driver, <a target="_blank" rel="noopener" href="https://www.php.net/Closure">Closure</a> $callback)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Register a custom driver creator Closure.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$driver</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a target="_blank" rel="noopener" href="https://www.php.net/Closure">Closure</a></td>
+                <td>$callback</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>$this</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getDrivers">
+        <div class="location">in <a href="../../Illuminate/Support/Manager.html#method_getDrivers">
+<abbr title="Illuminate\Support\Manager">Manager</abbr></a> <a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Support/Manager.php#L142">at line 142</a></div>
+        <code>                    array
+    <strong>getDrivers</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Get all of the created &quot;drivers&quot;.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getContainer">
+        <div class="location">in <a href="../../Illuminate/Support/Manager.html#method_getContainer">
+<abbr title="Illuminate\Support\Manager">Manager</abbr></a> <a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Support/Manager.php#L152">at line 152</a></div>
+        <code>                    <a href="../../Illuminate/Contracts/Container/Container.html"><abbr title="Illuminate\Contracts\Container\Container">Container</abbr></a>
+    <strong>getContainer</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Get the container instance used by the manager.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../Illuminate/Contracts/Container/Container.html"><abbr title="Illuminate\Contracts\Container\Container">Container</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setContainer">
+        <div class="location">in <a href="../../Illuminate/Support/Manager.html#method_setContainer">
+<abbr title="Illuminate\Support\Manager">Manager</abbr></a> <a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Support/Manager.php#L163">at line 163</a></div>
+        <code>                    $this
+    <strong>setContainer</strong>(<a href="../../Illuminate/Contracts/Container/Container.html"><abbr title="Illuminate\Contracts\Container\Container">Container</abbr></a> $container)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Set the container instance used by the manager.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../Illuminate/Contracts/Container/Container.html"><abbr title="Illuminate\Contracts\Container\Container">Container</abbr></a></td>
+                <td>$container</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>$this</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_forgetDrivers">
+        <div class="location">in <a href="../../Illuminate/Support/Manager.html#method_forgetDrivers">
+<abbr title="Illuminate\Support\Manager">Manager</abbr></a> <a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Support/Manager.php#L175">at line 175</a></div>
+        <code>                    $this
+    <strong>forgetDrivers</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Forget all of the resolved driver instances.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>$this</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method___call">
+        <div class="location">in <a href="../../Illuminate/Support/Manager.html#method___call">
+<abbr title="Illuminate\Support\Manager">Manager</abbr></a> <a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Support/Manager.php#L189">at line 189</a></div>
+        <code>                    mixed
+    <strong>__call</strong>(string $method, array $parameters)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Dynamically call the default driver instance.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$method</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$parameters</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>mixed</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_createNullDriver">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Session/SessionManager.php#L25">at line 25</a></div>
+        <code>            protected        <a href="../../Illuminate/Session/Store.html"><abbr title="Illuminate\Session\Store">Store</abbr></a>
+    <strong>createNullDriver</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Create an instance of the &quot;null&quot; session driver.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../Illuminate/Session/Store.html"><abbr title="Illuminate\Session\Store">Store</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_createArrayDriver">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Session/SessionManager.php#L35">at line 35</a></div>
+        <code>            protected        <a href="../../Illuminate/Session/Store.html"><abbr title="Illuminate\Session\Store">Store</abbr></a>
+    <strong>createArrayDriver</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Create an instance of the &quot;array&quot; session driver.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../Illuminate/Session/Store.html"><abbr title="Illuminate\Session\Store">Store</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_createCookieDriver">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Session/SessionManager.php#L47">at line 47</a></div>
+        <code>            protected        <a href="../../Illuminate/Session/Store.html"><abbr title="Illuminate\Session\Store">Store</abbr></a>
+    <strong>createCookieDriver</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Create an instance of the &quot;cookie&quot; session driver.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../Illuminate/Session/Store.html"><abbr title="Illuminate\Session\Store">Store</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_createFileDriver">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Session/SessionManager.php#L59">at line 59</a></div>
+        <code>            protected        <a href="../../Illuminate/Session/Store.html"><abbr title="Illuminate\Session\Store">Store</abbr></a>
+    <strong>createFileDriver</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Create an instance of the file session driver.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../Illuminate/Session/Store.html"><abbr title="Illuminate\Session\Store">Store</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_createNativeDriver">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Session/SessionManager.php#L69">at line 69</a></div>
+        <code>            protected        <a href="../../Illuminate/Session/Store.html"><abbr title="Illuminate\Session\Store">Store</abbr></a>
+    <strong>createNativeDriver</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Create an instance of the file session driver.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../Illuminate/Session/Store.html"><abbr title="Illuminate\Session\Store">Store</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_createDatabaseDriver">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Session/SessionManager.php#L83">at line 83</a></div>
+        <code>            protected        <a href="../../Illuminate/Session/Store.html"><abbr title="Illuminate\Session\Store">Store</abbr></a>
+    <strong>createDatabaseDriver</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Create an instance of the database session driver.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../Illuminate/Session/Store.html"><abbr title="Illuminate\Session\Store">Store</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getDatabaseConnection">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Session/SessionManager.php#L99">at line 99</a></div>
+        <code>            protected        <a href="../../Illuminate/Database/Connection.html"><abbr title="Illuminate\Database\Connection">Connection</abbr></a>
+    <strong>getDatabaseConnection</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Get the database connection for the database driver.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../Illuminate/Database/Connection.html"><abbr title="Illuminate\Database\Connection">Connection</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_createApcDriver">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Session/SessionManager.php#L111">at line 111</a></div>
+        <code>            protected        <a href="../../Illuminate/Session/Store.html"><abbr title="Illuminate\Session\Store">Store</abbr></a>
+    <strong>createApcDriver</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Create an instance of the APC session driver.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../Illuminate/Session/Store.html"><abbr title="Illuminate\Session\Store">Store</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_createMemcachedDriver">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Session/SessionManager.php#L121">at line 121</a></div>
+        <code>            protected        <a href="../../Illuminate/Session/Store.html"><abbr title="Illuminate\Session\Store">Store</abbr></a>
+    <strong>createMemcachedDriver</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Create an instance of the Memcached session driver.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../Illuminate/Session/Store.html"><abbr title="Illuminate\Session\Store">Store</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_createRedisDriver">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Session/SessionManager.php#L131">at line 131</a></div>
+        <code>            protected        <a href="../../Illuminate/Session/Store.html"><abbr title="Illuminate\Session\Store">Store</abbr></a>
+    <strong>createRedisDriver</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Create an instance of the Redis session driver.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../Illuminate/Session/Store.html"><abbr title="Illuminate\Session\Store">Store</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_createDynamodbDriver">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Session/SessionManager.php#L147">at line 147</a></div>
+        <code>            protected        <a href="../../Illuminate/Session/Store.html"><abbr title="Illuminate\Session\Store">Store</abbr></a>
+    <strong>createDynamodbDriver</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Create an instance of the DynamoDB session driver.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../Illuminate/Session/Store.html"><abbr title="Illuminate\Session\Store">Store</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_createCacheBased">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Session/SessionManager.php#L158">at line 158</a></div>
+        <code>            protected        <a href="../../Illuminate/Session/Store.html"><abbr title="Illuminate\Session\Store">Store</abbr></a>
+    <strong>createCacheBased</strong>(string $driver)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Create an instance of a cache driven driver.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$driver</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../Illuminate/Session/Store.html"><abbr title="Illuminate\Session\Store">Store</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_createCacheHandler">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Session/SessionManager.php#L169">at line 169</a></div>
+        <code>            protected        <a href="../../Illuminate/Session/CacheBasedSessionHandler.html"><abbr title="Illuminate\Session\CacheBasedSessionHandler">CacheBasedSessionHandler</abbr></a>
+    <strong>createCacheHandler</strong>(string $driver)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Create the cache based session handler instance.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$driver</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../Illuminate/Session/CacheBasedSessionHandler.html"><abbr title="Illuminate\Session\CacheBasedSessionHandler">CacheBasedSessionHandler</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_buildSession">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Session/SessionManager.php#L185">at line 185</a></div>
+        <code>            protected        <a href="../../Illuminate/Session/Store.html"><abbr title="Illuminate\Session\Store">Store</abbr></a>
+    <strong>buildSession</strong>(<a target="_blank" rel="noopener" href="https://www.php.net/SessionHandlerInterface">SessionHandlerInterface</a> $handler)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Build the session instance.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a target="_blank" rel="noopener" href="https://www.php.net/SessionHandlerInterface">SessionHandlerInterface</a></td>
+                <td>$handler</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../Illuminate/Session/Store.html"><abbr title="Illuminate\Session\Store">Store</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_buildEncryptedSession">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Session/SessionManager.php#L198">at line 198</a></div>
+        <code>            protected        <a href="../../Illuminate/Session/EncryptedStore.html"><abbr title="Illuminate\Session\EncryptedStore">EncryptedStore</abbr></a>
+    <strong>buildEncryptedSession</strong>(<a target="_blank" rel="noopener" href="https://www.php.net/SessionHandlerInterface">SessionHandlerInterface</a> $handler)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Build the encrypted session instance.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a target="_blank" rel="noopener" href="https://www.php.net/SessionHandlerInterface">SessionHandlerInterface</a></td>
+                <td>$handler</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../Illuminate/Session/EncryptedStore.html"><abbr title="Illuminate\Session\EncryptedStore">EncryptedStore</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_shouldBlock">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Session/SessionManager.php#L210">at line 210</a></div>
+        <code>                    bool
+    <strong>shouldBlock</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Determine if requests for the same session should wait for each to finish before executing.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_blockDriver">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Session/SessionManager.php#L220">at line 220</a></div>
+        <code>                    string|null
+    <strong>blockDriver</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Get the name of the cache store / driver that should be used to acquire session locks.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string|null</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getSessionConfig">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Session/SessionManager.php#L230">at line 230</a></div>
+        <code>                    array
+    <strong>getSessionConfig</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Get the session configuration.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setDefaultDriver">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Session/SessionManager.php#L251">at line 251</a></div>
+        <code>                    void
+    <strong>setDefaultDriver</strong>(string $name)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Set the default session driver name.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$name</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+            </div>
+
+    
+</div><div id="footer">
+        Generated by <a href="https://github.com/code-lts/doctum">Doctum, a API Documentation generator and fork of Sami</a>.</div></div>
+    </div>
+    </body>
+
+</html>

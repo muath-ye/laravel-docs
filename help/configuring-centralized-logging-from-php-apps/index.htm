@@ -1,0 +1,1184 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+    <script src="https://cookie-cdn.cookiepro.com/scripttemplates/otSDKStub.js"  type="text/javascript" charset="UTF-8" data-domain-script="98b75af9-2e96-4d68-adbb-9a00b9c25508" ></script>
+    <script type="text/javascript">
+        function OptanonWrapper() { }
+    </script>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-21839902-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-21839902-1', {'linker': {'domains': ['papertrailapp.com']}});
+  </script>
+  <meta name="viewport" content="width=device-width">
+  
+    <meta name='robots' content='index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1' />
+
+	<!-- This site is optimized with the Yoast SEO plugin v18.2 - https://yoast.com/wordpress/plugins/seo/ -->
+	<title>PHP - Papertrail</title>
+	<meta name="description" content="Configuring centralized logging from PHP apps · Papertrail log management" />
+	<link rel="canonical" href="https://www.papertrail.com/help/configuring-centralized-logging-from-php-apps/" />
+	<meta property="og:locale" content="en_US" />
+	<meta property="og:type" content="article" />
+	<meta property="og:title" content="PHP - Papertrail" />
+	<meta property="og:description" content="Configuring centralized logging from PHP apps · Papertrail log management" />
+	<meta property="og:url" content="https://www.papertrail.com/help/configuring-centralized-logging-from-php-apps/" />
+	<meta property="og:site_name" content="Papertrail" />
+	<meta property="article:modified_time" content="2021-10-05T18:59:56+00:00" />
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:label1" content="Est. reading time" />
+	<meta name="twitter:data1" content="3 minutes" />
+	<script type="application/ld+json" class="yoast-schema-graph">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://www.papertrail.com/#website","url":"https://www.papertrail.com/","name":"Papertrail","description":"","potentialAction":[{"@type":"SearchAction","target":{"@type":"EntryPoint","urlTemplate":"https://www.papertrail.com/?s={search_term_string}"},"query-input":"required name=search_term_string"}],"inLanguage":"en-US"},{"@type":"WebPage","@id":"https://www.papertrail.com/help/configuring-centralized-logging-from-php-apps/#webpage","url":"https://www.papertrail.com/help/configuring-centralized-logging-from-php-apps/","name":"PHP - Papertrail","isPartOf":{"@id":"https://www.papertrail.com/#website"},"datePublished":"2021-06-18T18:13:23+00:00","dateModified":"2021-10-05T18:59:56+00:00","description":"Configuring centralized logging from PHP apps · Papertrail log management","breadcrumb":{"@id":"https://www.papertrail.com/help/configuring-centralized-logging-from-php-apps/#breadcrumb"},"inLanguage":"en-US","potentialAction":[{"@type":"ReadAction","target":["https://www.papertrail.com/help/configuring-centralized-logging-from-php-apps/"]}]},{"@type":"BreadcrumbList","@id":"https://www.papertrail.com/help/configuring-centralized-logging-from-php-apps/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.papertrail.com/"},{"@type":"ListItem","position":2,"name":"PHP"}]}]}</script>
+	<!-- / Yoast SEO plugin. -->
+
+
+<link rel='dns-prefetch' href='//code.jquery.com' />
+<link rel='dns-prefetch' href='//s.w.org' />
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/13.1.0\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/13.1.0\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/www.papertrail.com\/wp-includes\/js\/wp-emoji-release.min.js?ver=5.8.3"}};
+			!function(e,a,t){var n,r,o,i=a.createElement("canvas"),p=i.getContext&&i.getContext("2d");function s(e,t){var a=String.fromCharCode;p.clearRect(0,0,i.width,i.height),p.fillText(a.apply(this,e),0,0);e=i.toDataURL();return p.clearRect(0,0,i.width,i.height),p.fillText(a.apply(this,t),0,0),e===i.toDataURL()}function c(e){var t=a.createElement("script");t.src=e,t.defer=t.type="text/javascript",a.getElementsByTagName("head")[0].appendChild(t)}for(o=Array("flag","emoji"),t.supports={everything:!0,everythingExceptFlag:!0},r=0;r<o.length;r++)t.supports[o[r]]=function(e){if(!p||!p.fillText)return!1;switch(p.textBaseline="top",p.font="600 32px Arial",e){case"flag":return s([127987,65039,8205,9895,65039],[127987,65039,8203,9895,65039])?!1:!s([55356,56826,55356,56819],[55356,56826,8203,55356,56819])&&!s([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]);case"emoji":return!s([10084,65039,8205,55357,56613],[10084,65039,8203,55357,56613])}return!1}(o[r]),t.supports.everything=t.supports.everything&&t.supports[o[r]],"flag"!==o[r]&&(t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&t.supports[o[r]]);t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&!t.supports.flag,t.DOMReady=!1,t.readyCallback=function(){t.DOMReady=!0},t.supports.everything||(n=function(){t.readyCallback()},a.addEventListener?(a.addEventListener("DOMContentLoaded",n,!1),e.addEventListener("load",n,!1)):(e.attachEvent("onload",n),a.attachEvent("onreadystatechange",function(){"complete"===a.readyState&&t.readyCallback()})),(n=t.source||{}).concatemoji?c(n.concatemoji):n.wpemoji&&n.twemoji&&(c(n.twemoji),c(n.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+	<link rel='stylesheet' id='wp-block-library-css'  href='https://www.papertrail.com/wp-includes/css/dist/block-library/style.min.css?ver=5.8.3' type='text/css' media='all' />
+<link rel="https://api.w.org/" href="https://www.papertrail.com/wp-json/" /><link rel="alternate" type="application/json" href="https://www.papertrail.com/wp-json/wp/v2/help/2581" /><link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://www.papertrail.com/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://www.papertrail.com/wp-includes/wlwmanifest.xml" /> 
+<link rel='shortlink' href='https://www.papertrail.com/?p=2581' />
+<link rel="alternate" type="application/json+oembed" href="https://www.papertrail.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.papertrail.com%2Fhelp%2Fconfiguring-centralized-logging-from-php-apps%2F" />
+<link rel="alternate" type="text/xml+oembed" href="https://www.papertrail.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.papertrail.com%2Fhelp%2Fconfiguring-centralized-logging-from-php-apps%2F&#038;format=xml" />
+<link rel="icon" href="https://www.papertrail.com/wp-content/uploads/2020/12/cropped-papertrailFavicon-32x32.png" sizes="32x32" />
+<link rel="icon" href="https://www.papertrail.com/wp-content/uploads/2020/12/cropped-papertrailFavicon-192x192.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://www.papertrail.com/wp-content/uploads/2020/12/cropped-papertrailFavicon-180x180.png" />
+<meta name="msapplication-TileImage" content="https://www.papertrail.com/wp-content/uploads/2020/12/cropped-papertrailFavicon-270x270.png" />
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700&display=swap" rel="stylesheet">
+      <script src="//assets.adobedtm.com/764583179334/078f77aa1f6f/launch-df1677ab0c63.min.js" async></script>
+  
+  <link rel="stylesheet" href="https://www.papertrail.com/wp-content/themes/papertrail-2019/assets/styles.min.css?ver=1643985121">
+</head>
+<body>
+
+<nav class="sw19b-old-header">
+    <div class="container grow">
+        <div class="flex spread center-vertically">
+            <a href="/">
+                <img src="/wp-content/themes/papertrail-2019/assets/images/logo.svg" width="140" height="51" alt="SolarWinds Papertrail logo">
+            </a>
+            <div class="flex center-vertically">
+                <ul class="menu">
+                    <li><a href="/tour/viewer/">Tour</a></li>
+                    <li class="menu-item-has-children"><a href="/solution/">Product</a>
+                        <ul class="sub-menu">
+                            <li><a href="/solution/technology/">Technology</a></li>
+                            <li><a href="/solution/capabilities/">Capabilities</a></li>
+                            <li><a href="/solution/languages/">Languages</a></li>
+                            <li><a href="/solution/tips/">Tips from the Team</a></li>
+                            <li><a href="/help/papertrail-documentation/">Help</a></li>
+                          </ul>
+                    </li>
+                    <li><a href="/plans/">Pricing</a></li>
+                    <li><a href="/blog/">Blog</a></li>
+                    <li><a href="/plans/contact/">Contact</a></li>
+                    <li class="btn btn-blue hide-medium" ><a href="https://www.papertrail.com/demo-request/">Request Demo</a></li>
+                    <li><a href="https://papertrailapp.com/login">Log In</a></li>
+                    <li class="btn btn-success">
+                      <a href="https://papertrailapp.com/signup?plan=free" >Sign Up</a>                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<div class="sw19b-old-header-spacer"></div>
+
+<svg id="sw19-svg-lib" height="0">
+    <mask id="sw19-plus-mask" maskContentUnits="objectBoundingBox">
+        <rect x="0" y="0" width="1" height="1" fill="white"/>
+        <line x1=".25" y1=".5" x2=".75" y2=".5" stroke="black" stroke-width=".1"/>
+        <line x1=".5" y1=".25" x2=".5" y2=".75" stroke="black" stroke-width=".1"/>
+    </mask>
+    <mask id="sw19-minus-mask" maskContentUnits="objectBoundingBox">
+        <rect x="0" y="0" width="1" height="1" fill="white"/>
+        <line x1=".25" y1=".5" x2=".75" y2=".5" stroke="black" stroke-width=".1"/>
+    </mask>
+    <symbol id="sw19-arrow-right" viewBox="0 0 90 110"><polyline fill="none" stroke-width="20px" points="20 10 65 55 20 100"/></symbol>
+    <symbol id="sw19-circle-plus" viewBox="0 0 10 10"><circle cx="5" cy="5" r="5" mask="url(#sw19-plus-mask)"/></symbol>
+    <symbol id="sw19-circle-minus" viewBox="0 0 10 10"><circle cx="5" cy="5" r="5" mask="url(#sw19-minus-mask)"/></symbol>
+    <symbol id="sw19-close" width="26" height="26" stroke="#666" stroke-width="15" viewBox="0 0 100 100"><circle cx="50" cy="50" r="45" fill="none" stroke-width="10"></circle><line x1="33" y1="33" x2="67" y2="67"></line><line x1="33" y1="67" x2="67" y2="33"></line></symbol>
+</svg>
+
+
+<div class="sw19b-header-logo-area">
+    <div class="sw19s-std-wrap">
+        <a
+                            href="/"
+                        class="logo"
+            aria-label="Home Link Logo"
+            data-linktype="Default Header"
+                        data-linkdetail="Site Logo">
+                            <svg viewBox="0 0 770 280" fill="#454545"><path fill="#f99d1e" d="M663 70l-25 7c-17-15-39-25-63-28 19-13 59-38 118-38l-15 13s62-2 77-23l-2 6c-4 13-12 24-22 32s-21 13-32 18-23 10-35 13h-1m96-2s-57-4-116 15c8 8 15 17 20 28 31-18 74-40 96-43m-92 52c3 9 6 19 7 29l54-56-61 27zm29 29c3 0 5-2 5-5s-2-5-5-5-5 2-5 5 2 5 5 5m0-9c2 0 4 2 4 4 0 3-2 4-4 4s-4-1-4-4c0-2 2-4 4-4m2 6.4l-.4-1-.6-1.1c.4-.2.8-.6.8-1.2 0-1.3-1-1.5-2-1.5h-1.4v4.8h1v-1.9h.7l.5 1.1.2.8h1.2zm-2.1-4c.7 0 .9 0 .9.6s-.3.8-1.4.8v-1.4h.5"/><path d="M623 201.3c0 .7-.1 1.3-.3 1.8a4 4 0 01-3.9 2.5 5 5 0 01-1.7-.3 3.7 3.7 0 01-2.1-2.2c-.2-.5-.3-1.1-.3-1.8 0-.6 0-1.2.3-1.7a4 4 0 012.2-2.2c.5-.2 1-.3 1.6-.3.6 0 1.2 0 1.7.3a3.9 3.9 0 012.2 2.2c.2.5.3 1.1.3 1.8zm-.6 0c0-.6-.1-1.1-.3-1.6-.2-.4-.4-.8-.8-1.1-.3-.4-.6-.6-1-.8a4 4 0 00-2.9 0c-.4.2-.8.4-1 .8-.4.3-.7.7-.8 1.1-.2.5-.3 1-.3 1.6 0 .6 0 1.2.3 1.6.1.5.4.9.7 1.2l1.1.8 1.4.2c.5 0 1 0 1.4-.2l1.1-.8c.4-.3.6-.7.8-1.2.2-.4.3-1 .3-1.6zm-2.5 2.3l-1.3-1.9h-.3v1.8h-1v-4.7h1.6c.5 0 1 .2 1.2.4.3.3.5.6.5 1 0 .7-.3 1.1-.9 1.4l1.3 1.8-1.1.2zm-.4-3.3c0-.4-.2-.6-.7-.6h-.5v1.3h.5c.5 0 .8-.2.8-.7zM32 171c-11 0-19-4-19-4v-10s12 4 19 4c6 0 12-1 12-8 0-6-4-8-9-9l-5-1c-7-2-17-5-17-18 0-15 11-18 24-18 11 0 17 3 17 3v10s-8-4-18-4c-7 0-12 2-12 8s4 7 9 9l6 1c8 2 17 6 17 18 0 15-11 19-24 19m65 0c12 0 29-4 29-32s-18-32-29-32c-12 0-29 4-29 32s17 32 29 32m0-56c6 0 17 2 17 24 0 21-11 23-17 23-5 0-17-2-17-23 0-22 11-24 17-24m44 55h12V88h-12v82zm79 0v-42c0-16-9-21-23-21-12 0-23 4-23 4v9s12-4 22-4c8 0 13 2 13 10v5h-14c-10 0-26 4-26 21 0 15 10 19 20 19 13 0 20-9 20-9l1 8h10zm-11-16s-9 8-17 8c-7 0-11-3-11-11 0-10 6-12 16-12l12-1v16zm53-37c6 0 10 2 10 2v-11l-8-1c-11 0-15 9-15 9l-1-8h-10v62h12v-45s5-8 12-8m118-9h-13l-7 35-4 21-5-21-11-35h-16l-11 35c-3 8-5 21-5 21l-4-21-7-35h-13l16 62h16l9-33 7-23 6 23 10 33h16l16-62zm15 62h11v-63h-11v63zm84 0v-43c0-15-8-20-20-20-13 0-23 10-23 10l-2-9h-9v62h11v-45s10-8 21-8c8 0 11 3 11 10v43h11zm70 0V88h-12v25s-5-6-16-6c-8 0-28 4-28 32s16 32 26 32c13 0 20-9 20-9l1 8h9zm-12-15s-8 7-16 7c-7 0-16-3-16-23s9-23 17-23c9 0 15 6 15 6v33zm48 16c13 0 23-4 23-19 0-12-9-16-16-18l-6-1c-5-2-10-3-10-9s5-8 13-8c10 0 18 4 18 4v-10s-7-3-18-3c-12 0-24 3-24 18 0 13 11 16 18 17l5 2c5 1 9 3 9 9 0 7-6 8-12 8-7 0-19-4-19-4v10s7 4 19 4m-317 89c-6 0-10-2-13-6h-1l1 7v18h-9v-64h7l1 6h1c3-4 7-6 13-6 5 0 10 2 13 6s4 9 4 16-1 13-4 17-8 6-13 6zm-2-38c-4 0-7 1-9 3l-2 11v1l2 12c2 2 5 3 9 3 3 0 5-1 7-4s3-6 3-11-1-8-3-11c-2-2-4-4-7-4zm55 37l-1-6h-1l-6 6-8 1c-5 0-8-1-10-4-3-2-4-5-4-9 0-5 2-8 5-11 3-2 8-3 15-3l8-1v-2l-2-6c-1-2-3-2-6-2l-7 1-6 2-3-7 8-2 8-1c6 0 10 1 13 3 3 3 4 7 4 12v29h-7zm-13-6c3 0 6-1 8-3s3-5 3-8v-4l-6 1c-4 0-7 0-9 2-2 1-3 3-3 6l1 4 6 2zm53 7c-5 0-10-2-13-6v25h-9v-64h8l1 6c3-4 8-6 13-6 6 0 10 2 13 6s5 9 5 16-2 13-5 17-7 6-13 6zm-2-38c-4 0-6 1-8 3-2 3-3 6-3 11v1c0 6 1 9 3 12 2 2 4 3 8 3 3 0 6-1 8-4s2-6 2-11l-2-11c-2-2-5-4-8-4zm48 38c-7 0-13-2-16-6-4-4-6-9-6-16 0-8 2-13 5-17 4-4 9-6 15-6s10 1 14 5 5 8 5 14v5h-30c1 5 2 8 4 10s5 4 9 4a34 34 0 0014-4v8l-6 2-8 1zm-2-38l-7 2c-2 2-3 5-3 9h19c0-4 0-7-2-9l-7-2zm49-7h5l-1 9-4-1c-4 0-7 1-9 4-2 2-4 5-4 9v23h-9v-44h7l2 8c2-2 3-5 6-6 2-2 5-2 7-2zm29 37l7-1v7l-4 2h-5c-9 0-13-5-13-14v-24h-6v-4l6-3 3-9h6v9h13v7h-13v24l2 5 4 1zm37-37h5l-1 9-4-1c-4 0-7 1-9 4-2 2-4 5-4 9v23h-9v-44h7l2 8c1-2 3-5 6-6 2-2 5-2 7-2zm38 44l-2-6-6 6-8 1c-5 0-8-1-11-4-2-2-3-5-3-9 0-5 2-8 5-11 3-2 8-3 15-3l8-1v-2l-2-6c-2-2-4-2-6-2l-7 1-6 2-3-7 8-2 8-1c6 0 10 1 13 3 3 3 4 7 4 12v29h-7zm-14-6c4 0 7-1 9-3s3-5 3-8v-4l-6 1c-4 0-7 0-9 2-2 1-3 3-3 6l1 4 5 2zm31-49l2-4 4-1 3 1 2 4-2 4-3 1-4-1-2-4zm10 55h-9v-44h9v44zm21 0h-10v-61h10v61z"/></svg>                    </a>
+        <div class="nav">
+            <a href="https://www.solarwinds.com/" data-linktype="Default Header" data-linkdetail="SolarWinds.com">SolarWinds.com</a> | <a href="/blog/" data-linktype="Default Header" data-linkdetail="Blog">Blog</a> | <a href="/plans/contact/" data-linktype="Default Header" data-linkdetail="Contact Us">Contact Us</a>        </div>
+        <a class="swhamburger"></a>
+    </div>
+</div>
+
+
+<header class="sw19b-header-navbar">
+    <nav class="sw19s-std-wrap SetHeight">
+        <div class="links">
+                                                <a data-toplevel-id="202" href="https://www.papertrail.com/solution/" class=" parent" data-linktype="Top Menu" target="" data-linkdetail="PRODUCTS">
+                        PRODUCTS <svg><use xlink:href="#sw19-arrow-right"></use></svg>
+                    </a>
+                                                                <a data-toplevel-id="1891" href="#" class=" parent" data-linktype="Top Menu" target="" data-linkdetail="FEATURES">
+                        FEATURES <svg><use xlink:href="#sw19-arrow-right"></use></svg>
+                    </a>
+                                                                <a data-toplevel-id="277" href="https://www.papertrail.com/solution/tips/" class=" parent" data-linktype="Top Menu" target="" data-linkdetail="TIPS FROM THE TEAM">
+                        TIPS FROM THE TEAM <svg><use xlink:href="#sw19-arrow-right"></use></svg>
+                    </a>
+                                                                <a data-toplevel-id="1919" href="#" class=" parent" data-linktype="Top Menu" target="" data-linkdetail="RESOURCES">
+                        RESOURCES <svg><use xlink:href="#sw19-arrow-right"></use></svg>
+                    </a>
+                                                                <a href="https://papertrailapp.com/login" data-linktype="Top Menu" class="" target="" data-linkdetail="LOG IN">LOG IN</a>                                    </div>
+        <div class="extra">
+            <div class="extra-links">
+                <a href="/demo-request/" class="sw19-nav-button-default" data-linktype="Top Menu" data-linkdetail="REQUEST DEMO">REQUEST DEMO</a><a href="https://staging.papertrailapp.com/signup?plan=free" class="sw19-nav-button-orange" data-linktype="Top Menu" data-linkdetail="FREE TRIAL">FREE TRIAL</a>            </div>
+            <form action="/search-results/" class="search-box">
+                <button><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 144 1007 1008"><path d="M994 1015q14 14 14 34t-14 33l-56 56q-14 14-33.5 14t-33.5-14L675 942q-14-14-14-34v-32q-110 87-252 87-111 0-205-55T55 759 0 553.5 55 348t149-149 205.5-55T615 199t149 149 55 205q0 142-87 252h32q20 0 34 14zM409.5 805q104.5 0 178-73.5t73.5-178T587.5 375t-178-74T231 375t-74 178.5 74 178T409.5 805z"/></svg></button>
+                <input type="text" name="q" placeholder="Search loggly.com" required>
+            </form>
+            <button aria-label="Show Searchbox" class="search">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 144 1007 1008"><path d="M994 1015q14 14 14 34t-14 33l-56 56q-14 14-33.5 14t-33.5-14L675 942q-14-14-14-34v-32q-110 87-252 87-111 0-205-55T55 759 0 553.5 55 348t149-149 205.5-55T615 199t149 149 55 205q0 142-87 252h32q20 0 34 14zM409.5 805q104.5 0 178-73.5t73.5-178T587.5 375t-178-74T231 375t-74 178.5 74 178T409.5 805z"/></svg>                <span>&times;</span>
+            </button>
+        </div>
+    </nav>
+</header>
+
+        <div class="sw19b-nav-panel multi-panel" data-toplevel-id="202">
+            <div class="sw19s-std-wrap">
+                                                <div class="subnav">
+                    <div class="tabs">
+                                                                                                            <a  data-linkdetail="PRODUCTS:TECHNOLOGY"
+                                data-linktype="Top Menu"
+                                href="https://www.papertrail.com/solution/technology/" class=" sw-subnav-0 selected" target="">
+                                                                                                    <div class="svg-wrap">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 144 1260 1008"><path d="M1153 188H107q-26 0-44.5 18.5T44 251v794q0 26 18.5 44.5T107 1108h1046q26 0 44.5-18.5t18.5-44.5V251q0-26-18.5-44.5T1153 188zm0-44q44 0 75.5 31.5T1260 251v794q0 44-31.5 75.5T1153 1152H107q-44 0-75.5-31.5T0 1045V251q0-44 31.5-75.5T107 144h1046zM173.5 722q-8.5 0-15-6t-6-14.5T159 687l110-109-110-113q-7-6-6.5-14.5T159 436t14.5-6 14.5 6l125 127q7 6 6.5 14.5T313 593L188 716q-6 6-14.5 6zM486 767h-59q-8 0-14.5-6t-6.5-14.5 6.5-15T427 725h59q9 0 15 6.5t6 15-6 14.5-15 6zm309 0H588q-9 0-15-6t-6-14.5 6-15 15-6.5h207q8 0 14 6.5t6 14.5q0 6-2.5 10.5T805 764t-10 3zM486 478h-59q-8 0-14.5-6t-6.5-15 6.5-15 14.5-6h59q9 0 15 6t6 15-6 15-15 6zm309 0H588q-9 0-15-6t-6-15 6-15 15-6h207q5 0 10 3t7.5 7.5T815 457t-2.5 10.5-7.5 7.5-10 3zm151 0h-45q-8 0-14.5-6t-6.5-15 6.5-15 14.5-6h45q9 0 15 6t6 15-6 15-15 6zm141 0h-45q-9 0-15-6t-6-15 6-15 15-6h45q5 0 10 3t7.5 7.5 2.5 10.5q0 9-6 15t-14 6zm0 144h-60q-8 0-14-6t-6-14.5 6-14.5 14-6h60q8 0 14 6t6 15q0 4-1.5 8t-4 6.5-6.5 4-8 1.5zm-161 0H719q-8 0-14.5-6t-6.5-14.5 6.5-14.5 14.5-6h207q9 0 15 6t6 14.5-6 14.5-15 6zm-313 0h-45q-9 0-15-6t-6-14.5 6-14.5 15-6h45q8 0 14.5 6t6.5 15q0 5-3 10t-8 7.5-10 2.5zm-141 0h-45q-8 0-14.5-6t-6.5-14.5 6.5-14.5 14.5-6h45q9 0 15 6t6 14.5-6 14.5-15 6zm615 290H891q-9 0-15-6t-6-15 6-15 15-6h196q8 0 14 6t6 14.5-6 15-14 6.5zm-283 0H427q-8 0-14.5-6t-6.5-15 6.5-15 14.5-6h377q6 0 10.5 3t7.5 7.5 3 10.5-3 10.5-7.5 7.5-10.5 3z"/></svg>                                    </div>
+                                                                TECHNOLOGY                            </a>
+                                                                                                            <a  data-linkdetail="PRODUCTS:CAPABILITIES"
+                                data-linktype="Top Menu"
+                                href="https://www.papertrail.com/solution/capabilities/" class=" sw-subnav-1" target="">
+                                                                                                    <div class="svg-wrap">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 144 1006 1008"><path d="M142 675q10 0 18.5 4t15 10.5T186 705t4 18q0 20-14 34.5T142 772t-34-14.5-14-34 14-34 34-14.5zm740.5 0q19.5 0 33.5 14.5t14 34-14 34-33.5 14.5-34-14.5-14.5-34 14.5-34 34-14.5zM555 925.5q4 7.5 1.5 15.5T546 953l-90 48q-8 4-16 1.5t-12-10-1.5-16T437 965l90-48q8-4 16-1.5t12 10zM903 593q45 11 74 47t29 84q0 55-39 94t-94 39l-569 295-4-29q0-5-.5-12t.5-28.5 5-41.5 14-46.5 25-49 41-43.5 60-33q1-1 22-12H138q-53 0-93.5-35.5T0 734q-3-50 26-89.5t76-50.5l570-450 9 29 5.5 22 7 48.5 1 65-17 65L635 430q-55 44-209 160h436v-66h-42q-21 0-36.5-15T768 472v-7q0-21 15.5-36.5T820 413h125q4 0 7.5-3.5t3.5-8.5v-6q0-5-3.5-8.5T945 383H820q-14 0-26-7t-19-19-7-26v-7q0-22 15.5-37t36.5-15h124q5 0 8.5-3.5t3.5-8.5v-7q0-4-3.5-7.5T944 242h-82v-77q0-8 6-14t14.5-6 14.5 6 6 14v36h41q22 0 37.5 15.5T997 253v7q0 22-15.5 37.5T944 313H820q-5 0-8 3t-3 8v7q0 5 3 8.5t8 3.5h124q22 0 37.5 15t15.5 37v7q0 21-15.5 36.5T944 454H820q-5 0-8 3.5t-3 7.5v7q0 5 3 8.5t8 3.5h83v109zM649 215 173 590h186q190-143 251-192 62-50 39-183zm-309 872 435-230H559q-96 47-100 50-42 26-70 61t-38 63-11 56zm533-270q40 0 67.5-29.5T965 717q-1-18-9-34t-21-27.5-30-18.5-36-7H134q-40 0-68 29.5T41 730q3 37 31 62t65 25h736z"/></svg>                                    </div>
+                                                                CAPABILITIES                            </a>
+                                                                                                            <a  data-linkdetail="PRODUCTS:LANGUAGES"
+                                data-linktype="Top Menu"
+                                href="https://www.papertrail.com/solution/languages/" class=" sw-subnav-2" target="">
+                                                                                                    <div class="svg-wrap">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 144 920 1008"><path d="M367 993q-8 0-13-5t-5-12.5 5-12.5 13-5h180q7 0 12 5t5 12.5-5 12.5-12 5H367zm180 34q7 0 12 5t5 12q0 2-1 5-1 43-32 73t-74 30q-45 0-76.5-31.5T349 1045q0-4 2-7 4-11 16-11h180zm-90.5 90q25.5 0 45-15.5T527 1062H386q6 24 25.5 39.5t45 15.5zM638 408q79 73 79 178 0 28-6 54.5T693 691t-29 45.5-39 39.5q-61 50-61 125 0 7-5 12t-12 5H367q-7 0-12-5t-5-12q0-75-60-124-47-37-71.5-90.5T197 575q5-95 74-163t168-74q55-4 107.5 14.5T638 408zm-22 330q66-63 66-152 0-90-67-153-73-68-174-61-84 5-144.5 64.5T232 576q-5 95 66 162l35 34q45 49 51 112h146q6-62 50-112zM458 512zm-65 27zm208 59q9 4 13.5 13t1.5 18l-8 32q-4 17-21 20h-7l-21-2-2 2 8 20q8 20-10 31l-30 18q-4 2-8 3-15 3-25-8l-1-1-12-16h-4l-8 20q-6 12-19 15h-12l-31-9q-10-2-15.5-10t-4.5-18l2-21q-1-1-3-1l-19 8q-2 0-4 1-18 3-28-12v-1l-17-28q-11-20 6-34l16-13v-4l-19-7q-10-4-14-13t-2-18l9-32q1-7 5-11.5t10-7 13-1.5l20 2 1-1 1-2-8-18q-7-20 10-32l3-2 25-15 3-2q6-3 13-3 12 0 20 9l13 17 3-1 8-18q4-10 13-14t18-2l32 8q10 3 15.5 11t4.5 17v2l-2 19 2 2 19-8q20-7 32 9l17 29 2 3q10 19-7 33l-16 13v3zm-72-63zm-18-13zm-141 37zm43 136zm167-43 8-28-31-15-2-3v-1l-1-4q0-8-2-17l-1-4 2-6 1-1 3-3 21-17-15-24-25 10-5 1h-3l-2-1q-1-1-2-1t-1-.5-1-1l-1-.5q-5-5-13-10l-5-4-2-8v-2l3-27-27-7-11 27q-1 0-2 1l-1 1v1l-2 1-5 3h-3q-7 0-16 2l-4 1h-2l-4-1-1-1q-1 0-2-1l-1-1-1-1-1-1-16-21-24 15 11 27v7l-1 2-1 1-1 2-1 1q-6 6-10 14l-1 1-1 1-1 1-1 1-2 1-5 2h-3l-1-1-25-3-7 28 28 12 1 1 1 1 1 1 2 5v3q1 8 3 17v3l-1 5v1l-1 1-3 4-22 17 15 24 25-11h9l1 1 3 1 2 1q6 6 13 11l3 2 1 1 2 2v2l1 2v4l-3 27 28 7 11-27 1-1 6-4 3-1h1q9-1 18-3h6l5 2 1 1 3 2 16 21 24-14-11-28v-2l1-6q0-1 1-2l1-2q6-6 11-14l5-5 7-2h2zm-49 31zm-84-144.5q28-5.5 51.5 10.5t28.5 44-11 51.5-44 28.5q-6 1-12 1-25 0-44-15.5T392 618q-5-28 11-51t44-28.5zm44.5 89Q501 614 498 599q-3-14-14-23t-24-9h-8q-15 3-24.5 16.5T421 613t16.5 25 29 6 25-16.5zM904 587q7 0 12 5t5 12-5 12.5-12 5.5H784q-5 0-9-2.5t-6-6.5-2-9q0-7 5-12t12-5h120zm-750 17q0 7-5 12.5t-12 5.5H17q-7 0-12-5.5T0 604t5-12 12-5h120q7 0 12 5t5 12zm306-306q-7 0-12-5t-5-12V161q0-7 5-12t12-5 12.5 5 5.5 12v120q0 7-5.5 12t-12.5 5zM219 821q5-5 12.5-5t12.5 5 5 12-5 12l-85 85q-5 5-12 5t-12-5-5-12 5-12zm482-433q-5 5-12 5t-12-5-5-12.5 5-12.5l84-84q5-5 12.5-5t12.5 5 5 12-5 12zm-482 0-84-85q-5-5-5-12t5-12 12-5 12 5l85 84q5 5 5 12.5t-5 12.5-12.5 5-12.5-5zm482 433 85 84q5 5 5 12.5t-5 12.5-12.5 5-12.5-5l-84-85q-5-5-5-12t5-12 12-5 12 5z"/></svg>                                    </div>
+                                                                LANGUAGES                            </a>
+                                            </div>
+                                    </div>
+                                                                            <div class="description sw-subnav-0 columns-2 selected">
+                        <p class="strong-title"> Make Your Logs Work for You </p>
+                        <p class="desc">The days of logging in to servers and manually viewing log files are over. SolarWinds® Papertrail™ aggregates logs from applications, devices, and platforms to a central location. </p>
+                                                                                <a href="#" class="view-more" data-linktype="Top Menu" data-linkdetail="PRODUCTS:TECHNOLOGY:View Technology Info">View Technology Info</a>                                                                            <p class="title">FEATURED TECHNOLOGY</p>
+                            <div class="links">
+                                <a href="/solution/rkubelog/" data-linktype="Top Menu" data-linkdetail="PRODUCTS:TECHNOLOGY:Kubenetes Cluster Logging" class="" target="">Kubenetes Cluster Logging</a><a href="/solution/kubernetes-logging/" data-linktype="Top Menu" data-linkdetail="PRODUCTS:TECHNOLOGY:Kubernetes Logging" class="" target="">Kubernetes Logging</a><a href="/solution/aws-log-management/" data-linktype="Top Menu" data-linkdetail="PRODUCTS:TECHNOLOGY:AWS Log Management" class="" target="">AWS Log Management</a><a href="/solution/java-gc-log-analyzer/" data-linktype="Top Menu" data-linkdetail="PRODUCTS:TECHNOLOGY:GC Log Analyzer" class="" target="">GC Log Analyzer</a><a href="/solution/aws-logging/" data-linktype="Top Menu" data-linkdetail="PRODUCTS:TECHNOLOGY:AWS Logging" class="" target="">AWS Logging</a><a href="/solution/docker-logging/" data-linktype="Top Menu" data-linkdetail="PRODUCTS:TECHNOLOGY:Docker Logging" class="" target="">Docker Logging</a><a href="/solution/docker-syslog/" data-linktype="Top Menu" data-linkdetail="PRODUCTS:TECHNOLOGY:Docker Syslog" class="" target="">Docker Syslog</a><a href="/solution/heroku-logging/" data-linktype="Top Menu" data-linkdetail="PRODUCTS:TECHNOLOGY:Heroku Logging" class="" target="">Heroku Logging</a><a href="/solution/azure-logging/" data-linktype="Top Menu" data-linkdetail="PRODUCTS:TECHNOLOGY:Logging Tools for Azure App" class="" target="">Logging Tools for Azure App</a>                            </div>
+                                            </div>
+                                                                                                <div class="description sw-subnav-1 columns-2">
+                        <p class="strong-title"> Troubleshoot Fast and Enjoy It </p>
+                        <p class="desc">SolarWinds® Papertrail™ provides cloud-based log management that seamlessly aggregates logs from applications, servers, network devices, services, platforms, and much more. </p>
+                                                                                <a href="/solution/capabilities/" class="view-more" data-linktype="Top Menu" data-linkdetail="PRODUCTS:CAPABILITIES:View Capabilities Info">View Capabilities Info</a>                                                                            <p class="title">FEATURED CAPABILITIES</p>
+                            <div class="links">
+                                <a href="/solution/log-viewer/" data-linktype="Top Menu" data-linkdetail="PRODUCTS:CAPABILITIES:Log Viewer" class="" target="">Log Viewer</a><a href="/solution/firewall-log-analyzer/" data-linktype="Top Menu" data-linkdetail="PRODUCTS:CAPABILITIES:Firewall Log Analyzer" class="" target="">Firewall Log Analyzer</a><a href="/solution/centralized-log-management/" data-linktype="Top Menu" data-linkdetail="PRODUCTS:CAPABILITIES:Centralized Log Management" class="" target="">Centralized Log Management</a><a href="/solution/log-analysis/" data-linktype="Top Menu" data-linkdetail="PRODUCTS:CAPABILITIES:Log Analysis" class="" target="">Log Analysis</a><a href="/solution/tail-log-files/" data-linktype="Top Menu" data-linkdetail="PRODUCTS:CAPABILITIES:Tail Logging" class="" target="">Tail Logging</a><a href="/solution/cron-monitoring/" data-linktype="Top Menu" data-linkdetail="PRODUCTS:CAPABILITIES:Cron Job Monitoring" class="" target="">Cron Job Monitoring</a><a href="/solution/log-aggregator/" data-linktype="Top Menu" data-linkdetail="PRODUCTS:CAPABILITIES:Log Aggregator" class="" target="">Log Aggregator</a><a href="/solution/cloud-logging/" data-linktype="Top Menu" data-linkdetail="PRODUCTS:CAPABILITIES:Cloud Logging" class="" target="">Cloud Logging</a>                            </div>
+                                            </div>
+                                                                                                <div class="description sw-subnav-2 columns-2">
+                        <p class="strong-title"> Aggregate and Search Any Log </p>
+                        <p class="desc">SolarWinds® Papertrail™ provides lightning-fast search, live tail, flexible system groups, team-wide access, and integration with popular communications platforms like PagerDuty and Slack to help you quickly track down customer problems, debug app requests, or troubleshoot slow database queries. </p>
+                                                                                <a href="/solution/languages/" class="view-more" data-linktype="Top Menu" data-linkdetail="PRODUCTS:LANGUAGES:View Languages Info">View Languages Info</a>                                                                            <p class="title">FEATURED LANGUAGES</p>
+                            <div class="links">
+                                <a href="/solution/linux-logging-software/" data-linktype="Top Menu" data-linkdetail="PRODUCTS:LANGUAGES:Linux Logging Software" class="" target="">Linux Logging Software</a><a href="/solution/linux-log-management/" data-linktype="Top Menu" data-linkdetail="PRODUCTS:LANGUAGES:Linux Log Management" class="" target="">Linux Log Management</a><a href="/solution/ruby-logging-manager/" data-linktype="Top Menu" data-linkdetail="PRODUCTS:LANGUAGES:Ruby Logging Manager" class="" target="">Ruby Logging Manager</a><a href="/solution/golang-logging/" data-linktype="Top Menu" data-linkdetail="PRODUCTS:LANGUAGES:Golang Logging" class="" target="">Golang Logging</a><a href="/solution/haproxy-log-analyzer/" data-linktype="Top Menu" data-linkdetail="PRODUCTS:LANGUAGES:HAproxy Log Analyzer" class="" target="">HAproxy Log Analyzer</a><a href="/solution/mysql-logging/" data-linktype="Top Menu" data-linkdetail="PRODUCTS:LANGUAGES:MySQL Logging" class="" target="">MySQL Logging</a><a href="/solution/nginx-logging/" data-linktype="Top Menu" data-linkdetail="PRODUCTS:LANGUAGES:NGINX Logging" class="" target="">NGINX Logging</a><a href="/solution/javascript-logging/" data-linktype="Top Menu" data-linkdetail="PRODUCTS:LANGUAGES:Javascript Logging" class="" target="">Javascript Logging</a><a href="/solution/tomcat-logging/" data-linktype="Top Menu" data-linkdetail="PRODUCTS:LANGUAGES:Tomcat Logging" class="" target="">Tomcat Logging</a><a href="/solution/apache-log-analyzer/" data-linktype="Top Menu" data-linkdetail="PRODUCTS:LANGUAGES:Apache Log Analyzer" class="" target="">Apache Log Analyzer</a>                            </div>
+                                            </div>
+                                                </div>
+        </div>
+            <div class="sw19b-nav-panel multi-panel" data-toplevel-id="1891">
+            <div class="sw19s-std-wrap">
+                                                <div class="subnav">
+                    <div class="tabs">
+                                                                                                            <a  data-linkdetail="FEATURES:EVENT VIEWER"
+                                data-linktype="Top Menu"
+                                href="#" class=" sw-subnav-0 selected" target="">
+                                                                                                    <div class="svg-wrap">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 144 763 1008"><path d="M746 326q17 17 18 43v412q0 32-23 55t-55 23h-61q-7 0-12-5t-5-12q0-5 2.5-9t6.5-6 8-2h61q18 0 31-13t13-31V368H592q-12 0-22-6t-16-16-6-22V179h-1l-308-1q-18 0-31 12.5T195 222v157q0 7-5 12t-12 5-12-5-5-12V222q0-32 22.5-55t55.5-23l308 1q25 0 43 17zm-164-2q0 9 10 9h114L582 204v120zM287 996q-119 0-203-84T0 709t84-203 202.5-84T489 506t84 203-83.5 203T287 996zm0-539q-105 0-179 74T34 709.5 108 888t178.5 74T465 888t74-178.5T465 531t-178-74zm0 459q-86 0-147-60.5T79 709t61-146.5T287 502t146.5 60.5T494 709t-60.5 146.5T287 916zm0-380q-72 0-123 50.5T113 709t51 122.5T286.5 882 409 831.5 460 709t-50.5-122.5T287 536zm352 616q-31 0-53-22l-113-113q-5-5-5-12t5-13l97-97q5-5 12-5t12 5l114 113q21 22 21 53.5t-21 53.5l-16 15q-22 22-53 22zm-130-147 101 101q12 12 29 12t29-12l15-15q12-12 12-29t-12-29L582 931zm186 98h1-1zM561 941q7 0 12-5t5-12-5-12l-54-54q-5-5-12-5t-12 5-5 12 5 12l54 54q5 5 12 5zm-60 59q7 0 12-4.5t5-12-5-12.5l-54-53q-5-5-12-5t-12 5-5 12 5 12l54 54q5 4 12 4zM356 646H210q-7 0-12.5-5t-5.5-12 5-12 13-5h146q7 0 12 5t5 12q0 5-2 9t-6 6-9 2zm0 77H210q-7 0-12.5-5t-5.5-12 5-12 13-5h146q7 0 12 5t5 12-5 12-12 5zm-82 77h-64q-7 0-12-5t-5-12 5-12 12-5h64q8 0 13 5t5 12-5 12-13 5z"/></svg>                                    </div>
+                                                                EVENT VIEWER                            </a>
+                                                                                                            <a  data-linkdetail="FEATURES:APM INTEGRATION"
+                                data-linktype="Top Menu"
+                                href="/tour/viewer/apm/" class=" sw-subnav-1" target="">
+                                                                                                    <div class="svg-wrap">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 144 1232 1008"><path d="M870.5 473q-8.5 0-14.5-6t-6-14V307q0-5-3.5-8.5T838 295H256q-3 0-5.5 1.5t-4 4-1.5 5.5v147q0 8-6 14t-14 6q-6 0-10.5-2.5t-7-7.5-2.5-10V306q0-21 15-36t36-15h582q22 0 37.5 15t15.5 37v146q0 8-6 14t-14.5 6zm-757 0q-8.5 0-14-6T94 453V265q0-24 9.5-46.5t25.5-39 38.5-26T215 144h659q52 0 89.5 37.5T1001 272v181q0 8-6 14t-14 6q-5 0-10-2.5t-7.5-7.5-2.5-10V272q0-24-11.5-44t-32-32-43.5-12H215q-33 0-57 24t-24 57v188q0 8-6 14t-14.5 6zM305 556q-6 6-15 6H20q-8 0-14-6t-6-14 6-14 14-6h262l138-149q6-7 15-7 9 1 15 8l138 166 74-82q6-6 15-6t15 6l59 67h318q8 0 14 5.5t6 14-6 14.5-14 6H742q-9 0-15-7l-50-56-75 82q-6 7-15 7h-1q-9-1-15-8L434 417zm596 509q5 0 9.5 2.5t7.5 7.5 3 10q0 9-6 14.5t-14 5.5H667q-6 21-23.5 34t-39.5 13H495q-22 0-39.5-13t-24.5-34H195q-9 0-14.5-5.5t-5.5-14 5.5-14.5 14.5-6h236q5-13 14-24t22-17 28-6h32V884H215q-50 0-85.5-35.5T94 763V633q0-8 5.5-14t14-6 14.5 6 6 14v130q0 22 11 40.5t29.5 29.5 40.5 11h428q8 0 14 6t6 14-5.5 14-13.5 6h-76v134h36q22 0 39.5 13t23.5 34h234zm-297 47q11 0 19-8t8-19-8-18.5-19-7.5H495q-11 0-19 7.5t-8 18.5 8 19 19 8h109zm574-487q23 0 38.5 16t15.5 38v289q0 23-15.5 39t-38.5 16H772q-23 0-39-16t-16-39V679q0-22 16-38t39-16h406zm14 343V679q0-5-4-9.5t-10-4.5H772q-6 0-10 4.5t-4 9.5v289q0 6 4 10t10 4h406q6 0 10-4t4-10zM922 753q-9 0-15-6t-6-14.5 6-14 15-5.5h113q9 0 14.5 5.5t5.5 14-5.5 14.5-14.5 6H922zm158 139q8 0 14 6t6 14.5-6 14.5-14 6H922q-9 0-15-6t-6-14.5 6-14.5 15-6h158zm53-89q4 0 7.5 1.5t6.5 4 4.5 6.5 1.5 8q0 8-6 14t-14 6H922q-9 0-15-6t-6-14.5 6-14 15-5.5h211zm-288-90q8 0 14 5.5t6 14-6 14.5-14 6h-24q-4 0-7-1t-5.5-3-4.5-4.5-3-5.5-1-6q0-9 6-14.5t15-5.5h24zm0 90q8 0 14 5.5t6 14-6 14.5-14 6h-24q-5 0-8.5-1.5t-6-4.5-4.5-6.5-2-7.5q0-9 6-14.5t15-5.5h24zm0 89q6 0 10.5 3t7 7.5 2.5 10-2.5 10-7 7.5-10.5 3h-24q-9 0-15-6t-6-14.5 6-14.5 15-6h24zM224.5 613q8.5 0 14.5 6t6 14v91q0 9 9 9h390q5 0 9.5 3t7 7.5 2.5 9.5q0 8-5.5 14t-13.5 6H254q-20 0-34.5-14.5T205 724v-91q0-8 5.5-14t14-6z"/></svg>                                    </div>
+                                                                APM INTEGRATION                            </a>
+                                                                                                            <a  data-linkdetail="FEATURES:BUILT FOR COLLABORATION"
+                                data-linktype="Top Menu"
+                                href="#" class=" sw-subnav-2" target="">
+                                                                                                    <div class="svg-wrap">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 144 983 1008"><path d="M295 670q-13-12-29.5-11.5t-28 13-10.5 29 13 27.5 28 10.5 27-11.5l2-1 1-1q17-14 38-14 20 0 35.5 12t21.5 31q2 4 2 8v4q1 3 1 6v106q0 7-5.5 12.5T377 896H19q-8 0-13.5-5.5T0 878V163q0-8 5.5-13.5T19 144h715q7 0 13 5.5t6 13.5v358q0 7-6 12.5t-13 5.5H623q-5 1-9 4t-6.5 7.5T605 561q0 8 6 15 1 0 1 .5t1 1.5q9 11 14.5 24.5T633 630t-5.5 27.5T612 682q-22 24-54 25h-3q-31 0-53-20-24-22-25-54.5t20-55.5l.5-.5 1-1 .5-.5q0-1 1-1 4-6 4-13 0-9-6-15.5t-15-6.5h-10q-3 1-6 1h-71v86q0 3-1 5-2 23-19 39t-40 16q-21 0-38-13-1-2-3-4v1zm420-169V182H396v85q0 2-1 4 1 9 7 14.5t15 5.5 15-6l1-.5 1-.5q22-20 52-20t52 20q24 22 25.5 54.5T543 394q-23 26-57 26-31 0-53-21-1-1-3-2-6-5-13-5-9 0-15.5 6.5T395 414q1 2 1 4v83h86q3 0 5 1 24 2 39.5 18.5T542 561q0 21-13 37l-2 2-.5 1-.5 1q-12 13-11.5 29.5t13 27.5 29 10.5T584 656q11-11 10.5-27.5T583 601l-.5-1-1.5-2q-14-16-14-37 0-24 16-41t40-18q2-1 5-1h87zM357 182H38v319h91q4-1 7.5-2.5t6-4.5 3.5-6.5 1-7.5q0-9-6-15 0-1-.5-1.5l-.5-.5q-20-22-20-52t20-53q22-24 54.5-25t56 20.5 25 54T255 464l-1 1-1 1q-5 6-5 14 0 9 6.5 15t15.5 6q2 0 4 1h5q3-1 6-1h72v-87q0-2 1-5 2-23 18.5-39t40.5-16q21 0 37 14 2 1 3 3h1q12 11 29 10.5t28-12.5 10.5-28.5T512 312q-11-11-27.5-10.5T457 314l-1 .5-2 .5q-16 14-37 14-24 0-41-16t-18-39q-1-3-1-5v-87zM214 756q-24-22-25-54t20.5-56 54-25.5T320 641l-1 1q2 0 3 1 6 5 14 5 9 0 15-6t6-15q0-3 1-4v-4q-1-3-1-6v-74h-92q-23-2-39-19t-16-40q0-21 13-38 1-1 3-2v-.5l1-1.5q11-12 10.5-28.5t-12.5-28-28.5-10.5-28.5 13q-11 12-10.5 28t12.5 27q0 1 .5 1.5t.5 1.5q14 17 14 38 0 23-16 40t-39 19q-3 1-5 1H38v318h319v-92q-4-17-21-17-9 0-15 6h-1v1q-23 21-53 21t-53-21zm751 0q8 0 13.5 5.5T984 775v358q0 8-5.5 13.5T965 1152H607q-8 0-13.5-5.5T588 1133v-112q-4-16-21-16-9 0-15 6h-1q-23 21-53 21t-53-20q-23-22-24.5-54.5t20.5-56 54-25 56 20.5l1 1 1 1q6 5 14 5 6 0 11-3t8-8 3-11v-8q-1-2-1-5v-94q0-7 5.5-13t13.5-6h106q3 0 6 1 23 2 38.5 19t15.5 40q0 21-13 38l-3 3q-12 13-11 29.5t13 28 28.5 10.5 27.5-13 10.5-28-11.5-27q0-1-.5-2t-1.5-1q-14-17-14-38 0-23 16-40t40-19q3-1 5-1h106zm-19 358V794h-84q-2 1-4 1-9 0-15.5 6t-6.5 15 6 15l1 1v1q21 23 21 52.5T843 938q-23 25-57 25-31 0-53-21-24-21-25-53.5t20-56.5l1 1q1-2 2-3 4-6 4-14 0-9-6-15t-15-6q-2 0-4-1h-83v88q0 2-1 5-2 23-19 39t-40 16q-21 0-37-13l-3-3-1-1q-13-11-29.5-10.5t-28 12.5-10.5 29 13 28 28 10.5 28-12.5l1-.5 1-.5q17-14 38-14 20 0 35.5 12t21.5 30q2 5 2 9v4q1 3 1 5v87h319z"/></svg>                                    </div>
+                                                                BUILT FOR COLLABORATION                            </a>
+                                            </div>
+                                    </div>
+                                                                            <div class="description sw-subnav-0 columns-2 selected">
+                        <p class="strong-title"> Meet the Event Viewer </p>
+                        <p class="desc">It's the heart of Papertrail. </p>
+                                                                                <a href="/tour/viewer/" class="view-more" data-linktype="Top Menu" data-linkdetail="FEATURES:EVENT VIEWER:Start Tour">Start Tour</a>                                                                            <p class="title">TAKE A TOUR</p>
+                            <div class="links">
+                                <a href="/tour/viewer/tail/" data-linktype="Top Menu" data-linkdetail="FEATURES:EVENT VIEWER:Live Tail" class="" target="">Live Tail</a><a href="/tour/viewer/seek/" data-linktype="Top Menu" data-linkdetail="FEATURES:EVENT VIEWER:Seek by Time" class="" target="">Seek by Time</a><a href="/tour/viewer/context/" data-linktype="Top Menu" data-linkdetail="FEATURES:EVENT VIEWER:Context" class="" target="">Context</a><a href="/tour/viewer/search/" data-linktype="Top Menu" data-linkdetail="FEATURES:EVENT VIEWER:Elegant Search" class="" target="">Elegant Search</a><a href="/tour/viewer/apm/" data-linktype="Top Menu" data-linkdetail="FEATURES:EVENT VIEWER:APM Integration" class="" target="">APM Integration</a><a href="/tour/viewer/skim-ability/" data-linktype="Top Menu" data-linkdetail="FEATURES:EVENT VIEWER:Skim-ability" class="" target="">Skim-ability</a><a href="/tour/viewer/saved-searches/" data-linktype="Top Menu" data-linkdetail="FEATURES:EVENT VIEWER:Saved Searches" class="" target="">Saved Searches</a><a href="/tour/viewer/log-velocity-analytics/" data-linktype="Top Menu" data-linkdetail="FEATURES:EVENT VIEWER:Log Velocity Analytics" class="" target="">Log Velocity Analytics</a>                            </div>
+                                            </div>
+                                                                                                <div class="description sw-subnav-1 columns-1">
+                        <p class="strong-title"> TBD - APM Integration Title </p>
+                        <p class="desc">TBD - APM Integration Description</p>
+                                                                                <a href="#" class="view-more" data-linktype="Top Menu" data-linkdetail="FEATURES:APM INTEGRATION:TBD Link">TBD Link</a>                                                                            <p class="title">APM Integration Feature List</p>
+                            <div class="links">
+                                <a href="#" data-linktype="Top Menu" data-linkdetail="FEATURES:APM INTEGRATION:Feature 1" class="" target="">Feature 1</a>                            </div>
+                                            </div>
+                                                                                                <div class="description sw-subnav-2 columns-1">
+                        <p class="strong-title"> TBD - Built for Collaboration Title </p>
+                        <p class="desc">TBD - Built for Collaboration Description</p>
+                                                                                <a href="#" class="view-more" data-linktype="Top Menu" data-linkdetail="FEATURES:BUILT FOR COLLABORATION:TBD Link">TBD Link</a>                                                                            <p class="title">Built for Collaboration Feature List</p>
+                            <div class="links">
+                                                            </div>
+                                            </div>
+                                                </div>
+        </div>
+            <div class="sw19b-nav-panel multi-panel" data-toplevel-id="277">
+            <div class="sw19s-std-wrap">
+                                                <div class="subnav no-icons">
+                    <div class="tabs">
+                                                                                                            <a  data-linkdetail="TIPS FROM THE TEAM:TIPS FROM THE TEAM"
+                                data-linktype="Top Menu"
+                                href="#" class=" sw-subnav-0 selected" target="">
+                                                                                                    <i class="fort " aria-hidden="true"></i>
+                                                                TIPS FROM THE TEAM                            </a>
+                                            </div>
+                                    </div>
+                                                                            <div class="description sw-subnav-0 columns-2 selected">
+                        <p class="strong-title"> Tips from the Team </p>
+                        <p class="desc">By engineers, for engineers</p>
+                                                                                <a href="/solution/tips/" class="view-more" data-linktype="Top Menu" data-linkdetail="TIPS FROM THE TEAM:TIPS FROM THE TEAM:View More Tips">View More Tips</a>                                                                            <p class="title">Additional Tips</p>
+                            <div class="links">
+                                <a href="/solution/tips/kubernetes-logging-tips-to-avoid-memory-and-resource-issues/" data-linktype="Top Menu" data-linkdetail="TIPS FROM THE TEAM:TIPS FROM THE TEAM:Kubernetes Logging" class="" target="">Kubernetes Logging</a><a href="https://www.papertrail.com/solution/tips/monitoring-wordpress-error-logs-with-papertrail/" data-linktype="Top Menu" data-linkdetail="TIPS FROM THE TEAM:TIPS FROM THE TEAM:Monitoring WordPress Error Logs" class="" target="">Monitoring WordPress Error Logs</a><a href="https://www.papertrail.com/solution/tips/a-guide-to-log-filtering-tips-for-it-pros/" data-linktype="Top Menu" data-linkdetail="TIPS FROM THE TEAM:TIPS FROM THE TEAM:A Guide to Log Filtering" class="" target="">A Guide to Log Filtering</a><a href="https://www.papertrail.com/solution/tips/managing-and-analyzing-firewall-logs/" data-linktype="Top Menu" data-linkdetail="TIPS FROM THE TEAM:TIPS FROM THE TEAM:Managing and Analyzing Firewall Logs" class="" target="">Managing and Analyzing Firewall Logs</a><a href="https://www.papertrail.com/solution/tips/what-your-router-logs-say-about-your-network/" data-linktype="Top Menu" data-linkdetail="TIPS FROM THE TEAM:TIPS FROM THE TEAM:What Your Router Logs Say About Your Network" class="" target="">What Your Router Logs Say About Your Network</a><a href="https://www.papertrail.com/solution/tips/how-to-diagnose-app-issues-using-crash-logs/" data-linktype="Top Menu" data-linkdetail="TIPS FROM THE TEAM:TIPS FROM THE TEAM:How to Diagnose App Issues Using Crash Logs" class="" target="">How to Diagnose App Issues Using Crash Logs</a><a href="https://www.papertrail.com/solution/tips/docker-container-logs-5-tips-to-optimize-logging-for-debugging/" data-linktype="Top Menu" data-linkdetail="TIPS FROM THE TEAM:TIPS FROM THE TEAM:Docker Container Logs" class="" target="">Docker Container Logs</a><a href="https://www.papertrail.com/solution/tips/5-reasons-laas-is-essential-for-modern-log-management/" data-linktype="Top Menu" data-linkdetail="TIPS FROM THE TEAM:TIPS FROM THE TEAM:5 Reasons LaaS Is Essential for Modern Log Management" class="" target="">5 Reasons LaaS Is Essential for Modern Log Management</a><a href="https://www.papertrail.com/solution/tips/6-secrets-for-successful-log-management/" data-linktype="Top Menu" data-linkdetail="TIPS FROM THE TEAM:TIPS FROM THE TEAM:6 Secrets for Successful Log Management" class="" target="">6 Secrets for Successful Log Management</a><a href="https://www.papertrail.com/solution/tips/how-to-live-tail-docker-logs/" data-linktype="Top Menu" data-linkdetail="TIPS FROM THE TEAM:TIPS FROM THE TEAM:How to Live Tail Docker Log" class="" target="">How to Live Tail Docker Log</a>                            </div>
+                                            </div>
+                                                </div>
+        </div>
+            <div class="sw19b-nav-panel multi-column" data-toplevel-id="1919">
+            <div class="sw19s-std-wrap">
+                <div class="description">
+                                            <div class="link-column">
+                            <p class="subtitle">
+                                Technical Resources                            </p>
+                                                            <div class="links">
+                                                                                                                    <a href="https://documentation.solarwinds.com/en/Success_Center/papertrail/Content/papertrail_Administrator_Guide.htm" data-linktype="Top Menu" data-linkdetail="RESOURCES:Technical Resources:Admin Guide" class="" target="">Admin Guide</a>                                                                                                                    <a href="https://documentation.solarwinds.com/en/Success_Center/papertrail/Content/papertrail_Getting_Started_Guide.htm" data-linktype="Top Menu" data-linkdetail="RESOURCES:Technical Resources:Getting Started" class="" target="">Getting Started</a>                                                                                                                    <a href="https://documentation.solarwinds.com/en/Success_Center/papertrail/Content/Release_Notes/release_notes.htm" data-linktype="Top Menu" data-linkdetail="RESOURCES:Technical Resources:Release Notes" class="" target="">Release Notes</a>                                                                    </div>
+                                                    </div>
+                                            <div class="link-column">
+                            <p class="subtitle">
+                                Educational Resources                            </p>
+                                                            <div class="links">
+                                                                                                                    <a href="/tour/viewer/" data-linktype="Top Menu" data-linkdetail="RESOURCES:Educational Resources:Take a Tour" class="" target="">Take a Tour</a>                                                                                                                    <a href="/solution/tips/" data-linktype="Top Menu" data-linkdetail="RESOURCES:Educational Resources:Tips from the Team" class="" target="">Tips from the Team</a>                                                                                                                    <a href="#" data-linktype="Top Menu" data-linkdetail="RESOURCES:Educational Resources:Use Cases" class="" target="">Use Cases</a>                                                                    </div>
+                                                    </div>
+                                            <div class="link-column">
+                            <p class="subtitle">
+                                Connect with Us                            </p>
+                                                            <div class="links">
+                                                                                                                    <a href="https://thwack.solarwinds.com/t5/Papertrail/ct-p/papertrail" data-linktype="Top Menu" data-linkdetail="RESOURCES:Connect with Us:THWACK Community" class="" target="">THWACK Community</a>                                                                                                                    <a href="/blog/" data-linktype="Top Menu" data-linkdetail="RESOURCES:Connect with Us:Blog" class="" target="">Blog</a>                                                                                                                    <a href="https://www.solarwinds.com/covid-19-resources" data-linktype="Top Menu" data-linkdetail="RESOURCES:Connect with Us:COVID-19 Resource Center" class="" target="">COVID-19 Resource Center</a>                                                                    </div>
+                                                    </div>
+                                    </div>
+                            </div>
+        </div>
+    
+<nav class="sw19b-header-mobile">
+    <div class="sw19s-std-wrap">
+                    <div class="menu-and-panel">
+                                    <a  data-linkdetail="PRODUCTS"
+                        data-linktype="Top Menu"
+                        href="https://www.papertrail.com/solution/" class="" target="">
+                        PRODUCTS<svg class="menu-toggle"><use xlink:href="#sw19-circle-plus"></use></svg>
+                    </a>
+                                            <div class="panel">
+                            <a href="https://www.papertrail.com/solution/technology/" class="" target="">
+                                technology                                                                    <svg class="menu-toggle"><use xlink:href="#sw19-circle-plus"></use></svg>
+                                                            </a>
+                                                            <div class="subnav collapsable">
+                                                                            <a href="/solution/rkubelog/" data-linktype="Top Menu" class="" target="" data-linkdetail="Kubenetes Cluster Logging">Kubenetes Cluster Logging</a>                                                                            <a href="/solution/kubernetes-logging/" data-linktype="Top Menu" class="" target="" data-linkdetail="Kubernetes Logging">Kubernetes Logging</a>                                                                            <a href="/solution/aws-log-management/" data-linktype="Top Menu" class="" target="" data-linkdetail="AWS Log Management">AWS Log Management</a>                                                                            <a href="/solution/java-gc-log-analyzer/" data-linktype="Top Menu" class="" target="" data-linkdetail="GC Log Analyzer">GC Log Analyzer</a>                                                                            <a href="/solution/aws-logging/" data-linktype="Top Menu" class="" target="" data-linkdetail="AWS Logging">AWS Logging</a>                                                                            <a href="/solution/docker-logging/" data-linktype="Top Menu" class="" target="" data-linkdetail="Docker Logging">Docker Logging</a>                                                                            <a href="/solution/docker-syslog/" data-linktype="Top Menu" class="" target="" data-linkdetail="Docker Syslog">Docker Syslog</a>                                                                            <a href="/solution/heroku-logging/" data-linktype="Top Menu" class="" target="" data-linkdetail="Heroku Logging">Heroku Logging</a>                                                                            <a href="/solution/azure-logging/" data-linktype="Top Menu" class="" target="" data-linkdetail="Logging Tools for Azure App">Logging Tools for Azure App</a>                                                                    </div>
+                                                    </div>
+                                            <div class="panel">
+                            <a href="https://www.papertrail.com/solution/capabilities/" class="" target="">
+                                capabilities                                                                    <svg class="menu-toggle"><use xlink:href="#sw19-circle-plus"></use></svg>
+                                                            </a>
+                                                            <div class="subnav collapsable">
+                                                                            <a href="/solution/log-viewer/" data-linktype="Top Menu" class="" target="" data-linkdetail="Log Viewer">Log Viewer</a>                                                                            <a href="/solution/firewall-log-analyzer/" data-linktype="Top Menu" class="" target="" data-linkdetail="Firewall Log Analyzer">Firewall Log Analyzer</a>                                                                            <a href="/solution/centralized-log-management/" data-linktype="Top Menu" class="" target="" data-linkdetail="Centralized Log Management">Centralized Log Management</a>                                                                            <a href="/solution/log-analysis/" data-linktype="Top Menu" class="" target="" data-linkdetail="Log Analysis">Log Analysis</a>                                                                            <a href="/solution/tail-log-files/" data-linktype="Top Menu" class="" target="" data-linkdetail="Tail Logging">Tail Logging</a>                                                                            <a href="/solution/cron-monitoring/" data-linktype="Top Menu" class="" target="" data-linkdetail="Cron Job Monitoring">Cron Job Monitoring</a>                                                                            <a href="/solution/log-aggregator/" data-linktype="Top Menu" class="" target="" data-linkdetail="Log Aggregator">Log Aggregator</a>                                                                            <a href="/solution/cloud-logging/" data-linktype="Top Menu" class="" target="" data-linkdetail="Cloud Logging">Cloud Logging</a>                                                                    </div>
+                                                    </div>
+                                            <div class="panel">
+                            <a href="https://www.papertrail.com/solution/languages/" class="" target="">
+                                languages                                                                    <svg class="menu-toggle"><use xlink:href="#sw19-circle-plus"></use></svg>
+                                                            </a>
+                                                            <div class="subnav collapsable">
+                                                                            <a href="/solution/linux-logging-software/" data-linktype="Top Menu" class="" target="" data-linkdetail="Linux Logging Software">Linux Logging Software</a>                                                                            <a href="/solution/linux-log-management/" data-linktype="Top Menu" class="" target="" data-linkdetail="Linux Log Management">Linux Log Management</a>                                                                            <a href="/solution/ruby-logging-manager/" data-linktype="Top Menu" class="" target="" data-linkdetail="Ruby Logging Manager">Ruby Logging Manager</a>                                                                            <a href="/solution/golang-logging/" data-linktype="Top Menu" class="" target="" data-linkdetail="Golang Logging">Golang Logging</a>                                                                            <a href="/solution/haproxy-log-analyzer/" data-linktype="Top Menu" class="" target="" data-linkdetail="HAproxy Log Analyzer">HAproxy Log Analyzer</a>                                                                            <a href="/solution/mysql-logging/" data-linktype="Top Menu" class="" target="" data-linkdetail="MySQL Logging">MySQL Logging</a>                                                                            <a href="/solution/nginx-logging/" data-linktype="Top Menu" class="" target="" data-linkdetail="NGINX Logging">NGINX Logging</a>                                                                            <a href="/solution/javascript-logging/" data-linktype="Top Menu" class="" target="" data-linkdetail="Javascript Logging">Javascript Logging</a>                                                                            <a href="/solution/tomcat-logging/" data-linktype="Top Menu" class="" target="" data-linkdetail="Tomcat Logging">Tomcat Logging</a>                                                                            <a href="/solution/apache-log-analyzer/" data-linktype="Top Menu" class="" target="" data-linkdetail="Apache Log Analyzer">Apache Log Analyzer</a>                                                                    </div>
+                                                    </div>
+                                                </div>
+                    <div class="menu-and-panel">
+                                    <a  data-linkdetail="FEATURES"
+                        data-linktype="Top Menu"
+                        href="#" class="" target="">
+                        FEATURES<svg class="menu-toggle"><use xlink:href="#sw19-circle-plus"></use></svg>
+                    </a>
+                                            <div class="panel">
+                            <a href="#" class="" target="">
+                                event viewer                                                                    <svg class="menu-toggle"><use xlink:href="#sw19-circle-plus"></use></svg>
+                                                            </a>
+                                                            <div class="subnav collapsable">
+                                                                            <a href="/tour/viewer/tail/" data-linktype="Top Menu" class="" target="" data-linkdetail="Live Tail">Live Tail</a>                                                                            <a href="/tour/viewer/seek/" data-linktype="Top Menu" class="" target="" data-linkdetail="Seek by Time">Seek by Time</a>                                                                            <a href="/tour/viewer/context/" data-linktype="Top Menu" class="" target="" data-linkdetail="Context">Context</a>                                                                            <a href="/tour/viewer/search/" data-linktype="Top Menu" class="" target="" data-linkdetail="Elegant Search">Elegant Search</a>                                                                            <a href="/tour/viewer/apm/" data-linktype="Top Menu" class="" target="" data-linkdetail="APM Integration">APM Integration</a>                                                                            <a href="/tour/viewer/skim-ability/" data-linktype="Top Menu" class="" target="" data-linkdetail="Skim-ability">Skim-ability</a>                                                                            <a href="/tour/viewer/saved-searches/" data-linktype="Top Menu" class="" target="" data-linkdetail="Saved Searches">Saved Searches</a>                                                                            <a href="/tour/viewer/log-velocity-analytics/" data-linktype="Top Menu" class="" target="" data-linkdetail="Log Velocity Analytics">Log Velocity Analytics</a>                                                                    </div>
+                                                    </div>
+                                            <div class="panel">
+                            <a href="/tour/viewer/apm/" class="" target="">
+                                apm integration                                                                    <svg class="menu-toggle"><use xlink:href="#sw19-circle-plus"></use></svg>
+                                                            </a>
+                                                            <div class="subnav collapsable">
+                                                                            <a href="#" data-linktype="Top Menu" class="" target="" data-linkdetail="Feature 1">Feature 1</a>                                                                    </div>
+                                                    </div>
+                                            <div class="panel">
+                            <a href="#" class="" target="">
+                                built for collaboration                                                                    <svg class="menu-toggle"><use xlink:href="#sw19-circle-plus"></use></svg>
+                                                            </a>
+                                                            <div class="subnav collapsable">
+                                                                    </div>
+                                                    </div>
+                                                </div>
+                    <div class="menu-and-panel">
+                                    <a  data-linkdetail="TIPS FROM THE TEAM"
+                        data-linktype="Top Menu"
+                        href="https://www.papertrail.com/solution/tips/" class="" target="">
+                        TIPS FROM THE TEAM<svg class="menu-toggle"><use xlink:href="#sw19-circle-plus"></use></svg>
+                    </a>
+                                            <div class="panel">
+                            <a href="#" class="" target="">
+                                tips from the team                                                                    <svg class="menu-toggle"><use xlink:href="#sw19-circle-plus"></use></svg>
+                                                            </a>
+                                                            <div class="subnav collapsable">
+                                                                            <a href="/solution/tips/kubernetes-logging-tips-to-avoid-memory-and-resource-issues/" data-linktype="Top Menu" class="" target="" data-linkdetail="Kubernetes Logging">Kubernetes Logging</a>                                                                            <a href="https://www.papertrail.com/solution/tips/monitoring-wordpress-error-logs-with-papertrail/" data-linktype="Top Menu" class="" target="" data-linkdetail="Monitoring WordPress Error Logs">Monitoring WordPress Error Logs</a>                                                                            <a href="https://www.papertrail.com/solution/tips/a-guide-to-log-filtering-tips-for-it-pros/" data-linktype="Top Menu" class="" target="" data-linkdetail="A Guide to Log Filtering">A Guide to Log Filtering</a>                                                                            <a href="https://www.papertrail.com/solution/tips/managing-and-analyzing-firewall-logs/" data-linktype="Top Menu" class="" target="" data-linkdetail="Managing and Analyzing Firewall Logs">Managing and Analyzing Firewall Logs</a>                                                                            <a href="https://www.papertrail.com/solution/tips/what-your-router-logs-say-about-your-network/" data-linktype="Top Menu" class="" target="" data-linkdetail="What Your Router Logs Say About Your Network">What Your Router Logs Say About Your Network</a>                                                                            <a href="https://www.papertrail.com/solution/tips/how-to-diagnose-app-issues-using-crash-logs/" data-linktype="Top Menu" class="" target="" data-linkdetail="How to Diagnose App Issues Using Crash Logs">How to Diagnose App Issues Using Crash Logs</a>                                                                            <a href="https://www.papertrail.com/solution/tips/docker-container-logs-5-tips-to-optimize-logging-for-debugging/" data-linktype="Top Menu" class="" target="" data-linkdetail="Docker Container Logs">Docker Container Logs</a>                                                                            <a href="https://www.papertrail.com/solution/tips/5-reasons-laas-is-essential-for-modern-log-management/" data-linktype="Top Menu" class="" target="" data-linkdetail="5 Reasons LaaS Is Essential for Modern Log Management">5 Reasons LaaS Is Essential for Modern Log Management</a>                                                                            <a href="https://www.papertrail.com/solution/tips/6-secrets-for-successful-log-management/" data-linktype="Top Menu" class="" target="" data-linkdetail="6 Secrets for Successful Log Management">6 Secrets for Successful Log Management</a>                                                                            <a href="https://www.papertrail.com/solution/tips/how-to-live-tail-docker-logs/" data-linktype="Top Menu" class="" target="" data-linkdetail="How to Live Tail Docker Log">How to Live Tail Docker Log</a>                                                                    </div>
+                                                    </div>
+                                                </div>
+                    <div class="menu-and-panel">
+                                    <a href="#" class="" target="">
+                        RESOURCES<svg class="menu-toggle"><use xlink:href="#sw19-circle-plus"></use></svg>
+                    </a>
+                    <div class="panel">
+                                                                                    <p>Technical Resources</p>
+                                                        <div class="subnav">
+                                                                    <a href="https://documentation.solarwinds.com/en/Success_Center/papertrail/Content/papertrail_Administrator_Guide.htm" data-linktype="Top Menu" class="" target="" data-linkdetail="Admin Guide">Admin Guide</a>                                                                    <a href="https://documentation.solarwinds.com/en/Success_Center/papertrail/Content/papertrail_Getting_Started_Guide.htm" data-linktype="Top Menu" class="" target="" data-linkdetail="Getting Started">Getting Started</a>                                                                    <a href="https://documentation.solarwinds.com/en/Success_Center/papertrail/Content/Release_Notes/release_notes.htm" data-linktype="Top Menu" class="" target="" data-linkdetail="Release Notes">Release Notes</a>                                                            </div>
+                                                                                    <p>Educational Resources</p>
+                                                        <div class="subnav">
+                                                                    <a href="/tour/viewer/" data-linktype="Top Menu" class="" target="" data-linkdetail="Take a Tour">Take a Tour</a>                                                                    <a href="/solution/tips/" data-linktype="Top Menu" class="" target="" data-linkdetail="Tips from the Team">Tips from the Team</a>                                                                    <a href="#" data-linktype="Top Menu" class="" target="" data-linkdetail="Use Cases">Use Cases</a>                                                            </div>
+                                                                                    <p>Connect with Us</p>
+                                                        <div class="subnav">
+                                                                    <a href="https://thwack.solarwinds.com/t5/Papertrail/ct-p/papertrail" data-linktype="Top Menu" class="" target="" data-linkdetail="THWACK Community">THWACK Community</a>                                                                    <a href="/blog/" data-linktype="Top Menu" class="" target="" data-linkdetail="Blog">Blog</a>                                                                    <a href="https://www.solarwinds.com/covid-19-resources" data-linktype="Top Menu" class="" target="" data-linkdetail="COVID-19 Resource Center">COVID-19 Resource Center</a>                                                            </div>
+                                            </div>
+                            </div>
+                    <div class="menu-and-panel">
+                                    <a href="https://papertrailapp.com/login" data-linktype="Top Menu" class="" target="" data-linkdetail="LOG IN">LOG IN</a>                            </div>
+                            <div class="menu-and-panel">
+                <a href="/demo-request/" class="default" data-linktype="Top Menu" data-linkdetail="REQUEST DEMO">REQUEST DEMO</a>            </div>
+                    <div class="menu-and-panel">
+                <a href="https://staging.papertrailapp.com/signup?plan=free" class="orange" data-linktype="Top Menu" data-linkdetail="FREE TRIAL">FREE TRIAL</a>            </div>
+            </div>
+</nav>
+
+
+<div class="helpdocs">
+    <div class="helpdocs__grid">
+        <div class="helpdocs__grid-item">
+            <div class="left__sidebar ">
+                <div class="search__form">
+                    <form action="/help-docs/?q=">
+                        <input type="text"
+                            class="search__term"
+                            name="search_term"
+                            placeholder="">
+                        <input type="submit" value="search">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 144 1007 1008"><path d="M994 1015q14 14 14 34t-14 33l-56 56q-14 14-33.5 14t-33.5-14L675 942q-14-14-14-34v-32q-110 87-252 87-111 0-205-55T55 759 0 553.5 55 348t149-149 205.5-55T615 199t149 149 55 205q0 142-87 252h32q20 0 34 14zM409.5 805q104.5 0 178-73.5t73.5-178T587.5 375t-178-74T231 375t-74 178.5 74 178T409.5 805z"/></svg>                    </form>
+                </div>
+                <div class="categories__list">
+                                        <div class="mobile__categories-dropdown">
+                        Select a Category
+                        <img src="https://www.papertrail.com/wp-content/themes/papertrail-2019/assets/graphics/svg/icons-symbol-arrow-dropdown.svg" class="icon_arrow-down">
+                    </div>
+                    <ul class="main__ul">
+                                                    <li class="main__list-items">
+                                <img src="https://www.papertrail.com/wp-content/themes/papertrail-2019/assets/graphics/svg/icons-symbol-arrow-dropdown.svg" class="icon_arrow-down">
+                                <p class="category__title">
+                                    Administrator Guide                                </p>
+                                <ul>
+                                                                                    <li>
+                                                    <a href="https://www.papertrail.com/help/papertrail-documentation/">
+                                                        Documentation for Papertrail                                                    </a>
+                                                </li>
+                                                                            </ul>
+                            </li>
+                                                    <li class="main__list-items">
+                                <img src="https://www.papertrail.com/wp-content/themes/papertrail-2019/assets/graphics/svg/icons-symbol-arrow-dropdown.svg" class="icon_arrow-down">
+                                <p class="category__title">
+                                    Collect Logs                                </p>
+                                <ul>
+                                                                                    <li>
+                                                    <a href="https://www.papertrail.com/help/troubleshooting-remote-syslog-reachability/">
+                                                        Troubleshooting reachability                                                    </a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="https://www.papertrail.com/help/controlling-verbosity/">
+                                                        Controlling Verbosity                                                    </a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="https://www.papertrail.com/help/encrypting-remote-syslog-with-tls-ssl/">
+                                                        Encrypting with TLS (SSL)                                                    </a>
+                                                </li>
+                                                                            </ul>
+                            </li>
+                                                    <li class="main__list-items">
+                                <img src="https://www.papertrail.com/wp-content/themes/papertrail-2019/assets/graphics/svg/icons-symbol-arrow-dropdown.svg" class="icon_arrow-down">
+                                <p class="category__title">
+                                    Collect Logs: Apps &amp; Services                                </p>
+                                <ul>
+                                                                                    <li>
+                                                    <a href="https://www.papertrail.com/help/configuring-centralized-logging-from-esxi/">
+                                                        ESXi                                                    </a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="https://www.papertrail.com/help/configuring-remote-syslog-from-routers-switches-network-devices/">
+                                                        Routers network hardware                                                    </a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="https://www.papertrail.com/help/configuring-centralized-logging-from-ios-or-os-x-apps/">
+                                                        Apple iOS and macOS                                                    </a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="https://www.papertrail.com/help/configuring-remote-syslog-from-unixlinux-and-bsdos-x/">
+                                                        Unix and BSD system logs                                                    </a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="https://www.papertrail.com/help/nlog-net-logging/">
+                                                        C# and .NET (NLog)                                                    </a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="https://www.papertrail.com/help/log4net-logging/">
+                                                        C# and .NET (log4net)                                                    </a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="https://www.papertrail.com/help/java-logback-logging/">
+                                                        Java logback                                                    </a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="https://www.papertrail.com/help/configuring-centralized-logging-from-android-apps/">
+                                                        Android                                                    </a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="https://www.papertrail.com/help/rkubelog/">
+                                                        Kubernetes cluster logging with rKubelog                                                    </a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="https://www.papertrail.com/help/haproxy/">
+                                                        haproxy                                                    </a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="https://www.papertrail.com/help/advanced-unix-logging-tips/">
+                                                        Advanced Unix logging tips                                                    </a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="https://www.papertrail.com/help/configuring-centralized-logging-from-perl-scripts/">
+                                                        Perl                                                    </a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="https://www.papertrail.com/help/configuring-remote-syslog-from-windows/">
+                                                        Windows                                                    </a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="https://www.papertrail.com/help/configuring-centralized-logging-from-kubernetes/">
+                                                        Kubernetes                                                    </a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="https://www.papertrail.com/help/configuring-centralized-logging-from-erlang/">
+                                                        Erlang                                                    </a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="https://www.papertrail.com/help/configuring-centralized-logging-from-nodejs-apps/">
+                                                        Node.js                                                    </a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="https://www.papertrail.com/help/java-log4j-logging/">
+                                                        Java log4j                                                    </a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="https://www.papertrail.com/help/configuring-centralized-logging-from-javascript/">
+                                                        JavaScript                                                    </a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="https://www.papertrail.com/help/unicorn/">
+                                                        Unicorn                                                    </a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="https://www.papertrail.com/help/configuring-centralized-logging-from-php-apps/">
+                                                        PHP                                                    </a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="https://www.papertrail.com/help/configuring-centralized-logging-from-docker/">
+                                                        Docker                                                    </a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="https://www.papertrail.com/help/configuring-centralized-logging-from-systemd/">
+                                                        systemd                                                    </a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="https://www.papertrail.com/help/configuring-centralized-logging-from-ruby-on-rails-apps/">
+                                                        Ruby on Rails                                                    </a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="https://www.papertrail.com/help/configuring-centralized-logging-from-mysql-query-logs/">
+                                                        MySQL                                                    </a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="https://www.papertrail.com/help/configuring-centralized-logging-from-text-log-files-in-unix/">
+                                                        Unix and BSD text log files (remote_syslog2)                                                    </a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="https://www.papertrail.com/help/redis/">
+                                                        Redis                                                    </a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="https://www.papertrail.com/help/go-logging/">
+                                                        Go                                                    </a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="https://www.papertrail.com/help/configuring-centralized-logging-from-python-apps/">
+                                                        Python                                                    </a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="https://www.papertrail.com/help/configuring-centralized-logging-from-elixir/">
+                                                        Elixir                                                    </a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="https://www.papertrail.com/help/configuring-centralized-logging-from-iis/">
+                                                        IIS                                                    </a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="https://www.papertrail.com/help/configuring-remote-syslog-from-embedded-or-proprietary-systems/">
+                                                        Embedded devices or proprietary systems                                                    </a>
+                                                </li>
+                                                                            </ul>
+                            </li>
+                                                    <li class="main__list-items">
+                                <img src="https://www.papertrail.com/wp-content/themes/papertrail-2019/assets/graphics/svg/icons-symbol-arrow-dropdown.svg" class="icon_arrow-down">
+                                <p class="category__title">
+                                    Collect Logs: Hosting Services                                </p>
+                                <ul>
+                                                                                    <li>
+                                                    <a href="https://www.papertrail.com/help/engine-yard/">
+                                                        Engine Yard                                                    </a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="https://www.papertrail.com/help/google-cloud-platform/">
+                                                        Google Cloud Platform                                                    </a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="https://www.papertrail.com/help/aws-elastic-beanstalk/">
+                                                        AWS Elastic Beanstalk                                                    </a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="https://www.papertrail.com/help/amazon-ec2/">
+                                                        Amazon EC2                                                    </a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="https://www.papertrail.com/help/cloud-66/">
+                                                        Cloud 66                                                    </a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="https://www.papertrail.com/help/windows-azure/">
+                                                        Windows Azure                                                    </a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="https://www.papertrail.com/help/amazon-ecs/">
+                                                        Amazon ECS                                                    </a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="https://www.papertrail.com/help/aws-opsworks/">
+                                                        AWS OpsWorks                                                    </a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="https://www.papertrail.com/help/heroku/">
+                                                        Heroku                                                    </a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="https://www.papertrail.com/help/cloud-foundry/">
+                                                        Cloud Foundry                                                    </a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="https://www.papertrail.com/help/fastly/">
+                                                        Fastly                                                    </a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="https://www.papertrail.com/help/ao-integration-setup/">
+                                                        Using the SolarWinds SnapAgent                                                    </a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="https://www.papertrail.com/help/amazon-rds/">
+                                                        Amazon RDS                                                    </a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="https://www.papertrail.com/help/amazon-cloudwatch/">
+                                                        Amazon CloudWatch                                                    </a>
+                                                </li>
+                                                                            </ul>
+                            </li>
+                                                    <li class="main__list-items">
+                                <img src="https://www.papertrail.com/wp-content/themes/papertrail-2019/assets/graphics/svg/icons-symbol-arrow-dropdown.svg" class="icon_arrow-down">
+                                <p class="category__title">
+                                    Collect Logs: Integrations                                </p>
+                                <ul>
+                                                                                    <li>
+                                                    <a href="https://www.papertrail.com/help/fluentd/">
+                                                        Fluentd                                                    </a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="https://www.papertrail.com/help/librato-metrics/">
+                                                        Librato                                                    </a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="https://www.papertrail.com/help/cloudwatch/">
+                                                        Amazon CloudWatch                                                    </a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="https://www.papertrail.com/help/stathat/">
+                                                        StatHat                                                    </a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="https://www.papertrail.com/help/amazon-sns/">
+                                                        Amazon SNS                                                    </a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="https://www.papertrail.com/help/hostedgraphite/">
+                                                        HostedGraphite                                                    </a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="https://www.papertrail.com/help/datadog/">
+                                                        Datadog                                                    </a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="https://www.papertrail.com/help/zapier/">
+                                                        Zapier                                                    </a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="https://www.papertrail.com/help/victorops/">
+                                                        VictorOps                                                    </a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="https://www.papertrail.com/help/new-relic-traces/">
+                                                        New Relic traces                                                    </a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="https://www.papertrail.com/help/slack/">
+                                                        Slack                                                    </a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="https://www.papertrail.com/help/campfire/">
+                                                        Campfire                                                    </a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="https://www.papertrail.com/help/pagerduty/">
+                                                        PagerDuty                                                    </a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="https://www.papertrail.com/help/new-relic-insights/">
+                                                        New Relic Insights                                                    </a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="https://www.papertrail.com/help/pushover/">
+                                                        Pushover                                                    </a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="https://www.papertrail.com/help/appoptics/">
+                                                        AppOptics                                                    </a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="https://www.papertrail.com/help/geckoboard/">
+                                                        Geckoboard                                                    </a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="https://www.papertrail.com/help/opsgenie/">
+                                                        OpsGenie                                                    </a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="https://www.papertrail.com/help/honeybadger/">
+                                                        Honeybadger                                                    </a>
+                                                </li>
+                                                                            </ul>
+                            </li>
+                                                    <li class="main__list-items">
+                                <img src="https://www.papertrail.com/wp-content/themes/papertrail-2019/assets/graphics/svg/icons-symbol-arrow-dropdown.svg" class="icon_arrow-down">
+                                <p class="category__title">
+                                    Manage Logs                                </p>
+                                <ul>
+                                                                                    <li>
+                                                    <a href="https://www.papertrail.com/help/groups/">
+                                                        Groups                                                    </a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="https://www.papertrail.com/help/log-rate-notifications/">
+                                                        Log flood detection                                                    </a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="https://www.papertrail.com/help/web-hooks/">
+                                                        Web Hooks                                                    </a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="https://www.papertrail.com/help/log-colorization/">
+                                                        Log colorization                                                    </a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="https://www.papertrail.com/help/linking-to-logs/">
+                                                        Linking to logs                                                    </a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="https://www.papertrail.com/help/json-search/">
+                                                        JSON search syntax                                                    </a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="https://www.papertrail.com/help/settings-api/">
+                                                        Settings API                                                    </a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="https://www.papertrail.com/help/log-destinations/">
+                                                        Log destinations                                                    </a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="https://www.papertrail.com/help/alerts/">
+                                                        Alerts                                                    </a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="https://www.papertrail.com/help/command-line-client/">
+                                                        Command-line client                                                    </a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="https://www.papertrail.com/help/log-filtering/">
+                                                        Log filtering                                                    </a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="https://www.papertrail.com/help/http-api/">
+                                                        HTTP API                                                    </a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="https://www.papertrail.com/help/automatic-s3-archive-export/">
+                                                        Automatic S3 archive export                                                    </a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="https://www.papertrail.com/help/adding-and-removing-senders/">
+                                                        Managing Senders                                                    </a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="https://www.papertrail.com/help/permanent-log-archives/">
+                                                        Permanent log archives                                                    </a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="https://www.papertrail.com/help/mapping-senders-to-groups/">
+                                                        Mapping senders to groups                                                    </a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="https://www.papertrail.com/help/search-syntax/">
+                                                        Search syntax                                                    </a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="https://www.papertrail.com/help/viewer-click-to-search/">
+                                                        Click-to-search                                                    </a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="https://www.papertrail.com/help/search-api/">
+                                                        Log search API                                                    </a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="https://www.papertrail.com/help/event-viewer/">
+                                                        Event Viewer                                                    </a>
+                                                </li>
+                                                                            </ul>
+                            </li>
+                                                    <li class="main__list-items">
+                                <img src="https://www.papertrail.com/wp-content/themes/papertrail-2019/assets/graphics/svg/icons-symbol-arrow-dropdown.svg" class="icon_arrow-down">
+                                <p class="category__title">
+                                    Send Logs for Analytics                                </p>
+                                <ul>
+                                                                                    <li>
+                                                    <a href="https://www.papertrail.com/help/openrefine/">
+                                                        OpenRefine                                                    </a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="https://www.papertrail.com/help/amazon-redshift/">
+                                                        Amazon Redshift                                                    </a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="https://www.papertrail.com/help/log-analytics-with-xplenty/">
+                                                        Xplenty                                                    </a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="https://www.papertrail.com/help/google-sheets/">
+                                                        Google Sheets                                                    </a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="https://www.papertrail.com/help/introduction-to-hadoop-and-hive/">
+                                                        Hadoop and Hive: SELECT *                                                    </a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="https://www.papertrail.com/help/log-analytics-with-hadoop-and-hive/">
+                                                        Hadoop and Hive: Quick Start                                                    </a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="https://www.papertrail.com/help/amazon-athena/">
+                                                        Amazon Athena                                                    </a>
+                                                </li>
+                                                                            </ul>
+                            </li>
+                                                    <li class="main__list-items">
+                                <img src="https://www.papertrail.com/wp-content/themes/papertrail-2019/assets/graphics/svg/icons-symbol-arrow-dropdown.svg" class="icon_arrow-down">
+                                <p class="category__title">
+                                    SolarWinds Users &amp; Orgs                                </p>
+                                <ul>
+                                                                                    <li>
+                                                    <a href="https://www.papertrail.com/help/saml/">
+                                                        Configure Single Sign-On (SSO) via SAML                                                    </a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="https://www.papertrail.com/help/user-roles/">
+                                                        User Roles and Access Levels                                                    </a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="https://www.papertrail.com/help/sw-usermgmt/">
+                                                        Users and Organizations                                                    </a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="https://www.papertrail.com/help/access-control/">
+                                                        Access control                                                    </a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="https://www.papertrail.com/help/sw-unified-login/">
+                                                        SolarWinds  Unified Login                                                    </a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="https://www.papertrail.com/help/usage-and-payment/">
+                                                        Usage and payment                                                    </a>
+                                                </li>
+                                                                            </ul>
+                            </li>
+                                                    <li class="main__list-items">
+                                <img src="https://www.papertrail.com/wp-content/themes/papertrail-2019/assets/graphics/svg/icons-symbol-arrow-dropdown.svg" class="icon_arrow-down">
+                                <p class="category__title">
+                                    Support and Security                                </p>
+                                <ul>
+                                                                                    <li>
+                                                    <a href="https://www.papertrail.com/help/security/">
+                                                        Security and Compliance                                                    </a>
+                                                </li>
+                                                                                            <li>
+                                                    <a href="https://www.papertrail.com/help/support/">
+                                                        Support Policy                                                    </a>
+                                                </li>
+                                                                            </ul>
+                            </li>
+                                                    <li class="main__list-items">
+                                <img src="https://www.papertrail.com/wp-content/themes/papertrail-2019/assets/graphics/svg/icons-symbol-arrow-dropdown.svg" class="icon_arrow-down">
+                                <p class="category__title">
+                                    What&#039;s New                                </p>
+                                <ul>
+                                                                                    <li>
+                                                    <a href="https://www.papertrail.com/help/release-notes/">
+                                                        Papertrail Release Notes                                                    </a>
+                                                </li>
+                                                                            </ul>
+                            </li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+        <div class="helpdocs__grid-item">
+            <div class="single__help">
+                <div class="single__help-breadcrumbs">
+                    <span class="single__help-breadcrumb-category">
+                        Collect Logs: Apps &amp; Services                    </span>
+                    <span class="single__help-breadcrumb-title"> > PHP</span>
+                </div>
+                <div class="single__help-title">
+                    <h1>PHP</h1>
+                </div>
+                <div class="single__help-content">
+                    
+<p>Papertrail can accept logs from any PHP app, including CakePHP, CodeIgniter, Laravel, Symfony, Zend, and &#8220;plain&#8221; PHP.</p>
+
+
+
+<p>If you aren&#8217;t sure how to configure logging for your PHP app, start with the PHP manual coverage of <a href="http://www.php.net/manual/en/book.errorfunc.php" target="_blank" rel="noreferrer noopener">Error Handling</a>, especially <a href="http://www.php.net/manual/en/ref.errorfunc.php" target="_blank" rel="noreferrer noopener">Error Handling Functions</a>.</p>
+
+
+
+<h2>Send log file with remote_syslog2</h2>
+
+
+
+<p>Configure your Web server or app to log to a file as usual, then <a href="https://www.papertrail.com/help/configuring-centralized-logging-from-text-log-files-in-unix">transmit the log file</a> to Papertrail using <a href="https://github.com/papertrail/remote_syslog2" target="_blank" rel="noreferrer noopener">remote_syslog2</a>. This does not require any modifications to the app.</p>
+
+
+
+<h2>Send events from PHP app</h2>
+
+
+
+<p>PHP apps can also send log messages directly to Papertrail. Here are a few ways to send syslog to Papertrail from PHP.</p>
+
+
+
+<h3>Generic PHP log sender</h3>
+
+
+
+<p><a href="https://gist.github.com/2220679" target="_blank" rel="noreferrer noopener">Here is</a> simple PHP code to construct and transmit a UDP remote syslog log message.</p>
+
+
+
+<p>As the code comments show, call that PHP function from your app (or from a log handler) to transmit the message to Papertrail.</p>
+
+
+
+<h3>Laravel</h3>
+
+
+
+<p><a href="https://laravel.com/docs/8.x/logging#configuring-the-papertrail-channel" target="_blank" rel="noreferrer noopener">Configure a Laravel Papertrail channel</a>&nbsp;to use Laravel to send logs to Papertrail. See&nbsp;<a href="https://laravel.com/docs/" target="_blank" rel="noreferrer noopener">Laravel documentation</a>&nbsp;for more information.</p>
+
+
+
+<h3>Monolog</h3>
+
+
+
+<p>Consider <a href="https://github.com/Seldaek/monolog" target="_blank" rel="noreferrer noopener">Monolog</a> and its <a href="https://github.com/Seldaek/monolog/blob/master/doc/02-handlers-formatters-processors.md#log-to-files-and-syslog" target="_blank" rel="noreferrer noopener">SyslogHandler</a> or <a href="https://github.com/Seldaek/monolog/blob/master/doc/02-handlers-formatters-processors.md#log-specific-servers-and-networked-logging" target="_blank" rel="noreferrer noopener">SyslogUdpHandler</a>. This works particularly well with Laravel and Laravel Forge, since Laravel <a href="https://laravel.com/docs/errors" target="_blank" rel="noreferrer noopener">already uses</a> Monolog.</p>
+
+
+
+<p>Here is an example Monolog <code>SyslogUdpHandler</code> that sends to Papertrail:</p>
+
+
+
+<pre><code>require 'vendor/autoload.php';
+use Monolog\Logger;
+use Monolog\Formatter\LineFormatter;
+use Monolog\Handler\SyslogUdpHandler;
+// Set the format
+$output = "%channel%.%level_name%: %message%";
+$formatter = new LineFormatter($output);
+// Setup the logger
+$logger = new Logger('my_logger');
+$syslogHandler = new SyslogUdpHandler("logsN.papertrailapp.com", XXXXX);
+$syslogHandler-&gt;setFormatter($formatter);
+$logger-&gt;pushHandler($syslogHandler);
+// Use the new logger
+$logger-&gt;addInfo('Monolog test');</code></pre>
+
+
+
+<p>Change <code>logsN</code> and <code>XXXXX</code> to match your <a href="https://papertrailapp.com/account/destinations" target="_blank" rel="noreferrer noopener">Papertrail log destination</a>.</p>
+
+
+
+<h3>Kohana</h3>
+
+
+
+<p>Users of the <a href="http://kohanaframework.org/" target="_blank" rel="noreferrer noopener">Kohana</a> framework can use the <a href="https://github.com/dlucian/kohana-papertrail" target="_blank" rel="noreferrer noopener">kohana-papertrail</a> module. Setup instructions can be found in the <a href="https://github.com/dlucian/kohana-papertrail/blob/master/README.md" target="_blank" rel="noreferrer noopener">README</a>.</p>
+
+
+
+<h2>Logging via the Heroku add-on</h2>
+
+
+
+<p>Rather than logging directly to syslog, send everything to stderr and Heroku will forward it over to Papertrail. An example of how do this using Monolog, adapted from <a href="https://devcenter.heroku.com/articles/getting-started-with-php#basic-logging" target="_blank" rel="noreferrer noopener">this</a> Heroku Dev Center article, is shown below.</p>
+
+
+
+<pre><code>require('vendor/autoload.php');
+use Monolog\Logger;
+use Monolog\Formatter\LineFormatter;
+use Monolog\Handler\StreamHandler;
+// set the format
+$output = "%message%";
+$formatter = new LineFormatter($output);
+// create a log channel to STDOUT
+$log = new Logger('my_logger');
+$streamHandler = new StreamHandler('php://stdout', Logger::WARNING);
+$streamHandler-&gt;setFormatter($formatter);
+$log-&gt;pushHandler($streamHandler);
+// test messages
+$log-&gt;addWarning("testing 1");
+$log-&gt;addWarning("testing 2");</code></pre>
+
+
+
+<p style="font-size: 10pt;"><em>The scripts are not supported under any SolarWinds support program or service. The scripts are provided AS IS without warranty of any kind. SolarWinds further disclaims all warranties including, without limitation, any implied warranties of merchantability or of fitness for a particular purpose. The risk arising out of the use or performance of the scripts and documentation stays with you. In no event shall SolarWinds or anyone else involved in the creation, production, or delivery of the scripts be liable for any damages whatsoever (including, without limitation, damages for loss of business profits, business interruption, loss of business information, or other pecuniary loss) arising out of the use of or inability to use the scripts or documentation</em>.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type='text/javascript' src='https://code.jquery.com/jquery-3.6.0.slim.min.js' id='jquery-slim-js'></script>
+<script type='text/javascript' src='https://www.papertrail.com/wp-content/themes/papertrail-2019/assets/main.min.js?ver=1646818792' id='scripts-js'></script>
+<script type='text/javascript' src='https://www.papertrail.com/wp-includes/js/wp-embed.min.js?ver=5.8.3' id='wp-embed-js'></script>
+
+<section class="mod-links footer">
+  <div class="container">
+    <p class="center">
+      <a href="https://www.papertrail.com/wp-content/uploads/2021/04/papertrail_datasheet.pdf">Datasheet</a>
+      <a href="http://help.papertrailapp.com">Help</a>
+      <a href="/plans/contact">Contact</a>
+      <a href="http://twitter.com/papertrailapp">@papertrailapp</a>
+      <a href="https://www.solarwinds.com/legal/legal-documents">Legal Documents</a>
+      <a href="https://www.solarwinds.com/legal/privacy#california-privacy-rights" target="_blank" rel="noopener noreferrer">California Privacy Rights</a>
+      <a target="_blank" href="https://www.solarwinds.com/-/media/solarwinds/swdcv2/legal/legal-documents/solarwinds-software-services-agreement-for-cloud.ashx">Software Services Agreement</a>
+      <a href="https://www.solarwinds.com/legal/privacy">Privacy Notice</a>
+      <a href="https://www.solarwinds.com/general-data-protection-regulation-cloud">GDPR Resource Center</a>
+      <a href="https://launch.solarwinds.com/Subscription-Center.html">SolarWinds Subscription Center</a>
+      <a href="https://www.solarwinds.com/covid-19-resources">COVID-19 Resource Center</a>
+    </p>
+    <p class="center light">
+      © 2022 SolarWinds Worldwide, LLC. All rights reserved.    </p>
+</section>
+
+<footer class="footer sw19-footer sw19-hidden">
+    <div class="footer-info">
+        <div class="container">
+            <div class="footer__block">
+                <div class="footer__block-column">
+                    <div class="footer__left-column">
+                                                    <div class="footer-description">
+                                <p><strong>We’re Geekbuilt <sup>™</sup>.</strong></p>
+<p>&nbsp;</p>
+<p>Developed by network and systems engineers who know what it takes to manage today’s dynamic IT environments,<br />
+SolarWinds has a deep connection to the IT community.</p>
+<p>&nbsp;</p>
+<p>The result? IT management products that are effective, accessible, and easy to use.</p>
+                            </div>
+                                            </div>
+                </div>
+                <div class="footer__block-column">
+                                                <div class="half__column">
+                                <div class="sw19-footer-links">
+                                                                            <div class="footer-link">
+                                                <a href="#" >COMPANY</a>                                            </div>
+                                                                                    <div class="footer-link">
+                                                <a href="#" >CARRER CENTER</a>                                            </div>
+                                                                                    <div class="footer-link">
+                                                <a href="https://cloudprefs.solarwinds.com/Subscription-Center.html" >EMAIL PREFNCE CENTER</a>                                            </div>
+                                                                                    <div class="footer-link">
+                                                <a href="#" >SOLUTION FINDER</a>                                            </div>
+                                                                        </div>
+                            </div>
+                                                    <div class="half__column">
+                                <div class="sw19-footer-links">
+                                                                            <div class="footer-link">
+                                                <a href="#" >FOR GOVERNMENT</a>                                            </div>
+                                                                                    <div class="footer-link">
+                                                <a href="#" >FOR PARTNERS</a>                                            </div>
+                                                                                    <div class="footer-link">
+                                                <a href="#" >FOR TEST</a>                                            </div>
+                                                                                    <div class="footer-link">
+                                                <a href="#" >Another Link</a>                                            </div>
+                                                                        </div>
+                            </div>
+                                        </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="legal__footer-block">
+        <div class="container">
+            <div class="legal__footer">
+                <div class="legal__footer-column">
+                    <div class="legal__block">
+                                                        <div class="legal__link">
+                                    <a href="https://www.solarwinds.com/legal/privacy" >Privacy Notice</a>                                </div>
+                                                                <div class="legal__link">
+                                    <a href="https://www.solarwinds.com/-/media/solarwinds/swdcv2/legal/legal-documents/solarwinds-software-services-agreement-for-cloud.ashx" >Terms of use</a>                                </div>
+                                                                <div class="legal__link">
+                                    <a href="https://www.solarwinds.com/legal/legal-documents" >Security Policy</a>                                </div>
+                                                                <div class="legal__link">
+                                    <a href="#" >Another Link</a>                                </div>
+                                                    </div>
+                </div>
+                <div class="legal__footer-column">
+                                                    <div class="legal__information">
+                                <p>© 2021 SolarWinds Worldwide, LLC. All rights reserved.</p>
+                            </div>
+                                        </div>
+            </div>
+        </div>
+    </div>
+
+</footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script>
+      function sw19_nav_turn_on() { document.body.classList.add('wpdev-965') }
+    </script>
+</body>
+</html>
+
+<script>
+
+jQuery(function($) {
+    $(document).ready(function() {
+        $('.categories__list .main__list-items').click(function() {
+            if($(this).hasClass('activeList')) {
+                $(this).removeClass('activeList');
+                $(this).find('ul').hide();
+            } else {
+                $(this).addClass('activeList');
+                $(this).find('ul').show();
+            }
+        });
+
+        $('.helpdocs .mobile__categories-dropdown').click(function() {
+            if($(this).hasClass('activeDropdown')) {
+                $(this).removeClass('activeDropdown');
+                $(this).parent().find('.main__ul').hide();
+            } else {
+                $(this).addClass('activeDropdown');
+                $(this).parent().find('.main__ul').show();
+            }
+        });
+
+    });
+});
+
+</script>

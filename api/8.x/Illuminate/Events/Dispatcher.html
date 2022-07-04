@@ -1,0 +1,2655 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="index, follow, all" />
+    <title>Illuminate\Events\Dispatcher | Laravel API</title>
+
+            <link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="../../css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="../../css/doctum.css">
+        <link rel="stylesheet" type="text/css" href="../../fonts/doctum-font.css">
+        <script src="../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../doctum.js"></script>
+        <script async defer src="../../js/bootstrap.min.js"></script>
+        <script async defer src="../../js/autocomplete.min.js"></script>
+        <meta name="MobileOptimized" content="width">
+        <meta name="HandheldFriendly" content="true">
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+
+        <link rel="search"
+          type="application/opensearchdescription+xml"
+          href="https://laravel.com/api/5.5/opensearch.xml"
+          title="Laravel API (5.5)" />
+    <link rel="search"
+          type="application/opensearchdescription+xml"
+          href="https://laravel.com/api/5.8/opensearch.xml"
+          title="Laravel API (5.8)" />
+    <link rel="search"
+          type="application/opensearchdescription+xml"
+          href="https://laravel.com/api/6.x/opensearch.xml"
+          title="Laravel API (6.x)" />
+    <link rel="search"
+          type="application/opensearchdescription+xml"
+          href="https://laravel.com/api/7.x/opensearch.xml"
+          title="Laravel API (7.x)" />
+    <link rel="search"
+          type="application/opensearchdescription+xml"
+          href="https://laravel.com/api/8.x/opensearch.xml"
+          title="Laravel API (8.x)" />
+    <link rel="search"
+          type="application/opensearchdescription+xml"
+          href="https://laravel.com/api/9.x/opensearch.xml"
+          title="Laravel API (9.x)" />
+    <link rel="search"
+          type="application/opensearchdescription+xml"
+          href="https://laravel.com/api/master/opensearch.xml"
+          title="Laravel API (master)" />
+    </head>
+
+    <body id="class" data-name="class:Illuminate_Events_Dispatcher" data-root-path="../../" data-search-index-url="../../doctum-search.json">
+            <div id="content">
+        <div id="left-column">
+                <div id="control-panel">
+                    <form action="#">
+                <select class="form-control" id="version-switcher" name="version">
+                                            <option
+                            value="../../../5.5/index.html"
+                            data-version="5.5" >Laravel 5.5</option>
+                                            <option
+                            value="../../../5.8/index.html"
+                            data-version="5.8" >Laravel 5.8</option>
+                                            <option
+                            value="../../../6.x/index.html"
+                            data-version="6.x" >Laravel 6.x</option>
+                                            <option
+                            value="../../../7.x/index.html"
+                            data-version="7.x" >Laravel 7.x</option>
+                                            <option
+                            value="../../../8.x/index.html"
+                            data-version="8.x" selected>Laravel 8.x</option>
+                                            <option
+                            value="../../../9.x/index.html"
+                            data-version="9.x" >Laravel 9.x</option>
+                                            <option
+                            value="../../../master/index.html"
+                            data-version="master" >Laravel Dev</option>
+                                    </select>
+            </form>
+                <div class="search-bar hidden" id="search-progress-bar-container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" id="search-progress-bar"
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+        </div>
+        <form id="search-form" action="../../search.html">
+            <span class="icon icon-search"></span>
+            <input name="search"
+                   id="doctum-search-auto-complete"
+                   class="typeahead form-control"
+                   type="search"
+                   placeholder="Search"
+                   spellcheck="false"
+                   autocorrect="off"
+                   autocomplete="off"
+                   autocapitalize="off">
+            <div class="auto-complete-results" id="auto-complete-results"></div>
+        </form>
+    </div>
+
+                <div id="api-tree"></div>
+
+        </div>
+        <div id="right-column">
+                <nav id="site-nav" class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-elements">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../../index.html">Laravel API</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-elements">
+                <ul class="nav navbar-nav">
+                                        <li role="presentation" class="dropdown visible-xs-block visible-sm-block">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#"
+                            role="button" aria-haspopup="true" aria-expanded="false">Versions&nbsp;<span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                        <li ><a href="../../../5.5/index.html" data-version="5.5">Laravel 5.5</a></li>
+                        <li ><a href="../../../5.8/index.html" data-version="5.8">Laravel 5.8</a></li>
+                        <li ><a href="../../../6.x/index.html" data-version="6.x">Laravel 6.x</a></li>
+                        <li ><a href="../../../7.x/index.html" data-version="7.x">Laravel 7.x</a></li>
+                        <li class="active"><a href="../../../8.x/index.html" data-version="8.x">Laravel 8.x</a></li>
+                        <li ><a href="../../../9.x/index.html" data-version="9.x">Laravel 9.x</a></li>
+                        <li ><a href="../../../master/index.html" data-version="master">Laravel Dev</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="../../classes.html">Classes</a></li>
+                    <li><a href="../../namespaces.html">Namespaces</a></li>
+                    <li><a href="../../interfaces.html">Interfaces</a></li>
+                    <li><a href="../../traits.html">Traits</a></li>
+                    <li><a href="../../doc-index.html">Index</a></li>
+                    <li><a href="../../search.html">Search</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+                        <div class="namespace-breadcrumbs">
+            <ol class="breadcrumb">
+                <li><span class="label label-default">class</span></li>
+                        <li><a href="../../Illuminate.html">Illuminate</a></li><li class="backslash">\</li><li><a href="../../Illuminate/Events.html">Events</a></li><li class="backslash">\</li><li>Dispatcher</li>
+            </ol>
+        </div>
+                <div id="page-content">
+    <div class="page-header">
+        <h1>Dispatcher    
+            </h1>
+    </div>
+
+    
+    <p>        class
+    <strong>Dispatcher</strong>        implements        <a href="../../Illuminate/Contracts/Events/Dispatcher.html"><abbr title="Illuminate\Contracts\Events\Dispatcher">Dispatcher</abbr></a>        (<a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Events/Dispatcher.php">View source</a>)
+</p>
+
+        
+    
+        
+
+            
+                <h2>Traits</h2>
+
+        
+    <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-6">
+                    <a href="../../Illuminate/Support/Traits/Macroable.html"><abbr title="Illuminate\Support\Traits\Macroable">Macroable</abbr></a>    </div>
+                <div class="col-md-6"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                    <a href="../../Illuminate/Support/Traits/ReflectsClosures.html"><abbr title="Illuminate\Support\Traits\ReflectsClosures">ReflectsClosures</abbr></a>    </div>
+                <div class="col-md-6"></div>
+            </div>
+            </div>
+    
+    
+            <h2>Properties</h2>
+
+            <table class="table table-condensed">
+                    <tr>
+                <td class="type" id="property_macros">
+                    static                    protected                                        array
+                                                                                
+                                    </td>
+                <td>$macros</td>
+                <td class="last"><p>The registered string macros.</p></td>
+                <td><small>from&nbsp;<a href="../../Illuminate/Support/Traits/Macroable.html#property_macros">
+<abbr title="Illuminate\Support\Traits\Macroable">Macroable</abbr></a></small></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_container">
+                                        protected                                        <a href="../../Illuminate/Contracts/Container/Container.html"><abbr title="Illuminate\Contracts\Container\Container">Container</abbr></a>
+                                                                                
+                                    </td>
+                <td>$container</td>
+                <td class="last"><p>The IoC container instance.</p></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_listeners">
+                                        protected                                        array
+                                                                                
+                                    </td>
+                <td>$listeners</td>
+                <td class="last"><p>The registered event listeners.</p></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_wildcards">
+                                        protected                                        array
+                                                                                
+                                    </td>
+                <td>$wildcards</td>
+                <td class="last"><p>The wildcard listeners.</p></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_wildcardsCache">
+                                        protected                                        array
+                                                                                
+                                    </td>
+                <td>$wildcardsCache</td>
+                <td class="last"><p>The cached wildcard listeners.</p></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_queueResolver">
+                                        protected                                        callable
+                                                                                
+                                    </td>
+                <td>$queueResolver</td>
+                <td class="last"><p>The queue resolver instance.</p></td>
+                <td></td>
+            </tr>
+            </table>
+
+    
+            <h2>Methods</h2>
+
+            <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_macro">macro</a>(string $name, object|callable $macro)
+        
+                                            <p><p>Register a custom macro.</p></p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Illuminate/Support/Traits/Macroable.html#method_macro">
+<abbr title="Illuminate\Support\Traits\Macroable">Macroable</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_mixin">mixin</a>(object $mixin, bool $replace = true)
+        
+                                            <p><p>Mix another object into the class.</p></p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Illuminate/Support/Traits/Macroable.html#method_mixin">
+<abbr title="Illuminate\Support\Traits\Macroable">Macroable</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_hasMacro">hasMacro</a>(string $name)
+        
+                                            <p><p>Checks if macro is registered.</p></p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Illuminate/Support/Traits/Macroable.html#method_hasMacro">
+<abbr title="Illuminate\Support\Traits\Macroable">Macroable</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_flushMacros">flushMacros</a>()
+        
+                                            <p><p>Flush the existing macros.</p></p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Illuminate/Support/Traits/Macroable.html#method_flushMacros">
+<abbr title="Illuminate\Support\Traits\Macroable">Macroable</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;mixed
+                </div>
+                <div class="col-md-8">
+                    <a href="#method___callStatic">__callStatic</a>(string $method, array $parameters)
+        
+                                            <p><p>Dynamically handle calls to the class.</p></p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Illuminate/Support/Traits/Macroable.html#method___callStatic">
+<abbr title="Illuminate\Support\Traits\Macroable">Macroable</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    mixed
+                </div>
+                <div class="col-md-8">
+                    <a href="#method___call">__call</a>(string $method, array $parameters)
+        
+                                            <p><p>Dynamically handle calls to the class.</p></p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Illuminate/Support/Traits/Macroable.html#method___call">
+<abbr title="Illuminate\Support\Traits\Macroable">Macroable</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_firstClosureParameterType">firstClosureParameterType</a>(<a target="_blank" rel="noopener" href="https://www.php.net/Closure">Closure</a> $closure)
+        
+                                            <p><p>Get the class name of the first parameter of the given Closure.</p></p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Illuminate/Support/Traits/ReflectsClosures.html#method_firstClosureParameterType">
+<abbr title="Illuminate\Support\Traits\ReflectsClosures">ReflectsClosures</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_firstClosureParameterTypes">firstClosureParameterTypes</a>(<a target="_blank" rel="noopener" href="https://www.php.net/Closure">Closure</a> $closure)
+        
+                                            <p><p>Get the class names of the first parameter of the given Closure, including union types.</p></p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Illuminate/Support/Traits/ReflectsClosures.html#method_firstClosureParameterTypes">
+<abbr title="Illuminate\Support\Traits\ReflectsClosures">ReflectsClosures</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_closureParameterTypes">closureParameterTypes</a>(<a target="_blank" rel="noopener" href="https://www.php.net/Closure">Closure</a> $closure)
+        
+                                            <p><p>Get the class names / types of the parameters of the given Closure.</p></p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Illuminate/Support/Traits/ReflectsClosures.html#method_closureParameterTypes">
+<abbr title="Illuminate\Support\Traits\ReflectsClosures">ReflectsClosures</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method___construct">__construct</a>(<a href="../../Illuminate/Contracts/Container/Container.html"><abbr title="Illuminate\Contracts\Container\Container">Container</abbr></a> $container = null)
+        
+                                            <p><p>Create a new event dispatcher instance.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_listen">listen</a>(<a target="_blank" rel="noopener" href="https://www.php.net/Closure">Closure</a>|string|array $events, <a target="_blank" rel="noopener" href="https://www.php.net/Closure">Closure</a>|string|array|null $listener = null)
+        
+                                            <p><p>Register an event listener with the dispatcher.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_setupWildcardListen">setupWildcardListen</a>(string $event, <a target="_blank" rel="noopener" href="https://www.php.net/Closure">Closure</a>|string $listener)
+        
+                                            <p><p>Setup a wildcard listener callback.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_hasListeners">hasListeners</a>(string $eventName)
+        
+                                            <p><p>Determine if a given event has listeners.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_hasWildcardListeners">hasWildcardListeners</a>(string $eventName)
+        
+                                            <p><p>Determine if the given event has any wildcard listeners.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_push">push</a>(string $event, array $payload = [])
+        
+                                            <p><p>Register an event and payload to be fired later.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_flush">flush</a>(string $event)
+        
+                                            <p><p>Flush a set of pushed events.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_subscribe">subscribe</a>(object|string $subscriber)
+        
+                                            <p><p>Register an event subscriber with the dispatcher.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    mixed
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_resolveSubscriber">resolveSubscriber</a>(object|string $subscriber)
+        
+                                            <p><p>Resolve the subscriber instance.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array|null
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_until">until</a>(string|object $event, mixed $payload = [])
+        
+                                            <p><p>Fire an event until the first non-null response is returned.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array|null
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_dispatch">dispatch</a>(string|object $event, mixed $payload = [], bool $halt = false)
+        
+                                            <p><p>Fire an event and call the listeners.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_parseEventAndPayload">parseEventAndPayload</a>(mixed $event, mixed $payload)
+        
+                                            <p><p>Parse the given event and payload and prepare them for dispatching.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_shouldBroadcast">shouldBroadcast</a>(array $payload)
+        
+                                            <p><p>Determine if the payload has a broadcastable event.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_broadcastWhen">broadcastWhen</a>(mixed $event)
+        
+                                            <p><p>Check if the event should be broadcasted by the condition.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_broadcastEvent">broadcastEvent</a>(<a href="../../Illuminate/Contracts/Broadcasting/ShouldBroadcast.html"><abbr title="Illuminate\Contracts\Broadcasting\ShouldBroadcast">ShouldBroadcast</abbr></a> $event)
+        
+                                            <p><p>Broadcast the given event class.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getListeners">getListeners</a>(string $eventName)
+        
+                                            <p><p>Get all of the listeners for a given event name.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getWildcardListeners">getWildcardListeners</a>(string $eventName)
+        
+                                            <p><p>Get the wildcard listeners for the event.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_addInterfaceListeners">addInterfaceListeners</a>(string $eventName, array $listeners = [])
+        
+                                            <p><p>Add the listeners for the event's interfaces to the given array.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a target="_blank" rel="noopener" href="https://www.php.net/Closure">Closure</a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_makeListener">makeListener</a>(<a target="_blank" rel="noopener" href="https://www.php.net/Closure">Closure</a>|string|array $listener, bool $wildcard = false)
+        
+                                            <p><p>Register an event listener with the dispatcher.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a target="_blank" rel="noopener" href="https://www.php.net/Closure">Closure</a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_createClassListener">createClassListener</a>(string $listener, bool $wildcard = false)
+        
+                                            <p><p>Create a class based listener using the IoC container.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    callable
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_createClassCallable">createClassCallable</a>(array|string $listener)
+        
+                                            <p><p>Create the class based event callable.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_parseClassCallable">parseClassCallable</a>(string $listener)
+        
+                                            <p><p>Parse the class listener into class and method.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_handlerShouldBeQueued">handlerShouldBeQueued</a>(string $class)
+        
+                                            <p><p>Determine if the event handler class should be queued.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a target="_blank" rel="noopener" href="https://www.php.net/Closure">Closure</a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_createQueuedHandlerCallable">createQueuedHandlerCallable</a>(string $class, string $method)
+        
+                                            <p><p>Create a callable for putting an event handler on the queue.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_handlerShouldBeDispatchedAfterDatabaseTransactions">handlerShouldBeDispatchedAfterDatabaseTransactions</a>(object|mixed $listener)
+        
+                                            <p><p>Determine if the given event handler should be dispatched after all database transactions have committed.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a target="_blank" rel="noopener" href="https://www.php.net/Closure">Closure</a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_createCallbackForListenerRunningAfterCommits">createCallbackForListenerRunningAfterCommits</a>(mixed $listener, string $method)
+        
+                                            <p><p>Create a callable for dispatching a listener after database transactions.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_handlerWantsToBeQueued">handlerWantsToBeQueued</a>(string $class, array $arguments)
+        
+                                            <p><p>Determine if the event handler wants to be queued.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_queueHandler">queueHandler</a>(string $class, string $method, array $arguments)
+        
+                                            <p><p>Queue the handler class.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_createListenerAndJob">createListenerAndJob</a>(string $class, string $method, array $arguments)
+        
+                                            <p><p>Create the listener and job for a queued listener.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    mixed
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_propagateListenerOptions">propagateListenerOptions</a>(mixed $listener, mixed $job)
+        
+                                            <p><p>Propagate listener options to the job.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_forget">forget</a>(string $event)
+        
+                                            <p><p>Remove a set of listeners from the dispatcher.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_forgetPushed">forgetPushed</a>()
+        
+                                            <p><p>Forget all of the pushed listeners.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../Illuminate/Contracts/Queue/Queue.html"><abbr title="Illuminate\Contracts\Queue\Queue">Queue</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_resolveQueue">resolveQueue</a>()
+        
+                                            <p><p>Get the queue implementation from the resolver.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    $this
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_setQueueResolver">setQueueResolver</a>(callable $resolver)
+        
+                                            <p><p>Set the queue resolver implementation.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+            </div>
+
+
+        <h2>Details</h2>
+
+            <div id="method-details">
+                    <div class="method-item">
+                    <h3 id="method_macro">
+        <div class="location">in <a href="../../Illuminate/Support/Traits/Macroable.html#method_macro">
+<abbr title="Illuminate\Support\Traits\Macroable">Macroable</abbr></a> <a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Macroable/Traits/Macroable.php#L26">at line 26</a></div>
+        <code>        static            void
+    <strong>macro</strong>(string $name, object|callable $macro)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Register a custom macro.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$name</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>object|callable</td>
+                <td>$macro</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_mixin">
+        <div class="location">in <a href="../../Illuminate/Support/Traits/Macroable.html#method_mixin">
+<abbr title="Illuminate\Support\Traits\Macroable">Macroable</abbr></a> <a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Macroable/Traits/Macroable.php#L40">at line 40</a></div>
+        <code>        static            void
+    <strong>mixin</strong>(object $mixin, bool $replace = true)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Mix another object into the class.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>object</td>
+                <td>$mixin</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>bool</td>
+                <td>$replace</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a target="_blank" rel="noopener" href="https://www.php.net/ReflectionException">ReflectionException</a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_hasMacro">
+        <div class="location">in <a href="../../Illuminate/Support/Traits/Macroable.html#method_hasMacro">
+<abbr title="Illuminate\Support\Traits\Macroable">Macroable</abbr></a> <a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Macroable/Traits/Macroable.php#L60">at line 60</a></div>
+        <code>        static            bool
+    <strong>hasMacro</strong>(string $name)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Checks if macro is registered.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$name</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_flushMacros">
+        <div class="location">in <a href="../../Illuminate/Support/Traits/Macroable.html#method_flushMacros">
+<abbr title="Illuminate\Support\Traits\Macroable">Macroable</abbr></a> <a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Macroable/Traits/Macroable.php#L70">at line 70</a></div>
+        <code>        static            void
+    <strong>flushMacros</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Flush the existing macros.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method___callStatic">
+        <div class="location">in <a href="../../Illuminate/Support/Traits/Macroable.html#method___callStatic">
+<abbr title="Illuminate\Support\Traits\Macroable">Macroable</abbr></a> <a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Macroable/Traits/Macroable.php#L84">at line 84</a></div>
+        <code>        static            mixed
+    <strong>__callStatic</strong>(string $method, array $parameters)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Dynamically handle calls to the class.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$method</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$parameters</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>mixed</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a target="_blank" rel="noopener" href="https://www.php.net/BadMethodCallException">BadMethodCallException</a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method___call">
+        <div class="location">in <a href="../../Illuminate/Support/Traits/Macroable.html#method___call">
+<abbr title="Illuminate\Support\Traits\Macroable">Macroable</abbr></a> <a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Macroable/Traits/Macroable.php#L110">at line 110</a></div>
+        <code>                    mixed
+    <strong>__call</strong>(string $method, array $parameters)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Dynamically handle calls to the class.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$method</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$parameters</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>mixed</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a target="_blank" rel="noopener" href="https://www.php.net/BadMethodCallException">BadMethodCallException</a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_firstClosureParameterType">
+        <div class="location">in <a href="../../Illuminate/Support/Traits/ReflectsClosures.html#method_firstClosureParameterType">
+<abbr title="Illuminate\Support\Traits\ReflectsClosures">ReflectsClosures</abbr></a> <a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Support/Traits/ReflectsClosures.php#L21">at line 21</a></div>
+        <code>            protected        string
+    <strong>firstClosureParameterType</strong>(<a target="_blank" rel="noopener" href="https://www.php.net/Closure">Closure</a> $closure)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Get the class name of the first parameter of the given Closure.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a target="_blank" rel="noopener" href="https://www.php.net/Closure">Closure</a></td>
+                <td>$closure</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a target="_blank" rel="noopener" href="https://www.php.net/ReflectionException">ReflectionException</a></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a target="_blank" rel="noopener" href="https://www.php.net/RuntimeException">RuntimeException</a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_firstClosureParameterTypes">
+        <div class="location">in <a href="../../Illuminate/Support/Traits/ReflectsClosures.html#method_firstClosureParameterTypes">
+<abbr title="Illuminate\Support\Traits\ReflectsClosures">ReflectsClosures</abbr></a> <a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Support/Traits/ReflectsClosures.php#L45">at line 45</a></div>
+        <code>            protected        array
+    <strong>firstClosureParameterTypes</strong>(<a target="_blank" rel="noopener" href="https://www.php.net/Closure">Closure</a> $closure)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Get the class names of the first parameter of the given Closure, including union types.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a target="_blank" rel="noopener" href="https://www.php.net/Closure">Closure</a></td>
+                <td>$closure</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a target="_blank" rel="noopener" href="https://www.php.net/ReflectionException">ReflectionException</a></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a target="_blank" rel="noopener" href="https://www.php.net/RuntimeException">RuntimeException</a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_closureParameterTypes">
+        <div class="location">in <a href="../../Illuminate/Support/Traits/ReflectsClosures.html#method_closureParameterTypes">
+<abbr title="Illuminate\Support\Traits\ReflectsClosures">ReflectsClosures</abbr></a> <a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Support/Traits/ReflectsClosures.php#L76">at line 76</a></div>
+        <code>            protected        array
+    <strong>closureParameterTypes</strong>(<a target="_blank" rel="noopener" href="https://www.php.net/Closure">Closure</a> $closure)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Get the class names / types of the parameters of the given Closure.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a target="_blank" rel="noopener" href="https://www.php.net/Closure">Closure</a></td>
+                <td>$closure</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a target="_blank" rel="noopener" href="https://www.php.net/ReflectionException">ReflectionException</a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method___construct">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Events/Dispatcher.php#L65">at line 65</a></div>
+        <code>                    void
+    <strong>__construct</strong>(<a href="../../Illuminate/Contracts/Container/Container.html"><abbr title="Illuminate\Contracts\Container\Container">Container</abbr></a> $container = null)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Create a new event dispatcher instance.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../Illuminate/Contracts/Container/Container.html"><abbr title="Illuminate\Contracts\Container\Container">Container</abbr></a></td>
+                <td>$container</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_listen">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Events/Dispatcher.php#L77">at line 77</a></div>
+        <code>                    void
+    <strong>listen</strong>(<a target="_blank" rel="noopener" href="https://www.php.net/Closure">Closure</a>|string|array $events, <a target="_blank" rel="noopener" href="https://www.php.net/Closure">Closure</a>|string|array|null $listener = null)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Register an event listener with the dispatcher.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a target="_blank" rel="noopener" href="https://www.php.net/Closure">Closure</a>|string|array</td>
+                <td>$events</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a target="_blank" rel="noopener" href="https://www.php.net/Closure">Closure</a>|string|array|null</td>
+                <td>$listener</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setupWildcardListen">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Events/Dispatcher.php#L109">at line 109</a></div>
+        <code>            protected        void
+    <strong>setupWildcardListen</strong>(string $event, <a target="_blank" rel="noopener" href="https://www.php.net/Closure">Closure</a>|string $listener)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Setup a wildcard listener callback.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$event</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a target="_blank" rel="noopener" href="https://www.php.net/Closure">Closure</a>|string</td>
+                <td>$listener</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_hasListeners">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Events/Dispatcher.php#L122">at line 122</a></div>
+        <code>                    bool
+    <strong>hasListeners</strong>(string $eventName)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Determine if a given event has listeners.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$eventName</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_hasWildcardListeners">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Events/Dispatcher.php#L135">at line 135</a></div>
+        <code>                    bool
+    <strong>hasWildcardListeners</strong>(string $eventName)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Determine if the given event has any wildcard listeners.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$eventName</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_push">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Events/Dispatcher.php#L153">at line 153</a></div>
+        <code>                    void
+    <strong>push</strong>(string $event, array $payload = [])
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Register an event and payload to be fired later.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$event</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$payload</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_flush">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Events/Dispatcher.php#L166">at line 166</a></div>
+        <code>                    void
+    <strong>flush</strong>(string $event)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Flush a set of pushed events.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$event</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_subscribe">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Events/Dispatcher.php#L177">at line 177</a></div>
+        <code>                    void
+    <strong>subscribe</strong>(object|string $subscriber)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Register an event subscriber with the dispatcher.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>object|string</td>
+                <td>$subscriber</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_resolveSubscriber">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Events/Dispatcher.php#L204">at line 204</a></div>
+        <code>            protected        mixed
+    <strong>resolveSubscriber</strong>(object|string $subscriber)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Resolve the subscriber instance.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>object|string</td>
+                <td>$subscriber</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>mixed</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_until">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Events/Dispatcher.php#L220">at line 220</a></div>
+        <code>                    array|null
+    <strong>until</strong>(string|object $event, mixed $payload = [])
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Fire an event until the first non-null response is returned.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string|object</td>
+                <td>$event</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>mixed</td>
+                <td>$payload</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array|null</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_dispatch">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Events/Dispatcher.php#L233">at line 233</a></div>
+        <code>                    array|null
+    <strong>dispatch</strong>(string|object $event, mixed $payload = [], bool $halt = false)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Fire an event and call the listeners.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string|object</td>
+                <td>$event</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>mixed</td>
+                <td>$payload</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>bool</td>
+                <td>$halt</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array|null</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_parseEventAndPayload">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Events/Dispatcher.php#L278">at line 278</a></div>
+        <code>            protected        array
+    <strong>parseEventAndPayload</strong>(mixed $event, mixed $payload)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Parse the given event and payload and prepare them for dispatching.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>mixed</td>
+                <td>$event</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>mixed</td>
+                <td>$payload</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_shouldBroadcast">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Events/Dispatcher.php#L293">at line 293</a></div>
+        <code>            protected        bool
+    <strong>shouldBroadcast</strong>(array $payload)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Determine if the payload has a broadcastable event.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$payload</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_broadcastWhen">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Events/Dispatcher.php#L306">at line 306</a></div>
+        <code>            protected        bool
+    <strong>broadcastWhen</strong>(mixed $event)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Check if the event should be broadcasted by the condition.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>mixed</td>
+                <td>$event</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_broadcastEvent">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Events/Dispatcher.php#L318">at line 318</a></div>
+        <code>            protected        void
+    <strong>broadcastEvent</strong>(<a href="../../Illuminate/Contracts/Broadcasting/ShouldBroadcast.html"><abbr title="Illuminate\Contracts\Broadcasting\ShouldBroadcast">ShouldBroadcast</abbr></a> $event)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Broadcast the given event class.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../Illuminate/Contracts/Broadcasting/ShouldBroadcast.html"><abbr title="Illuminate\Contracts\Broadcasting\ShouldBroadcast">ShouldBroadcast</abbr></a></td>
+                <td>$event</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getListeners">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Events/Dispatcher.php#L329">at line 329</a></div>
+        <code>                    array
+    <strong>getListeners</strong>(string $eventName)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Get all of the listeners for a given event name.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$eventName</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getWildcardListeners">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Events/Dispatcher.php#L349">at line 349</a></div>
+        <code>            protected        array
+    <strong>getWildcardListeners</strong>(string $eventName)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Get the wildcard listeners for the event.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$eventName</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_addInterfaceListeners">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Events/Dispatcher.php#L369">at line 369</a></div>
+        <code>            protected        array
+    <strong>addInterfaceListeners</strong>(string $eventName, array $listeners = [])
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Add the listeners for the event's interfaces to the given array.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$eventName</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$listeners</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_makeListener">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Events/Dispatcher.php#L389">at line 389</a></div>
+        <code>                    <a target="_blank" rel="noopener" href="https://www.php.net/Closure">Closure</a>
+    <strong>makeListener</strong>(<a target="_blank" rel="noopener" href="https://www.php.net/Closure">Closure</a>|string|array $listener, bool $wildcard = false)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Register an event listener with the dispatcher.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a target="_blank" rel="noopener" href="https://www.php.net/Closure">Closure</a>|string|array</td>
+                <td>$listener</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>bool</td>
+                <td>$wildcard</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a target="_blank" rel="noopener" href="https://www.php.net/Closure">Closure</a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_createClassListener">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Events/Dispatcher.php#L415">at line 415</a></div>
+        <code>                    <a target="_blank" rel="noopener" href="https://www.php.net/Closure">Closure</a>
+    <strong>createClassListener</strong>(string $listener, bool $wildcard = false)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Create a class based listener using the IoC container.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$listener</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>bool</td>
+                <td>$wildcard</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a target="_blank" rel="noopener" href="https://www.php.net/Closure">Closure</a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_createClassCallable">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Events/Dispatcher.php#L434">at line 434</a></div>
+        <code>            protected        callable
+    <strong>createClassCallable</strong>(array|string $listener)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Create the class based event callable.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array|string</td>
+                <td>$listener</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>callable</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_parseClassCallable">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Events/Dispatcher.php#L461">at line 461</a></div>
+        <code>            protected        array
+    <strong>parseClassCallable</strong>(string $listener)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Parse the class listener into class and method.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$listener</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_handlerShouldBeQueued">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Events/Dispatcher.php#L472">at line 472</a></div>
+        <code>            protected        bool
+    <strong>handlerShouldBeQueued</strong>(string $class)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Determine if the event handler class should be queued.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$class</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_createQueuedHandlerCallable">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Events/Dispatcher.php#L490">at line 490</a></div>
+        <code>            protected        <a target="_blank" rel="noopener" href="https://www.php.net/Closure">Closure</a>
+    <strong>createQueuedHandlerCallable</strong>(string $class, string $method)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Create a callable for putting an event handler on the queue.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$class</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$method</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a target="_blank" rel="noopener" href="https://www.php.net/Closure">Closure</a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_handlerShouldBeDispatchedAfterDatabaseTransactions">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Events/Dispatcher.php#L509">at line 509</a></div>
+        <code>            protected        bool
+    <strong>handlerShouldBeDispatchedAfterDatabaseTransactions</strong>(object|mixed $listener)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Determine if the given event handler should be dispatched after all database transactions have committed.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>object|mixed</td>
+                <td>$listener</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_createCallbackForListenerRunningAfterCommits">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Events/Dispatcher.php#L521">at line 521</a></div>
+        <code>            protected        <a target="_blank" rel="noopener" href="https://www.php.net/Closure">Closure</a>
+    <strong>createCallbackForListenerRunningAfterCommits</strong>(mixed $listener, string $method)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Create a callable for dispatching a listener after database transactions.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>mixed</td>
+                <td>$listener</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$method</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a target="_blank" rel="noopener" href="https://www.php.net/Closure">Closure</a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_handlerWantsToBeQueued">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Events/Dispatcher.php#L541">at line 541</a></div>
+        <code>            protected        bool
+    <strong>handlerWantsToBeQueued</strong>(string $class, array $arguments)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Determine if the event handler wants to be queued.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$class</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$arguments</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_queueHandler">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Events/Dispatcher.php#L560">at line 560</a></div>
+        <code>            protected        void
+    <strong>queueHandler</strong>(string $class, string $method, array $arguments)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Queue the handler class.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$class</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$method</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$arguments</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_createListenerAndJob">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Events/Dispatcher.php#L585">at line 585</a></div>
+        <code>            protected        array
+    <strong>createListenerAndJob</strong>(string $class, string $method, array $arguments)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Create the listener and job for a queued listener.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$class</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$method</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$arguments</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_propagateListenerOptions">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Events/Dispatcher.php#L601">at line 601</a></div>
+        <code>            protected        mixed
+    <strong>propagateListenerOptions</strong>(mixed $listener, mixed $job)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Propagate listener options to the job.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>mixed</td>
+                <td>$listener</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>mixed</td>
+                <td>$job</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>mixed</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_forget">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Events/Dispatcher.php#L625">at line 625</a></div>
+        <code>                    void
+    <strong>forget</strong>(string $event)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Remove a set of listeners from the dispatcher.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$event</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_forgetPushed">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Events/Dispatcher.php#L645">at line 645</a></div>
+        <code>                    void
+    <strong>forgetPushed</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Forget all of the pushed listeners.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_resolveQueue">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Events/Dispatcher.php#L659">at line 659</a></div>
+        <code>            protected        <a href="../../Illuminate/Contracts/Queue/Queue.html"><abbr title="Illuminate\Contracts\Queue\Queue">Queue</abbr></a>
+    <strong>resolveQueue</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Get the queue implementation from the resolver.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../Illuminate/Contracts/Queue/Queue.html"><abbr title="Illuminate\Contracts\Queue\Queue">Queue</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setQueueResolver">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Events/Dispatcher.php#L670">at line 670</a></div>
+        <code>                    $this
+    <strong>setQueueResolver</strong>(callable $resolver)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Set the queue resolver implementation.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>callable</td>
+                <td>$resolver</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>$this</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+            </div>
+
+    
+</div><div id="footer">
+        Generated by <a href="https://github.com/code-lts/doctum">Doctum, a API Documentation generator and fork of Sami</a>.</div></div>
+    </div>
+    </body>
+
+</html>

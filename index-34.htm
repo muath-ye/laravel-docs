@@ -1,0 +1,1706 @@
+<!DOCTYPE html>
+<!--[if lt IE 3]>
+ ______  __       ___
+/\  _  \/\ \     /\_ \
+\ \ \L\ \ \ \____\//\ \    __  __
+ \ \  __ \ \ '__`\ \ \ \  /\ \/\ \
+  \ \ \/\ \ \ \L\ \ \_\ \_\ \ \_\ \
+   \ \_\ \_\ \_,__/ /\____\\/`____ \
+    \/_/\/_/\/___/  \/____/ `/___/> \
+                               /\___/
+                               \/__/
+
+Interested in solving hard distributed and realtime problems, at scale?
+We're looking for great people to join us. See https://ably.com/careers
+<![endif]-->
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Ably: the platform to power synchronized digital experiences in realtime | Ably Realtime</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="runtime-environment" content="production">
+    <meta name="cookies-accepted" content="accept_cookie">
+    <meta name="csrf-param" content="authenticity_token" />
+<meta name="csrf-token" content="wPHHrJ702nrHWsQGLWZ/ljIVtctRxuVLJ6WorhaSeCv63BNIXry0RUX6V+9VCBAs17BHAzX/As9esav8g3jkDw==" />
+    
+    <meta name="description" content="Ably provides a suite of APIs to build, extend, and deliver powerful digital experiences in realtime. Organizations like Toyota, Bloomberg, HubSpot, and Hopin depend on Ably’s platform to offload the growing complexity of business-critical realtime data synchronization at global scale.">
+
+<meta property="og:title" content="Ably: the platform to power synchronized digital experiences in realtime">
+<meta property="og:site_name" content="Ably Realtime">
+<meta property="og:url" content="https://ably.com/">
+<meta property="og:description" content="Ably provides a suite of APIs to build, extend, and deliver powerful digital experiences in realtime. Organizations like Toyota, Bloomberg, HubSpot, and Hopin depend on Ably’s platform to offload the growing complexity of business-critical realtime data synchronization at global scale.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://files.ably.io/website/images/meta-tags/ably-generic%402x.jpg">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@ablyrealtime">
+<meta name="twitter:title" content="Ably: the platform to power synchronized digital experiences in realtime">
+<meta name="twitter:description" content="Ably provides a suite of APIs to build, extend, and deliver powerful digital experiences in realtime. Organizations like Toyota, Bloomberg, HubSpot, and Hopin depend on Ably’s platform to offload the growing complexity of business-critical realtime data synchronization at global scale.">
+<meta name="twitter:image" content="https://files.ably.io/website/images/meta-tags/ably-generic%402x.jpg">
+
+
+    <link rel="preload" href="/packs/media/fonts/NEXT-Book-Light-23c5ac93.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="/packs/media/fonts/NEXT-Book-Medium-7c43b50a.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+
+    <link rel="stylesheet" media="screen" href="/packs/css/92-353fafc1.chunk.css" />
+<link rel="stylesheet" media="screen" href="/packs/css/ably-ui-890ff2be.chunk.css" />
+<link rel="stylesheet" media="screen" href="/packs/css/82-b878ebd8.chunk.css" />
+<link rel="stylesheet" media="screen" href="/packs/css/72-8b687635.chunk.css" />
+<link rel="stylesheet" media="screen" href="/packs/css/81-a5310338.chunk.css" />
+    
+
+      <!-- Google Tag Manager -->
+  <script>
+    // Initialize dataLayer
+    window.dataLayer = window.dataLayer || [];
+  </script>
+
+  <script>
+    (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl+'&gtm_auth=OwoW8XUrrg19PuKAgJa7-g&gtm_preview=env-2&gtm_cookies_win=x';f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-TZ37KKW');
+    
+    
+    dataLayer.push({ 'sessionPageViews': 2 });
+  </script>
+  <!-- End Google Tag Manager -->
+
+    <script type="text/javascript" id="hs-script-loader" async src="//js.hs-scripts.com/6939709.js">
+</script>
+
+<script type="text/javascript">
+  var _hsq = window._hsq = window._hsq || [];
+
+
+</script>
+
+  </head>
+
+
+
+  <body  class="bg-light-grey" data-api-blog-posts="/blog/feed/recent" data-notice-cookie-id="bnr.x" data-api-company-autocomplete-uri="https://autocomplete.clearbit.com/v1/companies/suggest" data-notice-id="76" data-notice-config-collapse="true" data-sentry-browser-config={&quot;client&quot;:{&quot;dsn&quot;:&quot;https://eea063ec602e468aa15a94fbaa0556be@o1076963.ingest.sentry.io/6156014&quot;,&quot;environment&quot;:&quot;production&quot;,&quot;release&quot;:&quot;7fb1fa71681d15b593b3f41abd5eead066faff25&quot;},&quot;user&quot;:null,&quot;emulating&quot;:null}>
+      <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TZ37KKW&gtm_auth=OwoW8XUrrg19PuKAgJa7-g&gtm_preview=env-2&gtm_cookies_win=x"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
+
+    <nav class="ui-meganav-wrapper bg-white shadow-subtle" data-id="meganav" aria-label="Main">
+  <div class="ui-announcement bg-gradient-active-orange text-white" data-id="ui-notice" style="max-height: 0; overflow: hidden">
+  <div class="ui-grid-px py-16 max-w-screen-xl mx-auto flex items-start">
+    <a class="font-light w-full pr-8 text-p3 self-center" href="https://ably.com/careers">
+      <strong class="font-medium whitespace-nowrap pr-4">🚀 We&#39;re hiring for roles across Ably!</strong>
+      <span class="pr-4">Help us build and deliver the platform to power live and collaborative experiences for one billion devices every month by 2024.</span>
+      <span class="underline cursor-pointer whitespace-nowrap">See what life is like at Ably &gt;</span>
+</a>
+      <button name="button" type="button" class="h-20 w-20 mt-4 ml-auto border-none bg-none self-baseline">
+        <svg class="text-white " style="width: 1.25rem; height: 1.25rem">
+  <use xlink:href="#sprite-icon-gui-close"></use>
+</svg>
+</button>  </div>
+</div>
+
+  <div class="ui-meganav ui-grid-px">
+    <a class="h-32" href="/">
+  <svg class="transition-colors text-cool-black" data-id="meganav-logo" width="108" height="32" viewBox="0 0 108 32" xmlns="http://www.w3.org/2000/svg">
+    <path
+      d="M62.922 24.9786V4.08813H66.6933V11.6512C67.9709 10.435 69.6164 9.76044 71.3538 9.76044C75.4318 9.76044 79.0498 12.8674 79.0498 17.5484C79.0498 22.2293 75.4318 25.3465 71.3538 25.3465C69.5244 25.3465 67.7971 24.6209 66.5094 23.3024V24.9786H62.922ZM75.2785 17.5484C75.2785 14.932 73.4183 13.1025 70.9859 13.1025C68.6148 13.1025 66.7853 14.84 66.6933 17.3644V17.5484C66.6933 20.1648 68.5534 21.9942 70.9859 21.9942C73.4183 21.9942 75.2785 20.1648 75.2785 17.5484ZM80.7975 24.9786V4.08813H84.5688V24.9786H80.7975ZM89.8425 30.3954L92.0399 25.1523L86.0712 10.1284H90.1491L93.9511 20.6247L97.8144 10.1284H101.954L93.8591 30.4056H89.8425V30.3954ZM56.9329 10.1284V12.0191C55.6247 10.5883 53.7952 9.77066 51.9147 9.77066C47.8367 9.77066 44.2187 12.8777 44.2187 17.5586C44.2187 22.2497 47.8367 25.3465 51.9147 25.3465C53.8668 25.3465 55.7166 24.4982 57.0555 22.9754V24.9888H60.3465V10.1284H56.9329ZM56.5649 17.5484C56.5649 20.1341 54.7048 21.9942 52.2724 21.9942C49.8399 21.9942 47.9798 20.1341 47.9798 17.5484C47.9798 14.9626 49.8399 13.1025 52.2724 13.1025C54.6435 13.1025 56.473 14.8706 56.5649 17.3644V17.5484Z"
+      fill="currentColor"
+    />
+    <path d="M19.2858 0L3.14788 29.5369L0 27.3293L14.932 0H19.2858ZM19.5107 0L35.6487 29.5369L38.7965 27.3293L23.8646 0H19.5107Z" fill="url(#paint0_linear)" />
+    <path d="M35.4238 29.7107L19.3983 17.16L3.37271 29.7107L6.64323 32L19.3983 22.0147L32.1533 32L35.4238 29.7107Z" fill="url(#paint1_linear)" />
+    <defs>
+      <linearGradient id="paint0_linear" x1="5.47361" y1="37.4219" x2="32.4603" y2="7.45023" gradientUnits="userSpaceOnUse">
+        <stop stop-color="#FF5416" />
+        <stop offset="0.2535" stop-color="#FF5115" />
+        <stop offset="0.461" stop-color="#FF4712" />
+        <stop offset="0.6523" stop-color="#FF350E" />
+        <stop offset="0.8327" stop-color="#FF1E08" />
+        <stop offset="1" stop-color="#FF0000" />
+      </linearGradient>
+      <linearGradient id="paint1_linear" x1="10.7084" y1="39.3593" x2="26.6583" y2="21.6452" gradientUnits="userSpaceOnUse">
+        <stop stop-color="#FF5416" />
+        <stop offset="0.2535" stop-color="#FF5115" />
+        <stop offset="0.461" stop-color="#FF4712" />
+        <stop offset="0.6523" stop-color="#FF350E" />
+        <stop offset="0.8327" stop-color="#FF1E08" />
+        <stop offset="1" stop-color="#FF0000" />
+      </linearGradient>
+    </defs>
+</svg></a>
+    <ul class="hidden md:flex" data-id="meganav-items-desktop">
+    <li class="ui-meganav-item">
+      <button name="button" type="button" class="ui-meganav-link h-64 flex items-center group text-cool-black" data-id="meganav-control" aria-expanded="false" aria-controls="platform-panel" aria-label="Show 
+        Platform
+">  
+        Platform
+<svg class="text-cool-black transform rotate-90 group-hover:text-gui-hover group-focus:text-gui-focus" style="width: 1.5rem; height: 1.5rem">
+  <use xlink:href="#sprite-icon-gui-disclosure-arrow"></use>
+</svg>
+</button>
+      <div class="ui-meganav-panel invisible" data-id="meganav-panel" id="platform-panel">
+        <section class="ui-meganav-content ui-grid-gap sm:grid-cols-2 md:grid-cols-3">
+  <div class="sm:col-span-full md:col-span-1">
+    <div class="flex mb-20">
+      <img alt="Ably homepage" src="/assets/ably_ui/core/images/ably-stack-bbd871091cfae630ec875060e923948ec5bdb06b69de8a303cb7967b82dd5999.svg" />
+      <h3 class="ui-meganav-overline ml-24">The Ably Platform</h3>
+    </div>
+
+    <p class="text-p2 font-medium text-cool-black mb-8">
+      Easily power any realtime experience in your application. No complex infrastructure to manage or provision. Just a simple API that handles everything
+      realtime, and lets you focus on your code.
+    </p>
+
+    <a class="ui-featured-link text-menu3 py-8  " style="--featured-link-icon-size: var(--fs-menu3)" href="/platform">
+  Explore how it works<svg class="text-cool-black ui-featured-link-icon" style="width: calc(var(--featured-link-icon-size) * 1.25); height: calc(var(--featured-link-icon-size) * 1.25)">
+  <use xlink:href="#sprite-icon-gui-link-arrow"></use>
+</svg>
+</a>
+  </div>
+
+  <div>
+    <h3 class="ui-meganav-overline" id="meganav-platform-panel-list-our-features">Our features</h3>
+    <ul aria-labelledby="meganav-platform-panel-list-our-features">
+      <li>
+        <a class="ui-meganav-media group" href="/pub-sub-messaging">
+          <p class="ui-meganav-media-heading">Publish/subscribe messaging</p>
+          <p class="ui-meganav-media-copy">Feature-rich pub/sub messaging to power any realtime requirement.</p>
+</a>      </li>
+      <li>
+        <a class="ui-meganav-media group" href="/push-notifications">
+          <p class="ui-meganav-media-heading">Push notifications</p>
+          <p class="ui-meganav-media-copy">Deliver native notifications at scale with our unified API.</p>
+</a>      </li>
+      <li>
+        <a class="ui-meganav-media group" href="/integrations">
+          <p class="ui-meganav-media-heading">Third-party integrations</p>
+          <p class="ui-meganav-media-copy">Integrate and extend Ably with cloud services like AWS Kinesis.</p>
+</a>      </li>
+      <li>
+        <a class="ui-meganav-media group" href="/protocols">
+          <p class="ui-meganav-media-heading">Multi-protocol messaging</p>
+          <p class="ui-meganav-media-copy">We support pub/sub over WebSockets, MQTT, SSE, and more.</p>
+</a>      </li>
+      <li>
+        <a class="ui-meganav-media group" href="/hub">
+          <p class="ui-meganav-media-heading">Streaming data sources</p>
+          <p class="ui-meganav-media-copy">Augment your apps with realtime updates like weather or transit.</p>
+</a>      </li>
+    </ul>
+
+    <a class="ui-featured-link text-menu3 py-8  " style="--featured-link-icon-size: var(--fs-menu3)" href="/platform">
+  Explore all platform features<svg class="text-cool-black ui-featured-link-icon" style="width: calc(var(--featured-link-icon-size) * 1.25); height: calc(var(--featured-link-icon-size) * 1.25)">
+  <use xlink:href="#sprite-icon-gui-link-arrow"></use>
+</svg>
+</a>
+  </div>
+
+  <div>
+    <h3 class="ui-meganav-overline" id="meganav-platform-panel-list-our-technology">Our technology</h3>
+    <ul class="mb-8" aria-labelledby="meganav-platform-panel-list-our-technology">
+      <li>
+        <a class="ui-meganav-media group" href="/four-pillars-of-dependability#performance">
+          <p class="ui-meganav-media-heading">Predictable performance</p>
+          <p class="ui-meganav-media-copy">We provide predictability so you can be confident your realtime application will always perform as expected.</p>
+</a>      </li>
+      <li>
+        <a class="ui-meganav-media group" href="/four-pillars-of-dependability#integrity">
+          <p class="ui-meganav-media-heading">Guaranteed ordering & delivery</p>
+          <p class="ui-meganav-media-copy">We guarantee in-order data delivery, even after disconnections.</p>
+</a>      </li>
+      <li>
+        <a class="ui-meganav-media group" href="/four-pillars-of-dependability#reliability">
+          <p class="ui-meganav-media-heading">Fault tolerant infrastructure</p>
+          <p class="ui-meganav-media-copy">Redundant at regional and global levels with 99.999% uptime SLAs.</p>
+</a>      </li>
+      <li>
+        <a class="ui-meganav-media group" href="/four-pillars-of-dependability#availability">
+          <p class="ui-meganav-media-heading">High scalability & availability</p>
+          <p class="ui-meganav-media-copy">Elastic, battle-tested global infrastructure for massive scale.</p>
+</a>      </li>
+      <li>
+        <a class="ui-meganav-media group" href="/network">
+          <p class="ui-meganav-media-heading">Global edge network</p>
+          <p class="ui-meganav-media-copy">An edge network of 15 core routing datacenters and 200+ PoPs.</p>
+</a>      </li>
+    </ul>
+
+    <a class="ui-featured-link text-menu3 py-8  " style="--featured-link-icon-size: var(--fs-menu3)" href="/four-pillars-of-dependability">
+  Explore our technology<svg class="text-cool-black ui-featured-link-icon" style="width: calc(var(--featured-link-icon-size) * 1.25); height: calc(var(--featured-link-icon-size) * 1.25)">
+  <use xlink:href="#sprite-icon-gui-link-arrow"></use>
+</svg>
+</a>
+  </div>
+</section>
+
+</div>    </li>
+    <li class="ui-meganav-item">
+      <button name="button" type="button" class="ui-meganav-link h-64 flex items-center group text-cool-black" data-id="meganav-control" aria-expanded="false" aria-controls="use-cases-panel" aria-label="Show 
+        Use Cases
+">  
+        Use Cases
+<svg class="text-cool-black transform rotate-90 group-hover:text-gui-hover group-focus:text-gui-focus" style="width: 1.5rem; height: 1.5rem">
+  <use xlink:href="#sprite-icon-gui-disclosure-arrow"></use>
+</svg>
+</button>
+      <div class="ui-meganav-panel invisible" data-id="meganav-panel" id="use-cases-panel">
+        <section class="ui-meganav-content ui-grid-gap md:grid-cols-2 gap-y-0 md:gap-y-32">
+  <div>
+    <h3 class="ui-meganav-overline" id="meganav-use-cases-panel-industry-use-cases">By use case</h3>
+    <ul aria-labelledby="meganav-use-cases-panel-industry-use-cases">
+      <li>
+        <a class="ui-meganav-media group" href="/solutions/extend-kafka-to-the-edge">
+          <p class="ui-meganav-media-heading">Extend Kafka to the edge</p>
+          <p class="ui-meganav-media-copy">Enhance and reliably expand Kafka&apos;s event streaming capabilities beyond your private network.</p>
+</a>      </li>
+      <li>
+        <a class="ui-meganav-media group" href="/solutions/edtech">
+          <p class="ui-meganav-media-heading">EdTech</p>
+          <p class="ui-meganav-media-copy">Deliver interactive learning experiences like multi-user classrooms with chat.</p>
+</a>      </li>
+      <li>
+        <a class="ui-meganav-media group" href="/solutions/automotive-logistics-and-mobility">
+          <p class="ui-meganav-media-heading">Automotive, Logistics, & Mobility</p>
+          <p class="ui-meganav-media-copy">Power asset tracking, live transit updates, race-critical diagnostics, and more.</p>
+</a>      </li>
+      <li>
+        <a class="ui-meganav-media group" href="/solutions/b2b-platforms">
+          <p class="ui-meganav-media-heading">B2B Platforms</p>
+          <p class="ui-meganav-media-copy">Empower customers with realtime technology that gives them a competitive edge.</p>
+</a>      </li>
+      <li>
+        <a class="ui-meganav-media group" href="/solutions/healthcare">
+          <p class="ui-meganav-media-heading">Healthcare</p>
+          <p class="ui-meganav-media-copy">Provide HIPAA-compliant realtime apps healthcare professionals can depend on.</p>
+</a>      </li>
+      <li>
+        <a class="ui-meganav-media group" href="/solutions/virtual-events">
+          <p class="ui-meganav-media-heading">Virtual Events</p>
+          <p class="ui-meganav-media-copy">Power engaging virtual events with interactive realtime features.</p>
+</a>      </li>
+    </ul>
+  </div>
+
+  <div>
+    <ul class="md:mt-40" aria-labelledby="meganav-use-cases-panel-industry-use-cases">
+      <li>
+        <a class="ui-meganav-media group" href="/solutions/iot-and-connected-devices">
+          <p class="ui-meganav-media-heading">IoT & Connected Devices</p>
+          <p class="ui-meganav-media-copy">Monitor and control global IoT deployments of any kind in realtime.</p>
+</a>      </li>
+      <li>
+        <a class="ui-meganav-media group" href="/solutions/sports-and-media">
+          <p class="ui-meganav-media-heading">Sports & Media</p>
+          <p class="ui-meganav-media-copy">Deliver global realtime experiences to keep fans informed, engaged, entertained.</p>
+</a>      </li>
+      <li>
+        <a class="ui-meganav-media group" href="/solutions/gaming">
+          <p class="ui-meganav-media-heading">Gaming</p>
+          <p class="ui-meganav-media-copy">Power interactive gaming experiences that are wicked fast and utterly reliable.</p>
+</a>      </li>
+      <li>
+        <a class="ui-meganav-media group" href="/solutions/ecommerce-and-retail">
+          <p class="ui-meganav-media-heading">eCommerce & Retail</p>
+          <p class="ui-meganav-media-copy">Enable realtime pricing, inventory, and transactions to enrich user experiences.</p>
+</a>      </li>
+      <li>
+        <a class="ui-meganav-media group" href="/solutions/asset-tracking">
+          <p class="ui-meganav-media-heading">Asset Tracking</p>
+          <p class="ui-meganav-media-copy">Track assets in realtime with a solution optimized for last mile logistics, food delivery applications, and urban mobility services.</p>
+</a>      </li>
+    </ul>
+  </div>
+</section>
+
+</div>    </li>
+    <li class="ui-meganav-item">
+      <button name="button" type="button" class="ui-meganav-link h-64 flex items-center group text-cool-black" data-id="meganav-control" aria-expanded="false" aria-controls="why-ably-panel" aria-label="Show 
+        Why Ably
+">  
+        Why Ably
+<svg class="text-cool-black transform rotate-90 group-hover:text-gui-hover group-focus:text-gui-focus" style="width: 1.5rem; height: 1.5rem">
+  <use xlink:href="#sprite-icon-gui-disclosure-arrow"></use>
+</svg>
+</button>
+      <div class="ui-meganav-panel invisible" data-id="meganav-panel" id="why-ably-panel">
+        <section class="ui-meganav-content ui-grid-gap md:grid-cols-3">
+  <div>
+    <h3 class="ui-meganav-overline" id="meganav-why-ably-panel-list-why-companies">Why companies choose Ably</h3>
+    <ul aria-labelledby="meganav-why-ably-panel-list-why-companies">
+      <li>
+        <a class="group ui-meganav-media py-12" href="/customers">
+          <p class="ui-meganav-media-heading">Customers</p>
+</a>      </li>
+
+      <li>
+        <a class="group ui-meganav-media py-12" href="/case-studies">
+          <p class="ui-meganav-media-heading">Case studies</p>
+</a>      </li>
+
+      <li>
+        <a class="group ui-meganav-media py-12" href="/compare">
+          <p class="ui-meganav-media-heading">Compare our tech</p>
+</a>      </li>
+
+      <li>
+        <a class="group ui-meganav-media py-12" href="/aws">
+          <p class="ui-meganav-media-heading">Ably & AWS</p>
+</a>      </li>
+
+      <li>
+        <a class="group ui-meganav-media py-12" href="/resources/datasheets">
+          <p class="ui-meganav-media-heading">Resources</p>
+</a>      </li>
+    </ul>
+  </div>
+
+  <div>
+    <h3 class="ui-meganav-overline" id="meganav-why-ably-panel-list-four-pillars">Four pillars of dependability</h3>
+    <ul class="mb-8" aria-labelledby="meganav-why-ably-panel-list-four-pillars">
+      <li>
+        <a class="ui-meganav-media group" href="/four-pillars-of-dependability#performance">
+          <p class="ui-meganav-media-heading">Predictable performance</p>
+          <p class="ui-meganav-media-copy">A low-latency global edge network across 200+ PoPs.</p>
+</a>      </li>
+      <li>
+        <a class="ui-meganav-media group" href="/four-pillars-of-dependability#integrity">
+          <p class="ui-meganav-media-heading">Guaranteed ordering & delivery</p>
+          <p class="ui-meganav-media-copy">We guarantee in-order data delivery, even after disconnections.</p>
+</a>      </li>
+      <li>
+        <a class="ui-meganav-media group" href="/four-pillars-of-dependability#reliability">
+          <p class="ui-meganav-media-heading">Fault tolerant infrastructure</p>
+          <p class="ui-meganav-media-copy">Redundant at regional and global levels with 99.999% uptime SLAs.</p>
+</a>      </li>
+      <li>
+        <a class="ui-meganav-media group" href="/four-pillars-of-dependability#availability">
+          <p class="ui-meganav-media-heading">High scalability & availability</p>
+          <p class="ui-meganav-media-copy">Elastic, battle-tested global infrastructure for massive scale.</p>
+</a>      </li>
+    </ul>
+
+    <a class="ui-featured-link text-menu3 py-8  " style="--featured-link-icon-size: var(--fs-menu3)" href="/four-pillars-of-dependability">
+  Explore our Four Pillars of Dependability<svg class="text-cool-black ui-featured-link-icon" style="width: calc(var(--featured-link-icon-size) * 1.25); height: calc(var(--featured-link-icon-size) * 1.25)">
+  <use xlink:href="#sprite-icon-gui-link-arrow"></use>
+</svg>
+</a>
+  </div>
+
+  <div class="hidden" data-id="meganav-why-ably-panel-blog-section">
+  <h3 class="ui-meganav-overline" id="meganav-why-ably-panel-recent-blog-posts">Blog</h3>
+  <ul class="mb-8" aria-labelledby="meganav-why-ably-panel-recent-blog-posts" data-id="meganav-why-ably-panel-recent-blog-posts"></ul>
+  <a class="ui-featured-link text-menu3 py-8  " style="--featured-link-icon-size: var(--fs-menu3)" href="/blog">
+  More from our Blog<svg class="text-cool-black ui-featured-link-icon" style="width: calc(var(--featured-link-icon-size) * 1.25); height: calc(var(--featured-link-icon-size) * 1.25)">
+  <use xlink:href="#sprite-icon-gui-link-arrow"></use>
+</svg>
+</a>
+</div>
+
+</section>
+
+</div>    </li>
+    <li class="ui-meganav-item">
+      <button name="button" type="button" class="ui-meganav-link h-64 flex items-center group text-cool-black" data-id="meganav-control" aria-expanded="false" aria-controls="developers-panel" aria-label="Show 
+        Developers
+">  
+        Developers
+<svg class="text-cool-black transform rotate-90 group-hover:text-gui-hover group-focus:text-gui-focus" style="width: 1.5rem; height: 1.5rem">
+  <use xlink:href="#sprite-icon-gui-disclosure-arrow"></use>
+</svg>
+</button>
+      <div class="ui-meganav-panel invisible" data-id="meganav-panel" id="developers-panel">
+        <section class="ui-meganav-content ui-grid-gap md:grid-cols-3">
+  <div>
+    <h3 class="ui-meganav-overline md:mb-8">Documentation</h3>
+    <div class="relative mb-16">
+      <form class="relative" action="/search" method="get">
+        <svg class="text-cool-black absolute top-8 left-8 pt-1 mt-1" style="width: 1.5rem; height: 1.5rem">
+  <use xlink:href="#sprite-icon-gui-search"></use>
+</svg>
+        <input type="search" name="q" class="ui-input pl-48" placeholder="Search docs" />
+</form>    </div>
+    <p class="text-p1 font-medium text-cool-black mb-20">
+      Docs, quick start guides, tutorials, and API reference to help you start building with Ably’s platform and APIs.
+    </p>
+
+    <a class="ui-featured-link text-menu3 py-8  " style="--featured-link-icon-size: var(--fs-menu3)" href="/documentation">
+  Visit Documentation<svg class="text-cool-black ui-featured-link-icon" style="width: calc(var(--featured-link-icon-size) * 1.25); height: calc(var(--featured-link-icon-size) * 1.25)">
+  <use xlink:href="#sprite-icon-gui-link-arrow"></use>
+</svg>
+</a>
+  </div>
+
+  <div>
+    <h3 class="ui-meganav-overline uppercase" id="meganav-developers-panel-explore">Explore</h3>
+    <ul aria-labelledby="meganav-developers-panel-explore">
+      <li>
+        <a class="ui-meganav-media group" href="/integrations">
+          <p class="ui-meganav-media-heading">Third-party integrations & plugins</p>
+          <p class="ui-meganav-media-copy">Integrate and extend Ably with cloud services like AWS Kinesis.</p>
+</a>      </li>
+      <li>
+        <a class="ui-meganav-media group" href="/protocols">
+          <p class="ui-meganav-media-heading">Multi-protocol messaging</p>
+          <p class="ui-meganav-media-copy">We support pub/sub over WebSockets, MQTT, SSE, and more.</p>
+</a>      </li>
+      <li>
+        <a class="ui-meganav-media group" href="/hub">
+          <p class="ui-meganav-media-heading">Streaming data sources</p>
+          <p class="ui-meganav-media-copy">Augment your apps with realtime updates like weather or transit.</p>
+</a>      </li>
+      <li>
+        <a class="ui-meganav-media group" href="/periodic-table-of-realtime">
+          <p class="ui-meganav-media-heading">The Periodic Table of Realtime</p>
+          <p class="ui-meganav-media-copy">A compendium for all things realtime and event-driven.</p>
+</a>      </li>
+    </ul>
+  </div>
+
+  <div>
+    <h3 class="ui-meganav-overline uppercase" id="meganav-developers-panel-quick-links">Quick links</h3>
+    <ul aria-labelledby="meganav-developers-panel-quick-links">
+      <li>
+        <a class="group ui-meganav-media py-12" href="/download">
+          <p class="ui-meganav-media-heading">Download an SDK</p>
+</a>      </li>
+
+      <li>
+        <a href="https://changelog.ably.com/" class="group ui-meganav-media py-12">
+          <p class="ui-meganav-media-heading">Platform changelog</p>
+        </a>
+      </li>
+
+      <li>
+        <a class="group ui-meganav-media py-12" href="/support">
+          <p class="ui-meganav-media-heading">Support & FAQs</p>
+</a>      </li>
+
+      <li>
+        <a href="http://status.ably.com/" class="group ui-meganav-media py-12">
+          <p class="ui-meganav-media-heading">
+            Status<iframe
+              src="https://status.ably.com/embed/icon"
+              allowtransparency="true"
+              frameborder="0"
+              scrolling="no"
+              class="w-24 h-24 ml-4 border-none pointer-events-none align-middle"
+            ></iframe>
+          </p>
+        </a>
+      </li>
+    </ul>
+  </div>
+</section>
+
+</div>    </li>
+  <li>
+    <a data-id="meganav-link" class="ui-meganav-link h-64 items-center flex text-cool-black" href="/pricing">Pricing</a>
+  </li>
+</ul>
+
+
+      <ul class="hidden md:flex items-center">
+        <li>
+          <a data-id="meganav-link" class="ui-meganav-link text-cool-black" href="/contact">Contact us</a>
+        </li>
+        <li>
+          <a data-id="meganav-link" class="ui-meganav-link text-cool-black" href="/login">Login</a>
+        </li>
+        <li class="ml-16">
+          <a data-id="meganav-sign-up-btn" class="ui-btn p-btn-small  " href="/sign-up">Sign up free</a>
+        </li>
+      </ul>
+
+    <ul class="flex md:hidden" data-id="meganav-items-mobile">
+  <li>
+      <a data-id="meganav-link" class="ui-meganav-link text-cool-black" href="/login">Login</a>
+  </li>
+
+  <li class="ui-meganav-item">
+    <button name="button" type="button" class="block ml-24 mr-0 px-0 py-16 hover:text-gui-hover focus:text-gui-focus focus:outline-none" data-id="meganav-control-mobile-dropdown" aria-expanded="false" aria-controls="meganav-mobile-dropdown">
+  <svg class="text-cool-black transition-colors" style="width: 1.5rem; height: 1.5rem" data-id="meganav-control-mobile-dropdown-menu">
+  <use xlink:href="#sprite-icon-gui-burger-menu"></use>
+</svg>
+  <svg class="text-cool-black transition-colors hidden" style="width: 1.5rem; height: 1.5rem" data-id="meganav-control-mobile-dropdown-close">
+  <use xlink:href="#sprite-icon-gui-close"></use>
+</svg>
+</button>
+
+    <div class="ui-meganav-mobile-dropdown invisible" id="meganav-mobile-dropdown" data-id="meganav-mobile-dropdown">
+      <div class="py-16 ui-grid-px bg-white">
+        <ul class="mb-16">
+            <li class="ui-meganav-mobile-item">
+              <button name="button" type="button" class="ui-meganav-mobile-link" data-id="meganav-control-mobile-panel-open" aria-expanded="false" aria-controls="platform-panel-mobile" aria-label="Show 
+                Platform
+">
+  
+                Platform
+
+  <svg class="text-cool-black relative -top-1 ml-auto float-right" style="width: 1.5rem; height: 1.5rem">
+  <use xlink:href="#sprite-icon-gui-disclosure-arrow"></use>
+</svg>
+</button>
+              <div class="ui-meganav-panel-mobile hidden" id="platform-panel-mobile" data-scroll-lock-scrollable="true">
+                <div class="mx-24 md:mx-32">
+  <button name="button" type="button" class="ui-meganav-mobile-link text-gui-default mb-16" data-id="meganav-control-mobile-panel-close" aria-expanded="false" aria-controls="platform-panel-mobile" aria-label="Hide panel">    <svg class="text-cool-black relative -top-1 transform rotate-180" style="width: 1.5rem; height: 1.5rem">
+  <use xlink:href="#sprite-icon-gui-disclosure-arrow"></use>
+</svg>
+    Back
+</button>  <hr class="ui-meganav-hr" />
+</div>
+
+                <section class="ui-meganav-content ui-grid-gap sm:grid-cols-2 md:grid-cols-3">
+  <div class="sm:col-span-full md:col-span-1">
+    <div class="flex mb-20">
+      <img alt="Ably homepage" src="/assets/ably_ui/core/images/ably-stack-bbd871091cfae630ec875060e923948ec5bdb06b69de8a303cb7967b82dd5999.svg" />
+      <h3 class="ui-meganav-overline ml-24">The Ably Platform</h3>
+    </div>
+
+    <p class="text-p2 font-medium text-cool-black mb-8">
+      Easily power any realtime experience in your application. No complex infrastructure to manage or provision. Just a simple API that handles everything
+      realtime, and lets you focus on your code.
+    </p>
+
+    <a class="ui-featured-link text-menu3 py-8  " style="--featured-link-icon-size: var(--fs-menu3)" href="/platform">
+  Explore how it works<svg class="text-cool-black ui-featured-link-icon" style="width: calc(var(--featured-link-icon-size) * 1.25); height: calc(var(--featured-link-icon-size) * 1.25)">
+  <use xlink:href="#sprite-icon-gui-link-arrow"></use>
+</svg>
+</a>
+  </div>
+
+  <div>
+    <h3 class="ui-meganav-overline" id="meganav-platform-panel-list-our-features">Our features</h3>
+    <ul aria-labelledby="meganav-platform-panel-list-our-features">
+      <li>
+        <a class="ui-meganav-media group" href="/pub-sub-messaging">
+          <p class="ui-meganav-media-heading">Publish/subscribe messaging</p>
+          <p class="ui-meganav-media-copy">Feature-rich pub/sub messaging to power any realtime requirement.</p>
+</a>      </li>
+      <li>
+        <a class="ui-meganav-media group" href="/push-notifications">
+          <p class="ui-meganav-media-heading">Push notifications</p>
+          <p class="ui-meganav-media-copy">Deliver native notifications at scale with our unified API.</p>
+</a>      </li>
+      <li>
+        <a class="ui-meganav-media group" href="/integrations">
+          <p class="ui-meganav-media-heading">Third-party integrations</p>
+          <p class="ui-meganav-media-copy">Integrate and extend Ably with cloud services like AWS Kinesis.</p>
+</a>      </li>
+      <li>
+        <a class="ui-meganav-media group" href="/protocols">
+          <p class="ui-meganav-media-heading">Multi-protocol messaging</p>
+          <p class="ui-meganav-media-copy">We support pub/sub over WebSockets, MQTT, SSE, and more.</p>
+</a>      </li>
+      <li>
+        <a class="ui-meganav-media group" href="/hub">
+          <p class="ui-meganav-media-heading">Streaming data sources</p>
+          <p class="ui-meganav-media-copy">Augment your apps with realtime updates like weather or transit.</p>
+</a>      </li>
+    </ul>
+
+    <a class="ui-featured-link text-menu3 py-8  " style="--featured-link-icon-size: var(--fs-menu3)" href="/platform">
+  Explore all platform features<svg class="text-cool-black ui-featured-link-icon" style="width: calc(var(--featured-link-icon-size) * 1.25); height: calc(var(--featured-link-icon-size) * 1.25)">
+  <use xlink:href="#sprite-icon-gui-link-arrow"></use>
+</svg>
+</a>
+  </div>
+
+  <div>
+    <h3 class="ui-meganav-overline" id="meganav-platform-panel-list-our-technology">Our technology</h3>
+    <ul class="mb-8" aria-labelledby="meganav-platform-panel-list-our-technology">
+      <li>
+        <a class="ui-meganav-media group" href="/four-pillars-of-dependability#performance">
+          <p class="ui-meganav-media-heading">Predictable performance</p>
+          <p class="ui-meganav-media-copy">We provide predictability so you can be confident your realtime application will always perform as expected.</p>
+</a>      </li>
+      <li>
+        <a class="ui-meganav-media group" href="/four-pillars-of-dependability#integrity">
+          <p class="ui-meganav-media-heading">Guaranteed ordering & delivery</p>
+          <p class="ui-meganav-media-copy">We guarantee in-order data delivery, even after disconnections.</p>
+</a>      </li>
+      <li>
+        <a class="ui-meganav-media group" href="/four-pillars-of-dependability#reliability">
+          <p class="ui-meganav-media-heading">Fault tolerant infrastructure</p>
+          <p class="ui-meganav-media-copy">Redundant at regional and global levels with 99.999% uptime SLAs.</p>
+</a>      </li>
+      <li>
+        <a class="ui-meganav-media group" href="/four-pillars-of-dependability#availability">
+          <p class="ui-meganav-media-heading">High scalability & availability</p>
+          <p class="ui-meganav-media-copy">Elastic, battle-tested global infrastructure for massive scale.</p>
+</a>      </li>
+      <li>
+        <a class="ui-meganav-media group" href="/network">
+          <p class="ui-meganav-media-heading">Global edge network</p>
+          <p class="ui-meganav-media-copy">An edge network of 15 core routing datacenters and 200+ PoPs.</p>
+</a>      </li>
+    </ul>
+
+    <a class="ui-featured-link text-menu3 py-8  " style="--featured-link-icon-size: var(--fs-menu3)" href="/four-pillars-of-dependability">
+  Explore our technology<svg class="text-cool-black ui-featured-link-icon" style="width: calc(var(--featured-link-icon-size) * 1.25); height: calc(var(--featured-link-icon-size) * 1.25)">
+  <use xlink:href="#sprite-icon-gui-link-arrow"></use>
+</svg>
+</a>
+  </div>
+</section>
+
+</div>            </li>
+            <li class="ui-meganav-mobile-item">
+              <button name="button" type="button" class="ui-meganav-mobile-link" data-id="meganav-control-mobile-panel-open" aria-expanded="false" aria-controls="use-cases-panel-mobile" aria-label="Show 
+                Use Cases
+">
+  
+                Use Cases
+
+  <svg class="text-cool-black relative -top-1 ml-auto float-right" style="width: 1.5rem; height: 1.5rem">
+  <use xlink:href="#sprite-icon-gui-disclosure-arrow"></use>
+</svg>
+</button>
+              <div class="ui-meganav-panel-mobile hidden" id="use-cases-panel-mobile" data-scroll-lock-scrollable="true">
+                <div class="mx-24 md:mx-32">
+  <button name="button" type="button" class="ui-meganav-mobile-link text-gui-default mb-16" data-id="meganav-control-mobile-panel-close" aria-expanded="false" aria-controls="use-cases-panel-mobile" aria-label="Hide panel">    <svg class="text-cool-black relative -top-1 transform rotate-180" style="width: 1.5rem; height: 1.5rem">
+  <use xlink:href="#sprite-icon-gui-disclosure-arrow"></use>
+</svg>
+    Back
+</button>  <hr class="ui-meganav-hr" />
+</div>
+
+                <section class="ui-meganav-content ui-grid-gap md:grid-cols-2 gap-y-0 md:gap-y-32">
+  <div>
+    <h3 class="ui-meganav-overline" id="meganav-use-cases-panel-industry-use-cases">By use case</h3>
+    <ul aria-labelledby="meganav-use-cases-panel-industry-use-cases">
+      <li>
+        <a class="ui-meganav-media group" href="/solutions/extend-kafka-to-the-edge">
+          <p class="ui-meganav-media-heading">Extend Kafka to the edge</p>
+          <p class="ui-meganav-media-copy">Enhance and reliably expand Kafka&apos;s event streaming capabilities beyond your private network.</p>
+</a>      </li>
+      <li>
+        <a class="ui-meganav-media group" href="/solutions/edtech">
+          <p class="ui-meganav-media-heading">EdTech</p>
+          <p class="ui-meganav-media-copy">Deliver interactive learning experiences like multi-user classrooms with chat.</p>
+</a>      </li>
+      <li>
+        <a class="ui-meganav-media group" href="/solutions/automotive-logistics-and-mobility">
+          <p class="ui-meganav-media-heading">Automotive, Logistics, & Mobility</p>
+          <p class="ui-meganav-media-copy">Power asset tracking, live transit updates, race-critical diagnostics, and more.</p>
+</a>      </li>
+      <li>
+        <a class="ui-meganav-media group" href="/solutions/b2b-platforms">
+          <p class="ui-meganav-media-heading">B2B Platforms</p>
+          <p class="ui-meganav-media-copy">Empower customers with realtime technology that gives them a competitive edge.</p>
+</a>      </li>
+      <li>
+        <a class="ui-meganav-media group" href="/solutions/healthcare">
+          <p class="ui-meganav-media-heading">Healthcare</p>
+          <p class="ui-meganav-media-copy">Provide HIPAA-compliant realtime apps healthcare professionals can depend on.</p>
+</a>      </li>
+      <li>
+        <a class="ui-meganav-media group" href="/solutions/virtual-events">
+          <p class="ui-meganav-media-heading">Virtual Events</p>
+          <p class="ui-meganav-media-copy">Power engaging virtual events with interactive realtime features.</p>
+</a>      </li>
+    </ul>
+  </div>
+
+  <div>
+    <ul class="md:mt-40" aria-labelledby="meganav-use-cases-panel-industry-use-cases">
+      <li>
+        <a class="ui-meganav-media group" href="/solutions/iot-and-connected-devices">
+          <p class="ui-meganav-media-heading">IoT & Connected Devices</p>
+          <p class="ui-meganav-media-copy">Monitor and control global IoT deployments of any kind in realtime.</p>
+</a>      </li>
+      <li>
+        <a class="ui-meganav-media group" href="/solutions/sports-and-media">
+          <p class="ui-meganav-media-heading">Sports & Media</p>
+          <p class="ui-meganav-media-copy">Deliver global realtime experiences to keep fans informed, engaged, entertained.</p>
+</a>      </li>
+      <li>
+        <a class="ui-meganav-media group" href="/solutions/gaming">
+          <p class="ui-meganav-media-heading">Gaming</p>
+          <p class="ui-meganav-media-copy">Power interactive gaming experiences that are wicked fast and utterly reliable.</p>
+</a>      </li>
+      <li>
+        <a class="ui-meganav-media group" href="/solutions/ecommerce-and-retail">
+          <p class="ui-meganav-media-heading">eCommerce & Retail</p>
+          <p class="ui-meganav-media-copy">Enable realtime pricing, inventory, and transactions to enrich user experiences.</p>
+</a>      </li>
+      <li>
+        <a class="ui-meganav-media group" href="/solutions/asset-tracking">
+          <p class="ui-meganav-media-heading">Asset Tracking</p>
+          <p class="ui-meganav-media-copy">Track assets in realtime with a solution optimized for last mile logistics, food delivery applications, and urban mobility services.</p>
+</a>      </li>
+    </ul>
+  </div>
+</section>
+
+</div>            </li>
+            <li class="ui-meganav-mobile-item">
+              <button name="button" type="button" class="ui-meganav-mobile-link" data-id="meganav-control-mobile-panel-open" aria-expanded="false" aria-controls="why-ably-panel-mobile" aria-label="Show 
+                Why Ably
+">
+  
+                Why Ably
+
+  <svg class="text-cool-black relative -top-1 ml-auto float-right" style="width: 1.5rem; height: 1.5rem">
+  <use xlink:href="#sprite-icon-gui-disclosure-arrow"></use>
+</svg>
+</button>
+              <div class="ui-meganav-panel-mobile hidden" id="why-ably-panel-mobile" data-scroll-lock-scrollable="true">
+                <div class="mx-24 md:mx-32">
+  <button name="button" type="button" class="ui-meganav-mobile-link text-gui-default mb-16" data-id="meganav-control-mobile-panel-close" aria-expanded="false" aria-controls="why-ably-panel-mobile" aria-label="Hide panel">    <svg class="text-cool-black relative -top-1 transform rotate-180" style="width: 1.5rem; height: 1.5rem">
+  <use xlink:href="#sprite-icon-gui-disclosure-arrow"></use>
+</svg>
+    Back
+</button>  <hr class="ui-meganav-hr" />
+</div>
+
+                <section class="ui-meganav-content ui-grid-gap md:grid-cols-3">
+  <div>
+    <h3 class="ui-meganav-overline" id="meganav-why-ably-panel-list-why-companies">Why companies choose Ably</h3>
+    <ul aria-labelledby="meganav-why-ably-panel-list-why-companies">
+      <li>
+        <a class="group ui-meganav-media py-12" href="/customers">
+          <p class="ui-meganav-media-heading">Customers</p>
+</a>      </li>
+
+      <li>
+        <a class="group ui-meganav-media py-12" href="/case-studies">
+          <p class="ui-meganav-media-heading">Case studies</p>
+</a>      </li>
+
+      <li>
+        <a class="group ui-meganav-media py-12" href="/compare">
+          <p class="ui-meganav-media-heading">Compare our tech</p>
+</a>      </li>
+
+      <li>
+        <a class="group ui-meganav-media py-12" href="/aws">
+          <p class="ui-meganav-media-heading">Ably & AWS</p>
+</a>      </li>
+
+      <li>
+        <a class="group ui-meganav-media py-12" href="/resources/datasheets">
+          <p class="ui-meganav-media-heading">Resources</p>
+</a>      </li>
+    </ul>
+  </div>
+
+  <div>
+    <h3 class="ui-meganav-overline" id="meganav-why-ably-panel-list-four-pillars">Four pillars of dependability</h3>
+    <ul class="mb-8" aria-labelledby="meganav-why-ably-panel-list-four-pillars">
+      <li>
+        <a class="ui-meganav-media group" href="/four-pillars-of-dependability#performance">
+          <p class="ui-meganav-media-heading">Predictable performance</p>
+          <p class="ui-meganav-media-copy">A low-latency global edge network across 200+ PoPs.</p>
+</a>      </li>
+      <li>
+        <a class="ui-meganav-media group" href="/four-pillars-of-dependability#integrity">
+          <p class="ui-meganav-media-heading">Guaranteed ordering & delivery</p>
+          <p class="ui-meganav-media-copy">We guarantee in-order data delivery, even after disconnections.</p>
+</a>      </li>
+      <li>
+        <a class="ui-meganav-media group" href="/four-pillars-of-dependability#reliability">
+          <p class="ui-meganav-media-heading">Fault tolerant infrastructure</p>
+          <p class="ui-meganav-media-copy">Redundant at regional and global levels with 99.999% uptime SLAs.</p>
+</a>      </li>
+      <li>
+        <a class="ui-meganav-media group" href="/four-pillars-of-dependability#availability">
+          <p class="ui-meganav-media-heading">High scalability & availability</p>
+          <p class="ui-meganav-media-copy">Elastic, battle-tested global infrastructure for massive scale.</p>
+</a>      </li>
+    </ul>
+
+    <a class="ui-featured-link text-menu3 py-8  " style="--featured-link-icon-size: var(--fs-menu3)" href="/four-pillars-of-dependability">
+  Explore our Four Pillars of Dependability<svg class="text-cool-black ui-featured-link-icon" style="width: calc(var(--featured-link-icon-size) * 1.25); height: calc(var(--featured-link-icon-size) * 1.25)">
+  <use xlink:href="#sprite-icon-gui-link-arrow"></use>
+</svg>
+</a>
+  </div>
+
+  <div class="hidden" data-id="meganav-why-ably-panel-blog-section">
+  <h3 class="ui-meganav-overline" id="meganav-why-ably-panel-recent-blog-posts">Blog</h3>
+  <ul class="mb-8" aria-labelledby="meganav-why-ably-panel-recent-blog-posts" data-id="meganav-why-ably-panel-recent-blog-posts"></ul>
+  <a class="ui-featured-link text-menu3 py-8  " style="--featured-link-icon-size: var(--fs-menu3)" href="/blog">
+  More from our Blog<svg class="text-cool-black ui-featured-link-icon" style="width: calc(var(--featured-link-icon-size) * 1.25); height: calc(var(--featured-link-icon-size) * 1.25)">
+  <use xlink:href="#sprite-icon-gui-link-arrow"></use>
+</svg>
+</a>
+</div>
+
+</section>
+
+</div>            </li>
+            <li class="ui-meganav-mobile-item">
+              <button name="button" type="button" class="ui-meganav-mobile-link" data-id="meganav-control-mobile-panel-open" aria-expanded="false" aria-controls="developers-panel-mobile" aria-label="Show 
+                Developers
+">
+  
+                Developers
+
+  <svg class="text-cool-black relative -top-1 ml-auto float-right" style="width: 1.5rem; height: 1.5rem">
+  <use xlink:href="#sprite-icon-gui-disclosure-arrow"></use>
+</svg>
+</button>
+              <div class="ui-meganav-panel-mobile hidden" id="developers-panel-mobile" data-scroll-lock-scrollable="true">
+                <div class="mx-24 md:mx-32">
+  <button name="button" type="button" class="ui-meganav-mobile-link text-gui-default mb-16" data-id="meganav-control-mobile-panel-close" aria-expanded="false" aria-controls="developers-panel-mobile" aria-label="Hide panel">    <svg class="text-cool-black relative -top-1 transform rotate-180" style="width: 1.5rem; height: 1.5rem">
+  <use xlink:href="#sprite-icon-gui-disclosure-arrow"></use>
+</svg>
+    Back
+</button>  <hr class="ui-meganav-hr" />
+</div>
+
+                <section class="ui-meganav-content ui-grid-gap md:grid-cols-3">
+  <div>
+    <h3 class="ui-meganav-overline md:mb-8">Documentation</h3>
+    <div class="relative mb-16">
+      <form class="relative" action="/search" method="get">
+        <svg class="text-cool-black absolute top-8 left-8 pt-1 mt-1" style="width: 1.5rem; height: 1.5rem">
+  <use xlink:href="#sprite-icon-gui-search"></use>
+</svg>
+        <input type="search" name="q" class="ui-input pl-48" placeholder="Search docs" />
+</form>    </div>
+    <p class="text-p1 font-medium text-cool-black mb-20">
+      Docs, quick start guides, tutorials, and API reference to help you start building with Ably’s platform and APIs.
+    </p>
+
+    <a class="ui-featured-link text-menu3 py-8  " style="--featured-link-icon-size: var(--fs-menu3)" href="/documentation">
+  Visit Documentation<svg class="text-cool-black ui-featured-link-icon" style="width: calc(var(--featured-link-icon-size) * 1.25); height: calc(var(--featured-link-icon-size) * 1.25)">
+  <use xlink:href="#sprite-icon-gui-link-arrow"></use>
+</svg>
+</a>
+  </div>
+
+  <div>
+    <h3 class="ui-meganav-overline uppercase" id="meganav-developers-panel-explore">Explore</h3>
+    <ul aria-labelledby="meganav-developers-panel-explore">
+      <li>
+        <a class="ui-meganav-media group" href="/integrations">
+          <p class="ui-meganav-media-heading">Third-party integrations & plugins</p>
+          <p class="ui-meganav-media-copy">Integrate and extend Ably with cloud services like AWS Kinesis.</p>
+</a>      </li>
+      <li>
+        <a class="ui-meganav-media group" href="/protocols">
+          <p class="ui-meganav-media-heading">Multi-protocol messaging</p>
+          <p class="ui-meganav-media-copy">We support pub/sub over WebSockets, MQTT, SSE, and more.</p>
+</a>      </li>
+      <li>
+        <a class="ui-meganav-media group" href="/hub">
+          <p class="ui-meganav-media-heading">Streaming data sources</p>
+          <p class="ui-meganav-media-copy">Augment your apps with realtime updates like weather or transit.</p>
+</a>      </li>
+      <li>
+        <a class="ui-meganav-media group" href="/periodic-table-of-realtime">
+          <p class="ui-meganav-media-heading">The Periodic Table of Realtime</p>
+          <p class="ui-meganav-media-copy">A compendium for all things realtime and event-driven.</p>
+</a>      </li>
+    </ul>
+  </div>
+
+  <div>
+    <h3 class="ui-meganav-overline uppercase" id="meganav-developers-panel-quick-links">Quick links</h3>
+    <ul aria-labelledby="meganav-developers-panel-quick-links">
+      <li>
+        <a class="group ui-meganav-media py-12" href="/download">
+          <p class="ui-meganav-media-heading">Download an SDK</p>
+</a>      </li>
+
+      <li>
+        <a href="https://changelog.ably.com/" class="group ui-meganav-media py-12">
+          <p class="ui-meganav-media-heading">Platform changelog</p>
+        </a>
+      </li>
+
+      <li>
+        <a class="group ui-meganav-media py-12" href="/support">
+          <p class="ui-meganav-media-heading">Support & FAQs</p>
+</a>      </li>
+
+      <li>
+        <a href="http://status.ably.com/" class="group ui-meganav-media py-12">
+          <p class="ui-meganav-media-heading">
+            Status<iframe
+              src="https://status.ably.com/embed/icon"
+              allowtransparency="true"
+              frameborder="0"
+              scrolling="no"
+              class="w-24 h-24 ml-4 border-none pointer-events-none align-middle"
+            ></iframe>
+          </p>
+        </a>
+      </li>
+    </ul>
+  </div>
+</section>
+
+</div>            </li>
+          <li>
+            <a class="ui-meganav-mobile-link" href="/pricing">Pricing</a>
+          </li>
+        </ul>
+
+        <hr class="ui-meganav-hr mb-20" />
+
+        <div class="flex justify-between items-center mb-16">
+          <a class="text-menu2 font-medium block ml-0 mr-8 lg:mx-12 p-0 hover:text-gui-hover focus:text-gui-focus focus:outline-none" href="/contact">Contact us</a>
+
+            <a class="ui-btn" href="/sign-up">Sign up free</a>
+        </div>
+      </div>
+    </div>
+  </li>
+</ul>
+
+  </div>
+</nav>
+    <div data-react="Flash" data-react-props="{&quot;flashes&quot;:[]}"></div>
+    <div data-react="CookieMessage" data-react-props="{&quot;cookieId&quot;:&quot;accept_cookie&quot;}"></div>
+
+    <main class="font-sans antialiased pt-64">
+
+<div class="overflow-x-hidden">
+  <section class="ui-homepage-hero ui-grid-px" data-id="ui-homepage-hero">
+  <div class="max-w-screen-md m-auto w-full relative">
+    <h1 class="text-white pt-64 sm:pt-80 text-left mb-40 font-medium text-h2 sm:text-title relative z-10">
+      The platform to power synchronized digital experiences in
+      realtime. Guaranteed to <strong class="font-medium text-active-orange">deliver at scale</strong>.
+    </h1>
+
+    <div class="relative z-10">
+      <a href="/sign-up" class="ui-btn-invert mb-16 sm:mb-0 mr-16">Start with a free account</a>
+      <a href="/documentation" class="ui-btn-secondary-invert">Explore our documentation</a>
+    </div>
+
+    <div class="ui-homepage-hero-motif">
+      <svg width="1312" height="1136" viewBox="0 0 1312 1136" fill="none" class="w-full h-auto" xmlns="http://www.w3.org/2000/svg">
+        <path d="M656 2L1309.85 1134.5H2.15088L656 2Z" fill="none" stroke="url(#linear)" stroke-width="2" />
+        <path d="M656 188L1148.77 1041.5H163.232L656 188Z" fill="none" stroke="url(#linear)" stroke-width="2" />
+        <path d="M656 380L982.492 945.5H329.508L656 380Z" fill="none" stroke="url(#linear)" stroke-width="2" />
+        <path d="M656 568L819.679 851.5H492.321L656 568Z" fill="none" stroke="url(#linear)" stroke-width="2" />
+        <defs>
+          <linearGradient id="linear" x1="31.3613" y1="846.489" x2="1219.79" y2="92.1296" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#FF5511" />
+            <stop offset="1" stop-color="#FF0000" />
+          </linearGradient>
+        </defs>
+      </svg>
+    </div>
+  </div>
+</section>
+
+
+  <section class="relative z-0 -top-1">
+    <img alt="" class="absolute z-0 w-full" src="/packs/media/assets/home/bg-triangle-564d6317c5dc4cb8be636d7da2168c62.svg" />
+  </section>
+
+  <section class="ui-code-explorer-wrapper relative z-20">
+    <div data-react="CodeExplorer" data-react-props="{&quot;screenshots&quot;:{&quot;liveupdates&quot;:&quot;/packs/media/assets/home/screenshots/live-updates-e0ff85f08fe3b34c68c72bda578b2d2a.svg&quot;,&quot;gps&quot;:&quot;/packs/media/assets/home/screenshots/gps-a17bf597a733413c98e6643084f7e8d2.svg&quot;,&quot;multiuser&quot;:&quot;/packs/media/assets/home/screenshots/multi-user-9d9755ef64f91a2ac7ce22c72474ff59.svg&quot;,&quot;chat&quot;:[[&quot;/packs/media/assets/home/screenshots/chat-86959461088bb8dda689a419901d8094.jpg&quot;,&quot;&quot;],[&quot;/packs/media/assets/home/screenshots/chat@2x-8f6beba9859784388021fcbac55df908.png&quot;,&quot;2x&quot;]],&quot;iot&quot;:&quot;/packs/media/assets/home/screenshots/iot-a0d07978920e13cdc42a3bf3187e518f.svg&quot;},&quot;apiKeyURL&quot;:&quot;/ably-auth/api-key/demos&quot;}"></div>
+  </section>
+
+  <section class="w-full right-0 left-0 relative z-10 mt-64">
+    <div class="ui-for-developers-wrapper ui-grid-px">
+  <div class="ui-for-developers">
+    <div class="flex-shrink-0">
+      <div class="ui-for-developers-icon">
+        <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M38 42.5H10C9.72386 42.5 9.5 42.2761 9.5 42V6C9.5 5.72386 9.72386 5.5 10 5.5H30.3431C31.0062 5.5 31.6421 5.76339 32.1109 6.23223L37.7678 11.8891C38.2366 12.3579 38.5 12.9938 38.5 13.6569V42C38.5 42.2761 38.2761 42.5 38 42.5ZM10 44H38C39.1046 44 40 43.1046 40 42V13.6569C40 12.596 39.5786 11.5786 38.8284 10.8284L33.1716 5.17157C32.4214 4.42143 31.404 4 30.3431 4H10C8.89543 4 8 4.89543 8 6V42C8 43.1046 8.89543 44 10 44ZM20.1167 17.6L14.25 22L20.1167 26.4L19.2167 27.6L12.55 22.6C12.3611 22.4584 12.25 22.2361 12.25 22C12.25 21.764 12.3611 21.5417 12.55 21.4L19.2167 16.4L20.1167 17.6ZM27.7212 14.206L21.7212 35.206L20.2789 34.7939L26.2789 13.7939L27.7212 14.206ZM27.4834 23.6L33.3501 28L27.4834 32.4L28.3834 33.6L35.0501 28.6C35.239 28.4584 35.3501 28.2361 35.3501 28C35.3501 27.764 35.239 27.5417 35.0501 27.4L28.3834 22.4L27.4834 23.6Z" fill="currentColor"/>
+        </svg>
+      </div>
+    </div>
+    <div class="max-w-screen-sm">
+      <p class="text-p2 font-medium">Designed for developers</p>
+      <p class="text-p2 font-light">Our simple yet powerful APIs help you build delightful and dependable realtime experiences without stitching together disparate systems.</p>
+      <div class="mt-16 xs:flex">
+        <div class="whitespace-nowrap mr-24">
+          <a class="ui-featured-link text-p2 py-8  " style="--featured-link-icon-size: var(--fs-p2)" href="/download">
+  See SDKs<svg class="text-cool-black ui-featured-link-icon" style="width: calc(var(--featured-link-icon-size) * 1.25); height: calc(var(--featured-link-icon-size) * 1.25)">
+  <use xlink:href="#sprite-icon-gui-link-arrow"></use>
+</svg>
+</a>
+        </div>
+        <a class="ui-featured-link text-p2 py-8  " style="--featured-link-icon-size: var(--fs-p2)" href="/documentation">
+  Read the docs<svg class="text-cool-black ui-featured-link-icon" style="width: calc(var(--featured-link-icon-size) * 1.25); height: calc(var(--featured-link-icon-size) * 1.25)">
+  <use xlink:href="#sprite-icon-gui-link-arrow"></use>
+</svg>
+</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+  </section>
+
+  <section class="relative z-10">
+    <div class="ui-standard-container">
+  <div class="flex justify-center pt-80 pb-16 sm:pb-40">
+    <p class="text-overline2 uppercase text-cool-black font-medium tracking-widen-0.1">Trusted by</p>
+  </div>
+
+  <div class="w-full overflow-x-hidden" data-id="slider" style="--dynamic-grid-columns-count: 4; --dynamic-grid-column-min-width: 16.875rem; --dynamic-grid-column-max-width: 1fr;">
+  <ol class="grid ui-grid-gap grid-cols-dynamic transform transition-transform ui-homepage-trusted-by-grid ui-grid-gap" data-id="slider-strip">
+      <li class="ui-homepage-trusted-by-item-wrapper" data-id="slider-slide">          <a class="ui-homepage-trusted-by-item-link" href="/case-studies/hubspot">
+            <img alt="" class="ui-homepage-trusted-by-logo" src="/packs/media/assets/customers/cust-logo-hubspot-col-pos-858f21717ee9ee4346b84b69744fa827.svg" />
+            <p class="ui-homepage-trusted-by-summary text-p2 font-light text-charcoal-grey text-center">Powers live chat, updates, analytics, and composition for millions of users.</p>
+            <p class="ui-homepage-trusted-by-read-case-study ui-btn-secondary">Read case study</p>
+</a></li>
+      <li class="ui-homepage-trusted-by-item-wrapper" data-id="slider-slide">          <div class="ui-homepage-trusted-by-item">
+            <img alt="" class="ui-homepage-trusted-by-logo" src="/packs/media/assets/customers/cust-logo-hopin-col-pos-db9a934ea91ea23f07253e45a54e99af.svg" />
+            <p class="text-p2 font-light text-charcoal-grey text-center">Powers virtual venues for millions of event attendees around the world.</p>
+          </div>
+</li>
+      <li class="ui-homepage-trusted-by-item-wrapper" data-id="slider-slide">          <a class="ui-homepage-trusted-by-item-link" href="/case-studies/quintype">
+            <img alt="" class="ui-homepage-trusted-by-logo" src="/packs/media/assets/customers/cust-logo-bloomberg-col-pos-180b4ee849dec9f75ebed19ccc94076d.svg" />
+            <p class="ui-homepage-trusted-by-summary text-p2 font-light text-charcoal-grey text-center">Provides 5 million daily users with live financial commentary and stock tickers.</p>
+            <p class="ui-homepage-trusted-by-read-case-study ui-btn-secondary">Read case study</p>
+</a></li>
+      <li class="ui-homepage-trusted-by-item-wrapper" data-id="slider-slide">          <div class="ui-homepage-trusted-by-item">
+            <img alt="" class="ui-homepage-trusted-by-logo" src="/packs/media/assets/customers/cust-logo-toyota-col-pos-8587a97434ab23588f45606f63a4d387.svg" />
+            <p class="text-p2 font-light text-charcoal-grey text-center">Monitors live car performance data across the USA.</p>
+          </div>
+</li>
+</ol>
+  <div class="hidden justify-center items-center my-24" data-id="slider-controls">
+    <button type="button" class="p-0 w-24 h-24 flex items-center focus:outline-gui-focus" data-id="slider-previous">
+      <svg class="text-cool-black transform rotate-180" style="width: 1.5rem; height: 1.5rem">
+  <use xlink:href="#sprite-icon-gui-disclosure-arrow"></use>
+</svg>
+    </button>
+
+    <ul class="flex justify-center items-center mx-32 relative h-24">
+        <li>
+          <span
+            class="ui-slider-marker text-cool-black"
+            data-id="slider-marker"
+          >&#x2b24;</span> 
+        </li>
+        <li>
+          <span
+            class="ui-slider-marker text-cool-black"
+            data-id="slider-marker"
+          >&#x2b24;</span> 
+        </li>
+        <li>
+          <span
+            class="ui-slider-marker text-cool-black"
+            data-id="slider-marker"
+          >&#x2b24;</span> 
+        </li>
+        <li>
+          <span
+            class="ui-slider-marker text-cool-black"
+            data-id="slider-marker"
+          >&#x2b24;</span> 
+        </li>
+    </ul>
+
+    <button type="button" class="p-0 w-24 h-24 flex items-center focus:outline-gui-focus" data-id="slider-next">
+      <svg class="text-cool-black " style="width: 1.5rem; height: 1.5rem">
+  <use xlink:href="#sprite-icon-gui-disclosure-arrow"></use>
+</svg>
+    </button>
+  </div>
+</div>
+  <div class="flex justify-center pt-40 pb-80">
+    <a class="ui-featured-link text-p1 py-8  " style="--featured-link-icon-size: var(--fs-p1)" href="/customers">
+  See what else our customers are building<svg class="text-cool-black ui-featured-link-icon" style="width: calc(var(--featured-link-icon-size) * 1.25); height: calc(var(--featured-link-icon-size) * 1.25)">
+  <use xlink:href="#sprite-icon-gui-link-arrow"></use>
+</svg>
+</a>
+  </div>
+</div>
+
+  </section>
+</div>
+
+<div class="overflow-x-hidden md:overflow-x-visible">
+  <div class="relative bg-light-grey" data-id="ui-homepage-build-intro">
+      <div class="ui-massive-scaling-text-motif-wrapper">
+    <img alt="" class="ui-massive-scaling-text-motif" src="/packs/media/assets/home/scale-motif-bold-dependable-9bfd7da8fcd80bf705643aa3e3b82cbe.svg" />
+  </div>
+  <h2 class="ui-massive-scaling-text text-cool-black">
+      Build
+</h2>
+  </div>
+
+  <section class="ui-homepage-section bg-light-grey">
+    <div class="ui-homepage-build w-full max-w-screen-xl mx-auto ui-grid-px" data-id="ui-homepage-build">
+  <div class="grid md:grid-cols-12 ui-grid-gap">
+    <div class="col-span-full md:col-span-4">
+      <p class="text-overline2 uppercase text-dark-grey font-medium tracking-widen-0.1 mb-20">Build</p>
+      <h3 class="text-h1 mb-24 text-cool-black text-light font-medium tracking-tighten-0.01">A suite of simple <span class="md:block">APIs to develop </span><span class="md:block">powerful realtime </span>experiences</h3>
+      <p class="text-p1 mb-16 text-charcoal-grey font-light">Start with <a href="/platform#realtime-messaging" class="underline font-medium hover:text-gui-hover focus:text-gui-focus active:text-gui-active">pub/sub messaging</a> that is <a href="/platform#realtime-messaging" class="underline font-medium hover:text-gui-hover focus:text-gui-focus active:text-gui-active">guaranteed to deliver</a> and automatically translates between <a href="/protocols" class="underline font-medium hover:text-gui-hover focus:text-gui-focus active:text-gui-active">protocols</a>. Then add <a href="/documentation/core-features/presence" class="underline font-medium hover:text-gui-hover focus:text-gui-focus active:text-gui-active">device presence</a>, check <a href="/documentation/realtime/history" class="underline font-medium hover:text-gui-hover focus:text-gui-focus active:text-gui-active">stream history</a>, and never worry about <a href="/documentation/realtime/connection#connection-state-recovery" class="underline font-medium hover:text-gui-hover focus:text-gui-focus active:text-gui-active">abrupt disconnections.</a></p>
+
+      <div class="mb-40">
+        <a class="ui-featured-link text-p1 py-8  " style="--featured-link-icon-size: var(--fs-p1)" href="/platform">
+  More on our platform<svg class="text-cool-black ui-featured-link-icon" style="width: calc(var(--featured-link-icon-size) * 1.25); height: calc(var(--featured-link-icon-size) * 1.25)">
+  <use xlink:href="#sprite-icon-gui-link-arrow"></use>
+</svg>
+</a>
+      </div>
+    </div>
+
+    <div class="col-span-full md:col-span-7 md:col-start-6">
+      <img alt="" class="ui-homepage-build-diagram" src="/packs/media/assets/home/publish-subscribe-with-presence-76e2a9920ed917be3f9e2157d624239f.svg" />
+    </div>
+  </div>
+</div>
+
+  </section>
+</div>
+
+<div class="overflow-x-hidden md:overflow-x-visible">
+  <div class="relative bg-white" data-id="ui-homepage-extend-intro">
+      <div class="ui-massive-scaling-text-motif-wrapper">
+    <img alt="" class="ui-massive-scaling-text-motif" src="/packs/media/assets/home/scale-motif-active-ambitious-ad851c00ed48ee2100555c92032d756d.svg" />
+  </div>
+  <h2 class="ui-massive-scaling-text text-cool-black">
+      Extend
+</h2>
+  </div>
+
+  <section class="ui-homepage-section bg-white">
+    <div class="ui-homepage-extend w-full max-w-screen-xl mx-auto ui-grid-px" data-id="ui-homepage-extend">
+  <div class="grid md:grid-cols-12 ui-grid-gap">
+    <div class="relative col-span-full md:col-span-4">
+      <div class="ui-homepage-extend-col">
+        <p class="text-overline2 uppercase text-dark-grey font-medium tracking-widen-0.1 mb-20">Extend</p>
+        <h3 class="text-h1 mb-24 text-cool-black text-light font-medium tracking-tighten-0.01">Transparently <span class="md:block">and securely </span><span class="md:block">connect your </span>cloud services</h3>
+        <p class="text-p1 mb-16 text-charcoal-grey font-light">We provide managed integrations with other cloud services so you can deploy best-in-class tooling across your entire stack and build event-driven applications using the ecosystems you’re already invested in.</p>
+        <div class="mb-40">
+          <a class="ui-featured-link text-p1 py-8  " style="--featured-link-icon-size: var(--fs-p1)" href="/integrations">
+  View all integrations<svg class="text-cool-black ui-featured-link-icon" style="width: calc(var(--featured-link-icon-size) * 1.25); height: calc(var(--featured-link-icon-size) * 1.25)">
+  <use xlink:href="#sprite-icon-gui-link-arrow"></use>
+</svg>
+</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-span-full	md:col-span-7 md:col-start-6">
+        <div class="rounded-lg bg-light-grey mb-24">
+    <div class="border-b border-mid-grey p-40">
+      <h4 class="uppercase text-h4 text-cool-black tracking-widen-0.01 font-medium">Webhooks</h4>
+    </div>
+
+    <div class="p-24 sm:p-32 md:p-40">
+      <ul>
+          <li class="flex items-start mb-24">
+            <img alt="" class="h-32 w-32 mr-24" src="/packs/media/assets/technologies/icon-tech-customwebhooks-309c16f0cef3d496679ddce9a3e6be40.svg" />
+            <div>
+              <p class="text-p2 font-medium text-charcoal-grey">Custom</p>
+              <p class="text-p2 font-light text-charcoal-grey">Notify your servers over HTTP in realtime when devices become present, channels become active, or messages are published. </p>
+              <a class="text-p2 underline text-charcoal-grey font-medium hover:text-gui-hover focus:text-gui-focus active:text-gui-active" href="/documentation/general/events">Read the docs</a>
+            </div>
+          </li>
+          <li class="flex items-start mb-24">
+            <img alt="" class="h-32 w-32 mr-24" src="/packs/media/assets/technologies/icon-tech-zapier-3bdf7b2779bf1ff6429b5c35bbb7026c.svg" />
+            <div>
+              <p class="text-p2 font-medium text-charcoal-grey">Zapier</p>
+              <p class="text-p2 font-light text-charcoal-grey">Trigger sophisticated workflows in realtime that connect and automate over 1,300 disparate business services.</p>
+              <a class="text-p2 underline text-charcoal-grey font-medium hover:text-gui-hover focus:text-gui-focus active:text-gui-active" href="/documentation/general/events/zapier">Read the docs</a>
+            </div>
+          </li>
+          <li class="flex items-start mb-24">
+            <img alt="" class="h-32 w-32 mr-24" src="/packs/media/assets/technologies/icon-tech-ifttt-40d954132566817055d6a9a9775e81e6.svg" />
+            <div>
+              <p class="text-p2 font-medium text-charcoal-grey">IFTTT</p>
+              <p class="text-p2 font-light text-charcoal-grey">Connect and automate business, personal, and smart home apps and devices in realtime.</p>
+              <a class="text-p2 underline text-charcoal-grey font-medium hover:text-gui-hover focus:text-gui-focus active:text-gui-active" href="/documentation/general/events/ifttt">Read the docs</a>
+            </div>
+          </li>
+      </ul>
+    </div>
+</div>  <div class="rounded-lg bg-light-grey mb-24">
+    <div class="border-b border-mid-grey p-40">
+      <h4 class="uppercase text-h4 text-cool-black tracking-widen-0.01 font-medium">Serverless functions</h4>
+    </div>
+
+    <div class="p-24 sm:p-32 md:p-40">
+      <ul>
+          <li class="flex items-start mb-24">
+            <img alt="" class="h-32 w-32 mr-24" src="/packs/media/assets/technologies/icon-tech-awslambda-81e144dbb8bcd41e2fae204a637f02c5.svg" />
+            <div>
+              <p class="text-p2 font-medium text-charcoal-grey">AWS Lambda</p>
+              <p class="text-p2 font-light text-charcoal-grey">Serverless functions to run code whenever triggered by an event. Can be very useful for integrating into various AWS systems.</p>
+              <a class="text-p2 underline text-charcoal-grey font-medium hover:text-gui-hover focus:text-gui-focus active:text-gui-active" href="/documentation/general/events/aws-lambda">Read the docs</a>
+            </div>
+          </li>
+          <li class="flex items-start mb-24">
+            <img alt="" class="h-32 w-32 mr-24" src="/packs/media/assets/technologies/icon-tech-azurefunctions-66a0b7b25cd4b8426c9f782ba50d77f2.svg" />
+            <div>
+              <p class="text-p2 font-medium text-charcoal-grey">Microsoft Azure Functions</p>
+              <p class="text-p2 font-light text-charcoal-grey">Serverless functions to run code whenever triggered by an event. Can be very useful for integrating deeper into Microsoft Azure Cloud.</p>
+              <a class="text-p2 underline text-charcoal-grey font-medium hover:text-gui-hover focus:text-gui-focus active:text-gui-active" href="/documentation/general/events/azure">Read the docs</a>
+            </div>
+          </li>
+          <li class="flex items-start mb-24">
+            <img alt="" class="h-32 w-32 mr-24" src="/packs/media/assets/technologies/icon-tech-gcloudfunctions-090f76916ceae24927bfe833a92d1f56.svg" />
+            <div>
+              <p class="text-p2 font-medium text-charcoal-grey">Google Cloud Functions</p>
+              <p class="text-p2 font-light text-charcoal-grey">Serverless functions to run code whenever triggered by an event. Can be very useful for integrating into Google Cloud Platform.</p>
+              <a class="text-p2 underline text-charcoal-grey font-medium hover:text-gui-hover focus:text-gui-focus active:text-gui-active" href="/documentation/general/events/google-functions">Read the docs</a>
+            </div>
+          </li>
+          <li class="flex items-start mb-24">
+            <img alt="" class="h-32 w-32 mr-24" src="/packs/media/assets/technologies/icon-tech-cloudflareworkers-1ec23a13538392a5f4acbb83f6626f1b.svg" />
+            <div>
+              <p class="text-p2 font-medium text-charcoal-grey">Cloudflare Workers</p>
+              <p class="text-p2 font-light text-charcoal-grey">Serverless JavaScript functions deployed across Cloudflare’s edge network. Cloudflare’s answer to serverless functions.</p>
+              <a class="text-p2 underline text-charcoal-grey font-medium hover:text-gui-hover focus:text-gui-focus active:text-gui-active" href="/documentation/general/events/cloudflare">Read the docs</a>
+            </div>
+          </li>
+      </ul>
+    </div>
+</div>  <div class="rounded-lg bg-light-grey ">
+    <div class="border-b border-mid-grey p-40">
+      <h4 class="uppercase text-h4 text-cool-black tracking-widen-0.01 font-medium">Stream processing</h4>
+    </div>
+
+    <div class="p-24 sm:p-32 md:p-40">
+      <ul>
+          <li class="flex items-start mb-24">
+            <img alt="" class="h-32 w-32 mr-24" src="/packs/media/assets/technologies/icon-tech-awskinesis-f5a1e96aafc113b99555f9ad3af214f7.svg" />
+            <div>
+              <p class="text-p2 font-medium text-charcoal-grey">AWS Kinesis</p>
+              <p class="text-p2 font-light text-charcoal-grey">Stream into your own AWS Kinesis deployment to process, filter, or transform realtime messages published over Ably.</p>
+              <a class="text-p2 underline text-charcoal-grey font-medium hover:text-gui-hover focus:text-gui-focus active:text-gui-active" href="/documentation/general/firehose">Read the docs</a>
+            </div>
+          </li>
+          <li class="flex items-start mb-24">
+            <img alt="" class="h-32 w-32 mr-24" src="/packs/media/assets/technologies/icon-tech-awssqs-3f6c4c483957c42dd5959c135e74df9b.svg" />
+            <div>
+              <p class="text-p2 font-medium text-charcoal-grey">AWS SQS</p>
+              <p class="text-p2 font-light text-charcoal-grey">Stream into your own AWS SQS queues to process, filter, or transform realtime messages published over Ably.</p>
+              <a class="text-p2 underline text-charcoal-grey font-medium hover:text-gui-hover focus:text-gui-focus active:text-gui-active" href="/documentation/general/firehose">Read the docs</a>
+            </div>
+          </li>
+          <li class="flex items-start mb-24">
+            <img alt="" class="h-32 w-32 mr-24" src="/packs/media/assets/technologies/icon-tech-rabbitMQ-e2761ccf618e1fb38e64f97abaf7a7df.svg" />
+            <div>
+              <p class="text-p2 font-medium text-charcoal-grey">RabbitMQ</p>
+              <p class="text-p2 font-light text-charcoal-grey">Stream into your own RabbitMQ deployment to process, filter, or transform realtime messages published over Ably.</p>
+              <a class="text-p2 underline text-charcoal-grey font-medium hover:text-gui-hover focus:text-gui-focus active:text-gui-active" href="/documentation/general/firehose">Read the docs</a>
+            </div>
+          </li>
+          <li class="flex items-start mb-24">
+            <img alt="" class="h-32 w-32 mr-24" src="/packs/media/assets/technologies/icon-tech-amqp10-f9cffc3b070892003ea43badbbef0579.svg" />
+            <div>
+              <p class="text-p2 font-medium text-charcoal-grey">AMQP</p>
+              <p class="text-p2 font-light text-charcoal-grey">Use the AMQP queuing protocol to pass on realtime messages published over Ably for processing or transformation.</p>
+              <a class="text-p2 underline text-charcoal-grey font-medium hover:text-gui-hover focus:text-gui-focus active:text-gui-active" href="/documentation/general/queues">Read the docs</a>
+            </div>
+          </li>
+          <li class="flex items-start mb-24">
+            <img alt="" class="h-32 w-32 mr-24" src="/packs/media/assets/technologies/icon-tech-apachepulsar-cff8c84ba5cbd2ec592005dd3c521cad.svg" />
+            <div>
+              <p class="text-p2 font-medium text-charcoal-grey">Apache Pulsar</p>
+              <p class="text-p2 font-light text-charcoal-grey">Stream into your own Apache Pulsar deployment to process, filter, or transform realtime messages published over Ably.</p>
+              <a class="text-p2 underline text-charcoal-grey font-medium hover:text-gui-hover focus:text-gui-focus active:text-gui-active" href="/documentation/general/firehose">Read the docs</a>
+            </div>
+          </li>
+      </ul>
+    </div>
+</div>
+    </div>
+  </div>
+</div>
+
+  </section>
+</div>
+
+<div class="overflow-x-hidden md:overflow-x-visible">
+  <div class="relative bg-cool-black" data-id="ui-homepage-deliver-intro">
+      <div class="ui-massive-scaling-text-motif-wrapper">
+    <img alt="" class="ui-massive-scaling-text-motif" src="/packs/media/assets/home/scale-motif-open-empathetic-0b06198b6ad76b9024e2afcfe73df3e1.svg" />
+  </div>
+  <h2 class="ui-massive-scaling-text text-white">
+      Deliver <span class="text-active-orange block">at scale</span>
+</h2>
+  </div>
+
+  <section class="ui-homepage-section bg-cool-black overflow-hidden">
+    <div class="ui-homepage-deliver w-full max-w-screen-xl mx-auto ui-grid-px" data-id="ui-homepage-deliver">
+  <div class="relative">
+    <div class="ui-homepage-bg-globe">
+      <img alt="" src="/packs/media/assets/home/globe-ce0cfb264381dee9bb9ac482fa5223a7.png" />
+      <div class="ui-homepage-bg-globe-overlay"></div>
+    </div>
+
+    <div class="grid md:grid-cols-12 ui-grid-gap relative z-10 pb-80">
+      <div class="col-span-full md:col-span-4">
+        <p class="text-overline2 uppercase text-dark-grey font-medium tracking-widen-0.1 mb-20">Deliver at scale</p>
+        <h3 class="text-h1 mb-24 text-white text-light font-medium tracking-tighten-0.01">A global edge <span class="md:block">network</span> engineered to <span class="md:block">deliver at scale</span></h3>
+        <p class="text-p1 mb-24 text-light-grey font-light">Bring your users closer for a more polished and predictable user experience with Ably’s globally-distributed edge network. It’s battle-tested and always growing, allowing us to offer unrivaled realtime messaging performance, scalability, and reliability.</p>
+        <div class="mb-40 md:mb-0">
+          <a class="ui-featured-link text-p1   " style="--featured-link-icon-size: var(--fs-p1)" href="/four-pillars-of-dependability">
+  Our network is designed for dependability<svg class="text-white ui-featured-link-icon" style="width: calc(var(--featured-link-icon-size) * 1.25); height: calc(var(--featured-link-icon-size) * 1.25)">
+  <use xlink:href="#sprite-icon-gui-link-arrow"></use>
+</svg>
+</a>
+        </div>
+      </div>
+
+      <div class="col-span-full md:col-span-7 md:col-start-6 grid ui-grid-gap grid-cols-2 auto-rows-min" data-id="ui-homepage-delivery-at-scale-bar">
+          <div class="col-span-2 md:mt-80"><div class="ui-homepage-deliver-bar bg-white h-1 mb-12"></div><p class="text-h1 text-active-orange font-medium tracking-tighten-0.01 mb-32 sm:mb-24 md:mb-16 xl:mb-8">        250+ million<span class="block text-p1 text-white font-light tracking-none">unique end-users</span>
+</p></div>
+          <div class="col-span-2 sm:col-span-1"><div class="ui-homepage-deliver-bar bg-white h-1 mb-12"></div><p class="text-h2 text-active-orange font-medium tracking-tighten-0.01 mb-32 sm:mb-24 md:mb-16 xl:mb-8">        205+<span class="block text-p1 text-white font-light tracking-none">points of presence</span>
+</p></div>
+          <div class="col-span-2 sm:col-span-1"><div class="ui-homepage-deliver-bar bg-white h-1 mb-12"></div><p class="text-h2 text-active-orange font-medium tracking-tighten-0.01 mb-32 sm:mb-24 md:mb-16 xl:mb-8">        550+ billion<span class="block text-p1 text-white font-light tracking-none">monthly messages</span>
+</p></div>
+          <div class="col-span-2 sm:col-span-1"><div class="ui-homepage-deliver-bar bg-white h-1 mb-12"></div><p class="text-h2 text-active-orange font-medium tracking-tighten-0.01 mb-32 sm:mb-24 md:mb-16 xl:mb-8">        15<span class="block text-p1 text-white font-light tracking-none">isolated core routing datacentres</span>
+</p></div>
+          <div class="col-span-2 sm:col-span-1"><div class="ui-homepage-deliver-bar bg-white h-1 mb-12"></div><p class="text-h2 text-active-orange font-medium tracking-tighten-0.01 mb-32 sm:mb-24 md:mb-16 xl:mb-8">        <65ms<span class="block text-p1 text-white font-light tracking-none">round-trip latency</span>
+</p></div>
+      </div>
+    </div>
+  </div>
+</div>
+  </section>
+</div>
+
+<section class="ui-homepage-section bg-cool-black">
+  <div class="w-full max-w-screen-xl mx-auto ui-grid-px">
+  <div class="grid md:grid-cols-2 ui-grid-gap mb-64 relative">
+    <h3 class="text-h1 text-white text-light font-medium tracking-tighten-0.01">Reliability and <span class="block">uptime you can trust</span></h3>
+    <p class="text-p1 text-light-grey font-light">Ably's platform is architected from the ground-up to provide a resilient, highly-available network of datacenters and edge acceleration PoPs. Plus each datacenter can operate in isolation should issues outside of our control arise.</p>
+  </div>
+
+  <h4 class="text-h3 text-white font-medium tracking-tighten-0.025 mb-20">Service status over the last 90 days</h4>
+
+  <div data-react="Uptime" data-react-props="{&quot;serverUrl&quot;:&quot;https://status.ably.com/embed/uptime.json&quot;,&quot;linkTo&quot;:{&quot;href&quot;:&quot;//status.ably.com&quot;,&quot;text&quot;:&quot;More on our status site&quot;},&quot;theme&quot;:&quot;dark&quot;}"></div>
+
+  <div class="mt-64">
+    <ul class="ui-deliver-at-scale-guarantees ui-grid-gap">
+      <li class="pt-40 px-24 sm:p-40 col-span-full sm:col-span-1">
+        <p class="text-p2 text-white font-medium mb-16">SOC II Type 2 & HIPAA</p>
+        <p class="text-p2 text-light-grey font-light">Ably is SOC II Type 2 certified and HIPAA compliant for your peace of mind.</p>
+        <a class="text-p2 text-light-grey hover:text-gui-hover focus:text-gui-focus active:text-gui-active font-medium underline block" href="/security-and-compliance">Learn more</a>
+      </li>
+      <li class="pt-40 px-24 sm:p-40 col-span-full sm:col-span-1">
+        <p class="text-p2 text-white font-medium mb-16">99.999% uptime SLA</p>
+        <p class="text-p2 text-light-grey font-light">A fault-tolerant, highly-available design means a legitimate uptime SLA.</p>
+        <a class="text-p2 text-light-grey hover:text-gui-hover focus:text-gui-focus active:text-gui-active font-medium underline block" href="/uptime">Learn more</a>
+      </li>
+      <li class="py-40 px-24 sm:p-40 col-span-full sm:col-span-1">
+        <p class="text-p2 text-white font-medium mb-16">Industry-leading encryption</p>
+        <p class="text-p2 text-light-grey font-light">AES256 encryption so no one, even Ably, can ever read your messages.</p>
+        <a class="text-p2 text-light-grey hover:text-gui-hover focus:text-gui-focus active:text-gui-active font-medium underline block" href="/security-and-compliance">Learn more</a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+</section>
+
+<div class="ui-feature-footer" data-id="feature-footer">
+  <div class="w-full bp-lg max-w-screen-xl mx-auto py-64 md:grid grid-cols-3 ui-grid-gap ui-grid-px">
+    <div class="col-span-2 bg-cool-black text-white rounded-lg overflow-hidden sm:flex flex-row mb-24 md:mb-0">
+      <div class="ui-feature-image flex-0 bg-center bg-cover w-full h-256 sm:w-1/2 sm:h-auto" style="background-image:url(/assets/ably_ui/core/images/technical-support-01-800x533-d9e243448b3bf5cbc8bfeed4fd8f1ac66435375d2599fb62861f6658fdab4c95.jpg)"></div>
+      <div class="p-24 sm:p-32 flex-1 h-full">
+        <div class="flex flex-col h-full space-between">
+          <span class="flex-1">
+            <div class="text-h3 mb-24 flex-1">Talk to our technical team </div>
+            <p class="text-p1 font-light">If you&#39;re having technical or account issues just get in touch.</p>
+            <button type="button" class="ui-btn-secondary-invert self-start mt-24" data-id="open-chat-widget" data-enabled-label="Start a live chat" data-disabled-label="Live chat unavailable" disabled="disabled">
+              Live chat unavailable
+</button>          </span>
+          <span class="flex-0 mt-24 md:mt-0">
+            <p class="text-p1 font-light">
+              Don’t want to chat?
+              <a class="text-white underline font-medium hover:text-gui-hover focus:text-gui-focus focus:outline-gui-focus" href="/contact">Get in touch via our contact page</a>
+            </p>
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="bg-white rounded-lg p-24 sm:p-32 w-auto">
+      <div class="flex flex-col h-full space-between">
+        <span class="flex-1">
+          <div class="text-h3 mb-24">Try our APIs for free</div>
+          <p class="text-p1 font-medium mb-16">Our free plan includes</p>
+          <ul class="relative ml-24 text-p1 font-light leading-8">
+            <li>
+              <svg class=" align-text-bottom" style="width: 1.5rem; height: 1.5rem">
+  <use xlink:href="#sprite-icon-gui-tick"></use>
+</svg>
+              3m messages per month
+            </li>
+            <li>
+              <svg class=" align-text-bottom" style="width: 1.5rem; height: 1.5rem">
+  <use xlink:href="#sprite-icon-gui-tick"></use>
+</svg>
+              100 peak connections
+            </li>
+            <li>
+              <svg class=" align-text-bottom" style="width: 1.5rem; height: 1.5rem">
+  <use xlink:href="#sprite-icon-gui-tick"></use>
+</svg>
+              100 peak channels
+            </li>
+            <li>
+              <svg class=" align-text-bottom" style="width: 1.5rem; height: 1.5rem">
+  <use xlink:href="#sprite-icon-gui-tick"></use>
+</svg>
+              Loads of features
+            </li>
+          </ul>
+        </span>
+        <span class="flex-0">
+          <a class="ui-btn-secondary self-start mt-24" href="/sign-up">Start with a free account</a>
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="bg-light-grey font-sans antialiased" data-id="footer">
+  <div class="max-w-screen-xl mx-auto py-32 sm:py-40 lg:py-64 ui-grid-gap ui-grid-px grid grid-cols-6">
+    <div class="col-span-full md:col-span-2">
+      <div class="flex flex-row p-menu-row-snug">
+        <img alt="Ably homepage" class="mr-24 -mt-16" src="/assets/ably_ui/core/images/ably-stack-bbd871091cfae630ec875060e923948ec5bdb06b69de8a303cb7967b82dd5999.svg" />
+        <h2 class="text-overline2 col-span-full font-medium uppercase tracking-widen-0.1">The Ably Platform</h2>
+      </div>
+
+      <div class="grid grid-cols-4">
+        <p class="text-p3 py-16 font-medium p-menu-row-snug col-span-3">
+          Easily power any realtime experience in your application via a simple API that handles everything realtime.
+        </p>
+      </div>
+
+      <ul class="grid gap-x-8 sm:gap-x-16 md:gap-x-24 xl:gap-x-32 sm:grid-cols-2 md:grid-cols-1">
+        <li class="p-menu-row-snug">
+          <a class="ui-footer-menu-row-link" href="/pub-sub-messaging">Pub/sub messaging</a>
+        </li>
+        <li class="p-menu-row-snug">
+          <a class="ui-footer-menu-row-link" href="/push-notifications">Push notifications</a>
+        </li>
+        <li class="p-menu-row-snug">
+          <a class="ui-footer-menu-row-link" href="/integrations">Third-party integrations</a>
+        </li>
+        <li class="p-menu-row-snug">
+          <a class="ui-footer-menu-row-link" href="/protocols">Multiple protocol messaging</a>
+        </li>
+        <li class="p-menu-row-snug">
+          <a class="ui-footer-menu-row-link" href="/hub">Streaming data sources</a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="col-span-full sm:col-span-3 md:col-span-1">
+      <h2 class="ui-footer-col-title">Ably is for</h2>
+      <ul>
+        <li class="p-menu-row-snug">
+          <a class="ui-footer-menu-row-link" href="/solutions/asset-tracking">Ably Asset Tracking</a>
+        </li>
+        <li class="p-menu-row-snug">
+          <a class="ui-footer-menu-row-link" href="/solutions/extend-kafka-to-the-edge">Extend Kafka to the edge</a>
+        </li>
+        <li class="p-menu-row-snug">
+          <a class="ui-footer-menu-row-link" href="/solutions/edtech">EdTech</a>
+        </li>
+        <li class="p-menu-row-snug">
+          <a class="ui-footer-menu-row-link" href="/solutions/automotive-logistics-and-mobility">Automotive, Logistics, &amp; Mobility</a>
+        </li>
+        <li class="p-menu-row-snug">
+          <a class="ui-footer-menu-row-link" href="/solutions/b2b-platforms">B2B Platforms</a>
+        </li>
+        <li class="p-menu-row-snug">
+          <a class="ui-footer-menu-row-link" href="/solutions/healthcare">Healthcare</a>
+        </li>
+        <li class="p-menu-row-snug">
+          <a class="ui-footer-menu-row-link" href="/hub">Streaming data sources</a>
+        </li>
+        <li class="p-menu-row-snug">
+          <a class="ui-footer-menu-row-link" href="/solutions/ecommerce-and-retail">eCommerce &amp; Retail</a>
+        </li>
+        <li class="p-menu-row-snug">
+          <a class="ui-footer-menu-row-link" href="/solutions/sports-and-media">Sports &amp; Media</a>
+        </li>
+        <li class="p-menu-row-snug">
+          <a class="ui-footer-menu-row-link" href="/solutions/gaming">Gaming</a>
+        </li>
+        <li class="p-menu-row-snug">
+          <a class="ui-footer-menu-row-link" href="/solutions/iot-and-connected-devices">IoT &amp; Connected Devices</a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="col-span-full sm:col-span-3 md:col-span-1">
+      <h2 class="ui-footer-col-title">Developers</h2>
+      <ul>
+        <li class="p-menu-row-snug">
+          <a class="ui-footer-menu-row-link" href="/documentation/quick-start-guide">Start in 5 minutes</a>
+        </li>
+        <li class="p-menu-row-snug">
+          <a class="ui-footer-menu-row-link" href="/documentation">Documentation</a>
+        </li>
+        <li class="p-menu-row-snug">
+          <a class="ui-footer-menu-row-link" href="/tutorials">Tutorials</a>
+        </li>
+        <li class="p-menu-row-snug">
+          <a href="https://changelog.ably.com/" class="ui-footer-menu-row-link">Changelog</a>
+        </li>
+        <li class="p-menu-row-snug">
+          <a class="ui-footer-menu-row-link" href="/support">Support &amp; FAQs</a>
+        </li>
+        <li class="p-menu-row-snug">
+          <a class="ui-footer-menu-row-link" href="/download">SDKs</a>
+        </li>
+        <li class="p-menu-row-snug flex items-center">
+          <a class="pr-8 ui-footer-menu-row-link" href="https://status.ably.com/">System status</a>
+          <iframe class="w-24 h-24 mt-4" src="https://status.ably.com/embed/icon" allowtransparency="true" frameborder="0" scrolling="no"></iframe>
+        </li>
+      </ul>
+    </div>
+
+    <div class="col-span-full sm:col-span-3 md:col-span-1">
+      <h2 class="ui-footer-col-title">WHY ABLY</h2>
+      <ul>
+        <li class="p-menu-row-snug">
+          <a class="ui-footer-menu-row-link" href="/customers">Customers</a>
+        </li>
+        <li class="p-menu-row-snug">
+          <a class="ui-footer-menu-row-link" href="/case-studies">Case Studies</a>
+        </li>
+        <li class="p-menu-row-snug">
+          <a class="ui-footer-menu-row-link" href="/four-pillars-of-dependability">Four Pillars of Dependability</a>
+        </li>
+        <li class="p-menu-row-snug">
+          <a class="ui-footer-menu-row-link" href="/compare">Compare our tech</a>
+        </li>
+        <li class="p-menu-row-snug">
+          <a class="ui-footer-menu-row-link" href="/protocols">Multi protocol support</a>
+        </li>
+        <li class="p-menu-row-snug">
+          <a class="ui-footer-menu-row-link" href="/integrations">Third-party integrations</a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="col-span-full sm:col-span-3 md:col-span-1">
+      <h2 class="ui-footer-col-title">ABOUT</h2>
+      <ul>
+        <li class="p-menu-row-snug">
+          <a class="ui-footer-menu-row-link" href="/about">About Ably</a>
+        </li>
+        <li class="p-menu-row-snug">
+          <a class="ui-footer-menu-row-link" href="/pricing">Pricing</a>
+        </li>
+        <li class="p-menu-row-snug">
+          <a class="ui-footer-menu-row-link" href="/blog">Blog</a>
+        </li>
+        <li class="p-menu-row-snug">
+          <a class="ui-footer-menu-row-link" href="/careers">Careers</a>
+        </li>
+        <li class="p-menu-row-snug">
+          <a class="ui-footer-menu-row-link" href="/open-policy">Open protocol policy</a>
+        </li>
+        <li class="p-menu-row-snug">
+          <a href="https://www.notion.so/ably/Ably-Press-Center-551152f5be724d4495a7c2e29d9f51c7" target="_blank" rel="noopener" class="ui-footer-menu-row-link">Press & Media</a>
+        </li>
+        <li class="p-menu-row-snug">
+          <a class="ui-footer-menu-row-link" href="/contact">Contact us</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="max-w-screen-xl ui-grid-px mx-auto">
+    <hr class="border-t border-mid-grey" />
+  </div>
+
+  <div class="max-w-screen-xl mx-auto py-24 md:py-40 lg:py-32 grid ui-grid-gap ui-grid-px grid-cols-2">
+    <div class="flex flex-col flex-auto pb-40 ml-8 col-span-full md:col-span-1">
+      <div class="inline-flex">
+        <a class="ui-footer-link pr-24" href="/privacy">Cookies</a>
+        <a class="ui-footer-link pr-24" href="/legals">Legals</a>
+        <a class="ui-footer-link pr-24" href="/data-protection">Data Protection</a>
+        <a class="ui-footer-link" href="/privacy">Privacy</a>
+      </div>
+
+      <div class="pt-32 flex items-center">
+        <a class="h-24 pr-24 text-cool-black hover:text-icon-twitter" href="https://twitter.com/ablyrealtime">
+          <svg class=" " style="width: 1.5rem; height: 1.5rem">
+  <use xlink:href="#sprite-twitter"></use>
+</svg>
+        </a>
+        <a class="h-24 pr-24 text-cool-black hover:text-icon-linkedin" href="https://www.linkedin.com/company/ably-realtime">
+          <svg class=" " style="width: 1.5rem; height: 1.5rem">
+  <use xlink:href="#sprite-linkedin"></use>
+</svg>
+        </a>
+        <a class="h-24 pr-24 text-cool-black hover:text-icon-github" href="https://github.com/ably/">
+          <svg class=" " style="width: 1.5rem; height: 1.5rem">
+  <use xlink:href="#sprite-github"></use>
+</svg>
+        </a>
+        <a class="h-24 pr-24 text-cool-black hover:text-icon-discord" href="https://discord.gg/jwBPhEZ9g5">
+          <svg class=" " style="width: 1.5rem; height: 1.5rem">
+  <use xlink:href="#sprite-discord"></use>
+</svg>
+        </a>
+        <div class="border-l border-mid-grey h-40"></div>
+        <a
+          class="flex flex-row pl-24 text-cool-black hover:text-icon-glassdoor"
+          href="https://www.glassdoor.co.uk/Overview/Working-at-Ably-EI_IE2184188.11,15.htm"
+        >
+          <svg class=" " style="width: 1.5rem; height: 1.5rem">
+  <use xlink:href="#sprite-glassdoor"></use>
+</svg>
+        </a>
+        <div class="pl-16 text-menu3 font-light">
+          <strong class="block font-medium">We&apos;re hiring!</strong>
+          <a href="https://www.glassdoor.co.uk/Overview/Working-at-Ably-EI_IE2184188.11,15.htm" class="ui-footer-link">Learn more</a>
+          at Glassdoor
+        </div>
+      </div>
+    </div>
+
+    <div class="md:text-right col-span-full md:col-span-1 ml-8 inline-flex md:ml-auto">
+      <img alt="Rocket List 2021" class="mr-24 w-96 h-96" src="/assets/ably_ui/core/images/rocket-list-2021-640e296a9fcdd43515437b0f9f34bf83f4ac887437d924d12c2e120ac15a2ad8.png" />
+      <img alt="Flexible Companies 2021" class="w-96 h-96" src="/assets/ably_ui/core/images/flexible-companies-3ce2f99e779aeac49aabca7bd7573474bbbd76c0ad47282aa21aee9ec15a1af8.png" />
+    </div>
+  </div>
+</footer>
+
+</main>
+
+    <script src="/packs/js/runtime-d66f568fc62e04a782c9.js"></script>
+<script src="/packs/js/npm.react-dom-d11db8398795ff2d3e14.chunk.js"></script>
+<script src="/packs/js/npm.react-d157c4058f79b67c7725.chunk.js"></script>
+<script src="/packs/js/npm.scheduler-7a3f69f8c9be3424a18e.chunk.js"></script>
+<script src="/packs/js/npm.object-assign-4b696e5365e421254334.chunk.js"></script>
+<script src="/packs/js/npm.ably-5fe1a9d987b6fc24581d.chunk.js"></script>
+<script src="/packs/js/10-952a344173fa3ad69e8d.chunk.js"></script>
+<script src="/packs/js/92-87887219f9defd7c3749.chunk.js"></script>
+<script src="/packs/js/ably-ui-b1e3ceb1c256df9ee70b.chunk.js"></script>
+<script src="/packs/js/npm.jquery-5019cd4ec477963d128c.chunk.js"></script>
+<script src="/packs/js/npm.webpack-b4c5f2b38f39e85670e2.chunk.js"></script>
+<script src="/packs/js/npm.process-3cfa78e2e68de98a0201.chunk.js"></script>
+<script src="/packs/js/npm.sentry-19a734b81dc81d32b526.chunk.js"></script>
+<script src="/packs/js/npm.tslib-61c55646b72a9bea4097.chunk.js"></script>
+<script src="/packs/js/npm.rails-87bec5c20d64a65391db.chunk.js"></script>
+<script src="/packs/js/40-aa79828daec37eea2167.chunk.js"></script>
+<script src="/packs/js/application-next-4fb739424909931f88d9.chunk.js"></script>
+<script src="/packs/js/controllers/pages/pages-8d7ea4612680046cde38.chunk.js"></script>
+<script src="/packs/js/npm.regenerator-runtime-fb6da35bdd322832dcba.chunk.js"></script>
+<script src="/packs/js/npm.babel-e2a617ad19efd5ecfab8.chunk.js"></script>
+<script src="/packs/js/npm.basicscroll-7489d991c532e3fd9572.chunk.js"></script>
+<script src="/packs/js/npm.lodash.throttle-1f564d6f950fa053c87e.chunk.js"></script>
+<script src="/packs/js/82-33e9e299699c28ebf7a5.chunk.js"></script>
+<script src="/packs/js/72-d577e2d4e9c5ad16356d.chunk.js"></script>
+<script src="/packs/js/81-0feff56f01e2dc2b4a22.chunk.js"></script>
+<script src="/packs/js/90-c3ab9f7740da35f3d2dc.chunk.js"></script>
+<script src="/packs/js/controllers/pages/home-33503be77cce09753a77.chunk.js"></script>
+    
+
+      <script src="//addsearch.com/js/?key=1fcb5a6e74fa2d6396c671ae5974119d" async="async"></script>
+
+    
+
+    
+  </body>
+</html>

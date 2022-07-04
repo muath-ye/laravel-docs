@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Laravel Spark</title>
+
+    <link rel="stylesheet" href="/css/marketing.css?id=42104606f12481bc134f">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600"
+        rel="stylesheet"
+    />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
+    <script
+        src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.7.0/dist/alpine.min.js"
+        defer
+    ></script>
+</head>
+<body
+    class="font-sans text-gray-900 antialiased bg-gray-100"
+    x-init="init()"
+    x-data="{
+            navShowing: false,
+            init() {
+                this.$watch('navShowing', val => {
+                    if (val) {
+                        document.body.classList.add('overflow-hidden');
+
+                        setTimeout(() => this.$refs.navigationClose.focus(), 300);
+                    } else {
+                        document.body.classList.remove('overflow-hidden');
+
+                        this.$refs.navigationOpen.focus();
+                    }
+                })
+            }
+        }"
+>
+<div class="mb-4 bg-indigo-100 border-b border-indigo-200 px-4 py-2 text-sm text-center">
+    <span class="text-indigo-700 font-semibold">You can access the previous generation of Spark via</span> <a href="https://spark-classic.laravel.com" class="text-indigo-800 font-bold underline">Spark Classic</a>.
+</div>
+<nav class="max-w-screen-xl mx-auto p-5 md:px-8 lg:px-16">
+    <div class="flex items-center justify-between">
+        <a href="/" class="inline-flex items-center">
+            <svg class="h-9" viewBox="0 0 22 36" fill="none">
+                <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M14.2 2.63A2 2 0 0012.3 0H8.6a2 2 0 00-1.9 1.37l-6.6 20A2 2 0 002 24h3.7a2 2 0 001.9-1.37l6.6-20zm6.93 12a2 2 0 00-1.9-2.63h-3.7a2 2 0 00-1.9 1.37l-6.6 20A2 2 0 008.93 36h3.7a2 2 0 001.9-1.37l6.6-20z"
+                    fill="url(#paint0_radial)"
+                />
+                <defs>
+                    <radialGradient
+                        id="paint0_radial"
+                        cx="0"
+                        cy="0"
+                        r="1"
+                        gradientUnits="userSpaceOnUse"
+                        gradientTransform="matrix(4.99052 19.99997 -10.77366 2.68831 16.98 20)"
+                    >
+                        <stop stop-color="#754BEC" />
+                        <stop offset="1" stop-color="#49DEFF" />
+                    </radialGradient>
+                </defs>
+            </svg>
+            <span
+                class="ml-4 text-gray-900 text-lg font-medium font-heading leading-6 sm:text-xl"
+            >
+                        Laravel Spark
+                    </span>
+        </a>
+
+        <button
+            x-ref="navigationOpen"
+            class="inline-flex items-center px-2.5 py-2 border border-gray-400 border-opacity-50 rounded-md transition duration-200 md:hidden hover:text-gray-900 hover:bg-gray-100 hover:border-opacity-100 focus:text-gray-600 focus:bg-gray-200 focus:outline-none focus:ring"
+            @click="navShowing = true"
+        >
+            <svg
+                class="w-3 h-3 text-gray-800"
+                viewBox="0 0 12 10"
+                fill="none"
+            >
+                <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M0 1a1 1 0 011-1h10a1 1 0 110 2H1a1 1 0 01-1-1zm0 4a1 1 0 011-1h10a1 1 0 110 2H1a1 1 0 01-1-1zm1 3a1 1 0 100 2h10a1 1 0 100-2H1z"
+                    fill="#343A45"
+                />
+            </svg>
+            <span
+                class="ml-3 text-gray-800 text-sm font-semibold leading-5"
+            >
+                        Menu
+                    </span>
+        </button>
+
+        <div class="hidden md:space-x-6 md:flex md:items-center">
+            <a
+                class="text-gray-800 text-sm font-semibold leading-5 hover:text-indigo-700"
+                href="/docs"
+            >
+                Documentation
+            </a>
+            <span class="w-px h-5 bg-gray-600 bg-opacity-50"></span>
+            <a
+                class="text-gray-800 text-sm font-semibold leading-5 hover:text-indigo-700"
+                href="/login"
+            >
+                Sign In
+            </a>
+            <a
+                class="px-3 py-2 text-gray-800 text-sm font-semibold leading-5 border border-gray-400 border-opacity-50 rounded-md transition duration-200 hover:text-gray-900 hover:bg-gray-100 hover:border-opacity-100 focus:text-gray-600 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
+                href="/register"
+            >
+                Create Account
+            </a>
+        </div>
+    </div>
+</nav>
+<section class="relative mt-8 md:mt-12">
+    <div
+        class="px-5 max-w-screen-xl mx-auto md:px-8 md:pt-16 md:pb-24 lg:pt-24 lg:pb-32 lg:px-16"
+    >
+        <div class="md:w-1/2 md:pr-8">
+            <h1
+                class="font-heading text-gray-900 font-medium text-4xl leading-10"
+            >
+                The perfect starting point for your next
+                big idea.
+            </h1>
+            <p class="mt-4 text-gray-800 leading-6 sm:text-gray-600">
+                Laravel Spark is the complete recurring billing solution for Laravel. A starter-kit for your next great SaaS application.
+            </p>
+            <div class="mt-6 flex items-center space-x-4">
+                <a
+                    class="px-3 py-2 text-white text-sm font-semibold leading-5 bg-indigo-700 border-gray-400 rounded-md shadow-sm transition duration-200 hover:bg-indigo-600 hover:shadow focus:bg-indigo-800 focus:shadow-none"
+                    href="/register"
+                >
+                    Get Spark
+                </a>
+                <a
+                    class="px-3 py-2 text-gray-600 text-sm font-semibold leading-5 bg-white border border-transparent border-opacity-25 rounded-md shadow-sm transition duration-200 hover:text-gray-800 hover:border-gray-200 hover:shadow focus:text-gray-600 focus:shadow-none"
+                    href="/docs"
+                >
+                    Find Out More
+                </a>
+            </div>
+        </div>
+    </div>
+    <div
+        class="mt-16 overflow-hidden md:absolute md:top-0 md:right-0 md:w-1/2 md:mt-0 md:flex md:justify-end"
+    >
+        <div class="relative -z-1" style="width: 792px; height: 571px;">
+            <img
+                src="/images/screenshot.svg"
+                width="792"
+                height="571"
+                class="-ml-3 md:ml-0"
+            />
+        </div>
+    </div>
+</section>
+
+<section class="mt-8 md:mt-20 lg:mt-36">
+    <div class="relative">
+        <div
+            class="hidden absolute inset-0 -z-1 md:block"
+            style="
+                        height: 120%;
+                        background-image: -webkit-radial-gradient(circle, #5526DD 0%, #49DEFF 100%);
+                        background-image: radial-gradient(circle, #8a64fc 0%, #9bedff 100%);
+                        filter: blur(120px);
+                    "
+        ></div>
+
+
+        <div
+            class="relative max-w-screen-xl mx-auto px-5 md:grid md:grid-cols-2 md:gap-x-8 md:px-8 lg:gap-16 lg:px-16"
+        >
+            <div class="md:mt-2 lg:mt-6">
+                <h2
+                    class="text-3xl leading-9 font-heading font-medium lg:text-4xl"
+                >
+                    From start to shipped.
+                </h2>
+                <p class="mt-4 text-gray-800 leading-6">
+                    Laravel Spark allows you to define subscription plans for your application
+                    and provides your customers with a convenient billing portal. From the Spark billing
+                    portal, customers can subscribe to plans, update their plan, update their payment information,
+                    and download their invoices.
+                </p>
+                <p class="mt-6 text-gray-800 leading-6">
+                    Spark is installed via Composer, and when paired with a Laravel application starter kit like Laravel Jetstream or Laravel Breeze, allows you to focus on building what matters most - your application.
+                </p>
+            </div>
+            <div>
+                <div
+                    class="mt-8 flex items-start pb-8 border-t border-gray-600 border-opacity-25 md:mt-8 md:flex-row-reverse"
+                >
+                    <div class="pt-6 pr-8 md:pr-0 md:pl-8">
+                        <p class="text-gray-800 text-sm leading-6">
+                            Our convenient, single-site license allows you to use Laravel Spark on a single deployed application. Includes one year of updates.
+                        </p>
+                    </div>
+                    <div class="md:w-40 md:flex-shrink-0">
+                        <div
+                            class="-mt-px inline-block pt-6 border-t border-gray-600 text-5xl font-heading leading-none"
+                        >
+                            $99
+                        </div>
+                        <div
+                            class="mt-2 text-gray-800 text-sm text-right font-semibold leading-5 md:text-left"
+                        >
+                            Per Project
+                        </div>
+                    </div>
+                </div>
+                <div
+                    class="flex items-start pb-8 border-t border-gray-600 border-opacity-25 md:flex-row-reverse"
+                >
+                    <div class="pt-6 pr-8 md:pr-0 md:pl-8">
+                        <p class="text-gray-800 text-sm leading-6">
+                            Have big dreams? Our unlimited license allows you to use Laravel Spark on as many deployed applications as you wish. Includes one year of updates.
+                        </p>
+                    </div>
+                    <div class="md:w-40 md:flex-shrink-0">
+                        <div
+                            class="-mt-px inline-block pt-6 border-t border-gray-600 text-5xl font-heading leading-none"
+                        >
+                            $199
+                        </div>
+                        <div
+                            class="mt-2 text-gray-800 text-sm text-right font-semibold leading-5 md:text-left"
+                        >
+                            Unlimited Projects
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="mt-16 px-5 md:mt-24 md:px-8 lg:mt-32 lg:px-16">
+    <div class="md:max-w-3xl md:mx-auto md:text-center">
+        <h2
+            class="text-gray-900 text-3xl leading-9 font-heading font-medium lg:text-4xl"
+        >
+            Spark just got its biggest update ever.
+        </h2>
+        <p class="mt-4 text-gray-800 leading-6">
+            This release includes an enhanced UI and customer billing portal, Paddle / PayPal support, and the freedom to develop on the frontend stack of your choice.
+        </p>
+    </div>
+    <div
+        class="mt-10 grid gap-y-6 md:max-w-5xl md:mx-auto md:grid-cols-2 md:gap-x-8"
+    >
+        <div
+            class="relative overflow-hidden px-6 py-8 bg-white shadow-lg rounded-lg lg:px-12 lg:pt-20 lg:pb-24"
+        >
+            <svg
+                class="absolute bottom-0 right-0 text-gray-200 opacity-25 lg:inset-y-0 lg:mr-12"
+                width="269"
+                height="267"
+                viewBox="0 0 269 267"
+                fill="none"
+            >
+                <g>
+                    <path
+                        d="M120.23 225.05l-63.65 6.69a32 32 0 01-35.17-28.48L6.34 59.9a32 32 0 0128.48-35.17l175.04-18.4a32 32 0 0135.17 28.48l11.72 111.48"
+                        stroke="currentColor"
+                        stroke-width="4"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                    />
+                    <path
+                        d="M7.18 67.9l238.69-25.1M86.75 59.53l17.57 167.19"
+                        stroke="currentColor"
+                        stroke-width="4"
+                    />
+                    <path
+                        d="M166.3 204.1l-.22-1.98a2 2 0 00-1.78 2.2l2-.21zm42.73-52.63l1.98-.21a2 2 0 00-3.97.42l1.99-.2zm52.95 44.59a2 2 0 10-.42-3.98l.42 3.98zm-42.95 50.64l-1.98.22a2 2 0 003.97-.42l-1.99.2zm-52.74-42.6l-1.98.22a2 2 0 002.2 1.78l-.22-2zm.21 2a50.02 50.02 0 0044.52-54.83l-3.98.4a46.01 46.01 0 01-40.95 50.45l.41 3.97zm40.54-54.41a50.02 50.02 0 0054.94 44.37l-.42-3.98A46.01 46.01 0 01211 151.26l-3.97.43zm54.94 44.37l-.42-3.98.42 3.98zm-.42-3.98l-.07.01h-.05l-.03.01h-.01.09l.07-.02.42 3.98h.07l.05-.02h0l-.05.01-.07.01-.42-3.98zm0 0a50.02 50.02 0 00-44.51 54.82l3.97-.4a46.01 46.01 0 0140.96-50.44l-.42-3.98zm-40.54 54.4a50.02 50.02 0 00-54.94-44.36l.42 3.97a46.02 46.02 0 0150.55 40.83l3.97-.43zm-52.74-42.58l-3.97.41 3.97-.41z"
+                        fill="currentColor"
+                    />
+                </g>
+            </svg>
+            <div class="relative">
+                <h3 class="text-indigo-700 font-semibold leading-6 text-lg">
+                    Your application. Your frontend.
+                </h3>
+                <p class="mt-3 text-gray-800 leading-6">
+                    Unlike previous versions of Spark, Spark's billing portal is totally isolated from the rest of your application. This means you can use the frontend stack of your choice. Blade and Bootstrap? No problem. Inertia and Vue.js? Go for it.
+                </p>
+            </div>
+        </div>
+        <div
+            class="relative overflow-hidden px-6 py-8 bg-white shadow-lg rounded-lg lg:px-12 lg:pt-20 lg:pb-24"
+        >
+            <svg
+                class="absolute bottom-0 right-0 text-gray-200 opacity-25 lg:inset-y-0 lg:mr-12"
+                width="232"
+                height="231"
+                viewBox="0 0 232 231"
+                fill="none"
+            >
+                <g stroke="currentColor" stroke-width="4">
+                    <path
+                        d="M37.98 39.15l-20.87 2.2A14 14 0 004.66 56.72l14.62 139.15a14 14 0 0015.38 12.45l20.87-2.2M177.13 24.53l20.87-2.2a14 14 0 0115.38 12.46L228 173.93a14 14 0 01-12.45 15.38l-20.88 2.2"
+                    />
+                    <path
+                        d="M37.25 32.2A14 14 0 0149.7 16.82l111.32-11.7a14 14 0 0115.37 12.45l19.02 180.89a14 14 0 01-12.46 15.38l-111.31 11.7a14 14 0 01-15.38-12.45L37.25 32.19z"
+                    />
+                    <path
+                        d="M135 92.26l-12.19-9.87a14 14 0 00-19.67 2.07l-1.07 1.32a14 14 0 002.07 19.67l24.38 19.75a14 14 0 012.07 19.68l-1.07 1.32a14 14 0 01-19.68 2.07l-12.2-9.88M112.3 77.06l-1.1-10.43M121.45 164.03l-1.1-10.44"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                    />
+                </g>
+            </svg>
+            <div class="relative">
+                <h3 class="text-indigo-700 text-lg font-semibold leading-6">
+                    Now supporting <a class="underline" href="https://paddle.com">Paddle</a>.
+                </h3>
+                <p class="mt-3 text-gray-800 leading-6">
+                    Spark now offers support for Paddle - a payment provider that functions as a merchant of record, offers service to almost every country in the world, and provides support for PayPal. Operating from Europe? Paddle will handle VAT for you so you can focus on your business.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+<section
+    class="max-w-5xl mx-auto mt-16 sm:mt-2 px-5 md:mt-16 md:px-8 lg:mt-20 lg:px-16"
+>
+    <div class="relative md:divide-none">
+        <div
+            class="hidden md:absolute md:inset-0 md:flex md:items-center md:justify-center -z-1"
+        >
+            <div
+                class="md:block md:w-px md:h-full md:bg-gray-200"
+            ></div>
+        </div>
+        <div
+            class="relative py-10 border-t border-gray-400 border-opacity-50 md:grid md:grid-cols-2 md:items-center md:gap-x-16 md:border-0 lg:gap-x-24"
+        >
+            <div
+                class="hidden md:absolute md:inset-0 md:flex md:items-center md:justify-center -z-1"
+            >
+                <div
+                    class="md:block md:w-px md:h-20 md:bg-gray-600 md:opacity-50"
+                ></div>
+            </div>
+            <div class="md:flex md:justify-center">
+                <img width="150" src="/images/paddle.svg" />
+            </div>
+            <div class="mt-3 text-gray-800 leading-6">
+                Spark supports Paddle as a subscription payment gateway,
+                allowing you to easily bill your users on a monthly,
+                yearly, or per-seat basis.
+
+                <div class="mt-2">
+                    <a class="underline" href="https://paddle.com/solutions/laravel-spark/">Learn more about Spark with Paddle</a>
+                </div>
+            </div>
+        </div>
+        <div
+            class="relative py-10 border-t border-gray-400 border-opacity-50 md:grid md:grid-cols-2 md:items-center md:gap-x-16 md:border-0 lg:gap-x-24"
+        >
+            <div
+                class="hidden md:absolute md:inset-0 md:flex md:items-center md:justify-center -z-1"
+            >
+                <div
+                    class="md:block md:w-px md:h-20 md:bg-gray-600 md:opacity-50"
+                ></div>
+            </div>
+            <div class="md:flex md:justify-center">
+                <img width="150" src="/images/stripe.svg" />
+            </div>
+            <p class="mt-3 text-gray-800 leading-6">
+                Spark also offers support for Stripe as a subscription gateway,
+                allowing for recurring payments, per-seat pricing, and much more.
+            </p>
+        </div>
+        <div
+            class="relative py-10 border-t border-gray-400 border-opacity-50 md:grid md:grid-cols-2 md:items-center md:gap-x-16 md:border-0 lg:gap-x-24"
+        >
+            <div
+                class="hidden md:absolute md:inset-0 md:flex md:items-center md:justify-center -z-1"
+            >
+                <div
+                    class="md:block md:w-px md:h-20 md:bg-gray-600 md:opacity-50"
+                ></div>
+            </div>
+            <div class="md:flex md:justify-center">
+                <img src="/images/laravel.svg" />
+            </div>
+            <p class="mt-3 text-gray-800 leading-6">
+                Spark supports the latest release of Laravel, so you
+                are free to take advantage of all of Laravel's great new
+                features within your own Spark application.
+            </p>
+        </div>
+    </div>
+</section>
+<section class="relative pb-24 mt-16 lg:mt-24">
+    <div
+        class="hidden absolute inset-0 w-full -z-1 md:block"
+        style="
+                    background-image: radial-gradient(circle, #e7cdad 0%, #8fbddd 100%);
+                    background-image: -webkit-radial-gradient(circle, #e7cdad 0%, #8fbddd 100%);
+                    filter: blur(120px);
+                "
+    ></div>
+    <div class="relative max-w-2xl mx-auto px-5 md:px-8 lg:px-16">
+        <div
+            class="absolute top-0 left-0 transform -translate-x-1/4 -mt-16 opacity-50 -z-1 md:mt-0 md:-translate-x-1/2 md:-translate-y-1/4 lg:-translate-x-2/3"
+        >
+            <img
+                class="w-full hidden pointer-events-none md:block"
+                src="/images/bars-lg.svg"
+            />
+        </div>
+        <blockquote class="relative">
+            <p class="text-gray-900 text-2xl font-heading leading-8">
+                “I built Spark because I have a passion for building
+                great web applications and helping others do the same.
+                I've poured my heart into making sure Spark gives your
+                next big idea the solid foundation it deserves.”
+            </p>
+            <cite
+                class="mt-6 block py-4 pl-8 not-italic border-l border-gray-600 border-opacity-50"
+            >
+                <div class="font-semibold text-gray-800 leading-6">
+                    Taylor Otwell
+                </div>
+                <div class="font-semibold text-gray-600 leading-6">
+                    Creator of Laravel
+                </div>
+            </cite>
+        </blockquote>
+    </div>
+</section>
+<section class="max-w-screen-xl mx-auto px-5 md:px-8 lg:px-16">
+    <div class="max-w-lg">
+        <h2
+            class="text-gray-900 text-3xl leading-9 font-heading font-medium"
+        >
+            All the features you need to build your Laravel dream business.
+        </h2>
+        <p class="mt-4 text-gray-800 leading-6">
+            Spark gives you everything you need to launch your business and start charging customers on a recurring basis.
+        </p>
+    </div>
+    <div
+        class="mt-16 grid gap-y-10 sm:grid-cols-2 sm:gap-x-8 md:gap-x-12 lg:grid-cols-3 lg:gap-20"
+    >
+        <div>
+            <img src="/images/icons/subscriptions.svg" />
+            <h3
+                class="mt-6 text-gray-800 text-sm font-semibold leading-6"
+            >
+                Subscriptions
+            </h3>
+            <p class="mt-2 text-gray-800 text-sm leading-5">
+                Spark allows you to define monthly and yearly subscription plans in a simple configuration file.
+                Once your plans have been defined, customers can subscribe them via Spark's
+                customer billing portal.
+            </p>
+        </div>
+        <div>
+            <img src="/images/icons/invoices.svg" />
+            <h3
+                class="mt-6 text-gray-800 text-sm font-semibold leading-6"
+            >
+                Invoices
+            </h3>
+            <p class="mt-2 text-gray-800 text-sm leading-5">
+                Allow your customers to download PDF copies of their
+                invoices. Your customers will even receive an email with their monthly or yearly invoices.
+                One more thing you
+                don’t have to worry about.
+            </p>
+        </div>
+        <div>
+            <img src="/images/icons/billing.svg" />
+            <h3
+                class="mt-6 text-gray-800 text-sm font-semibold leading-6"
+            >
+                PayPal Support
+            </h3>
+            <p class="mt-2 text-gray-800 text-sm leading-5">
+                Spark now offers support for Paddle as a payment provider, allowing you to accept PayPal payments from your customers.
+            </p>
+        </div>
+        <div>
+            <img src="/images/icons/teams.svg" />
+            <h3
+                class="mt-6 text-gray-800 text-sm font-semibold leading-6"
+            >
+                Per Seat Billing
+            </h3>
+            <p class="mt-2 text-gray-800 text-sm leading-5">
+                Spark allows you to bill your customers "per seat". So, you might choose to bill your users for every team member they collaborate with, or for every project they create. Spark can handle it.
+            </p>
+        </div>
+        <div>
+            <img src="/images/icons/api.svg" />
+            <h3
+                class="mt-6 text-gray-800 text-sm font-semibold leading-6"
+            >
+                Frontend Freedom
+            </h3>
+            <p class="mt-2 text-gray-800 text-sm leading-5">
+                Spark's new customer billing portal is isolated from the rest of your frontend stack and includes its own CSS and JavaScript files. That means you're free to build your application using the frontend technology of your choice.
+            </p>
+        </div>
+        <div>
+            <img src="/images/icons/upgrades.svg" />
+            <h3
+                class="mt-6 text-gray-800 text-sm font-semibold leading-6"
+            >
+                Easy Upgrades
+            </h3>
+            <p class="mt-2 text-gray-800 text-sm leading-5">
+                Since your customers interact with Spark through Spark's isolated customer billing portal,
+                it's a cinch to upgrade Spark as we release new updates. Spark doesn't interfere with your
+                application's code.
+            </p>
+        </div>
+    </div>
+</section>
+<section class="mt-16 border-t border-gray-200 md:mt-32">
+    <div
+        class="max-w-4xl mx-auto px-5 py-10 flex flex-col items-center justify-between md:px-8 md:flex-row lg:px-16"
+    >
+        <a
+            href="https://laravel.com"
+            target="_blank"
+            class="px-2 py-4 transition-opacity duration-200 hover:opacity-75"
+        >
+            <img src="/images/laravel-small.svg" alt="Laravel" />
+        </a>
+        <a
+            href="https://laracasts.com"
+            target="_blank"
+            class="px-2 py-4 transition-opacity duration-200 hover:opacity-75"
+        >
+            <img src="/images/laracasts.svg" alt="Laracasts" />
+        </a>
+        <a
+            href="https://laravel-news.com"
+            target="_blank"
+            class="px-2 py-4 transition-opacity duration-200 hover:opacity-75"
+        >
+            <img src="/images/laravel-news.svg" alt="Laravel News" />
+        </a>
+        <a
+            href="https://forge.laravel.com"
+            target="_blank"
+            class="px-2 py-4 transition-opacity duration-200 hover:opacity-75"
+        >
+            <img src="/images/forge.svg" alt="Laravel Forge" />
+        </a>
+    </div>
+</section>
+<footer class="px-5 pb-10 text-center md:px-8 lg:px-16">
+    <p class="text-gray-600 text-sm leading-6">
+        Copyright &copy; Laravel LLC.
+    </p>
+</footer>
+<!-- Mobile Nav -->
+<nav
+    x-show="navShowing"
+    x-cloak
+    class="transition-opacity"
+    x-transition:enter="duration-150 ease-out"
+    x-transition:enter-start="opacity-0"
+    x-transition:enter-end="opacity-100"
+    x-transition:leave="duration-100 ease-in"
+    x-transition:leave-start="opacity-100"
+    x-transition:leave-end="opacity-0"
+>
+    <div
+        x-show="navShowing"
+        class="fixed inset-0 bg-gray-800 bg-opacity-50 transition"
+        x-transition:enter="duration-150 ease-out"
+        x-transition:enter-start="opacity-0"
+        x-transition:enter-end="opacity-100"
+        x-transition:leave="duration-100 ease-in"
+        x-transition:leave-start="opacity-100"
+        x-transition:leave-end="opacity-0"
+    ></div>
+    <div class="fixed top-0 inset-x-0 p-4">
+        <div
+            x-show="navShowing"
+            class="bg-white rounded-lg shadow-lg transition transform origin-top-right"
+            x-transition:enter="duration-150 ease-out"
+            x-transition:enter-start="opacity-0 scale-95"
+            x-transition:enter-end="opacity-100 scale-100"
+            x-transition:leave="duration-100 ease-in"
+            x-transition:leave-start="opacity-100 scale-100"
+            x-transition:leave-end="opacity-0 scale-95"
+            @click.away="navShowing = false"
+        >
+            <div
+                class="flex items-center justify-between px-6 py-4 border-b border-gray-400 border-opacity-50"
+            >
+                <div>
+                    <a href="https://spark.laravel.com/docs"
+                        class="text-gray-600 text-sm font-semibold leading-5">
+                        Documentation
+                    </a>
+
+                    <div class="mt-2">
+                        <a href="https://spark.laravel.com/login"
+                            class="text-gray-600 text-sm font-semibold leading-5">
+                            Sign In
+                        </a>
+                    </div>
+                </div>
+
+                <button
+                    x-ref="navigationClose"
+                    class="p-1 rounded text-gray-600 focus:outline-none focus:text-gray-800"
+                    aria-label="Close navigation"
+                    @click="navShowing = false"
+                >
+                    <svg
+                        class="w-3 h-3"
+                        viewBox="0 0 12 12"
+                        fill="none"
+                    >
+                        <path
+                            fill-rule="evenodd"
+                            clip-rule="evenodd"
+                            d="M10.3.3a1 1 0 111.4 1.4L7.42 6l4.3 4.3a1 1 0 01-1.42 1.4L6 7.42l-4.3 4.3a1 1 0 01-1.4-1.42L4.58 6 .29 1.7A1 1 0 011.71.3L6 4.58l4.3-4.3z"
+                            fill="currentColor"
+                        />
+                    </svg>
+                </button>
+            </div>
+
+        </div>
+    </div>
+</nav>
+
+<script type="text/javascript">!function(e,t,n){function a(){var e=t.getElementsByTagName("script")[0],n=t.createElement("script");n.type="text/javascript",n.async=!0,n.src="https://beacon-v2.helpscout.net",e.parentNode.insertBefore(n,e)}if(e.Beacon=n=function(t,n,a){e.Beacon.readyQueue.push({method:t,options:n,data:a})},n.readyQueue=[],"complete"===t.readyState)return a();e.attachEvent?e.attachEvent("onload",a):e.addEventListener("load",a,!1)}(window,document,window.Beacon||function(){});
+</script><script type="text/javascript">window.Beacon('init', 'b4c28295-5588-4668-a3af-7a56a9091998')</script>
+
+</body>
+</html>

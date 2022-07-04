@@ -1,0 +1,1011 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html class="hasSidebar hasPageActions hasBreadcrumb conceptual has-default-focus theme-light" lang="en-us" dir="ltr" data-css-variable-support="true" data-authenticated="false" data-auth-status-determined="false" data-target="docs" x-ms-format-detection="none">
+
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta property="og:title" content="Install WSL" />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="https://docs.microsoft.com/en-us/windows/wsl/install" />
+			<meta property="og:description" content="Install Windows Subsystem for Linux with the command, wsl --install. Use a Bash terminal on your Windows machine run by your preferred Linux distribution - Ubuntu, Debian, SUSE, Kali, Fedora, Pengwin, Alpine, and more are available." />
+		<meta property="og:image" content="https://docs.microsoft.com/en-us/media/logos/logo-ms-social.png" />
+		<meta property="og:image:alt" content="Microsoft Logo" />
+
+	<meta name="twitter:card" content="summary" />
+
+	<meta name="twitter:site" content="@docsmsft" />
+
+	<meta name="color-scheme" content="light dark">
+
+
+	<meta name="author" content="craigloewen-msft" />
+<meta name="breadcrumb_path" content="/windows/wsl/breadcrumb/toc.json" />
+<meta name="depot_name" content="WS.wsl" />
+<meta name="description" content="Install Windows Subsystem for Linux with the command, wsl --install. Use a Bash terminal on your Windows machine run by your preferred Linux distribution - Ubuntu, Debian, SUSE, Kali, Fedora, Pengwin, Alpine, and more are available." />
+<meta name="document_id" content="0cc9a77f-e6a1-a719-c337-7ff7506a1ac8" />
+<meta name="document_version_independent_id" content="7ed8fb81-5b8f-4d56-7b89-bf600ce6080a" />
+<meta name="gitcommit" content="https://github.com/MicrosoftDocs/WSL/blob/a5a13a4f8de0712312529ddcaa66adc67f3935d6/WSL/install.md" />
+<meta name="locale" content="en-us" />
+<meta name="ms.author" content="crloewen" />
+<meta name="ms.date" content="11/22/2021" />
+<meta name="ms.prod" content="dev-environment" />
+<meta name="ms.technology" content="windows-subsystem-for-linux" />
+<meta name="ms.topic" content="article" />
+<meta name="original_content_git_url" content="https://github.com/MicrosoftDocs/WSL/blob/live/WSL/install.md" />
+<meta name="page_type" content="conceptual" />
+<meta name="pdf_url_template" content="https://docs.microsoft.com/pdfstore/en-us/WS.wsl/{branchName}{pdfName}" />
+<meta name="recommendations" content="true" />
+<meta name="schema" content="Conceptual" />
+<meta name="site_name" content="Docs" />
+<meta name="toc_rel" content="toc.json" />
+<meta name="updated_at" content="2022-02-24 09:43 PM" />
+<meta name="word_count" content="1315" />
+
+
+	<meta name="scope" content="WSL" />
+<link href="https://docs.microsoft.com/en-us/windows/wsl/install" rel="canonical">
+	<title>Install WSL | Microsoft Docs</title>
+
+		<link rel="stylesheet" href="/_themes/docs.theme/master/en-us/_themes/styles/17b893fb.site-ltr.css ">
+
+	
+
+	<script id="msdocs-script">
+	var msDocs = {
+		data: {
+			timeOrigin: Date.now(),
+			contentLocale: 'en-us',
+			contentDir: 'ltr',
+			userLocale: 'en-us',
+			userDir: 'ltr',
+			pageTemplate: 'Conceptual',
+			brand: '',
+			context: {
+
+			},
+			hasBinaryRating: true,
+			hasGithubIssues: true,
+			showFeedbackReport: false,
+			enableTutorialFeedback: false,
+			feedbackSystem: 'GitHub',
+			feedbackGitHubRepo: 'MicrosoftDocs/WSL',
+			feedbackProductUrl: 'https://github.com/Microsoft/WSL/issues',
+			contentGitUrl: 'https://github.com/MicrosoftDocs/wsl/blob/main/WSL/install.md',
+			extendBreadcrumb: true,
+			isEditDisplayable: true,
+			hideViewSource: false,
+			hasPageActions: true,
+			hasBookmark: true,
+			hasShare: true,
+			hasRecommendations: true,
+			contributors: [
+						{ name: "craigloewen-msft", url: "https://github.com/craigloewen-msft" },
+						{ name: "dix", url: "https://github.com/dix" },
+						{ name: "crramirez", url: "https://github.com/crramirez" },
+						{ name: "pzhlkj6612", url: "https://github.com/pzhlkj6612" },
+						{ name: "v-alje", url: "https://github.com/v-alje" },
+						{ name: "mattwojo", url: "https://github.com/mattwojo" }
+],
+		},
+		functions:{}
+	};
+	</script>
+	<script src="https://wcpstatic.microsoft.com/mscc/lib/v2/wcp-consent.js"></script>
+	<script src="https://js.monitor.azure.com/scripts/c/ms.jsll-3.min.js"></script>
+
+	<script src="/_themes/docs.theme/master/en-us/_themes/global/5cce29c0.deprecation.js"></script>
+		<script src="/_themes/docs.theme/master/en-us/_themes/scripts/281108bd.index-docs.js"></script>
+</head>
+
+<body lang="en-us" dir="ltr">
+	<div class="header-holder has-default-focus">
+		<a href="#main" class="skip-to-main-link has-outline-color-text visually-hidden-until-focused position-fixed has-inner-focus focus-visible top-0 left-0 right-0 padding-xs has-text-centered has-body-background" tabindex="1">Skip to main content</a>
+
+		<div hidden id="cookie-consent-holder"></div>
+
+		<div id="unsupported-browser" style="
+			background-color: white;
+			color: black;
+			padding: 16px;
+			border-bottom: 1px solid grey;"
+			hidden
+		>
+			<div style="max-width: 800px; margin: 0 auto;">
+				<p style="font-size: 24px">This browser is no longer supported.</p>
+				<p style="font-size: 16px; margin-top: 16px;">Upgrade to Microsoft Edge to take advantage of the latest features, security updates, and technical support.</p>
+				<div style="margin-top: 12px;">
+					<a href="https://go.microsoft.com/fwlink/p/?LinkID=2092881 "
+						style="
+						background-color: #0078d4;
+						border: 1px solid #0078d4;
+						color: white;
+						padding: 6px 12px;
+						border-radius: 2px;
+						display: inline-block;
+						">
+Download Microsoft Edge					</a>
+					<a href="https://docs.microsoft.com/en-US/lifecycle/faq/internet-explorer-microsoft-edge"
+						style="
+							background-color: white;
+							padding: 6px 12px;
+							border: 1px solid #505050;
+							color: #171717;
+							border-radius: 2px;
+							display: inline-block;
+							">
+More info					</a>
+				</div>
+			</div>
+
+		</div>
+		<!-- liquid-tag banners global -->
+		<div id="headerAreaHolder" data-bi-name="header">
+<header role="banner" itemscope="itemscope" itemtype="http://schema.org/Organization">
+	<div class="nav-bar">
+		<div class="nav-bar-brand">
+			<a itemprop="url" href="https://www.microsoft.com" aria-label="Microsoft" class="nav-bar-button">
+				<div class="nav-bar-logo has-background-image theme-display is-light" role="presentation" aria-hidden="true" itemprop="logo" itemscope="itemscope"></div>
+				<div class="nav-bar-logo has-background-image theme-display is-dark is-high-contrast" role="presentation" aria-hidden="true" itemprop="logo" itemscope="itemscope"></div>
+			</a>
+		</div>
+	</div>
+	<div class="is-hidden"></div>
+</header>		</div>
+
+						<div id="content-header" class="content-header uhf-container has-padding has-default-focus border-bottom-none" data-bi-name="content-header">
+					<nav id="breadcrumbs-deprecated-container" class="breadcrumb-holder padding-none padding-inline-xs-tablet has-padding-left-none-uhf-tablet has-padding-left-none-uhf-tablet padding-none-desktop flex-grow-1" data-bi-name="breadcrumb" role="navigation" aria-label="Breadcrumb">
+						<ul id="page-breadcrumbs-deprecated" class="breadcrumbs-deprecated">
+						</ul>
+					</nav>
+					<div class="content-header-controls">
+						<button type="button" class="contents-button button" data-bi-name="contents-expand" aria-haspopup="true" data-contents-button>
+							<span class="icon"><span class="docon docon-menu" aria-hidden="true"></span></span>
+							<span class="contents-expand-title">Contents</span>
+						</button>
+						<button type="button" class="ap-collapse-behavior ap-expanded button" data-bi-name="ap-collapse" aria-controls="action-panel">
+							<span class="icon"><span class="docon docon-exit-mode" aria-hidden="true"></span></span>
+							<span>Exit focus mode</span>
+						</button>
+					</div>
+					<div id="page-actions-deprecated-container" class="padding-none-tablet padding-xs font-size-sm display-flex justify-content-space-between flex-grow-1 page-action-holder">
+						<ul class="is-hidden-mobile action-list justify-content-flex-start justify-content-flex-end-tablet display-flex flex-wrap-wrap flex-grow-1 is-unstyled">
+							<li hidden>
+								<a id="lang-link-deprecated" class="button button button-clear button-sm" title="Read in English" data-bi-name="language-toggle" data-read-in-link data-hidden-parent>
+									<span class="icon docon docon-locale-globe" aria-hidden="true" data-read-in-link-icon></span>
+									<span class="is-visually-hidden-touch is-hidden-portrait" data-read-in-link-text>Read in English</span>
+								</a>
+							</li>
+							<li>
+								<button type="button" class="collection button button-clear button-sm has-inner-focus" data-list-type="collection" data-bi-name="collection" title="Add to collection">
+									<span class="icon" aria-hidden="true">
+										<span class="docon docon-circle-addition has-text-primary"></span>
+									</span>
+									<span class="collection-status is-visually-hidden-touch is-hidden-portrait">Save</span>
+								</button>
+							</li>
+								<li data-feedback-section-link>
+									<a href="#feedback" class="button  button button-clear button-sm has-inner-focus" data-bi-name="comments" title="Send feedback about this page">
+										<span class="icon" aria-hidden="true">
+											<span class="docon docon-comment-lines"></span>
+										</span>
+										<span class="is-visually-hidden-touch is-hidden-portrait">Feedback</span>
+									</a>
+								</li>
+									<li data-contenteditbtn>
+										<a href="https://github.com/MicrosoftDocs/wsl/blob/main/WSL/install.md" class=" button button-clear button-sm has-inner-focus" title="Edit This Document" data-bi-name="edit" data-original_content_git_url="https://github.com/MicrosoftDocs/WSL/blob/live/WSL/install.md" data-original_content_git_url_template="{repo}/blob/{branch}/WSL/install.md" data-pr_repo="" data-pr_branch="">
+										<span class="icon" aria-hidden="true">
+											<span class="docon docon-edit-outline"></span>
+										</span>
+										<span class="is-visually-hidden-touch is-hidden-portrait">Edit</span>
+									</a>
+								</li>
+							<li>
+<div class="sharing dropdown has-caret">
+	<button class="dropdown-trigger button button-clear button-sm button-block justify-content-flex-start has-inner-focus" aria-controls="sharing-menu" aria-expanded="false" title="Share This Document" data-bi-name="share">
+		<span class="icon" aria-hidden="true">
+			<span class="docon docon-sharing"></span>
+		</span>
+		<span class="is-visually-hidden-touch is-hidden-portrait">Share</span>
+	</button>
+	<div class="dropdown-menu padding-xxs" id="sharing-menu">
+		<ul data-bi-name="share-links">
+			<li>
+				<a class="button button-clear button-sm button-block justify-content-flex-start has-inner-focus share-twitter" data-bi-name="twitter">
+					<span class="icon">
+						<span class="docon docon-brand-twitter has-text-primary" aria-hidden="true"></span>
+					</span>
+					<span>Twitter</span>
+				</a>
+			</li>
+			<li>
+				<a class="button button-clear button-sm button-block justify-content-flex-start has-inner-focus share-linkedin" data-bi-name="linkedin">
+					<span class="icon">
+						<span class="docon docon-brand-linkedin has-text-primary" aria-hidden="true"></span>
+					</span>
+					<span>LinkedIn</span>
+				</a>
+			</li>
+			<li>
+				<a class="button button-clear button-sm button-block justify-content-flex-start has-inner-focus share-facebook" data-bi-name="facebook">
+					<span class="icon">
+						<span class="docon docon-brand-facebook has-text-primary" aria-hidden="true"></span>
+					</span>
+					<span>Facebook</span>
+				</a>
+			</li>
+			<li>
+				<a class="button button-clear button-sm button-block justify-content-flex-start has-inner-focus share-email" data-bi-name="email">
+					<span class="icon">
+						<span class="docon docon-mail-message-fill has-text-primary" aria-hidden="true"></span>
+					</span>
+					<span>Email</span>
+				</a>
+			</li>
+		</ul>
+	</div>
+</div>
+							</li>
+						</ul>
+						<button id="page-actions-toc-button-deprecated" type="button" class="border contents-button button button-clear button-sm is-hidden-tablet has-inner-focus" aria-label="Contents" data-bi-name="contents-expand" data-contents-button>
+							<span class="icon">
+								<span class="docon docon-editor-list-bullet" aria-hidden="true"></span>
+							</span>
+							<span class="contents-expand-title">Table of contents</span>
+						</button>
+						<div class="is-invisible"></div>
+						<div class="is-hidden-tablet level-item is-flexible level-right">
+							<button type="button" class="page-actions-button  button button-clear button-sm is-hidden-tablet has-inner-focus border is-full-height  margin-left-xxs" aria-label="Page Actions" data-bi-name="pageactions">
+								<span class="icon">
+									<span class="docon docon-more-vertical" aria-hidden="true"></span>
+								</span>
+							</button>
+						</div>
+					</div>
+			</div>
+
+
+		<div id="disclaimer-holder" class="has-overflow-hidden has-default-focus">
+			<!-- liquid-tag banners sectional -->
+		</div>
+	</div>
+
+	<div class="mainContainer  uhf-container has-top-padding has-default-focus" data-bi-name="body">
+
+		<div class="columns has-large-gaps is-gapless-mobile ">
+
+			<div id="left-container" class="left-container is-hidden-mobile column is-one-third-tablet is-one-quarter-desktop">
+				<nav id="affixed-left-container" class="position-fixed display-flex flex-direction-column" role="navigation" aria-label="Primary"></nav>
+			</div>
+
+			<!-- .primary-holder -->
+			<section class="primary-holder column is-two-thirds-tablet is-three-quarters-desktop">
+				<!--div.columns -->
+				<div class="columns is-gapless-mobile has-large-gaps ">
+
+
+					<div id="main-column" class="column  is-full is-8-desktop">
+
+						<main id="main" role="main" data-bi-name="content" lang="en-us" dir="ltr">
+							<!-- article-header -->
+							<div id="article-header" class="background-color-body margin-top-sm-tablet margin-bottom-xs" aria-label="content-header" hidden>
+								<div class="display-flex align-items-center ">
+									<details id="article-header-breadcrumbs-overflow-popover" class="popover" data-for="article-header-breadcrumbs">
+										<summary class="button button-clear button-primary button-sm">
+											<span class="icon">
+												<span class="docon docon-more"></span>
+											</span>
+										</summary>
+										<div id="article-header-breadcrumbs-overflow" class="popover-content padding-none">
+
+										</div>
+									</details>
+									<bread-crumbs id="article-header-breadcrumbs" class="overflow-hidden flex-grow-1 margin-right-sm margin-right-md-tablet margin-right-lg-desktop" id="page-breadcrumbs"></bread-crumbs>
+
+									<div id="article-header-page-actions"  class="opacity-none margin-left-auto display-flex flex-wrap-no-wrap align-items-stretch">
+
+										<a
+											id="lang-link-tablet"
+											class="button button-primary button-clear button-sm display-none display-inline-flex-tablet"
+											title="Read in English" data-bi-name="language-toggle"
+											data-read-in-link
+											hidden>
+											<span class="icon margin-none" aria-hidden="true" data-read-in-link-icon>
+												<span class="docon docon-locale-globe"></span>
+											</span>
+											<span class="is-visually-hidden" data-read-in-link-text>Read in English</span>
+										</a>
+
+											<button
+												type="button"
+												class="collection button button-clear button-sm button-primary display-none display-inline-flex-tablet"
+												data-list-type="collection"
+												data-bi-name="collection"
+												title="Add to collection">
+												<span class="icon margin-none" aria-hidden="true">
+													<span class="docon docon-circle-addition"></span>
+												</span>
+												<span class="collection-status is-visually-hidden">Save</span>
+											</button>
+										
+
+										
+
+											<a	data-feedback-section-link
+												aria-label="Feedback"
+												href="#feedback"
+												class="button button-clear button-sm text-decoration-none button-primary display-none display-inline-flex-tablet"
+												data-bi-name="comments"
+												title="Send feedback about this page">
+												<span class="icon margin-none" aria-hidden="true">
+													<span class="docon docon-comment-lines"></span>
+												</span>
+											</a>
+										
+
+											<a	data-contenteditbtn
+												class="button button-clear button-sm text-decoration-none button-primary display-none display-inline-flex-tablet"
+												aria-label="Edit"
+												title="Edit This Document"
+												data-bi-name="edit"
+														href="https://github.com/MicrosoftDocs/wsl/blob/main/WSL/install.md"
+														data-original_content_git_url="https://github.com/MicrosoftDocs/WSL/blob/live/WSL/install.md"
+														data-original_content_git_url_template="{repo}/blob/{branch}/WSL/install.md"
+														data-pr_repo=""
+														data-pr_branch=""
+											>
+												<span class="icon margin-none" aria-hidden="true">
+													<span class="docon docon-edit-outline"></span>
+												</span>
+											</a>
+										
+
+
+										
+										<details class="popover popover-right" id="article-header-page-actions-overflow">
+											<summary class="justify-content-flex-start button button-clear button-sm button-primary" aria-label="More actions">
+												<span class="icon" aria-hidden="true">
+													<span class="docon docon-more-vertical"></span>
+												</span>
+											</summary>
+											<div class="popover-content padding-none">
+													<button
+														data-page-action-item="overflow-mobile"
+														type="button"
+														class="justify-content-flex-start button-block button-sm has-inner-focus button button-clear display-none-tablet"
+														aria-label="Contents"
+														data-bi-name="contents-expand"
+														data-contents-button
+														data-popover-close>
+														<span class="icon">
+															<span class="docon docon-editor-list-bullet" aria-hidden="true"></span>
+														</span>
+														<span class="contents-expand-title">Table of contents</span>
+													</button>
+
+												<a
+													id="lang-link-overflow"
+													class="justify-content-flex-start button-sm has-inner-focus button button-clear button-block display-none-tablet"
+													title="Read in English" data-bi-name="language-toggle"
+													data-page-action-item="overflow-mobile"
+													data-check-hidden="true"
+													data-read-in-link
+													hidden
+													>
+													<span class="icon" aria-hidden="true" data-read-in-link-icon>
+														<span class="docon docon-locale-globe"></span>
+													</span>
+													<span data-read-in-link-text>Read in English</span>
+												</a>
+
+													<button
+														type="button"
+														class="collection justify-content-flex-start button button-clear button-sm has-inner-focus button-block display-none-tablet"
+														data-list-type="collection"
+														data-bi-name="collection"
+														title="Add to collection"
+														data-page-action-item="overflow-mobile"
+														data-check-hidden="true"
+														data-popover-close>
+														<span class="icon" aria-hidden="true">
+															<span class="docon docon-circle-addition"></span>
+														</span>
+														<span class="collection-status">Save</span>
+													</button>
+
+
+													<a	data-feedback-section-link
+														aria-label="Feedback"
+														href="#feedback"
+														class="button button-clear button-block button-sm has-inner-focus justify-content-flex-start text-decoration-none display-none-tablet"
+														data-bi-name="comments"
+														title="Send feedback about this page"
+														data-page-action-item="overflow-mobile">
+														<span class="icon" aria-hidden="true">
+															<span class="docon docon-comment-lines"></span>
+														</span>
+														<span>
+Feedback														</span>
+													</a>
+
+													<a	data-contenteditbtn
+														class="button button-clear button-block button-sm has-inner-focus justify-content-flex-start text-decoration-none display-none-tablet"
+														aria-label="Edit"
+														title="Edit This Document"
+														data-bi-name="edit"
+																href="https://github.com/MicrosoftDocs/wsl/blob/main/WSL/install.md"
+																data-original_content_git_url="https://github.com/MicrosoftDocs/WSL/blob/live/WSL/install.md"
+																data-original_content_git_url_template="{repo}/blob/{branch}/WSL/install.md"
+																data-pr_repo=""
+																data-pr_branch=""
+													>
+														<span class="icon" aria-hidden="true">
+															<span class="docon docon-edit-outline"></span>
+														</span>
+														<span>Edit</span>
+													</a>
+
+													<div aria-hidden="true" class="margin-none display-none-tablet border-top" data-page-action-item="overflow-all"></div>
+
+													
+														<a class="button button-clear button-sm has-inner-focus button-block text-decoration-none justify-content-flex-start share-twitter" data-bi-name="twitter" data-page-action-item="overflow-all">
+															<span class="icon" aria-hidden="true">
+																<span class="docon docon-brand-twitter"></span>
+															</span>
+															<span>Twitter</span>
+														</a>
+														<a class="button button-clear button-sm has-inner-focus button-block text-decoration-none justify-content-flex-start share-linkedin" data-bi-name="linkedin" data-page-action-item="overflow-all">
+															<span class="icon" aria-hidden="true">
+																<span class="docon docon-brand-linkedin"></span>
+															</span>
+															<span>LinkedIn</span>
+														</a>
+														<a class="button button-clear button-sm button-block has-inner-focus text-decoration-none justify-content-flex-start share-facebook" data-bi-name="facebook" data-page-action-item="overflow-all">
+															<span class="icon" aria-hidden="true">
+																<span class="docon docon-brand-facebook"></span>
+															</span>
+															<span>Facebook</span>
+														</a>
+														<a class="button button-clear button-sm button-block has-inner-focus text-decoration-none justify-content-flex-start share-email" data-bi-name="email" data-page-action-item="overflow-all">
+															<span class="icon" aria-hidden="true">
+																<span class="docon docon-mail-message-fill"></span>
+															</span>
+															<span>Email</span>
+														</a>
+												
+											</div>
+										</details>
+										
+									</div>
+								</div>
+							</div>
+							<!-- end article-header -->
+
+
+							<div class="">
+								<button type="button" class="border contents-button button button-clear button-sm is-hidden-tablet has-inner-focus" aria-label="Contents" data-bi-name="contents-expand" data-contents-button hidden>
+									<span class="icon">
+										<span class="docon docon-editor-list-bullet" aria-hidden="true"></span>
+									</span>
+									<span class="contents-expand-title">Table of contents</span>
+								</button>
+							</div>
+
+							<!-- end mobile-contents button  -->
+
+							<div class="content ">
+
+
+								<h1 id="install-wsl">Install WSL</h1>
+
+
+
+										<div class="display-flex-tablet justify-content-space-between-tablet page-metadata-container">
+
+											<ul class="metadata page-metadata" data-bi-name="page info" lang="en-us" dir="ltr">
+														<li>
+Article														</li>
+														<li>
+															<time class="is-invisible" data-article-date aria-label="Article review date" datetime="2022-02-24T21:43:00Z" data-article-date-source="git">02/24/2022</time>
+														</li>
+																<li class="readingTime">6 minutes to read</li>
+														<li class="contributors-holder">
+															<button aria-label="View all contributors" class="contributors-button link-button" data-bi-name="contributors" title="View all contributors">
+																	6 contributors
+															</button>
+														</li>
+											</ul>
+												<div class="dropdown display-flex" data-hide-on-archived>
+													<button class="dropdown-trigger thumb-rating like link-button padding-xxs padding-right-none" data-binary-rating-response="rating-yes" title="This article is helpful" type="button" data-bi-name="rating-yes" data-bi-sat="1" aria-controls="is-this-helpful" aria-expanded="false" >
+														<span aria-hidden="true" class="icon docon docon-like"></span>
+													</button>
+													<button class="dropdown-trigger thumb-rating dislike link-button padding-xxs padding-right-none" data-binary-rating-response="rating-no" title="This article is not helpful" type="button" data-bi-name="rating-no" data-bi-sat="0" aria-controls="is-this-helpful" aria-expanded="false" >
+														<span aria-hidden="true" class="icon docon docon-dislike"></span>
+													</button>
+													<div class="dropdown-menu border-radius" id="is-this-helpful" role="menu">
+
+
+<div class="padding-xs" data-bi-name="rating" data-binary-rating-container>
+    <div class="binary-rating" data-binary-rating-hide-on-submit>
+		<form class="feedback-verbatim-form width-250-tablet" data-feedback-verbatim-form id="main-page-rating-container">
+        	<div class="binary-rating-buttons">
+				<h3 id="binary-rating-heading" class="font-weight-semibold margin-top-none margin-bottom-xs font-size-h5 has-caret">Is this page helpful?</h3>
+				<div class="buttons">
+					<button class="thumb-rating like margin-right-xxs button button-clear button-sm"
+						data-binary-rating-response="rating-yes"
+						title="Yes"
+						type="button"
+						data-bi-name="rating-yes"
+						data-bi-sat="1">
+						<span aria-hidden="true" class="icon docon docon-like"></span>
+						<span>Yes</span>
+					</button>
+					<button class="thumb-rating dislike button button-clear button-sm"
+						data-binary-rating-response="rating-no"
+						title="No"
+						data-bi-name="rating-no"
+						type="button"
+						data-bi-sat="0">
+						<span aria-hidden="true" class="icon docon docon-dislike"></span>
+						<span>No</span>
+					</button>
+				</div>
+			</div>
+			<div id="binary-verbatim-container" class="font-size-xs margin-top-xs">
+				<div class="verbatim-textarea">
+					<label for="binary-rating-textarea" class="visually-hidden">
+Any additional feedback?					</label>
+					<textarea
+						id="binary-rating-textarea"
+						data-binary-rating-text rows="4"
+						maxlength="999"
+						placeholder="Any additional feedback?"
+						class="textarea has-inner-focus"></textarea>
+				</div>
+				<p class="has-line-height-reset has-text-wrap">Feedback will be sent to Microsoft: By pressing the submit button, your feedback will be used to improve Microsoft products and services. <a href="https://privacy.microsoft.com/en-us/privacystatement">Privacy policy.</a></p>
+				<div class="buttons buttons-right margin-top-xs margin-right-xxs">
+					<button class="submit-rating button button-primary button-filled button-sm" data-bi-name="rating-verbatim" data-binary-rating-submit type="submit" disabled>Submit</button>
+				</div>
+			</div>
+        </form>
+    </div>
+    <p
+		data-binary-rating-onsubmit-message="main-page-rating-container"
+		tabindex="-1"
+		class="margin-none inner-focus"
+		hidden>
+Thank you.    </p>
+</div>
+													</div>
+												</div>
+											</div>
+
+
+											<nav id="center-doc-outline" class="doc-outline is-hidden-desktop" data-bi-name="intopic toc" role="navigation" aria-label="Article Outline">
+												<h3>In this article</h3>
+											</nav>
+
+
+
+								<!-- <content> -->
+									<h2 id="prerequisites">Prerequisites</h2>
+<p>You must be running Windows 10 version 2004 and higher (Build 19041 and higher) or Windows 11.</p>
+<div class="NOTE">
+<p>Note</p>
+<p>To check your Windows version and build number, select <strong>Windows logo key + R</strong>, type <strong>winver</strong>, select <strong>OK</strong>. You can update to the latest Windows version by selecting <strong>Start</strong> &gt; <strong>Settings</strong> &gt; <strong>Windows Update</strong> &gt; <strong><a href="ms-settings:windowsupdate" data-linktype="external">Check for updates</a></strong>.</p>
+</div>
+<p>If you're running an older build, or just prefer not to use the install command and would like step-by-step directions, see <strong><a href="install-manual" data-linktype="relative-path">WSL manual installation steps for older versions</a></strong>.</p>
+<h2 id="install">Install</h2>
+<p>You can now install everything you need to run Windows Subsystem for Linux (WSL) by entering this command in an <strong>administrator</strong> PowerShell or Windows Command Prompt and then restarting your machine.</p>
+<pre><code class="lang-powershell">wsl --install
+</code></pre>
+<p>This command will enable the required optional components, download the latest Linux kernel, set WSL 2 as your default, and install a Linux distribution for you <em>(Ubuntu by default, see below to change this)</em>.</p>
+<p>The first time you launch a newly installed Linux distribution, a console window will open and you'll be asked to wait for files to de-compress and be stored on your machine. All future launches should take less than a second.</p>
+<div class="NOTE">
+<p>Note</p>
+<p>The above command only works if WSL is not installed at all, if you run <code>wsl --install</code> and see the WSL help text, please try running <code>wsl --list --online</code> to see a list of available distros and run <code>wsl --install -d &lt;DistroName&gt;</code> to install a distro.</p>
+</div>
+<h2 id="change-the-default-linux-distribution-installed">Change the default Linux distribution installed</h2>
+<p>By default, the installed Linux distribution will be Ubuntu. This can be changed using the <code>-d</code> flag.</p>
+<ul>
+<li>To change the distribution installed, enter: <code>wsl --install -d &lt;Distribution Name&gt;</code>. Replace <code>&lt;Distribution Name&gt;</code> with the name of the distribution you would like to install.</li>
+<li>To see a list of available Linux distributions available for download through the online store, enter: <code>wsl --list --online</code> or <code>wsl -l -o</code>.</li>
+<li>To install additional Linux distributions after the initial install, you may also use the command: <code>wsl --install -d &lt;Distribution Name&gt;</code>.</li>
+</ul>
+<div class="TIP">
+<p>Tip</p>
+<p>If you want to install additional distributions from inside a Linux/Bash command line (rather than from PowerShell or Command Prompt), you must use .exe in the command: <code>wsl.exe --install -d &lt;Distribution Name&gt;</code> or to list available distributions: <code>wsl.exe -l -o</code>.</p>
+</div>
+<p>If you run into an issue during the install process, check the <a href="troubleshooting#installation-issues" data-linktype="relative-path">installation section of the troubleshooting guide</a>.</p>
+<h2 id="set-up-your-linux-user-info">Set up your Linux user info</h2>
+<p>Once you have installed WSL, you will need to create a user account and password for your newly installed Linux distribution. See the <a href="setup/environment#set-up-your-linux-username-and-password" data-linktype="relative-path">Best practices for setting up a WSL development environment</a> guide to learn more.</p>
+<h2 id="set-up-and-best-practices">Set up and best practices</h2>
+<p>We recommend following our <a href="setup/environment" data-linktype="relative-path">Best practices for setting up a WSL development environment</a> guide for a step-by-step walk-through of how to set up a user name and password for your installed Linux distribution(s), using basic WSL commands, installing and customizing Windows Terminal, set up for Git version control, code editing and debugging using the VS Code remote server, good practices for file storage, setting up a database, mounting an external drive, setting up GPU acceleration, and more.</p>
+<h2 id="check-which-version-of-wsl-you-are-running">Check which version of WSL you are running</h2>
+<p>You can list your installed Linux distributions and check the version of WSL each is set to by entering the command: <code>wsl -l -v</code> in PowerShell or Windows Command Prompt.</p>
+<p>To set the default version to WSL 1 or WSL 2 when a new Linux distribution is installed, use the command: <code>wsl --set-default-version &lt;Version#&gt;</code>, replacing <code>&lt;Version#&gt;</code> with either 1 or 2.</p>
+<p>To set the default Linux distribution used with the <code>wsl</code> command, enter: <code>wsl -s &lt;DistributionName&gt;</code> or <code>wsl --setdefault &lt;DistributionName&gt;</code>, replacing <code>&lt;DistributionName&gt;</code> with the name of the Linux distribution you would like to use. For example, from PowerShell/CMD, enter: <code>wsl -s Debian</code> to set the default distribution to Debian. Now running <code>wsl npm init</code> from Powershell will run the <code>npm init</code> command in Debian.</p>
+<p>To run a specific wsl distribution from within PowerShell or Windows Command Prompt without changing your default distribution, use the command: <code>wsl -d &lt;DistributionName&gt;</code>, replacing <code>&lt;DistributionName&gt;</code> with the name of the distribution you want to use.</p>
+<p>Learn more in the guide to <a href="basic-commands" data-linktype="relative-path">Basic commands for WSL</a>.</p>
+<h2 id="upgrade-version-from-wsl-1-to-wsl-2">Upgrade version from WSL 1 to WSL 2</h2>
+<p>To update from WSL 1 to WSL 2 on previously installed Linux distributions, use the command: <code>wsl --set-version &lt;distro name&gt; 2</code> replacing <code>&lt;distro name&gt;</code> with the name of the Linux distribution that you want to update. For example, <code>wsl --set-version Ubuntu-20.04 2</code> will set your Ubuntu 20.04 distribution to use WSL 2. You may also need to <a href="install-manual#step-3---enable-virtual-machine-feature" data-linktype="relative-path">enable the virtual machine optional component</a> used by WSL 2 and <a href="install-manual#step-4---download-the-linux-kernel-update-package" data-linktype="relative-path">install the kernel package</a> if you haven't already done so.</p>
+<p>New Linux installations will be set to WSL 2 by default, but the <code>wsl --set-version</code> command can be used to downgrade from WSL 2 to WSL 1 as well. To see whether your Linux distribution is set to WSL 1 or WSL 2, use the command: <code>wsl -l -v</code>.</p>
+<p>To learn more, see the <a href="basic-commands" data-linktype="relative-path">Command reference for WSL</a> for a list of WSL commands, <a href="compare-versions" data-linktype="relative-path">Comparing WSL 1 and WSL 2</a> for guidance on which to use for your work scenario, or <a href="setup/environment" data-linktype="relative-path">Best practices for setting up a WSL development environment</a> for general guidance on setting up a good development workflow with WSL.</p>
+<h2 id="ways-to-run-multiple-linux-distributions-with-wsl">Ways to run multiple Linux distributions with WSL</h2>
+<p>WSL supports running as many different Linux distributions as you would like to install. This can include choosing distributions from the <a href="https://aka.ms/wslstore" data-linktype="external">Microsoft Store</a>, <a href="use-custom-distro" data-linktype="relative-path">importing a custom distribution</a>, or <a href="build-custom-distro" data-linktype="relative-path">building your own custom distribution</a>.</p>
+<p>There are several ways to run your Linux distributions once installed:</p>
+<ol>
+<li><a href="/en-us/windows/terminal/get-started" data-linktype="absolute-path">Install Windows Terminal</a> <em><strong>(Recommended)</strong></em> Using Windows Terminal supports as many command lines as you would like to install and enables you to open them in multiple tabs or window panes and quickly switch between multiple Linux distributions or other command lines (PowerShell, Command Prompt, PowerShell, Azure CLI, etc). You can fully customize your terminal with unique color schemes, font styles, sizes, background images, and custom keyboard shortcuts. <a href="/en-us/windows/terminal" data-linktype="absolute-path">Learn more.</a></li>
+<li>You can directly open your Linux distribution by visiting the Windows Start menu and typing the name of your installed distributions. For example: &quot;Ubuntu&quot;. This will open Ubuntu in it's own console window.</li>
+<li>From Windows Command Prompt or PowerShell, you can enter the name of your installed distribution. For example: <code>ubuntu</code></li>
+<li>From Windows Command Prompt or PowerShell, you can open your default Linux distribution inside your current command line, by entering: <code>wsl.exe</code>.</li>
+<li>From Windows Command Prompt or PowerShell, you can use your default Linux distribution inside your current command line, without entering a new one, by entering:<code>wsl [command]</code>. Replacing <code>[command]</code> with a WSL command, such as: <code>wsl -l -v</code> to list installed distributions or <code>wsl pwd</code> to see where the current directory path is mounted in wsl. From PowerShell, the command <code>get-date</code> will provide the date from the Windows file system and <code>wsl date</code> will provide the date from the Linux file system.</li>
+</ol>
+<p>The method you select should depend on what you're doing. If you've opened a WSL command line within a Windows Prompt or PowerShell window and want to exit, enter the command: <code>exit</code>.</p>
+<h2 id="want-to-try-the-latest-wsl-preview-features">Want to try the latest WSL preview features?</h2>
+<p>Try the most recent features or updates to WSL by joining the <a href="https://insider.windows.com/getting-started" data-linktype="external">Windows Insiders Program</a>. Once you have joined Windows Insiders, you can choose the channel you would like to receive preview builds from inside the Windows settings menu to automatically receive any WSL updates or preview features associated with that build. You can choose from:</p>
+<ul>
+<li>Dev channel: Most recent updates, but low stability.</li>
+<li>Beta channel: Ideal for early adopters, more reliable builds than the Dev channel.</li>
+<li>Release Preview channel: Preview fixes and key features on the next version of Windows just before its available to the general public.</li>
+</ul>
+<h2 id="additional-resources">Additional resources</h2>
+<ul>
+<li><a href="https://devblogs.microsoft.com/commandline/install-wsl-with-a-single-command-now-available-in-windows-10-version-2004-and-higher/" data-linktype="external">Windows Command Line Blog: Install WSL with a single command now available in Windows 10 version 2004 and higher</a></li>
+</ul>
+
+							</div>
+							<!-- </content> -->
+
+						</main>
+
+
+
+
+						<!-- recommendations section -->
+							<section id="recommendations-section" data-bi-name="recommendations"></section>
+						<!-- end recommendations section -->
+
+						<!-- feedback section -->
+<section class="feedback-section position-relative" data-bi-name="feedback-section">
+
+    <h2 id="feedback" class="title is-3 margin-top-sm">Feedback</h2>
+
+    <div class="alert choose-feedback-type">
+        <p id="send-feedback-about">Submit and view feedback for</p>
+
+        <div class="choose-feedback-buttons margin-top-xs">
+                <a class="button has-external-link-indicator feedback-type-product margin-bottom-xxs" aria-label="Send feedback about this product" href="https://github.com/Microsoft/WSL/issues" data-bi-name="product-feedback">
+                    <span>This product</span>
+                </a>
+
+			<a class="button feedback-type-product margin-bottom-xxs github-link" aria-label="Send feedback about this page" data-bi-name="create-issue-on-github">
+				<span aria-hidden="true" class="docon docon-brand-github padding-right-xxs"></span>
+				<span>This page</span>
+			</a>
+        </div>
+    </div>
+
+    <div class="action-container display-flex justify-content-flex-end margin-block-xxs">
+        <a class="view-on-github has-external-link-indicator" data-bi-name="view-on-github" href="https://github.com/MicrosoftDocs/WSL/issues">
+            <span aria-hidden="true" class="docon docon-brand-github"></span>
+            <span>View all page feedback</span>
+        </a>
+    </div>
+</section>
+						<!-- end feedback section -->
+
+						<!-- feedback report section -->
+						<!-- end feedback report section -->
+
+						<div class="border-top is-visible-interactive has-default-focus margin-top-sm ">
+
+
+
+	<footer id="footer-interactive" data-bi-name="footer" class="footer-layout">
+	<div class="display-flex is-full-height padding-right-lg-desktop">
+			<a
+				data-mscc-ic="false"
+				class="locale-selector-link button button-clear flex-shrink-0"
+				href="#"
+				data-bi-name="select-locale">
+					<span class="icon" aria-hidden="true">
+						<span class="docon docon-world"></span>
+					</span>
+					<span class="local-selector-link-text"></span></a>
+		<div class="margin-inline-xs flex-shrink-0">
+<div class="dropdown has-caret-up">
+	<button class="dropdown-trigger button button-clear button-sm has-inner-focus theme-dropdown-trigger"
+		aria-controls="theme-menu-interactive" aria-expanded="false" title="Theme" data-bi-name="theme">
+		<span class="icon">
+			<span class="docon docon-sun" aria-hidden="true"></span>
+		</span>
+		<span>Theme</span>
+	</button>
+	<div class="dropdown-menu" id="theme-menu-interactive" role="menu">
+		<ul class="theme-selector padding-xxs">
+			<li class="theme display-block">
+				<button class="button button-clear button-sm theme-control button-block justify-content-flex-start"
+					data-theme-to="light">
+					<span class="theme-light margin-right-xxs">
+						<span
+							class="theme-selector-icon css-variable-support border display-inline-block has-body-background"
+							aria-hidden="true">
+							<svg class="svg" xmlns="http://www.w3.org/2000/svg"
+								viewBox="0 0 22 14">
+								<rect width="22" height="14" class="has-fill-body-background" />
+								<rect x="5" y="5" width="12" height="4" class="has-fill-secondary" />
+								<rect x="5" y="2" width="2" height="1" class="has-fill-secondary" />
+								<rect x="8" y="2" width="2" height="1" class="has-fill-secondary" />
+								<rect x="11" y="2" width="3" height="1" class="has-fill-secondary" />
+								<rect x="1" y="1" width="2" height="2" class="has-fill-secondary" />
+								<rect x="5" y="10" width="7" height="2" rx="0.3" class="has-fill-primary" />
+								<rect x="19" y="1" width="2" height="2" rx="1" class="has-fill-secondary" />
+							</svg>
+						</span>
+					</span>
+					<span role="menuitem">
+Light					</span>
+				</button>
+			</li>
+			<li class="theme display-block">
+				<button class="button button-clear button-sm theme-control button-block justify-content-flex-start"
+					data-theme-to="dark">
+					<span class="theme-dark margin-right-xxs">
+						<span
+							class="border theme-selector-icon css-variable-support display-inline-block has-body-background"
+							aria-hidden="true">
+							<svg class="svg" xmlns="http://www.w3.org/2000/svg"
+								viewBox="0 0 22 14">
+								<rect width="22" height="14" class="has-fill-body-background" />
+								<rect x="5" y="5" width="12" height="4" class="has-fill-secondary" />
+								<rect x="5" y="2" width="2" height="1" class="has-fill-secondary" />
+								<rect x="8" y="2" width="2" height="1" class="has-fill-secondary" />
+								<rect x="11" y="2" width="3" height="1" class="has-fill-secondary" />
+								<rect x="1" y="1" width="2" height="2" class="has-fill-secondary" />
+								<rect x="5" y="10" width="7" height="2" rx="0.3" class="has-fill-primary" />
+								<rect x="19" y="1" width="2" height="2" rx="1" class="has-fill-secondary" />
+							</svg>
+						</span>
+					</span>
+					<span role="menuitem">
+Dark					</span>
+				</button>
+			</li>
+			<li class="theme display-block">
+				<button class="button button-clear button-sm theme-control button-block justify-content-flex-start"
+					data-theme-to="high-contrast">
+					<span class="theme-high-contrast margin-right-xxs">
+						<span
+							class="border theme-selector-icon css-variable-support display-inline-block has-body-background"
+							aria-hidden="true">
+							<svg class="svg" xmlns="http://www.w3.org/2000/svg"
+								viewBox="0 0 22 14">
+								<rect width="22" height="14" class="has-fill-body-background" />
+								<rect x="5" y="5" width="12" height="4" class="has-fill-secondary" />
+								<rect x="5" y="2" width="2" height="1" class="has-fill-secondary" />
+								<rect x="8" y="2" width="2" height="1" class="has-fill-secondary" />
+								<rect x="11" y="2" width="3" height="1" class="has-fill-secondary" />
+								<rect x="1" y="1" width="2" height="2" class="has-fill-secondary" />
+								<rect x="5" y="10" width="7" height="2" rx="0.3" class="has-fill-primary" />
+								<rect x="19" y="1" width="2" height="2" rx="1" class="has-fill-secondary" />
+							</svg>
+						</span>
+					</span>
+					<span role="menuitem">
+High contrast					</span>
+				</button>
+			</li>
+		</ul>
+	</div>
+</div>
+		</div>
+	</div>
+	<ul class="links" data-bi-name="footerlinks">
+		<li class="manage-cookies-holder" hidden></li>
+				<li><a data-mscc-ic="false" href="https://docs.microsoft.com/en-us/previous-versions/" data-bi-name="archivelink">Previous Version Docs</a></li>
+				<li><a data-mscc-ic="false" href="https://docs.microsoft.com/en-us/teamblog" data-bi-name="bloglink">Blog</a></li>
+				<li><a data-mscc-ic="false" href="https://docs.microsoft.com/en-us/contribute" data-bi-name="contributorGuide">Contribute</a></li>
+					<li><a data-mscc-ic="false" href="https://go.microsoft.com/fwlink/?LinkId=521839" data-bi-name="privacy">Privacy &amp; Cookies</a></li>
+				<li><a data-mscc-ic="false" href="https://docs.microsoft.com/en-us/legal/termsofuse" data-bi-name="termsofuse">Terms of Use</a></li>
+				<li><a data-mscc-ic="false" href="https://www.microsoft.com/en-us/legal/intellectualproperty/Trademarks/EN-US.aspx" data-bi-name="trademarks">Trademarks</a></li>
+		<li>&copy; Microsoft 2022</li>
+	</ul>
+</footer>
+						</div>
+
+					</div>
+
+						<div
+							class="font-size-sm right-container column is-4-desktop display-none display-block-desktop"
+							data-bi-name="pageactions"
+							role="complementary"
+							aria-label="Page Actions">
+
+							<div id="affixed-right-container" class="doc-outline is-vertically-scrollable">
+								<nav id="side-doc-outline" data-bi-name="intopic toc" role="navigation" aria-label="Article Outline">
+									<h3>In this article</h3>
+								</nav>
+							</div>
+						</div>
+
+				</div>
+				<!--end of div.columns -->
+
+			</section>
+			<!--end of .primary-holder -->
+
+			<!-- interactive container -->
+			<aside id="interactive-container" class="interactive-container is-visible-interactive column has-body-background-dark ">
+			</aside>
+			<!-- end of interactive container -->
+		</div>
+
+	</div>
+	<!--end of .mainContainer -->
+
+	<section class="border-top has-default-focus is-hidden-interactive margin-top-sm ">
+
+
+
+	<footer id="footer" data-bi-name="footer" class="footer-layout uhf-container has-padding" role="contentinfo">
+	<div class="display-flex is-full-height padding-right-lg-desktop">
+			<a
+				data-mscc-ic="false"
+				class="locale-selector-link button button-clear flex-shrink-0"
+				href="#"
+				data-bi-name="select-locale">
+					<span class="icon" aria-hidden="true">
+						<span class="docon docon-world"></span>
+					</span>
+					<span class="local-selector-link-text"></span></a>
+		<div class="margin-inline-xs flex-shrink-0">
+<div class="dropdown has-caret-up">
+	<button class="dropdown-trigger button button-clear button-sm has-inner-focus theme-dropdown-trigger"
+		aria-controls="theme-menu" aria-expanded="false" title="Theme" data-bi-name="theme">
+		<span class="icon">
+			<span class="docon docon-sun" aria-hidden="true"></span>
+		</span>
+		<span>Theme</span>
+	</button>
+	<div class="dropdown-menu" id="theme-menu" role="menu">
+		<ul class="theme-selector padding-xxs">
+			<li class="theme display-block">
+				<button class="button button-clear button-sm theme-control button-block justify-content-flex-start"
+					data-theme-to="light">
+					<span class="theme-light margin-right-xxs">
+						<span
+							class="theme-selector-icon css-variable-support border display-inline-block has-body-background"
+							aria-hidden="true">
+							<svg class="svg" xmlns="http://www.w3.org/2000/svg"
+								viewBox="0 0 22 14">
+								<rect width="22" height="14" class="has-fill-body-background" />
+								<rect x="5" y="5" width="12" height="4" class="has-fill-secondary" />
+								<rect x="5" y="2" width="2" height="1" class="has-fill-secondary" />
+								<rect x="8" y="2" width="2" height="1" class="has-fill-secondary" />
+								<rect x="11" y="2" width="3" height="1" class="has-fill-secondary" />
+								<rect x="1" y="1" width="2" height="2" class="has-fill-secondary" />
+								<rect x="5" y="10" width="7" height="2" rx="0.3" class="has-fill-primary" />
+								<rect x="19" y="1" width="2" height="2" rx="1" class="has-fill-secondary" />
+							</svg>
+						</span>
+					</span>
+					<span role="menuitem">
+Light					</span>
+				</button>
+			</li>
+			<li class="theme display-block">
+				<button class="button button-clear button-sm theme-control button-block justify-content-flex-start"
+					data-theme-to="dark">
+					<span class="theme-dark margin-right-xxs">
+						<span
+							class="border theme-selector-icon css-variable-support display-inline-block has-body-background"
+							aria-hidden="true">
+							<svg class="svg" xmlns="http://www.w3.org/2000/svg"
+								viewBox="0 0 22 14">
+								<rect width="22" height="14" class="has-fill-body-background" />
+								<rect x="5" y="5" width="12" height="4" class="has-fill-secondary" />
+								<rect x="5" y="2" width="2" height="1" class="has-fill-secondary" />
+								<rect x="8" y="2" width="2" height="1" class="has-fill-secondary" />
+								<rect x="11" y="2" width="3" height="1" class="has-fill-secondary" />
+								<rect x="1" y="1" width="2" height="2" class="has-fill-secondary" />
+								<rect x="5" y="10" width="7" height="2" rx="0.3" class="has-fill-primary" />
+								<rect x="19" y="1" width="2" height="2" rx="1" class="has-fill-secondary" />
+							</svg>
+						</span>
+					</span>
+					<span role="menuitem">
+Dark					</span>
+				</button>
+			</li>
+			<li class="theme display-block">
+				<button class="button button-clear button-sm theme-control button-block justify-content-flex-start"
+					data-theme-to="high-contrast">
+					<span class="theme-high-contrast margin-right-xxs">
+						<span
+							class="border theme-selector-icon css-variable-support display-inline-block has-body-background"
+							aria-hidden="true">
+							<svg class="svg" xmlns="http://www.w3.org/2000/svg"
+								viewBox="0 0 22 14">
+								<rect width="22" height="14" class="has-fill-body-background" />
+								<rect x="5" y="5" width="12" height="4" class="has-fill-secondary" />
+								<rect x="5" y="2" width="2" height="1" class="has-fill-secondary" />
+								<rect x="8" y="2" width="2" height="1" class="has-fill-secondary" />
+								<rect x="11" y="2" width="3" height="1" class="has-fill-secondary" />
+								<rect x="1" y="1" width="2" height="2" class="has-fill-secondary" />
+								<rect x="5" y="10" width="7" height="2" rx="0.3" class="has-fill-primary" />
+								<rect x="19" y="1" width="2" height="2" rx="1" class="has-fill-secondary" />
+							</svg>
+						</span>
+					</span>
+					<span role="menuitem">
+High contrast					</span>
+				</button>
+			</li>
+		</ul>
+	</div>
+</div>
+		</div>
+	</div>
+	<ul class="links" data-bi-name="footerlinks">
+		<li class="manage-cookies-holder" hidden></li>
+				<li><a data-mscc-ic="false" href="https://docs.microsoft.com/en-us/previous-versions/" data-bi-name="archivelink">Previous Version Docs</a></li>
+				<li><a data-mscc-ic="false" href="https://docs.microsoft.com/en-us/teamblog" data-bi-name="bloglink">Blog</a></li>
+				<li><a data-mscc-ic="false" href="https://docs.microsoft.com/en-us/contribute" data-bi-name="contributorGuide">Contribute</a></li>
+					<li><a data-mscc-ic="false" href="https://go.microsoft.com/fwlink/?LinkId=521839" data-bi-name="privacy">Privacy &amp; Cookies</a></li>
+				<li><a data-mscc-ic="false" href="https://docs.microsoft.com/en-us/legal/termsofuse" data-bi-name="termsofuse">Terms of Use</a></li>
+				<li><a data-mscc-ic="false" href="https://www.microsoft.com/en-us/legal/intellectualproperty/Trademarks/EN-US.aspx" data-bi-name="trademarks">Trademarks</a></li>
+		<li>&copy; Microsoft 2022</li>
+	</ul>
+</footer>
+	</section>
+
+	<div id="action-panel" role="region" aria-label="Action Panel" class="action-panel has-default-focus" tabindex="-1"></div>
+</body>
+</html>

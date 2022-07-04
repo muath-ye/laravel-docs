@@ -1,0 +1,1383 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>HTTP Client - Laravel - The PHP Framework For Web Artisans</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+        <link rel="canonical" href="http-client.html">
+    
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="../../img/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../../img/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../../img/favicon/favicon-16x16.png">
+    <link rel="manifest" href="../../img/favicon/site.webmanifest">
+    <link rel="mask-icon" href="../../img/favicon/safari-pinned-tab.svg" color="#ff2d20">
+    <link rel="shortcut icon" href="../../img/favicon/favicon.ico">
+    <meta name="msapplication-TileColor" content="#ff2d20">
+    <meta name="msapplication-config" content="/img/favicon/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
+    
+    <link rel="stylesheet" href="../../assets/css/ins2wgm.css">
+    <link rel="stylesheet" type="text/css" href="../../css/app.css?id=e59564080d0a323bcdb7">
+
+    <script>
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+        if (localStorage.theme === 'system') {
+            if (e.matches) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+        }
+    });
+
+    function updateTheme() {
+        if (!('theme' in localStorage)) {
+            localStorage.theme = 'system';
+        }
+
+        switch (localStorage.theme) {
+            case 'system':
+                if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                    document.documentElement.classList.add('dark');
+                } else {
+                    document.documentElement.classList.remove('dark');
+                }
+                document.documentElement.setAttribute('color-theme', 'system');
+                break;
+
+            case 'dark':
+                document.documentElement.classList.add('dark');
+                document.documentElement.setAttribute('color-theme', 'dark');
+                break;
+
+            case 'light':
+                document.documentElement.classList.remove('dark');
+                document.documentElement.setAttribute('color-theme', 'light');
+                break;
+        }
+    }
+
+    updateTheme();
+</script>
+</head>
+<body x-data="{
+        navIsOpen: false,
+        searchIsOpen: false,
+        search: '',
+    }" class="language-php h-full w-full font-sans text-gray-900 antialiased">
+
+     <a id="skip-to-content-link" href="#main-content" class="absolute bg-gray-100 px-4 py-2 top-3 left-3 text-gray-700 shadow-xl">
+    Skip to content
+</a>
+ 
+    <div class="relative overflow-auto dark:bg-dark-700" id="docsScreen">
+        <div class="relative lg:flex lg:items-start">
+            <aside x-init="init()" x-data="{
+                    navIsOpen: false,
+                    init() {
+                        this.$watch('navIsOpen', (val) => {
+                            if (val) {
+                                document.body.classList.add('overflow-hidden');
+                            } else {
+                                document.body.classList.remove('overflow-hidden');
+                            }
+                        });
+                    }
+                }" class="hidden fixed top-0 bottom-0 left-0 z-20 h-full w-16 flex flex-col bg-gradient-to-b from-gray-100 to-white transition-all duration-300 overflow-hidden lg:sticky lg:w-80 lg:flex-shrink-0 lg:flex lg:justify-end lg:items-end 2xl:max-w-lg 2xl:w-full dark:from-dark-800 dark:to-dark-700" :class="{ 'w-64': navIsOpen }" @click.away="navIsOpen = false" @keydown.window.escape="navIsOpen = false">
+                <div class="relative min-h-0 flex-1 flex flex-col xl:w-80">
+                    <a href="../../index.htm" class="flex items-center py-8 px-4 lg:px-8 xl:px-16">
+                        <img class="w-8 h-8 flex-shrink-0 transition-all duration-300 lg:w-12 lg:h-12" :class="{ 'w-12 h-12': navIsOpen }" src="../../img/logomark.min.svg" alt="Laravel" width="50" height="52">
+                        <img x-show="navIsOpen" x-cloak="" class="ml-4 transition-all duration-300 lg:hidden" x-transition:enter="duration-250 ease-out" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" x-transition:leave="duration-250 ease-in" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0" src="../../img/logotype.min.svg" alt="Laravel" width="114" height="29">
+                        <img src="../../img/logotype.min.svg" alt="Laravel" class="hidden ml-4 lg:block" width="114" height="29">
+                    </a>
+                    <div class="overflow-y-auto overflow-x-hidden px-4 lg:overflow-hidden lg:px-8 xl:px-16">
+                        <nav x-show="navIsOpen" x-cloak="" class="mt-4 lg:hidden">
+                            <div class="docs_sidebar">
+                                <ul>
+<li>
+<h2>Prologue</h2>
+<ul>
+<li><a href="releases.html">Release Notes</a></li>
+<li><a href="upgrade.html">Upgrade Guide</a></li>
+<li><a href="contributions.html">Contribution Guide</a></li>
+</ul>
+</li>
+<li>
+<h2>Getting Started</h2>
+<ul>
+<li><a href="installation.html">Installation</a></li>
+<li><a href="configuration.html">Configuration</a></li>
+<li><a href="structure.html">Directory Structure</a></li>
+<li><a href="starter-kits.html">Starter Kits</a></li>
+<li><a href="deployment.html">Deployment</a></li>
+</ul>
+</li>
+<li>
+<h2>Architecture Concepts</h2>
+<ul>
+<li><a href="lifecycle.html">Request Lifecycle</a></li>
+<li><a href="container.html">Service Container</a></li>
+<li><a href="providers.html">Service Providers</a></li>
+<li><a href="facades.html">Facades</a></li>
+</ul>
+</li>
+<li>
+<h2>The Basics</h2>
+<ul>
+<li><a href="routing.html">Routing</a></li>
+<li><a href="middleware.html">Middleware</a></li>
+<li><a href="csrf.html">CSRF Protection</a></li>
+<li><a href="controllers.html">Controllers</a></li>
+<li><a href="requests.html">Requests</a></li>
+<li><a href="responses.html">Responses</a></li>
+<li><a href="views.html">Views</a></li>
+<li><a href="blade.html">Blade Templates</a></li>
+<li><a href="urls.html">URL Generation</a></li>
+<li><a href="session.html">Session</a></li>
+<li><a href="validation.html">Validation</a></li>
+<li><a href="errors.html">Error Handling</a></li>
+<li><a href="logging.html">Logging</a></li>
+</ul>
+</li>
+<li>
+<h2>Digging Deeper</h2>
+<ul>
+<li><a href="artisan.html">Artisan Console</a></li>
+<li><a href="broadcasting.html">Broadcasting</a></li>
+<li><a href="cache.html">Cache</a></li>
+<li><a href="collections.html">Collections</a></li>
+<li><a href="mix.html">Compiling Assets</a></li>
+<li><a href="contracts.html">Contracts</a></li>
+<li><a href="events.html">Events</a></li>
+<li><a href="filesystem.html">File Storage</a></li>
+<li><a href="helpers.html">Helpers</a></li>
+<li><a href="http-client.html">HTTP Client</a></li>
+<li><a href="localization.html">Localization</a></li>
+<li><a href="mail.html">Mail</a></li>
+<li><a href="notifications.html">Notifications</a></li>
+<li><a href="packages.html">Package Development</a></li>
+<li><a href="queues.html">Queues</a></li>
+<li><a href="rate-limiting.html">Rate Limiting</a></li>
+<li><a href="scheduling.html">Task Scheduling</a></li>
+</ul>
+</li>
+<li>
+<h2>Security</h2>
+<ul>
+<li><a href="authentication.html">Authentication</a></li>
+<li><a href="authorization.html">Authorization</a></li>
+<li><a href="verification.html">Email Verification</a></li>
+<li><a href="encryption.html">Encryption</a></li>
+<li><a href="hashing.html">Hashing</a></li>
+<li><a href="passwords.html">Password Reset</a></li>
+</ul>
+</li>
+<li>
+<h2>Database</h2>
+<ul>
+<li><a href="database.html">Getting Started</a></li>
+<li><a href="queries.html">Query Builder</a></li>
+<li><a href="pagination.html">Pagination</a></li>
+<li><a href="migrations.html">Migrations</a></li>
+<li><a href="seeding.html">Seeding</a></li>
+<li><a href="redis.html">Redis</a></li>
+</ul>
+</li>
+<li>
+<h2>Eloquent ORM</h2>
+<ul>
+<li><a href="eloquent.html">Getting Started</a></li>
+<li><a href="eloquent-relationships.html">Relationships</a></li>
+<li><a href="eloquent-collections.html">Collections</a></li>
+<li><a href="eloquent-mutators.html">Mutators / Casts</a></li>
+<li><a href="eloquent-resources.html">API Resources</a></li>
+<li><a href="eloquent-serialization.html">Serialization</a></li>
+</ul>
+</li>
+<li>
+<h2>Testing</h2>
+<ul>
+<li><a href="testing.html">Getting Started</a></li>
+<li><a href="http-tests.html">HTTP Tests</a></li>
+<li><a href="console-tests.html">Console Tests</a></li>
+<li><a href="dusk.html">Browser Tests</a></li>
+<li><a href="database-testing.html">Database</a></li>
+<li><a href="mocking.html">Mocking</a></li>
+</ul>
+</li>
+<li>
+<h2>Packages</h2>
+<ul>
+<li><a href="starter-kits.html#laravel-breeze">Breeze</a></li>
+<li><a href="billing.html">Cashier (Stripe)</a></li>
+<li><a href="cashier-paddle.html">Cashier (Paddle)</a></li>
+<li><a href="dusk.html">Dusk</a></li>
+<li><a href="envoy.html">Envoy</a></li>
+<li><a href="fortify.html">Fortify</a></li>
+<li><a href="homestead.html">Homestead</a></li>
+<li><a href="horizon.html">Horizon</a></li>
+<li><a href="../../index-6.htm">Jetstream</a></li>
+<li><a href="octane.html">Octane</a></li>
+<li><a href="passport.html">Passport</a></li>
+<li><a href="sail.html">Sail</a></li>
+<li><a href="sanctum.html">Sanctum</a></li>
+<li><a href="scout.html">Scout</a></li>
+<li><a href="socialite.html">Socialite</a></li>
+<li><a href="telescope.html">Telescope</a></li>
+<li><a href="valet.html">Valet</a></li>
+</ul>
+</li>
+<li><a href="/api/8.x">API Documentation</a></li>
+</ul>
+                            </div>
+                        </nav>
+                        <nav id="indexed-nav" class="hidden lg:block lg:mt-4">
+                            <div class="docs_sidebar">
+                                <ul>
+<li>
+<h2>Prologue</h2>
+<ul>
+<li><a href="releases.html">Release Notes</a></li>
+<li><a href="upgrade.html">Upgrade Guide</a></li>
+<li><a href="contributions.html">Contribution Guide</a></li>
+</ul>
+</li>
+<li>
+<h2>Getting Started</h2>
+<ul>
+<li><a href="installation.html">Installation</a></li>
+<li><a href="configuration.html">Configuration</a></li>
+<li><a href="structure.html">Directory Structure</a></li>
+<li><a href="starter-kits.html">Starter Kits</a></li>
+<li><a href="deployment.html">Deployment</a></li>
+</ul>
+</li>
+<li>
+<h2>Architecture Concepts</h2>
+<ul>
+<li><a href="lifecycle.html">Request Lifecycle</a></li>
+<li><a href="container.html">Service Container</a></li>
+<li><a href="providers.html">Service Providers</a></li>
+<li><a href="facades.html">Facades</a></li>
+</ul>
+</li>
+<li>
+<h2>The Basics</h2>
+<ul>
+<li><a href="routing.html">Routing</a></li>
+<li><a href="middleware.html">Middleware</a></li>
+<li><a href="csrf.html">CSRF Protection</a></li>
+<li><a href="controllers.html">Controllers</a></li>
+<li><a href="requests.html">Requests</a></li>
+<li><a href="responses.html">Responses</a></li>
+<li><a href="views.html">Views</a></li>
+<li><a href="blade.html">Blade Templates</a></li>
+<li><a href="urls.html">URL Generation</a></li>
+<li><a href="session.html">Session</a></li>
+<li><a href="validation.html">Validation</a></li>
+<li><a href="errors.html">Error Handling</a></li>
+<li><a href="logging.html">Logging</a></li>
+</ul>
+</li>
+<li>
+<h2>Digging Deeper</h2>
+<ul>
+<li><a href="artisan.html">Artisan Console</a></li>
+<li><a href="broadcasting.html">Broadcasting</a></li>
+<li><a href="cache.html">Cache</a></li>
+<li><a href="collections.html">Collections</a></li>
+<li><a href="mix.html">Compiling Assets</a></li>
+<li><a href="contracts.html">Contracts</a></li>
+<li><a href="events.html">Events</a></li>
+<li><a href="filesystem.html">File Storage</a></li>
+<li><a href="helpers.html">Helpers</a></li>
+<li><a href="http-client.html">HTTP Client</a></li>
+<li><a href="localization.html">Localization</a></li>
+<li><a href="mail.html">Mail</a></li>
+<li><a href="notifications.html">Notifications</a></li>
+<li><a href="packages.html">Package Development</a></li>
+<li><a href="queues.html">Queues</a></li>
+<li><a href="rate-limiting.html">Rate Limiting</a></li>
+<li><a href="scheduling.html">Task Scheduling</a></li>
+</ul>
+</li>
+<li>
+<h2>Security</h2>
+<ul>
+<li><a href="authentication.html">Authentication</a></li>
+<li><a href="authorization.html">Authorization</a></li>
+<li><a href="verification.html">Email Verification</a></li>
+<li><a href="encryption.html">Encryption</a></li>
+<li><a href="hashing.html">Hashing</a></li>
+<li><a href="passwords.html">Password Reset</a></li>
+</ul>
+</li>
+<li>
+<h2>Database</h2>
+<ul>
+<li><a href="database.html">Getting Started</a></li>
+<li><a href="queries.html">Query Builder</a></li>
+<li><a href="pagination.html">Pagination</a></li>
+<li><a href="migrations.html">Migrations</a></li>
+<li><a href="seeding.html">Seeding</a></li>
+<li><a href="redis.html">Redis</a></li>
+</ul>
+</li>
+<li>
+<h2>Eloquent ORM</h2>
+<ul>
+<li><a href="eloquent.html">Getting Started</a></li>
+<li><a href="eloquent-relationships.html">Relationships</a></li>
+<li><a href="eloquent-collections.html">Collections</a></li>
+<li><a href="eloquent-mutators.html">Mutators / Casts</a></li>
+<li><a href="eloquent-resources.html">API Resources</a></li>
+<li><a href="eloquent-serialization.html">Serialization</a></li>
+</ul>
+</li>
+<li>
+<h2>Testing</h2>
+<ul>
+<li><a href="testing.html">Getting Started</a></li>
+<li><a href="http-tests.html">HTTP Tests</a></li>
+<li><a href="console-tests.html">Console Tests</a></li>
+<li><a href="dusk.html">Browser Tests</a></li>
+<li><a href="database-testing.html">Database</a></li>
+<li><a href="mocking.html">Mocking</a></li>
+</ul>
+</li>
+<li>
+<h2>Packages</h2>
+<ul>
+<li><a href="starter-kits.html#laravel-breeze">Breeze</a></li>
+<li><a href="billing.html">Cashier (Stripe)</a></li>
+<li><a href="cashier-paddle.html">Cashier (Paddle)</a></li>
+<li><a href="dusk.html">Dusk</a></li>
+<li><a href="envoy.html">Envoy</a></li>
+<li><a href="fortify.html">Fortify</a></li>
+<li><a href="homestead.html">Homestead</a></li>
+<li><a href="horizon.html">Horizon</a></li>
+<li><a href="../../index-6.htm">Jetstream</a></li>
+<li><a href="octane.html">Octane</a></li>
+<li><a href="passport.html">Passport</a></li>
+<li><a href="sail.html">Sail</a></li>
+<li><a href="sanctum.html">Sanctum</a></li>
+<li><a href="scout.html">Scout</a></li>
+<li><a href="socialite.html">Socialite</a></li>
+<li><a href="telescope.html">Telescope</a></li>
+<li><a href="valet.html">Valet</a></li>
+</ul>
+</li>
+<li><a href="/api/8.x">API Documentation</a></li>
+</ul>
+                            </div>
+                        </nav>
+
+                        
+                        
+                        
+                                            </div>
+                    <div class="sticky bottom-0 flex-1 flex flex-col justify-end lg:hidden">
+                        <div class="py-4 px-4 bg-white">
+                            <button class="relative ml-1 w-6 h-6 text-red-600 lg:hidden focus:outline-none focus:shadow-outline" aria-label="Menu" @click.prevent="navIsOpen = !navIsOpen">
+                                <svg x-show.transition.opacity="! navIsOpen" class="absolute inset-0 w-6 h-6" viewbox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+                                <svg x-show.transition.opacity="navIsOpen" x-cloak="" class="absolute inset-0 w-6 h-6" viewbox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+
+            <header class="lg:hidden" @keydown.window.escape="navIsOpen = false" @click.away="navIsOpen = false">
+                <div class="relative mx-auto w-full py-10 bg-white transition duration-200 dark:bg-dark-700">
+                    <div class="mx-auto px-8 sm:px-16 flex items-center justify-between">
+                        <a href="../../index.htm" class="flex items-center">
+                            <img class="" src="../../img/logomark.min.svg" alt="Laravel">
+                            <img class="hidden ml-5 sm:block" src="../../img/logotype.min.svg" alt="Laravel">
+                        </a>
+                        <div class="flex-1 flex items-center justify-end">
+                            <button id="header__sun" onclick="toSystemMode()" title="Switch to system theme" class="relative w-10 h-10 focus:outline-none focus:shadow-outline text-gray-500">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-sun" width="24" height="24" viewbox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                    <circle cx="12" cy="12" r="4"></circle>
+                                    <path d="M3 12h1m8 -9v1m8 8h1m-9 8v1m-6.4 -15.4l.7 .7m12.1 -.7l-.7 .7m0 11.4l.7 .7m-12.1 -.7l-.7 .7"></path>
+                                 </svg>
+                            </button>
+                            <button id="header__moon" onclick="toLightMode()" title="Switch to light mode" class="relative w-10 h-10 focus:outline-none focus:shadow-outline text-gray-500">
+                                <svg style="width:24px;height:24px" viewbox="0 0 24 24">
+                                    <path fill="currentColor" d="M17.75,4.09L15.22,6.03L16.13,9.09L13.5,7.28L10.87,9.09L11.78,6.03L9.25,4.09L12.44,4L13.5,1L14.56,4L17.75,4.09M21.25,11L19.61,12.25L20.2,14.23L18.5,13.06L16.8,14.23L17.39,12.25L15.75,11L17.81,10.95L18.5,9L19.19,10.95L21.25,11M18.97,15.95C19.8,15.87 20.69,17.05 20.16,17.8C19.84,18.25 19.5,18.67 19.08,19.07C15.17,23 8.84,23 4.94,19.07C1.03,15.17 1.03,8.83 4.94,4.93C5.34,4.53 5.76,4.17 6.21,3.85C6.96,3.32 8.14,4.21 8.06,5.04C7.79,7.9 8.75,10.87 10.95,13.06C13.14,15.26 16.1,16.22 18.97,15.95M17.33,17.97C14.5,17.81 11.7,16.64 9.53,14.5C7.36,12.31 6.2,9.5 6.04,6.68C3.23,9.82 3.34,14.64 6.35,17.66C9.37,20.67 14.19,20.78 17.33,17.97Z"></path>
+                                </svg>
+                            </button>
+                            <button id="header__indeterminate" onclick="toDarkMode()" title="Switch to dark mode" class="relative w-10 h-10 focus:outline-none focus:shadow-outline text-gray-500">
+                                <svg style="width:24px;height:24px" viewbox="0 0 24 24">
+                                    <path fill="currentColor" d="M12 2A10 10 0 0 0 2 12A10 10 0 0 0 12 22A10 10 0 0 0 22 12A10 10 0 0 0 12 2M12 4A8 8 0 0 1 20 12A8 8 0 0 1 12 20V4Z"></path>
+                                </svg>
+                            </button>
+                            <button class="ml-2 relative w-10 h-10 p-2 text-red-600 lg:hidden focus:outline-none focus:shadow-outline" aria-label="Menu" @click.prevent="navIsOpen = !navIsOpen">
+                                <svg x-show.transition.opacity="! navIsOpen" class="absolute inset-0 mt-2 ml-2 w-6 h-6" viewbox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+                                <svg x-show.transition.opacity="navIsOpen" x-cloak="" class="absolute inset-0 mt-2 ml-2 w-6 h-6" viewbox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                            </button>
+                        </div>
+                    </div>
+                    <span :class="{ 'shadow-sm': navIsOpen }" class="absolute inset-0 z-20 pointer-events-none"></span>
+                </div>
+                <div x-show="navIsOpen" x-transition:enter="duration-150" x-transition:leave="duration-100 ease-in" x-cloak="">
+                    <nav x-show="navIsOpen" x-cloak="" class="absolute w-full transform origin-top shadow-sm z-10" x-transition:enter="duration-150 ease-out" x-transition:enter-start="opacity-0 -translate-y-8 scale-75" x-transition:enter-end="opacity-100 scale-100" x-transition:leave="duration-100 ease-in" x-transition:leave-start="opacity-100 scale-100" x-transition:leave-end="opacity-0 -translate-y-8 scale-75">
+                        <div class="relative p-8 bg-white docs_sidebar dark:bg-dark-600">
+                            <ul>
+<li>
+<h2>Prologue</h2>
+<ul>
+<li><a href="releases.html">Release Notes</a></li>
+<li><a href="upgrade.html">Upgrade Guide</a></li>
+<li><a href="contributions.html">Contribution Guide</a></li>
+</ul>
+</li>
+<li>
+<h2>Getting Started</h2>
+<ul>
+<li><a href="installation.html">Installation</a></li>
+<li><a href="configuration.html">Configuration</a></li>
+<li><a href="structure.html">Directory Structure</a></li>
+<li><a href="starter-kits.html">Starter Kits</a></li>
+<li><a href="deployment.html">Deployment</a></li>
+</ul>
+</li>
+<li>
+<h2>Architecture Concepts</h2>
+<ul>
+<li><a href="lifecycle.html">Request Lifecycle</a></li>
+<li><a href="container.html">Service Container</a></li>
+<li><a href="providers.html">Service Providers</a></li>
+<li><a href="facades.html">Facades</a></li>
+</ul>
+</li>
+<li>
+<h2>The Basics</h2>
+<ul>
+<li><a href="routing.html">Routing</a></li>
+<li><a href="middleware.html">Middleware</a></li>
+<li><a href="csrf.html">CSRF Protection</a></li>
+<li><a href="controllers.html">Controllers</a></li>
+<li><a href="requests.html">Requests</a></li>
+<li><a href="responses.html">Responses</a></li>
+<li><a href="views.html">Views</a></li>
+<li><a href="blade.html">Blade Templates</a></li>
+<li><a href="urls.html">URL Generation</a></li>
+<li><a href="session.html">Session</a></li>
+<li><a href="validation.html">Validation</a></li>
+<li><a href="errors.html">Error Handling</a></li>
+<li><a href="logging.html">Logging</a></li>
+</ul>
+</li>
+<li>
+<h2>Digging Deeper</h2>
+<ul>
+<li><a href="artisan.html">Artisan Console</a></li>
+<li><a href="broadcasting.html">Broadcasting</a></li>
+<li><a href="cache.html">Cache</a></li>
+<li><a href="collections.html">Collections</a></li>
+<li><a href="mix.html">Compiling Assets</a></li>
+<li><a href="contracts.html">Contracts</a></li>
+<li><a href="events.html">Events</a></li>
+<li><a href="filesystem.html">File Storage</a></li>
+<li><a href="helpers.html">Helpers</a></li>
+<li><a href="http-client.html">HTTP Client</a></li>
+<li><a href="localization.html">Localization</a></li>
+<li><a href="mail.html">Mail</a></li>
+<li><a href="notifications.html">Notifications</a></li>
+<li><a href="packages.html">Package Development</a></li>
+<li><a href="queues.html">Queues</a></li>
+<li><a href="rate-limiting.html">Rate Limiting</a></li>
+<li><a href="scheduling.html">Task Scheduling</a></li>
+</ul>
+</li>
+<li>
+<h2>Security</h2>
+<ul>
+<li><a href="authentication.html">Authentication</a></li>
+<li><a href="authorization.html">Authorization</a></li>
+<li><a href="verification.html">Email Verification</a></li>
+<li><a href="encryption.html">Encryption</a></li>
+<li><a href="hashing.html">Hashing</a></li>
+<li><a href="passwords.html">Password Reset</a></li>
+</ul>
+</li>
+<li>
+<h2>Database</h2>
+<ul>
+<li><a href="database.html">Getting Started</a></li>
+<li><a href="queries.html">Query Builder</a></li>
+<li><a href="pagination.html">Pagination</a></li>
+<li><a href="migrations.html">Migrations</a></li>
+<li><a href="seeding.html">Seeding</a></li>
+<li><a href="redis.html">Redis</a></li>
+</ul>
+</li>
+<li>
+<h2>Eloquent ORM</h2>
+<ul>
+<li><a href="eloquent.html">Getting Started</a></li>
+<li><a href="eloquent-relationships.html">Relationships</a></li>
+<li><a href="eloquent-collections.html">Collections</a></li>
+<li><a href="eloquent-mutators.html">Mutators / Casts</a></li>
+<li><a href="eloquent-resources.html">API Resources</a></li>
+<li><a href="eloquent-serialization.html">Serialization</a></li>
+</ul>
+</li>
+<li>
+<h2>Testing</h2>
+<ul>
+<li><a href="testing.html">Getting Started</a></li>
+<li><a href="http-tests.html">HTTP Tests</a></li>
+<li><a href="console-tests.html">Console Tests</a></li>
+<li><a href="dusk.html">Browser Tests</a></li>
+<li><a href="database-testing.html">Database</a></li>
+<li><a href="mocking.html">Mocking</a></li>
+</ul>
+</li>
+<li>
+<h2>Packages</h2>
+<ul>
+<li><a href="starter-kits.html#laravel-breeze">Breeze</a></li>
+<li><a href="billing.html">Cashier (Stripe)</a></li>
+<li><a href="cashier-paddle.html">Cashier (Paddle)</a></li>
+<li><a href="dusk.html">Dusk</a></li>
+<li><a href="envoy.html">Envoy</a></li>
+<li><a href="fortify.html">Fortify</a></li>
+<li><a href="homestead.html">Homestead</a></li>
+<li><a href="horizon.html">Horizon</a></li>
+<li><a href="../../index-6.htm">Jetstream</a></li>
+<li><a href="octane.html">Octane</a></li>
+<li><a href="passport.html">Passport</a></li>
+<li><a href="sail.html">Sail</a></li>
+<li><a href="sanctum.html">Sanctum</a></li>
+<li><a href="scout.html">Scout</a></li>
+<li><a href="socialite.html">Socialite</a></li>
+<li><a href="telescope.html">Telescope</a></li>
+<li><a href="valet.html">Valet</a></li>
+</ul>
+</li>
+<li><a href="/api/8.x">API Documentation</a></li>
+</ul>
+                        </div>
+                    </nav>
+                </div>
+            </header>
+
+            <section class="flex-1 dark:bg-dark-700">
+                <div class="max-w-screen-lg px-8 sm:px-16 lg:px-24">
+                    <div class="flex flex-col items-end lg:mt-8 lg:flex-row-reverse">
+                        <div class="hidden lg:flex items-center justify-center ml-8">
+                            <button id="header__sun" onclick="toSystemMode()" title="Switch to system theme" class="relative w-10 h-10 focus:outline-none focus:shadow-outline text-gray-500">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-sun" width="24" height="24" viewbox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                    <circle cx="12" cy="12" r="4"></circle>
+                                    <path d="M3 12h1m8 -9v1m8 8h1m-9 8v1m-6.4 -15.4l.7 .7m12.1 -.7l-.7 .7m0 11.4l.7 .7m-12.1 -.7l-.7 .7"></path>
+                                 </svg>
+                            </button>
+                            <button id="header__moon" onclick="toLightMode()" title="Switch to light mode" class="relative w-10 h-10 focus:outline-none focus:shadow-outline text-gray-500">
+                                <svg style="width:24px;height:24px" viewbox="0 0 24 24">
+                                    <path fill="currentColor" d="M17.75,4.09L15.22,6.03L16.13,9.09L13.5,7.28L10.87,9.09L11.78,6.03L9.25,4.09L12.44,4L13.5,1L14.56,4L17.75,4.09M21.25,11L19.61,12.25L20.2,14.23L18.5,13.06L16.8,14.23L17.39,12.25L15.75,11L17.81,10.95L18.5,9L19.19,10.95L21.25,11M18.97,15.95C19.8,15.87 20.69,17.05 20.16,17.8C19.84,18.25 19.5,18.67 19.08,19.07C15.17,23 8.84,23 4.94,19.07C1.03,15.17 1.03,8.83 4.94,4.93C5.34,4.53 5.76,4.17 6.21,3.85C6.96,3.32 8.14,4.21 8.06,5.04C7.79,7.9 8.75,10.87 10.95,13.06C13.14,15.26 16.1,16.22 18.97,15.95M17.33,17.97C14.5,17.81 11.7,16.64 9.53,14.5C7.36,12.31 6.2,9.5 6.04,6.68C3.23,9.82 3.34,14.64 6.35,17.66C9.37,20.67 14.19,20.78 17.33,17.97Z"></path>
+                                </svg>
+                            </button>
+                            <button id="header__indeterminate" onclick="toDarkMode()" title="Switch to dark mode" class="relative w-10 h-10 focus:outline-none focus:shadow-outline text-gray-500">
+                                <svg style="width:24px;height:24px" viewbox="0 0 24 24">
+                                    <path fill="currentColor" d="M12 2A10 10 0 0 0 2 12A10 10 0 0 0 12 22A10 10 0 0 0 22 12A10 10 0 0 0 12 2M12 4A8 8 0 0 1 20 12A8 8 0 0 1 12 20V4Z"></path>
+                                </svg>
+                            </button>
+                        </div>
+                        <div class="w-full lg:w-64 lg:pl-12">
+                            <div>
+                                <label class="text-gray-600 text-xs tracking-widest uppercase dark:text-gray-500" for="version-switch">Version</label>
+                                <div x-data="" class="relative w-full bg-white border-b border-gray-600 border-opacity-50 transition-all duration-500 focus-within:border-gray-600 dark:bg-gray-800">
+                                    <select id="version-switcher" aria-label="Laravel version" class="appearance-none flex-1 w-full px-0 py-1 placeholder-gray-900 tracking-wide bg-white focus:outline-none dark:bg-dark-700 dark:text-gray-400 dark:placeholder-gray-500" @change="window.location = $event.target.value">
+                                                                                    <option value="http://laravel.test/docs/muathye/http-client">Muathye</option>
+                                                                                    <option value="http://laravel.test/docs/master/http-client">Master</option>
+                                                                                    <option selected="" value="http://laravel.test/docs/8.x/http-client">8.x</option>
+                                                                                    <option value="http://laravel.test/docs/7.x/http-client">7.x</option>
+                                                                                    <option value="http://laravel.test/docs/6.x/http-client">6.x</option>
+                                                                                    <option value="http://laravel.test/docs/5.8/http-client">5.8</option>
+                                                                                    <option value="http://laravel.test/docs/5.7/http-client">5.7</option>
+                                                                                    <option value="http://laravel.test/docs/5.6/http-client">5.6</option>
+                                                                                    <option value="http://laravel.test/docs/5.5/http-client">5.5</option>
+                                                                                    <option value="http://laravel.test/docs/5.4/http-client">5.4</option>
+                                                                                    <option value="http://laravel.test/docs/5.3/http-client">5.3</option>
+                                                                                    <option value="http://laravel.test/docs/5.2/http-client">5.2</option>
+                                                                                    <option value="http://laravel.test/docs/5.1/http-client">5.1</option>
+                                                                                    <option value="http://laravel.test/docs/5.0/http-client">5.0</option>
+                                                                                    <option value="http://laravel.test/docs/4.2/http-client">4.2</option>
+                                                                            </select>
+                                    <img class="absolute inset-y-0 right-0 mt-2.5 w-2.5 h-2.5 text-gray-900 pointer-events-none" id="docs_search__version_arrow" src="../../img/icons/drop_arrow.min.svg" alt="">
+                                    <img class="absolute inset-y-0 right-0 mt-2.5 w-2.5 h-2.5 text-gray-900 pointer-events-none" id="docs_search__version_arrow_dark" src="../../img/icons/drop_arrow.dark.min.svg" alt="">
+                                </div>
+                            </div>
+                        </div>
+                        <div x-data="searchComponent()" x-init="init()" class="relative mt-8 flex justify-end w-full lg:mt-0">
+                            <div class="relative w-full border-b border-gray-600 border-opacity-50 overflow-hidden transition-all duration-500 focus-within:border-gray-600" @click="searchIsOpen = true" @click.away="clear" @keydown.window.escape="clear" @keydown.window="handleSlashKey">
+                                <svg class="absolute inset-y-0 left-0 mt-1 w-5 h-5 text-gray-900 pointer-events-none dark:text-gray-500" fill="none" viewbox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                                <input x-model.debouce.200ms="search" x-ref="searchInput" class="flex-1 w-full pl-8 pr-4 py-1 placeholder-gray-900 tracking-wide bg-white focus:outline-none dark:bg-dark-700 dark:text-gray-400 dark:placeholder-gray-500" placeholder="Search Docs (Press '/')" aria-label="Search in the documentation" @keydown.arrow-up.prevent="focusPreviousResult()" @keydown.arrow-down.prevent="focusNextResult()">
+                            </div>
+                            <div x-show="hits.length" x-cloak="" class="absolute w-full mt-8 pt-px divide-y divide-gray-200 shadow-sm z-30 dark:divide-dark-500">
+    <template x-for="(hit, index) in hits" :key="index">
+        <a :id="'search-result-' + index" :href="hit.url" class="search-result block px-4 py-3 bg-gray-100 transition-colors duration-200 hover:bg-gray-200 focus:outline-none focus:bg-gray-200 dark:bg-dark-600 dark:text-gray-400 dark:focus:bg-dark-500 dark:hover:bg-dark-500" @keydown.arrow-up.prevent="focusPreviousResult(index)" @keydown.arrow-down.prevent="focusNextResult(index)">
+            <div x-show="hit._highlightResult.hierarchy.lvl0" class="text-sm font-medium" x-html="hit._highlightResult.hierarchy.lvl0 ? hit._highlightResult.hierarchy.lvl0.value : ''"></div>
+            <div class="mt-2">
+                <div x-show="hit._highlightResult.hierarchy.lvl1" class="text-sm">
+                    <span class="text-red-600 opacity-75">#</span> <span x-html="hit._highlightResult.hierarchy.lvl1 ? hit._highlightResult.hierarchy.lvl1.value : ''"></span>
+                </div>
+
+                <div x-show="hit._highlightResult.hierarchy.lvl2" class="text-sm">
+                    > <span x-html="hit._highlightResult.hierarchy.lvl2 ? hit._highlightResult.hierarchy.lvl2.value : ''"></span>
+                </div>
+
+                <div x-show="hit._highlightResult.hierarchy.lvl3" class="text-sm">
+                    > <span x-html="hit._highlightResult.hierarchy.lvl3 ? hit._highlightResult.hierarchy.lvl3.value : ''"></span>
+                </div>
+
+                <div x-show="hit._highlightResult.hierarchy.lvl4" class="text-sm">
+                    > <span x-html="hit._highlightResult.hierarchy.lvl4 ? hit._highlightResult.hierarchy.lvl4.value : ''"></span>
+                </div>
+
+                <div x-show="hit._highlightResult.hierarchy.lvl5" class="text-sm">
+                    > <span x-html="hit._highlightResult.hierarchy.lvl5 ? hit._highlightResult.hierarchy.lvl5.value : ''"></span>
+                </div>
+            </div>
+        </a>
+    </template>
+	<div class="bg-gray-100 flex justify-end dark:bg-dark-600 dark:text-gray-400">
+		<a class="px-4 py-2 inline-block" target="_blank" href="../../index-9.htm?utm_source=laravel&utm_medium=link&utm_campaign=laravel_documentation_search">
+            <img width="105" src="../../img/icons/algolia.min.svg" id="docs_search__algolia" alt="Algolia">
+            <img width="105" src="../../img/icons/algolia.dark.min.svg" id="docs_search__algolia_dark" alt="Algolia">
+		</a>
+	</div>
+</div>
+
+<div x-show="search && ! hits.length" x-cloak="" class="absolute w-full mt-8 pt-px divide-y divide-gray-200 shadow-sm z-30 dark:divide-dark-500">
+	<div class="px-4 py-2 bg-gray-100 dark:bg-dark-600 dark:text-gray-400">
+		<div class="text-sm" x-text="`We didn't find any result for '${search}'. Sorry!`"></div>
+	</div>
+	<div class="bg-gray-100 flex justify-end dark:bg-dark-600 dark:text-gray-400">
+		<a class="px-4 py-2 inline-block" target="_blank" href="../../index-9.htm?utm_source=laravel&utm_medium=link&utm_campaign=laravel_documentation_search">
+            <img width="105" src="../../img/icons/algolia.min.svg" id="docs_search__algolia" alt="Algolia">
+            <img width="105" src="../../img/icons/algolia.dark.min.svg" id="docs_search__algolia_dark" alt="Algolia">
+		</a>
+	</div>
+</div>
+                        </div>
+                    </div>
+
+                    <section class="mt-8 md:mt-16">
+                        <section class="docs_main max-w-prose">
+                            
+                                                         <div id="main-content">
+    <h1>HTTP Client</h1>
+<ul>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#making-requests">Making Requests</a>
+<ul>
+<li><a href="#request-data">Request Data</a></li>
+<li><a href="#headers">Headers</a></li>
+<li><a href="#authentication">Authentication</a></li>
+<li><a href="#timeout">Timeout</a></li>
+<li><a href="#retries">Retries</a></li>
+<li><a href="#error-handling">Error Handling</a></li>
+<li><a href="#guzzle-options">Guzzle Options</a></li>
+</ul></li>
+<li><a href="#concurrent-requests">Concurrent Requests</a></li>
+<li><a href="#testing">Testing</a>
+<ul>
+<li><a href="#faking-responses">Faking Responses</a></li>
+<li><a href="#inspecting-requests">Inspecting Requests</a></li>
+</ul></li>
+<li><a href="#events">Events</a></li>
+</ul>
+<p><a name="introduction"></a></p>
+<h2 id="introduction">Introduction</h2>
+<p>Laravel provides an expressive, minimal API around the <a href="../../en (1)/stable/index.htm">Guzzle HTTP client</a>, allowing you to quickly make outgoing HTTP requests to communicate with other web applications. Laravel's wrapper around Guzzle is focused on its most common use cases and a wonderful developer experience.</p>
+<p>Before getting started, you should ensure that you have installed the Guzzle package as a dependency of your application. By default, Laravel automatically includes this dependency. However, if you have previously removed the package, you may install it again via Composer:</p>
+<pre><code>composer require guzzlehttp/guzzle</code></pre>
+<p><a name="making-requests"></a></p>
+<h2 id="making-requests">Making Requests</h2>
+<p>To make requests, you may use the <code>get</code>, <code>post</code>, <code>put</code>, <code>patch</code>, and <code>delete</code> methods provided by the <code>Http</code> facade. First, let's examine how to make a basic <code>GET</code> request to another URL:</p>
+<pre><code>use Illuminate\Support\Facades\Http;
+
+$response = Http::get('http://example.com');</code></pre>
+<p>The <code>get</code> method returns an instance of <code>Illuminate\Http\Client\Response</code>, which provides a variety of methods that may be used to inspect the response:</p>
+<pre><code>$response-&gt;body() : string;
+$response-&gt;json() : array|mixed;
+$response-&gt;object() : object;
+$response-&gt;collect() : Illuminate\Support\Collection;
+$response-&gt;status() : int;
+$response-&gt;ok() : bool;
+$response-&gt;successful() : bool;
+$response-&gt;failed() : bool;
+$response-&gt;serverError() : bool;
+$response-&gt;clientError() : bool;
+$response-&gt;header($header) : string;
+$response-&gt;headers() : array;</code></pre>
+<p>The <code>Illuminate\Http\Client\Response</code> object also implements the PHP <code>ArrayAccess</code> interface, allowing you to access JSON response data directly on the response:</p>
+<pre><code>return Http::get('http://example.com/users/1')['name'];</code></pre>
+<p><a name="dumping-requests"></a></p>
+<h4 id="dumping-requests">Dumping Requests</h4>
+<p>If you would like to dump the outgoing request instance before it is sent and terminate the script's execution, you may add the <code>dd</code> method to the beginning of your request definition:</p>
+<pre><code>return Http::dd()-&gt;get('http://example.com');</code></pre>
+<p><a name="request-data"></a></p>
+<h3 id="request-data">Request Data</h3>
+<p>Of course, it is common when making <code>POST</code>, <code>PUT</code>, and <code>PATCH</code> requests to send additional data with your request, so these methods accept an array of data as their second argument. By default, data will be sent using the <code>application/json</code> content type:</p>
+<pre><code>use Illuminate\Support\Facades\Http;
+
+$response = Http::post('http://example.com/users', [
+    'name' =&gt; 'Steve',
+    'role' =&gt; 'Network Administrator',
+]);</code></pre>
+<p><a name="get-request-query-parameters"></a></p>
+<h4 id="get-request-query-parameters">GET Request Query Parameters</h4>
+<p>When making <code>GET</code> requests, you may either append a query string to the URL directly or pass an array of key / value pairs as the second argument to the <code>get</code> method:</p>
+<pre><code>$response = Http::get('http://example.com/users', [
+    'name' =&gt; 'Taylor',
+    'page' =&gt; 1,
+]);</code></pre>
+<p><a name="sending-form-url-encoded-requests"></a></p>
+<h4 id="sending-form-url-encoded-requests">Sending Form URL Encoded Requests</h4>
+<p>If you would like to send data using the <code>application/x-www-form-urlencoded</code> content type, you should call the <code>asForm</code> method before making your request:</p>
+<pre><code>$response = Http::asForm()-&gt;post('http://example.com/users', [
+    'name' =&gt; 'Sara',
+    'role' =&gt; 'Privacy Consultant',
+]);</code></pre>
+<p><a name="sending-a-raw-request-body"></a></p>
+<h4 id="sending-a-raw-request-body">Sending A Raw Request Body</h4>
+<p>You may use the <code>withBody</code> method if you would like to provide a raw request body when making a request. The content type may be provided via the method's second argument:</p>
+<pre><code>$response = Http::withBody(
+    base64_encode($photo), 'image/jpeg'
+)-&gt;post('http://example.com/photo');</code></pre>
+<p><a name="multi-part-requests"></a></p>
+<h4 id="multi-part-requests">Multi-Part Requests</h4>
+<p>If you would like to send files as multi-part requests, you should call the <code>attach</code> method before making your request. This method accepts the name of the file and its contents. If needed, you may provide a third argument which will be considered the file's filename:</p>
+<pre><code>$response = Http::attach(
+    'attachment', file_get_contents('photo.jpg'), 'photo.jpg'
+)-&gt;post('http://example.com/attachments');</code></pre>
+<p>Instead of passing the raw contents of a file, you may pass a stream resource:</p>
+<pre><code>$photo = fopen('photo.jpg', 'r');
+
+$response = Http::attach(
+    'attachment', $photo, 'photo.jpg'
+)-&gt;post('http://example.com/attachments');</code></pre>
+<p><a name="headers"></a></p>
+<h3 id="headers">Headers</h3>
+<p>Headers may be added to requests using the <code>withHeaders</code> method. This <code>withHeaders</code> method accepts an array of key / value pairs:</p>
+<pre><code>$response = Http::withHeaders([
+    'X-First' =&gt; 'foo',
+    'X-Second' =&gt; 'bar'
+])-&gt;post('http://example.com/users', [
+    'name' =&gt; 'Taylor',
+]);</code></pre>
+<p>You may use the <code>accept</code> method to specify the content type that your application is expecting in response to your request:</p>
+<pre><code>$response = Http::accept('application/json')-&gt;get('http://example.com/users');</code></pre>
+<p>For convenience, you may use the <code>acceptJson</code> method to quickly specify that your application expects the <code>application/json</code> content type in response to your request:</p>
+<pre><code>$response = Http::acceptJson()-&gt;get('http://example.com/users');</code></pre>
+<p><a name="authentication"></a></p>
+<h3 id="authentication">Authentication</h3>
+<p>You may specify basic and digest authentication credentials using the <code>withBasicAuth</code> and <code>withDigestAuth</code> methods, respectively:</p>
+<pre><code>// Basic authentication...
+$response = Http::withBasicAuth('taylor@laravel.com', 'secret')-&gt;post(...);
+
+// Digest authentication...
+$response = Http::withDigestAuth('taylor@laravel.com', 'secret')-&gt;post(...);</code></pre>
+<p><a name="bearer-tokens"></a></p>
+<h4 id="bearer-tokens">Bearer Tokens</h4>
+<p>If you would like to quickly add a bearer token to the request's <code>Authorization</code> header, you may use the <code>withToken</code> method:</p>
+<pre><code>$response = Http::withToken('token')-&gt;post(...);</code></pre>
+<p><a name="timeout"></a></p>
+<h3 id="timeout">Timeout</h3>
+<p>The <code>timeout</code> method may be used to specify the maximum number of seconds to wait for a response:</p>
+<pre><code>$response = Http::timeout(3)-&gt;get(...);</code></pre>
+<p>If the given timeout is exceeded, an instance of <code>Illuminate\Http\Client\ConnectionException</code> will  be thrown.</p>
+<p><a name="retries"></a></p>
+<h3 id="retries">Retries</h3>
+<p>If you would like HTTP client to automatically retry the request if a client or server error occurs, you may use the <code>retry</code> method. The <code>retry</code> method accepts the maximum number of times the request should be attempted and the number of milliseconds that Laravel should wait in between attempts:</p>
+<pre><code>$response = Http::retry(3, 100)-&gt;post(...);</code></pre>
+<p>If needed, you may pass a third argument to the <code>retry</code> method. The third argument should be a callable that determines if the retries should actually be attempted. For example, you may wish to only retry the request if the initial request encounters an <code>ConnectionException</code>:</p>
+<pre><code>$response = Http::retry(3, 100, function ($exception) {
+    return $exception instanceof ConnectionException;
+})-&gt;post(...);</code></pre>
+<p>If all of the requests fail, an instance of <code>Illuminate\Http\Client\RequestException</code> will be thrown.</p>
+<p><a name="error-handling"></a></p>
+<h3 id="error-handling">Error Handling</h3>
+<p>Unlike Guzzle's default behavior, Laravel's HTTP client wrapper does not throw exceptions on client or server errors (<code>400</code> and <code>500</code> level responses from servers). You may determine if one of these errors was returned using the <code>successful</code>, <code>clientError</code>, or <code>serverError</code> methods:</p>
+<pre><code>// Determine if the status code is &gt;= 200 and &lt; 300...
+$response-&gt;successful();
+
+// Determine if the status code is &gt;= 400...
+$response-&gt;failed();
+
+// Determine if the response has a 400 level status code...
+$response-&gt;clientError();
+
+// Determine if the response has a 500 level status code...
+$response-&gt;serverError();</code></pre>
+<p><a name="throwing-exceptions"></a></p>
+<h4 id="throwing-exceptions">Throwing Exceptions</h4>
+<p>If you have a response instance and would like to throw an instance of <code>Illuminate\Http\Client\RequestException</code> if the response status code indicates a client or server error, you may use the <code>throw</code> or <code>throwIf</code> methods:</p>
+<pre><code>$response = Http::post(...);
+
+// Throw an exception if a client or server error occurred...
+$response-&gt;throw();
+
+// Throw an exception if an error occurred and the given condition is true...
+$response-&gt;throwIf($condition);
+
+return $response['user']['id'];</code></pre>
+<p>The <code>Illuminate\Http\Client\RequestException</code> instance has a public <code>$response</code> property which will allow you to inspect the returned response.</p>
+<p>The <code>throw</code> method returns the response instance if no error occurred, allowing you to chain other operations onto the <code>throw</code> method:</p>
+<pre><code>return Http::post(...)-&gt;throw()-&gt;json();</code></pre>
+<p>If you would like to perform some additional logic before the exception is thrown, you may pass a closure to the <code>throw</code> method. The exception will be thrown automatically after the closure is invoked, so you do not need to re-throw the exception from within the closure:</p>
+<pre><code>return Http::post(...)-&gt;throw(function ($response, $e) {
+    //
+})-&gt;json();</code></pre>
+<p><a name="guzzle-options"></a></p>
+<h3 id="guzzle-options">Guzzle Options</h3>
+<p>You may specify additional <a href="../../en (1)/stable/request-options.html">Guzzle request options</a> using the <code>withOptions</code> method. The <code>withOptions</code> method accepts an array of key / value pairs:</p>
+<pre><code>$response = Http::withOptions([
+    'debug' =&gt; true,
+])-&gt;get('http://example.com/users');</code></pre>
+<p><a name="concurrent-requests"></a></p>
+<h2 id="concurrent-requests">Concurrent Requests</h2>
+<p>Sometimes, you may wish to make multiple HTTP requests concurrently. In other words, you want several requests to be dispatched at the same time instead of issuing the requests sequentially. This can lead to substantial performance improvements when interacting with slow HTTP APIs.</p>
+<p>Thankfully, you may accomplish this using the <code>pool</code> method. The <code>pool</code> method accepts a closure which receives an <code>Illuminate\Http\Client\Pool</code> instance, allowing you to easily add requests to the request pool for dispatching:</p>
+<pre><code>use Illuminate\Http\Client\Pool;
+use Illuminate\Support\Facades\Http;
+
+$responses = Http::pool(fn (Pool $pool) =&gt; [
+    $pool-&gt;get('http://localhost/first'),
+    $pool-&gt;get('http://localhost/second'),
+    $pool-&gt;get('http://localhost/third'),
+]);
+
+return $responses[0]-&gt;ok() &amp;&amp;
+       $responses[1]-&gt;ok() &amp;&amp;
+       $responses[2]-&gt;ok();</code></pre>
+<p>As you can see, each response instance can be accessed based on the order it was added to the pool. If you wish, you can name the requests using the <code>as</code> method, which allows you to access the corresponding responses by name:</p>
+<pre><code>use Illuminate\Http\Client\Pool;
+use Illuminate\Support\Facades\Http;
+
+$responses = Http::pool(fn (Pool $pool) =&gt; [
+    $pool-&gt;as('first')-&gt;get('http://localhost/first'),
+    $pool-&gt;as('second')-&gt;get('http://localhost/second'),
+    $pool-&gt;as('third')-&gt;get('http://localhost/third'),
+]);
+
+return $responses['first']-&gt;ok();</code></pre>
+<p><a name="testing"></a></p>
+<h2 id="testing">Testing</h2>
+<p>Many Laravel services provide functionality to help you easily and expressively write tests, and Laravel's HTTP wrapper is no exception. The <code>Http</code> facade's <code>fake</code> method allows you to instruct the HTTP client to return stubbed / dummy responses when requests are made.</p>
+<p><a name="faking-responses"></a></p>
+<h3 id="faking-responses">Faking Responses</h3>
+<p>For example, to instruct the HTTP client to return empty, <code>200</code> status code responses for every request, you may call the <code>fake</code> method with no arguments:</p>
+<pre><code>use Illuminate\Support\Facades\Http;
+
+Http::fake();
+
+$response = Http::post(...);</code></pre>
+<blockquote>
+<p>{note} When faking requests, HTTP client middleware are not executed. You should define expectations for faked responses as if these middleware have run correctly.</p>
+</blockquote>
+<p><a name="faking-specific-urls"></a></p>
+<h4 id="faking-specific-urls">Faking Specific URLs</h4>
+<p>Alternatively, you may pass an array to the <code>fake</code> method. The array's keys should represent URL patterns that you wish to fake and their associated responses. The <code>*</code> character may be used as a wildcard character. Any requests made to URLs that have not been faked will actually be executed. You may use the <code>Http</code> facade's <code>response</code> method to construct stub / fake responses for these endpoints:</p>
+<pre><code>Http::fake([
+    // Stub a JSON response for GitHub endpoints...
+    'github.com/*' =&gt; Http::response(['foo' =&gt; 'bar'], 200, $headers),
+
+    // Stub a string response for Google endpoints...
+    'google.com/*' =&gt; Http::response('Hello World', 200, $headers),
+]);</code></pre>
+<p>If you would like to specify a fallback URL pattern that will stub all unmatched URLs, you may use a single <code>*</code> character:</p>
+<pre><code>Http::fake([
+    // Stub a JSON response for GitHub endpoints...
+    'github.com/*' =&gt; Http::response(['foo' =&gt; 'bar'], 200, ['Headers']),
+
+    // Stub a string response for all other endpoints...
+    '*' =&gt; Http::response('Hello World', 200, ['Headers']),
+]);</code></pre>
+<p><a name="faking-response-sequences"></a></p>
+<h4 id="faking-response-sequences">Faking Response Sequences</h4>
+<p>Sometimes you may need to specify that a single URL should return a series of fake responses in a specific order. You may accomplish this using the <code>Http::sequence</code> method to build the responses:</p>
+<pre><code>Http::fake([
+    // Stub a series of responses for GitHub endpoints...
+    'github.com/*' =&gt; Http::sequence()
+                            -&gt;push('Hello World', 200)
+                            -&gt;push(['foo' =&gt; 'bar'], 200)
+                            -&gt;pushStatus(404),
+]);</code></pre>
+<p>When all of the responses in a response sequence have been consumed, any further requests will cause the response sequence to throw an exception. If you would like to specify a default response that should be returned when a sequence is empty, you may use the <code>whenEmpty</code> method:</p>
+<pre><code>Http::fake([
+    // Stub a series of responses for GitHub endpoints...
+    'github.com/*' =&gt; Http::sequence()
+                            -&gt;push('Hello World', 200)
+                            -&gt;push(['foo' =&gt; 'bar'], 200)
+                            -&gt;whenEmpty(Http::response()),
+]);</code></pre>
+<p>If you would like to fake a sequence of responses but do not need to specify a specific URL pattern that should be faked, you may use the <code>Http::fakeSequence</code> method:</p>
+<pre><code>Http::fakeSequence()
+        -&gt;push('Hello World', 200)
+        -&gt;whenEmpty(Http::response());</code></pre>
+<p><a name="fake-callback"></a></p>
+<h4 id="fake-callback">Fake Callback</h4>
+<p>If you require more complicated logic to determine what responses to return for certain endpoints, you may pass a closure to the <code>fake</code> method. This closure will receive an instance of <code>Illuminate\Http\Client\Request</code> and should return a response instance. Within your closure, you may perform whatever logic is necessary to determine what type of response to return:</p>
+<pre><code>Http::fake(function ($request) {
+    return Http::response('Hello World', 200);
+});</code></pre>
+<p><a name="inspecting-requests"></a></p>
+<h3 id="inspecting-requests">Inspecting Requests</h3>
+<p>When faking responses, you may occasionally wish to inspect the requests the client receives in order to make sure your application is sending the correct data or headers. You may accomplish this by calling the <code>Http::assertSent</code> method after calling <code>Http::fake</code>.</p>
+<p>The <code>assertSent</code> method accepts a closure which will receive an <code>Illuminate\Http\Client\Request</code> instance and should return a boolean value indicating if the request matches your expectations. In order for the test to pass, at least one request must have been issued matching the given expectations:</p>
+<pre><code>use Illuminate\Http\Client\Request;
+use Illuminate\Support\Facades\Http;
+
+Http::fake();
+
+Http::withHeaders([
+    'X-First' =&gt; 'foo',
+])-&gt;post('http://example.com/users', [
+    'name' =&gt; 'Taylor',
+    'role' =&gt; 'Developer',
+]);
+
+Http::assertSent(function (Request $request) {
+    return $request-&gt;hasHeader('X-First', 'foo') &amp;&amp;
+           $request-&gt;url() == 'http://example.com/users' &amp;&amp;
+           $request['name'] == 'Taylor' &amp;&amp;
+           $request['role'] == 'Developer';
+});</code></pre>
+<p>If needed, you may assert that a specific request was not sent using the <code>assertNotSent</code> method:</p>
+<pre><code>use Illuminate\Http\Client\Request;
+use Illuminate\Support\Facades\Http;
+
+Http::fake();
+
+Http::post('http://example.com/users', [
+    'name' =&gt; 'Taylor',
+    'role' =&gt; 'Developer',
+]);
+
+Http::assertNotSent(function (Request $request) {
+    return $request-&gt;url() === 'http://example.com/posts';
+});</code></pre>
+<p>Or, you may use the <code>assertNothingSent</code> method to assert that no requests were sent during the test:</p>
+<pre><code>Http::fake();
+
+Http::assertNothingSent();</code></pre>
+<p><a name="events"></a></p>
+<h2 id="events">Events</h2>
+<p>Laravel fires three events during the process of sending HTTP requests. The <code>RequestSending</code> event is fired prior to a request being sent, while the <code>ResponseReceived</code> event is fired after a response is received for a given request. The <code>ConnectionFailed</code> event is fired if no response is received for a given request.</p>
+<p>The <code>RequestSending</code> and <code>ConnectionFailed</code> events both contain a public <code>$request</code> property that you may use to inspect the <code>Illuminate\Http\Client\Request</code> instance. Likewise, the <code>ResponseReceived</code> event contains a <code>$request</code> property as well as a <code>$response</code> property which may be used to inspect the <code>Illuminate\Http\Client\Response</code> instance. You may register event listeners for this event in your <code>App\Providers\EventServiceProvider</code> service provider:</p>
+<pre><code>/**
+ * The event listener mappings for the application.
+ *
+ * @var array
+ */
+protected $listen = [
+    'Illuminate\Http\Client\Events\RequestSending' =&gt; [
+        'App\Listeners\LogRequestSending',
+    ],
+    'Illuminate\Http\Client\Events\ResponseReceived' =&gt; [
+        'App\Listeners\LogResponseReceived',
+    ],
+    'Illuminate\Http\Client\Events\ConnectionFailed' =&gt; [
+        'App\Listeners\LogConnectionFailed',
+    ],
+];</code></pre>
+</div>
+ 
+                                                        <button onclick="topFunction()" id="toTheTop" title="Go to top" class="fixed bottom-5 right-5 h-15 w-15 hidden">
+                                <span class="topChevron"></span>
+                            </button>
+                                                    </section>
+                    </section>
+                </div>
+            </section>
+        </div>
+    </div>
+    <script>
+        mybutton = document.getElementById('toTheTop');
+        window.onscroll = function() {scrollFunction()};
+        function scrollFunction() {
+            carbonAds = document.getElementById('carbonads');
+            if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+                mybutton.style.setProperty('display', 'block', 'important');
+                if (carbonAds) {
+                    carbonAds.classList.add('move-top');
+                }
+            } else {
+                mybutton.style.display = 'none';
+                if (carbonAds) {
+                    carbonAds.classList.remove('move-top');
+                }
+            }
+        }
+        function topFunction() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        }
+    </script>
+
+<footer class="relative z-30 dark:bg-dark-700">
+    <div class="relative z-20 overflow-x-hidden">
+        <div class="relative max-w-screen-2xl mx-auto sm:px-8">
+            <div class="absolute inset-0 flex flex-col px-4 lg:px-12 xl:px-16">
+                <div class="flex-1"></div>
+                <div class="flex-1 bg-gray-100 dark:bg-dark-900"></div>
+            </div>
+            <div class="relative max-w-screen-xl mx-auto px-8">
+                <section class="relative z-10 p-6 bg-white shadow-lg md:flex md:items-center md:p-12 lg:p-16 dark:bg-dark-600">
+                    <div class="content md:pr-12">
+                        <h2 class="text-3xl tracking-tight sm:text-4xl md:mt-4 xl:text-5xl dark:text-gray-200">Become a Laravel Partner</h2>
+                        <p class="mt-3 max-w-xl text-gray-600 sm:mt-5 md:max-w-2xl md:mt-8 md:text-lg dark:text-gray-400">Laravel Partners are elite shops providing top-notch Laravel development and consulting. Each of our partners can help you craft a beautiful, well-architected project.</p>
+                    </div>
+                                             <a class="group relative h-12 inline-flex w-64 border border-red-600 sm:w-56 focus:outline-none mt-8" href="../../index-8.htm">
+    <span class="absolute inset-0 inline-flex items-center justify-center self-stretch px-6 text-white text-center font-medium bg-red-600 ring-1 ring-red-600 ring-offset-1 ring-offset-red-600 transform transition-transform group-hover:-translate-y-1 group-hover:-translate-x-1 group-focus:-translate-y-1 group-focus:-translate-x-1">
+        Our Partners
+    </span>
+</a>
+ 
+                                    </section>
+            </div>
+        </div>
+
+        <div class="max-w-screen-2xl mx-auto px-4 lg:px-12 xl:px-16">
+            <div class="px-8 pb-12 bg-gray-100 xl:px-20 dark:bg-dark-900">
+                <div>
+                    <img class="-mt-2 max-w-4xl w-full transform -translate-x-12 lg:-translate-x-24 xl:-translate-x-40" src="../../img/logotype.min.svg" alt="Laravel" width="114" height="29" loading="lazy">
+                </div>
+                <div class="mt-6 sm:mt-12 md:flex">
+                    <div class="divide-y divide-gray-600 divide-opacity-25 sm:hidden">
+                                                    <div x-data="{ expanded: false }" class="py-4">
+                                <button class="-mx-2 px-2 w-full flex items-center justify-between py-2 font-bold dark:text-gray-200" @click="expanded = ! expanded">
+                                    <span>Highlights</span>
+                                    <span class="transform transition-transform" :class="{ 'rotate-45': expanded }">&plus;</span>
+                                </button>
+                                <div x-show="expanded" x-cloak="" class="py-2 transition transform" x-transition:enter="duration-250 ease-out" x-transition:enter-start="opacity-0 -translate-y-8" x-transition:enter-end="opacity-100" x-transition:leave="duration-250 ease-in" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0 -translate-y-8">
+                                    <ul class="space-y-2 text-gray-600 text-sm dark:text-gray-500">
+                                                                                    <li><a href="/team">Our Team</a></li>
+                                                                                    <li><a href="releases.html">Release Notes</a></li>
+                                                                                    <li><a href="installation.html">Getting Started</a></li>
+                                                                                    <li><a href="routing.html">Routing</a></li>
+                                                                                    <li><a href="blade.html">Blade Templates</a></li>
+                                                                                    <li><a href="authentication.html">Authentication</a></li>
+                                                                                    <li><a href="authorization.html">Authorization</a></li>
+                                                                                    <li><a href="artisan.html">Artisan Console</a></li>
+                                                                                    <li><a href="database.html">Database</a></li>
+                                                                                    <li><a href="eloquent.html">Eloquent ORM</a></li>
+                                                                                    <li><a href="testing.html">Testing</a></li>
+                                                                            </ul>
+                                </div>
+                            </div>
+                                                    <div x-data="{ expanded: false }" class="py-4">
+                                <button class="-mx-2 px-2 w-full flex items-center justify-between py-2 font-bold dark:text-gray-200" @click="expanded = ! expanded">
+                                    <span>Resources</span>
+                                    <span class="transform transition-transform" :class="{ 'rotate-45': expanded }">&plus;</span>
+                                </button>
+                                <div x-show="expanded" x-cloak="" class="py-2 transition transform" x-transition:enter="duration-250 ease-out" x-transition:enter-start="opacity-0 -translate-y-8" x-transition:enter-end="opacity-100" x-transition:leave="duration-250 ease-in" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0 -translate-y-8">
+                                    <ul class="space-y-2 text-gray-600 text-sm dark:text-gray-500">
+                                                                                    <li><a href="../../index-10.htm">Laracasts</a></li>
+                                                                                    <li><a href="../../index-7.htm">Laravel News</a></li>
+                                                                                    <li><a href="../../index-13.htm">Laracon</a></li>
+                                                                                    <li><a href="../../winter-2022/index.htm">Laracon EU</a></li>
+                                                                                    <li><a href="../../index-14.htm">Jobs</a></li>
+                                                                                    <li><a href="../../index-16.htm">Certification</a></li>
+                                                                                    <li><a href="../../discuss.html">Forums</a></li>
+                                                                            </ul>
+                                </div>
+                            </div>
+                                                    <div x-data="{ expanded: false }" class="py-4">
+                                <button class="-mx-2 px-2 w-full flex items-center justify-between py-2 font-bold dark:text-gray-200" @click="expanded = ! expanded">
+                                    <span>Partners</span>
+                                    <span class="transform transition-transform" :class="{ 'rotate-45': expanded }">&plus;</span>
+                                </button>
+                                <div x-show="expanded" x-cloak="" class="py-2 transition transform" x-transition:enter="duration-250 ease-out" x-transition:enter-start="opacity-0 -translate-y-8" x-transition:enter-end="opacity-100" x-transition:leave="duration-250 ease-in" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0 -translate-y-8">
+                                    <ul class="space-y-2 text-gray-600 text-sm dark:text-gray-500">
+                                                                                    <li><a href="../../index-17.htm">Vehikl</a></li>
+                                                                                    <li><a href="../../index-18.htm">Tighten</a></li>
+                                                                                    <li><a href="../../index-19.htm">64 Robots</a></li>
+                                                                                    <li><a href="../../index-20.htm">Kirschbaum</a></li>
+                                                                                    <li><a href="../../services/technologies/laravel/index.htm">Curotec</a></li>
+                                                                                    <li><a href="../../index-21.htm">Jump24</a></li>
+                                                                                    <li><a href="../../index-22.htm">A2 Design</a></li>
+                                                                                    <li><a href="../../app/uploads/2019/08/INTRO-Pitch-I-AY-Tech.pdf?utm_source=laravelpartnersfindoutmore&amp;utm_medium=socialgroups&amp;utm_campaign=tech">ABOUT YOU</a></li>
+                                                                                    <li><a href="../../index-23.htm">Byte 5</a></li>
+                                                                                    <li><a href="../../index-24.htm">Cubet</a></li>
+                                                                                    <li><a href="../../what-we-do/technology-implementation/laravel.html?utm_source=Laravel%20Partner&amp;utm_medium=Sponsorship">Cyber-Duck</a></li>
+                                                                                    <li><a href="../../index-25.htm">DevSquad</a></li>
+                                                                                    <li><a href="../../index-26.htm">Ideil</a></li>
+                                                                                    <li><a href="../../index-27.htm">Romega Software</a></li>
+                                                                                    <li><a href="../../index-28.htm">Worksome</a></li>
+                                                                                    <li><a href="../../index.html?utm_source=laravel&amp;utm_medium=laravel.com&amp;utm_campaign=patreon-sponsors">WebReinvent</a></li>
+                                                                            </ul>
+                                </div>
+                            </div>
+                                                    <div x-data="{ expanded: false }" class="py-4">
+                                <button class="-mx-2 px-2 w-full flex items-center justify-between py-2 font-bold dark:text-gray-200" @click="expanded = ! expanded">
+                                    <span>Ecosystem</span>
+                                    <span class="transform transition-transform" :class="{ 'rotate-45': expanded }">&plus;</span>
+                                </button>
+                                <div x-show="expanded" x-cloak="" class="py-2 transition transform" x-transition:enter="duration-250 ease-out" x-transition:enter-start="opacity-0 -translate-y-8" x-transition:enter-end="opacity-100" x-transition:leave="duration-250 ease-in" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0 -translate-y-8">
+                                    <ul class="space-y-2 text-gray-600 text-sm dark:text-gray-500">
+                                                                                    <li><a href="billing.html">Cashier</a></li>
+                                                                                    <li><a href="dusk.html">Dusk</a></li>
+                                                                                    <li><a href="broadcasting.html">Echo</a></li>
+                                                                                    <li><a href="../../index-3.htm">Envoyer</a></li>
+                                                                                    <li><a href="../../index-2.htm">Forge</a></li>
+                                                                                    <li><a href="homestead.html">Homestead</a></li>
+                                                                                    <li><a href="horizon.html">Horizon</a></li>
+                                                                                    <li><a href="../9.x.html">Lumen</a></li>
+                                                                                    <li><a href="mix.html">Mix</a></li>
+                                                                                    <li><a href="../../index-4.htm">Nova</a></li>
+                                                                                    <li><a href="passport.html">Passport</a></li>
+                                                                                    <li><a href="scout.html">Scout</a></li>
+                                                                                    <li><a href="socialite.html">Socialite</a></li>
+                                                                                    <li><a href="../../index-5.htm">Spark</a></li>
+                                                                                    <li><a href="telescope.html">Telescope</a></li>
+                                                                                    <li><a href="valet.html">Valet</a></li>
+                                                                                    <li><a href="../../index-1.htm">Vapor</a></li>
+                                                                            </ul>
+                                </div>
+                            </div>
+                                            </div>
+                    <div class="hidden sm:grid sm:grid-cols-2 sm:gap-x-4 sm:gap-y-8 md:w-1/2 lg:w-3/4 lg:grid-cols-4">
+                                                    <div>
+                                <span class="font-bold dark:text-gray-200">Highlights</span>
+                                <div class="mt-6">
+                                    <ul class="space-y-3 text-gray-600 text-sm dark:text-gray-500">
+                                                                                    <li>
+                                                <a href="/team" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Our Team</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="releases.html" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Release Notes</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="installation.html" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Getting Started</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="routing.html" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Routing</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="blade.html" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Blade Templates</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="authentication.html" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Authentication</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="authorization.html" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Authorization</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="artisan.html" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Artisan Console</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="database.html" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Database</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="eloquent.html" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Eloquent ORM</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="testing.html" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Testing</a>
+                                            </li>
+                                                                            </ul>
+                                </div>
+                            </div>
+                                                    <div>
+                                <span class="font-bold dark:text-gray-200">Resources</span>
+                                <div class="mt-6">
+                                    <ul class="space-y-3 text-gray-600 text-sm dark:text-gray-500">
+                                                                                    <li>
+                                                <a href="../../index-10.htm" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Laracasts</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="../../index-7.htm" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Laravel News</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="../../index-13.htm" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Laracon</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="../../winter-2022/index.htm" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Laracon EU</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="../../index-14.htm" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Jobs</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="../../index-16.htm" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Certification</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="../../discuss.html" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Forums</a>
+                                            </li>
+                                                                            </ul>
+                                </div>
+                            </div>
+                                                    <div>
+                                <span class="font-bold dark:text-gray-200">Partners</span>
+                                <div class="mt-6">
+                                    <ul class="space-y-3 text-gray-600 text-sm dark:text-gray-500">
+                                                                                    <li>
+                                                <a href="../../index-17.htm" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Vehikl</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="../../index-18.htm" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Tighten</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="../../index-19.htm" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">64 Robots</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="../../index-20.htm" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Kirschbaum</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="../../services/technologies/laravel/index.htm" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Curotec</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="../../index-21.htm" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Jump24</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="../../index-22.htm" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">A2 Design</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="../../app/uploads/2019/08/INTRO-Pitch-I-AY-Tech.pdf?utm_source=laravelpartnersfindoutmore&amp;utm_medium=socialgroups&amp;utm_campaign=tech" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">ABOUT YOU</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="../../index-23.htm" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Byte 5</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="../../index-24.htm" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Cubet</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="../../what-we-do/technology-implementation/laravel.html?utm_source=Laravel%20Partner&amp;utm_medium=Sponsorship" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Cyber-Duck</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="../../index-25.htm" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">DevSquad</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="../../index-26.htm" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Ideil</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="../../index-27.htm" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Romega Software</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="../../index-28.htm" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Worksome</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="../../index.html?utm_source=laravel&amp;utm_medium=laravel.com&amp;utm_campaign=patreon-sponsors" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">WebReinvent</a>
+                                            </li>
+                                                                            </ul>
+                                </div>
+                            </div>
+                                                    <div>
+                                <span class="font-bold dark:text-gray-200">Ecosystem</span>
+                                <div class="mt-6">
+                                    <ul class="space-y-3 text-gray-600 text-sm dark:text-gray-500">
+                                                                                    <li>
+                                                <a href="billing.html" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Cashier</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="dusk.html" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Dusk</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="broadcasting.html" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Echo</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="../../index-3.htm" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Envoyer</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="../../index-2.htm" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Forge</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="homestead.html" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Homestead</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="horizon.html" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Horizon</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="../9.x.html" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Lumen</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="mix.html" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Mix</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="../../index-4.htm" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Nova</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="passport.html" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Passport</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="scout.html" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Scout</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="socialite.html" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Socialite</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="../../index-5.htm" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Spark</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="telescope.html" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Telescope</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="valet.html" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Valet</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="../../index-1.htm" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Vapor</a>
+                                            </li>
+                                                                            </ul>
+                                </div>
+                            </div>
+                                            </div>
+                    <div class="mt-10 max-w-md md:mt-0 md:w-1/2 lg:w-1/4">
+                        <p class="text-xs text-gray-600 sm:text-sm dark:text-gray-500">Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in most web projects.</p>
+                        <p class="mt-6 text-xs text-gray-600 text-opacity-75 sm:text-sm dark:text-gray-500">
+                            Laravel is a Trademark of Taylor Otwell.<br>Copyright &copy; 2011-2022 Laravel LLC.
+                        </p>
+                        <ul class="mt-6 flex items-center space-x-3">
+                            <li>
+                                <a href="../../laravelphp.html">
+                                    <img id="footer__twitter" class="w-6 h-6" src="../../img/social/twitter.min.svg" alt="Twitter" width="24" height="20" loading="lazy">
+                                    <img id="footer__twitter_dark" class="w-6 h-6" src="../../img/social/twitter.dark.min.svg" alt="Twitter" width="24" height="20" loading="lazy">
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../../laravel.html">
+                                    <img id="footer__github" class="w-6 h-6" src="../../img/social/github.min.svg" alt="GitHub" width="24" height="24" loading="lazy">
+                                    <img id="footer__github_dark" class="w-6 h-6" src="../../img/social/github.dark.min.svg" alt="GitHub" width="24" height="24" loading="lazy">
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../../invite/mPZNm7A.html">
+                                    <img id="footer__discord" class="w-6 h-6" src="../../img/social/discord.min.svg" alt="Discord" width="21" height="24" loading="lazy">
+                                    <img id="footer__discord_dark" class="w-6 h-6" src="../../img/social/discord.dark.min.svg" alt="Discord" width="21" height="24" loading="lazy">
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../../laravelphp-1.html">
+                                    <img id="footer__youtube" class="w-6 h-6" src="../../img/social/youtube.min.svg" alt="YouTube" width="169" height="150" loading="lazy">
+                                    <img id="footer__youtube_dark" class="w-6 h-6" src="../../img/social/youtube.dark.min.svg" alt="YouTube" width="169" height="150" loading="lazy">
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="flex justify-center py-6">
+            <a href="../../index.htm" class="logomark">
+                <img class="w-9 h-9" src="../../img/logomark.min.svg" alt="Laravel" width="50" height="52" loading="lazy">
+            </a>
+        </div>
+    </div>
+</footer>
+
+<script>
+    var algolia_app_id = 'ITGXQG9N0J';
+    var algolia_search_key = '29e3498a066622afdacafa73072c548d';
+    var version = '8.x';
+</script>
+
+<script src="../../js/app.js?id=22821ba61048c5ed17c4"></script>
+</body>
+</html>

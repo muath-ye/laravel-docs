@@ -1,0 +1,89 @@
+﻿/*
+ * The Typekit service used to deliver this font or fonts for use on websites
+ * is provided by Adobe and is subject to these Terms of Use
+ * http://www.adobe.com/products/eulas/tou_typekit. For font license
+ * information, see the list below.
+ *
+ * scandia-line-web:
+ *   - http://typekit.com/eulas/00000000000000007735db08
+ *   - http://typekit.com/eulas/00000000000000007735db06
+ *   - http://typekit.com/eulas/00000000000000007735db09
+ * scandia-web:
+ *   - http://typekit.com/eulas/00000000000000007735dd24
+ *   - http://typekit.com/eulas/0000000000000000000158e4
+ *   - http://typekit.com/eulas/0000000000000000000158e6
+ *   - http://typekit.com/eulas/0000000000000000000158e7
+ *   - http://typekit.com/eulas/0000000000000000000158e8
+ * source-code-pro:
+ *   - http://typekit.com/eulas/00000000000000007735dc06
+ *   - http://typekit.com/eulas/00000000000000007735dc01
+ *
+ * © 2009-2021 Adobe Systems Incorporated. All Rights Reserved.
+ */
+/*{"last_published":"2021-03-22 16:00:55 UTC"}*/
+
+@import url("../../p.css");
+
+@font-face {
+font-family:"source-code-pro";
+src:url("../../af/398a64/00000000000000007735dc06/30/l") format("woff2"),url("../../af/398a64/00000000000000007735dc06/30/d") format("woff"),url("../../af/398a64/00000000000000007735dc06/30/a") format("opentype");
+font-display:auto;font-style:normal;font-weight:400;
+}
+
+@font-face {
+font-family:"source-code-pro";
+src:url("../../af/b0fedd/00000000000000007735dc01/30/l") format("woff2"),url("../../af/b0fedd/00000000000000007735dc01/30/d") format("woff"),url("../../af/b0fedd/00000000000000007735dc01/30/a") format("opentype");
+font-display:auto;font-style:italic;font-weight:400;
+}
+
+@font-face {
+font-family:"scandia-line-web";
+src:url("../../af/9c393a/00000000000000007735db08/30/l") format("woff2"),url("../../af/9c393a/00000000000000007735db08/30/d") format("woff"),url("../../af/9c393a/00000000000000007735db08/30/a") format("opentype");
+font-display:auto;font-style:normal;font-weight:700;
+}
+
+@font-face {
+font-family:"scandia-line-web";
+src:url("../../af/47cb70/00000000000000007735db06/30/l") format("woff2"),url("../../af/47cb70/00000000000000007735db06/30/d") format("woff"),url("../../af/47cb70/00000000000000007735db06/30/a") format("opentype");
+font-display:auto;font-style:normal;font-weight:500;
+}
+
+@font-face {
+font-family:"scandia-line-web";
+src:url("../../af/3cdb9c/00000000000000007735db09/30/l") format("woff2"),url("../../af/3cdb9c/00000000000000007735db09/30/d") format("woff"),url("../../af/3cdb9c/00000000000000007735db09/30/a") format("opentype");
+font-display:auto;font-style:normal;font-weight:400;
+}
+
+@font-face {
+font-family:"scandia-web";
+src:url("../../af/716155/00000000000000007735dd24/30/l") format("woff2"),url("../../af/716155/00000000000000007735dd24/30/d") format("woff"),url("../../af/716155/00000000000000007735dd24/30/a") format("opentype");
+font-display:auto;font-style:normal;font-weight:700;
+}
+
+@font-face {
+font-family:"scandia-web";
+src:url("../../af/7e0390/0000000000000000000158e4/27/l") format("woff2"),url("../../af/7e0390/0000000000000000000158e4/27/d") format("woff"),url("../../af/7e0390/0000000000000000000158e4/27/a") format("opentype");
+font-display:auto;font-style:normal;font-weight:500;
+}
+
+@font-face {
+font-family:"scandia-web";
+src:url("../../af/4cf72c/0000000000000000000158e6/27/l") format("woff2"),url("../../af/4cf72c/0000000000000000000158e6/27/d") format("woff"),url("../../af/4cf72c/0000000000000000000158e6/27/a") format("opentype");
+font-display:auto;font-style:italic;font-weight:500;
+}
+
+@font-face {
+font-family:"scandia-web";
+src:url("../../af/e3f590/0000000000000000000158e7/27/l") format("woff2"),url("../../af/e3f590/0000000000000000000158e7/27/d") format("woff"),url("../../af/e3f590/0000000000000000000158e7/27/a") format("opentype");
+font-display:auto;font-style:normal;font-weight:400;
+}
+
+@font-face {
+font-family:"scandia-web";
+src:url("../../af/396f3b/0000000000000000000158e8/27/l") format("woff2"),url("../../af/396f3b/0000000000000000000158e8/27/d") format("woff"),url("../../af/396f3b/0000000000000000000158e8/27/a") format("opentype");
+font-display:auto;font-style:italic;font-weight:400;
+}
+
+.tk-source-code-pro { font-family: "source-code-pro",monospace; }
+.tk-scandia-line-web { font-family: "scandia-line-web",sans-serif; }
+.tk-scandia-web { font-family: "scandia-web",sans-serif; }

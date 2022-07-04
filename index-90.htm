@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="/apple-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="/apple-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="/apple-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="/apple-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="/apple-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="/apple-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-icon-180x180.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/android-icon-192x192.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content="@php_swoole">
+<meta name="twitter:title" content="Open Swoole: PHP Server with Async IO, Coroutines and Fibers | Open Swoole PHP" />
+<meta name="twitter:description" content="Use Open Swoole to build high-performance, scalable, concurrent TCP, UDP, Unix Socket, HTTP, WebSocket services with PHP without too much knowledge about non-blocking I/O programming and low-level Linux kernel with fiber and coroutines." />
+<meta name="twitter:image" content="https://openswoole.com/images/large.png?v=1" />
+<meta name="twitter:creator" content="@php_swoole" />
+<meta property="og:title" content="Open Swoole: PHP Server with Async IO, Coroutines and Fibers | Open Swoole PHP" />
+<meta property="og:description" content="Use Open Swoole to build high-performance, scalable, concurrent TCP, UDP, Unix Socket, HTTP, WebSocket services with PHP without too much knowledge about non-blocking I/O programming and low-level Linux kernel with fiber and coroutines." />
+<meta property="og:url" content="https://openswoole.com/" />
+<meta property="og:site_name" content="Swoole" />
+<meta property="og:image" content="https://openswoole.com/images/large.png>?v=1" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="robots" content="max-snippet:-1, max-image-preview:large, max-video-preview:-1"/>
+<link rel="manifest" href="/manifest.json">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+<meta name="theme-color" content="#ffffff">
+<link rel="canonical" href="https://openswoole.com/">
+<script async src="https://t.pubperf.com/t/b5a635e307.js"></script>
+<script src='https://cmp.uniconsent.com/v2/stub.min.js'></script>
+<script async src='https://cmp.uniconsent.com/v2/57d3646d38/cmp.js'></script>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Open Swoole: PHP Server with Async IO, Coroutines and Fibers | Open Swoole PHP</title>
+
+<meta name="description" content="Use Open Swoole to build high-performance, scalable, concurrent TCP, UDP, Unix Socket, HTTP, WebSocket services with PHP without too much knowledge about non-blocking I/O programming and low-level Linux kernel with fiber and coroutines.">
+
+<!-- Bootstrap -->
+<link href="/css/plugins/plugins.css" rel="stylesheet">
+<script type="text/unicscript" unic-purpose-id="3" data-ad-client="ca-pub-4791403894387706" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!--main css file-->
+<link href="/css/style.css" rel="stylesheet">
+<script>
+function lzload() {
+    var imgDefer = document.getElementsByTagName('img');
+    for (var i = 0; i < imgDefer.length; i++) {
+        if (imgDefer[i].getAttribute('data-src')) {
+            var boundingClientRect = imgDefer[i].getBoundingClientRect();
+            if (boundingClientRect.top < window.innerHeight) {
+                imgDefer[i].setAttribute('src', imgDefer[i].getAttribute('data-src'));
+                imgDefer[i].removeAttribute("data-src");
+            }
+        }
+    }
+}
+
+window.addEventListener('scroll', lzload);
+window.addEventListener('load', lzload);
+window.addEventListener('resize', lzload);
+</script>
+<link rel="manifest" href="/manifest.json" />
+<!-- <script id="unisignin-tag" data-license="589ad04d06" data-domain="account.swoole.co.uk" src="https://account.swoole.co.uk/tag/tag.js"></script> -->
+</head>
+
+<body>
+    <div class="container">
+<nav class="navbar navbar-expand-lg navbar-light bg-faded">
+    <a class="navbar-brand" href="/" alt="swoole" title="swoole"><img src="/images/swoole-logo.svg" alt="swoole" title="swoole"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="/" alt="swoole" title="swoole">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/article/" alt="swoole article" title="swoole article">News</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/docs/" alt="swoole docs" title="swoole docs">Docs</a>
+            </li>
+            <!--             <li class="nav-item dropdown">
+                <a class="nav-link" href="/how-it-works" alt="how swoole works" title="how swoole works">How Swoole Works</a>
+            </li> -->
+            <li class="nav-item">
+                <a class="nav-link" href="/community" alt="swoole community" title="swoole community">Community</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="https://swoolelabs.com/" alt="swoole support" title="swoole support">Swoole Labs</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/search" alt="swoole search" title="swoole search">Search</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="https://github.com/openswoole/swoole-src" alt="swoole github" title="swoole github"><i class="fa fa-github"></i> Github</a>
+            </li>
+            <!--                     <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Blog</a>
+                <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
+                    <li><a href="#" class="dropdown-item">Case studies</a></li>
+                </ul>
+            <li> -->
+        </ul>
+    </div>
+</nav>
+</div>
+<!--/footer-->
+    <div class='saas-app-hero bg-faded'>
+        <div class='container pt30 pb30'>
+            <div class='row align-items-center'>
+                <div class='col-md-12'>
+                    <h1 class='h1 mb20 font400' style="font-size: 40px;">
+                        Powering the next-generation microservices and application
+                    </h1>
+                    <p class='lead text-muted mb40'>
+                        Build high-performance, scalable, concurrent TCP, UDP, Unix Socket, HTTP, WebSocket services with PHP and easy to use coroutine, fibers API
+                    </p>
+                    <p class='lead text-muted mb40'>
+                        Write your next scalable async application with <a href="https://openswoole.com/coroutine">PHP coroutines and fibers</a>.
+                    </p>
+                    <a class='btn btn-xl btn-primary btn-rounded' href="https://github.com/openswoole/swoole-src/issues">
+                        <i class="fa fa-github"></i> Github
+                    </a>
+                    <a class='btn btn-xl btn-primary btn-rounded' href="/article/">
+                        News & Tutorial
+                    </a>
+                    <a class='btn btn-xl btn-primary btn-rounded' href="/docs/get-started/installation">
+                        Installation
+                    </a>
+                    <a class='btn btn-xl btn-primary btn-rounded' href="https://hub.docker.com/r/openswoole/swoole">
+                        Docker Images
+                    </a>
+                    <a class='btn btn-xl btn-primary btn-rounded' href="/docs/">
+                        Documentation
+                    </a>
+<!--                     <a class='btn btn-xl btn-primary btn-rounded' href="https://openswoole.com/async-php">
+                        Alternative solutions
+                    </a> -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class='container pt30 pb30'>
+        <div class='row'>
+            <div class='col-md-8 pt50-md'>
+                <p class='lead mb20'>
+                    Compared with other async programming frameworks or software such as Nginx, Tornado, Node.js, Open Swoole is a complete async solution that has built-in support for async programming via fibers/coroutines, a range of multi-threaded I/O modules (HTTP Server, WebSockets, TaskWorkers, Process Pools) and support for popular PHP clients like PDO for MySQL, Redis and CURL.
+                </p>
+                <p class='lead mb20'>
+                    You can use sync or async, coroutine, fiber API to write the applications or create thousands of light weight fibers within one Linux process.
+                </p>
+                <p class='lead mb50'>
+                    Swoole enhances the efficiency of your PHP applications and brings you out of the traditional stateless model, enabling you to focus on the development of innovative products at high scale, brining event loops and asynchronous programming to the PHP language.
+                </p>
+                <div class='row'>
+                    <div class="col-md-6 mb40">
+                        <div class="icon-card-style1 p0 border0">
+                            <i class="icon-layers text-primary"></i>
+                            <div class="overflow-hiden">
+                                <h2 class="h6 font400">Event-driven, PHP Coroutine, PHP Fiber, Asynchronous API</h2>
+                                <p>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb40">
+                        <div class="icon-card-style1 p0 border0">
+                            <i class="icon-layers text-primary"></i>
+                            <div class="overflow-hiden">
+                                <h2 class="h6 font400">Async TCP / UDP / HTTP / Websocket / HTTP2 Client / Server Side API</h2>
+                                <p>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb40">
+                        <div class="icon-card-style1 p0 border0">
+                            <i class="icon-layers text-primary"></i>
+                            <div class="overflow-hiden">
+                                <h2 class="h6 font400">IPv4 / IPv6 / UnixSocket / TCP / UDP and SSL / TLS / DTLS</h2>
+                                <p>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb40">
+                        <div class="icon-card-style1 p0 border0">
+                            <i class="icon-layers text-primary"></i>
+                            <div class="overflow-hiden">
+                                <h2 class="h6 font400">Native PHP Coroutine and PHP Fiber Support</h2>
+                                <p>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb40">
+                        <div class="icon-card-style1 p0 border0">
+                            <i class="icon-layers text-primary"></i>
+                            <div class="overflow-hiden">
+                                <h2 class="h6 font400"><a href="/benchmark">High performance</a>, scalable, support C1000K</h2>
+                                <p>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb40">
+                        <div class="icon-card-style1 p0 border0">
+                            <i class="icon-layers text-primary"></i>
+                            <div class="overflow-hiden">
+                                <h2 class="h6 font400">Milliseconds task scheduler</h2>
+                                <p>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb40">
+                        <div class="icon-card-style1 p0 border0">
+                            <i class="icon-layers text-primary"></i>
+                            <div class="overflow-hiden">
+                                <h2 class="h6 font400">Free and Open Source (Apache 2 License)</h2>
+                                <p>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb40">
+                        <div class="icon-card-style1 p0 border0">
+                            <i class="icon-layers text-primary"></i>
+                            <div class="overflow-hiden">
+                                <h2 class="h6 font400">Multiprocessing and Daemonize</h2>
+                                <p>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="center-title mb70 text-center">
+                    <h4 id="get-started">Get Started</h4>
+                </div>
+                <div>
+                    <ul class="sw_steps">
+                        <li>
+                            <div class="sw_steps_icon"><span>1</span></div>
+                            <div class="sw_steps_content">
+                                <h4>Installation</h4>
+                                <div style="background: #272822; overflow:auto;width:auto;border:solid gray;border-width:0;padding:1em 0;"><b style="color: #f8f8f2">Linux users</b><br><br>
+                                    <pre style="margin: 0; line-height: 125%"><span style="color: #75715e">#!/bin/bash</span>
+<span style="color: #f8f8f2">pecl</span> <span style="color: #f8f8f2">install</span> <span style="color: #f8f8f2">openswoole</span>
+</pre>
+                                </div>
+                                <div style="background: #272822; overflow:auto;width:auto;border:solid gray;border-width:0;padding:1em 0;"><b style="color: #f8f8f2">Mac users</b><br><br>
+                                    <pre style="margin: 0; line-height: 125%"><span style="color: #f8f8f2">brew install php </span>
+<span style="color: #75715e">#!/bin/bash</span>
+<span style="color: #f8f8f2">pecl install openswoole</span>
+</pre>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="sw_steps_icon"><span style="">2</span></div>
+                            <div class="sw_steps_content">
+                                <h4>HTTP Server</h4>
+                                <div class="highlight">
+                                    <pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<span class="nv">$server</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Swoole\HTTP\Server</span><span class="p">(</span><span class="s2">"127.0.0.1"</span><span class="p">,</span> <span class="mi">9501</span><span class="p">);</span>
+
+<span class="nv">$server</span><span class="o">-&gt;</span><span class="na">on</span><span class="p">(</span><span class="s2">"start"</span><span class="p">,</span> <span class="k">function</span> <span class="p">(</span><span class="nx">Swoole\Http\Server</span> <span class="nv">$server</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="s2">"Swoole http server is started at http://127.0.0.1:9501</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span>
+<span class="p">});</span>
+
+<span class="nv">$server</span><span class="o">-&gt;</span><span class="na">on</span><span class="p">(</span><span class="s2">"request"</span><span class="p">,</span> <span class="k">function</span> <span class="p">(</span><span class="nx">Swoole\Http\Request</span> <span class="nv">$request</span><span class="p">,</span> <span class="nx">Swoole\Http\Response</span> <span class="nv">$response</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nv">$response</span><span class="o">-&gt;</span><span class="na">header</span><span class="p">(</span><span class="s2">"Content-Type"</span><span class="p">,</span> <span class="s2">"text/plain"</span><span class="p">);</span>
+    <span class="nv">$response</span><span class="o">-&gt;</span><span class="na">end</span><span class="p">(</span><span class="s2">"Hello World</span><span class="se">\n</span><span class="s2">"</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="nv">$server</span><span class="o">-&gt;</span><span class="na">start</span><span class="p">();</span>
+</code></pre>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="sw_steps_icon"><span>3</span></div>
+                            <div class="sw_steps_content">
+                                <h4>WebSocket Server</h4>
+                                <div class="highlight">
+                                    <pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<span class="nv">$server</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Swoole\Websocket\Server</span><span class="p">(</span><span class="s2">"127.0.0.1"</span><span class="p">,</span> <span class="mi">9502</span><span class="p">);</span>
+
+<span class="nv">$server</span><span class="o">-&gt;</span><span class="na">on</span><span class="p">(</span><span class="s1">'open'</span><span class="p">,</span> <span class="k">function</span><span class="p">(</span><span class="nv">$server</span><span class="p">,</span> <span class="nv">$req</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="s2">"connection open: </span><span class="si">{</span><span class="nv">$req</span><span class="o">-&gt;</span><span class="na">fd</span><span class="si">}</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span>
+<span class="p">});</span>
+
+<span class="nv">$server</span><span class="o">-&gt;</span><span class="na">on</span><span class="p">(</span><span class="s1">'message'</span><span class="p">,</span> <span class="k">function</span><span class="p">(</span><span class="nv">$server</span><span class="p">,</span> <span class="nv">$frame</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="s2">"received message: </span><span class="si">{</span><span class="nv">$frame</span><span class="o">-&gt;</span><span class="na">data</span><span class="si">}</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span>
+    <span class="nv">$server</span><span class="o">-&gt;</span><span class="na">push</span><span class="p">(</span><span class="nv">$frame</span><span class="o">-&gt;</span><span class="na">fd</span><span class="p">,</span> <span class="nb">json_encode</span><span class="p">([</span><span class="s2">"hello"</span><span class="p">,</span> <span class="s2">"world"</span><span class="p">]));</span>
+<span class="p">});</span>
+
+<span class="nv">$server</span><span class="o">-&gt;</span><span class="na">on</span><span class="p">(</span><span class="s1">'close'</span><span class="p">,</span> <span class="k">function</span><span class="p">(</span><span class="nv">$server</span><span class="p">,</span> <span class="nv">$fd</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="s2">"connection close: </span><span class="si">{</span><span class="nv">$fd</span><span class="si">}</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span>
+<span class="p">});</span>
+
+<span class="nv">$server</span><span class="o">-&gt;</span><span class="na">start</span><span class="p">();</span>
+</code></pre>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="sw_steps_icon"><span>4</span></div>
+                            <div class="sw_steps_content">
+                                <h4>TCP Server</h4>
+                                <div class="highlight">
+                                    <pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<span class="nv">$server</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Swoole\Server</span><span class="p">(</span><span class="s2">"127.0.0.1"</span><span class="p">,</span> <span class="mi">9503</span><span class="p">);</span>
+<span class="nv">$server</span><span class="o">-&gt;</span><span class="na">on</span><span class="p">(</span><span class="s1">'connect'</span><span class="p">,</span> <span class="k">function</span> <span class="p">(</span><span class="nv">$server</span><span class="p">,</span> <span class="nv">$fd</span><span class="p">){</span>
+    <span class="k">echo</span> <span class="s2">"connection open: </span><span class="si">{</span><span class="nv">$fd</span><span class="si">}</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span>
+<span class="p">});</span>
+<span class="nv">$server</span><span class="o">-&gt;</span><span class="na">on</span><span class="p">(</span><span class="s1">'receive'</span><span class="p">,</span> <span class="k">function</span> <span class="p">(</span><span class="nv">$server</span><span class="p">,</span> <span class="nv">$fd</span><span class="p">,</span> <span class="nv">$from_id</span><span class="p">,</span> <span class="nv">$data</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nv">$server</span><span class="o">-&gt;</span><span class="na">send</span><span class="p">(</span><span class="nv">$fd</span><span class="p">,</span> <span class="s2">"Swoole: </span><span class="si">{</span><span class="nv">$data</span><span class="si">}</span><span class="s2">"</span><span class="p">);</span>
+    <span class="nv">$server</span><span class="o">-&gt;</span><span class="na">close</span><span class="p">(</span><span class="nv">$fd</span><span class="p">);</span>
+<span class="p">});</span>
+<span class="nv">$server</span><span class="o">-&gt;</span><span class="na">on</span><span class="p">(</span><span class="s1">'close'</span><span class="p">,</span> <span class="k">function</span> <span class="p">(</span><span class="nv">$server</span><span class="p">,</span> <span class="nv">$fd</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="s2">"connection close: </span><span class="si">{</span><span class="nv">$fd</span><span class="si">}</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span>
+<span class="p">});</span>
+<span class="nv">$server</span><span class="o">-&gt;</span><span class="na">start</span><span class="p">();</span>
+</code></pre>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="sw_steps_icon"><span>5</span></div>
+                            <div class="sw_steps_content">
+                                <h4>Coroutine TCP Client</h4>
+                                <div class="highlight">
+                                    <pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<span class="nv">$client</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Swoole\Client</span><span class="p">(</span><span class="nx">SWOOLE_SOCK_TCP</span><span class="p">);</span>
+<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nv">$client</span><span class="o">-&gt;</span><span class="na">connect</span><span class="p">(</span><span class="s1">'127.0.0.1'</span><span class="p">,</span> <span class="mi">9501</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">))</span> <span class="p">{</span>
+    <span class="k">exit</span><span class="p">(</span><span class="s2">"connect failed. Error: </span><span class="si">{</span><span class="nv">$client</span><span class="o">-&gt;</span><span class="na">errCode</span><span class="si">}</span><span class="se">\n</span><span class="s2">"</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="nv">$client</span><span class="o">-&gt;</span><span class="na">send</span><span class="p">(</span><span class="s2">"hello world</span><span class="se">\n</span><span class="s2">"</span><span class="p">);</span>
+<span class="k">echo</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">recv</span><span class="p">();</span>
+<span class="nv">$client</span><span class="o">-&gt;</span><span class="na">close</span><span class="p">();</span>
+</code></pre>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="sw_steps_icon"><span>6</span></div>
+                            <div class="sw_steps_content">
+                                <h4>Coroutine Redis / HTTP / WebSocket Client</h4>
+                                <div class="highlight">
+                                    <pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<span class="nv">$redis</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Swoole\Coroutine\Redis</span><span class="p">();</span>
+<span class="nv">$redis</span><span class="o">-&gt;</span><span class="na">connect</span><span class="p">(</span><span class="s1">'127.0.0.1'</span><span class="p">,</span> <span class="mi">6379</span><span class="p">);</span>
+<span class="nv">$val</span> <span class="o">=</span> <span class="nv">$redis</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">'key'</span><span class="p">);</span>
+<span class="k">echo</span> <span class="nv">$val</span><span class="p">;</span>
+<span class="nv">$http</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Swoole\Coroutine\Http\Client</span><span class="p">(</span><span class="s1">'127.0.0.1'</span><span class="p">,</span> <span class="mi">80</span><span class="p">);</span>
+<span class="nv">$http</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">'/index.php'</span><span class="p">);</span>
+<span class="k">echo</span> <span class="nv">$http</span><span class="o">-&gt;</span><span class="na">body</span><span class="p">;</span>
+<span class="nv">$http</span><span class="o">-&gt;</span><span class="na">close</span><span class="p">();</span>
+</code></pre>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="sw_steps_icon"><span>7</span></div>
+                            <div class="sw_steps_content">
+                                <h4>Coroutine Tasks</h4>
+                                <div class="highlight">
+                                    <pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<span class="nv">$server</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Swoole\Http\Server</span><span class="p">(</span><span class="s2">"0.0.0.0"</span><span class="p">,</span> <span class="mi">9501</span><span class="p">,</span> <span class="nx">SWOOLE_BASE</span><span class="p">);</span>
+<span class="nv">$server</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">([</span>
+    <span class="s1">'worker_num'</span> <span class="o">=&gt;</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="s1">'task_worker_num'</span> <span class="o">=&gt;</span> <span class="mi">2</span><span class="p">,</span>
+<span class="p">]);</span>
+<span class="nv">$server</span><span class="o">-&gt;</span><span class="na">on</span><span class="p">(</span><span class="s1">'Request'</span><span class="p">,</span> <span class="k">function</span> <span class="p">(</span><span class="nv">$request</span><span class="p">,</span> <span class="nv">$response</span><span class="p">)</span> <span class="k">use</span> <span class="p">(</span><span class="nv">$server</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nv">$tasks</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'time'</span> <span class="o">=&gt;</span> <span class="mi">0</span><span class="p">];</span>
+    <span class="nv">$tasks</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'data'</span> <span class="o">=&gt;</span> <span class="s1">'openswoole.com'</span><span class="p">,</span> <span class="s1">'code'</span> <span class="o">=&gt;</span> <span class="mi">200</span><span class="p">];</span>
+    <span class="nv">$result</span> <span class="o">=</span> <span class="nv">$server</span><span class="o">-&gt;</span><span class="na">taskCo</span><span class="p">(</span><span class="nv">$tasks</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">);</span>
+    <span class="nv">$response</span><span class="o">-&gt;</span><span class="na">end</span><span class="p">(</span><span class="s1">'&lt;pre&gt;Task Result: '</span><span class="o">.</span><span class="nb">var_export</span><span class="p">(</span><span class="nv">$result</span><span class="p">,</span> <span class="kc">true</span><span class="p">));</span>
+<span class="p">});</span>
+<span class="nv">$server</span><span class="o">-&gt;</span><span class="na">on</span><span class="p">(</span><span class="s1">'Task'</span><span class="p">,</span> <span class="k">function</span> <span class="p">(</span><span class="nx">Swoole\Server</span> <span class="nv">$server</span><span class="p">,</span> <span class="nv">$task_id</span><span class="p">,</span> <span class="nv">$worker_id</span><span class="p">,</span> <span class="nv">$data</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nv">$server</span><span class="o">-&gt;</span><span class="na">worker_id</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nb">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="nv">$data</span><span class="p">[</span><span class="s1">'done'</span><span class="p">]</span> <span class="o">=</span> <span class="nb">time</span><span class="p">();</span>
+    <span class="nv">$data</span><span class="p">[</span><span class="s1">'worker_id'</span><span class="p">]</span> <span class="o">=</span> <span class="nv">$server</span><span class="o">-&gt;</span><span class="na">worker_id</span><span class="p">;</span>
+    <span class="k">return</span> <span class="nv">$data</span><span class="p">;</span>
+<span class="p">});</span>
+<span class="nv">$server</span><span class="o">-&gt;</span><span class="na">start</span><span class="p">();</span>
+</code></pre>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-4">
+<!--                 <div class="sidebar__widget">
+                    <a href="https://swoolebook.com/"><img src="/images/banner-swoolebook.png" alt="swoole book" title="swoole book" target="_blank" style="width: 350px; margin-bottom: 10px"></a>
+                </div> -->
+<style type="text/css">
+/*#carbon {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    z-index: 1000;
+}
+#carbonads {
+    margin-bottom: 0;
+}
+.carbon-poweredby {
+    display: none;
+}*/
+</style>
+<!--                 <div id="carbon">
+                    <script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?serve=CK7I6KJY&placement=swoolecouk" id="_carbonads_js"></script>
+                </div> -->
+
+<div class="boxed boxed--border bg--secondary">
+    <h5>Community</h5>
+    <div class="mc-field-group">
+        <p>Join 2,000+ others and never miss out on new tips, tutorials, and more.</p>
+    </div>
+    <a href="https://github.com/openswoole/swoole-src/issues" target="_blank" class="btn btn-md btn-primary"><i class="fa fa-github"></i> Github</a>
+    <a href="https://twitter.com/openswoole" target="_blank" class="btn btn-md btn-primary"><i class="fa fa-twitter"></i>  Twitter</a>
+    <a href="https://www.getrevue.co/profile/swoole" target="_blank" class="btn btn-md btn-primary">Newsletter</a>
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLScqpkPJeFG-ss3P-KhFECDSNLyo1iKmU1DToIQX9YRWbuetjw/viewform" target="_blank" class="btn btn-md btn-primary"><i class="fa fa-slack"></i> Slack</a>
+    <a href="https://discord.com/invite/5QC57RNPpw" target="_blank" class="btn btn-md btn-primary"><i class="fa fa-discord"></i>  Discord</a>
+    <a href="/support" class="btn btn-md btn-primary">Support</a>
+</div>
+
+                <div class="sidebar boxed boxed--border boxed--lg bg--secondary">
+                    <div class="sidebar__widget">
+                        <h5>Swoole Documentation</a></h5>
+                        <ul>
+                            <li><a href="/docs/">Introduction</a></li>
+                            <li><a href="/docs/get-started-swoole">Get started with Swoole</a></li>
+                            <li><a href="/docs/get-started/installation">Installation</a></li>
+                            <li><a href="/docs/background-knowledge-index">Background Knowledge</a></li>
+                            <li><a href="/docs/common-questions-index">Common Questions</a></li>
+                            <li><a href="/docs/get-started/alias">Swoole Class Alias</a></li>
+                            <li><a href="/docs/swoole-features">Swoole Features</a></li>
+                            <li><a href="/docs/modules/swoole-event-loop">Event Loop API</a></li>
+                            <li><a href="/docs/modules/swoole-timer">Timer</a></li>
+                            <li><a href="/protocols">Protocols</a></li>
+                            <li><a href="/tools">Tools</a></li>
+                        </ul>
+                    </div>
+                    <div class="sidebar__widget">
+                        <h5>Server</a></h5>
+                        <ul>
+                            <li><a href="/docs/modules/swoole-server-doc">TCP/UDP Server</a></li>
+                            <li><a href="/docs/modules/swoole-http-server-doc">HTTP Server</a></li>
+                            <li><a href="/docs/modules/swoole-websocket-server">WebSocket Server</a></li>
+                            <li><a href="/docs/modules/swoole-mqtt-server">MQTT Server</a></li>
+                            <li><a href="/docs/modules/grpc-server">GRPC Server</a></li>
+                        </ul>
+                    </div>
+                    <div class="sidebar__widget">
+                        <h5>PHP Coroutine</a></h5>
+                        <ul>
+                            <li><a href="/docs/modules/swoole-coroutine">PHP Coroutine / PHP Fiber</a></li>
+                            <li><a href="/docs/modules/swoole-coroutine-system">Coroutine System</a></li>
+                            <li><a href="/docs/modules/swoole-coroutine-channel">Coroutine Channel</a></li>
+                            <li><a href="/docs/modules/swoole-coroutine-waitgroup">Coroutine WaitGroup</a></li>
+                            <li><a href="/docs/modules/swoole-coroutine-run">Coroutine Co\run</a></li>
+                            <li><a href="/docs/modules/swoole-coroutine-server">Coroutine TCP Server</a>
+                            <li><a href="/docs/modules/swoole-coroutine-http-server">Coroutine HTTP Server</a>
+                            <li><a href="/docs/modules/swoole-coroutine-library">Coroutine Library</a></li>
+                            <li><a href="/docs/modules/swoole-runtime-flags">Coroutine Hooks</a></li>    
+                            
+                        </ul>
+                    </div>
+                    <div class="sidebar__widget">
+                        <h5>Coroutine Clients</a></h5>
+                        <ul>
+                            <li><a href="/docs/modules/swoole-coroutine-client">Coroutine TCP/UDP Client</a></li>
+                            <li><a href="/docs/modules/swoole-coroutine-http-client">Coroutine HTTP Client</a></li>
+                            <li><a href="/docs/modules/swoole-coroutine-http2-client">Coroutine HTTP2 Client</a></li>
+                            <li><a href="/docs/modules/swoole-coroutine-socket-client">Coroutine Socket Client</a></li>
+                            <li><a href="/docs/modules/swoole-coroutine-fastcgi-client">Coroutine FastCGI Client</a></li>
+                            <li><a href="/docs/modules/swoole-coroutine-redis">Coroutine Redis Client</a></li>
+                            <li><a href="/docs/modules/swoole-coroutine-mysql">Coroutine MySQL Client</a></li>
+                            <li><a href="/docs/modules/swoole-coroutine-postgres">Coroutine Postgres Client</a></li>
+                        </ul>
+                    </div>
+                    <div class="sidebar__widget">
+                        <h5>Multiprocessing</a></h5>
+                        <ul>
+                            <li><a href="/docs/modules/swoole-multiprocessing">Multiprocessing</a></li>
+                            <li><a href="/docs/modules/swoole-process">Process</a></li>
+                            <li><a href="/docs/modules/swoole-process-pool">Process Pool</a></li>
+                            <li><a href="/docs/modules/swoole-table">Table</a></li>
+                            <li><a href="/docs/modules/swoole-atomic">Atomic</a></li>
+                            <li><a href="/docs/modules/swoole-lock">Lock</a></li>
+                        </ul>
+                    </div>
+                    <div class="sidebar__widget">
+                        <h5>Swoole Community</h5>
+                        <ul>
+                            <li>
+                                <a href="https://twitter.com/openswoole" target="_blank">Twitter</a>
+                            </li>
+                            <li>
+                                <a href="/community">Slack Group</a>
+                            </li>
+                            <li><a href="/support">Support</a></li>
+                        </ul>
+                    </div>
+                </div>
+                                <div class="sidebar boxed boxed--border boxed--lg bg--secondary" style="padding: 0">
+                    <a class="twitter-timeline" data-width="340" data-height="1000" data-dnt="true" href="https://twitter.com/openswoole?ref_src=twsrc%5Etfw">Tweets by openswoole</a>
+                    <script type="text/javascript">
+                        
+                        window.addEventListener('scroll', function() {
+  setTimeout(function() {
+
+    (function() {
+        var st = document.createElement('script');
+        st.type = 'text/javascript';
+        st.async = true;
+        st.src = 'https://platform.twitter.com/widgets.js';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(st, s);
+    })();
+
+  }, 200);
+}, {once: true});
+
+                    </script>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="bg-faded pt90 pb50">
+        <div class="container">
+            <div class="center-title text-center mb50">
+                <h4 class="mb0">Open Swoole Use Cases</h4>
+            </div>
+            <div class="row">
+                <div class="col-md-4 mb40">
+                    <div class="icon-card-style1 bg-white">
+                        <i class="icon-mobile text-info"></i>
+                        <div class="overflow-hiden">
+                            <h4 class="h6 font400">Mobile API Server</h4>
+                            <p>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb40">
+                    <div class="icon-card-style1 bg-white">
+                        <i class="icon-gears text-danger"></i>
+                        <div class="overflow-hiden">
+                            <h4 class="h6 font400">Internet of Things (IoT Solutions)</h4>
+                            <p>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb40">
+                    <div class="icon-card-style1 bg-white">
+                        <i class="icon-tools-2 text-warning"></i>
+                        <div class="overflow-hiden">
+                            <h4 class="h6 font400">Micro Services</h4>
+                            <p>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb40">
+                    <div class="icon-card-style1 bg-white">
+                        <i class="icon-tools text-success"></i>
+                        <div class="overflow-hiden">
+                            <h4 class="h6 font400">Realtime Trading Engine</h4>
+                            <p>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb40">
+                    <div class="icon-card-style1 bg-white">
+                        <i class="icon-book-open text-primary"></i>
+                        <div class="overflow-hiden">
+                            <h4 class="h6 font400">Gaming Server</h4>
+                            <p>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb40">
+                    <div class="icon-card-style1 bg-white">
+                        <i class="icon-chat text-muted"></i>
+                        <div class="overflow-hiden">
+                            <h4 class="h6 font400">Live Chat System</h4>
+                            <p>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="text-gray-700 body-font">
+        <div class="container mx-auto flex px-4 py-4 flex-col max-w-5xl">
+            <h4 class="text-md font-bold">Swoole Resources</h4>
+        </div>
+        <div class="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-4 max-w-5xl">
+            
+            <div class="m-4">
+                <h5><a href="/article/openswoole-4.10.0-released" class="text-sm">
+                    Open Swoole 4.10.0 released with coroutine selector, HTTP2 SSE streaming, sleep data type bug fixes and more</a>
+                </h5>
+            </div>
+            
+            <div class="m-4">
+                <h5><a href="/article/official-openswoole-ubuntu-ppa-launched" class="text-sm">
+                    How to install Open Swoole on Ubuntu and Windows WSL</a>
+                </h5>
+            </div>
+            
+            <div class="m-4">
+                <h5><a href="/article/openswoole-4.9.0-released" class="text-sm">
+                    Open Swoole 4.9.0 released: Server Metrics, Cloud Native OpenMetrics support and more</a>
+                </h5>
+            </div>
+            
+            <div class="m-4">
+                <h5><a href="/article/openswoole-ide-helper-4.8.1-released" class="text-sm">
+                    Open Swoole IDE Helper released with enhanced type hinting for IDE</a>
+                </h5>
+            </div>
+            
+            <div class="m-4">
+                <h5><a href="/article/openswoole-docker-images-for-php8.1-released" class="text-sm">
+                    Open Swoole 4.8.1 Docker images released with PHP 8.1 support</a>
+                </h5>
+            </div>
+            
+            <div class="m-4">
+                <h5><a href="/article/openswoole-v4-8-0-released" class="text-sm">
+                    Open Swoole 4.8.0 released: PHP 8.1 support, PostgreSQL support and enhancements</a>
+                </h5>
+            </div>
+            
+        </div>
+    </section>
+
+
+            <footer class="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 col-lg-3">
+                        <h4>Open Swoole</h4>
+                        <p>
+                            Open Swoole is an open source production ready high performance coroutine fiber async solution for PHP.
+                        </p>
+                    </div><!--/.column-->
+                    <div class="col-md-6 col-lg-3">
+                        <h4>Quick Links</h4>
+                        <ul class="list-unstyled pt-0">
+                            <li><a class="btn btn-underline" href="/how-it-works">How it works</a></li>
+                            <li><a href="https://swoolelabs.com" class="btn btn-underline">Swoole Labs</a></li>
+                            <li><a href="/docs/" class="btn btn-underline">Get started</a></li>
+                            <li><a href="/php-framework" class="btn btn-underline">Open Swoole Frameworks</a></li>
+                            <li><a href="https://swoolebook.com/" class="btn btn-underline">Swoole Book</a></li>
+                            <li><a href="https://openswoole.com/examples" class="btn btn-underline">Swoole Examples</a></li>
+                            <li><a href="https://github.com/openswoole/swoole-src" class="btn btn-underline">Swoole Github</a></li>
+                            <li><a href="/swoole-trademark" class="btn btn-underline">Trademark Policy</a></li>
+                        </ul>
+
+                    </div><!--/.column-->
+                    <div class="col-md-12 col-lg-6">
+                        <!-- <h4>Newsletter</h4>
+                        <div class="mb30">
+                            <form>
+                                <div class="form-group">
+                                    <label for="subscribe">Subscribe today and get Latest Updates</label>
+                                    <input type="email" class="form-control" placeholder="Mail id" id="subscribe">
+                                    <button type="submit" class="btn-newsletter"><i class="fa fa-paper-plane-o"></i></button>
+                                </div>
+                            </form>
+                        </div>
+                        <ul class="social list-inline mb30">
+                            <li class="list-inline-item"><a class="facebook" href="#"><i class="fa fa-facebook-f"></i></a></li>
+                            <li class="list-inline-item"><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
+                            <li class="list-inline-item"><a class="gplus" href="#"><i class="fa fa-google-plus"></i></a></li>
+                        </ul> -->
+                        <span class="font400">Copyright © 2017 - 2022 <a href="https://swoolelabs.com/" class="btn btn-underline">Swoole Labs</a>, Transfon Ltd, all rights reserved. Swoole® and OpenSwoole™ are trademarks Swoole Labs, Transfon Ltd, all rights reserved.<br> 
+                            Contact Us: <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="472f222b2b280728372229343028282b226924282a">[email&#160;protected]</a> <br> 
+                            <!--<a onclick="window.__cmp('showConsentTool')" class="btn btn-underline">Review consent</a>-->
+                            <a onclick='__tcfapi("openunic");return false;' class="btn btn-underline">Consent Settings</a>
+                        </span> 
+                    </div><!--/.column-->
+                </div><!--/.row-->
+            </div><!--/.container-->
+        </footer><!--/.footer-->
+
+
+        <!-- Global Site Tag (gtag.js) - Google Analytics -->
+        <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script async src="https://www.googletagmanager.com/gtag/js?id=UA-106992508-1"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments)};
+          gtag('js', new Date());
+
+          gtag('config', 'UA-106992508-1');
+        </script>
+
+        <script src="/js/bundle/bundle.js" type="text/javascript"></script>
+<script src="//instant.page/5.1.0" type="module" integrity="sha384-by67kQnR+pyfy8yWP4kPO12fHKRLHZPfEsiSXR8u2IKcTdxD805MGUXBzVPnkLHw"></script>
+
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "b34a0cb3b6434296b5f5ba1db96ed7a5"}'></script><!-- End Cloudflare Web Analytics -->
+
+</body>
+
+</html>

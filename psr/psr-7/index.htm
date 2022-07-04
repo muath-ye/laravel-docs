@@ -1,0 +1,1978 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <title>PSR-7: HTTP message interfaces - PHP-FIG</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <!-- Place favicon.ico in the root directory -->
+
+    <link rel="stylesheet" href="/css/all.css?BGPQK5YPXHQD2XFJ5JN6PAC7GFWLIGXGKRYT55TQNNNEBY5XPHFA====">
+    <link rel="stylesheet" href="/css/hljs_default.css?BGPQK5YPXHQD2XFJ5JN6PAC7GFWLIGXGKRYT55TQNNNEBY5XPHFA====">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700,700i|Oswald|Source+Code+Pro">
+
+    <link rel="preconnect" href="https://ajax.googleapis.com" pr="1.0" />
+    <link rel="preconnect" href="https://ssl.google-analytics.com" pr="0.8" />
+
+    <link rel="alternate" type="application/atom+xml" href="/atom.xml" title="PHP-FIG Blog Feed" />
+
+    <meta name="og:title" content="PSR-7: HTTP message interfaces - PHP-FIG" />
+
+    <meta name="twitter:title" content="PSR-7: HTTP message interfaces - PHP-FIG" />
+    <meta name="twitter:site" content="@phpfig" />
+    <meta name="twitter:creator" content="@phpfig" />
+
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:image" content="https://www.php-fig.org/img/social-banner.png" />
+    <meta property="og:image" content="https://www.php-fig.org/img/social-banner.png" />
+
+    <meta property="og:type"  content="website" />
+
+    <meta name="description" content="We're a group of established PHP projects whose goal is to talk about commonalities between our projects and find ways we can work better together.">
+    <meta name="twitter:description" content="We&#039;re a group of established PHP projects whose goal is to talk about commonalities between our projects and find ways we can work better together." />
+    <meta name="og:description" content="We&#039;re a group of established PHP projects whose goal is to talk about commonalities between our projects and find ways we can work better together." />
+
+</head>
+<body>
+
+<header class="site_header">
+    <div class="center">
+        <a class="site_logo" href="/">
+            <span class="site_logo__short_name">PHP-FIG</span>
+            <span class="site_logo__long_name">The PHP Framework Interop Group</span>
+        </a>
+        <nav class="site_menu">
+            <label class="site_menu__dropdown_button" for="site_menu__dropdown_checkbox">Menu</label>
+            <input class="site_menu__dropdown_checkbox" id="site_menu__dropdown_checkbox" type="checkbox">
+            <ul class="site_menu__list">
+                <li class="site_menu__item">
+                    <a class="site_menu__link " href="/">Home</a>
+                </li>
+                <li class="site_menu__item">
+                    <a class="site_menu__link " href="/blog">Blog</a>
+                </li>
+                <li class="site_menu__item">
+                    <a class="site_menu__link site_menu__link--active" href="/psr">PSRs</a>
+                </li>
+                <li class="site_menu__item">
+                    <a class="site_menu__link " href="/personnel">Personnel</a>
+                </li>
+                <li class="site_menu__item">
+                    <a class="site_menu__link " href="/bylaws">Bylaws</a>
+                </li>
+                <li class="site_menu__item">
+                    <a class="site_menu__link " href="/faqs">FAQs</a>
+                </li>
+                <li class="site_menu__item">
+                    <a class="site_menu__link " href="/get-involved">Get Involved</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<div class="page_content">
+    <div class="page_banner">
+    <div class="center">
+        <h1 class="page_banner__title">
+                        PSR-7: HTTP message interfaces
+                    </h1>
+    </div>
+</div>
+
+<div class="center">
+    <div class="page_content__padding">
+                    <div class="columns">
+    <div class="columns__column columns__column--8">
+        <div class="markdown">
+                                            <h1>HTTP message interfaces<a id="http-message-interfaces" href="#http-message-interfaces" name="http-message-interfaces" class="heading-permalink" aria-hidden="true" title="Permalink">¶</a></h1>
+<p>This document describes common interfaces for representing HTTP messages as
+described in <a href="http://tools.ietf.org/html/rfc7230">RFC 7230</a> and
+<a href="http://tools.ietf.org/html/rfc7231">RFC 7231</a>, and URIs for use with HTTP
+messages as described in <a href="http://tools.ietf.org/html/rfc3986">RFC 3986</a>.</p>
+<p>HTTP messages are the foundation of web development. Web browsers and HTTP
+clients such as cURL create HTTP request messages that are sent to a web server,
+which provides an HTTP response message. Server-side code receives an HTTP
+request message, and returns an HTTP response message.</p>
+<p>HTTP messages are typically abstracted from the end-user consumer, but as
+developers, we typically need to know how they are structured and how to
+access or manipulate them in order to perform our tasks, whether that might be
+making a request to an HTTP API, or handling an incoming request.</p>
+<p>Every HTTP request message has a specific form:</p>
+<pre><code class="language-http hljs http" data-lang="http"><span class="hljs-keyword">POST</span> <span class="hljs-string">/path</span> HTTP/1.1
+<span class="hljs-attribute">Host</span>: example.com
+
+foo=bar&amp;baz=bat
+</code></pre>
+<p>The first line of a request is the &quot;request line&quot;, and contains, in order, the
+HTTP request method, the request target (usually either an absolute URI or a
+path on the web server), and the HTTP protocol version. This is followed by one
+or more HTTP headers, an empty line, and the message body.</p>
+<p>HTTP response messages have a similar structure:</p>
+<pre><code class="language-http hljs http" data-lang="http">HTTP/1.1 <span class="hljs-number">200</span> OK
+<span class="hljs-attribute">Content-Type</span>: text/plain
+
+This is the response body
+</code></pre>
+<p>The first line is the &quot;status line&quot;, and contains, in order, the HTTP protocol
+version, the HTTP status code, and a &quot;reason phrase,&quot; a human-readable
+description of the status code. Like the request message, this is then
+followed by one or more HTTP headers, an empty line, and the message body.</p>
+<p>The interfaces described in this document are abstractions around HTTP messages
+and the elements composing them.</p>
+<p>The key words &quot;MUST&quot;, &quot;MUST NOT&quot;, &quot;REQUIRED&quot;, &quot;SHALL&quot;, &quot;SHALL NOT&quot;, &quot;SHOULD&quot;,
+&quot;SHOULD NOT&quot;, &quot;RECOMMENDED&quot;, &quot;MAY&quot;, and &quot;OPTIONAL&quot; in this document are to be
+interpreted as described in <a href="http://tools.ietf.org/html/rfc2119">RFC 2119</a>.</p>
+<h3>References<a id="references" href="#references" name="references" class="heading-permalink" aria-hidden="true" title="Permalink">¶</a></h3>
+<ul>
+<li>
+<a href="http://tools.ietf.org/html/rfc2119">RFC 2119</a>
+</li>
+<li>
+<a href="http://tools.ietf.org/html/rfc3986">RFC 3986</a>
+</li>
+<li>
+<a href="http://tools.ietf.org/html/rfc7230">RFC 7230</a>
+</li>
+<li>
+<a href="http://tools.ietf.org/html/rfc7231">RFC 7231</a>
+</li>
+</ul>
+<h2>1. Specification<a id="1-specification" href="#1-specification" name="1-specification" class="heading-permalink" aria-hidden="true" title="Permalink">¶</a></h2>
+<h3>1.1 Messages<a id="11-messages" href="#11-messages" name="11-messages" class="heading-permalink" aria-hidden="true" title="Permalink">¶</a></h3>
+<p>An HTTP message is either a request from a client to a server or a response from
+a server to a client. This specification defines interfaces for the HTTP messages
+<code>Psr\Http\Message\RequestInterface</code> and <code>Psr\Http\Message\ResponseInterface</code> respectively.</p>
+<p>Both <code>Psr\Http\Message\RequestInterface</code> and <code>Psr\Http\Message\ResponseInterface</code> extend
+<code>Psr\Http\Message\MessageInterface</code>. While <code>Psr\Http\Message\MessageInterface</code> MAY be
+implemented directly, implementors SHOULD implement
+<code>Psr\Http\Message\RequestInterface</code> and <code>Psr\Http\Message\ResponseInterface</code>.</p>
+<p>From here forward, the namespace <code>Psr\Http\Message</code> will be omitted when
+referring to these interfaces.</p>
+<h3>1.2 HTTP Headers<a id="12-http-headers" href="#12-http-headers" name="12-http-headers" class="heading-permalink" aria-hidden="true" title="Permalink">¶</a></h3>
+<h4>Case-insensitive header field names<a id="case-insensitive-header-field-names" href="#case-insensitive-header-field-names" name="case-insensitive-header-field-names" class="heading-permalink" aria-hidden="true" title="Permalink">¶</a></h4>
+<p>HTTP messages include case-insensitive header field names. Headers are retrieved
+by name from classes implementing the <code>MessageInterface</code> in a case-insensitive
+manner. For example, retrieving the <code>foo</code> header will return the same result as
+retrieving the <code>FoO</code> header. Similarly, setting the <code>Foo</code> header will overwrite
+any previously set <code>foo</code> header value.</p>
+<pre><code class="language-php hljs php" data-lang="php">$message = $message-&gt;withHeader(<span class="hljs-string">'foo'</span>, <span class="hljs-string">'bar'</span>);
+
+<span class="hljs-keyword">echo</span> $message-&gt;getHeaderLine(<span class="hljs-string">'foo'</span>);
+<span class="hljs-comment">// Outputs: bar</span>
+
+<span class="hljs-keyword">echo</span> $message-&gt;getHeaderLine(<span class="hljs-string">'FOO'</span>);
+<span class="hljs-comment">// Outputs: bar</span>
+
+$message = $message-&gt;withHeader(<span class="hljs-string">'fOO'</span>, <span class="hljs-string">'baz'</span>);
+<span class="hljs-keyword">echo</span> $message-&gt;getHeaderLine(<span class="hljs-string">'foo'</span>);
+<span class="hljs-comment">// Outputs: baz</span>
+</code></pre>
+<p>Despite that headers may be retrieved case-insensitively, the original case
+MUST be preserved by the implementation, in particular when retrieved with
+<code>getHeaders()</code>.</p>
+<p>Non-conforming HTTP applications may depend on a certain case, so it is useful
+for a user to be able to dictate the case of the HTTP headers when creating a
+request or response.</p>
+<h4>Headers with multiple values<a id="headers-with-multiple-values" href="#headers-with-multiple-values" name="headers-with-multiple-values" class="heading-permalink" aria-hidden="true" title="Permalink">¶</a></h4>
+<p>In order to accommodate headers with multiple values yet still provide the
+convenience of working with headers as strings, headers can be retrieved from
+an instance of a <code>MessageInterface</code> as an array or a string. Use the
+<code>getHeaderLine()</code> method to retrieve a header value as a string containing all
+header values of a case-insensitive header by name concatenated with a comma.
+Use <code>getHeader()</code> to retrieve an array of all the header values for a
+particular case-insensitive header by name.</p>
+<pre><code class="language-php hljs php" data-lang="php">$message = $message
+    -&gt;withHeader(<span class="hljs-string">'foo'</span>, <span class="hljs-string">'bar'</span>)
+    -&gt;withAddedHeader(<span class="hljs-string">'foo'</span>, <span class="hljs-string">'baz'</span>);
+
+$header = $message-&gt;getHeaderLine(<span class="hljs-string">'foo'</span>);
+<span class="hljs-comment">// $header contains: 'bar,baz'</span>
+
+$header = $message-&gt;getHeader(<span class="hljs-string">'foo'</span>);
+<span class="hljs-comment">// ['bar', 'baz']</span>
+</code></pre>
+<p>Note: Not all header values can be concatenated using a comma (e.g.,
+<code>Set-Cookie</code>). When working with such headers, consumers of
+<code>MessageInterface</code>-based classes SHOULD rely on the <code>getHeader()</code> method
+for retrieving such multi-valued headers.</p>
+<h4>Host header<a id="host-header" href="#host-header" name="host-header" class="heading-permalink" aria-hidden="true" title="Permalink">¶</a></h4>
+<p>In requests, the <code>Host</code> header typically mirrors the host component of the URI, as
+well as the host used when establishing the TCP connection. However, the HTTP
+specification allows the <code>Host</code> header to differ from each of the two.</p>
+<p>During construction, implementations MUST attempt to set the <code>Host</code> header from
+a provided URI if no <code>Host</code> header is provided.</p>
+<p><code>RequestInterface::withUri()</code> will, by default, replace the returned request's
+<code>Host</code> header with a <code>Host</code> header matching the host component of the passed
+<code>UriInterface</code>.</p>
+<p>You can opt-in to preserving the original state of the <code>Host</code> header by passing
+<code>true</code> for the second (<code>$preserveHost</code>) argument. When this argument is set to
+<code>true</code>, the returned request will not update the <code>Host</code> header of the returned
+message -- unless the message contains no <code>Host</code> header.</p>
+<p>This table illustrates what <code>getHeaderLine('Host')</code> will return for a request
+returned by <code>withUri()</code> with the <code>$preserveHost</code> argument set to <code>true</code> for
+various initial requests and URIs.</p>
+<table>
+<thead>
+<tr>
+<th>Request Host header<sup><a href="#rhh">1</a></sup></th>
+<th>Request host component<sup><a href="#rhc">2</a></sup></th>
+<th>URI host component<sup><a href="#uhc">3</a></sup></th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>''</td>
+<td>''</td>
+<td>''</td>
+<td>''</td>
+</tr>
+<tr>
+<td>''</td>
+<td>foo.com</td>
+<td>''</td>
+<td>foo.com</td>
+</tr>
+<tr>
+<td>''</td>
+<td>foo.com</td>
+<td>bar.com</td>
+<td>foo.com</td>
+</tr>
+<tr>
+<td>foo.com</td>
+<td>''</td>
+<td>bar.com</td>
+<td>foo.com</td>
+</tr>
+<tr>
+<td>foo.com</td>
+<td>bar.com</td>
+<td>baz.com</td>
+<td>foo.com</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>
+<sup id="rhh">1</sup> <code>Host</code> header value prior to operation.</li>
+<li>
+<sup id="rhc">2</sup> Host component of the URI composed in the request prior
+to the operation.</li>
+<li>
+<sup id="uhc">3</sup> Host component of the URI being injected via
+<code>withUri()</code>.</li>
+</ul>
+<h3>1.3 Streams<a id="13-streams" href="#13-streams" name="13-streams" class="heading-permalink" aria-hidden="true" title="Permalink">¶</a></h3>
+<p>HTTP messages consist of a start-line, headers, and a body. The body of an HTTP
+message can be very small or extremely large. Attempting to represent the body
+of a message as a string can easily consume more memory than intended because
+the body must be stored completely in memory. Attempting to store the body of a
+request or response in memory would preclude the use of that implementation from
+being able to work with large message bodies. <code>StreamInterface</code> is used in
+order to hide the implementation details when a stream of data is read from
+or written to. For situations where a string would be an appropriate message
+implementation, built-in streams such as <code>php://memory</code> and <code>php://temp</code> may be
+used.</p>
+<p><code>StreamInterface</code> exposes several methods that enable streams to be read
+from, written to, and traversed effectively.</p>
+<p>Streams expose their capabilities using three methods: <code>isReadable()</code>,
+<code>isWritable()</code>, and <code>isSeekable()</code>. These methods can be used by stream
+collaborators to determine if a stream is capable of their requirements.</p>
+<p>Each stream instance will have various capabilities: it can be read-only,
+write-only, or read-write. It can also allow arbitrary random access (seeking
+forwards or backwards to any location), or only sequential access (for
+example in the case of a socket, pipe, or callback-based stream).</p>
+<p>Finally, <code>StreamInterface</code> defines a <code>__toString()</code> method to simplify
+retrieving or emitting the entire body contents at once.</p>
+<p>Unlike the request and response interfaces, <code>StreamInterface</code> does not model
+immutability. In situations where an actual PHP stream is wrapped, immutability
+is impossible to enforce, as any code that interacts with the resource can
+potentially change its state (including cursor position, contents, and more).
+Our recommendation is that implementations use read-only streams for
+server-side requests and client-side responses. Consumers should be aware of
+the fact that the stream instance may be mutable, and, as such, could alter
+the state of the message; when in doubt, create a new stream instance and attach
+it to a message to enforce state.</p>
+<h3>1.4 Request Targets and URIs<a id="14-request-targets-and-uris" href="#14-request-targets-and-uris" name="14-request-targets-and-uris" class="heading-permalink" aria-hidden="true" title="Permalink">¶</a></h3>
+<p>Per RFC 7230, request messages contain a &quot;request-target&quot; as the second segment
+of the request line. The request target can be one of the following forms:</p>
+<ul>
+<li>
+<strong>origin-form</strong>, which consists of the path, and, if present, the query
+string; this is often referred to as a relative URL. Messages as transmitted
+over TCP typically are of origin-form; scheme and authority data are usually
+only present via CGI variables.</li>
+<li>
+<strong>absolute-form</strong>, which consists of the scheme, authority
+(&quot;[user-info@]host[:port]&quot;, where items in brackets are optional), path (if
+present), query string (if present), and fragment (if present). This is often
+referred to as an absolute URI, and is the only form to specify a URI as
+detailed in RFC 3986. This form is commonly used when making requests to
+HTTP proxies.</li>
+<li>
+<strong>authority-form</strong>, which consists of the authority only. This is typically
+used in CONNECT requests only, to establish a connection between an HTTP
+client and a proxy server.</li>
+<li>
+<strong>asterisk-form</strong>, which consists solely of the string <code>*</code>, and which is used
+with the OPTIONS method to determine the general capabilities of a web server.</li>
+</ul>
+<p>Aside from these request-targets, there is often an 'effective URL' which is
+separate from the request target. The effective URL is not transmitted within
+an HTTP message, but it is used to determine the protocol (http/https), port
+and hostname for making the request.</p>
+<p>The effective URL is represented by <code>UriInterface</code>. <code>UriInterface</code> models HTTP
+and HTTPS URIs as specified in RFC 3986 (the primary use case). The interface
+provides methods for interacting with the various URI parts, which will obviate
+the need for repeated parsing of the URI. It also specifies a <code>__toString()</code>
+method for casting the modeled URI to its string representation.</p>
+<p>When retrieving the request-target with <code>getRequestTarget()</code>, by default this
+method will use the URI object and extract all the necessary components to
+construct the <em>origin-form</em>. The <em>origin-form</em> is by far the most common
+request-target.</p>
+<p>If it's desired by an end-user to use one of the other three forms, or if the
+user wants to explicitly override the request-target, it is possible to do so
+with <code>withRequestTarget()</code>.</p>
+<p>Calling this method does not affect the URI, as it is returned from <code>getUri()</code>.</p>
+<p>For example, a user may want to make an asterisk-form request to a server:</p>
+<pre><code class="language-php hljs php" data-lang="php">$request = $request
+    -&gt;withMethod(<span class="hljs-string">'OPTIONS'</span>)
+    -&gt;withRequestTarget(<span class="hljs-string">'*'</span>)
+    -&gt;withUri(<span class="hljs-keyword">new</span> Uri(<span class="hljs-string">'https://example.org/'</span>));
+</code></pre>
+<p>This example may ultimately result in an HTTP request that looks like this:</p>
+<pre><code class="language-http hljs http" data-lang="http"><span class="hljs-keyword">OPTIONS</span> <span class="hljs-string">*</span> HTTP/1.1
+</code></pre>
+<p>But the HTTP client will be able to use the effective URL (from <code>getUri()</code>),
+to determine the protocol, hostname and TCP port.</p>
+<p>An HTTP client MUST ignore the values of <code>Uri::getPath()</code> and <code>Uri::getQuery()</code>,
+and instead use the value returned by <code>getRequestTarget()</code>, which defaults
+to concatenating these two values.</p>
+<p>Clients that choose to not implement 1 or more of the 4 request-target forms,
+MUST still use <code>getRequestTarget()</code>. These clients MUST reject request-targets
+they do not support, and MUST NOT fall back on the values from <code>getUri()</code>.</p>
+<p><code>RequestInterface</code> provides methods for retrieving the request-target or
+creating a new instance with the provided request-target. By default, if no
+request-target is specifically composed in the instance, <code>getRequestTarget()</code>
+will return the origin-form of the composed URI (or &quot;/&quot; if no URI is composed).
+<code>withRequestTarget($requestTarget)</code> creates a new instance with the
+specified request target, and thus allows developers to create request messages
+that represent the other three request-target forms (absolute-form,
+authority-form, and asterisk-form). When used, the composed URI instance can
+still be of use, particularly in clients, where it may be used to create the
+connection to the server.</p>
+<h3>1.5 Server-side Requests<a id="15-server-side-requests" href="#15-server-side-requests" name="15-server-side-requests" class="heading-permalink" aria-hidden="true" title="Permalink">¶</a></h3>
+<p><code>RequestInterface</code> provides the general representation of an HTTP request
+message. However, server-side requests need additional treatment, due to the
+nature of the server-side environment. Server-side processing needs to take into
+account Common Gateway Interface (CGI), and, more specifically, PHP's
+abstraction and extension of CGI via its Server APIs (SAPI). PHP has provided
+simplification around input marshaling via superglobals such as:</p>
+<ul>
+<li>
+<code>$_COOKIE</code>, which deserializes and provides simplified access to HTTP
+cookies.</li>
+<li>
+<code>$_GET</code>, which deserializes and provides simplified access to query string
+arguments.</li>
+<li>
+<code>$_POST</code>, which deserializes and provides simplified access for urlencoded
+parameters submitted via HTTP POST; generically, it can be considered the
+results of parsing the message body.</li>
+<li>
+<code>$_FILES</code>, which provides serialized metadata around file uploads.</li>
+<li>
+<code>$_SERVER</code>, which provides access to CGI/SAPI environment variables, which
+commonly include the request method, the request scheme, the request URI, and
+headers.</li>
+</ul>
+<p><code>ServerRequestInterface</code> extends <code>RequestInterface</code> to provide an abstraction
+around these various superglobals. This practice helps reduce coupling to the
+superglobals by consumers, and encourages and promotes the ability to test
+request consumers.</p>
+<p>The server request provides one additional property, &quot;attributes&quot;, to allow
+consumers the ability to introspect, decompose, and match the request against
+application-specific rules (such as path matching, scheme matching, host
+matching, etc.). As such, the server request can also provide messaging between
+multiple request consumers.</p>
+<h3>1.6 Uploaded files<a id="16-uploaded-files" href="#16-uploaded-files" name="16-uploaded-files" class="heading-permalink" aria-hidden="true" title="Permalink">¶</a></h3>
+<p><code>ServerRequestInterface</code> specifies a method for retrieving a tree of upload
+files in a normalized structure, with each leaf an instance of
+<code>UploadedFileInterface</code>.</p>
+<p>The <code>$_FILES</code> superglobal has some well-known problems when dealing with arrays
+of file inputs. As an example, if you have a form that submits an array of files
+— e.g., the input name &quot;files&quot;, submitting <code>files[0]</code> and <code>files[1]</code> — PHP will
+represent this as:</p>
+<pre><code class="language-php hljs php" data-lang="php"><span class="hljs-keyword">array</span>(
+    <span class="hljs-string">'files'</span> =&gt; <span class="hljs-keyword">array</span>(
+        <span class="hljs-string">'name'</span> =&gt; <span class="hljs-keyword">array</span>(
+            <span class="hljs-number">0</span> =&gt; <span class="hljs-string">'file0.txt'</span>,
+            <span class="hljs-number">1</span> =&gt; <span class="hljs-string">'file1.html'</span>,
+        ),
+        <span class="hljs-string">'type'</span> =&gt; <span class="hljs-keyword">array</span>(
+            <span class="hljs-number">0</span> =&gt; <span class="hljs-string">'text/plain'</span>,
+            <span class="hljs-number">1</span> =&gt; <span class="hljs-string">'text/html'</span>,
+        ),
+        <span class="hljs-comment">/* etc. */</span>
+    ),
+)
+</code></pre>
+<p>instead of the expected:</p>
+<pre><code class="language-php hljs php" data-lang="php"><span class="hljs-keyword">array</span>(
+    <span class="hljs-string">'files'</span> =&gt; <span class="hljs-keyword">array</span>(
+        <span class="hljs-number">0</span> =&gt; <span class="hljs-keyword">array</span>(
+            <span class="hljs-string">'name'</span> =&gt; <span class="hljs-string">'file0.txt'</span>,
+            <span class="hljs-string">'type'</span> =&gt; <span class="hljs-string">'text/plain'</span>,
+            <span class="hljs-comment">/* etc. */</span>
+        ),
+        <span class="hljs-number">1</span> =&gt; <span class="hljs-keyword">array</span>(
+            <span class="hljs-string">'name'</span> =&gt; <span class="hljs-string">'file1.html'</span>,
+            <span class="hljs-string">'type'</span> =&gt; <span class="hljs-string">'text/html'</span>,
+            <span class="hljs-comment">/* etc. */</span>
+        ),
+    ),
+)
+</code></pre>
+<p>The result is that consumers need to know this language implementation detail,
+and write code for gathering the data for a given upload.</p>
+<p>Additionally, scenarios exist where <code>$_FILES</code> is not populated when file uploads
+occur:</p>
+<ul>
+<li>When the HTTP method is not <code>POST</code>.</li>
+<li>When unit testing.</li>
+<li>When operating under a non-SAPI environment, such as <a href="http://reactphp.org">ReactPHP</a>.</li>
+</ul>
+<p>In such cases, the data will need to be seeded differently. As examples:</p>
+<ul>
+<li>A process might parse the message body to discover the file uploads. In such
+cases, the implementation may choose <em>not</em> to write the file uploads to the
+file system, but instead wrap them in a stream in order to reduce memory,
+I/O, and storage overhead.</li>
+<li>In unit testing scenarios, developers need to be able to stub and/or mock the
+file upload metadata in order to validate and verify different scenarios.</li>
+</ul>
+<p><code>getUploadedFiles()</code> provides the normalized structure for consumers.
+Implementations are expected to:</p>
+<ul>
+<li>Aggregate all information for a given file upload, and use it to populate a
+<code>Psr\Http\Message\UploadedFileInterface</code> instance.</li>
+<li>Re-create the submitted tree structure, with each leaf being the appropriate
+<code>Psr\Http\Message\UploadedFileInterface</code> instance for the given location in
+the tree.</li>
+</ul>
+<p>The tree structure referenced should mimic the naming structure in which files
+were submitted.</p>
+<p>In the simplest example, this might be a single named form element submitted as:</p>
+<pre><code class="language-html hljs xml" data-lang="html"><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"file"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"avatar"</span> /&gt;</span>
+</code></pre>
+<p>In this case, the structure in <code>$_FILES</code> would look like:</p>
+<pre><code class="language-php hljs php" data-lang="php"><span class="hljs-keyword">array</span>(
+    <span class="hljs-string">'avatar'</span> =&gt; <span class="hljs-keyword">array</span>(
+        <span class="hljs-string">'tmp_name'</span> =&gt; <span class="hljs-string">'phpUxcOty'</span>,
+        <span class="hljs-string">'name'</span> =&gt; <span class="hljs-string">'my-avatar.png'</span>,
+        <span class="hljs-string">'size'</span> =&gt; <span class="hljs-number">90996</span>,
+        <span class="hljs-string">'type'</span> =&gt; <span class="hljs-string">'image/png'</span>,
+        <span class="hljs-string">'error'</span> =&gt; <span class="hljs-number">0</span>,
+    ),
+)
+</code></pre>
+<p>The normalized form returned by <code>getUploadedFiles()</code> would be:</p>
+<pre><code class="language-php hljs php" data-lang="php"><span class="hljs-keyword">array</span>(
+    <span class="hljs-string">'avatar'</span> =&gt; <span class="hljs-comment">/* UploadedFileInterface instance */</span>
+)
+</code></pre>
+<p>In the case of an input using array notation for the name:</p>
+<pre><code class="language-html hljs xml" data-lang="html"><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"file"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"my-form[details][avatar]"</span> /&gt;</span>
+</code></pre>
+<p><code>$_FILES</code> ends up looking like this:</p>
+<pre><code class="language-php hljs php" data-lang="php"><span class="hljs-keyword">array</span> (
+    <span class="hljs-string">'my-form'</span> =&gt; <span class="hljs-keyword">array</span> (
+        <span class="hljs-string">'name'</span> =&gt; <span class="hljs-keyword">array</span> (
+            <span class="hljs-string">'details'</span> =&gt; <span class="hljs-keyword">array</span> (
+                <span class="hljs-string">'avatar'</span> =&gt; <span class="hljs-string">'my-avatar.png'</span>,
+            ),
+        ),
+        <span class="hljs-string">'type'</span> =&gt; <span class="hljs-keyword">array</span> (
+            <span class="hljs-string">'details'</span> =&gt; <span class="hljs-keyword">array</span> (
+                <span class="hljs-string">'avatar'</span> =&gt; <span class="hljs-string">'image/png'</span>,
+            ),
+        ),
+        <span class="hljs-string">'tmp_name'</span> =&gt; <span class="hljs-keyword">array</span> (
+            <span class="hljs-string">'details'</span> =&gt; <span class="hljs-keyword">array</span> (
+                <span class="hljs-string">'avatar'</span> =&gt; <span class="hljs-string">'phpmFLrzD'</span>,
+            ),
+        ),
+        <span class="hljs-string">'error'</span> =&gt; <span class="hljs-keyword">array</span> (
+            <span class="hljs-string">'details'</span> =&gt; <span class="hljs-keyword">array</span> (
+                <span class="hljs-string">'avatar'</span> =&gt; <span class="hljs-number">0</span>,
+            ),
+        ),
+        <span class="hljs-string">'size'</span> =&gt; <span class="hljs-keyword">array</span> (
+            <span class="hljs-string">'details'</span> =&gt; <span class="hljs-keyword">array</span> (
+                <span class="hljs-string">'avatar'</span> =&gt; <span class="hljs-number">90996</span>,
+            ),
+        ),
+    ),
+)
+</code></pre>
+<p>And the corresponding tree returned by <code>getUploadedFiles()</code> should be:</p>
+<pre><code class="language-php hljs php" data-lang="php"><span class="hljs-keyword">array</span>(
+    <span class="hljs-string">'my-form'</span> =&gt; <span class="hljs-keyword">array</span>(
+        <span class="hljs-string">'details'</span> =&gt; <span class="hljs-keyword">array</span>(
+            <span class="hljs-string">'avatar'</span> =&gt; <span class="hljs-comment">/* UploadedFileInterface instance */</span>
+        ),
+    ),
+)
+</code></pre>
+<p>In some cases, you may specify an array of files:</p>
+<pre><code class="language-html hljs xml" data-lang="html">Upload an avatar: <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"file"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"my-form[details][avatars][]"</span> /&gt;</span>
+Upload an avatar: <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"file"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"my-form[details][avatars][]"</span> /&gt;</span>
+</code></pre>
+<p>(As an example, JavaScript controls might spawn additional file upload inputs to
+allow uploading multiple files at once.)</p>
+<p>In such a case, the specification implementation must aggregate all information
+related to the file at the given index. The reason is because <code>$_FILES</code> deviates
+from its normal structure in such cases:</p>
+<pre><code class="language-php hljs php" data-lang="php"><span class="hljs-keyword">array</span> (
+    <span class="hljs-string">'my-form'</span> =&gt; <span class="hljs-keyword">array</span> (
+        <span class="hljs-string">'name'</span> =&gt; <span class="hljs-keyword">array</span> (
+            <span class="hljs-string">'details'</span> =&gt; <span class="hljs-keyword">array</span> (
+                <span class="hljs-string">'avatars'</span> =&gt; <span class="hljs-keyword">array</span> (
+                    <span class="hljs-number">0</span> =&gt; <span class="hljs-string">'my-avatar.png'</span>,
+                    <span class="hljs-number">1</span> =&gt; <span class="hljs-string">'my-avatar2.png'</span>,
+                    <span class="hljs-number">2</span> =&gt; <span class="hljs-string">'my-avatar3.png'</span>,
+                ),
+            ),
+        ),
+        <span class="hljs-string">'type'</span> =&gt; <span class="hljs-keyword">array</span> (
+            <span class="hljs-string">'details'</span> =&gt; <span class="hljs-keyword">array</span> (
+                <span class="hljs-string">'avatars'</span> =&gt; <span class="hljs-keyword">array</span> (
+                    <span class="hljs-number">0</span> =&gt; <span class="hljs-string">'image/png'</span>,
+                    <span class="hljs-number">1</span> =&gt; <span class="hljs-string">'image/png'</span>,
+                    <span class="hljs-number">2</span> =&gt; <span class="hljs-string">'image/png'</span>,
+                ),
+            ),
+        ),
+        <span class="hljs-string">'tmp_name'</span> =&gt; <span class="hljs-keyword">array</span> (
+            <span class="hljs-string">'details'</span> =&gt; <span class="hljs-keyword">array</span> (
+                <span class="hljs-string">'avatars'</span> =&gt; <span class="hljs-keyword">array</span> (
+                    <span class="hljs-number">0</span> =&gt; <span class="hljs-string">'phpmFLrzD'</span>,
+                    <span class="hljs-number">1</span> =&gt; <span class="hljs-string">'phpV2pBil'</span>,
+                    <span class="hljs-number">2</span> =&gt; <span class="hljs-string">'php8RUG8v'</span>,
+                ),
+            ),
+        ),
+        <span class="hljs-string">'error'</span> =&gt; <span class="hljs-keyword">array</span> (
+            <span class="hljs-string">'details'</span> =&gt; <span class="hljs-keyword">array</span> (
+                <span class="hljs-string">'avatars'</span> =&gt; <span class="hljs-keyword">array</span> (
+                    <span class="hljs-number">0</span> =&gt; <span class="hljs-number">0</span>,
+                    <span class="hljs-number">1</span> =&gt; <span class="hljs-number">0</span>,
+                    <span class="hljs-number">2</span> =&gt; <span class="hljs-number">0</span>,
+                ),
+            ),
+        ),
+        <span class="hljs-string">'size'</span> =&gt; <span class="hljs-keyword">array</span> (
+            <span class="hljs-string">'details'</span> =&gt; <span class="hljs-keyword">array</span> (
+                <span class="hljs-string">'avatars'</span> =&gt; <span class="hljs-keyword">array</span> (
+                    <span class="hljs-number">0</span> =&gt; <span class="hljs-number">90996</span>,
+                    <span class="hljs-number">1</span> =&gt; <span class="hljs-number">90996</span>,
+                    <span class="hljs-number">3</span> =&gt; <span class="hljs-number">90996</span>,
+                ),
+            ),
+        ),
+    ),
+)
+</code></pre>
+<p>The above <code>$_FILES</code> array would correspond to the following structure as
+returned by <code>getUploadedFiles()</code>:</p>
+<pre><code class="language-php hljs php" data-lang="php"><span class="hljs-keyword">array</span>(
+    <span class="hljs-string">'my-form'</span> =&gt; <span class="hljs-keyword">array</span>(
+        <span class="hljs-string">'details'</span> =&gt; <span class="hljs-keyword">array</span>(
+            <span class="hljs-string">'avatars'</span> =&gt; <span class="hljs-keyword">array</span>(
+                <span class="hljs-number">0</span> =&gt; <span class="hljs-comment">/* UploadedFileInterface instance */</span>,
+                <span class="hljs-number">1</span> =&gt; <span class="hljs-comment">/* UploadedFileInterface instance */</span>,
+                <span class="hljs-number">2</span> =&gt; <span class="hljs-comment">/* UploadedFileInterface instance */</span>,
+            ),
+        ),
+    ),
+)
+</code></pre>
+<p>Consumers would access index <code>1</code> of the nested array using:</p>
+<pre><code class="language-php hljs php" data-lang="php">$request-&gt;getUploadedFiles()[<span class="hljs-string">'my-form'</span>][<span class="hljs-string">'details'</span>][<span class="hljs-string">'avatars'</span>][<span class="hljs-number">1</span>];
+</code></pre>
+<p>Because the uploaded files data is derivative (derived from <code>$_FILES</code> or the
+request body), a mutator method, <code>withUploadedFiles()</code>, is also present in the
+interface, allowing delegation of the normalization to another process.</p>
+<p>In the case of the original examples, consumption resembles the following:</p>
+<pre><code class="language-php hljs php" data-lang="php">$file0 = $request-&gt;getUploadedFiles()[<span class="hljs-string">'files'</span>][<span class="hljs-number">0</span>];
+$file1 = $request-&gt;getUploadedFiles()[<span class="hljs-string">'files'</span>][<span class="hljs-number">1</span>];
+
+printf(
+    <span class="hljs-string">"Received the files %s and %s"</span>,
+    $file0-&gt;getClientFilename(),
+    $file1-&gt;getClientFilename()
+);
+
+<span class="hljs-comment">// "Received the files file0.txt and file1.html"</span>
+</code></pre>
+<p>This proposal also recognizes that implementations may operate in non-SAPI
+environments. As such, <code>UploadedFileInterface</code> provides methods for ensuring
+operations will work regardless of environment. In particular:</p>
+<ul>
+<li>
+<code>moveTo($targetPath)</code> is provided as a safe and recommended alternative to calling
+<code>move_uploaded_file()</code> directly on the temporary upload file. Implementations
+will detect the correct operation to use based on environment.</li>
+<li>
+<code>getStream()</code> will return a <code>StreamInterface</code> instance. In non-SAPI
+environments, one proposed possibility is to parse individual upload files
+into <code>php://temp</code> streams instead of directly to files; in such cases, no
+upload file is present. <code>getStream()</code> is therefore guaranteed to work
+regardless of environment.</li>
+</ul>
+<p>As examples:</p>
+<pre><code class="language-php hljs php" data-lang="php"><span class="hljs-comment">// Move a file to an upload directory</span>
+$filename = sprintf(
+    <span class="hljs-string">'%s.%s'</span>,
+    create_uuid(),
+    pathinfo($file0-&gt;getClientFilename(), PATHINFO_EXTENSION)
+);
+$file0-&gt;moveTo(DATA_DIR . <span class="hljs-string">'/'</span> . $filename);
+
+<span class="hljs-comment">// Stream a file to Amazon S3.</span>
+<span class="hljs-comment">// Assume $s3wrapper is a PHP stream that will write to S3, and that</span>
+<span class="hljs-comment">// Psr7StreamWrapper is a class that will decorate a StreamInterface as a PHP</span>
+<span class="hljs-comment">// StreamWrapper.</span>
+$stream = <span class="hljs-keyword">new</span> Psr7StreamWrapper($file1-&gt;getStream());
+stream_copy_to_stream($stream, $s3wrapper);
+</code></pre>
+<h2>2. Package<a id="2-package" href="#2-package" name="2-package" class="heading-permalink" aria-hidden="true" title="Permalink">¶</a></h2>
+<p>The interfaces and classes described are provided as part of the
+<a href="https://packagist.org/packages/psr/http-message">psr/http-message</a> package.</p>
+<h2>3. Interfaces<a id="3-interfaces" href="#3-interfaces" name="3-interfaces" class="heading-permalink" aria-hidden="true" title="Permalink">¶</a></h2>
+<h3>3.1 <code>Psr\Http\Message\MessageInterface</code><a id="31-psrhttpmessagemessageinterface" href="#31-psrhttpmessagemessageinterface" name="31-psrhttpmessagemessageinterface" class="heading-permalink" aria-hidden="true" title="Permalink">¶</a></h3>
+<pre><code class="language-php hljs php" data-lang="php"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-keyword">namespace</span> <span class="hljs-title">Psr</span>\<span class="hljs-title">Http</span>\<span class="hljs-title">Message</span>;
+
+<span class="hljs-comment">/**
+ * HTTP messages consist of requests from a client to a server and responses
+ * from a server to a client. This interface defines the methods common to
+ * each.
+ *
+ * Messages are considered immutable; all methods that might change state MUST
+ * be implemented such that they retain the internal state of the current
+ * message and return an instance that contains the changed state.
+ *
+ * <span class="hljs-doctag">@see</span> http://www.ietf.org/rfc/rfc7230.txt
+ * <span class="hljs-doctag">@see</span> http://www.ietf.org/rfc/rfc7231.txt
+ */</span>
+<span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">MessageInterface</span>
+</span>{
+    <span class="hljs-comment">/**
+     * Retrieves the HTTP protocol version as a string.
+     *
+     * The string MUST contain only the HTTP version number (e.g., "1.1", "1.0").
+     *
+     * <span class="hljs-doctag">@return</span> string HTTP protocol version.
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getProtocolVersion</span><span class="hljs-params">()</span></span>;
+
+    <span class="hljs-comment">/**
+     * Return an instance with the specified HTTP protocol version.
+     *
+     * The version string MUST contain only the HTTP version number (e.g.,
+     * "1.1", "1.0").
+     *
+     * This method MUST be implemented in such a way as to retain the
+     * immutability of the message, and MUST return an instance that has the
+     * new protocol version.
+     *
+     * <span class="hljs-doctag">@param</span> string $version HTTP protocol version
+     * <span class="hljs-doctag">@return</span> static
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">withProtocolVersion</span><span class="hljs-params">($version)</span></span>;
+
+    <span class="hljs-comment">/**
+     * Retrieves all message header values.
+     *
+     * The keys represent the header name as it will be sent over the wire, and
+     * each value is an array of strings associated with the header.
+     *
+     *     // Represent the headers as a string
+     *     foreach ($message-&gt;getHeaders() as $name =&gt; $values) {
+     *         echo $name . ': ' . implode(', ', $values);
+     *     }
+     *
+     *     // Emit headers iteratively:
+     *     foreach ($message-&gt;getHeaders() as $name =&gt; $values) {
+     *         foreach ($values as $value) {
+     *             header(sprintf('%s: %s', $name, $value), false);
+     *         }
+     *     }
+     *
+     * While header names are not case-sensitive, getHeaders() will preserve the
+     * exact case in which headers were originally specified.
+     *
+     * <span class="hljs-doctag">@return</span> string[][] Returns an associative array of the message's headers.
+     *     Each key MUST be a header name, and each value MUST be an array of
+     *     strings for that header.
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getHeaders</span><span class="hljs-params">()</span></span>;
+
+    <span class="hljs-comment">/**
+     * Checks if a header exists by the given case-insensitive name.
+     *
+     * <span class="hljs-doctag">@param</span> string $name Case-insensitive header field name.
+     * <span class="hljs-doctag">@return</span> bool Returns true if any header names match the given header
+     *     name using a case-insensitive string comparison. Returns false if
+     *     no matching header name is found in the message.
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">hasHeader</span><span class="hljs-params">($name)</span></span>;
+
+    <span class="hljs-comment">/**
+     * Retrieves a message header value by the given case-insensitive name.
+     *
+     * This method returns an array of all the header values of the given
+     * case-insensitive header name.
+     *
+     * If the header does not appear in the message, this method MUST return an
+     * empty array.
+     *
+     * <span class="hljs-doctag">@param</span> string $name Case-insensitive header field name.
+     * <span class="hljs-doctag">@return</span> string[] An array of string values as provided for the given
+     *    header. If the header does not appear in the message, this method MUST
+     *    return an empty array.
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getHeader</span><span class="hljs-params">($name)</span></span>;
+
+    <span class="hljs-comment">/**
+     * Retrieves a comma-separated string of the values for a single header.
+     *
+     * This method returns all of the header values of the given
+     * case-insensitive header name as a string concatenated together using
+     * a comma.
+     *
+     * <span class="hljs-doctag">NOTE:</span> Not all header values may be appropriately represented using
+     * comma concatenation. For such headers, use getHeader() instead
+     * and supply your own delimiter when concatenating.
+     *
+     * If the header does not appear in the message, this method MUST return
+     * an empty string.
+     *
+     * <span class="hljs-doctag">@param</span> string $name Case-insensitive header field name.
+     * <span class="hljs-doctag">@return</span> string A string of values as provided for the given header
+     *    concatenated together using a comma. If the header does not appear in
+     *    the message, this method MUST return an empty string.
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getHeaderLine</span><span class="hljs-params">($name)</span></span>;
+
+    <span class="hljs-comment">/**
+     * Return an instance with the provided value replacing the specified header.
+     *
+     * While header names are case-insensitive, the casing of the header will
+     * be preserved by this function, and returned from getHeaders().
+     *
+     * This method MUST be implemented in such a way as to retain the
+     * immutability of the message, and MUST return an instance that has the
+     * new and/or updated header and value.
+     *
+     * <span class="hljs-doctag">@param</span> string $name Case-insensitive header field name.
+     * <span class="hljs-doctag">@param</span> string|string[] $value Header value(s).
+     * <span class="hljs-doctag">@return</span> static
+     * <span class="hljs-doctag">@throws</span> \InvalidArgumentException for invalid header names or values.
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">withHeader</span><span class="hljs-params">($name, $value)</span></span>;
+
+    <span class="hljs-comment">/**
+     * Return an instance with the specified header appended with the given value.
+     *
+     * Existing values for the specified header will be maintained. The new
+     * value(s) will be appended to the existing list. If the header did not
+     * exist previously, it will be added.
+     *
+     * This method MUST be implemented in such a way as to retain the
+     * immutability of the message, and MUST return an instance that has the
+     * new header and/or value.
+     *
+     * <span class="hljs-doctag">@param</span> string $name Case-insensitive header field name to add.
+     * <span class="hljs-doctag">@param</span> string|string[] $value Header value(s).
+     * <span class="hljs-doctag">@return</span> static
+     * <span class="hljs-doctag">@throws</span> \InvalidArgumentException for invalid header names.
+     * <span class="hljs-doctag">@throws</span> \InvalidArgumentException for invalid header values.
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">withAddedHeader</span><span class="hljs-params">($name, $value)</span></span>;
+
+    <span class="hljs-comment">/**
+     * Return an instance without the specified header.
+     *
+     * Header resolution MUST be done without case-sensitivity.
+     *
+     * This method MUST be implemented in such a way as to retain the
+     * immutability of the message, and MUST return an instance that removes
+     * the named header.
+     *
+     * <span class="hljs-doctag">@param</span> string $name Case-insensitive header field name to remove.
+     * <span class="hljs-doctag">@return</span> static
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">withoutHeader</span><span class="hljs-params">($name)</span></span>;
+
+    <span class="hljs-comment">/**
+     * Gets the body of the message.
+     *
+     * <span class="hljs-doctag">@return</span> StreamInterface Returns the body as a stream.
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getBody</span><span class="hljs-params">()</span></span>;
+
+    <span class="hljs-comment">/**
+     * Return an instance with the specified message body.
+     *
+     * The body MUST be a StreamInterface object.
+     *
+     * This method MUST be implemented in such a way as to retain the
+     * immutability of the message, and MUST return a new instance that has the
+     * new body stream.
+     *
+     * <span class="hljs-doctag">@param</span> StreamInterface $body Body.
+     * <span class="hljs-doctag">@return</span> static
+     * <span class="hljs-doctag">@throws</span> \InvalidArgumentException When the body is not valid.
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">withBody</span><span class="hljs-params">(StreamInterface $body)</span></span>;
+}
+</code></pre>
+<h3>3.2 <code>Psr\Http\Message\RequestInterface</code><a id="32-psrhttpmessagerequestinterface" href="#32-psrhttpmessagerequestinterface" name="32-psrhttpmessagerequestinterface" class="heading-permalink" aria-hidden="true" title="Permalink">¶</a></h3>
+<pre><code class="language-php hljs php" data-lang="php"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-keyword">namespace</span> <span class="hljs-title">Psr</span>\<span class="hljs-title">Http</span>\<span class="hljs-title">Message</span>;
+
+<span class="hljs-comment">/**
+ * Representation of an outgoing, client-side request.
+ *
+ * Per the HTTP specification, this interface includes properties for
+ * each of the following:
+ *
+ * - Protocol version
+ * - HTTP method
+ * - URI
+ * - Headers
+ * - Message body
+ *
+ * During construction, implementations MUST attempt to set the Host header from
+ * a provided URI if no Host header is provided.
+ *
+ * Requests are considered immutable; all methods that might change state MUST
+ * be implemented such that they retain the internal state of the current
+ * message and return an instance that contains the changed state.
+ */</span>
+<span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">RequestInterface</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">MessageInterface</span>
+</span>{
+    <span class="hljs-comment">/**
+     * Retrieves the message's request target.
+     *
+     * Retrieves the message's request-target either as it will appear (for
+     * clients), as it appeared at request (for servers), or as it was
+     * specified for the instance (see withRequestTarget()).
+     *
+     * In most cases, this will be the origin-form of the composed URI,
+     * unless a value was provided to the concrete implementation (see
+     * withRequestTarget() below).
+     *
+     * If no URI is available, and no request-target has been specifically
+     * provided, this method MUST return the string "/".
+     *
+     * <span class="hljs-doctag">@return</span> string
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getRequestTarget</span><span class="hljs-params">()</span></span>;
+
+    <span class="hljs-comment">/**
+     * Return an instance with the specific request-target.
+     *
+     * If the request needs a non-origin-form request-target — e.g., for
+     * specifying an absolute-form, authority-form, or asterisk-form —
+     * this method may be used to create an instance with the specified
+     * request-target, verbatim.
+     *
+     * This method MUST be implemented in such a way as to retain the
+     * immutability of the message, and MUST return an instance that has the
+     * changed request target.
+     *
+     * <span class="hljs-doctag">@see</span> http://tools.ietf.org/html/rfc7230#section-5.3 (for the various
+     *     request-target forms allowed in request messages)
+     * <span class="hljs-doctag">@param</span> mixed $requestTarget
+     * <span class="hljs-doctag">@return</span> static
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">withRequestTarget</span><span class="hljs-params">($requestTarget)</span></span>;
+
+    <span class="hljs-comment">/**
+     * Retrieves the HTTP method of the request.
+     *
+     * <span class="hljs-doctag">@return</span> string Returns the request method.
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getMethod</span><span class="hljs-params">()</span></span>;
+
+    <span class="hljs-comment">/**
+     * Return an instance with the provided HTTP method.
+     *
+     * While HTTP method names are typically all uppercase characters, HTTP
+     * method names are case-sensitive and thus implementations SHOULD NOT
+     * modify the given string.
+     *
+     * This method MUST be implemented in such a way as to retain the
+     * immutability of the message, and MUST return an instance that has the
+     * changed request method.
+     *
+     * <span class="hljs-doctag">@param</span> string $method Case-sensitive method.
+     * <span class="hljs-doctag">@return</span> static
+     * <span class="hljs-doctag">@throws</span> \InvalidArgumentException for invalid HTTP methods.
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">withMethod</span><span class="hljs-params">($method)</span></span>;
+
+    <span class="hljs-comment">/**
+     * Retrieves the URI instance.
+     *
+     * This method MUST return a UriInterface instance.
+     *
+     * <span class="hljs-doctag">@see</span> http://tools.ietf.org/html/rfc3986#section-4.3
+     * <span class="hljs-doctag">@return</span> UriInterface Returns a UriInterface instance
+     *     representing the URI of the request.
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getUri</span><span class="hljs-params">()</span></span>;
+
+    <span class="hljs-comment">/**
+     * Returns an instance with the provided URI.
+     *
+     * This method MUST update the Host header of the returned request by
+     * default if the URI contains a host component. If the URI does not
+     * contain a host component, any pre-existing Host header MUST be carried
+     * over to the returned request.
+     *
+     * You can opt-in to preserving the original state of the Host header by
+     * setting `$preserveHost` to `true`. When `$preserveHost` is set to
+     * `true`, this method interacts with the Host header in the following ways:
+     *
+     * - If the Host header is missing or empty, and the new URI contains
+     *   a host component, this method MUST update the Host header in the returned
+     *   request.
+     * - If the Host header is missing or empty, and the new URI does not contain a
+     *   host component, this method MUST NOT update the Host header in the returned
+     *   request.
+     * - If a Host header is present and non-empty, this method MUST NOT update
+     *   the Host header in the returned request.
+     *
+     * This method MUST be implemented in such a way as to retain the
+     * immutability of the message, and MUST return an instance that has the
+     * new UriInterface instance.
+     *
+     * <span class="hljs-doctag">@see</span> http://tools.ietf.org/html/rfc3986#section-4.3
+     * <span class="hljs-doctag">@param</span> UriInterface $uri New request URI to use.
+     * <span class="hljs-doctag">@param</span> bool $preserveHost Preserve the original state of the Host header.
+     * <span class="hljs-doctag">@return</span> static
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">withUri</span><span class="hljs-params">(UriInterface $uri, $preserveHost = false)</span></span>;
+}
+</code></pre>
+<h4>3.2.1 <code>Psr\Http\Message\ServerRequestInterface</code><a id="321-psrhttpmessageserverrequestinterface" href="#321-psrhttpmessageserverrequestinterface" name="321-psrhttpmessageserverrequestinterface" class="heading-permalink" aria-hidden="true" title="Permalink">¶</a></h4>
+<pre><code class="language-php hljs php" data-lang="php"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-keyword">namespace</span> <span class="hljs-title">Psr</span>\<span class="hljs-title">Http</span>\<span class="hljs-title">Message</span>;
+
+<span class="hljs-comment">/**
+ * Representation of an incoming, server-side HTTP request.
+ *
+ * Per the HTTP specification, this interface includes properties for
+ * each of the following:
+ *
+ * - Protocol version
+ * - HTTP method
+ * - URI
+ * - Headers
+ * - Message body
+ *
+ * Additionally, it encapsulates all data as it has arrived at the
+ * application from the CGI and/or PHP environment, including:
+ *
+ * - The values represented in $_SERVER.
+ * - Any cookies provided (generally via $_COOKIE)
+ * - Query string arguments (generally via $_GET, or as parsed via parse_str())
+ * - Upload files, if any (as represented by $_FILES)
+ * - Deserialized body parameters (generally from $_POST)
+ *
+ * $_SERVER values MUST be treated as immutable, as they represent application
+ * state at the time of request; as such, no methods are provided to allow
+ * modification of those values. The other values provide such methods, as they
+ * can be restored from $_SERVER or the request body, and may need treatment
+ * during the application (e.g., body parameters may be deserialized based on
+ * content type).
+ *
+ * Additionally, this interface recognizes the utility of introspecting a
+ * request to derive and match additional parameters (e.g., via URI path
+ * matching, decrypting cookie values, deserializing non-form-encoded body
+ * content, matching authorization headers to users, etc). These parameters
+ * are stored in an "attributes" property.
+ *
+ * Requests are considered immutable; all methods that might change state MUST
+ * be implemented such that they retain the internal state of the current
+ * message and return an instance that contains the changed state.
+ */</span>
+<span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">ServerRequestInterface</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">RequestInterface</span>
+</span>{
+    <span class="hljs-comment">/**
+     * Retrieve server parameters.
+     *
+     * Retrieves data related to the incoming request environment,
+     * typically derived from PHP's $_SERVER superglobal. The data IS NOT
+     * REQUIRED to originate from $_SERVER.
+     *
+     * <span class="hljs-doctag">@return</span> array
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getServerParams</span><span class="hljs-params">()</span></span>;
+
+    <span class="hljs-comment">/**
+     * Retrieve cookies.
+     *
+     * Retrieves cookies sent by the client to the server.
+     *
+     * The data MUST be compatible with the structure of the $_COOKIE
+     * superglobal.
+     *
+     * <span class="hljs-doctag">@return</span> array
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getCookieParams</span><span class="hljs-params">()</span></span>;
+
+    <span class="hljs-comment">/**
+     * Return an instance with the specified cookies.
+     *
+     * The data IS NOT REQUIRED to come from the $_COOKIE superglobal, but MUST
+     * be compatible with the structure of $_COOKIE. Typically, this data will
+     * be injected at instantiation.
+     *
+     * This method MUST NOT update the related Cookie header of the request
+     * instance, nor related values in the server params.
+     *
+     * This method MUST be implemented in such a way as to retain the
+     * immutability of the message, and MUST return an instance that has the
+     * updated cookie values.
+     *
+     * <span class="hljs-doctag">@param</span> array $cookies Array of key/value pairs representing cookies.
+     * <span class="hljs-doctag">@return</span> static
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">withCookieParams</span><span class="hljs-params">(array $cookies)</span></span>;
+
+    <span class="hljs-comment">/**
+     * Retrieve query string arguments.
+     *
+     * Retrieves the deserialized query string arguments, if any.
+     *
+     * <span class="hljs-doctag">Note:</span> the query params might not be in sync with the URI or server
+     * params. If you need to ensure you are only getting the original
+     * values, you may need to parse the query string from `getUri()-&gt;getQuery()`
+     * or from the `QUERY_STRING` server param.
+     *
+     * <span class="hljs-doctag">@return</span> array
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getQueryParams</span><span class="hljs-params">()</span></span>;
+
+    <span class="hljs-comment">/**
+     * Return an instance with the specified query string arguments.
+     *
+     * These values SHOULD remain immutable over the course of the incoming
+     * request. They MAY be injected during instantiation, such as from PHP's
+     * $_GET superglobal, or MAY be derived from some other value such as the
+     * URI. In cases where the arguments are parsed from the URI, the data
+     * MUST be compatible with what PHP's parse_str() would return for
+     * purposes of how duplicate query parameters are handled, and how nested
+     * sets are handled.
+     *
+     * Setting query string arguments MUST NOT change the URI stored by the
+     * request, nor the values in the server params.
+     *
+     * This method MUST be implemented in such a way as to retain the
+     * immutability of the message, and MUST return an instance that has the
+     * updated query string arguments.
+     *
+     * <span class="hljs-doctag">@param</span> array $query Array of query string arguments, typically from
+     *     $_GET.
+     * <span class="hljs-doctag">@return</span> static
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">withQueryParams</span><span class="hljs-params">(array $query)</span></span>;
+
+    <span class="hljs-comment">/**
+     * Retrieve normalized file upload data.
+     *
+     * This method returns upload metadata in a normalized tree, with each leaf
+     * an instance of Psr\Http\Message\UploadedFileInterface.
+     *
+     * These values MAY be prepared from $_FILES or the message body during
+     * instantiation, or MAY be injected via withUploadedFiles().
+     *
+     * <span class="hljs-doctag">@return</span> array An array tree of UploadedFileInterface instances; an empty
+     *     array MUST be returned if no data is present.
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getUploadedFiles</span><span class="hljs-params">()</span></span>;
+
+    <span class="hljs-comment">/**
+     * Create a new instance with the specified uploaded files.
+     *
+     * This method MUST be implemented in such a way as to retain the
+     * immutability of the message, and MUST return an instance that has the
+     * updated body parameters.
+     *
+     * <span class="hljs-doctag">@param</span> array $uploadedFiles An array tree of UploadedFileInterface instances.
+     * <span class="hljs-doctag">@return</span> static
+     * <span class="hljs-doctag">@throws</span> \InvalidArgumentException if an invalid structure is provided.
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">withUploadedFiles</span><span class="hljs-params">(array $uploadedFiles)</span></span>;
+
+    <span class="hljs-comment">/**
+     * Retrieve any parameters provided in the request body.
+     *
+     * If the request Content-Type is either application/x-www-form-urlencoded
+     * or multipart/form-data, and the request method is POST, this method MUST
+     * return the contents of $_POST.
+     *
+     * Otherwise, this method may return any results of deserializing
+     * the request body content; as parsing returns structured content, the
+     * potential types MUST be arrays or objects only. A null value indicates
+     * the absence of body content.
+     *
+     * <span class="hljs-doctag">@return</span> null|array|object The deserialized body parameters, if any.
+     *     These will typically be an array or object.
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getParsedBody</span><span class="hljs-params">()</span></span>;
+
+    <span class="hljs-comment">/**
+     * Return an instance with the specified body parameters.
+     *
+     * These MAY be injected during instantiation.
+     *
+     * If the request Content-Type is either application/x-www-form-urlencoded
+     * or multipart/form-data, and the request method is POST, use this method
+     * ONLY to inject the contents of $_POST.
+     *
+     * The data IS NOT REQUIRED to come from $_POST, but MUST be the results of
+     * deserializing the request body content. Deserialization/parsing returns
+     * structured data, and, as such, this method ONLY accepts arrays or objects,
+     * or a null value if nothing was available to parse.
+     *
+     * As an example, if content negotiation determines that the request data
+     * is a JSON payload, this method could be used to create a request
+     * instance with the deserialized parameters.
+     *
+     * This method MUST be implemented in such a way as to retain the
+     * immutability of the message, and MUST return an instance that has the
+     * updated body parameters.
+     *
+     * <span class="hljs-doctag">@param</span> null|array|object $data The deserialized body data. This will
+     *     typically be in an array or object.
+     * <span class="hljs-doctag">@return</span> static
+     * <span class="hljs-doctag">@throws</span> \InvalidArgumentException if an unsupported argument type is
+     *     provided.
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">withParsedBody</span><span class="hljs-params">($data)</span></span>;
+
+    <span class="hljs-comment">/**
+     * Retrieve attributes derived from the request.
+     *
+     * The request "attributes" may be used to allow injection of any
+     * parameters derived from the request: e.g., the results of path
+     * match operations; the results of decrypting cookies; the results of
+     * deserializing non-form-encoded message bodies; etc. Attributes
+     * will be application and request specific, and CAN be mutable.
+     *
+     * <span class="hljs-doctag">@return</span> mixed[] Attributes derived from the request.
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getAttributes</span><span class="hljs-params">()</span></span>;
+
+    <span class="hljs-comment">/**
+     * Retrieve a single derived request attribute.
+     *
+     * Retrieves a single derived request attribute as described in
+     * getAttributes(). If the attribute has not been previously set, returns
+     * the default value as provided.
+     *
+     * This method obviates the need for a hasAttribute() method, as it allows
+     * specifying a default value to return if the attribute is not found.
+     *
+     * <span class="hljs-doctag">@see</span> getAttributes()
+     * <span class="hljs-doctag">@param</span> string $name The attribute name.
+     * <span class="hljs-doctag">@param</span> mixed $default Default value to return if the attribute does not exist.
+     * <span class="hljs-doctag">@return</span> mixed
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getAttribute</span><span class="hljs-params">($name, $default = null)</span></span>;
+
+    <span class="hljs-comment">/**
+     * Return an instance with the specified derived request attribute.
+     *
+     * This method allows setting a single derived request attribute as
+     * described in getAttributes().
+     *
+     * This method MUST be implemented in such a way as to retain the
+     * immutability of the message, and MUST return an instance that has the
+     * updated attribute.
+     *
+     * <span class="hljs-doctag">@see</span> getAttributes()
+     * <span class="hljs-doctag">@param</span> string $name The attribute name.
+     * <span class="hljs-doctag">@param</span> mixed $value The value of the attribute.
+     * <span class="hljs-doctag">@return</span> static
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">withAttribute</span><span class="hljs-params">($name, $value)</span></span>;
+
+    <span class="hljs-comment">/**
+     * Return an instance that removes the specified derived request attribute.
+     *
+     * This method allows removing a single derived request attribute as
+     * described in getAttributes().
+     *
+     * This method MUST be implemented in such a way as to retain the
+     * immutability of the message, and MUST return an instance that removes
+     * the attribute.
+     *
+     * <span class="hljs-doctag">@see</span> getAttributes()
+     * <span class="hljs-doctag">@param</span> string $name The attribute name.
+     * <span class="hljs-doctag">@return</span> static
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">withoutAttribute</span><span class="hljs-params">($name)</span></span>;
+}
+</code></pre>
+<h3>3.3 <code>Psr\Http\Message\ResponseInterface</code><a id="33-psrhttpmessageresponseinterface" href="#33-psrhttpmessageresponseinterface" name="33-psrhttpmessageresponseinterface" class="heading-permalink" aria-hidden="true" title="Permalink">¶</a></h3>
+<pre><code class="language-php hljs php" data-lang="php"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-keyword">namespace</span> <span class="hljs-title">Psr</span>\<span class="hljs-title">Http</span>\<span class="hljs-title">Message</span>;
+
+<span class="hljs-comment">/**
+ * Representation of an outgoing, server-side response.
+ *
+ * Per the HTTP specification, this interface includes properties for
+ * each of the following:
+ *
+ * - Protocol version
+ * - Status code and reason phrase
+ * - Headers
+ * - Message body
+ *
+ * Responses are considered immutable; all methods that might change state MUST
+ * be implemented such that they retain the internal state of the current
+ * message and return an instance that contains the changed state.
+ */</span>
+<span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">ResponseInterface</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">MessageInterface</span>
+</span>{
+    <span class="hljs-comment">/**
+     * Gets the response status code.
+     *
+     * The status code is a 3-digit integer result code of the server's attempt
+     * to understand and satisfy the request.
+     *
+     * <span class="hljs-doctag">@return</span> int Status code.
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getStatusCode</span><span class="hljs-params">()</span></span>;
+
+    <span class="hljs-comment">/**
+     * Return an instance with the specified status code and, optionally, reason phrase.
+     *
+     * If no reason phrase is specified, implementations MAY choose to default
+     * to the RFC 7231 or IANA recommended reason phrase for the response's
+     * status code.
+     *
+     * This method MUST be implemented in such a way as to retain the
+     * immutability of the message, and MUST return an instance that has the
+     * updated status and reason phrase.
+     *
+     * <span class="hljs-doctag">@see</span> http://tools.ietf.org/html/rfc7231#section-6
+     * <span class="hljs-doctag">@see</span> http://www.iana.org/assignments/http-status-codes/http-status-codes.xhtml
+     * <span class="hljs-doctag">@param</span> int $code The 3-digit integer result code to set.
+     * <span class="hljs-doctag">@param</span> string $reasonPhrase The reason phrase to use with the
+     *     provided status code; if none is provided, implementations MAY
+     *     use the defaults as suggested in the HTTP specification.
+     * <span class="hljs-doctag">@return</span> static
+     * <span class="hljs-doctag">@throws</span> \InvalidArgumentException For invalid status code arguments.
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">withStatus</span><span class="hljs-params">($code, $reasonPhrase = <span class="hljs-string">''</span>)</span></span>;
+
+    <span class="hljs-comment">/**
+     * Gets the response reason phrase associated with the status code.
+     *
+     * Because a reason phrase is not a required element in a response
+     * status line, the reason phrase value MAY be empty. Implementations MAY
+     * choose to return the default RFC 7231 recommended reason phrase (or those
+     * listed in the IANA HTTP Status Code Registry) for the response's
+     * status code.
+     *
+     * <span class="hljs-doctag">@see</span> http://tools.ietf.org/html/rfc7231#section-6
+     * <span class="hljs-doctag">@see</span> http://www.iana.org/assignments/http-status-codes/http-status-codes.xhtml
+     * <span class="hljs-doctag">@return</span> string Reason phrase; must return an empty string if none present.
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getReasonPhrase</span><span class="hljs-params">()</span></span>;
+}
+</code></pre>
+<h3>3.4 <code>Psr\Http\Message\StreamInterface</code><a id="34-psrhttpmessagestreaminterface" href="#34-psrhttpmessagestreaminterface" name="34-psrhttpmessagestreaminterface" class="heading-permalink" aria-hidden="true" title="Permalink">¶</a></h3>
+<pre><code class="language-php hljs php" data-lang="php"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-keyword">namespace</span> <span class="hljs-title">Psr</span>\<span class="hljs-title">Http</span>\<span class="hljs-title">Message</span>;
+
+<span class="hljs-comment">/**
+ * Describes a data stream.
+ *
+ * Typically, an instance will wrap a PHP stream; this interface provides
+ * a wrapper around the most common operations, including serialization of
+ * the entire stream to a string.
+ */</span>
+<span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">StreamInterface</span>
+</span>{
+    <span class="hljs-comment">/**
+     * Reads all data from the stream into a string, from the beginning to end.
+     *
+     * This method MUST attempt to seek to the beginning of the stream before
+     * reading data and read the stream until the end is reached.
+     *
+     * Warning: This could attempt to load a large amount of data into memory.
+     *
+     * This method MUST NOT raise an exception in order to conform with PHP's
+     * string casting operations.
+     *
+     * <span class="hljs-doctag">@see</span> http://php.net/manual/en/language.oop5.magic.php#object.tostring
+     * <span class="hljs-doctag">@return</span> string
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__toString</span><span class="hljs-params">()</span></span>;
+
+    <span class="hljs-comment">/**
+     * Closes the stream and any underlying resources.
+     *
+     * <span class="hljs-doctag">@return</span> void
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">close</span><span class="hljs-params">()</span></span>;
+
+    <span class="hljs-comment">/**
+     * Separates any underlying resources from the stream.
+     *
+     * After the stream has been detached, the stream is in an unusable state.
+     *
+     * <span class="hljs-doctag">@return</span> resource|null Underlying PHP stream, if any
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">detach</span><span class="hljs-params">()</span></span>;
+
+    <span class="hljs-comment">/**
+     * Get the size of the stream if known.
+     *
+     * <span class="hljs-doctag">@return</span> int|null Returns the size in bytes if known, or null if unknown.
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getSize</span><span class="hljs-params">()</span></span>;
+
+    <span class="hljs-comment">/**
+     * Returns the current position of the file read/write pointer
+     *
+     * <span class="hljs-doctag">@return</span> int Position of the file pointer
+     * <span class="hljs-doctag">@throws</span> \RuntimeException on error.
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">tell</span><span class="hljs-params">()</span></span>;
+
+    <span class="hljs-comment">/**
+     * Returns true if the stream is at the end of the stream.
+     *
+     * <span class="hljs-doctag">@return</span> bool
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">eof</span><span class="hljs-params">()</span></span>;
+
+    <span class="hljs-comment">/**
+     * Returns whether or not the stream is seekable.
+     *
+     * <span class="hljs-doctag">@return</span> bool
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">isSeekable</span><span class="hljs-params">()</span></span>;
+
+    <span class="hljs-comment">/**
+     * Seek to a position in the stream.
+     *
+     * <span class="hljs-doctag">@see</span> http://www.php.net/manual/en/function.fseek.php
+     * <span class="hljs-doctag">@param</span> int $offset Stream offset
+     * <span class="hljs-doctag">@param</span> int $whence Specifies how the cursor position will be calculated
+     *     based on the seek offset. Valid values are identical to the built-in
+     *     PHP $whence values for `fseek()`.  SEEK_SET: Set position equal to
+     *     offset bytes SEEK_CUR: Set position to current location plus offset
+     *     SEEK_END: Set position to end-of-stream plus offset.
+     * <span class="hljs-doctag">@throws</span> \RuntimeException on failure.
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">seek</span><span class="hljs-params">($offset, $whence = SEEK_SET)</span></span>;
+
+    <span class="hljs-comment">/**
+     * Seek to the beginning of the stream.
+     *
+     * If the stream is not seekable, this method will raise an exception;
+     * otherwise, it will perform a seek(0).
+     *
+     * <span class="hljs-doctag">@see</span> seek()
+     * <span class="hljs-doctag">@see</span> http://www.php.net/manual/en/function.fseek.php
+     * <span class="hljs-doctag">@throws</span> \RuntimeException on failure.
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">rewind</span><span class="hljs-params">()</span></span>;
+
+    <span class="hljs-comment">/**
+     * Returns whether or not the stream is writable.
+     *
+     * <span class="hljs-doctag">@return</span> bool
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">isWritable</span><span class="hljs-params">()</span></span>;
+
+    <span class="hljs-comment">/**
+     * Write data to the stream.
+     *
+     * <span class="hljs-doctag">@param</span> string $string The string that is to be written.
+     * <span class="hljs-doctag">@return</span> int Returns the number of bytes written to the stream.
+     * <span class="hljs-doctag">@throws</span> \RuntimeException on failure.
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">write</span><span class="hljs-params">($string)</span></span>;
+
+    <span class="hljs-comment">/**
+     * Returns whether or not the stream is readable.
+     *
+     * <span class="hljs-doctag">@return</span> bool
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">isReadable</span><span class="hljs-params">()</span></span>;
+
+    <span class="hljs-comment">/**
+     * Read data from the stream.
+     *
+     * <span class="hljs-doctag">@param</span> int $length Read up to $length bytes from the object and return
+     *     them. Fewer than $length bytes may be returned if underlying stream
+     *     call returns fewer bytes.
+     * <span class="hljs-doctag">@return</span> string Returns the data read from the stream, or an empty string
+     *     if no bytes are available.
+     * <span class="hljs-doctag">@throws</span> \RuntimeException if an error occurs.
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">read</span><span class="hljs-params">($length)</span></span>;
+
+    <span class="hljs-comment">/**
+     * Returns the remaining contents in a string
+     *
+     * <span class="hljs-doctag">@return</span> string
+     * <span class="hljs-doctag">@throws</span> \RuntimeException if unable to read.
+     * <span class="hljs-doctag">@throws</span> \RuntimeException if error occurs while reading.
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getContents</span><span class="hljs-params">()</span></span>;
+
+    <span class="hljs-comment">/**
+     * Get stream metadata as an associative array or retrieve a specific key.
+     *
+     * The keys returned are identical to the keys returned from PHP's
+     * stream_get_meta_data() function.
+     *
+     * <span class="hljs-doctag">@see</span> http://php.net/manual/en/function.stream-get-meta-data.php
+     * <span class="hljs-doctag">@param</span> string $key Specific metadata to retrieve.
+     * <span class="hljs-doctag">@return</span> array|mixed|null Returns an associative array if no key is
+     *     provided. Returns a specific key value if a key is provided and the
+     *     value is found, or null if the key is not found.
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getMetadata</span><span class="hljs-params">($key = null)</span></span>;
+}
+</code></pre>
+<h3>3.5 <code>Psr\Http\Message\UriInterface</code><a id="35-psrhttpmessageuriinterface" href="#35-psrhttpmessageuriinterface" name="35-psrhttpmessageuriinterface" class="heading-permalink" aria-hidden="true" title="Permalink">¶</a></h3>
+<pre><code class="language-php hljs php" data-lang="php"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-keyword">namespace</span> <span class="hljs-title">Psr</span>\<span class="hljs-title">Http</span>\<span class="hljs-title">Message</span>;
+
+<span class="hljs-comment">/**
+ * Value object representing a URI.
+ *
+ * This interface is meant to represent URIs according to RFC 3986 and to
+ * provide methods for most common operations. Additional functionality for
+ * working with URIs can be provided on top of the interface or externally.
+ * Its primary use is for HTTP requests, but may also be used in other
+ * contexts.
+ *
+ * Instances of this interface are considered immutable; all methods that
+ * might change state MUST be implemented such that they retain the internal
+ * state of the current instance and return an instance that contains the
+ * changed state.
+ *
+ * Typically the Host header will also be present in the request message.
+ * For server-side requests, the scheme will typically be discoverable in the
+ * server parameters.
+ *
+ * <span class="hljs-doctag">@see</span> http://tools.ietf.org/html/rfc3986 (the URI specification)
+ */</span>
+<span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">UriInterface</span>
+</span>{
+    <span class="hljs-comment">/**
+     * Retrieve the scheme component of the URI.
+     *
+     * If no scheme is present, this method MUST return an empty string.
+     *
+     * The value returned MUST be normalized to lowercase, per RFC 3986
+     * Section 3.1.
+     *
+     * The trailing ":" character is not part of the scheme and MUST NOT be
+     * added.
+     *
+     * <span class="hljs-doctag">@see</span> https://tools.ietf.org/html/rfc3986#section-3.1
+     * <span class="hljs-doctag">@return</span> string The URI scheme.
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getScheme</span><span class="hljs-params">()</span></span>;
+
+    <span class="hljs-comment">/**
+     * Retrieve the authority component of the URI.
+     *
+     * If no authority information is present, this method MUST return an empty
+     * string.
+     *
+     * The authority syntax of the URI is:
+     *
+     * &lt;pre&gt;
+     * [user-info@]host[:port]
+     * &lt;/pre&gt;
+     *
+     * If the port component is not set or is the standard port for the current
+     * scheme, it SHOULD NOT be included.
+     *
+     * <span class="hljs-doctag">@see</span> https://tools.ietf.org/html/rfc3986#section-3.2
+     * <span class="hljs-doctag">@return</span> string The URI authority, in "[user-info@]host[:port]" format.
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getAuthority</span><span class="hljs-params">()</span></span>;
+
+    <span class="hljs-comment">/**
+     * Retrieve the user information component of the URI.
+     *
+     * If no user information is present, this method MUST return an empty
+     * string.
+     *
+     * If a user is present in the URI, this will return that value;
+     * additionally, if the password is also present, it will be appended to the
+     * user value, with a colon (":") separating the values.
+     *
+     * The trailing "@" character is not part of the user information and MUST
+     * NOT be added.
+     *
+     * <span class="hljs-doctag">@return</span> string The URI user information, in "username[:password]" format.
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getUserInfo</span><span class="hljs-params">()</span></span>;
+
+    <span class="hljs-comment">/**
+     * Retrieve the host component of the URI.
+     *
+     * If no host is present, this method MUST return an empty string.
+     *
+     * The value returned MUST be normalized to lowercase, per RFC 3986
+     * Section 3.2.2.
+     *
+     * <span class="hljs-doctag">@see</span> http://tools.ietf.org/html/rfc3986#section-3.2.2
+     * <span class="hljs-doctag">@return</span> string The URI host.
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getHost</span><span class="hljs-params">()</span></span>;
+
+    <span class="hljs-comment">/**
+     * Retrieve the port component of the URI.
+     *
+     * If a port is present, and it is non-standard for the current scheme,
+     * this method MUST return it as an integer. If the port is the standard port
+     * used with the current scheme, this method SHOULD return null.
+     *
+     * If no port is present, and no scheme is present, this method MUST return
+     * a null value.
+     *
+     * If no port is present, but a scheme is present, this method MAY return
+     * the standard port for that scheme, but SHOULD return null.
+     *
+     * <span class="hljs-doctag">@return</span> null|int The URI port.
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getPort</span><span class="hljs-params">()</span></span>;
+
+    <span class="hljs-comment">/**
+     * Retrieve the path component of the URI.
+     *
+     * The path can either be empty or absolute (starting with a slash) or
+     * rootless (not starting with a slash). Implementations MUST support all
+     * three syntaxes.
+     *
+     * Normally, the empty path "" and absolute path "/" are considered equal as
+     * defined in RFC 7230 Section 2.7.3. But this method MUST NOT automatically
+     * do this normalization because in contexts with a trimmed base path, e.g.
+     * the front controller, this difference becomes significant. It's the task
+     * of the user to handle both "" and "/".
+     *
+     * The value returned MUST be percent-encoded, but MUST NOT double-encode
+     * any characters. To determine what characters to encode, please refer to
+     * RFC 3986, Sections 2 and 3.3.
+     *
+     * As an example, if the value should include a slash ("/") not intended as
+     * delimiter between path segments, that value MUST be passed in encoded
+     * form (e.g., "%2F") to the instance.
+     *
+     * <span class="hljs-doctag">@see</span> https://tools.ietf.org/html/rfc3986#section-2
+     * <span class="hljs-doctag">@see</span> https://tools.ietf.org/html/rfc3986#section-3.3
+     * <span class="hljs-doctag">@return</span> string The URI path.
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getPath</span><span class="hljs-params">()</span></span>;
+
+    <span class="hljs-comment">/**
+     * Retrieve the query string of the URI.
+     *
+     * If no query string is present, this method MUST return an empty string.
+     *
+     * The leading "?" character is not part of the query and MUST NOT be
+     * added.
+     *
+     * The value returned MUST be percent-encoded, but MUST NOT double-encode
+     * any characters. To determine what characters to encode, please refer to
+     * RFC 3986, Sections 2 and 3.4.
+     *
+     * As an example, if a value in a key/value pair of the query string should
+     * include an ampersand ("&amp;") not intended as a delimiter between values,
+     * that value MUST be passed in encoded form (e.g., "%26") to the instance.
+     *
+     * <span class="hljs-doctag">@see</span> https://tools.ietf.org/html/rfc3986#section-2
+     * <span class="hljs-doctag">@see</span> https://tools.ietf.org/html/rfc3986#section-3.4
+     * <span class="hljs-doctag">@return</span> string The URI query string.
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getQuery</span><span class="hljs-params">()</span></span>;
+
+    <span class="hljs-comment">/**
+     * Retrieve the fragment component of the URI.
+     *
+     * If no fragment is present, this method MUST return an empty string.
+     *
+     * The leading "#" character is not part of the fragment and MUST NOT be
+     * added.
+     *
+     * The value returned MUST be percent-encoded, but MUST NOT double-encode
+     * any characters. To determine what characters to encode, please refer to
+     * RFC 3986, Sections 2 and 3.5.
+     *
+     * <span class="hljs-doctag">@see</span> https://tools.ietf.org/html/rfc3986#section-2
+     * <span class="hljs-doctag">@see</span> https://tools.ietf.org/html/rfc3986#section-3.5
+     * <span class="hljs-doctag">@return</span> string The URI fragment.
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getFragment</span><span class="hljs-params">()</span></span>;
+
+    <span class="hljs-comment">/**
+     * Return an instance with the specified scheme.
+     *
+     * This method MUST retain the state of the current instance, and return
+     * an instance that contains the specified scheme.
+     *
+     * Implementations MUST support the schemes "http" and "https" case
+     * insensitively, and MAY accommodate other schemes if required.
+     *
+     * An empty scheme is equivalent to removing the scheme.
+     *
+     * <span class="hljs-doctag">@param</span> string $scheme The scheme to use with the new instance.
+     * <span class="hljs-doctag">@return</span> static A new instance with the specified scheme.
+     * <span class="hljs-doctag">@throws</span> \InvalidArgumentException for invalid schemes.
+     * <span class="hljs-doctag">@throws</span> \InvalidArgumentException for unsupported schemes.
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">withScheme</span><span class="hljs-params">($scheme)</span></span>;
+
+    <span class="hljs-comment">/**
+     * Return an instance with the specified user information.
+     *
+     * This method MUST retain the state of the current instance, and return
+     * an instance that contains the specified user information.
+     *
+     * Password is optional, but the user information MUST include the
+     * user; an empty string for the user is equivalent to removing user
+     * information.
+     *
+     * <span class="hljs-doctag">@param</span> string $user The user name to use for authority.
+     * <span class="hljs-doctag">@param</span> null|string $password The password associated with $user.
+     * <span class="hljs-doctag">@return</span> static A new instance with the specified user information.
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">withUserInfo</span><span class="hljs-params">($user, $password = null)</span></span>;
+
+    <span class="hljs-comment">/**
+     * Return an instance with the specified host.
+     *
+     * This method MUST retain the state of the current instance, and return
+     * an instance that contains the specified host.
+     *
+     * An empty host value is equivalent to removing the host.
+     *
+     * <span class="hljs-doctag">@param</span> string $host The hostname to use with the new instance.
+     * <span class="hljs-doctag">@return</span> static A new instance with the specified host.
+     * <span class="hljs-doctag">@throws</span> \InvalidArgumentException for invalid hostnames.
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">withHost</span><span class="hljs-params">($host)</span></span>;
+
+    <span class="hljs-comment">/**
+     * Return an instance with the specified port.
+     *
+     * This method MUST retain the state of the current instance, and return
+     * an instance that contains the specified port.
+     *
+     * Implementations MUST raise an exception for ports outside the
+     * established TCP and UDP port ranges.
+     *
+     * A null value provided for the port is equivalent to removing the port
+     * information.
+     *
+     * <span class="hljs-doctag">@param</span> null|int $port The port to use with the new instance; a null value
+     *     removes the port information.
+     * <span class="hljs-doctag">@return</span> static A new instance with the specified port.
+     * <span class="hljs-doctag">@throws</span> \InvalidArgumentException for invalid ports.
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">withPort</span><span class="hljs-params">($port)</span></span>;
+
+    <span class="hljs-comment">/**
+     * Return an instance with the specified path.
+     *
+     * This method MUST retain the state of the current instance, and return
+     * an instance that contains the specified path.
+     *
+     * The path can either be empty or absolute (starting with a slash) or
+     * rootless (not starting with a slash). Implementations MUST support all
+     * three syntaxes.
+     *
+     * If an HTTP path is intended to be host-relative rather than path-relative
+     * then it must begin with a slash ("/"). HTTP paths not starting with a slash
+     * are assumed to be relative to some base path known to the application or
+     * consumer.
+     *
+     * Users can provide both encoded and decoded path characters.
+     * Implementations ensure the correct encoding as outlined in getPath().
+     *
+     * <span class="hljs-doctag">@param</span> string $path The path to use with the new instance.
+     * <span class="hljs-doctag">@return</span> static A new instance with the specified path.
+     * <span class="hljs-doctag">@throws</span> \InvalidArgumentException for invalid paths.
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">withPath</span><span class="hljs-params">($path)</span></span>;
+
+    <span class="hljs-comment">/**
+     * Return an instance with the specified query string.
+     *
+     * This method MUST retain the state of the current instance, and return
+     * an instance that contains the specified query string.
+     *
+     * Users can provide both encoded and decoded query characters.
+     * Implementations ensure the correct encoding as outlined in getQuery().
+     *
+     * An empty query string value is equivalent to removing the query string.
+     *
+     * <span class="hljs-doctag">@param</span> string $query The query string to use with the new instance.
+     * <span class="hljs-doctag">@return</span> static A new instance with the specified query string.
+     * <span class="hljs-doctag">@throws</span> \InvalidArgumentException for invalid query strings.
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">withQuery</span><span class="hljs-params">($query)</span></span>;
+
+    <span class="hljs-comment">/**
+     * Return an instance with the specified URI fragment.
+     *
+     * This method MUST retain the state of the current instance, and return
+     * an instance that contains the specified URI fragment.
+     *
+     * Users can provide both encoded and decoded fragment characters.
+     * Implementations ensure the correct encoding as outlined in getFragment().
+     *
+     * An empty fragment value is equivalent to removing the fragment.
+     *
+     * <span class="hljs-doctag">@param</span> string $fragment The fragment to use with the new instance.
+     * <span class="hljs-doctag">@return</span> static A new instance with the specified fragment.
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">withFragment</span><span class="hljs-params">($fragment)</span></span>;
+
+    <span class="hljs-comment">/**
+     * Return the string representation as a URI reference.
+     *
+     * Depending on which components of the URI are present, the resulting
+     * string is either a full URI or relative reference according to RFC 3986,
+     * Section 4.1. The method concatenates the various components of the URI,
+     * using the appropriate delimiters:
+     *
+     * - If a scheme is present, it MUST be suffixed by ":".
+     * - If an authority is present, it MUST be prefixed by "//".
+     * - The path can be concatenated without delimiters. But there are two
+     *   cases where the path has to be adjusted to make the URI reference
+     *   valid as PHP does not allow to throw an exception in __toString():
+     *     - If the path is rootless and an authority is present, the path MUST
+     *       be prefixed by "/".
+     *     - If the path is starting with more than one "/" and no authority is
+     *       present, the starting slashes MUST be reduced to one.
+     * - If a query is present, it MUST be prefixed by "?".
+     * - If a fragment is present, it MUST be prefixed by "#".
+     *
+     * <span class="hljs-doctag">@see</span> http://tools.ietf.org/html/rfc3986#section-4.1
+     * <span class="hljs-doctag">@return</span> string
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__toString</span><span class="hljs-params">()</span></span>;
+}
+</code></pre>
+<h3>3.6 <code>Psr\Http\Message\UploadedFileInterface</code><a id="36-psrhttpmessageuploadedfileinterface" href="#36-psrhttpmessageuploadedfileinterface" name="36-psrhttpmessageuploadedfileinterface" class="heading-permalink" aria-hidden="true" title="Permalink">¶</a></h3>
+<pre><code class="language-php hljs php" data-lang="php"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-keyword">namespace</span> <span class="hljs-title">Psr</span>\<span class="hljs-title">Http</span>\<span class="hljs-title">Message</span>;
+
+<span class="hljs-comment">/**
+ * Value object representing a file uploaded through an HTTP request.
+ *
+ * Instances of this interface are considered immutable; all methods that
+ * might change state MUST be implemented such that they retain the internal
+ * state of the current instance and return an instance that contains the
+ * changed state.
+ */</span>
+<span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">UploadedFileInterface</span>
+</span>{
+    <span class="hljs-comment">/**
+     * Retrieve a stream representing the uploaded file.
+     *
+     * This method MUST return a StreamInterface instance, representing the
+     * uploaded file. The purpose of this method is to allow utilizing native PHP
+     * stream functionality to manipulate the file upload, such as
+     * stream_copy_to_stream() (though the result will need to be decorated in a
+     * native PHP stream wrapper to work with such functions).
+     *
+     * If the moveTo() method has been called previously, this method MUST raise
+     * an exception.
+     *
+     * <span class="hljs-doctag">@return</span> StreamInterface Stream representation of the uploaded file.
+     * <span class="hljs-doctag">@throws</span> \RuntimeException in cases when no stream is available.
+     * <span class="hljs-doctag">@throws</span> \RuntimeException in cases when no stream can be created.
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getStream</span><span class="hljs-params">()</span></span>;
+
+    <span class="hljs-comment">/**
+     * Move the uploaded file to a new location.
+     *
+     * Use this method as an alternative to move_uploaded_file(). This method is
+     * guaranteed to work in both SAPI and non-SAPI environments.
+     * Implementations must determine which environment they are in, and use the
+     * appropriate method (move_uploaded_file(), rename(), or a stream
+     * operation) to perform the operation.
+     *
+     * $targetPath may be an absolute path, or a relative path. If it is a
+     * relative path, resolution should be the same as used by PHP's rename()
+     * function.
+     *
+     * The original file or stream MUST be removed on completion.
+     *
+     * If this method is called more than once, any subsequent calls MUST raise
+     * an exception.
+     *
+     * When used in an SAPI environment where $_FILES is populated, when writing
+     * files via moveTo(), is_uploaded_file() and move_uploaded_file() SHOULD be
+     * used to ensure permissions and upload status are verified correctly.
+     *
+     * If you wish to move to a stream, use getStream(), as SAPI operations
+     * cannot guarantee writing to stream destinations.
+     *
+     * <span class="hljs-doctag">@see</span> http://php.net/is_uploaded_file
+     * <span class="hljs-doctag">@see</span> http://php.net/move_uploaded_file
+     * <span class="hljs-doctag">@param</span> string $targetPath Path to which to move the uploaded file.
+     * <span class="hljs-doctag">@throws</span> \InvalidArgumentException if the $targetPath specified is invalid.
+     * <span class="hljs-doctag">@throws</span> \RuntimeException on any error during the move operation.
+     * <span class="hljs-doctag">@throws</span> \RuntimeException on the second or subsequent call to the method.
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">moveTo</span><span class="hljs-params">($targetPath)</span></span>;
+
+    <span class="hljs-comment">/**
+     * Retrieve the file size.
+     *
+     * Implementations SHOULD return the value stored in the "size" key of
+     * the file in the $_FILES array if available, as PHP calculates this based
+     * on the actual size transmitted.
+     *
+     * <span class="hljs-doctag">@return</span> int|null The file size in bytes or null if unknown.
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getSize</span><span class="hljs-params">()</span></span>;
+
+    <span class="hljs-comment">/**
+     * Retrieve the error associated with the uploaded file.
+     *
+     * The return value MUST be one of PHP's UPLOAD_ERR_XXX constants.
+     *
+     * If the file was uploaded successfully, this method MUST return
+     * UPLOAD_ERR_OK.
+     *
+     * Implementations SHOULD return the value stored in the "error" key of
+     * the file in the $_FILES array.
+     *
+     * <span class="hljs-doctag">@see</span> http://php.net/manual/en/features.file-upload.errors.php
+     * <span class="hljs-doctag">@return</span> int One of PHP's UPLOAD_ERR_XXX constants.
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getError</span><span class="hljs-params">()</span></span>;
+
+    <span class="hljs-comment">/**
+     * Retrieve the filename sent by the client.
+     *
+     * Do not trust the value returned by this method. A client could send
+     * a malicious filename with the intention to corrupt or hack your
+     * application.
+     *
+     * Implementations SHOULD return the value stored in the "name" key of
+     * the file in the $_FILES array.
+     *
+     * <span class="hljs-doctag">@return</span> string|null The filename sent by the client or null if none
+     *     was provided.
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getClientFilename</span><span class="hljs-params">()</span></span>;
+
+    <span class="hljs-comment">/**
+     * Retrieve the media type sent by the client.
+     *
+     * Do not trust the value returned by this method. A client could send
+     * a malicious media type with the intention to corrupt or hack your
+     * application.
+     *
+     * Implementations SHOULD return the value stored in the "type" key of
+     * the file in the $_FILES array.
+     *
+     * <span class="hljs-doctag">@return</span> string|null The media type sent by the client or null if none
+     *     was provided.
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getClientMediaType</span><span class="hljs-params">()</span></span>;
+}
+</code></pre>
+
+                    </div>
+    </div>
+        <div class="columns__column columns__column--4 columns__column--padding_left">
+        <nav class="sidebar">
+            <h2 class="sidebar__title">Additional Info:</h2>
+            <ul class="sidebar__list">
+                                    <li class="sidebar__item">
+                        <a class="sidebar__link sidebar__link--active"
+                           href="">PSR-7: HTTP message interfaces</a>
+                    </li>
+                                    <li class="sidebar__item">
+                        <a class="sidebar__link "
+                           href="/psr/psr-7/meta">PSR-7 Meta Document</a>
+                    </li>
+                            </ul>
+        </nav>
+    </div>
+    </div>
+
+            </div>
+</div>
+</div>
+
+<div class="site_footer_links">
+    <div class="center">
+        <div class="site_footer_links__content">
+            <ul class="site_footer_links__list">
+                <li class="site_footer_links__item site_footer_links__item--twitter">
+                    <a class="site_footer_links__link" href="https://twitter.com/phpfig">Follow us on Twitter</a>
+                </li>
+                <li class="site_footer_links__item site_footer_links__item--discord">
+                    <a class="site_footer_links__link" href="https://discord.gg/php-fig">Discuss on Discord</a>
+                </li>
+                <li class="site_footer_links__item site_footer_links__item--github">
+                    <a class="site_footer_links__link" href="https://github.com/php-fig">Contribute via GitHub</a>
+                </li>
+                <li class="site_footer_links__item site_footer_links__item--mailing_list">
+                    <a class="site_footer_links__link" href="https://groups.google.com/forum/?fromgroups#!forum/php-fig">Join our mailing list</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<footer class="site_footer">
+    <div class="center">
+        <span class="site_footer__section">&copy; <script type="text/javascript">document.write(new Date().getFullYear());</script> PHP Framework Interop Group.</span>
+        <span class="site_footer__section">Site design by <a class="site_footer__link" href="https://twitter.com/reinink" target="_blank">Jonathan Reinink</a>.</span>
+        <span class="site_footer__section platform_sh_widget">Hosting sponsored by the <a title="platform.sh" href="https://platform.sh/?utm_campaign=sponsored_sites&utm_source=php_fig" target="_blank"><img class="platformsh-logo" src="/img/platform-sh-logo.png" alt="platform.sh logo" style="padding: 0 3px 0 3px;height: 1.1em; vertical-align: text-bottom;"/></a> <a class="site_footer__link" href="https://platform.sh/?utm_campaign=sponsored_sites&utm_source=php_fig" target="_blank">PHP PaaS</a></span>
+    </div>
+</footer>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="/js/main.js"></script>
+<script type="text/javascript">
+    var _gaq = _gaq || [];_gaq.push(['_setAccount','UA-1997599-8']);_gaq.push(['_setDomainName','php-fig.org']);_gaq.push(['_trackPageview']);
+    (function(){var ga=document.createElement('script');ga.type='text/javascript';ga.async=true;ga.src='https://ssl.google-analytics.com/ga.js';var s=document.getElementsByTagName('script')[0];s.parentNode.insertBefore(ga,s);})();
+</script>
+
+</body>
+</html>

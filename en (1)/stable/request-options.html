@@ -1,0 +1,1267 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+  
+  <!-- Licensed under the Apache 2.0 License -->
+  <link rel="stylesheet" type="text/css" href="_static/fonts/open-sans/stylesheet.css" />
+  <!-- Licensed under the SIL Open Font License -->
+  <link rel="stylesheet" type="text/css" href="_static/fonts/source-serif-pro/source-serif-pro.css" />
+  <link rel="stylesheet" type="text/css" href="_static/css/bootstrap.min.css" />
+  <link rel="stylesheet" type="text/css" href="_static/css/bootstrap-theme.min.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+    <title>Request Options &mdash; Guzzle Documentation</title>
+    
+    <link rel="stylesheet" href="_static/guzzle.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="https://assets.readthedocs.org/static/css/badge_only.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="https://assets.readthedocs.org/static/javascript/readthedocs-doc-embed.js"></script>
+    <link rel="top" title="Guzzle Documentation" href="index.html" />
+    <link rel="next" title="Guzzle and PSR-7" href="psr7.html" />
+    <link rel="prev" title="Quickstart" href="quickstart.html" />
+  
+   
+
+  
+<!-- RTD Extra Head -->
+
+    <!--
+    Always link to the latest version, as canonical.
+    http://docs.readthedocs.org/en/latest/canonical.html
+    -->
+    <link rel="canonical" href="https://docs.guzzlephp.org/en/stable/request-options.html" />
+
+<link rel="stylesheet" href="https://assets.readthedocs.org/static/css/readthedocs-doc-embed.css" type="text/css" />
+
+<script type="application/json" id="READTHEDOCS_DATA">{"ad_free": false, "api_host": "https://readthedocs.org", "build_date": "2021-10-18T09:53:21Z", "builder": "sphinx", "canonical_url": "https://docs.guzzlephp.org/en/stable/", "commit": "868b3571", "docroot": "/docs/", "features": {"docsearch_disabled": false}, "global_analytics_code": "UA-17997319-1", "language": "en", "page": "request-options", "programming_language": "php", "project": "guzzle", "proxied_api_host": "/_", "source_suffix": ".rst", "subprojects": {}, "theme": "guzzle_sphinx_theme", "user_analytics_code": "UA-22752917-1", "version": "stable"}</script>
+
+<!--
+Using this variable directly instead of using `JSON.parse` is deprecated.
+The READTHEDOCS_DATA global variable will be removed in the future.
+-->
+<script type="text/javascript">
+READTHEDOCS_DATA = JSON.parse(document.getElementById('READTHEDOCS_DATA').innerHTML);
+</script>
+
+<script type="text/javascript" src="https://assets.readthedocs.org/static/javascript/readthedocs-analytics.js" async="async"></script>
+
+<!-- end RTD <extrahead> -->
+</head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="psr7.html" title="Guzzle and PSR-7"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="quickstart.html" title="Quickstart"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Guzzle 7</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="container-wrapper">
+
+      <div id="mobile-toggle">
+        <a href="#"><span class="glyphicon glyphicon-align-justify" aria-hidden="true"></span></a>
+      </div>
+  <div id="left-column">
+    <div class="sphinxsidebar"><a href="
+    index.html" class="text-logo">Guzzle 7</a>
+<div class="sidebar-block">
+  <div class="sidebar-wrapper">
+    <h2>Table Of Contents</h2>
+  </div>
+  <div class="sidebar-toc">
+    
+    
+      <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quickstart</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Request Options</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#allow-redirects">allow_redirects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#auth">auth</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#body">body</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#cert">cert</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#cookies">cookies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#connect-timeout">connect_timeout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#debug">debug</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#decode-content">decode_content</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#delay">delay</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#expect">expect</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#force-ip-resolve">force_ip_resolve</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#form-params">form_params</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#headers">headers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#http-errors">http_errors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#idn-conversion">idn_conversion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#json">json</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#multipart">multipart</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#on-headers">on_headers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#on-stats">on_stats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#progress">progress</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#proxy">proxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#query">query</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#read-timeout">read_timeout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#sink">sink</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#ssl-key">ssl_key</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#stream">stream</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#synchronous">synchronous</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#verify">verify</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#timeout">timeout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#version">version</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="psr7.html">Guzzle and PSR-7</a></li>
+<li class="toctree-l1"><a class="reference internal" href="handlers-and-middleware.html">Handlers and Middleware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="testing.html">Testing Guzzle Clients</a></li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">FAQ</a></li>
+</ul>
+
+    
+  </div>
+</div>
+<div class="sidebar-block">
+  <div class="sidebar-wrapper">
+    <div id="main-search">
+      <form class="form-inline" action="search.html" method="GET" role="form">
+        <div class="input-group">
+          <input name="q" type="text" class="form-control" placeholder="Search...">
+        </div>
+        <input type="hidden" name="check_keywords" value="yes" />
+        <input type="hidden" name="area" value="default" />
+      </form>
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
+        <div id="right-column">
+          
+          <div role="navigation" aria-label="breadcrumbs navigation">
+            <ol class="breadcrumb">
+              <li><a href="index.html">Docs</a></li>
+              
+              <li>Request Options</li>
+            </ol>
+          </div>
+          
+          <div class="document clearer body">
+            
+  <div class="section" id="request-options">
+<h1>Request Options<a class="headerlink" href="#request-options" title="Permalink to this headline">¶</a></h1>
+<p>You can customize requests created and transferred by a client using
+<strong>request options</strong>. Request options control various aspects of a request
+including, headers, query string parameters, timeout settings, the body of a
+request, and much more.</p>
+<p>All of the following examples use the following client:</p>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="nv">$client</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">GuzzleHttp\Client</span><span class="p">([</span><span class="s1">&#39;base_uri&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;http://httpbin.org&#39;</span><span class="p">]);</span>
+</pre></div>
+</div>
+<div class="section" id="allow-redirects">
+<span id="allow-redirects-option"></span><h2>allow_redirects<a class="headerlink" href="#allow-redirects" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils field-list" frame="void" rules="none">
+<dt class="field-name">Summary</dt><dd class="field-body"><p class="first">Describes the redirect behavior of a request</p>
+</dd>
+<dt class="field-name">Types</dt><dd class="field-body"><ul class="first simple">
+<li>bool</li>
+<li>array</li>
+</ul>
+</dd>
+<dt class="field-name">Default</dt><dd class="field-body"><div class="first highlight-python"><div class="highlight"><pre><span></span>[
+    &#39;max&#39;             =&gt; 5,
+    &#39;strict&#39;          =&gt; false,
+    &#39;referer&#39;         =&gt; false,
+    &#39;protocols&#39;       =&gt; [&#39;http&#39;, &#39;https&#39;],
+    &#39;track_redirects&#39; =&gt; false
+]
+</pre></div>
+</div>
+</dd>
+<dt class="field-name">Constant</dt><dd class="field-body"><p class="first last"><code class="docutils literal"><span class="pre">GuzzleHttp\RequestOptions::ALLOW_REDIRECTS</span></code></p>
+</dd>
+</dl>
+<p>Set to <code class="docutils literal"><span class="pre">false</span></code> to disable redirects.</p>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="nv">$res</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">request</span><span class="p">(</span><span class="s1">&#39;GET&#39;</span><span class="p">,</span> <span class="s1">&#39;/redirect/3&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;allow_redirects&#39;</span> <span class="o">=&gt;</span> <span class="k">false</span><span class="p">]);</span>
+<span class="k">echo</span> <span class="nv">$res</span><span class="o">-&gt;</span><span class="na">getStatusCode</span><span class="p">();</span>
+<span class="c1">// 302</span>
+</pre></div>
+</div>
+<p>Set to <code class="docutils literal"><span class="pre">true</span></code> (the default setting) to enable normal redirects with a maximum
+number of 5 redirects.</p>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="nv">$res</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">request</span><span class="p">(</span><span class="s1">&#39;GET&#39;</span><span class="p">,</span> <span class="s1">&#39;/redirect/3&#39;</span><span class="p">);</span>
+<span class="k">echo</span> <span class="nv">$res</span><span class="o">-&gt;</span><span class="na">getStatusCode</span><span class="p">();</span>
+<span class="c1">// 200</span>
+</pre></div>
+</div>
+<p>You can also pass an associative array containing the following key value
+pairs:</p>
+<ul>
+<li><p class="first">max: (int, default=5) maximum number of allowed redirects.</p>
+</li>
+<li><p class="first">strict: (bool, default=false) Set to true to use strict redirects.
+Strict RFC compliant redirects mean that POST redirect requests are sent as
+POST requests vs. doing what most browsers do which is redirect POST requests
+with GET requests.</p>
+</li>
+<li><p class="first">referer: (bool, default=false) Set to true to enable adding the Referer
+header when redirecting.</p>
+</li>
+<li><p class="first">protocols: (array, default=['http', 'https']) Specified which protocols are
+allowed for redirect requests.</p>
+</li>
+<li><p class="first">on_redirect: (callable) PHP callable that is invoked when a redirect
+is encountered. The callable is invoked with the original request and the
+redirect response that was received. Any return value from the on_redirect
+function is ignored.</p>
+</li>
+<li><p class="first">track_redirects: (bool) When set to <code class="docutils literal"><span class="pre">true</span></code>, each redirected URI and status
+code encountered will be tracked in the <code class="docutils literal"><span class="pre">X-Guzzle-Redirect-History</span></code> and
+<code class="docutils literal"><span class="pre">X-Guzzle-Redirect-Status-History</span></code> headers respectively. All URIs and
+status codes will be stored in the order which the redirects were encountered.</p>
+<p>Note: When tracking redirects the <code class="docutils literal"><span class="pre">X-Guzzle-Redirect-History</span></code> header will
+exclude the initial request's URI and the <code class="docutils literal"><span class="pre">X-Guzzle-Redirect-Status-History</span></code>
+header will exclude the final status code.</p>
+</li>
+</ul>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="k">use</span> <span class="nx">Psr\Http\Message\RequestInterface</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Psr\Http\Message\ResponseInterface</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Psr\Http\Message\UriInterface</span><span class="p">;</span>
+
+<span class="nv">$onRedirect</span> <span class="o">=</span> <span class="k">function</span><span class="p">(</span>
+    <span class="nx">RequestInterface</span> <span class="nv">$request</span><span class="p">,</span>
+    <span class="nx">ResponseInterface</span> <span class="nv">$response</span><span class="p">,</span>
+    <span class="nx">UriInterface</span> <span class="nv">$uri</span>
+<span class="p">)</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="s1">&#39;Redirecting! &#39;</span> <span class="o">.</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">getUri</span><span class="p">()</span> <span class="o">.</span> <span class="s1">&#39; to &#39;</span> <span class="o">.</span> <span class="nv">$uri</span> <span class="o">.</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="nv">$res</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">request</span><span class="p">(</span><span class="s1">&#39;GET&#39;</span><span class="p">,</span> <span class="s1">&#39;/redirect/3&#39;</span><span class="p">,</span> <span class="p">[</span>
+    <span class="s1">&#39;allow_redirects&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
+        <span class="s1">&#39;max&#39;</span>             <span class="o">=&gt;</span> <span class="mi">10</span><span class="p">,</span>        <span class="c1">// allow at most 10 redirects.</span>
+        <span class="s1">&#39;strict&#39;</span>          <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>      <span class="c1">// use &quot;strict&quot; RFC compliant redirects.</span>
+        <span class="s1">&#39;referer&#39;</span>         <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>      <span class="c1">// add a Referer header</span>
+        <span class="s1">&#39;protocols&#39;</span>       <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">&#39;https&#39;</span><span class="p">],</span> <span class="c1">// only allow https URLs</span>
+        <span class="s1">&#39;on_redirect&#39;</span>     <span class="o">=&gt;</span> <span class="nv">$onRedirect</span><span class="p">,</span>
+        <span class="s1">&#39;track_redirects&#39;</span> <span class="o">=&gt;</span> <span class="k">true</span>
+    <span class="p">]</span>
+<span class="p">]);</span>
+
+<span class="k">echo</span> <span class="nv">$res</span><span class="o">-&gt;</span><span class="na">getStatusCode</span><span class="p">();</span>
+<span class="c1">// 200</span>
+
+<span class="k">echo</span> <span class="nv">$res</span><span class="o">-&gt;</span><span class="na">getHeaderLine</span><span class="p">(</span><span class="s1">&#39;X-Guzzle-Redirect-History&#39;</span><span class="p">);</span>
+<span class="c1">// http://first-redirect, http://second-redirect, etc...</span>
+
+<span class="k">echo</span> <span class="nv">$res</span><span class="o">-&gt;</span><span class="na">getHeaderLine</span><span class="p">(</span><span class="s1">&#39;X-Guzzle-Redirect-Status-History&#39;</span><span class="p">);</span>
+<span class="c1">// 301, 302, etc...</span>
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">This option only has an effect if your handler has the
+<code class="docutils literal"><span class="pre">GuzzleHttp\Middleware::redirect</span></code> middleware. This middleware is added
+by default when a client is created with no handler, and is added by
+default when creating a handler with <code class="docutils literal"><span class="pre">GuzzleHttp\HandlerStack::create</span></code>.</p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This option has <strong>no</strong> effect when making requests using <code class="docutils literal"><span class="pre">GuzzleHttp\Client::sendRequest()</span></code>. In order to stay compliant with PSR-18 any redirect response is returned as is.</p>
+</div>
+</div>
+<div class="section" id="auth">
+<h2>auth<a class="headerlink" href="#auth" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils field-list" frame="void" rules="none">
+<dt class="field-name">Summary</dt><dd class="field-body"><p class="first">Pass an array of HTTP authentication parameters to use with the
+request. The array must contain the username in index [0], the password in
+index [1], and you can optionally provide a built-in authentication type in
+index [2]. Pass <code class="docutils literal"><span class="pre">null</span></code> to disable authentication for a request.</p>
+</dd>
+<dt class="field-name">Types</dt><dd class="field-body"><ul class="first simple">
+<li>array</li>
+<li>string</li>
+<li>null</li>
+</ul>
+</dd>
+<dt class="field-name">Default</dt><dd class="field-body"><p class="first">None</p>
+</dd>
+<dt class="field-name">Constant</dt><dd class="field-body"><p class="first last"><code class="docutils literal"><span class="pre">GuzzleHttp\RequestOptions::AUTH</span></code></p>
+</dd>
+</dl>
+<p>The built-in authentication types are as follows:</p>
+<dl class="docutils">
+<dt>basic</dt>
+<dd>Use <a class="reference external" href="http://www.ietf.org/rfc/rfc2069.txt">basic HTTP authentication</a>
+in the <code class="docutils literal"><span class="pre">Authorization</span></code> header (the default setting used if none is
+specified).</dd>
+</dl>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="nv">$client</span><span class="o">-&gt;</span><span class="na">request</span><span class="p">(</span><span class="s1">&#39;GET&#39;</span><span class="p">,</span> <span class="s1">&#39;/get&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;auth&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">&#39;username&#39;</span><span class="p">,</span> <span class="s1">&#39;password&#39;</span><span class="p">]]);</span>
+</pre></div>
+</div>
+<dl class="docutils">
+<dt>digest</dt>
+<dd>Use <a class="reference external" href="http://www.ietf.org/rfc/rfc2069.txt">digest authentication</a>
+(must be supported by the HTTP handler).</dd>
+</dl>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="nv">$client</span><span class="o">-&gt;</span><span class="na">request</span><span class="p">(</span><span class="s1">&#39;GET&#39;</span><span class="p">,</span> <span class="s1">&#39;/get&#39;</span><span class="p">,</span> <span class="p">[</span>
+    <span class="s1">&#39;auth&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">&#39;username&#39;</span><span class="p">,</span> <span class="s1">&#39;password&#39;</span><span class="p">,</span> <span class="s1">&#39;digest&#39;</span><span class="p">]</span>
+<span class="p">]);</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This is currently only supported when using the cURL handler, but
+creating a replacement that can be used with any HTTP handler is
+planned.</p>
+</div>
+<dl class="docutils">
+<dt>ntlm</dt>
+<dd>Use <a class="reference external" href="https://msdn.microsoft.com/en-us/library/windows/desktop/aa378749(v=vs.85).aspx">Microsoft NTLM authentication</a>
+(must be supported by the HTTP handler).</dd>
+</dl>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="nv">$client</span><span class="o">-&gt;</span><span class="na">request</span><span class="p">(</span><span class="s1">&#39;GET&#39;</span><span class="p">,</span> <span class="s1">&#39;/get&#39;</span><span class="p">,</span> <span class="p">[</span>
+    <span class="s1">&#39;auth&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">&#39;username&#39;</span><span class="p">,</span> <span class="s1">&#39;password&#39;</span><span class="p">,</span> <span class="s1">&#39;ntlm&#39;</span><span class="p">]</span>
+<span class="p">]);</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This is currently only supported when using the cURL handler.</p>
+</div>
+</div>
+<div class="section" id="body">
+<h2>body<a class="headerlink" href="#body" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils field-list" frame="void" rules="none">
+<dt class="field-name">Summary</dt><dd class="field-body"><p class="first">The <code class="docutils literal"><span class="pre">body</span></code> option is used to control the body of an entity
+enclosing request (e.g., PUT, POST, PATCH).</p>
+</dd>
+<dt class="field-name">Types</dt><dd class="field-body"><ul class="first simple">
+<li>string</li>
+<li><code class="docutils literal"><span class="pre">fopen()</span></code> resource</li>
+<li><code class="docutils literal"><span class="pre">Psr\Http\Message\StreamInterface</span></code></li>
+</ul>
+</dd>
+<dt class="field-name">Default</dt><dd class="field-body"><p class="first">None</p>
+</dd>
+<dt class="field-name">Constant</dt><dd class="field-body"><p class="first last"><code class="docutils literal"><span class="pre">GuzzleHttp\RequestOptions::BODY</span></code></p>
+</dd>
+</dl>
+<p>This setting can be set to any of the following types:</p>
+<ul>
+<li><p class="first">string</p>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="c1">// You can send requests that use a string as the message body.</span>
+<span class="nv">$client</span><span class="o">-&gt;</span><span class="na">request</span><span class="p">(</span><span class="s1">&#39;PUT&#39;</span><span class="p">,</span> <span class="s1">&#39;/put&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;body&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;foo&#39;</span><span class="p">]);</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">resource returned from <code class="docutils literal"><span class="pre">fopen()</span></code></p>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="c1">// You can send requests that use a stream resource as the body.</span>
+<span class="nv">$resource</span> <span class="o">=</span> <span class="nx">\GuzzleHttp\Psr7\Utils</span><span class="o">::</span><span class="na">tryFopen</span><span class="p">(</span><span class="s1">&#39;http://httpbin.org&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">);</span>
+<span class="nv">$client</span><span class="o">-&gt;</span><span class="na">request</span><span class="p">(</span><span class="s1">&#39;PUT&#39;</span><span class="p">,</span> <span class="s1">&#39;/put&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;body&#39;</span> <span class="o">=&gt;</span> <span class="nv">$resource</span><span class="p">]);</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first"><code class="docutils literal"><span class="pre">Psr\Http\Message\StreamInterface</span></code></p>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="c1">// You can send requests that use a Guzzle stream object as the body</span>
+<span class="nv">$stream</span> <span class="o">=</span> <span class="nx">GuzzleHttp\Psr7\Utils</span><span class="o">::</span><span class="na">streamFor</span><span class="p">(</span><span class="s1">&#39;contents...&#39;</span><span class="p">);</span>
+<span class="nv">$client</span><span class="o">-&gt;</span><span class="na">request</span><span class="p">(</span><span class="s1">&#39;POST&#39;</span><span class="p">,</span> <span class="s1">&#39;/post&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;body&#39;</span> <span class="o">=&gt;</span> <span class="nv">$stream</span><span class="p">]);</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This option cannot be used with <code class="docutils literal"><span class="pre">form_params</span></code>, <code class="docutils literal"><span class="pre">multipart</span></code>, or <code class="docutils literal"><span class="pre">json</span></code></p>
+</div>
+</div>
+<div class="section" id="cert">
+<span id="cert-option"></span><h2>cert<a class="headerlink" href="#cert" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils field-list" frame="void" rules="none">
+<dt class="field-name">Summary</dt><dd class="field-body"><p class="first">Set to a string to specify the path to a file containing a PEM
+formatted client side certificate. If a password is required, then set to
+an array containing the path to the PEM file in the first array element
+followed by the password required for the certificate in the second array
+element.</p>
+</dd>
+<dt class="field-name">Types</dt><dd class="field-body"><ul class="first simple">
+<li>string</li>
+<li>array</li>
+</ul>
+</dd>
+<dt class="field-name">Default</dt><dd class="field-body"><p class="first">None</p>
+</dd>
+<dt class="field-name">Constant</dt><dd class="field-body"><p class="first last"><code class="docutils literal"><span class="pre">GuzzleHttp\RequestOptions::CERT</span></code></p>
+</dd>
+</dl>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="nv">$client</span><span class="o">-&gt;</span><span class="na">request</span><span class="p">(</span><span class="s1">&#39;GET&#39;</span><span class="p">,</span> <span class="s1">&#39;/&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;cert&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">&#39;/path/server.pem&#39;</span><span class="p">,</span> <span class="s1">&#39;password&#39;</span><span class="p">]]);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="cookies">
+<span id="cookies-option"></span><h2>cookies<a class="headerlink" href="#cookies" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils field-list" frame="void" rules="none">
+<dt class="field-name">Summary</dt><dd class="field-body">Specifies whether or not cookies are used in a request or what cookie
+jar to use or what cookies to send.</dd>
+<dt class="field-name">Types</dt><dd class="field-body"><code class="docutils literal"><span class="pre">GuzzleHttp\Cookie\CookieJarInterface</span></code></dd>
+<dt class="field-name">Default</dt><dd class="field-body">None</dd>
+<dt class="field-name">Constant</dt><dd class="field-body"><code class="docutils literal"><span class="pre">GuzzleHttp\RequestOptions::COOKIES</span></code></dd>
+</dl>
+<p>You must specify the cookies option as a
+<code class="docutils literal"><span class="pre">GuzzleHttp\Cookie\CookieJarInterface</span></code> or <code class="docutils literal"><span class="pre">false</span></code>.</p>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="nv">$jar</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\GuzzleHttp\Cookie\CookieJar</span><span class="p">();</span>
+<span class="nv">$client</span><span class="o">-&gt;</span><span class="na">request</span><span class="p">(</span><span class="s1">&#39;GET&#39;</span><span class="p">,</span> <span class="s1">&#39;/get&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;cookies&#39;</span> <span class="o">=&gt;</span> <span class="nv">$jar</span><span class="p">]);</span>
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">This option only has an effect if your handler has the
+<code class="docutils literal"><span class="pre">GuzzleHttp\Middleware::cookies</span></code> middleware. This middleware is added
+by default when a client is created with no handler, and is added by
+default when creating a handler with <code class="docutils literal"><span class="pre">GuzzleHttp\default_handler</span></code>.</p>
+</div>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">When creating a client, you can set the default cookie option to <code class="docutils literal"><span class="pre">true</span></code>
+to use a shared cookie session associated with the client.</p>
+</div>
+</div>
+<div class="section" id="connect-timeout">
+<span id="connect-timeout-option"></span><h2>connect_timeout<a class="headerlink" href="#connect-timeout" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils field-list" frame="void" rules="none">
+<dt class="field-name">Summary</dt><dd class="field-body">Float describing the number of seconds to wait while trying to connect
+to a server. Use <code class="docutils literal"><span class="pre">0</span></code> to wait indefinitely (the default behavior).</dd>
+<dt class="field-name">Types</dt><dd class="field-body">float</dd>
+<dt class="field-name">Default</dt><dd class="field-body"><code class="docutils literal"><span class="pre">0</span></code></dd>
+<dt class="field-name">Constant</dt><dd class="field-body"><code class="docutils literal"><span class="pre">GuzzleHttp\RequestOptions::CONNECT_TIMEOUT</span></code></dd>
+</dl>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="c1">// Timeout if the client fails to connect to the server in 3.14 seconds.</span>
+<span class="nv">$client</span><span class="o">-&gt;</span><span class="na">request</span><span class="p">(</span><span class="s1">&#39;GET&#39;</span><span class="p">,</span> <span class="s1">&#39;/delay/5&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;connect_timeout&#39;</span> <span class="o">=&gt;</span> <span class="mf">3.14</span><span class="p">]);</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This setting must be supported by the HTTP handler used to send a request.
+<code class="docutils literal"><span class="pre">connect_timeout</span></code> is currently only supported by the built-in cURL
+handler.</p>
+</div>
+</div>
+<div class="section" id="debug">
+<span id="debug-option"></span><h2>debug<a class="headerlink" href="#debug" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils field-list" frame="void" rules="none">
+<dt class="field-name">Summary</dt><dd class="field-body"><p class="first">Set to <code class="docutils literal"><span class="pre">true</span></code> or set to a PHP stream returned by <code class="docutils literal"><span class="pre">fopen()</span></code> to
+enable debug output with the handler used to send a request. For example,
+when using cURL to transfer requests, cURL's verbose of <code class="docutils literal"><span class="pre">CURLOPT_VERBOSE</span></code>
+will be emitted. When using the PHP stream wrapper, stream wrapper
+notifications will be emitted. If set to true, the output is written to
+PHP's STDOUT. If a PHP stream is provided, output is written to the stream.</p>
+</dd>
+<dt class="field-name">Types</dt><dd class="field-body"><ul class="first simple">
+<li>bool</li>
+<li><code class="docutils literal"><span class="pre">fopen()</span></code> resource</li>
+</ul>
+</dd>
+<dt class="field-name">Default</dt><dd class="field-body"><p class="first">None</p>
+</dd>
+<dt class="field-name">Constant</dt><dd class="field-body"><p class="first last"><code class="docutils literal"><span class="pre">GuzzleHttp\RequestOptions::DEBUG</span></code></p>
+</dd>
+</dl>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="nv">$client</span><span class="o">-&gt;</span><span class="na">request</span><span class="p">(</span><span class="s1">&#39;GET&#39;</span><span class="p">,</span> <span class="s1">&#39;/get&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;debug&#39;</span> <span class="o">=&gt;</span> <span class="k">true</span><span class="p">]);</span>
+</pre></div>
+</div>
+<p>Running the above example would output something like the following:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>* About to connect() to httpbin.org port 80 (#0)
+*   Trying 107.21.213.98... * Connected to httpbin.org (107.21.213.98) port 80 (#0)
+&gt; GET /get HTTP/1.1
+Host: httpbin.org
+User-Agent: Guzzle/4.0 curl/7.21.4 PHP/5.5.7
+
+&lt; HTTP/1.1 200 OK
+&lt; Access-Control-Allow-Origin: *
+&lt; Content-Type: application/json
+&lt; Date: Sun, 16 Feb 2014 06:50:09 GMT
+&lt; Server: gunicorn/0.17.4
+&lt; Content-Length: 335
+&lt; Connection: keep-alive
+&lt;
+* Connection #0 to host httpbin.org left intact
+</pre></div>
+</div>
+</div>
+<div class="section" id="decode-content">
+<span id="decode-content-option"></span><h2>decode_content<a class="headerlink" href="#decode-content" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils field-list" frame="void" rules="none">
+<dt class="field-name">Summary</dt><dd class="field-body"><p class="first">Specify whether or not <code class="docutils literal"><span class="pre">Content-Encoding</span></code> responses (gzip,
+deflate, etc.) are automatically decoded.</p>
+</dd>
+<dt class="field-name">Types</dt><dd class="field-body"><ul class="first simple">
+<li>string</li>
+<li>bool</li>
+</ul>
+</dd>
+<dt class="field-name">Default</dt><dd class="field-body"><p class="first"><code class="docutils literal"><span class="pre">true</span></code></p>
+</dd>
+<dt class="field-name">Constant</dt><dd class="field-body"><p class="first last"><code class="docutils literal"><span class="pre">GuzzleHttp\RequestOptions::DECODE_CONTENT</span></code></p>
+</dd>
+</dl>
+<p>This option can be used to control how content-encoded response bodies are
+handled. By default, <code class="docutils literal"><span class="pre">decode_content</span></code> is set to true, meaning any gzipped
+or deflated response will be decoded by Guzzle.</p>
+<p>When set to <code class="docutils literal"><span class="pre">false</span></code>, the body of a response is never decoded, meaning the
+bytes pass through the handler unchanged.</p>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="c1">// Request gzipped data, but do not decode it while downloading</span>
+<span class="nv">$client</span><span class="o">-&gt;</span><span class="na">request</span><span class="p">(</span><span class="s1">&#39;GET&#39;</span><span class="p">,</span> <span class="s1">&#39;/foo.js&#39;</span><span class="p">,</span> <span class="p">[</span>
+    <span class="s1">&#39;headers&#39;</span>        <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">&#39;Accept-Encoding&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;gzip&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;decode_content&#39;</span> <span class="o">=&gt;</span> <span class="k">false</span>
+<span class="p">]);</span>
+</pre></div>
+</div>
+<p>When set to a string, the bytes of a response are decoded and the string value
+provided to the <code class="docutils literal"><span class="pre">decode_content</span></code> option is passed as the <code class="docutils literal"><span class="pre">Accept-Encoding</span></code>
+header of the request.</p>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="c1">// Pass &quot;gzip&quot; as the Accept-Encoding header.</span>
+<span class="nv">$client</span><span class="o">-&gt;</span><span class="na">request</span><span class="p">(</span><span class="s1">&#39;GET&#39;</span><span class="p">,</span> <span class="s1">&#39;/foo.js&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;decode_content&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;gzip&#39;</span><span class="p">]);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="delay">
+<span id="delay-option"></span><h2>delay<a class="headerlink" href="#delay" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils field-list" frame="void" rules="none">
+<dt class="field-name">Summary</dt><dd class="field-body"><p class="first">The number of milliseconds to delay before sending the request.</p>
+</dd>
+<dt class="field-name">Types</dt><dd class="field-body"><ul class="first simple">
+<li>integer</li>
+<li>float</li>
+</ul>
+</dd>
+<dt class="field-name">Default</dt><dd class="field-body"><p class="first">null</p>
+</dd>
+<dt class="field-name">Constant</dt><dd class="field-body"><p class="first last"><code class="docutils literal"><span class="pre">GuzzleHttp\RequestOptions::DELAY</span></code></p>
+</dd>
+</dl>
+</div>
+<div class="section" id="expect">
+<span id="expect-option"></span><h2>expect<a class="headerlink" href="#expect" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils field-list" frame="void" rules="none">
+<dt class="field-name">Summary</dt><dd class="field-body"><p class="first">Controls the behavior of the &quot;Expect: 100-Continue&quot; header.</p>
+</dd>
+<dt class="field-name">Types</dt><dd class="field-body"><ul class="first simple">
+<li>bool</li>
+<li>integer</li>
+</ul>
+</dd>
+<dt class="field-name">Default</dt><dd class="field-body"><p class="first"><code class="docutils literal"><span class="pre">1048576</span></code></p>
+</dd>
+<dt class="field-name">Constant</dt><dd class="field-body"><p class="first last"><code class="docutils literal"><span class="pre">GuzzleHttp\RequestOptions::EXPECT</span></code></p>
+</dd>
+</dl>
+<p>Set to <code class="docutils literal"><span class="pre">true</span></code> to enable the &quot;Expect: 100-Continue&quot; header for all requests
+that sends a body. Set to <code class="docutils literal"><span class="pre">false</span></code> to disable the &quot;Expect: 100-Continue&quot;
+header for all requests. Set to a number so that the size of the payload must
+be greater than the number in order to send the Expect header. Setting to a
+number will send the Expect header for all requests in which the size of the
+payload cannot be determined or where the body is not rewindable.</p>
+<p>By default, Guzzle will add the &quot;Expect: 100-Continue&quot; header when the size of
+the body of a request is greater than 1 MB and a request is using HTTP/1.1.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This option only takes effect when using HTTP/1.1. The HTTP/1.0 and
+HTTP/2.0 protocols do not support the &quot;Expect: 100-Continue&quot; header.
+Support for handling the &quot;Expect: 100-Continue&quot; workflow must be
+implemented by Guzzle HTTP handlers used by a client.</p>
+</div>
+</div>
+<div class="section" id="force-ip-resolve">
+<h2>force_ip_resolve<a class="headerlink" href="#force-ip-resolve" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils field-list" frame="void" rules="none">
+<dt class="field-name">Summary</dt><dd class="field-body">Set to &quot;v4&quot; if you want the HTTP handlers to use only ipv4 protocol or &quot;v6&quot; for ipv6 protocol.</dd>
+<dt class="field-name">Types</dt><dd class="field-body">string</dd>
+<dt class="field-name">Default</dt><dd class="field-body">null</dd>
+<dt class="field-name">Constant</dt><dd class="field-body"><code class="docutils literal"><span class="pre">GuzzleHttp\RequestOptions::FORCE_IP_RESOLVE</span></code></dd>
+</dl>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="c1">// Force ipv4 protocol</span>
+<span class="nv">$client</span><span class="o">-&gt;</span><span class="na">request</span><span class="p">(</span><span class="s1">&#39;GET&#39;</span><span class="p">,</span> <span class="s1">&#39;/foo&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;force_ip_resolve&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;v4&#39;</span><span class="p">]);</span>
+
+<span class="c1">// Force ipv6 protocol</span>
+<span class="nv">$client</span><span class="o">-&gt;</span><span class="na">request</span><span class="p">(</span><span class="s1">&#39;GET&#39;</span><span class="p">,</span> <span class="s1">&#39;/foo&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;force_ip_resolve&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;v6&#39;</span><span class="p">]);</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This setting must be supported by the HTTP handler used to send a request.
+<code class="docutils literal"><span class="pre">force_ip_resolve</span></code> is currently only supported by the built-in cURL
+and stream handlers.</p>
+</div>
+</div>
+<div class="section" id="form-params">
+<h2>form_params<a class="headerlink" href="#form-params" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils field-list" frame="void" rules="none">
+<dt class="field-name">Summary</dt><dd class="field-body">Used to send an <cite>application/x-www-form-urlencoded</cite> POST request.</dd>
+<dt class="field-name">Types</dt><dd class="field-body">array</dd>
+<dt class="field-name">Constant</dt><dd class="field-body"><code class="docutils literal"><span class="pre">GuzzleHttp\RequestOptions::FORM_PARAMS</span></code></dd>
+</dl>
+<p>Associative array of form field names to values where each value is a string or
+array of strings. Sets the Content-Type header to
+application/x-www-form-urlencoded when no Content-Type header is already
+present.</p>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="nv">$client</span><span class="o">-&gt;</span><span class="na">request</span><span class="p">(</span><span class="s1">&#39;POST&#39;</span><span class="p">,</span> <span class="s1">&#39;/post&#39;</span><span class="p">,</span> <span class="p">[</span>
+    <span class="s1">&#39;form_params&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
+        <span class="s1">&#39;foo&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;bar&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;baz&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">&#39;hi&#39;</span><span class="p">,</span> <span class="s1">&#39;there!&#39;</span><span class="p">]</span>
+    <span class="p">]</span>
+<span class="p">]);</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p><code class="docutils literal"><span class="pre">form_params</span></code> cannot be used with the <code class="docutils literal"><span class="pre">multipart</span></code> option. You will need to use
+one or the other. Use <code class="docutils literal"><span class="pre">form_params</span></code> for <code class="docutils literal"><span class="pre">application/x-www-form-urlencoded</span></code>
+requests, and <code class="docutils literal"><span class="pre">multipart</span></code> for <code class="docutils literal"><span class="pre">multipart/form-data</span></code> requests.</p>
+<p class="last">This option cannot be used with <code class="docutils literal"><span class="pre">body</span></code>, <code class="docutils literal"><span class="pre">multipart</span></code>, or <code class="docutils literal"><span class="pre">json</span></code></p>
+</div>
+</div>
+<div class="section" id="headers">
+<h2>headers<a class="headerlink" href="#headers" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils field-list" frame="void" rules="none">
+<dt class="field-name">Summary</dt><dd class="field-body">Associative array of headers to add to the request. Each key is the
+name of a header, and each value is a string or array of strings
+representing the header field values.</dd>
+<dt class="field-name">Types</dt><dd class="field-body">array</dd>
+<dt class="field-name">Defaults</dt><dd class="field-body">None</dd>
+<dt class="field-name">Constant</dt><dd class="field-body"><code class="docutils literal"><span class="pre">GuzzleHttp\RequestOptions::HEADERS</span></code></dd>
+</dl>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="c1">// Set various headers on a request</span>
+<span class="nv">$client</span><span class="o">-&gt;</span><span class="na">request</span><span class="p">(</span><span class="s1">&#39;GET&#39;</span><span class="p">,</span> <span class="s1">&#39;/get&#39;</span><span class="p">,</span> <span class="p">[</span>
+    <span class="s1">&#39;headers&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
+        <span class="s1">&#39;User-Agent&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;testing/1.0&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;Accept&#39;</span>     <span class="o">=&gt;</span> <span class="s1">&#39;application/json&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;X-Foo&#39;</span>      <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">&#39;Bar&#39;</span><span class="p">,</span> <span class="s1">&#39;Baz&#39;</span><span class="p">]</span>
+    <span class="p">]</span>
+<span class="p">]);</span>
+</pre></div>
+</div>
+<p>Headers may be added as default options when creating a client. When headers
+are used as default options, they are only applied if the request being created
+does not already contain the specific header. This includes both requests passed
+to the client in the <code class="docutils literal"><span class="pre">send()</span></code> and <code class="docutils literal"><span class="pre">sendAsync()</span></code> methods, and requests
+created by the client (e.g., <code class="docutils literal"><span class="pre">request()</span></code> and <code class="docutils literal"><span class="pre">requestAsync()</span></code>).</p>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="nv">$client</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">GuzzleHttp\Client</span><span class="p">([</span><span class="s1">&#39;headers&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">&#39;X-Foo&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Bar&#39;</span><span class="p">]]);</span>
+
+<span class="c1">// Will send a request with the X-Foo header.</span>
+<span class="nv">$client</span><span class="o">-&gt;</span><span class="na">request</span><span class="p">(</span><span class="s1">&#39;GET&#39;</span><span class="p">,</span> <span class="s1">&#39;/get&#39;</span><span class="p">);</span>
+
+<span class="c1">// Sets the X-Foo header to &quot;test&quot;, which prevents the default header</span>
+<span class="c1">// from being applied.</span>
+<span class="nv">$client</span><span class="o">-&gt;</span><span class="na">request</span><span class="p">(</span><span class="s1">&#39;GET&#39;</span><span class="p">,</span> <span class="s1">&#39;/get&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;headers&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">&#39;X-Foo&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;test&#39;</span><span class="p">]]);</span>
+
+<span class="c1">// Will disable adding in default headers.</span>
+<span class="nv">$client</span><span class="o">-&gt;</span><span class="na">request</span><span class="p">(</span><span class="s1">&#39;GET&#39;</span><span class="p">,</span> <span class="s1">&#39;/get&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;headers&#39;</span> <span class="o">=&gt;</span> <span class="k">null</span><span class="p">]);</span>
+
+<span class="c1">// Will not overwrite the X-Foo header because it is in the message.</span>
+<span class="k">use</span> <span class="nx">GuzzleHttp\Psr7\Request</span><span class="p">;</span>
+<span class="nv">$request</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Request</span><span class="p">(</span><span class="s1">&#39;GET&#39;</span><span class="p">,</span> <span class="s1">&#39;http://foo.com&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;X-Foo&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;test&#39;</span><span class="p">]);</span>
+<span class="nv">$client</span><span class="o">-&gt;</span><span class="na">send</span><span class="p">(</span><span class="nv">$request</span><span class="p">);</span>
+
+<span class="c1">// Will overwrite the X-Foo header with the request option provided in the</span>
+<span class="c1">// send method.</span>
+<span class="k">use</span> <span class="nx">GuzzleHttp\Psr7\Request</span><span class="p">;</span>
+<span class="nv">$request</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Request</span><span class="p">(</span><span class="s1">&#39;GET&#39;</span><span class="p">,</span> <span class="s1">&#39;http://foo.com&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;X-Foo&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;test&#39;</span><span class="p">]);</span>
+<span class="nv">$client</span><span class="o">-&gt;</span><span class="na">send</span><span class="p">(</span><span class="nv">$request</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;headers&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">&#39;X-Foo&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;overwrite&#39;</span><span class="p">]]);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="http-errors">
+<span id="http-errors-option"></span><h2>http_errors<a class="headerlink" href="#http-errors" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils field-list" frame="void" rules="none">
+<dt class="field-name">Summary</dt><dd class="field-body">Set to <code class="docutils literal"><span class="pre">false</span></code> to disable throwing exceptions on an HTTP protocol
+errors (i.e., 4xx and 5xx responses). Exceptions are thrown by default when
+HTTP protocol errors are encountered.</dd>
+<dt class="field-name">Types</dt><dd class="field-body">bool</dd>
+<dt class="field-name">Default</dt><dd class="field-body"><code class="docutils literal"><span class="pre">true</span></code></dd>
+<dt class="field-name">Constant</dt><dd class="field-body"><code class="docutils literal"><span class="pre">GuzzleHttp\RequestOptions::HTTP_ERRORS</span></code></dd>
+</dl>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="nv">$client</span><span class="o">-&gt;</span><span class="na">request</span><span class="p">(</span><span class="s1">&#39;GET&#39;</span><span class="p">,</span> <span class="s1">&#39;/status/500&#39;</span><span class="p">);</span>
+<span class="c1">// Throws a GuzzleHttp\Exception\ServerException</span>
+
+<span class="nv">$res</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">request</span><span class="p">(</span><span class="s1">&#39;GET&#39;</span><span class="p">,</span> <span class="s1">&#39;/status/500&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;http_errors&#39;</span> <span class="o">=&gt;</span> <span class="k">false</span><span class="p">]);</span>
+<span class="k">echo</span> <span class="nv">$res</span><span class="o">-&gt;</span><span class="na">getStatusCode</span><span class="p">();</span>
+<span class="c1">// 500</span>
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">This option only has an effect if your handler has the
+<code class="docutils literal"><span class="pre">GuzzleHttp\Middleware::httpErrors</span></code> middleware. This middleware is added
+by default when a client is created with no handler, and is added by
+default when creating a handler with <code class="docutils literal"><span class="pre">GuzzleHttp\default_handler</span></code>.</p>
+</div>
+</div>
+<div class="section" id="idn-conversion">
+<h2>idn_conversion<a class="headerlink" href="#idn-conversion" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils field-list" frame="void" rules="none">
+<dt class="field-name">Summary</dt><dd class="field-body"><p class="first">Internationalized Domain Name (IDN) support (enabled by default if
+<code class="docutils literal"><span class="pre">intl</span></code> extension is available).</p>
+</dd>
+<dt class="field-name">Types</dt><dd class="field-body"><ul class="first simple">
+<li>bool</li>
+<li>int</li>
+</ul>
+</dd>
+<dt class="field-name">Default</dt><dd class="field-body"><p class="first"><code class="docutils literal"><span class="pre">true</span></code> if <code class="docutils literal"><span class="pre">intl</span></code> extension is available (and ICU library is 4.6+ for PHP 7.2+), <code class="docutils literal"><span class="pre">false</span></code> otherwise</p>
+</dd>
+<dt class="field-name">Constant</dt><dd class="field-body"><p class="first last"><code class="docutils literal"><span class="pre">GuzzleHttp\RequestOptions::IDN_CONVERSION</span></code></p>
+</dd>
+</dl>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="nv">$client</span><span class="o">-&gt;</span><span class="na">request</span><span class="p">(</span><span class="s1">&#39;GET&#39;</span><span class="p">,</span> <span class="s1">&#39;https://яндекс.рф&#39;</span><span class="p">);</span>
+<span class="c1">// яндекс.рф is translated to xn--d1acpjx3f.xn--p1ai before passing it to the handler</span>
+
+<span class="nv">$res</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">request</span><span class="p">(</span><span class="s1">&#39;GET&#39;</span><span class="p">,</span> <span class="s1">&#39;https://яндекс.рф&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;idn_conversion&#39;</span> <span class="o">=&gt;</span> <span class="k">false</span><span class="p">]);</span>
+<span class="c1">// The domain part (яндекс.рф) stays unmodified</span>
+</pre></div>
+</div>
+<p>Enables/disables IDN support, can also be used for precise control by combining
+IDNA_* constants (except IDNA_ERROR_*), see <code class="docutils literal"><span class="pre">$options</span></code> parameter in
+<a class="reference external" href="https://www.php.net/manual/en/function.idn-to-ascii.php">idn_to_ascii()</a>
+documentation for more details.</p>
+</div>
+<div class="section" id="json">
+<h2>json<a class="headerlink" href="#json" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils field-list" frame="void" rules="none">
+<dt class="field-name">Summary</dt><dd class="field-body">The <code class="docutils literal"><span class="pre">json</span></code> option is used to easily upload JSON encoded data as the
+body of a request. A Content-Type header of <code class="docutils literal"><span class="pre">application/json</span></code> will be
+added if no Content-Type header is already present on the message.</dd>
+<dt class="field-name">Types</dt><dd class="field-body">Any PHP type that can be operated on by PHP's <code class="docutils literal"><span class="pre">json_encode()</span></code> function.</dd>
+<dt class="field-name">Default</dt><dd class="field-body">None</dd>
+<dt class="field-name">Constant</dt><dd class="field-body"><code class="docutils literal"><span class="pre">GuzzleHttp\RequestOptions::JSON</span></code></dd>
+</dl>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="nv">$response</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">request</span><span class="p">(</span><span class="s1">&#39;PUT&#39;</span><span class="p">,</span> <span class="s1">&#39;/put&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;json&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">&#39;foo&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;bar&#39;</span><span class="p">]]);</span>
+</pre></div>
+</div>
+<p>Here's an example of using the <code class="docutils literal"><span class="pre">tap</span></code> middleware to see what request is sent
+over the wire.</p>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="k">use</span> <span class="nx">GuzzleHttp\Middleware</span><span class="p">;</span>
+
+<span class="c1">// Create a middleware that echoes parts of the request.</span>
+<span class="nv">$tapMiddleware</span> <span class="o">=</span> <span class="nx">Middleware</span><span class="o">::</span><span class="na">tap</span><span class="p">(</span><span class="k">function</span> <span class="p">(</span><span class="nv">$request</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">getHeaderLine</span><span class="p">(</span><span class="s1">&#39;Content-Type&#39;</span><span class="p">);</span>
+    <span class="c1">// application/json</span>
+    <span class="k">echo</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">getBody</span><span class="p">();</span>
+    <span class="c1">// {&quot;foo&quot;:&quot;bar&quot;}</span>
+<span class="p">});</span>
+
+<span class="c1">// The $handler variable is the handler passed in the</span>
+<span class="c1">// options to the client constructor.</span>
+<span class="nv">$response</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">request</span><span class="p">(</span><span class="s1">&#39;PUT&#39;</span><span class="p">,</span> <span class="s1">&#39;/put&#39;</span><span class="p">,</span> <span class="p">[</span>
+    <span class="s1">&#39;json&#39;</span>    <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">&#39;foo&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;bar&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;handler&#39;</span> <span class="o">=&gt;</span> <span class="nv">$tapMiddleware</span><span class="p">(</span><span class="nv">$handler</span><span class="p">)</span>
+<span class="p">]);</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>This request option does not support customizing the Content-Type header
+or any of the options from PHP's <a class="reference external" href="http://www.php.net/manual/en/function.json-encode.php">json_encode()</a>
+function. If you need to customize these settings, then you must pass the
+JSON encoded data into the request yourself using the <code class="docutils literal"><span class="pre">body</span></code> request
+option and you must specify the correct Content-Type header using the
+<code class="docutils literal"><span class="pre">headers</span></code> request option.</p>
+<p class="last">This option cannot be used with <code class="docutils literal"><span class="pre">body</span></code>, <code class="docutils literal"><span class="pre">form_params</span></code>, or <code class="docutils literal"><span class="pre">multipart</span></code></p>
+</div>
+</div>
+<div class="section" id="multipart">
+<h2>multipart<a class="headerlink" href="#multipart" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils field-list" frame="void" rules="none">
+<dt class="field-name">Summary</dt><dd class="field-body">Sets the body of the request to a <cite>multipart/form-data</cite> form.</dd>
+<dt class="field-name">Types</dt><dd class="field-body">array</dd>
+<dt class="field-name">Constant</dt><dd class="field-body"><code class="docutils literal"><span class="pre">GuzzleHttp\RequestOptions::MULTIPART</span></code></dd>
+</dl>
+<p>The value of <code class="docutils literal"><span class="pre">multipart</span></code> is an array of associative arrays, each containing
+the following key value pairs:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">name</span></code>: (string, required) the form field name</li>
+<li><code class="docutils literal"><span class="pre">contents</span></code>: (StreamInterface/resource/string, required) The data to use in
+the form element.</li>
+<li><code class="docutils literal"><span class="pre">headers</span></code>: (array) Optional associative array of custom headers to use with
+the form element.</li>
+<li><code class="docutils literal"><span class="pre">filename</span></code>: (string) Optional string to send as the filename in the part.</li>
+</ul>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="k">use</span> <span class="nx">GuzzleHttp\Psr7</span><span class="p">;</span>
+
+<span class="nv">$client</span><span class="o">-&gt;</span><span class="na">request</span><span class="p">(</span><span class="s1">&#39;POST&#39;</span><span class="p">,</span> <span class="s1">&#39;/post&#39;</span><span class="p">,</span> <span class="p">[</span>
+    <span class="s1">&#39;multipart&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
+        <span class="p">[</span>
+            <span class="s1">&#39;name&#39;</span>     <span class="o">=&gt;</span> <span class="s1">&#39;foo&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;contents&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;data&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;headers&#39;</span>  <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">&#39;X-Baz&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;bar&#39;</span><span class="p">]</span>
+        <span class="p">],</span>
+        <span class="p">[</span>
+            <span class="s1">&#39;name&#39;</span>     <span class="o">=&gt;</span> <span class="s1">&#39;baz&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;contents&#39;</span> <span class="o">=&gt;</span> <span class="nx">Psr7\Utils</span><span class="o">::</span><span class="na">tryFopen</span><span class="p">(</span><span class="s1">&#39;/path/to/file&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
+        <span class="p">],</span>
+        <span class="p">[</span>
+            <span class="s1">&#39;name&#39;</span>     <span class="o">=&gt;</span> <span class="s1">&#39;qux&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;contents&#39;</span> <span class="o">=&gt;</span> <span class="nx">Psr7\Utils</span><span class="o">::</span><span class="na">tryFopen</span><span class="p">(</span><span class="s1">&#39;/path/to/file&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">),</span>
+            <span class="s1">&#39;filename&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;custom_filename.txt&#39;</span>
+        <span class="p">],</span>
+    <span class="p">]</span>
+<span class="p">]);</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p><code class="docutils literal"><span class="pre">multipart</span></code> cannot be used with the <code class="docutils literal"><span class="pre">form_params</span></code> option. You will need to
+use one or the other. Use <code class="docutils literal"><span class="pre">form_params</span></code> for <code class="docutils literal"><span class="pre">application/x-www-form-urlencoded</span></code>
+requests, and <code class="docutils literal"><span class="pre">multipart</span></code> for <code class="docutils literal"><span class="pre">multipart/form-data</span></code> requests.</p>
+<p class="last">This option cannot be used with <code class="docutils literal"><span class="pre">body</span></code>, <code class="docutils literal"><span class="pre">form_params</span></code>, or <code class="docutils literal"><span class="pre">json</span></code></p>
+</div>
+</div>
+<div class="section" id="on-headers">
+<span id="id1"></span><h2>on_headers<a class="headerlink" href="#on-headers" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils field-list" frame="void" rules="none">
+<dt class="field-name">Summary</dt><dd class="field-body"><p class="first">A callable that is invoked when the HTTP headers of the response have
+been received but the body has not yet begun to download.</p>
+</dd>
+<dt class="field-name">Types</dt><dd class="field-body"><ul class="first simple">
+<li>callable</li>
+</ul>
+</dd>
+<dt class="field-name">Constant</dt><dd class="field-body"><p class="first last"><code class="docutils literal"><span class="pre">GuzzleHttp\RequestOptions::ON_HEADERS</span></code></p>
+</dd>
+</dl>
+<p>The callable accepts a <code class="docutils literal"><span class="pre">Psr\Http\Message\ResponseInterface</span></code> object. If an exception
+is thrown by the callable, then the promise associated with the response will
+be rejected with a <code class="docutils literal"><span class="pre">GuzzleHttp\Exception\RequestException</span></code> that wraps the
+exception that was thrown.</p>
+<p>You may need to know what headers and status codes were received before data
+can be written to the sink.</p>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="c1">// Reject responses that are greater than 1024 bytes.</span>
+<span class="nv">$client</span><span class="o">-&gt;</span><span class="na">request</span><span class="p">(</span><span class="s1">&#39;GET&#39;</span><span class="p">,</span> <span class="s1">&#39;http://httpbin.org/stream/1024&#39;</span><span class="p">,</span> <span class="p">[</span>
+    <span class="s1">&#39;on_headers&#39;</span> <span class="o">=&gt;</span> <span class="k">function</span> <span class="p">(</span><span class="nx">ResponseInterface</span> <span class="nv">$response</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nv">$response</span><span class="o">-&gt;</span><span class="na">getHeaderLine</span><span class="p">(</span><span class="s1">&#39;Content-Length&#39;</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1024</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">throw</span> <span class="k">new</span> <span class="nx">\Exception</span><span class="p">(</span><span class="s1">&#39;The file is too big!&#39;</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">]);</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">When writing HTTP handlers, the <code class="docutils literal"><span class="pre">on_headers</span></code> function must be invoked
+before writing data to the body of the response.</p>
+</div>
+</div>
+<div class="section" id="on-stats">
+<span id="id2"></span><h2>on_stats<a class="headerlink" href="#on-stats" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils field-list" frame="void" rules="none">
+<dt class="field-name">Summary</dt><dd class="field-body"><p class="first"><code class="docutils literal"><span class="pre">on_stats</span></code> allows you to get access to transfer statistics of a
+request and access the lower level transfer details of the handler
+associated with your client. <code class="docutils literal"><span class="pre">on_stats</span></code> is a callable that is invoked
+when a handler has finished sending a request. The callback is invoked
+with transfer statistics about the request, the response received, or the
+error encountered. Included in the data is the total amount of time taken
+to send the request.</p>
+</dd>
+<dt class="field-name">Types</dt><dd class="field-body"><ul class="first simple">
+<li>callable</li>
+</ul>
+</dd>
+<dt class="field-name">Constant</dt><dd class="field-body"><p class="first last"><code class="docutils literal"><span class="pre">GuzzleHttp\RequestOptions::ON_STATS</span></code></p>
+</dd>
+</dl>
+<p>The callable accepts a <code class="docutils literal"><span class="pre">GuzzleHttp\TransferStats</span></code> object.</p>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="k">use</span> <span class="nx">GuzzleHttp\TransferStats</span><span class="p">;</span>
+
+<span class="nv">$client</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">GuzzleHttp\Client</span><span class="p">();</span>
+
+<span class="nv">$client</span><span class="o">-&gt;</span><span class="na">request</span><span class="p">(</span><span class="s1">&#39;GET&#39;</span><span class="p">,</span> <span class="s1">&#39;http://httpbin.org/stream/1024&#39;</span><span class="p">,</span> <span class="p">[</span>
+    <span class="s1">&#39;on_stats&#39;</span> <span class="o">=&gt;</span> <span class="k">function</span> <span class="p">(</span><span class="nx">TransferStats</span> <span class="nv">$stats</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">echo</span> <span class="nv">$stats</span><span class="o">-&gt;</span><span class="na">getEffectiveUri</span><span class="p">()</span> <span class="o">.</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+        <span class="k">echo</span> <span class="nv">$stats</span><span class="o">-&gt;</span><span class="na">getTransferTime</span><span class="p">()</span> <span class="o">.</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+        <span class="nb">var_dump</span><span class="p">(</span><span class="nv">$stats</span><span class="o">-&gt;</span><span class="na">getHandlerStats</span><span class="p">());</span>
+
+        <span class="c1">// You must check if a response was received before using the</span>
+        <span class="c1">// response object.</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nv">$stats</span><span class="o">-&gt;</span><span class="na">hasResponse</span><span class="p">())</span> <span class="p">{</span>
+            <span class="k">echo</span> <span class="nv">$stats</span><span class="o">-&gt;</span><span class="na">getResponse</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">getStatusCode</span><span class="p">();</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="c1">// Error data is handler specific. You will need to know what</span>
+            <span class="c1">// type of error data your handler uses before using this</span>
+            <span class="c1">// value.</span>
+            <span class="nb">var_dump</span><span class="p">(</span><span class="nv">$stats</span><span class="o">-&gt;</span><span class="na">getHandlerErrorData</span><span class="p">());</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">]);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="progress">
+<h2>progress<a class="headerlink" href="#progress" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils field-list" frame="void" rules="none">
+<dt class="field-name">Summary</dt><dd class="field-body"><p class="first">Defines a function to invoke when transfer progress is made.</p>
+</dd>
+<dt class="field-name">Types</dt><dd class="field-body"><ul class="first simple">
+<li>callable</li>
+</ul>
+</dd>
+<dt class="field-name">Default</dt><dd class="field-body"><p class="first">None</p>
+</dd>
+<dt class="field-name">Constant</dt><dd class="field-body"><p class="first last"><code class="docutils literal"><span class="pre">GuzzleHttp\RequestOptions::PROGRESS</span></code></p>
+</dd>
+</dl>
+<p>The function accepts the following positional arguments:</p>
+<ul class="simple">
+<li>the total number of bytes expected to be downloaded, zero if unknown</li>
+<li>the number of bytes downloaded so far</li>
+<li>the total number of bytes expected to be uploaded</li>
+<li>the number of bytes uploaded so far</li>
+</ul>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="c1">// Send a GET request to /get?foo=bar</span>
+<span class="nv">$result</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">request</span><span class="p">(</span>
+    <span class="s1">&#39;GET&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;/&#39;</span><span class="p">,</span>
+    <span class="p">[</span>
+        <span class="s1">&#39;progress&#39;</span> <span class="o">=&gt;</span> <span class="k">function</span><span class="p">(</span>
+            <span class="nv">$downloadTotal</span><span class="p">,</span>
+            <span class="nv">$downloadedBytes</span><span class="p">,</span>
+            <span class="nv">$uploadTotal</span><span class="p">,</span>
+            <span class="nv">$uploadedBytes</span>
+        <span class="p">)</span> <span class="p">{</span>
+            <span class="c1">//do something</span>
+        <span class="p">},</span>
+    <span class="p">]</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="proxy">
+<span id="proxy-option"></span><h2>proxy<a class="headerlink" href="#proxy" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils field-list" frame="void" rules="none">
+<dt class="field-name">Summary</dt><dd class="field-body"><p class="first">Pass a string to specify an HTTP proxy, or an array to specify
+different proxies for different protocols.</p>
+</dd>
+<dt class="field-name">Types</dt><dd class="field-body"><ul class="first simple">
+<li>string</li>
+<li>array</li>
+</ul>
+</dd>
+<dt class="field-name">Default</dt><dd class="field-body"><p class="first">None</p>
+</dd>
+<dt class="field-name">Constant</dt><dd class="field-body"><p class="first last"><code class="docutils literal"><span class="pre">GuzzleHttp\RequestOptions::PROXY</span></code></p>
+</dd>
+</dl>
+<p>Pass a string to specify a proxy for all protocols.</p>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="nv">$client</span><span class="o">-&gt;</span><span class="na">request</span><span class="p">(</span><span class="s1">&#39;GET&#39;</span><span class="p">,</span> <span class="s1">&#39;/&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;proxy&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;http://localhost:8125&#39;</span><span class="p">]);</span>
+</pre></div>
+</div>
+<p>Pass an associative array to specify HTTP proxies for specific URI schemes
+(i.e., &quot;http&quot;, &quot;https&quot;). Provide a <code class="docutils literal"><span class="pre">no</span></code> key value pair to provide a list of
+host names that should not be proxied to.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Guzzle will automatically populate this value with your environment's
+<code class="docutils literal"><span class="pre">NO_PROXY</span></code> environment variable. However, when providing a <code class="docutils literal"><span class="pre">proxy</span></code>
+request option, it is up to you to provide the <code class="docutils literal"><span class="pre">no</span></code> value parsed from
+the <code class="docutils literal"><span class="pre">NO_PROXY</span></code> environment variable
+(e.g., <code class="docutils literal"><span class="pre">explode(',',</span> <span class="pre">getenv('NO_PROXY'))</span></code>).</p>
+</div>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="nv">$client</span><span class="o">-&gt;</span><span class="na">request</span><span class="p">(</span><span class="s1">&#39;GET&#39;</span><span class="p">,</span> <span class="s1">&#39;/&#39;</span><span class="p">,</span> <span class="p">[</span>
+    <span class="s1">&#39;proxy&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
+        <span class="s1">&#39;http&#39;</span>  <span class="o">=&gt;</span> <span class="s1">&#39;http://localhost:8125&#39;</span><span class="p">,</span> <span class="c1">// Use this proxy with &quot;http&quot;</span>
+        <span class="s1">&#39;https&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;http://localhost:9124&#39;</span><span class="p">,</span> <span class="c1">// Use this proxy with &quot;https&quot;,</span>
+        <span class="s1">&#39;no&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">&#39;.mit.edu&#39;</span><span class="p">,</span> <span class="s1">&#39;foo.com&#39;</span><span class="p">]</span>    <span class="c1">// Don&#39;t use a proxy with these</span>
+    <span class="p">]</span>
+<span class="p">]);</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">You can provide proxy URLs that contain a scheme, username, and password.
+For example, <code class="docutils literal"><span class="pre">&quot;http://username:password&#64;192.168.16.1:10&quot;</span></code>.</p>
+</div>
+</div>
+<div class="section" id="query">
+<h2>query<a class="headerlink" href="#query" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils field-list" frame="void" rules="none">
+<dt class="field-name">Summary</dt><dd class="field-body"><p class="first">Associative array of query string values or query string to add to
+the request.</p>
+</dd>
+<dt class="field-name">Types</dt><dd class="field-body"><ul class="first simple">
+<li>array</li>
+<li>string</li>
+</ul>
+</dd>
+<dt class="field-name">Default</dt><dd class="field-body"><p class="first">None</p>
+</dd>
+<dt class="field-name">Constant</dt><dd class="field-body"><p class="first last"><code class="docutils literal"><span class="pre">GuzzleHttp\RequestOptions::QUERY</span></code></p>
+</dd>
+</dl>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="c1">// Send a GET request to /get?foo=bar</span>
+<span class="nv">$client</span><span class="o">-&gt;</span><span class="na">request</span><span class="p">(</span><span class="s1">&#39;GET&#39;</span><span class="p">,</span> <span class="s1">&#39;/get&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;query&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">&#39;foo&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;bar&#39;</span><span class="p">]]);</span>
+</pre></div>
+</div>
+<p>Query strings specified in the <code class="docutils literal"><span class="pre">query</span></code> option will overwrite all query string
+values supplied in the URI of a request.</p>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="c1">// Send a GET request to /get?foo=bar</span>
+<span class="nv">$client</span><span class="o">-&gt;</span><span class="na">request</span><span class="p">(</span><span class="s1">&#39;GET&#39;</span><span class="p">,</span> <span class="s1">&#39;/get?abc=123&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;query&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">&#39;foo&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;bar&#39;</span><span class="p">]]);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="read-timeout">
+<h2>read_timeout<a class="headerlink" href="#read-timeout" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils field-list" frame="void" rules="none">
+<dt class="field-name">Summary</dt><dd class="field-body">Float describing the timeout to use when reading a streamed body</dd>
+<dt class="field-name">Types</dt><dd class="field-body">float</dd>
+<dt class="field-name">Default</dt><dd class="field-body">Defaults to the value of the <code class="docutils literal"><span class="pre">default_socket_timeout</span></code> PHP ini setting</dd>
+<dt class="field-name">Constant</dt><dd class="field-body"><code class="docutils literal"><span class="pre">GuzzleHttp\RequestOptions::READ_TIMEOUT</span></code></dd>
+</dl>
+<p>The timeout applies to individual read operations on a streamed body (when the <code class="docutils literal"><span class="pre">stream</span></code> option is enabled).</p>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="nv">$response</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">request</span><span class="p">(</span><span class="s1">&#39;GET&#39;</span><span class="p">,</span> <span class="s1">&#39;/stream&#39;</span><span class="p">,</span> <span class="p">[</span>
+    <span class="s1">&#39;stream&#39;</span> <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
+    <span class="s1">&#39;read_timeout&#39;</span> <span class="o">=&gt;</span> <span class="mi">10</span><span class="p">,</span>
+<span class="p">]);</span>
+
+<span class="nv">$body</span> <span class="o">=</span> <span class="nv">$response</span><span class="o">-&gt;</span><span class="na">getBody</span><span class="p">();</span>
+
+<span class="c1">// Returns false on timeout</span>
+<span class="nv">$data</span> <span class="o">=</span> <span class="nv">$body</span><span class="o">-&gt;</span><span class="na">read</span><span class="p">(</span><span class="mi">1024</span><span class="p">);</span>
+
+<span class="c1">// Returns false on timeout</span>
+<span class="nv">$line</span> <span class="o">=</span> <span class="nb">fgets</span><span class="p">(</span><span class="nv">$body</span><span class="o">-&gt;</span><span class="na">detach</span><span class="p">());</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="sink">
+<span id="sink-option"></span><h2>sink<a class="headerlink" href="#sink" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils field-list" frame="void" rules="none">
+<dt class="field-name">Summary</dt><dd class="field-body"><p class="first">Specify where the body of a response will be saved.</p>
+</dd>
+<dt class="field-name">Types</dt><dd class="field-body"><ul class="first simple">
+<li>string (path to file on disk)</li>
+<li><code class="docutils literal"><span class="pre">fopen()</span></code> resource</li>
+<li><code class="docutils literal"><span class="pre">Psr\Http\Message\StreamInterface</span></code></li>
+</ul>
+</dd>
+<dt class="field-name">Default</dt><dd class="field-body"><p class="first">PHP temp stream</p>
+</dd>
+<dt class="field-name">Constant</dt><dd class="field-body"><p class="first last"><code class="docutils literal"><span class="pre">GuzzleHttp\RequestOptions::SINK</span></code></p>
+</dd>
+</dl>
+<p>Pass a string to specify the path to a file that will store the contents of the
+response body:</p>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="nv">$client</span><span class="o">-&gt;</span><span class="na">request</span><span class="p">(</span><span class="s1">&#39;GET&#39;</span><span class="p">,</span> <span class="s1">&#39;/stream/20&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;sink&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;/path/to/file&#39;</span><span class="p">]);</span>
+</pre></div>
+</div>
+<p>Pass a resource returned from <code class="docutils literal"><span class="pre">fopen()</span></code> to write the response to a PHP stream:</p>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="nv">$resource</span> <span class="o">=</span> <span class="nx">\GuzzleHttp\Psr7\Utils</span><span class="o">::</span><span class="na">tryFopen</span><span class="p">(</span><span class="s1">&#39;/path/to/file&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">);</span>
+<span class="nv">$client</span><span class="o">-&gt;</span><span class="na">request</span><span class="p">(</span><span class="s1">&#39;GET&#39;</span><span class="p">,</span> <span class="s1">&#39;/stream/20&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;sink&#39;</span> <span class="o">=&gt;</span> <span class="nv">$resource</span><span class="p">]);</span>
+</pre></div>
+</div>
+<p>Pass a <code class="docutils literal"><span class="pre">Psr\Http\Message\StreamInterface</span></code> object to stream the response
+body to an open PSR-7 stream.</p>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="nv">$resource</span> <span class="o">=</span> <span class="nx">\GuzzleHttp\Psr7\Utils</span><span class="o">::</span><span class="na">tryFopen</span><span class="p">(</span><span class="s1">&#39;/path/to/file&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">);</span>
+<span class="nv">$stream</span> <span class="o">=</span> <span class="nx">\GuzzleHttp\Psr7\Utils</span><span class="o">::</span><span class="na">streamFor</span><span class="p">(</span><span class="nv">$resource</span><span class="p">);</span>
+<span class="nv">$client</span><span class="o">-&gt;</span><span class="na">request</span><span class="p">(</span><span class="s1">&#39;GET&#39;</span><span class="p">,</span> <span class="s1">&#39;/stream/20&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;save_to&#39;</span> <span class="o">=&gt;</span> <span class="nv">$stream</span><span class="p">]);</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The <code class="docutils literal"><span class="pre">save_to</span></code> request option has been deprecated in favor of the
+<code class="docutils literal"><span class="pre">sink</span></code> request option. Providing the <code class="docutils literal"><span class="pre">save_to</span></code> option is now an alias
+of <code class="docutils literal"><span class="pre">sink</span></code>.</p>
+</div>
+</div>
+<div class="section" id="ssl-key">
+<span id="ssl-key-option"></span><h2>ssl_key<a class="headerlink" href="#ssl-key" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils field-list" frame="void" rules="none">
+<dt class="field-name">Summary</dt><dd class="field-body"><p class="first">Specify the path to a file containing a private SSL key in PEM
+format. If a password is required, then set to an array containing the path
+to the SSL key in the first array element followed by the password required
+for the certificate in the second element.</p>
+</dd>
+<dt class="field-name">Types</dt><dd class="field-body"><ul class="first simple">
+<li>string</li>
+<li>array</li>
+</ul>
+</dd>
+<dt class="field-name">Default</dt><dd class="field-body"><p class="first">None</p>
+</dd>
+<dt class="field-name">Constant</dt><dd class="field-body"><p class="first last"><code class="docutils literal"><span class="pre">GuzzleHttp\RequestOptions::SSL_KEY</span></code></p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last"><code class="docutils literal"><span class="pre">ssl_key</span></code> is implemented by HTTP handlers. This is currently only
+supported by the cURL handler, but might be supported by other third-part
+handlers.</p>
+</div>
+</div>
+<div class="section" id="stream">
+<span id="stream-option"></span><h2>stream<a class="headerlink" href="#stream" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils field-list" frame="void" rules="none">
+<dt class="field-name">Summary</dt><dd class="field-body">Set to <code class="docutils literal"><span class="pre">true</span></code> to stream a response rather than download it all
+up-front.</dd>
+<dt class="field-name">Types</dt><dd class="field-body">bool</dd>
+<dt class="field-name">Default</dt><dd class="field-body"><code class="docutils literal"><span class="pre">false</span></code></dd>
+<dt class="field-name">Constant</dt><dd class="field-body"><code class="docutils literal"><span class="pre">GuzzleHttp\RequestOptions::STREAM</span></code></dd>
+</dl>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="nv">$response</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">request</span><span class="p">(</span><span class="s1">&#39;GET&#39;</span><span class="p">,</span> <span class="s1">&#39;/stream/20&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;stream&#39;</span> <span class="o">=&gt;</span> <span class="k">true</span><span class="p">]);</span>
+<span class="c1">// Read bytes off of the stream until the end of the stream is reached</span>
+<span class="nv">$body</span> <span class="o">=</span> <span class="nv">$response</span><span class="o">-&gt;</span><span class="na">getBody</span><span class="p">();</span>
+<span class="k">while</span> <span class="p">(</span><span class="o">!</span><span class="nv">$body</span><span class="o">-&gt;</span><span class="na">eof</span><span class="p">())</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="nv">$body</span><span class="o">-&gt;</span><span class="na">read</span><span class="p">(</span><span class="mi">1024</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Streaming response support must be implemented by the HTTP handler used by
+a client. This option might not be supported by every HTTP handler, but the
+interface of the response object remains the same regardless of whether or
+not it is supported by the handler.</p>
+</div>
+</div>
+<div class="section" id="synchronous">
+<h2>synchronous<a class="headerlink" href="#synchronous" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils field-list" frame="void" rules="none">
+<dt class="field-name">Summary</dt><dd class="field-body">Set to true to inform HTTP handlers that you intend on waiting on the
+response. This can be useful for optimizations.</dd>
+<dt class="field-name">Types</dt><dd class="field-body">bool</dd>
+<dt class="field-name">Default</dt><dd class="field-body">none</dd>
+<dt class="field-name">Constant</dt><dd class="field-body"><code class="docutils literal"><span class="pre">GuzzleHttp\RequestOptions::SYNCHRONOUS</span></code></dd>
+</dl>
+</div>
+<div class="section" id="verify">
+<span id="verify-option"></span><h2>verify<a class="headerlink" href="#verify" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils field-list" frame="void" rules="none">
+<dt class="field-name">Summary</dt><dd class="field-body"><p class="first">Describes the SSL certificate verification behavior of a request.</p>
+<ul class="simple">
+<li>Set to <code class="docutils literal"><span class="pre">true</span></code> to enable SSL certificate verification and use the default
+CA bundle provided by operating system.</li>
+<li>Set to <code class="docutils literal"><span class="pre">false</span></code> to disable certificate verification (this is insecure!).</li>
+<li>Set to a string to provide the path to a CA bundle to enable verification
+using a custom certificate.</li>
+</ul>
+</dd>
+<dt class="field-name">Types</dt><dd class="field-body"><ul class="first simple">
+<li>bool</li>
+<li>string</li>
+</ul>
+</dd>
+<dt class="field-name">Default</dt><dd class="field-body"><p class="first"><code class="docutils literal"><span class="pre">true</span></code></p>
+</dd>
+<dt class="field-name">Constant</dt><dd class="field-body"><p class="first last"><code class="docutils literal"><span class="pre">GuzzleHttp\RequestOptions::VERIFY</span></code></p>
+</dd>
+</dl>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="c1">// Use the system&#39;s CA bundle (this is the default setting)</span>
+<span class="nv">$client</span><span class="o">-&gt;</span><span class="na">request</span><span class="p">(</span><span class="s1">&#39;GET&#39;</span><span class="p">,</span> <span class="s1">&#39;/&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;verify&#39;</span> <span class="o">=&gt;</span> <span class="k">true</span><span class="p">]);</span>
+
+<span class="c1">// Use a custom SSL certificate on disk.</span>
+<span class="nv">$client</span><span class="o">-&gt;</span><span class="na">request</span><span class="p">(</span><span class="s1">&#39;GET&#39;</span><span class="p">,</span> <span class="s1">&#39;/&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;verify&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;/path/to/cert.pem&#39;</span><span class="p">]);</span>
+
+<span class="c1">// Disable validation entirely (don&#39;t do this!).</span>
+<span class="nv">$client</span><span class="o">-&gt;</span><span class="na">request</span><span class="p">(</span><span class="s1">&#39;GET&#39;</span><span class="p">,</span> <span class="s1">&#39;/&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;verify&#39;</span> <span class="o">=&gt;</span> <span class="k">false</span><span class="p">]);</span>
+</pre></div>
+</div>
+<p>If you do not need a specific certificate bundle, then Mozilla provides a
+commonly used CA bundle which can be downloaded
+<a class="reference external" href="https://curl.haxx.se/ca/cacert.pem">here</a>
+(provided by the maintainer of cURL). Once you have a CA bundle available on
+disk, you can set the &quot;openssl.cafile&quot; PHP ini setting to point to the path to
+the file, allowing you to omit the &quot;verify&quot; request option. Much more detail on
+SSL certificates can be found on the
+<a class="reference external" href="http://curl.haxx.se/docs/sslcerts.html">cURL website</a>.</p>
+</div>
+<div class="section" id="timeout">
+<span id="timeout-option"></span><h2>timeout<a class="headerlink" href="#timeout" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils field-list" frame="void" rules="none">
+<dt class="field-name">Summary</dt><dd class="field-body">Float describing the total timeout of the request in seconds. Use <code class="docutils literal"><span class="pre">0</span></code>
+to wait indefinitely (the default behavior).</dd>
+<dt class="field-name">Types</dt><dd class="field-body">float</dd>
+<dt class="field-name">Default</dt><dd class="field-body"><code class="docutils literal"><span class="pre">0</span></code></dd>
+<dt class="field-name">Constant</dt><dd class="field-body"><code class="docutils literal"><span class="pre">GuzzleHttp\RequestOptions::TIMEOUT</span></code></dd>
+</dl>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="c1">// Timeout if a server does not return a response in 3.14 seconds.</span>
+<span class="nv">$client</span><span class="o">-&gt;</span><span class="na">request</span><span class="p">(</span><span class="s1">&#39;GET&#39;</span><span class="p">,</span> <span class="s1">&#39;/delay/5&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;timeout&#39;</span> <span class="o">=&gt;</span> <span class="mf">3.14</span><span class="p">]);</span>
+<span class="c1">// PHP Fatal error:  Uncaught exception &#39;GuzzleHttp\Exception\TransferException&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="version">
+<span id="version-option"></span><h2>version<a class="headerlink" href="#version" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils field-list" frame="void" rules="none">
+<dt class="field-name">Summary</dt><dd class="field-body">Protocol version to use with the request.</dd>
+<dt class="field-name">Types</dt><dd class="field-body">string, float</dd>
+<dt class="field-name">Default</dt><dd class="field-body"><code class="docutils literal"><span class="pre">1.1</span></code></dd>
+<dt class="field-name">Constant</dt><dd class="field-body"><code class="docutils literal"><span class="pre">GuzzleHttp\RequestOptions::VERSION</span></code></dd>
+</dl>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="c1">// Force HTTP/1.0</span>
+<span class="nv">$request</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">request</span><span class="p">(</span><span class="s1">&#39;GET&#39;</span><span class="p">,</span> <span class="s1">&#39;/get&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;version&#39;</span> <span class="o">=&gt;</span> <span class="mf">1.0</span><span class="p">]);</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+            
+  <div class="footer-relations">
+    
+      <div class="pull-left">
+        <a class="btn btn-default" href="quickstart.html" title="previous chapter (use the left arrow)">Quickstart</a>
+      </div>
+    
+      <div class="pull-right">
+        <a class="btn btn-default" href="psr7.html" title="next chapter (use the right arrow)">Guzzle and PSR-7</a>
+      </div>
+    </div>
+    <div class="clearer"></div>
+  
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="psr7.html" title="Guzzle and PSR-7"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="quickstart.html" title="Quickstart"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Guzzle 7</a> &raquo;</li> 
+      </ul>
+    </div>
+<script type="text/javascript">
+  $("#mobile-toggle a").click(function () {
+    $("#left-column").toggle();
+  });
+</script>
+<script type="text/javascript" src="_static/js/bootstrap.js"></script>
+  <div class="footer">
+    &copy; Copyright 2015, Michael Dowling. Created using <a href="http://sphinx.pocoo.org/">Sphinx</a>.
+  </div>
+  </body>
+</html>

@@ -1,0 +1,439 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <title>PostgreSQL: Versioning Policy</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="Content-Type" content="text/xhtml; charset=utf-8" />
+   
+  <meta name="theme-color" content="#336791"/>
+  <meta name="copyright" content="The PostgreSQL Global Development Group" />
+  <link href="/media/css/fontawesome.css?f51cc3cf" rel="stylesheet">
+  <link rel="stylesheet" href="/media/css/bootstrap-4.4.1.min.css">
+  <link rel="shortcut icon" href="/favicon.ico" />
+  
+    <link rel="stylesheet" type="text/css" href="/dyncss/base.css?f51cc3cf">
+  
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div class="row justify-content-md-center">
+        <div class="col">
+          <!-- Header -->
+          <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand p-0" href="/">
+              <img class="logo" src="/media/img/about/press/elephant.png" alt="PostgreSQL Elephant Logo">
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#pgNavbar" aria-controls="pgNavbar" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="pgNavbar">
+              <ul class="navbar-nav mr-auto">
+                <li class="nav-item p-2"><a href="/" title="Home">Home</a></li>
+                <li class="nav-item p-2"><a href="/about/" title="About">About</a></li>
+                <li class="nav-item p-2"><a href="/download/" title="Download">Download</a></li>
+                <li class="nav-item p-2"><a href="/docs/" title="Documentation">Documentation</a></li>
+                <li class="nav-item p-2"><a href="/community/" title="Community">Community</a></li>
+                <li class="nav-item p-2"><a href="/developer/" title="Developers">Developers</a></li>
+                <li class="nav-item p-2"><a href="/support/" title="Support">Support</a></li>
+                <li class="nav-item p-2"><a href="/about/donate/" title="Donate">Donate</a></li>
+                <li class="nav-item p-2"><a href="/account/" title="Your account">Your account</a></li>
+              </ul>
+             <form role="search" method="get" action="/search/">
+               <div class="input-group">
+                 <input id="q" name="q" type="text" size="20" maxlength="255" accesskey="s"  class="form-control" placeholder="Search for...">
+                 <span class="input-group-btn">
+                   <button class="btn btn-default" type="submit"><i class="fas fa-search"></i></button>
+                 </span>
+               </div><!-- /input-group -->
+             </form>
+            </div>
+          </nav>
+        </div>
+      </div>
+      <div class="row justify-content-center pg-shout-box">
+        <div class="col text-white text-center">10th February 2022: <a href="https://www.postgresql.org/about/news/postgresql-142-136-1210-1115-and-1020-released-2402/">
+  PostgreSQL 14.2, 13.6, 12.10, 11.15, and 10.20 Released</a>!
+
+</div>
+      </div>
+    </div>
+    
+<div class="container-fluid margin">
+  <div class="row">
+    <div class="col-lg-2">
+      <div id="pgSideWrap">
+       
+       <div id="pgSideNav">
+         <h2>Quick Links</h2>
+
+         <ul>
+           
+           
+           <li><a href="/support/">Support</a>
+            
+            
+           
+           </li>
+           <li><a href="/support/versioning/">Versioning Policy</a>
+            
+            
+           
+           </li>
+           <li><a href="/support/security/">Security</a>
+            
+            
+           
+           </li>
+           <li><a href="/support/professional_support/">Professional Services</a>
+            
+            
+           
+           </li>
+           <li><a href="/support/professional_hosting/">Hosting Solutions</a>
+            
+            
+           
+           </li>
+           <li class="last-child"><a href="/account/submitbug/">Report a Bug</a>
+            
+            
+           </li>
+            
+           
+        </ul>
+
+       </div>
+       
+      </div> <!-- pgSideWrap -->
+    </div>
+    <div class="col-lg-10">
+      <div id="pgContentWrap">
+        
+
+<h1>Versioning Policy <i class="fas fa-code-branch"></i></h1>
+
+<p>
+The PostgreSQL Global Development Group releases a new major version containing
+new features about once a year. Each major version receives bug fixes and, if
+need be, <a href="/support/security/">security</a> fixes that are released at
+least once every three months in what we call a "minor release." For more
+information on the minor release schedule, you can view the
+<a href="/developer/roadmap/">minor release roadmap</a>.
+<p>
+
+<p>
+If the release team determines that a critical bug or security fix is too
+important to wait until the regularly scheduled minor release, it may make
+a release available outside of the minor release roadmap.
+</p>
+
+<p>
+The PostgreSQL Global Development Group supports a major version for 5 years
+after its initial release. After its five year anniversary, a major version will
+have one last minor release containing any fixes and will be considered
+end-of-life (EOL) and no longer supported.
+</p>
+
+<h2>Version Numbering</h2>
+
+<p>
+Starting with PostgreSQL 10, a major version is indicated by increasing the
+first part of the version, e.g. 10 to 11.  Before PostgreSQL 10, a major version
+was indicated by increasing either the first or second part of the version
+number, e.g. 9.5 to 9.6.
+</p>
+
+<p>
+Minor releases are numbered by increasing the last part of the version number.
+Beginning with PostgreSQL 10, this is the second part of the version number,
+e.g. 10.0 to 10.1; for older versions this is the third part of the version
+number, e.g. 9.5.3 to 9.5.4.
+</p>
+
+<h2>Upgrading</h2>
+
+<p>
+  <strong>
+    We always recommend that all users run the latest available minor
+    release for whatever major version is in use.
+  </strong>
+</p>
+
+<p>
+Major versions usually change the internal format of system tables and data
+files.  These changes are often complex, so we do not maintain backward
+compatibility of all stored data.  A dump/reload of the database or use of the
+<a href="/docs/current/pgupgrade.html">pg_upgrade</a> module is required
+for major upgrades. We also recommend reading the
+<a href="/docs/current/upgrading.html">upgrading</a> section of the major
+version you are planning to upgrade to. You can upgrade from one major version
+to another without upgrading to intervening versions, but we recommend reading
+the <a href="/docs/release/">release notes</a> of all intervening major
+versions prior to doing so.
+</p>
+
+<p>
+Upgrading to a minor release does not normally require a dump and restore;  you
+can stop the database server, install the updated binaries, and restart the
+server.  For some releases, manual changes may be required to complete the
+upgrade, so always read the release notes before upgrading.
+</p>
+
+<p>
+While upgrading will always contain some level of risk, PostgreSQL minor releases
+fix only frequently-encountered bugs, <a href="/support/security/">security</a>
+issues, and data corruption problems to reduce the risk associated with
+upgrading. For minor releases, <em>the community considers not upgrading to be
+riskier than upgrading.</em>
+</p>
+
+<h2>Releases</h2>
+
+<table class="table table-striped">
+  <thead class="thead-light">
+    <tr>
+      <th>Version</th>
+      <th>Current minor</th>
+      <th>Supported</th>
+      <th>First Release</th>
+      <th>Final Release</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+      <tr>
+       <td>14</td>
+       <td>14.2</td>
+       <td>Yes</td>
+       <td>September 30, 2021</td>
+       <td>November 12, 2026</td>
+      </tr>
+    
+      <tr>
+       <td>13</td>
+       <td>13.6</td>
+       <td>Yes</td>
+       <td>September 24, 2020</td>
+       <td>November 13, 2025</td>
+      </tr>
+    
+      <tr>
+       <td>12</td>
+       <td>12.10</td>
+       <td>Yes</td>
+       <td>October 3, 2019</td>
+       <td>November 14, 2024</td>
+      </tr>
+    
+      <tr>
+       <td>11</td>
+       <td>11.15</td>
+       <td>Yes</td>
+       <td>October 18, 2018</td>
+       <td>November 9, 2023</td>
+      </tr>
+    
+      <tr>
+       <td>10</td>
+       <td>10.20</td>
+       <td>Yes</td>
+       <td>October 5, 2017</td>
+       <td>November 10, 2022</td>
+      </tr>
+    
+      <tr>
+       <td>9.6</td>
+       <td>9.6.24</td>
+       <td>No</td>
+       <td>September 29, 2016</td>
+       <td>November 11, 2021</td>
+      </tr>
+    
+      <tr>
+       <td>9.5</td>
+       <td>9.5.25</td>
+       <td>No</td>
+       <td>January 7, 2016</td>
+       <td>February 11, 2021</td>
+      </tr>
+    
+      <tr>
+       <td>9.4</td>
+       <td>9.4.26</td>
+       <td>No</td>
+       <td>December 18, 2014</td>
+       <td>February 13, 2020</td>
+      </tr>
+    
+      <tr>
+       <td>9.3</td>
+       <td>9.3.25</td>
+       <td>No</td>
+       <td>September 9, 2013</td>
+       <td>November 8, 2018</td>
+      </tr>
+    
+      <tr>
+       <td>9.2</td>
+       <td>9.2.24</td>
+       <td>No</td>
+       <td>September 10, 2012</td>
+       <td>November 9, 2017</td>
+      </tr>
+    
+      <tr>
+       <td>9.1</td>
+       <td>9.1.24</td>
+       <td>No</td>
+       <td>September 12, 2011</td>
+       <td>October 27, 2016</td>
+      </tr>
+    
+      <tr>
+       <td>9.0</td>
+       <td>9.0.23</td>
+       <td>No</td>
+       <td>September 20, 2010</td>
+       <td>October 8, 2015</td>
+      </tr>
+    
+      <tr>
+       <td>8.4</td>
+       <td>8.4.22</td>
+       <td>No</td>
+       <td>July 1, 2009</td>
+       <td>July 24, 2014</td>
+      </tr>
+    
+      <tr>
+       <td>8.3</td>
+       <td>8.3.23</td>
+       <td>No</td>
+       <td>February 4, 2008</td>
+       <td>February 7, 2013</td>
+      </tr>
+    
+      <tr>
+       <td>8.2</td>
+       <td>8.2.23</td>
+       <td>No</td>
+       <td>December 5, 2006</td>
+       <td>December 5, 2011</td>
+      </tr>
+    
+      <tr>
+       <td>8.1</td>
+       <td>8.1.23</td>
+       <td>No</td>
+       <td>November 8, 2005</td>
+       <td>November 8, 2010</td>
+      </tr>
+    
+      <tr>
+       <td>8.0</td>
+       <td>8.0.26</td>
+       <td>No</td>
+       <td>January 19, 2005</td>
+       <td>October 1, 2010</td>
+      </tr>
+    
+      <tr>
+       <td>7.4</td>
+       <td>7.4.30</td>
+       <td>No</td>
+       <td>November 17, 2003</td>
+       <td>October 1, 2010</td>
+      </tr>
+    
+      <tr>
+       <td>7.3</td>
+       <td>7.3.21</td>
+       <td>No</td>
+       <td>November 27, 2002</td>
+       <td>November 27, 2007</td>
+      </tr>
+    
+      <tr>
+       <td>7.2</td>
+       <td>7.2.8</td>
+       <td>No</td>
+       <td>February 4, 2002</td>
+       <td>February 4, 2007</td>
+      </tr>
+    
+      <tr>
+       <td>7.1</td>
+       <td>7.1.3</td>
+       <td>No</td>
+       <td>April 13, 2001</td>
+       <td>April 13, 2006</td>
+      </tr>
+    
+      <tr>
+       <td>7.0</td>
+       <td>7.0.3</td>
+       <td>No</td>
+       <td>May 8, 2000</td>
+       <td>May 8, 2005</td>
+      </tr>
+    
+      <tr>
+       <td>6.5</td>
+       <td>6.5.3</td>
+       <td>No</td>
+       <td>June 9, 1999</td>
+       <td>June 9, 2004</td>
+      </tr>
+    
+      <tr>
+       <td>6.4</td>
+       <td>6.4.2</td>
+       <td>No</td>
+       <td>October 30, 1998</td>
+       <td>October 30, 2003</td>
+      </tr>
+    
+      <tr>
+       <td>6.3</td>
+       <td>6.3.2</td>
+       <td>No</td>
+       <td>March 1, 1998</td>
+       <td>March 1, 2003</td>
+      </tr>
+    
+  </tbody>
+</table>
+
+      </div> <!-- pgContentWrap -->
+    </div>
+  </div>
+</div>
+
+    <!-- Footer -->
+    <footer id="footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <ul>
+              <li><a href="https://twitter.com/postgresql"><img src="/media/img/atpostgresql.png" alt="@postgresql"></a></li>
+              <li><a href="https://git.postgresql.org/gitweb/?p=postgresql.git"><img src="/media/img/git.png" alt="Git"></a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <!-- Copyright -->
+      <div class="container">
+        <a href="/about/policies/">Policies</a> |
+        <a href="/about/policies/coc/">Code of Conduct</a> |
+        <a href="/about/">About PostgreSQL</a> |
+        <a href="/about/contact/">Contact</a><br/>
+        <p>Copyright &copy; 1996-2022 The PostgreSQL Global Development Group</p>
+      </div>
+    </footer>
+    <script src="/media/js/jquery-3.4.1.slim.min.js"></script>
+    <script src="/media/js/popper-1.16.0.min.js"></script>
+    <script src="/media/js/bootstrap-4.4.1.min.js"></script>
+    <script src="/media/js/main.js?f51cc3cf"></script>
+
+  </body>
+</html>

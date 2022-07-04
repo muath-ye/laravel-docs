@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Laravel error tracking – Flare</title>
+<meta name="description"
+          content="Full-stack Laravel error tracking made specifically for your Laravel applications and JavaScript frontends."/>
+
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="google-site-verification" content="J-onzXE6OeNXHeQ-VinI99TK_zpe0hKbYXShYCGutKo" />
+<meta name="ahrefs-site-verification" content="5179741a52de628b7ade6c395de9c4628ac58317be69b8ed0cd7cbc5c696211b">
+
+<link rel="alternate" type="application/atom+xml" href="https://flareapp.io/feed" title="flareapp.io">
+
+
+
+<link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+<link rel="stylesheet" type="text/css" href="https://cloud.typography.com/6194432/7425412/css/fonts.css" />
+<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-iKbFRxucmOHIcpWdX9NTZ5WETOPm0Goy0WmfyNcl52qSYtc2Buk0NCe6jU1sWWNB" crossorigin="anonymous">
+
+        <link rel="stylesheet" href="/build/assets/main.f4f16b56.css">
+    <script type="module" src="/build/assets/app.1aa7bb94.js" defer></script>
+
+<script src="https://cdn.amcharts.com/lib/4/core.js"></script>
+<script src="https://cdn.amcharts.com/lib/4/charts.js"></script>
+<script src="https://cdn.amcharts.com/lib/4/themes/animated.js"></script>
+<script src="https://cdn.amcharts.com/lib/4/plugins/rangeSelector.js"></script>
+<script src="https://cdn.amcharts.com/lib/4/plugins/rangeSelector.js"></script>
+
+<link rel="apple-touch-icon" sizes="180x180" href="https://flareapp.io/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://flareapp.io/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="https://flareapp.io/favicon-16x16.png">
+<link rel="manifest" href="https://flareapp.io/site.webmanifest">
+<meta name="msapplication-TileColor" content="#4f0f8f">
+<meta name="theme-color" content="#4f0f8f">
+
+<meta property="og:site_name" content="Flare">
+<meta property="og:locale" content="en_US">
+
+    <meta name="twitter:card" content="summary_large_image"/>
+    <meta name="twitter:creator" content="@flareappio"/>
+    <meta name="twitter:site" content="@flareappio"/>
+    <meta name="twitter:title" content="Flare, error tracker for Laravel"/>
+    <meta name="twitter:description"
+          content="Flare is the only error tracker that suggests a fix.Think Ignition—your local error page—in production."/>
+    <meta name="twitter:image" content="https://flareapp.io/images/social-card.png"/>
+
+    <meta property="og:url" content="https://flareapp.io"/>
+    <meta property="og:type" content="product"/>
+    <meta property="og:title" content="Flare, error tracker for Laravel"/>
+    <meta property="og:description"
+          content="Flare is the only error tracker that suggests a fix.Think Ignition—your local error page—in production."/>
+    <meta property="og:image" content="https://flareapp.io/images/social-card.png"/>
+
+
+    <script>
+        window.__webpack_public_path__ = 'https://flareapp.io/';
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
+
+    
+    <script>
+        dataLayer = [{ context: 'public' }];
+    </script>
+    <script>(function(f,l,a,r,e){f[r]=f[r]||[];f[r].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=l.getElementsByTagName(a)[0],
+    j=l.createElement(a),dl=r!='dataLayer'?'&l='+r:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+e+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-M257ZV9');</script>
+
+</head>
+<body class="scrollbar-lg">
+<div class="flex flex-col min-h-screen bg-gray-800">
+
+    
+
+    <header class="header z-10">
+    <div class="layout-col">
+        <div class="header-bar grid-cols-auto grid-flow-col">
+            <a class="header-logo" href="/">
+                <svg class="header-logo-image" x="0px" y="0px" viewBox="0 0 682 1024">
+                    <polygon style="fill:#51DB9E;" points="235.3,510.5 21.5,387 21.5,140.2 236.5,264.1 "/>
+                    <polygon style="fill:#7900F5;" points="235.3,1004.8 21.5,881.4 21.5,634.5 234.8,757.9 "/>
+                    <polygon style="fill:#94F2C8;" points="448.9,386.9 21.5,140.2 235.3,16.7 663.2,263.4 "/>
+                    <polygon style="fill:#A475F4;" points="234.8,757.9 21.5,634.5 235.3,511 449.1,634.5 "/>
+                </svg>
+                <span class="header-logo-text text-gray-200">
+                    <span>Flare</span> <span class="header-logo-claim"></span>
+                </span>
+            </a>
+
+            <nav class="header-menu links-no-underline links-invers">
+                <a class="hidden sm:block" href="/features">
+                    Features
+                </a>
+                <a class="hidden sm:block" href="https://flareapp.io/pricing">
+                    Pricing
+                </a>
+                <a class="" href="/docs/general/welcome">
+                    Docs
+                </a>
+
+                <a class="" href="https://flareapp.io/blog">
+                    Blog
+                </a>
+                                                    <a href="https://flareapp.io/login"
+                       class="">
+                        Log in
+                    </a>
+                    <a class="ui-trial ui-corner"
+                       href=" https://flareapp.io/register">
+                        <span class="hidden sm:block">Start free trial</span>
+                        <span class="sm:hidden block">Free trial</span>
+                    </a>
+                            </nav>
+        </div>
+    </div>
+</header>
+
+        <main class="flex-1 w-full text-gray-300">
+        <div class=overflow-x-hidden>
+            <section class="z-10 ">
+                <div class="layout-col" id="invite">
+                    <div class="pt-16 pb-16 md:pb-32 grid grid-cols-auto grid-flow-col gap-8 border-t border-gray-700">
+                        <div class="home-hero">
+                            <img alt="Flare illustration" src="https://flareapp.io/images/home/hero.svg"/>
+                        </div>
+                        <div class="max-w-3xl">
+                            <h1 class="text-3xl sm:text-5xl leading-tight">
+                                <strong class="font-semibold">Laravel Error Tracking</strong>
+                            </h1>
+                            <p class="home-h1-baseline flex flex-wrap">
+                                <span class="inline-block font-normal">Let's fix this&nbsp;</span>
+                                <span class="inline-block">
+                                    <span class="slogan-words">
+                                        <span class="opacity-0">
+                                            automatically
+                                        </span>
+                                        <span class="slogan-word slogan-word-1">
+                                            automatically
+                                        </span>
+                                        <span class="slogan-word slogan-word-2">
+                                            together
+                                        </span>
+                                        <span class="slogan-word slogan-word-3">
+                                            right now
+                                        </span>
+                                    </span>
+                                </span>
+                            </p>
+                            <p class="mt-6 text-lg sm:text-2xl">
+                                Flare is specifically built for Laravel error tracking.
+                                <br>
+                                Think of Ignition<span class="mx-1">—</span>your local error page<span class="mx-1">—</span>in production.
+                                <br>
+                                Track all your PHP and JavaScript errors in one place.
+                            </p>
+
+                            <div class="grid items-center justify-start gap-6 mt-10 | sm:grid-flow-col sm:gap-12 | md:justify-start ">
+                                                                                                    <a href="https://flareapp.io/register"
+                                    class="button button-lg flex flex-col items-start">
+                                        Start your free 10-day trial
+                                        <span class="text-xs opacity-50 mt-1">No credit card required</span>
+                                    </a>
+                                                                <a href="/docs" class="link-dimmed-invers text-lg">Read documentation</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="bg-gray-900 bg-no-repeat"
+                    style="background-position: left 47%; background-size: 85% auto; background-image: url(https://flareapp.io/images/home/features-bg.svg)">
+                <div class="layout-col py-16 md:py-32">
+                    <div class="grid gap-16 | md:grid-cols-2">
+                        <div>
+                            <img alt="Solutions illustration" class="w-full h-auto screenshot-dark" src="https://flareapp.io/images/home/screenshot.png"/>
+                        </div>
+                        <div>
+                            <h2 class="home-h1">Know the issue in no time</h2>
+                            <p class="home-h1-baseline">Instant notifications for errors in production</p>
+                            <p class="text-lg mt-6">
+                                Flare monitors your PHP and JavaScript applications and tracks all errors when things go wrong.
+                            </p>
+                            <p class="text-lg mt-2">
+                                For common issues, Flare suggests solutions and related documentation.
+
+                                The best part? In local development, the Ignition error page can automatically fix things
+                                for you with a single click.
+                            </p>
+                            <p class="text-lg mt-2">
+                                Laravel error tracking has never been more comfortable.
+                            </p>
+                            <h3 class="mt-16 home-h3">Learn more</h3>
+                            <p class="mt-4 grid md:block">
+                                <a href="/features#errors">
+                                    <span class="link-dimmed-invers">Errors & occurrences</span>
+                                    <i class="fas fa-layer-group ml-1 text-sm text-green-400"></i>
+                                </a>
+                                <span class="home-link-divider hidden md:inline-block">|</span>
+                                <a href="/features#solutions">
+                                    <span class="link-dimmed-invers">Solutions</span>
+                                    <i class="fas fa-lightbulb ml-1 text-sm text-green-400"></i>
+                                </a>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="mt-16 grid gap-16 | md:grid-cols-2 md:mt-32">
+                        <div>
+                            <h2 class="home-h1">An idea, anyone?</h2>
+                            <p class="home-h1-baseline">Made to collaborate</p>
+                            <p class="text-lg mt-6">
+                                You can share your exceptions from your local environment or production.
+                                Pick the exact content which can see the light when you ask for help.
+                            </p>
+                            <p class="text-lg mt-2">
+                                Need more assistance? Invite guests and team members to your projects to share the burden.
+                                Flare is the Laravel error tracker that keeps the costs low–no matter how many collaborators or projects you add.
+                            </p>
+                            <h3 class="mt-16 home-h3">Featured</h3>
+                            <p class="mt-4 col-span-2 grid md:block">
+                                <a href="/features#sharing">
+                                    <span class="link-dimmed-invers">Shares</span>
+                                    <i class="fas fa-share ml-1 text-sm text-purple-400"></i>
+                                </a>
+                                <span class="home-link-divider hidden md:inline-block">|</span>
+                                <a href="/features#teams">
+                                    <span class="link-dimmed-invers">Teams & projects</span>
+                                    <i class="fas fa-users ml-1 text-sm text-purple-400"></i>
+                                </a>
+                                <span class="home-link-divider hidden md:inline-block">|</span>
+                                <a href="/features#notifications">
+                                    <span class="link-dimmed-invers">Notifications</span>
+                                    <i class="fas fa-bell ml-1 text-sm text-purple-400"></i>
+                                </a>
+                            </p>
+                        </div>
+                        <div>
+                            <img alt="Collaboration illustration" class="hidden md:block w-full h-auto screenshot-dark" src="https://flareapp.io/images/home/screenshot-sharing.png"/>
+                        </div>
+                    </div>
+
+                    <div class="mt-8 md:mt-16 grid gap-16 | md:mt-32 md:grid-cols-2">
+                        <div>
+                            <img alt="Ignition illustration" class="w-full h-auto screenshot-dark" src="https://flareapp.io/images/ignition/hero.png"/>
+                        </div>
+                        <div>
+                            <h2 class="home-h1">As seen in… Laravel</h2>
+                            <p class="home-h1-baseline">A first-class citizen</p>
+                            <p class="text-lg mt-6">
+                                Flare couples with Ignition—the open-source error page of Laravel.
+                                Anyone who has ever seen a local error will love the online features of Flare for monitoring
+                                projects in production. Flare is the Laravel error tracker that mirrors your local debugging experience.
+                            </p>
+                            <p class="text-lg mt-6">
+                                The service provides a focused and super-fast interface with customization in mind.
+                                It clearly shows that a team of fellow developers built Ignition and Flare.
+                            </p>
+
+                            <h3 class="mt-12 home-h3">Find out
+                                more</h3>
+                            <p class="mt-4 grid md:block">
+                                <a href="/ignition">
+                                    <span class="link-dimmed-invers">Ignition features</span>
+                                    <i class="fab fa-laravel ml-1 text-sm text-red-400"></i>
+                                </a>
+                                <span class="home-link-divider hidden md:inline-block">|</span>
+                                <a href="/docs/ignition-for-laravel/introduction">
+                                    <span class="link-dimmed-invers">Documentation</span>
+                                    <i class="fas fa-bug ml-1 text-sm text-red-400"></i>
+                                </a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+
+        <section class="bg-repeat"
+                 style="background-size: cover, 500px auto; background-image: linear-gradient(to bottom, rgba(32, 0, 43, .4), rgba(51, 47, 81, 0)), url(https://flareapp.io/images/home/testimonial-bg.svg)">
+            <div class="layout-col pt-16 pb-24">
+
+                <h3 class="home-h3 text-center text-xl text-gray-600 mb-12">Good folks saying nice things</h3>
+<div class="grid grid-cols-auto-1fr grid-flow-col items-center gap-8 md:gap-16 mb-12">
+    <div class="w-16 h-16 md:w-32 md:h-32 rounded-full bg-gray-100 border-2 md:border-4 border-purple-400 overflow-hidden shadow-home">
+        <img alt="Jeffrey" class="w-16 h-auto md:w-32 rounded-full" src="https://flareapp.io/images/testimonials/jeffrey-way.jpg" />
+    </div>
+    <blockquote class="inline-block max-w-2xl">
+        <p class="text-lg md:text-2xl">
+            <img alt="'" class="inline absolute right-full top-0 w-6 h-6" src="https://flareapp.io/images/home/quote-open.svg" />
+            Ignition provided a massive upgrade to Laravel’s default error page. But the seamless and instantly familiar integration with Flare changes the game entirely. I’m blown away.
+            <img alt="'" class="inline absolute bottom-0 -mt-2 w-6 h-6" src="https://flareapp.io/images/home/quote-close.svg" />
+        </p>
+        <p class="mt-4 text-gray-400">
+            Jeffrey Way
+        </p>
+    </blockquote>
+</div>
+<div class="grid grid-cols-auto grid-flow-col justify-end items-center gap-8 md:gap-16 mb-12">
+    <blockquote class="inline-block max-w-2xl text-right">
+        <p class="text-lg md:text-2xl">
+            <img alt="'" class="inline-block align-top w-6 h-6 -mr-2" src="https://flareapp.io/images/home/quote-open.svg" />
+            Absolutely love Flare and Ignition! It already has become a vital part of my techstack. Great integration with Laravel, dead simple UX and a beautiful UI. Worth every penny!
+            <img alt="'" class="inline absolute bottom-0 -mt-2 w-6 h-6" src="https://flareapp.io/images/home/quote-close.svg" />
+        </p>
+        <p class="mt-4 text-gray-400">
+            Patrick Brouwers
+        </p>
+    </blockquote>
+    <div class="w-16 h-16 md:w-32 md:h-32 rounded-full bg-gray-100 border-2 md:border-4 border-purple-400 overflow-hidden shadow-home">
+        <a target="_blank" rel="noopener nofollower noreferrer" href="https://twitter.com/patrickbrouwers/status/1178269000419221508">
+            <img alt="Patrick" class="w-16 h-auto md:w-32 rounded-full" src="https://flareapp.io/images/testimonials/patrick-brouwers.jpg" />
+        </a>
+    </div>
+</div>
+<div class="grid grid-cols-auto-1fr grid-flow-col items-center gap-8 md:gap-16 mb-12">
+    <div class="w-16 h-16 md:w-32 md:h-32 rounded-full bg-gray-100 border-2 md:border-4 border-purple-400 overflow-hidden shadow-home">
+        <a target="_blank" rel="noopener nofollower noreferrer" href="https://twitter.com/SPresnac/status/1169217327616987142">
+            <img alt="Sasha" class="w-16 h-auto md:w-32 rounded-full" src="https://flareapp.io/images/testimonials/sascha-presnac.jpg" />
+        </a>
+    </div>
+    <blockquote class="inline-block max-w-2xl">
+        <p class="text-lg md:text-2xl">
+            <img alt="'" class="inline-block align-top w-6 h-6 -mr-2" src="https://flareapp.io/images/home/quote-open.svg" />
+            Since using Flare, I already have a bug fixed when my collegues came to me for reporting that (fixed) error… nice work!
+            <img alt="'" class="inline absolute bottom-0 -mt-2 w-6 h-6" src="https://flareapp.io/images/home/quote-close.svg" />
+        </p>
+        <p class="mt-4 text-gray-400">
+           Sascha Presnac
+        </p>
+    </blockquote>
+</div>
+<div class="grid grid-cols-auto grid-flow-col justify-end items-center gap-8 md:gap-16 mb-12">
+    <blockquote class="inline-block max-w-2xl">
+        <p class="text-lg md:text-2xl">
+            <img alt="'" class="inline absolute right-full top-0 w-6 h-6" src="https://flareapp.io/images/home/quote-open.svg" />
+            I’ve been using Flare for the last month now. For my work and learning it’s the perfect fit. You can learn how to fix issues using Laravel specific and easy to understand logs. It’s as much a tool for learning as it is a bug tracker. 🔥
+            <img alt="'" class="inline absolute bottom-0 -mt-2 w-6 h-6" src="https://flareapp.io/images/home/quote-close.svg" />
+        </p>
+        <p class="mt-4 text-gray-400">
+            Gareth Redfern
+        </p>
+    </blockquote>
+    <div class="w-16 h-16 md:w-32 md:h-32 rounded-full bg-gray-100 border-2 md:border-4 border-purple-400 overflow-hidden shadow-home">
+        <a target="_blank" rel="noopener nofollower noreferrer" href="https://twitter.com/garethredfern/status/1177484302298148864?s=21" target="_blank">
+            <img alt="Gareth" class="w-16 h-auto md:w-32 rounded-full" src="https://flareapp.io/images/testimonials/gareth-redfern.jpg" />
+        </a>
+    </div>
+</div>
+
+                                    <div class="mt-32 -mb-24 z-1 grid justify-center">
+                        <div class="shadow-home">
+                            <div class="w-full bg-white p-12 sm:p-16 text-center text-gray-700 bg-no-repeat"
+    style="background-position: top left; background-size: 100% auto; background-image: url(https://flareapp.io/images/home/cta-bg.svg)">
+    <h1 class="text-xl mb-8 md:mb-0 md:text-3xl leading-tight">
+                    <span class="font-normal">Track your errors in</span>
+            <span class="font-semibold">
+                3 simple steps:
+            </span>
+            </h1>
+    <div class="flex flex-col md:grid md:grid-flow-col gap-4 justify-center items-center mt-4 sm:text-xl leading-tight | md:grid-cols-auto">
+        <div class="flex items-center text-left whitespace-nowrap"><span
+                class="ui-count mr-2 bg-green-500 font-semibold text-white text-base">1</span>
+            Create an account
+        </div>
+        <span class="font-normal text-gray-500">
+            <span class="hidden | md:block">&rarr;</span>
+            <span class="md:hidden">&darr;</span>
+        </span>
+        <div class="flex items-center text-left whitespace-nowrap"><span
+                class="ui-count mr-2 bg-green-500 font-semibold text-white text-base">2</span>
+            Add your project
+        </div>
+        <span class="font-normal text-gray-500">
+            <span class="hidden | md:block">&rarr;</span>
+            <span class="md:hidden">&darr;</span>
+        </span>
+        <div class="flex items-center text-left whitespace-nowrap"><span
+                class="ui-count mr-2 bg-green-500 font-semibold text-white text-base">3</span>
+            Install an application key
+        </div>
+    </div>
+    <p class="mt-6">
+        <a href="/register" class="button button-lg md:text-3xl mt-6 px-10 py-4 whitespace-nowrap">
+        Create an account
+        </a>
+    </p>
+    <p class="mt-3 text-gray-500">
+        <i class="text-gray-400 far fa-clock"></i> This takes only a few seconds
+    </p>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer ui-skew links-dimmed-invers links-no-underline">
+    <div class="layout-col">
+        <div class="footer-cols">
+            <div class="footer-nav">
+                <div class="footer-nav-col">
+                    <h4 class="footer-nav-col-title">
+                        About Flare
+                    </h4>
+                    <ul>
+                        <li>
+                            <a href="https://flareapp.io">Home</a>
+                        </li>
+                        <li>
+                            <a href="https://flareapp.io/features">Features</a>
+                        </li>
+                        <li>
+                            <a href="https://flareapp.io/pricing">Pricing</a>
+                        </li>
+                        <li>
+                            <a href="https://flareapp.io/support">Support</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="footer-nav-col">
+                    <h4 class="footer-nav-col-title">
+                        Resources
+                    </h4>
+                    <ul>
+                        <li>
+                            <a href="https://flareapp.io/blog">Blog</a>
+                        </li>
+                        <li>
+                            <a href="https://flareapp.io/changelog">Changelog</a>
+                        </li>
+                        <li>
+                            <a href="/docs/general/welcome">Docs</a>
+                        </li>
+                        <li>
+                            <a href="https://flareapp.io/ignition">Ignition</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="footer-nav-col">
+                    <h4 class="footer-nav-col-title">
+                        App
+                    </h4>
+                    <ul>
+                                                    <li>
+                                <a href="https://flareapp.io/login">Log in</a>
+                            </li>
+                        
+                        
+                                                    <li>
+                                <a class="text-green-500"
+                                href="https://flareapp.io/register">
+                                Start free trial
+                                <i class="ml-2 fa fa-arrow-right text-green-500"></i>
+                            </a>
+                            </li>
+                                            </ul>
+                </div>
+            </div>
+            <small>
+                <div class="footer-colophon">
+                    <div class="flex items-center sm:justify-end">
+                        <a rel="noopener nofollower noreferrer" href="https://facade.company" target="_blank">
+                            <svg class="w-12 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 595.28 255.12"><title>SPATIE</title><g><path class="fill-current text-blue-spatie" d="M0,9.77A10,10,0,0,1,10.26,0H585a10,10,0,0,1,10.28,9.77V245.36A10,10,0,0,1,585,255.12H10.26A10,10,0,0,1,0,245.36V9.77Z"></path></g><g><path d="M95.6,156.66l10.87-14.84c6.46,5.32,13.82,8.95,21.52,8.95,5.44,0,8.27-2.38,8.27-5.78v-0.11c0-3.17-2.38-5.1-11.67-8.38-14.95-5.1-25.48-10.53-25.48-24.92v-0.34c0-14.38,11-24.46,28.31-24.46,10.65,0,20,2.94,28.31,9.63l-10.31,15.17c-5.44-4.19-12-7.25-18.46-7.25-4.64,0-7.25,2.27-7.25,5.21v0.11c0,3.51,2.49,5.32,12.57,9.06,15.06,4.87,24.46,11,24.46,24.46v0.23c0,15.4-11.89,24.92-28.88,24.92A48.26,48.26,0,0,1,95.6,156.66Z" class="fill-current text-white"></path><path d="M175.67,87.92H204c18.69,0,30.92,9.74,30.92,27.52v0.45c0,19-13.82,28.09-31.14,28.31h-7.81v23H175.67V87.92Zm27.41,39.64c7.13,0,11.44-4.19,11.44-10.87v-0.34c0-7.25-4.19-11-11.55-11h-7v22.2h7.13Z" class="fill-current text-white"></path><path d="M267.17,87.47h20.61l28,79.73h-21.4l-4.64-14.27H264.8l-4.53,14.27h-21Zm17.44,49.15-7.36-23.22-7.36,23.22h14.72Z" class="fill-current text-white"></path><path d="M338.64,106.27H319V87.92h59.57v18.35H359V167.2H338.64V106.27Z" class="fill-current text-white"></path><path d="M396.17,87.92h20.39V167.2H396.17V87.92Z" class="fill-current text-white"></path><path d="M444.64,87.92h54.59v17.89H464.8v13h31v16.88h-31V149.3h34.88V167.2h-55V87.92Z" class="fill-current text-white"></path></g></svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="footer-gdpr">
+                    <ul class="footer-gdpr-links">
+                        <li><a href="https://status.flareapp.io" class="flex items-center text-gray-600 hover:text-gray-500">
+                            <span class="w-2 h-2 mr-2 rounded bg-green-500 border border-tint-200"></span>
+                            Service status
+                        </a></li>
+                        <li><a class="text-gray-600 hover:text-gray-500" href="https://flareapp.io/terms-of-use">Terms of use</a></li>
+                        <li><a class="text-gray-600 hover:text-gray-500" href="https://flareapp.io/privacy-cookie-policy">Privacy & cookie policy</a></li>
+                    </ul>
+                </div>
+            </small>
+        </div>
+    </div>
+</footer>
+</div>
+</body>
+</html>

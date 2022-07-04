@@ -1,0 +1,1146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Email testing and debugging has never been easier – HELO</title>
+    <meta name="ahrefs-site-verification" content="5179741a52de628b7ade6c395de9c4628ac58317be69b8ed0cd7cbc5c696211b">
+
+    <meta name="description" content="HELO is the swiss-army-knife of local email testing and debugging. Catch and review local emails without digging through logs."/>
+
+    <meta name="twitter:card" content="summary_large_image"/>
+    <meta name="twitter:creator" content="@beyondcode"/>
+    <meta name="twitter:site" content="@beyondcode"/>
+    <meta name="twitter:title" content="Email testing and debugging has never been easier – HELO"/>
+    <meta name="twitter:description" content="HELO is the swiss-army-knife of local email testing and debugging. Catch and review local emails without digging through logs."/>
+    <meta name="twitter:image" content="https://usehelo.com/images/social.png"/>
+
+    <meta property="og:url" content="https://usehelo.com"/>
+    <meta property="og:type" content="product"/>
+    <meta property="og:title" content="Email testing and debugging has never been easier – HELO"/>
+    <meta property="og:description" content="HELO is the swiss-army-knife of local email testing and debugging. Catch and review local emails without digging through logs."/>
+    <meta property="og:image" content="https://usehelo.com/images/social.png"/>
+
+    <link rel="stylesheet" href="/css/app.css">
+    <script src="https://cdn.paddle.com/paddle/paddle.js"></script>
+    <script type="text/javascript">
+        Paddle.Setup({ vendor: 103161 });
+    </script>
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.0.1/dist/alpine.js" defer></script>
+
+            <!-- Fathom - simple website analytics - https://usefathom.com -->
+        <script>
+            (function(f, a, t, h, o, m){
+                a[h]=a[h]||function(){
+                    (a[h].q=a[h].q||[]).push(arguments)
+                };
+                o=f.createElement('script'),
+                    m=f.getElementsByTagName('script')[0];
+                o.async=1; o.src=t; o.id='fathom-script';
+                m.parentNode.insertBefore(o,m)
+            })(document, window, 'https://cdn.usefathom.com/tracker.js', 'fathom');
+            fathom('set', 'siteId', 'XQPZIGME');
+            fathom('trackPageview');
+        </script>
+        <!-- / Fathom -->
+    
+</head>
+<body>
+
+<div class="bg-brand-900">
+    <div class="container max-w-7xl mx-auto relative px-8 md:px-16 header-image-sm sm:header-image xl:no-header-image">
+        <nav class="flex justify-between items-center text-white pt-8 pb-6">
+            <span class="font-brand text-3xl border-b-2 border-brand-200">
+                <a href="/">HELO</a>
+            </span>
+            <div class=" text-gray-400 text-xs items-center flex hidden lg:block">
+                <span class="pr-2">A product by</span>
+                <a href="https://beyondco.de/?ref=helo-site" target="_blank">
+                    <img src="https://beyondco.de/images/logo_white.png" class="h-5 inline-block" />
+                </a>
+            </div>
+            <div class="font-medium z-10">
+                <a href="/#features" class="pr-8">Features</a>
+                <a href="/download" class="pr-8 hidden md:inline">Download</a>
+                <a href="/#buy" class="pr-8 hidden md:inline">Pricing</a>
+                <a href="/#faq" class="pr-8">FAQ</a>
+                <a href="https://beyondco.de/docs/helo/getting-started/installation" target="_blank" class="pr-8 hidden md:inline">Docs</a>
+                <a href="/#buy" class="text-brand-200 hidden md:inline">Buy</a>
+            </div>
+        </nav>
+        <div class="pt-40 lg:pt-28 flex">
+            <div class="max-w-2xl mb-8 md:pb-28">
+                <div class="flex-shrink-0 text-gray-400 text-lg items-center flex lg:hidden block py-4">
+                    <span class="pr-2">A product by</span> <img src="https://beyondco.de/images/logo_white.png" class="h-6 inline-block" />
+                </div>
+                <h1 class="text-white text-4xl md:text-5xl font-brand leading-headline">Painless local email testing for web developers.</h1>
+                <p class="text-brand-100 pt-4 max-w-xl leading-paragraph">
+                    HELO is a desktop application that will change the way you test your emails.<br class="hidden md:inline">
+                    No more broken links, missing images, and customer complaints.
+                </p>
+
+                <div class="flex flex-wrap pt-8">
+                    <a href="/download" class="w-full justify-center md:w-auto font-medium rounded-lg bg-brand-200 hover:bg-brand-200-hover border-2 border-brand-900 focus:border-2 focus:border-brand-200-focus focus:text-opacity-dark-70 flex items-center py-2 px-4">Download Trial</a>
+                    <a href="https://www.youtube.com/watch?v=UJAtecCopI0&list=PLT_y1UQzlhiQc8MPawm5i4bqHitgmiz3h" target="_blank" class="w-full justify-center md:w-auto text-white h-10 flex items-center pl-7">Watch the video tour</a>
+                </div>
+            </div>
+        </div>
+        <div class="hidden xl:block absolute top-10 right-0 xl:top-48 xl:-mr-16 z-10" >
+            <div class="relative">
+                <div class="absolute" style="right: 95px; top:46px">
+                    <svg width="504px" height="508px" viewBox="0 0 504 508" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                    <!-- Generator: Sketch 64 (93537) - https://sketch.com -->
+                    <title>Group 6</title>
+                    <desc>Created with Sketch.</desc>
+                    <defs>
+                        <path d="M503.807732,398.293227 C507.490553,421.545643 491.836984,443.392723 468.752475,447.433923 L468.050683,447.550916 L90.7980275,507.301867 C67.5646139,510.981678 45.7305595,495.310412 41.6866689,472.206925 L41.5695891,471.504556 L0.972253091,215.183065 C0.433750099,211.783091 1.43890956,208.326919 3.70117964,205.750809 L3.93968018,205.487493 L185.349874,11.2803455 C195.416173,0.503954561 211.44886,-2.13517855 224.420924,4.79268459 L224.847453,5.02454346 L457.392109,133.667684 C460.402748,135.333162 462.509132,138.251749 463.149413,141.621558 L463.210396,141.971735 L503.807732,398.293227 Z M73.820958,216.526506 L5.03537769,227.421072 L43.6424059,471.176254 C47.1455771,493.294407 67.7285865,508.457406 89.8001812,505.327802 L90.469457,505.227355 L467.722112,445.476404 C489.822189,441.976096 504.968202,421.380906 501.835454,399.29135 L501.734916,398.621529 L463.127888,154.866346 L396.000014,165.498357 C382.367158,167.657589 370.766354,176.542876 365.106944,189.090738 L364.904981,189.545865 L364.698534,190.027146 L345.375825,235.877224 C339.663628,249.431466 327.437032,259.115757 312.968923,261.581733 L312.469141,261.6639 L186.919771,281.548967 C173.347953,283.698532 159.576671,279.229684 149.848335,269.545665 L149.466431,269.160695 L109.447306,228.310472 C100.302023,218.975264 87.2635336,214.57614 74.3585765,216.445006 L73.820958,216.526506 Z M187.209913,12.3704391 L186.883158,12.7148748 L5.47296477,206.922022 C3.55872361,208.971297 2.65713835,211.761328 2.99997592,214.534857 L3.04506988,214.854763 L4.70609854,225.34627 L73.4923876,214.451994 C87.0664958,212.302067 100.840134,216.772785 110.568747,226.460197 L110.945728,226.840266 L150.964853,267.690489 C160.110135,277.025697 173.148625,281.424821 186.053582,279.555955 L186.591201,279.474455 L312.140571,259.589388 C325.945794,257.402856 337.667256,248.319111 343.245448,235.519309 L343.442051,235.060599 L362.76476,189.21052 C368.476956,175.656279 380.703553,165.971988 395.171661,163.506012 L395.671444,163.423845 L462.798914,152.791496 L461.13758,142.300037 C460.698674,139.528898 459.053675,137.101667 456.657011,135.66692 L456.377163,135.505813 L223.832507,6.86267294 C211.767327,0.188244488 196.749136,2.46933121 187.209913,12.3704391 Z" id="path-1"></path>
+                        <filter x="-41.8%" y="-29.9%" width="183.6%" height="159.8%" filterUnits="objectBoundingBox" id="filter-3">
+                            <feGaussianBlur stdDeviation="100" in="SourceGraphic"></feGaussianBlur>
+                        </filter>
+                        <filter x="-20.9%" y="-14.9%" width="141.8%" height="129.9%" filterUnits="objectBoundingBox" id="filter-4">
+                            <feGaussianBlur stdDeviation="50" in="SourceGraphic"></feGaussianBlur>
+                        </filter>
+                        <filter x="-19.0%" y="-25.8%" width="138.0%" height="151.6%" filterUnits="objectBoundingBox" id="filter-5">
+                            <feGaussianBlur stdDeviation="39" in="SourceGraphic"></feGaussianBlur>
+                        </filter>
+                        <filter x="-12.8%" y="-19.8%" width="125.6%" height="139.7%" filterUnits="objectBoundingBox" id="filter-6">
+                            <feGaussianBlur stdDeviation="20" in="SourceGraphic"></feGaussianBlur>
+                        </filter>
+                        <filter x="-24.0%" y="-39.3%" width="148.0%" height="178.6%" filterUnits="objectBoundingBox" id="filter-7">
+                            <feGaussianBlur stdDeviation="38" in="SourceGraphic"></feGaussianBlur>
+                        </filter>
+                    </defs>
+                    <g id="HELO" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                        <g id="shape" transform="translate(-159.000000, -168.000000)">
+                            <g id="Group-6" transform="translate(47.000000, 119.000000)">
+                                <g id="Group-12" transform="translate(146.767278, 55.754104)"></g>
+                                <g id="Group-3" transform="translate(0.000000, 49.000000)">
+                                    <g id="Group-2" transform="translate(111.349178, 0.000000)">
+                                        <mask id="mask-2" fill="white">
+                                            <use xlink:href="#path-1"></use>
+                                        </mask>
+                                        <use id="Shape" fill="#7BFFFF" fill-rule="nonzero" xlink:href="#path-1"></use>
+                                        <path d="M26.8714248,-138.298505 C-21.7187052,117.451371 60.4526208,182.396526 322.042786,159.189086 C583.632952,135.981647 599.187425,266.150992 546.005349,703.859418 C740.878687,391.529209 782.090847,72.15012 669.641829,-254.277848 L85.9303417,-244.849171 C78.9511505,-344.315312 59.2648448,-308.798423 26.8714248,-138.298505 Z" id="Path-3" fill="#7BFFFF" filter="url(#filter-3)" mask="url(#mask-2)"></path>
+                                        <path d="M442.507252,203.625457 C491.097382,459.375333 408.926056,524.320488 147.33589,501.113049 C-114.254275,477.905609 -129.808748,608.074954 -76.6266725,1045.78338 C-271.500011,733.453171 -312.712171,414.074082 -200.263152,87.6461142 L383.448335,97.0747911 C390.427526,-2.39134945 410.113832,33.1255391 442.507252,203.625457 Z" id="Path-3" fill="#FF0DF0" filter="url(#filter-4)" mask="url(#mask-2)"></path>
+                                        <path d="M-113.16623,450.142025 C35.1824131,325.797021 131.302349,311.870141 216.700521,395.626646 C302.098693,479.383151 398.401843,458.750569 479.896207,259.655947 C534.225783,126.926199 494.485067,227.84315 360.67406,562.406801 C130.040294,630.967072 13.3146843,662.226182 10.4972293,656.18413 C7.67977418,650.142078 -13.3102662,605.128791 -52.4728917,521.14427 L-112.320993,451.954641" id="Path-4" fill="#7BFFFF" filter="url(#filter-5)" mask="url(#mask-2)"></path>
+                                        <path d="M559.261708,250.841015 C340.583875,212.578692 560.283023,429.885581 288.638027,517.458387 C16.9930319,605.031194 656.693018,482.450902 656.06728,478.500148 C655.441542,474.549395 777.939541,289.103337 559.261708,250.841015 Z" id="Path-5" fill="#FF9B8C" filter="url(#filter-6)" mask="url(#mask-2)"></path>
+                                        <path d="M109.24875,236.902612 C220.501512,429.014098 245.748357,121.03261 487.443055,272.834034 C729.137754,424.635459 224.044578,13.3899323 221.420342,16.4087706 C218.796106,19.427609 -2.00401197,44.7911258 109.24875,236.902612 Z" id="Path-5" fill="#3529FF" filter="url(#filter-7)" mask="url(#mask-2)"></path>
+                                    </g>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </svg>
+                </div>
+
+                <div class="absolute float" style="top: 101px;right: 430px;">
+                    <svg width="287px" height="304px" viewBox="0 0 287 304" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                        <defs>
+                            <path d="M503.807732,398.293227 C507.490553,421.545643 491.836984,443.392723 468.752475,447.433923 L468.050683,447.550916 L90.7980275,507.301867 C67.5646139,510.981678 45.7305595,495.310412 41.6866689,472.206925 L41.5695891,471.504556 L0.972253091,215.183065 C0.433750099,211.783091 1.43890956,208.326919 3.70117964,205.750809 L3.93968018,205.487493 L185.349874,11.2803455 C195.416173,0.503954561 211.44886,-2.13517855 224.420924,4.79268459 L224.847453,5.02454346 L457.392109,133.667684 C460.402748,135.333162 462.509132,138.251749 463.149413,141.621558 L463.210396,141.971735 L503.807732,398.293227 Z M73.820958,216.526506 L5.03537769,227.421072 L43.6424059,471.176254 C47.1455771,493.294407 67.7285865,508.457406 89.8001812,505.327802 L90.469457,505.227355 L467.722112,445.476404 C489.822189,441.976096 504.968202,421.380906 501.835454,399.29135 L501.734916,398.621529 L463.127888,154.866346 L396.000014,165.498357 C382.367158,167.657589 370.766354,176.542876 365.106944,189.090738 L364.904981,189.545865 L364.698534,190.027146 L345.375825,235.877224 C339.663628,249.431466 327.437032,259.115757 312.968923,261.581733 L312.469141,261.6639 L186.919771,281.548967 C173.347953,283.698532 159.576671,279.229684 149.848335,269.545665 L149.466431,269.160695 L109.447306,228.310472 C100.302023,218.975264 87.2635336,214.57614 74.3585765,216.445006 L73.820958,216.526506 Z M187.209913,12.3704391 L186.883158,12.7148748 L5.47296477,206.922022 C3.55872361,208.971297 2.65713835,211.761328 2.99997592,214.534857 L3.04506988,214.854763 L4.70609854,225.34627 L73.4923876,214.451994 C87.0664958,212.302067 100.840134,216.772785 110.568747,226.460197 L110.945728,226.840266 L150.964853,267.690489 C160.110135,277.025697 173.148625,281.424821 186.053582,279.555955 L186.591201,279.474455 L312.140571,259.589388 C325.945794,257.402856 337.667256,248.319111 343.245448,235.519309 L343.442051,235.060599 L362.76476,189.21052 C368.476956,175.656279 380.703553,165.971988 395.171661,163.506012 L395.671444,163.423845 L462.798914,152.791496 L461.13758,142.300037 C460.698674,139.528898 459.053675,137.101667 456.657011,135.66692 L456.377163,135.505813 L223.832507,6.86267294 C211.767327,0.188244488 196.749136,2.46933121 187.209913,12.3704391 Z" id="path-1"></path>
+                            <filter x="-41.8%" y="-29.9%" width="183.6%" height="159.8%" filterUnits="objectBoundingBox" id="filter-3">
+                                <feGaussianBlur stdDeviation="100" in="SourceGraphic"></feGaussianBlur>
+                            </filter>
+                            <filter x="-20.9%" y="-14.9%" width="141.8%" height="129.9%" filterUnits="objectBoundingBox" id="filter-4">
+                                <feGaussianBlur stdDeviation="50" in="SourceGraphic"></feGaussianBlur>
+                            </filter>
+                            <filter x="-19.0%" y="-25.8%" width="138.0%" height="151.6%" filterUnits="objectBoundingBox" id="filter-5">
+                                <feGaussianBlur stdDeviation="39" in="SourceGraphic"></feGaussianBlur>
+                            </filter>
+                            <filter x="-12.8%" y="-19.8%" width="125.6%" height="139.7%" filterUnits="objectBoundingBox" id="filter-6">
+                                <feGaussianBlur stdDeviation="20" in="SourceGraphic"></feGaussianBlur>
+                            </filter>
+                            <filter x="-24.0%" y="-39.3%" width="148.0%" height="178.6%" filterUnits="objectBoundingBox" id="filter-7">
+                                <feGaussianBlur stdDeviation="38" in="SourceGraphic"></feGaussianBlur>
+                            </filter>
+                            <filter x="-57.0%" y="-55.7%" width="213.9%" height="211.5%" filterUnits="objectBoundingBox" id="filter-8">
+                                <feOffset dx="16" dy="24" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+                                <feGaussianBlur stdDeviation="22" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+                                <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.5 0" type="matrix" in="shadowBlurOuter1" result="shadowMatrixOuter1"></feColorMatrix>
+                                <feMerge>
+                                    <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
+                                    <feMergeNode in="SourceGraphic"></feMergeNode>
+                                </feMerge>
+                            </filter>
+                            <linearGradient x1="50%" y1="0%" x2="88.1464483%" y2="93.9766733%" id="linearGradient-9">
+                                <stop stop-color="#B2FFFF" offset="0%"></stop>
+                                <stop stop-color="#7BDFFF" offset="100%"></stop>
+                            </linearGradient>
+                            <filter x="-93.7%" y="-108.2%" width="287.4%" height="316.4%" filterUnits="objectBoundingBox" id="filter-10">
+                                <feOffset dx="0" dy="18" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+                                <feGaussianBlur stdDeviation="22" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+                                <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.5 0" type="matrix" in="shadowBlurOuter1" result="shadowMatrixOuter1"></feColorMatrix>
+                                <feMerge>
+                                    <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
+                                    <feMergeNode in="SourceGraphic"></feMergeNode>
+                                </feMerge>
+                            </filter>
+                            <polygon id="path-11" points="63.5258236 0.873458775 0.167874853 42.314716 1.5666163 53.1578215 65.8444755 109.370375 126.237066 46.2125534 124.502575 35.3087413"></polygon>
+                            <linearGradient x1="153.791135%" y1="-39.9666355%" x2="33.5146634%" y2="77.8875971%" id="linearGradient-13">
+                                <stop stop-color="#D400FF" offset="0%"></stop>
+                                <stop stop-color="#FFCC7B" offset="100%"></stop>
+                            </linearGradient>
+                            <filter x="-77.7%" y="-52.7%" width="255.4%" height="205.4%" filterUnits="objectBoundingBox" id="filter-14">
+                                <feOffset dx="4" dy="22" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+                                <feGaussianBlur stdDeviation="30" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+                                <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.5 0" type="matrix" in="shadowBlurOuter1" result="shadowMatrixOuter1"></feColorMatrix>
+                                <feMerge>
+                                    <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
+                                    <feMergeNode in="SourceGraphic"></feMergeNode>
+                                </feMerge>
+                            </filter>
+                            <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-15">
+                                <stop stop-color="#1AA6E9" offset="0%"></stop>
+                                <stop stop-color="#087573" offset="100%"></stop>
+                            </linearGradient>
+                            <path d="M182.826204,6.99679463 L200.413955,56.5959448 C83.9728397,108.034829 21.3397889,187.906274 12.5148024,296.210279 L1.64427643,292.025584 L0.870525949,274.296932 C3.87456469,199.32232 60.595363,107.959955 171.032921,0.209836894 L179.326753,3.40261301 C180.962127,4.03216324 182.240549,5.34519202 182.826204,6.99679463 Z" id="path-16"></path>
+                            <linearGradient x1="50%" y1="100%" x2="50%" y2="3.061617e-15%" id="linearGradient-18">
+                                <stop stop-color="#2AFFA8" offset="0%"></stop>
+                                <stop stop-color="#0D84FC" offset="100%"></stop>
+                            </linearGradient>
+                            <path d="M171.032921,0.209836894 L189.543429,52.4112501 C89.9246062,84.1215901 8.91315095,181.853394 1.64427643,292.025584 L-10,270.112238 C-5.49394188,157.65032 53.6945739,68.348586 167.565547,2.20703712 L171.032921,0.209836894 Z" id="path-19"></path>
+                            <filter x="-0.5%" y="-0.3%" width="101.0%" height="100.7%" filterUnits="objectBoundingBox" id="filter-20">
+                                <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetInner1"></feOffset>
+                                <feComposite in="shadowOffsetInner1" in2="SourceAlpha" operator="arithmetic" k2="-1" k3="1" result="shadowInnerInner1"></feComposite>
+                                <feColorMatrix values="0 0 0 0 1   0 0 0 0 1   0 0 0 0 1  0 0 0 0.11 0" type="matrix" in="shadowInnerInner1"></feColorMatrix>
+                            </filter>
+                            <filter x="-103.4%" y="-60.6%" width="306.7%" height="221.2%" filterUnits="objectBoundingBox" id="filter-21">
+                                <feOffset dx="17" dy="30" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+                                <feGaussianBlur stdDeviation="17" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+                                <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.3 0" type="matrix" in="shadowBlurOuter1" result="shadowMatrixOuter1"></feColorMatrix>
+                                <feMerge>
+                                    <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
+                                    <feMergeNode in="SourceGraphic"></feMergeNode>
+                                </feMerge>
+                            </filter>
+                            <linearGradient x1="56.934048%" y1="42.9070262%" x2="37.8581426%" y2="57.2711735%" id="linearGradient-22">
+                                <stop stop-color="#24D557" offset="0%"></stop>
+                                <stop stop-color="#AAFFBE" offset="52.9284306%"></stop>
+                                <stop stop-color="#65FF84" offset="100%"></stop>
+                            </linearGradient>
+                            <path d="M28.347168,29.6918945 C38.9726102,25.3989372 45.5701241,17.5671609 43.5477216,11.3570096 L43.4708609,11.1332615 L117.770887,181.356847 C117.819194,181.461226 117.865034,181.567038 117.908361,181.674277 C120.391035,187.819111 113.538128,195.88823 102.784668,200.23291 C92.0312084,204.57759 81.4493132,203.552588 78.9666391,197.407754 C78.9291998,197.315089 78.8938499,197.221887 78.8605717,197.128171 L4.52913905,26.8667385 C7.53466797,32.9006348 17.5937084,34.0365742 28.347168,29.6918945 Z" id="path-23"></path>
+                            <filter x="-1.4%" y="-0.8%" width="102.8%" height="101.6%" filterUnits="objectBoundingBox" id="filter-24">
+                                <feGaussianBlur stdDeviation="1" in="SourceAlpha" result="shadowBlurInner1"></feGaussianBlur>
+                                <feOffset dx="0" dy="-1" in="shadowBlurInner1" result="shadowOffsetInner1"></feOffset>
+                                <feComposite in="shadowOffsetInner1" in2="SourceAlpha" operator="arithmetic" k2="-1" k3="1" result="shadowInnerInner1"></feComposite>
+                                <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.3 0" type="matrix" in="shadowInnerInner1" result="shadowMatrixInner1"></feColorMatrix>
+                                <feOffset dx="0" dy="-2" in="SourceAlpha" result="shadowOffsetInner2"></feOffset>
+                                <feComposite in="shadowOffsetInner2" in2="SourceAlpha" operator="arithmetic" k2="-1" k3="1" result="shadowInnerInner2"></feComposite>
+                                <feColorMatrix values="0 0 0 0 1   0 0 0 0 1   0 0 0 0 1  0 0 0 0.2 0" type="matrix" in="shadowInnerInner2" result="shadowMatrixInner2"></feColorMatrix>
+                                <feGaussianBlur stdDeviation="0.5" in="SourceAlpha" result="shadowBlurInner3"></feGaussianBlur>
+                                <feOffset dx="0" dy="1" in="shadowBlurInner3" result="shadowOffsetInner3"></feOffset>
+                                <feComposite in="shadowOffsetInner3" in2="SourceAlpha" operator="arithmetic" k2="-1" k3="1" result="shadowInnerInner3"></feComposite>
+                                <feColorMatrix values="0 0 0 0 1   0 0 0 0 1   0 0 0 0 1  0 0 0 0.2 0" type="matrix" in="shadowInnerInner3" result="shadowMatrixInner3"></feColorMatrix>
+                                <feMerge>
+                                    <feMergeNode in="shadowMatrixInner1"></feMergeNode>
+                                    <feMergeNode in="shadowMatrixInner2"></feMergeNode>
+                                    <feMergeNode in="shadowMatrixInner3"></feMergeNode>
+                                </feMerge>
+                            </filter>
+                            <linearGradient x1="29.3968547%" y1="100%" x2="100%" y2="100%" id="linearGradient-25">
+                                <stop stop-color="#C7FFD4" offset="0%"></stop>
+                                <stop stop-color="#4DE277" offset="100%"></stop>
+                            </linearGradient>
+                            <path d="M28.4952791,30.1262063 C39.2487387,25.7815266 45.9535351,17.2780956 43.4708609,11.1332615 C40.9881868,4.9884275 30.2581804,3.52911406 19.5047209,7.87379375 C8.75126131,12.2184734 2.04646495,20.7219044 4.52913905,26.8667385 C7.01181316,33.0115725 17.7418196,34.4708859 28.4952791,30.1262063 Z" id="path-26"></path>
+                            <filter x="-2.5%" y="-3.7%" width="105.0%" height="107.3%" filterUnits="objectBoundingBox" id="filter-27">
+                                <feGaussianBlur stdDeviation="1" in="SourceAlpha" result="shadowBlurInner1"></feGaussianBlur>
+                                <feOffset dx="0" dy="0" in="shadowBlurInner1" result="shadowOffsetInner1"></feOffset>
+                                <feComposite in="shadowOffsetInner1" in2="SourceAlpha" operator="arithmetic" k2="-1" k3="1" result="shadowInnerInner1"></feComposite>
+                                <feColorMatrix values="0 0 0 0 1   0 0 0 0 1   0 0 0 0 1  0 0 0 0.5 0" type="matrix" in="shadowInnerInner1"></feColorMatrix>
+                            </filter>
+                        </defs>
+                    <g id="HELO" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                        <g id="shape" transform="translate(-42.000000, -223.000000)">
+                            <g id="Group-6" transform="translate(47.000000, 119.000000)">
+                                <g id="Group-12" transform="translate(146.767278, 55.754104)"></g>
+                                <g id="Group-3" transform="translate(0.000000, 49.000000)">
+                                    <g id="Group" filter="url(#filter-8)" transform="translate(0.000000, 65.060094)">
+                                        <polygon id="Rectangle" fill="#09ADB4" transform="translate(115.280936, 117.280473) rotate(-20.000000) translate(-115.280936, -117.280473) " points="51.1960623 65.7886753 186.192088 25 199.989827 39.9789148 203.239018 199.005993 40.8052071 209.560947 27.3228531 194.030248"></polygon>
+                                        <path d="M199.43981,150.077716 L225.879621,163.977716 L225.886271,163.993905 L76.8584238,229.467953 L58.8773436,219.485107 L57.4276209,210.780716 L110.028308,166.643256 L199.43981,150.077716 Z" id="Combined-Shape" fill="#04888D"></path>
+                                        <polygon id="Rectangle" fill="url(#linearGradient-9)" transform="translate(104.978377, 112.766586) rotate(-20.000000) translate(-104.978377, -112.766586) " points="35.3908551 53.7853308 184.18462 27.9755703 184.956753 185.036895 25 197.557602"></polygon>
+                                    </g>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </svg>
+                </div>
+
+                <div class="absolute orange-square float-1" style="right: 0px; top: 129px;">
+                    <svg width="208px" height="187px" viewBox="0 0 208 187" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                        <defs>
+                            <filter x="-93.7%" y="-108.2%" width="287.4%" height="316.4%" filterUnits="objectBoundingBox" id="filter-1">
+                                <feOffset dx="0" dy="18" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+                                <feGaussianBlur stdDeviation="22" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+                                <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.5 0" type="matrix" in="shadowBlurOuter1" result="shadowMatrixOuter1"></feColorMatrix>
+                                <feMerge>
+                                    <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
+                                    <feMergeNode in="SourceGraphic"></feMergeNode>
+                                </feMerge>
+                            </filter>
+                            <polygon id="path-2" points="63.5258236 0.873458775 0.167874853 42.314716 1.5666163 53.1578215 65.8444755 109.370375 126.237066 46.2125534 124.502575 35.3087413"></polygon>
+                            <linearGradient x1="153.791135%" y1="-39.9666355%" x2="33.5146634%" y2="77.8875971%" id="linearGradient-4">
+                                <stop stop-color="#D400FF" offset="0%"></stop>
+                                <stop stop-color="#FFCC7B" offset="100%"></stop>
+                            </linearGradient>
+                        </defs>
+                        <g id="HELO" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                            <g id="shape" transform="translate(-549.000000, -251.000000)">
+                                <g id="Group-6" transform="translate(47.000000, 119.000000)">
+                                    <g id="Group-12" transform="translate(146.767278, 55.754104)"></g>
+                                    <g id="Group-3" transform="translate(0.000000, 49.000000)">
+                                        <g id="Group-4" filter="url(#filter-1)" transform="translate(542.777234, 103.558989)">
+                                            <mask id="mask-3" fill="white">
+                                                <use xlink:href="#path-2"></use>
+                                            </mask>
+                                            <use id="Rectangle" fill="#FBBB55" xlink:href="#path-2"></use>
+                                            <polygon id="Path" fill="#AF7022" mask="url(#mask-3)" points="88.4537589 51.4103572 63.6800798 93.4738571 65.8378634 109.36448 65.8444755 109.370375 126.237066 46.2125534 124.502575 35.3087413 120.377083 32.9791799"></polygon>
+                                            <polygon id="Rectangle" fill="url(#linearGradient-4)" mask="url(#mask-3)" points="61.9592073 -10 0 42.2843627 64.2778592 98.4969161 124.67045 35.3390946"></polygon>
+                                        </g>
+                                    </g>
+                                </g>
+                            </g>
+                        </g>
+                    </svg>
+                </div>
+
+                <div class="absolute float-3" style="right: 78px; top: 0px;">
+                    <svg width="311px" height="402px" viewBox="0 0 311 402" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                        <defs>
+                            <filter x="-77.7%" y="-52.7%" width="255.4%" height="205.4%" filterUnits="objectBoundingBox" id="filter-1">
+                                <feOffset dx="4" dy="22" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+                                <feGaussianBlur stdDeviation="30" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+                                <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.5 0" type="matrix" in="shadowBlurOuter1" result="shadowMatrixOuter1"></feColorMatrix>
+                                <feMerge>
+                                    <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
+                                    <feMergeNode in="SourceGraphic"></feMergeNode>
+                                </feMerge>
+                            </filter>
+                            <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-2">
+                                <stop stop-color="#1AA6E9" offset="0%"></stop>
+                                <stop stop-color="#087573" offset="100%"></stop>
+                            </linearGradient>
+                            <path d="M182.826204,6.99679463 L200.413955,56.5959448 C83.9728397,108.034829 21.3397889,187.906274 12.5148024,296.210279 L1.64427643,292.025584 L0.870525949,274.296932 C3.87456469,199.32232 60.595363,107.959955 171.032921,0.209836894 L179.326753,3.40261301 C180.962127,4.03216324 182.240549,5.34519202 182.826204,6.99679463 Z" id="path-3"></path>
+                            <linearGradient x1="50%" y1="100%" x2="50%" y2="3.061617e-15%" id="linearGradient-5">
+                                <stop stop-color="#2AFFA8" offset="0%"></stop>
+                                <stop stop-color="#0D84FC" offset="100%"></stop>
+                            </linearGradient>
+                            <path d="M171.032921,0.209836894 L189.543429,52.4112501 C89.9246062,84.1215901 8.91315095,181.853394 1.64427643,292.025584 L-10,270.112238 C-5.49394188,157.65032 53.6945739,68.348586 167.565547,2.20703712 L171.032921,0.209836894 Z" id="path-6"></path>
+                            <filter x="-0.5%" y="-0.3%" width="101.0%" height="100.7%" filterUnits="objectBoundingBox" id="filter-7">
+                                <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetInner1"></feOffset>
+                                <feComposite in="shadowOffsetInner1" in2="SourceAlpha" operator="arithmetic" k2="-1" k3="1" result="shadowInnerInner1"></feComposite>
+                                <feColorMatrix values="0 0 0 0 1   0 0 0 0 1   0 0 0 0 1  0 0 0 0.11 0" type="matrix" in="shadowInnerInner1"></feColorMatrix>
+                            </filter>
+                        </defs>
+                        <g id="HELO" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                            <g id="shape" transform="translate(-368.000000, -123.000000)">
+                                <g id="Group-6" transform="translate(47.000000, 119.000000)">
+                                    <g id="Group-12" transform="translate(146.767278, 55.754104)"></g>
+                                    <g id="Group-3" transform="translate(0.000000, 49.000000)"></g>
+
+                                    <g id="Group-44" filter="url(#filter-14)" transform="translate(373.349178, 35.000000)">
+                                        <g id="Group-5" transform="translate(0.560218, 0.429322)">
+                                            <mask id="mask-17" fill="white">
+                                                <use xlink:href="#path-16"></use>
+                                            </mask>
+                                            <use id="Path" fill="url(#linearGradient-15)" xlink:href="#path-16"></use>
+                                            <polygon id="Path-7" fill="#2C9DF8" mask="url(#mask-17)" points="189.543429 52.4112501 204.056506 58.4652875 182.325352 -1.05421202 166.773323 -3 184.644402 52.2822859"></polygon>
+                                            <g id="Path" mask="url(#mask-17)">
+                                                <use fill="url(#linearGradient-18)" fill-rule="evenodd" xlink:href="#path-19"></use>
+                                                <use fill="black" fill-opacity="1" filter="url(#filter-20)" xlink:href="#path-19"></use>
+                                            </g>
+                                        </g>
+                                    </g>
+                                </g>
+                            </g>
+                        </g>
+                    </svg>
+                </div>
+
+                <div class="absolute float-4" style="top: 0px; right: 311px;">
+                    <svg width="179px" height="263px" viewBox="0 0 179 263" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                        <defs>
+                            <filter x="-103.4%" y="-60.6%" width="306.7%" height="221.2%" filterUnits="objectBoundingBox" id="filter-1">
+                                <feOffset dx="17" dy="30" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+                                <feGaussianBlur stdDeviation="17" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+                                <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.3 0" type="matrix" in="shadowBlurOuter1" result="shadowMatrixOuter1"></feColorMatrix>
+                                <feMerge>
+                                    <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
+                                    <feMergeNode in="SourceGraphic"></feMergeNode>
+                                </feMerge>
+                            </filter>
+                            <linearGradient x1="56.934048%" y1="42.9070262%" x2="37.8581426%" y2="57.2711735%" id="linearGradient-2">
+                                <stop stop-color="#24D557" offset="0%"></stop>
+                                <stop stop-color="#AAFFBE" offset="52.9284306%"></stop>
+                                <stop stop-color="#65FF84" offset="100%"></stop>
+                            </linearGradient>
+                            <path d="M28.347168,29.6918945 C38.9726102,25.3989372 45.5701241,17.5671609 43.5477216,11.3570096 L43.4708609,11.1332615 L117.770887,181.356847 C117.819194,181.461226 117.865034,181.567038 117.908361,181.674277 C120.391035,187.819111 113.538128,195.88823 102.784668,200.23291 C92.0312084,204.57759 81.4493132,203.552588 78.9666391,197.407754 C78.9291998,197.315089 78.8938499,197.221887 78.8605717,197.128171 L4.52913905,26.8667385 C7.53466797,32.9006348 17.5937084,34.0365742 28.347168,29.6918945 Z" id="path-3"></path>
+                            <filter x="-1.4%" y="-0.8%" width="102.8%" height="101.6%" filterUnits="objectBoundingBox" id="filter-4">
+                                <feGaussianBlur stdDeviation="1" in="SourceAlpha" result="shadowBlurInner1"></feGaussianBlur>
+                                <feOffset dx="0" dy="-1" in="shadowBlurInner1" result="shadowOffsetInner1"></feOffset>
+                                <feComposite in="shadowOffsetInner1" in2="SourceAlpha" operator="arithmetic" k2="-1" k3="1" result="shadowInnerInner1"></feComposite>
+                                <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.3 0" type="matrix" in="shadowInnerInner1" result="shadowMatrixInner1"></feColorMatrix>
+                                <feOffset dx="0" dy="-2" in="SourceAlpha" result="shadowOffsetInner2"></feOffset>
+                                <feComposite in="shadowOffsetInner2" in2="SourceAlpha" operator="arithmetic" k2="-1" k3="1" result="shadowInnerInner2"></feComposite>
+                                <feColorMatrix values="0 0 0 0 1   0 0 0 0 1   0 0 0 0 1  0 0 0 0.2 0" type="matrix" in="shadowInnerInner2" result="shadowMatrixInner2"></feColorMatrix>
+                                <feGaussianBlur stdDeviation="0.5" in="SourceAlpha" result="shadowBlurInner3"></feGaussianBlur>
+                                <feOffset dx="0" dy="1" in="shadowBlurInner3" result="shadowOffsetInner3"></feOffset>
+                                <feComposite in="shadowOffsetInner3" in2="SourceAlpha" operator="arithmetic" k2="-1" k3="1" result="shadowInnerInner3"></feComposite>
+                                <feColorMatrix values="0 0 0 0 1   0 0 0 0 1   0 0 0 0 1  0 0 0 0.2 0" type="matrix" in="shadowInnerInner3" result="shadowMatrixInner3"></feColorMatrix>
+                                <feMerge>
+                                    <feMergeNode in="shadowMatrixInner1"></feMergeNode>
+                                    <feMergeNode in="shadowMatrixInner2"></feMergeNode>
+                                    <feMergeNode in="shadowMatrixInner3"></feMergeNode>
+                                </feMerge>
+                            </filter>
+                            <linearGradient x1="29.3968547%" y1="100%" x2="100%" y2="100%" id="linearGradient-5">
+                                <stop stop-color="#C7FFD4" offset="0%"></stop>
+                                <stop stop-color="#4DE277" offset="100%"></stop>
+                            </linearGradient>
+                            <path d="M28.4952791,30.1262063 C39.2487387,25.7815266 45.9535351,17.2780956 43.4708609,11.1332615 C40.9881868,4.9884275 30.2581804,3.52911406 19.5047209,7.87379375 C8.75126131,12.2184734 2.04646495,20.7219044 4.52913905,26.8667385 C7.01181316,33.0115725 17.7418196,34.4708859 28.4952791,30.1262063 Z" id="path-6"></path>
+                            <filter x="-2.5%" y="-3.7%" width="105.0%" height="107.3%" filterUnits="objectBoundingBox" id="filter-7">
+                                <feGaussianBlur stdDeviation="1" in="SourceAlpha" result="shadowBlurInner1"></feGaussianBlur>
+                                <feOffset dx="0" dy="0" in="shadowBlurInner1" result="shadowOffsetInner1"></feOffset>
+                                <feComposite in="shadowOffsetInner1" in2="SourceAlpha" operator="arithmetic" k2="-1" k3="1" result="shadowInnerInner1"></feComposite>
+                                <feColorMatrix values="0 0 0 0 1   0 0 0 0 1   0 0 0 0 1  0 0 0 0.5 0" type="matrix" in="shadowInnerInner1"></feColorMatrix>
+                            </filter>
+                        </defs>
+                        <g id="HELO" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                            <g id="shape" transform="translate(-263.000000, -122.000000)">
+                                <g id="Group-6" transform="translate(47.000000, 119.000000)">
+                                    <g id="Group-12" transform="translate(146.767278, 55.754104)"></g>
+                                    <g id="Group-45" filter="url(#filter-21)" transform="translate(227.349178, 0.000000)">
+                                        <g id="Combined-Shape">
+                                            <use fill="url(#linearGradient-22)" fill-rule="evenodd" xlink:href="#path-23"></use>
+                                            <use fill="black" fill-opacity="1" filter="url(#filter-24)" xlink:href="#path-23"></use>
+                                        </g>
+                                        <g id="Oval">
+                                            <use fill="url(#linearGradient-25)" fill-rule="evenodd" xlink:href="#path-26"></use>
+                                            <use fill="black" fill-opacity="1" filter="url(#filter-27)" xlink:href="#path-26"></use>
+                                        </g>
+                                    </g>
+                                </g>
+                            </g>
+                        </g>
+                    </svg>
+                </div>
+            </div>
+        </div>
+        <div class="hidden md:block absolute bottom-0 left-0 -mb-12 -ml-24 z-20">
+            <img class="" src="/images/circle_header.png" />
+        </div>
+    </div>
+</div>
+
+
+<div class="bg-white relative" id="features">
+    <div class="overflow-hidden">
+        <div class="container max-w-7xl mx-auto pt-24 px-8 md:px-16 ">
+            <div class="leading-headline max-w-2xl mx-auto text-left md:text-center text-brand-900 font-brand text-4xl md:text-5xl pb-10 pt-4">
+                The <span class="text-brand-800">swiss-army-knife</span> of <br class="hidden lg:flex"> email testing and debugging.
+            </div>
+        </div>
+        <div class="relative container max-w-7xl mx-auto px-8 md:pl-16 ">
+            <div class="flex flex-col-reverse md:flex-row items-center justify" x-data="featureSliderData()" x-init="start()">
+                <div class="w-full md:w-2/5">
+                    <div class="mt-16 block md:hidden flex justify-between">
+                        <div class="py-4 flex-1 " @click="setTab('views')">
+                            <div class="mr-4 flex-1 h-1 bg-gray-200" :class="{'bg-brand-800': tabIndex >= 1}">
+                                <div class="bg-brand-800 h-full transition-all duration-75 ease-in-out" x-bind:style="tabIndex === 0 ? 'width: '+progress+'%' : ''"></div>
+                            </div>
+                        </div>
+                        <div class="py-4 flex-1 " @click="setTab('links')">
+                            <div class="mr-4 flex-1 h-1 bg-gray-200" :class="{'bg-brand-800': tabIndex >= 2}">
+                                <div class="bg-brand-800 h-full transition-all duration-75 ease-in-out" x-bind:style="tabIndex === 1 ? 'width: '+progress+'%' : 'width: 0%'"></div>
+                            </div>
+                        </div>
+                        <div class="py-4 flex-1 " @click="setTab('spam')">
+                            <div class="mr-4 flex-1 h-1 bg-gray-200" :class="{'bg-brand-800': tabIndex >= 3}">
+                                <div class="bg-brand-800 h-full transition-all duration-75 ease-in-out" x-bind:style="tabIndex === 2 ? 'width: '+progress+'%' : 'width: 0%'"></div>
+                            </div>
+                        </div>
+                        <div class="py-4 flex-1 " @click="setTab('sharing')">
+                            <div class="mr-4 flex-1 h-1 bg-gray-200" :class="{'bg-brand-800': tabIndex >= 4}">
+                                <div class="bg-brand-800 h-full transition-all duration-75 ease-in-out" x-bind:style="tabIndex === 3 ? 'width: '+progress+'%' : 'width: 0%'"></div>
+                            </div>
+                        </div>
+                        <div class="py-4 flex-1 " @click="setTab('testing')">
+                            <div class="mr-4 flex-1 h-1 bg-gray-200" :class="{'bg-brand-800': tabIndex >= 5}">
+                                <div class="bg-brand-800 h-full transition-all duration-75 ease-in-out" x-bind:style="tabIndex === 4 ? 'width: '+progress+'%' : 'width: 0%'"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="py-6 border-b-2 border-gray-100 hidden md:block" :class="{ 'block': tab === 'views',  'hidden': tab !== 'views'}">
+                        <h2 class="font-brand text-2xl cursor-pointer" :class="{ 'text-brand-800': tab === 'views', 'text-brand-900': tab !== 'views'}" @click="tab = 'views'">Debug Views</h2>
+                        <p class="leading-paragraph text-gray-600 pt-4 max-w-md" x-show="tab === 'views'">
+                            HELO exposes an SMTP server and catches the outgoing emails from your application instead of sending them to their actual recipient.
+                        </p>
+                    </div>
+                    <div class="border-b-2 border-gray-100 py-6 md:block" :class="{ 'block': tab === 'links',  'hidden': tab !== 'links'}">
+                        <h2 class="font-brand text-brand-900 text-2xl cursor-pointer"  :class="{ 'text-brand-800': tab === 'links', 'text-brand-900': tab !== 'links'}" @click="tab = 'links'">Broken Link Checker</h2>
+                        <p class="leading-paragraph text-gray-600 pt-4 max-w-md" x-show="tab === 'links'">
+                            The automated link check verifies that all links in an email are valid and return an HTTP 200 status code. Don't send emails with broken links again.
+                        </p>
+                    </div>
+                    <div class="border-b-2 border-gray-100 py-6 md:block" :class="{ 'block': tab === 'spam',  'hidden': tab !== 'spam'}">
+                        <h2 class="font-brand text-brand-900 text-2xl cursor-pointer"  :class="{ 'text-brand-800': tab === 'spam', 'text-brand-900': tab !== 'spam'}" @click="tab = 'spam'">Spam Report</h2>
+                        <p class="leading-paragraph text-gray-600 pt-4 max-w-md" x-show="tab === 'spam'">
+                            If activated, HELO automatically checks the Apache SpamAssassin score of your incoming emails. Never lose a mail in your users spam box again.
+                        </p>
+                    </div>
+                    <div class="border-b-2 border-gray-100 py-6 md:block" :class="{ 'block': tab === 'sharing',  'hidden': tab !== 'sharing'}">
+                        <h2 class="font-brand text-brand-900 text-2xl cursor-pointer"  :class="{ 'text-brand-800': tab === 'sharing', 'text-brand-900': tab !== 'sharing'}" @click="tab = 'sharing'">Sharing</h2>
+                        <p class="leading-paragraph text-gray-600 pt-4 max-w-md" x-show="tab === 'sharing'">
+                            Share multiple emails with all the information that you see in HELO. Test all emails of your application, and share them with your client easily.
+                        </p>
+                    </div>
+                    <div class="py-6 md:block" :class="{ 'block': tab === 'testing',  'hidden': tab !== 'testing'}">
+                        <h2 class="font-brand text-brand-900 text-2xl cursor-pointer"  :class="{ 'text-brand-800': tab === 'testing', 'text-brand-900': tab !== 'testing'}" @click="tab = 'testing'">Remote Mailboxes</h2>
+                        <p class="leading-paragraph text-gray-600 pt-4 max-w-md" x-show="tab === 'testing'">
+                            HELO allows you to create publicly available email <br>  addresses. Send any email to those addresses,<br > and they will appear inside the HELO app.
+                        </p>
+                    </div>
+                </div>
+                <div class="w-full md:w-3/5 z-20">
+                    <img class="-ml-8 md:ml-6 max-h-1/2 mt-16 screenshot lg:screenshot-lg" x-show="tab === 'views'" style="max-width: inherit; max-height: 50%" src="/screenshots/debug.png" />
+                    <img class="-ml-8 md:ml-6 max-h-1/2 mt-16 screenshot lg:screenshot-lg" x-show="tab === 'links'" style="max-width: inherit; max-height: 50%" src="/screenshots/broken_links.png" />
+                    <img class="-ml-8 md:ml-6 max-h-1/2 mt-16 screenshot lg:screenshot-lg" x-show="tab === 'spam'" style="max-width: inherit; max-height: 50%" src="/screenshots/spam.png" />
+                    <img class="-ml-8 md:ml-6 max-h-1/2 mt-16 screenshot lg:screenshot-lg" x-show="tab === 'sharing'" style="max-width: inherit; max-height: 50%" src="/screenshots/share.png" />
+                    <img class="-ml-8 md:ml-6 max-h-1/2 mt-16 screenshot lg:screenshot-lg" x-show="tab === 'testing'" style="max-width: inherit; max-height: 50%" src="/screenshots/public_mailbox.png" />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="bg-gray-100 relative md:-mt-24">
+    <div class="relative container max-w-7xl mx-auto py-24 px-8 md:px-16 ">
+        <div class="z-10 hidden xl:block absolute top-0 right-64 -mt-110 -ml-16">
+            <img class="" src="/images/circle.png" />
+        </div>
+        <div class="z-10 block md:hidden absolute top-0 left-0 w-full overflow-hidden" style="margin-top: -970px">
+            <img class="max-w-full -ml-16" style="max-width: inherit; width: 700px"  src="/images/circle_mobile.png" />
+        </div>
+        <div class="leading-headline max-w-xl text-brand-900 font-brand text-4xl md:text-5xl pb-16">
+            A <span class="text-brand-800">completely<br class="flex sm:hidden"> refreshing</span> new way to test email.
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 col-gap-8 row-gap-16">
+            <div>
+                <svg class="mb-8" width="32" height="32" xmlns="http://www.w3.org/2000/svg"><path d="M25.265 0a3 3 0 012.94 2.4l.03.176 1.652 11.557a3.002 3.002 0 012.107 2.676L32 17v10a5 5 0 01-4.783 4.995L27 32H5a5 5 0 01-4.995-4.783L0 27V17c0-1.348.89-2.488 2.113-2.867L3.765 2.576A3 3 0 016.557.006L6.735 0h18.53zM10 16H3a1 1 0 00-.974.77l-.02.113L2 17v10a3 3 0 002.824 2.995L5 30h22a3 3 0 002.995-2.824L30 27V17a1 1 0 00-.883-.993L29 16h-7v1a3 3 0 01-2.824 2.995L19 20h-6a3 3 0 01-2.995-2.824L10 17v-1zM25.265 2H6.735a1 1 0 00-.968.747l-.022.112-1.267 8.858A2 2 0 006.458 14H11a1 1 0 01.993.883L12 15v2a1 1 0 00.883.993L13 18h6a1 1 0 00.993-.883L20 17v-2a1 1 0 01.883-.993L21 14h4.541a2 2 0 001.98-2.283L26.255 2.86a1 1 0 00-.876-.853L25.265 2z" fill="#3F3BFF" fill-rule="nonzero"/></svg>
+                <h3 class="text-brand-900 font-medium">Catch local emails</h3>
+                <p class="leading-relaxed text-gray-700 pt-4 max-w-md">
+                    HELO exposes an SMTP server and catches the outgoing emails from your application instead of sending them to their actual recipient.
+                </p>
+            </div>
+            <div>
+                <svg class="mb-8" width="32" height="32" xmlns="http://www.w3.org/2000/svg"><path d="M29 8a3 3 0 012.995 2.823L32 11V29a3 3 0 01-3 3H3a3 3 0 01-3-3V11a3 3 0 012.824-2.995L3 8h26zm0 4.234a1 1 0 00-.578.184l-11.808 8.369a1 1 0 01-1.116.075l-.112-.075-11.808-8.368A1 1 0 002 13.235v15.76a1 1 0 001 1L29 30a1 1 0 00.993-.883L30 29V13.234a1 1 0 00-1-1zM25.275 10H6.724a1 1 0 00-.575 1.818l9.277 6.51a1 1 0 001.148 0l9.276-6.51A1 1 0 0025.275 10zM27 0a3 3 0 012.995 2.823L30 3v2.002A1 1 0 0129 6h-.234A.766.766 0 0128 5.234a1 1 0 00-1.578-.816l-1.295 1.104A2 2 0 0123.829 6h-.841a.603.603 0 01-.402-1.052l1.264-1.13A1 1 0 0023.275 2H8.724a1 1 0 00-.575 1.818l1.263 1.13A.603.603 0 019.01 6h-.84a2 2 0 01-1.299-.478L5.578 4.419A1 1 0 004 5.235.765.765 0 013.235 6h-.236a1 1 0 01-1-1L2 3A3 3 0 014.824.004L5 0h22z" fill="#3F3BFF" fill-rule="nonzero"/></svg>
+                <h3 class="text-brand-900 font-medium">Unlimited Inboxes</h3>
+                <p class="leading-relaxed text-gray-700 pt-4 max-w-md">
+                    Receive emails in a dedicated inbox per application by setting a unique name per project. There is no limit on the number of inboxes.
+                </p>
+            </div>
+            <div>
+                <svg class="mb-8" width="32px" height="32px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                    <g id="HELO" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                        <g transform="translate(-1012.000000, -1924.000000)" fill="#3F3BFF" fill-rule="nonzero" id="Feature-section">
+                            <g transform="translate(100.000000, 1579.000000)">
+                                <path d="M941,345 C942.597681,345 943.903661,346.24892 943.994907,347.823727 L944,348 L944,366 C944,367.597681 942.75108,368.903661 941.176273,368.994907 L941,369 L936,369 L936,374 C936,375.597681 934.75108,376.903661 933.176273,376.994907 L933,377 L915,377 C913.402319,377 912.096339,375.75108 912.005093,374.176273 L912,374 L912,356 C912,354.402319 913.24892,353.096339 914.823727,353.005093 L915,353 L920,353 L920,348 C920,346.402319 921.24892,345.096339 922.823727,345.005093 L923,345 L941,345 Z M933,355 L915,355 C914.487164,355 914.064493,355.38604 914.006728,355.883379 L914,356 L914,374 C914,374.512836 914.38604,374.935507 914.883379,374.993272 L915,375 L933,375 C933.512836,375 933.935507,374.61396 933.993272,374.116621 L934,374 L934,356 C934,355.487164 933.61396,355.064493 933.116621,355.006728 L933,355 Z M930,369 C930.552285,369 931,369.447715 931,370 C931,370.512836 930.61396,370.935507 930.116621,370.993272 L930,371 L918,371 C917.447715,371 917,370.552285 917,370 C917,369.487164 917.38604,369.064493 917.883379,369.006728 L918,369 L930,369 Z M941,347 L923,347 C922.487164,347 922.064493,347.38604 922.006728,347.883379 L922,348 L922,351 C922,352.104569 922.895431,353 924,353 L933,353 L933,353 C934.597681,353 935.903661,354.24892 935.994907,355.823727 L936,356 L936,365 C936,366.104569 936.895431,367 938,367 L941,367 L941,367 C941.512836,367 941.935507,366.61396 941.993272,366.116621 L942,366 L942,348 C942,347.487164 941.61396,347.064493 941.116621,347.006728 L941,347 Z M930,364 C930.552285,364 931,364.447715 931,365 C931,365.512836 930.61396,365.935507 930.116621,365.993272 L930,366 L918,366 C917.447715,366 917,365.552285 917,365 C917,364.487164 917.38604,364.064493 917.883379,364.006728 L918,364 L930,364 Z M930,359 C930.552285,359 931,359.447715 931,360 C931,360.512836 930.61396,360.935507 930.116621,360.993272 L930,361 L918,361 C917.447715,361 917,360.552285 917,360 C917,359.487164 917.38604,359.064493 917.883379,359.006728 L918,359 L930,359 Z" id="Shape"></path>
+                            </g>
+                        </g>
+                    </g>
+                </svg>
+                <h3 class="text-brand-900 font-medium">Simple content Review</h3>
+                <p class="leading-relaxed text-gray-700 pt-4 max-w-md">
+                    HTML representation, text, source code, raw, headers–we got you covered. Check your emails before you deploy to production.
+                </p>
+            </div>
+            <div>
+                <svg class="mb-8" width="32" height="32" xmlns="http://www.w3.org/2000/svg"><path d="M16 0a1 1 0 01.993.883L17 1l.001 3.029c2.613.152 4.945.9 6.987 2.137l1.646-2.853a1 1 0 011.785.896l-.053.104-1.734 3.004a17.497 17.497 0 012.777 2.812C30.539 12.821 32 16.325 32 18c0 1.675-1.46 5.18-3.591 7.87C25.379 29.699 21.216 32 16 32c-5.216 0-9.379-2.302-12.409-6.13C1.461 23.18 0 19.676 0 18c0-1.675 1.46-5.18 3.591-7.87a17.497 17.497 0 012.777-2.813L4.634 4.313a1 1 0 011.668-1.097l.064.097 1.646 2.853C10.054 4.928 12.387 4.18 15 4.029V1a1 1 0 011-1zm0 6c-4.56 0-8.168 1.995-10.841 5.37l-.192.25a10.68 10.68 0 00.192 13.01l.238.294C8.045 28.12 11.574 30 16 30c4.56 0 8.168-1.995 10.841-5.37l.192-.25a10.68 10.68 0 00-.192-13.01l-.238-.294C23.955 7.88 20.426 6 16 6zm0 6c.605 0 1.2.09 1.767.265.882.271.957 1.489.117 1.867l-.13.066A1.498 1.498 0 0018.5 17a1.5 1.5 0 001.368-.884l.057-.11c.431-.722 1.553-.614 1.811.228A6 6 0 1116 12z" fill="#3F3BFF" fill-rule="nonzero"/></svg>
+                <h3 class="text-brand-900 font-medium">View Inspector</h3>
+                <p class="leading-relaxed text-gray-700 pt-4 max-w-md">
+                    Install our open-source helper package to debug Laravel views or create own helpers to debug mails of your favorite framework.
+                </p>
+            </div>
+            <div>
+                <svg class="mb-8" width="32" height="32" xmlns="http://www.w3.org/2000/svg"><path d="M14 0c4.757 0 8.96 2.373 11.49 6H31a1 1 0 01.117 1.993L31 8h-3.001a1 1 0 00-.958 1.289l.603 2A1 1 0 0028.6 12H31a1 1 0 01.117 1.993L31 14h-3c0 2.105-.458 4.11-1.373 6.013a4 4 0 00.777 4.562l4.01 4.01a2 2 0 01-2.701 2.946l-.127-.117-4.011-4.01a4 4 0 00-4.562-.777A13.705 13.705 0 0114 28C6.268 28 0 21.732 0 14S6.268 0 14 0zm0 2C7.373 2 2 7.373 2 14s5.373 12 12 12 12-5.373 12-12S20.627 2 14 2zm8.794 10c.571 0 1.049.432 1.106 1a.91.91 0 01-.815.995l-.09.005H18a1 1 0 01-.117-1.993L18 12h4.794zm-4.21-6.001c.906 0 1.775.36 2.415 1a.586.586 0 01-.414 1L14 8a1 1 0 01-.117-1.993L14 6l4.584-.001z" fill="#3F3BFF" fill-rule="evenodd"/></svg>
+                <h3 class="text-brand-900 font-medium">Link Checker</h3>
+                <p class="leading-relaxed text-gray-700 pt-4 max-w-md">
+                    The automated link check verifies that all links in an email are valid and return an HTTP 200 status code. Don't send emails with broken links again.
+                </p>
+            </div>
+            <div>
+                <svg class="mb-8" width="32" height="32" xmlns="http://www.w3.org/2000/svg"><path d="M18 0c2 0 3 1 3 3a.999.999 0 00.999 1H31a1 1 0 01.117 1.993L31 6h-2.109l-2.693 23.344a3 3 0 01-2.799 2.65l-.182.006H8.783a3 3 0 01-2.955-2.476l-.026-.18L3.108 6H1a1 1 0 01-.117-1.993L1 4h8.999c.552 0 1-.448 1.001-1 0 0 0-3 3-3h4zm6.623 6H7.376A2 2 0 005.39 8.238l2.399 20A2 2 0 009.774 30h12.451a2 2 0 001.986-1.762l2.398-20A2 2 0 0024.623 6zM12 12a1 1 0 01.993.883L13 13l1 10a1 1 0 01-1.993.117L12 23l-1-10a1 1 0 011-1zm8 0a1 1 0 01.993.883L21 13l-1 10a1 1 0 01-1.993.117L18 23l1-10a1 1 0 011-1z" fill="#3F3BFF" fill-rule="nonzero"/></svg>
+                <h3 class="text-brand-900 font-medium">Spam Report</h3>
+                <p class="leading-relaxed text-gray-700 pt-4 max-w-md">
+                    If activated, HELO automatically checks the Apache SpamAssassin score of your incoming emails. Never lose a mail in your users spam box again.
+                </p>
+            </div>
+            <div>
+                <svg class="mb-8" width="32" height="32" xmlns="http://www.w3.org/2000/svg"><path d="M26.623 18.213l.084.076 5 5a1 1 0 01.083 1.32l-.083.093-5 5c-.602.602-1.614.22-1.701-.594L25 28.995v-1.26a1.5 1.5 0 00-1.778-1.475c-3.405.642-5.879 2.42-7.422 5.334-.674.899-2.09.174-1.754-.898 2.119-5.255 5.326-8.121 9.62-8.6A1.5 1.5 0 0025 20.604v-1.609c0-.852.986-1.297 1.623-.783zM29 0a3 3 0 012.995 2.823L32 3v7.999a1 1 0 01-1.993.117L30 10.998V5.234a1 1 0 00-1.578-.816l-11.808 8.369a1 1 0 01-1.116.076l-.112-.076L3.578 4.419A1 1 0 002 5.235v21.76a1 1 0 00.883.993l.117.007h7c1.287 0 1.332 1.864.133 1.992l-.133.007H3a3 3 0 01-2.995-2.823L0 26.995V2.999A3 3 0 012.824.005L3 0h26zm-3.725 2H6.724a1 1 0 00-.575 1.818l9.277 6.51a1 1 0 001.148 0l9.276-6.51A1 1 0 0025.275 2z" fill="#3F3BFF" fill-rule="nonzero"/></svg>
+                <h3 class="text-brand-900 font-medium">Forward Emails</h3>
+                <p class="leading-relaxed text-gray-700 pt-4 max-w-md">
+                    Forward emails from HELO to team mates or clients for review. Send them to a testing service to see how they look in different email clients.
+                </p>
+            </div>
+            <div>
+                <div class="mb-8 flex items-center">
+                    <svg class="mr-4" width="32" height="32" xmlns="http://www.w3.org/2000/svg"><path d="M16 0c8.731 0 15.83 6.994 15.997 15.685l.002.334-.002.273C31.91 20.622 29.845 23 26 23c-1.912 0-3.432-.675-4.558-2.026a1 1 0 00-1.481-.06C18.594 22.303 16.94 23 15 23a7 7 0 115-11.898V10a1 1 0 011.993-.117L22 10v6c0 3.484 1.263 5 4 5 2.663 0 3.93-1.435 3.997-4.722l.003-.292-.003-.299C29.83 8.1 23.627 2 16 2 8.268 2 2 8.268 2 16s6.268 14 14 14a1 1 0 010 2C7.163 32 0 24.837 0 16S7.163 0 16 0zm-1 11a5 5 0 104.995 5.217l.005-.26a5 5 0 00-4.783-4.952L15 11z" fill="#3F3BFF" fill-rule="nonzero"/></svg>
+                    <span class="rounded-full bg-brand-300 text-brand-800 px-2 text-sm">This feature requires HELO Cloud</span>
+                </div>
+                <h3 class="text-brand-800">Share Emails and Inboxes</h3>
+                <p class="leading-relaxed text-gray-700 pt-4 max-w-md">
+                    Share multiple emails with all the information that you see in HELO. Test all emails of your application, and share them with your clients and colleagues easily.
+                </p>
+            </div>
+        </div>
+        <div class="hidden lg:block absolute bottom-0 right-0 -mb-64">
+            <img class="float" src="/images/square.png" />
+        </div>
+        <div class="block lg:hidden absolute bottom-0 right-0 -mr-58 -mb-56">
+            <img class="float" src="/images/square_small.png" />
+        </div>
+    </div>
+</div>
+
+<div class="bg-brand-300">
+    <div class="container max-w-7xl mx-auto pt-24 px-8 md:px-16 pb-20">
+        <div class="leading-headline text-center text-brand-900 font-brand text-4xl md:text-5xl pb-10 pt-10">
+            What people are<br class="flex md:hidden"> saying about <span class="text-brand-800">HELO</span>
+        </div>
+        <div class="lg:hidden" x-data="testimonialSliderData()" x-init="start()">
+                            <div class="rounded-lg shadow-lg bg-white p-4 m-4 max-w-sm mx-auto" :key="0" x-show="activeSlide === 0">
+                    <p class="border-b border-gray-200 pb-4 relative">
+                        I used a preview build of this and really dug it. 
+                        <svg class="absolute right-0 bottom-2" width="22" height="22" xmlns="http://www.w3.org/2000/svg"><path d="M13.819 0v9.58h3.984c-.084 2.657-.494 4.682-1.229 6.072-.735 1.39-1.88 2.437-3.433 3.14L15.006 22c2.571-1.253 4.45-3.101 5.638-5.546C21.548 14.621 22 11.657 22 7.562V0h-8.181zM.679 0v9.58h3.984c-.085 2.657-.495 4.682-1.23 6.072C2.7 17.042 1.555 18.09 0 18.792L1.865 22c2.572-1.253 4.451-3.101 5.638-5.546.904-1.833 1.356-4.797 1.356-8.892V0H.68z" fill="#153A82" fill-rule="nonzero" opacity=".1"/></svg>
+                    </p>
+                    <div class="flex items-center pt-4">
+                        <img class="h-12 w-12 rounded-full"
+                             src="https://usehelo.com/images/testimonials/taylorotwell.jpeg" />
+                        <div class="pl-4 text-sm">
+                            <p class="text-black">Taylor Otwell</p>
+                            <p class="text-gray-500">@taylorotwell</p>
+                        </div>
+                    </div>
+                </div>
+                            <div class="rounded-lg shadow-lg bg-white p-4 m-4 max-w-sm mx-auto" :key="1" x-show="activeSlide === 1">
+                    <p class="border-b border-gray-200 pb-4 relative">
+                        AMAZING piece of quality software! @marcelpociot has done it again, if you have not already make sure you check this out!!
+                        <svg class="absolute right-0 bottom-2" width="22" height="22" xmlns="http://www.w3.org/2000/svg"><path d="M13.819 0v9.58h3.984c-.084 2.657-.494 4.682-1.229 6.072-.735 1.39-1.88 2.437-3.433 3.14L15.006 22c2.571-1.253 4.45-3.101 5.638-5.546C21.548 14.621 22 11.657 22 7.562V0h-8.181zM.679 0v9.58h3.984c-.085 2.657-.495 4.682-1.23 6.072C2.7 17.042 1.555 18.09 0 18.792L1.865 22c2.572-1.253 4.451-3.101 5.638-5.546.904-1.833 1.356-4.797 1.356-8.892V0H.68z" fill="#153A82" fill-rule="nonzero" opacity=".1"/></svg>
+                    </p>
+                    <div class="flex items-center pt-4">
+                        <img class="h-12 w-12 rounded-full"
+                             src="https://usehelo.com/images/testimonials/RobertGordon89.jpeg" />
+                        <div class="pl-4 text-sm">
+                            <p class="text-black">Robert Gordon</p>
+                            <p class="text-gray-500">@RobertGordon89</p>
+                        </div>
+                    </div>
+                </div>
+                            <div class="rounded-lg shadow-lg bg-white p-4 m-4 max-w-sm mx-auto" :key="2" x-show="activeSlide === 2">
+                    <p class="border-b border-gray-200 pb-4 relative">
+                        Got a chance to try out @marcelpociot's HELO today. A great solution for testing emails on your local machine Clapping hands sign
+                        <svg class="absolute right-0 bottom-2" width="22" height="22" xmlns="http://www.w3.org/2000/svg"><path d="M13.819 0v9.58h3.984c-.084 2.657-.494 4.682-1.229 6.072-.735 1.39-1.88 2.437-3.433 3.14L15.006 22c2.571-1.253 4.45-3.101 5.638-5.546C21.548 14.621 22 11.657 22 7.562V0h-8.181zM.679 0v9.58h3.984c-.085 2.657-.495 4.682-1.23 6.072C2.7 17.042 1.555 18.09 0 18.792L1.865 22c2.572-1.253 4.451-3.101 5.638-5.546.904-1.833 1.356-4.797 1.356-8.892V0H.68z" fill="#153A82" fill-rule="nonzero" opacity=".1"/></svg>
+                    </p>
+                    <div class="flex items-center pt-4">
+                        <img class="h-12 w-12 rounded-full"
+                             src="https://usehelo.com/images/testimonials/gilbitron.jpeg" />
+                        <div class="pl-4 text-sm">
+                            <p class="text-black">Gilbert Pellegrom</p>
+                            <p class="text-gray-500">@gilbitron</p>
+                        </div>
+                    </div>
+                </div>
+                            <div class="rounded-lg shadow-lg bg-white p-4 m-4 max-w-sm mx-auto" :key="3" x-show="activeSlide === 3">
+                    <p class="border-b border-gray-200 pb-4 relative">
+                        HELO 🤯 it worth more than the amount I pay for the license, good work
+                        <svg class="absolute right-0 bottom-2" width="22" height="22" xmlns="http://www.w3.org/2000/svg"><path d="M13.819 0v9.58h3.984c-.084 2.657-.494 4.682-1.229 6.072-.735 1.39-1.88 2.437-3.433 3.14L15.006 22c2.571-1.253 4.45-3.101 5.638-5.546C21.548 14.621 22 11.657 22 7.562V0h-8.181zM.679 0v9.58h3.984c-.085 2.657-.495 4.682-1.23 6.072C2.7 17.042 1.555 18.09 0 18.792L1.865 22c2.572-1.253 4.451-3.101 5.638-5.546.904-1.833 1.356-4.797 1.356-8.892V0H.68z" fill="#153A82" fill-rule="nonzero" opacity=".1"/></svg>
+                    </p>
+                    <div class="flex items-center pt-4">
+                        <img class="h-12 w-12 rounded-full"
+                             src="https://usehelo.com/images/testimonials/alfonsobries.jpeg" />
+                        <div class="pl-4 text-sm">
+                            <p class="text-black">Alfonso Bribiesca</p>
+                            <p class="text-gray-500">@alfonsobries</p>
+                        </div>
+                    </div>
+                </div>
+                            <div class="rounded-lg shadow-lg bg-white p-4 m-4 max-w-sm mx-auto" :key="4" x-show="activeSlide === 4">
+                    <p class="border-b border-gray-200 pb-4 relative">
+                        Just got my copy 😎
+            Amazing work by @marcelpociot and @seb_sebsn! 👏
+                        <svg class="absolute right-0 bottom-2" width="22" height="22" xmlns="http://www.w3.org/2000/svg"><path d="M13.819 0v9.58h3.984c-.084 2.657-.494 4.682-1.229 6.072-.735 1.39-1.88 2.437-3.433 3.14L15.006 22c2.571-1.253 4.45-3.101 5.638-5.546C21.548 14.621 22 11.657 22 7.562V0h-8.181zM.679 0v9.58h3.984c-.085 2.657-.495 4.682-1.23 6.072C2.7 17.042 1.555 18.09 0 18.792L1.865 22c2.572-1.253 4.451-3.101 5.638-5.546.904-1.833 1.356-4.797 1.356-8.892V0H.68z" fill="#153A82" fill-rule="nonzero" opacity=".1"/></svg>
+                    </p>
+                    <div class="flex items-center pt-4">
+                        <img class="h-12 w-12 rounded-full"
+                             src="https://usehelo.com/images/testimonials/driesvints.jpeg" />
+                        <div class="pl-4 text-sm">
+                            <p class="text-black">Dries Vints</p>
+                            <p class="text-gray-500">@driesvints</p>
+                        </div>
+                    </div>
+                </div>
+                            <div class="rounded-lg shadow-lg bg-white p-4 m-4 max-w-sm mx-auto" :key="5" x-show="activeSlide === 5">
+                    <p class="border-b border-gray-200 pb-4 relative">
+                        Another @marcelpociot magic!! Devs, just buy this already. 
+                        <svg class="absolute right-0 bottom-2" width="22" height="22" xmlns="http://www.w3.org/2000/svg"><path d="M13.819 0v9.58h3.984c-.084 2.657-.494 4.682-1.229 6.072-.735 1.39-1.88 2.437-3.433 3.14L15.006 22c2.571-1.253 4.45-3.101 5.638-5.546C21.548 14.621 22 11.657 22 7.562V0h-8.181zM.679 0v9.58h3.984c-.085 2.657-.495 4.682-1.23 6.072C2.7 17.042 1.555 18.09 0 18.792L1.865 22c2.572-1.253 4.451-3.101 5.638-5.546.904-1.833 1.356-4.797 1.356-8.892V0H.68z" fill="#153A82" fill-rule="nonzero" opacity=".1"/></svg>
+                    </p>
+                    <div class="flex items-center pt-4">
+                        <img class="h-12 w-12 rounded-full"
+                             src="https://usehelo.com/images/testimonials/eFawzan.jpeg" />
+                        <div class="pl-4 text-sm">
+                            <p class="text-black">Fawzan</p>
+                            <p class="text-gray-500">@eFawzan</p>
+                        </div>
+                    </div>
+                </div>
+                        <div class="flex justify-center">
+                                    <button @click="setActiveSlide(0)" :class="{ 'text-black': activeSlide === 0, 'text-opacity-dark-20': activeSlide !== 0 }" class="focus:outline-none">
+                        <svg height="20" width="20" :key="0" class="fill-current">
+                            <circle cx="10" cy="10" r="3" />
+                        </svg>
+                    </button>
+                                    <button @click="setActiveSlide(1)" :class="{ 'text-black': activeSlide === 1, 'text-opacity-dark-20': activeSlide !== 1 }" class="focus:outline-none">
+                        <svg height="20" width="20" :key="1" class="fill-current">
+                            <circle cx="10" cy="10" r="3" />
+                        </svg>
+                    </button>
+                                    <button @click="setActiveSlide(2)" :class="{ 'text-black': activeSlide === 2, 'text-opacity-dark-20': activeSlide !== 2 }" class="focus:outline-none">
+                        <svg height="20" width="20" :key="2" class="fill-current">
+                            <circle cx="10" cy="10" r="3" />
+                        </svg>
+                    </button>
+                                    <button @click="setActiveSlide(3)" :class="{ 'text-black': activeSlide === 3, 'text-opacity-dark-20': activeSlide !== 3 }" class="focus:outline-none">
+                        <svg height="20" width="20" :key="3" class="fill-current">
+                            <circle cx="10" cy="10" r="3" />
+                        </svg>
+                    </button>
+                                    <button @click="setActiveSlide(4)" :class="{ 'text-black': activeSlide === 4, 'text-opacity-dark-20': activeSlide !== 4 }" class="focus:outline-none">
+                        <svg height="20" width="20" :key="4" class="fill-current">
+                            <circle cx="10" cy="10" r="3" />
+                        </svg>
+                    </button>
+                                    <button @click="setActiveSlide(5)" :class="{ 'text-black': activeSlide === 5, 'text-opacity-dark-20': activeSlide !== 5 }" class="focus:outline-none">
+                        <svg height="20" width="20" :key="5" class="fill-current">
+                            <circle cx="10" cy="10" r="3" />
+                        </svg>
+                    </button>
+                            </div>
+        </div>
+        <div class="col-count-1 lg:col-count-3 hidden lg:block">
+                            <div class="rounded-lg shadow-lg bg-white w-full p-4 m-4 inline-block">
+                    <p class="border-b border-gray-200 pb-4 relative">
+                        I used a preview build of this and really dug it. 
+                        <svg class="absolute right-0 bottom-2" width="22" height="22" xmlns="http://www.w3.org/2000/svg"><path d="M13.819 0v9.58h3.984c-.084 2.657-.494 4.682-1.229 6.072-.735 1.39-1.88 2.437-3.433 3.14L15.006 22c2.571-1.253 4.45-3.101 5.638-5.546C21.548 14.621 22 11.657 22 7.562V0h-8.181zM.679 0v9.58h3.984c-.085 2.657-.495 4.682-1.23 6.072C2.7 17.042 1.555 18.09 0 18.792L1.865 22c2.572-1.253 4.451-3.101 5.638-5.546.904-1.833 1.356-4.797 1.356-8.892V0H.68z" fill="#153A82" fill-rule="nonzero" opacity=".1"/></svg>
+                    </p>
+                    <div class="flex items-center pt-4">
+                        <img class="h-12 w-12 rounded-full"
+                             src="https://usehelo.com/images/testimonials/taylorotwell.jpeg" />
+                        <div class="pl-4 text-sm">
+                            <p class="text-black">Taylor Otwell</p>
+                            <p class="text-gray-500">@taylorotwell</p>
+                        </div>
+                    </div>
+                </div>
+                            <div class="rounded-lg shadow-lg bg-white w-full p-4 m-4 inline-block">
+                    <p class="border-b border-gray-200 pb-4 relative">
+                        AMAZING piece of quality software! @marcelpociot has done it again, if you have not already make sure you check this out!!
+                        <svg class="absolute right-0 bottom-2" width="22" height="22" xmlns="http://www.w3.org/2000/svg"><path d="M13.819 0v9.58h3.984c-.084 2.657-.494 4.682-1.229 6.072-.735 1.39-1.88 2.437-3.433 3.14L15.006 22c2.571-1.253 4.45-3.101 5.638-5.546C21.548 14.621 22 11.657 22 7.562V0h-8.181zM.679 0v9.58h3.984c-.085 2.657-.495 4.682-1.23 6.072C2.7 17.042 1.555 18.09 0 18.792L1.865 22c2.572-1.253 4.451-3.101 5.638-5.546.904-1.833 1.356-4.797 1.356-8.892V0H.68z" fill="#153A82" fill-rule="nonzero" opacity=".1"/></svg>
+                    </p>
+                    <div class="flex items-center pt-4">
+                        <img class="h-12 w-12 rounded-full"
+                             src="https://usehelo.com/images/testimonials/RobertGordon89.jpeg" />
+                        <div class="pl-4 text-sm">
+                            <p class="text-black">Robert Gordon</p>
+                            <p class="text-gray-500">@RobertGordon89</p>
+                        </div>
+                    </div>
+                </div>
+                            <div class="rounded-lg shadow-lg bg-white w-full p-4 m-4 inline-block">
+                    <p class="border-b border-gray-200 pb-4 relative">
+                        Got a chance to try out @marcelpociot's HELO today. A great solution for testing emails on your local machine Clapping hands sign
+                        <svg class="absolute right-0 bottom-2" width="22" height="22" xmlns="http://www.w3.org/2000/svg"><path d="M13.819 0v9.58h3.984c-.084 2.657-.494 4.682-1.229 6.072-.735 1.39-1.88 2.437-3.433 3.14L15.006 22c2.571-1.253 4.45-3.101 5.638-5.546C21.548 14.621 22 11.657 22 7.562V0h-8.181zM.679 0v9.58h3.984c-.085 2.657-.495 4.682-1.23 6.072C2.7 17.042 1.555 18.09 0 18.792L1.865 22c2.572-1.253 4.451-3.101 5.638-5.546.904-1.833 1.356-4.797 1.356-8.892V0H.68z" fill="#153A82" fill-rule="nonzero" opacity=".1"/></svg>
+                    </p>
+                    <div class="flex items-center pt-4">
+                        <img class="h-12 w-12 rounded-full"
+                             src="https://usehelo.com/images/testimonials/gilbitron.jpeg" />
+                        <div class="pl-4 text-sm">
+                            <p class="text-black">Gilbert Pellegrom</p>
+                            <p class="text-gray-500">@gilbitron</p>
+                        </div>
+                    </div>
+                </div>
+                            <div class="rounded-lg shadow-lg bg-white w-full p-4 m-4 inline-block">
+                    <p class="border-b border-gray-200 pb-4 relative">
+                        HELO 🤯 it worth more than the amount I pay for the license, good work
+                        <svg class="absolute right-0 bottom-2" width="22" height="22" xmlns="http://www.w3.org/2000/svg"><path d="M13.819 0v9.58h3.984c-.084 2.657-.494 4.682-1.229 6.072-.735 1.39-1.88 2.437-3.433 3.14L15.006 22c2.571-1.253 4.45-3.101 5.638-5.546C21.548 14.621 22 11.657 22 7.562V0h-8.181zM.679 0v9.58h3.984c-.085 2.657-.495 4.682-1.23 6.072C2.7 17.042 1.555 18.09 0 18.792L1.865 22c2.572-1.253 4.451-3.101 5.638-5.546.904-1.833 1.356-4.797 1.356-8.892V0H.68z" fill="#153A82" fill-rule="nonzero" opacity=".1"/></svg>
+                    </p>
+                    <div class="flex items-center pt-4">
+                        <img class="h-12 w-12 rounded-full"
+                             src="https://usehelo.com/images/testimonials/alfonsobries.jpeg" />
+                        <div class="pl-4 text-sm">
+                            <p class="text-black">Alfonso Bribiesca</p>
+                            <p class="text-gray-500">@alfonsobries</p>
+                        </div>
+                    </div>
+                </div>
+                            <div class="rounded-lg shadow-lg bg-white w-full p-4 m-4 inline-block">
+                    <p class="border-b border-gray-200 pb-4 relative">
+                        Just got my copy 😎
+            Amazing work by @marcelpociot and @seb_sebsn! 👏
+                        <svg class="absolute right-0 bottom-2" width="22" height="22" xmlns="http://www.w3.org/2000/svg"><path d="M13.819 0v9.58h3.984c-.084 2.657-.494 4.682-1.229 6.072-.735 1.39-1.88 2.437-3.433 3.14L15.006 22c2.571-1.253 4.45-3.101 5.638-5.546C21.548 14.621 22 11.657 22 7.562V0h-8.181zM.679 0v9.58h3.984c-.085 2.657-.495 4.682-1.23 6.072C2.7 17.042 1.555 18.09 0 18.792L1.865 22c2.572-1.253 4.451-3.101 5.638-5.546.904-1.833 1.356-4.797 1.356-8.892V0H.68z" fill="#153A82" fill-rule="nonzero" opacity=".1"/></svg>
+                    </p>
+                    <div class="flex items-center pt-4">
+                        <img class="h-12 w-12 rounded-full"
+                             src="https://usehelo.com/images/testimonials/driesvints.jpeg" />
+                        <div class="pl-4 text-sm">
+                            <p class="text-black">Dries Vints</p>
+                            <p class="text-gray-500">@driesvints</p>
+                        </div>
+                    </div>
+                </div>
+                            <div class="rounded-lg shadow-lg bg-white w-full p-4 m-4 inline-block">
+                    <p class="border-b border-gray-200 pb-4 relative">
+                        Another @marcelpociot magic!! Devs, just buy this already. 
+                        <svg class="absolute right-0 bottom-2" width="22" height="22" xmlns="http://www.w3.org/2000/svg"><path d="M13.819 0v9.58h3.984c-.084 2.657-.494 4.682-1.229 6.072-.735 1.39-1.88 2.437-3.433 3.14L15.006 22c2.571-1.253 4.45-3.101 5.638-5.546C21.548 14.621 22 11.657 22 7.562V0h-8.181zM.679 0v9.58h3.984c-.085 2.657-.495 4.682-1.23 6.072C2.7 17.042 1.555 18.09 0 18.792L1.865 22c2.572-1.253 4.451-3.101 5.638-5.546.904-1.833 1.356-4.797 1.356-8.892V0H.68z" fill="#153A82" fill-rule="nonzero" opacity=".1"/></svg>
+                    </p>
+                    <div class="flex items-center pt-4">
+                        <img class="h-12 w-12 rounded-full"
+                             src="https://usehelo.com/images/testimonials/eFawzan.jpeg" />
+                        <div class="pl-4 text-sm">
+                            <p class="text-black">Fawzan</p>
+                            <p class="text-gray-500">@eFawzan</p>
+                        </div>
+                    </div>
+                </div>
+                    </div>
+    </div>
+</div>
+
+<div class="bg-white lg:-mt-32 md:no-header-image pricing-circle-small" id="buy">
+    <div class="container max-w-7xl mx-auto pt-16 lg:pt-48 px-8 md:px-16 pb-20">
+        <div class="text-center text-brand-900 font-brand text-4xl md:text-5xl pb-16">
+            A simple pricing<br class="md:hidden flex"> model,<br class="hidden md:flex">
+            <span class="text-brand-800">that suits you.</span>
+        </div>
+        <div class="flex flex-col md:flex-row justify-center no-header-image lg:pricing-circle pb-16">
+            <div class="px-12 md:px-12 lg:px-24 py-8 text-center">
+                <h4 class="font-brand pb-8 text-2xl text-brand-900">Personal</h4>
+                <div class="font-brand text-7xl md:text-6xl text-brand-900"><span class="paddle-net" data-product="588995"></span></div>
+                <ul class="text-left py-6">
+                    <li class="flex items -center text-gray-600 py-2">
+                        <svg class="mr-4" width="26" height="26" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><circle id="a" cx="12" cy="12" r="12"/></defs><g transform="translate(1 1)" fill="none" fill-rule="evenodd"><mask id="b" fill="#fff"><use xlink:href="#a"/></mask><use stroke="#3F3BFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" xlink:href="#a"/><path stroke="#3F3BFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" mask="url(#b)" d="M7 13l3 3 7-7"/></g></svg>
+                        Catch local emails
+                    </li>
+                    <li class="flex items -center text-gray-600 py-2">
+                        <svg class="mr-4" width="26" height="26" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><circle id="a" cx="12" cy="12" r="12"/></defs><g transform="translate(1 1)" fill="none" fill-rule="evenodd"><mask id="b" fill="#fff"><use xlink:href="#a"/></mask><use stroke="#3F3BFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" xlink:href="#a"/><path stroke="#3F3BFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" mask="url(#b)" d="M7 13l3 3 7-7"/></g></svg>
+                        Spam report
+                    </li>
+                    <li class="flex items -center text-gray-600 py-2">
+                        <svg class="mr-4" width="26" height="26" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><circle id="a" cx="12" cy="12" r="12"/></defs><g transform="translate(1 1)" fill="none" fill-rule="evenodd"><mask id="b" fill="#fff"><use xlink:href="#a"/></mask><use stroke="#3F3BFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" xlink:href="#a"/><path stroke="#3F3BFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" mask="url(#b)" d="M7 13l3 3 7-7"/></g></svg>
+                        Unlimited inboxes
+                    </li>
+                    <li class="flex items -center text-gray-600 py-2">
+                        <svg class="mr-4" width="26" height="26" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><circle id="a" cx="12" cy="12" r="12"/></defs><g transform="translate(1 1)" fill="none" fill-rule="evenodd"><mask id="b" fill="#fff"><use xlink:href="#a"/></mask><use stroke="#3F3BFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" xlink:href="#a"/><path stroke="#3F3BFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" mask="url(#b)" d="M7 13l3 3 7-7"/></g></svg>
+                        Simple content review
+                    </li>
+                    <li class="flex items -center text-gray-600 py-2">
+                        <svg class="mr-4" width="26" height="26" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><circle id="a" cx="12" cy="12" r="12"/></defs><g transform="translate(1 1)" fill="none" fill-rule="evenodd"><mask id="b" fill="#fff"><use xlink:href="#a"/></mask><use stroke="#3F3BFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" xlink:href="#a"/><path stroke="#3F3BFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" mask="url(#b)" d="M7 13l3 3 7-7"/></g></svg>
+                        View Inspector
+                    </li>
+                    <li class="flex items -center text-gray-600 py-2">
+                        <svg class="mr-4" width="26" height="26" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><circle id="a" cx="12" cy="12" r="12"/></defs><g transform="translate(1 1)" fill="none" fill-rule="evenodd"><mask id="b" fill="#fff"><use xlink:href="#a"/></mask><use stroke="#3F3BFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" xlink:href="#a"/><path stroke="#3F3BFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" mask="url(#b)" d="M7 13l3 3 7-7"/></g></svg>
+                        Link checker
+                    </li>
+                    <li class="flex items -center text-gray-600 py-2">
+                        <svg class="mr-4" width="26" height="26" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><circle id="a" cx="12" cy="12" r="12"/></defs><g transform="translate(1 1)" fill="none" fill-rule="evenodd"><mask id="b" fill="#fff"><use xlink:href="#a"/></mask><use stroke="#3F3BFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" xlink:href="#a"/><path stroke="#3F3BFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" mask="url(#b)" d="M7 13l3 3 7-7"/></g></svg>
+                        Forward emails
+                    </li>
+                    <li class="flex items -center text-gray-600 py-2">
+                        <svg class="mr-4" width="26" height="26" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><circle id="a" cx="12" cy="12" r="12"/></defs><g transform="translate(1 1)" fill="none" fill-rule="evenodd"><mask id="b" fill="#fff"><use xlink:href="#a"/></mask><use stroke="#3F3BFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" xlink:href="#a"/><path stroke="#3F3BFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" mask="url(#b)" d="M7 13l3 3 7-7"/></g></svg>
+                        Includes updates for a year
+                    </li>
+                    <li class="flex items -center text-gray-600 py-2">
+                        <svg class="mr-4" width="26" height="26" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><circle id="a" cx="12" cy="12" r="12"/></defs><g transform="translate(1 1)" fill="none" fill-rule="evenodd"><mask id="b" fill="#fff"><use xlink:href="#a"/></mask><use stroke="#3F3BFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" xlink:href="#a"/><path stroke="#3F3BFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" mask="url(#b)" d="M7 13l3 3 7-7"/></g></svg>
+                        Commercial use
+                    </li>
+                    <li class="flex items -center text-brand-800 py-2">
+                        <svg class="mr-4" width="26" height="26" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><circle id="a" cx="12" cy="12" r="12"/></defs><g transform="translate(1 1)" fill="none" fill-rule="evenodd"><mask id="b" fill="#fff"><use xlink:href="#a"/></mask><use stroke="#3F3BFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" xlink:href="#a"/><path stroke="#3F3BFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" mask="url(#b)" d="M7 13l3 3 7-7"/></g></svg>
+                        <div>Activate on <span class="font-medium">1</span> computer</div>
+                    </li>
+                </ul>
+
+                <a href="#"
+                   onclick="openCheckout(588995);return false;"
+                   class="font-medium text-lg justify-center bg-brand-800 text-white rounded-lg flex items-center h-12 px-4 text-center">Buy now</a>
+
+                <div class="text-xs mt-2 text-gray-500">Local taxes may be added</div>
+            </div>
+            <div class="px-12 md:px-12 lg:px-24 py-8 text-center bg-white shadow-box rounded-lg">
+                <h4 class="font-brand pb-8 text-2xl text-brand-800">Professional</h4>
+                <div class="font-brand text-7xl md:text-6xl text-brand-800"><span class="paddle-net" data-product="588997"></span></div>
+                <ul class="text-left py-6">
+                    <li class="flex items -center text-gray-600 py-2">
+                        <svg class="mr-4" width="24" height="24" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><circle id="a" cx="12" cy="12" r="12"/></defs><g fill="none" fill-rule="evenodd"><mask id="b" fill="#fff"><use xlink:href="#a"/></mask><use fill="#3F3BFF" xlink:href="#a"/><path stroke="#FFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" mask="url(#b)" d="M7 13l3 3 7-7"/></g></svg>
+                        Catch local emails
+                    </li>
+                    <li class="flex items -center text-gray-600 py-2">
+                        <svg class="mr-4" width="24" height="24" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><circle id="a" cx="12" cy="12" r="12"/></defs><g fill="none" fill-rule="evenodd"><mask id="b" fill="#fff"><use xlink:href="#a"/></mask><use fill="#3F3BFF" xlink:href="#a"/><path stroke="#FFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" mask="url(#b)" d="M7 13l3 3 7-7"/></g></svg>
+                        Spam report
+                    </li>
+                    <li class="flex items -center text-gray-600 py-2">
+                        <svg class="mr-4" width="24" height="24" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><circle id="a" cx="12" cy="12" r="12"/></defs><g fill="none" fill-rule="evenodd"><mask id="b" fill="#fff"><use xlink:href="#a"/></mask><use fill="#3F3BFF" xlink:href="#a"/><path stroke="#FFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" mask="url(#b)" d="M7 13l3 3 7-7"/></g></svg>
+                        Unlimited inboxes
+                    </li>
+                    <li class="flex items -center text-gray-600 py-2">
+                        <svg class="mr-4" width="24" height="24" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><circle id="a" cx="12" cy="12" r="12"/></defs><g fill="none" fill-rule="evenodd"><mask id="b" fill="#fff"><use xlink:href="#a"/></mask><use fill="#3F3BFF" xlink:href="#a"/><path stroke="#FFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" mask="url(#b)" d="M7 13l3 3 7-7"/></g></svg>
+                        Simple content review
+                    </li>
+                    <li class="flex items -center text-gray-600 py-2">
+                        <svg class="mr-4" width="24" height="24" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><circle id="a" cx="12" cy="12" r="12"/></defs><g fill="none" fill-rule="evenodd"><mask id="b" fill="#fff"><use xlink:href="#a"/></mask><use fill="#3F3BFF" xlink:href="#a"/><path stroke="#FFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" mask="url(#b)" d="M7 13l3 3 7-7"/></g></svg>
+                        View Inspector
+                    </li>
+                    <li class="flex items -center text-gray-600 py-2">
+                        <svg class="mr-4" width="24" height="24" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><circle id="a" cx="12" cy="12" r="12"/></defs><g fill="none" fill-rule="evenodd"><mask id="b" fill="#fff"><use xlink:href="#a"/></mask><use fill="#3F3BFF" xlink:href="#a"/><path stroke="#FFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" mask="url(#b)" d="M7 13l3 3 7-7"/></g></svg>
+                        Link checker
+                    </li>
+                    <li class="flex items -center text-gray-600 py-2">
+                        <svg class="mr-4" width="24" height="24" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><circle id="a" cx="12" cy="12" r="12"/></defs><g fill="none" fill-rule="evenodd"><mask id="b" fill="#fff"><use xlink:href="#a"/></mask><use fill="#3F3BFF" xlink:href="#a"/><path stroke="#FFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" mask="url(#b)" d="M7 13l3 3 7-7"/></g></svg>
+                        Forward emails
+                    </li>
+                    <li class="flex items -center text-gray-600 py-2">
+                        <svg class="mr-4" width="24" height="24" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><circle id="a" cx="12" cy="12" r="12"/></defs><g fill="none" fill-rule="evenodd"><mask id="b" fill="#fff"><use xlink:href="#a"/></mask><use fill="#3F3BFF" xlink:href="#a"/><path stroke="#FFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" mask="url(#b)" d="M7 13l3 3 7-7"/></g></svg>
+                        Includes updates for a year
+                    </li>
+                    <li class="flex items -center text-gray-600 py-2">
+                        <svg class="mr-4" width="24" height="24" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><circle id="a" cx="12" cy="12" r="12"/></defs><g fill="none" fill-rule="evenodd"><mask id="b" fill="#fff"><use xlink:href="#a"/></mask><use fill="#3F3BFF" xlink:href="#a"/><path stroke="#FFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" mask="url(#b)" d="M7 13l3 3 7-7"/></g></svg>
+                        Commercial use
+                    </li>
+                    <li class="flex items -center text-brand-800 py-2">
+                        <svg class="mr-4" width="24" height="24" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><circle id="a" cx="12" cy="12" r="12"/></defs><g fill="none" fill-rule="evenodd"><mask id="b" fill="#fff"><use xlink:href="#a"/></mask><use fill="#3F3BFF" xlink:href="#a"/><path stroke="#FFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" mask="url(#b)" d="M7 13l3 3 7-7"/></g></svg>
+                        Share your local emails and inboxes
+                    </li>
+                    <li class="flex items -center text-brand-800 py-2">
+                        <svg class="mr-4" width="24" height="24" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><circle id="a" cx="12" cy="12" r="12"/></defs><g fill="none" fill-rule="evenodd"><mask id="b" fill="#fff"><use xlink:href="#a"/></mask><use fill="#3F3BFF" xlink:href="#a"/><path stroke="#FFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" mask="url(#b)" d="M7 13l3 3 7-7"/></g></svg>
+                        Unlimited remote mailboxes
+                    </li>
+                    <li class="flex items -center text-brand-800 py-2">
+                        <svg class="mr-4" width="24" height="24" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><circle id="a" cx="12" cy="12" r="12"/></defs><g fill="none" fill-rule="evenodd"><mask id="b" fill="#fff"><use xlink:href="#a"/></mask><use fill="#3F3BFF" xlink:href="#a"/><path stroke="#FFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" mask="url(#b)" d="M7 13l3 3 7-7"/></g></svg>
+                        <div>Activate on <span class="font-medium">3</span> computers</div>
+                    </li>
+                    <li class="flex items -center text-brand-800 py-2">
+                        <svg class="mr-4" width="24" height="24" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><circle id="a" cx="12" cy="12" r="12"/></defs><g fill="none" fill-rule="evenodd"><mask id="b" fill="#fff"><use xlink:href="#a"/></mask><use fill="#3F3BFF" xlink:href="#a"/><path stroke="#FFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" mask="url(#b)" d="M7 13l3 3 7-7"/></g></svg>
+                        HELO cloud for 1 year
+                    </li>
+                </ul>
+
+                <a href="#"
+                   onclick="openCheckout(588997);return false;"
+                   class="font-medium text-lg justify-center bg-brand-800 text-white rounded-lg flex items-center h-12 px-4 text-center">Buy now
+                </a>
+                <div class="text-xs mt-2 text-gray-500">Local taxes may be added</div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="bg-white" id="faq">
+    <div class="container max-w-7xl mx-auto py-24 md:px-16">
+        <div class="leading-headline text-brand-900 capitalize text-center font-brand text-4xl md:text-5xl pb-10">
+            Frequently asked <br class="flex md:hidden"> questions
+        </div>
+        <div class="px-16 grid grid-cols-1 md:grid-cols-2 col-gap-8 row-gap-16 text-gray-700">
+            <div>
+                <p class="font-medium text-brand-900 pb-4">What are concurrent activations?</p>
+                <p>
+                    One activation is connected to one machine. You can remove an activation to activate it on a different machine anytime.
+                </p>
+            </div>
+            <div>
+                <p class="font-medium text-brand-900 pb-4">What is HELO cloud?</p>
+                <p>
+                    HELO cloud is the service that you interact with, when you <a href="https://docs.beyondco.de/helo/1.0/basic-usage/sharing.html#sharing-single-emails" target="_blank" class="underline">share your local emails</a> or use <a href="https://docs.beyondco.de/helo/1.0/basic-usage/remote-mailboxes.html" target="_blank" class="underline">remote mailboxes</a>.
+                </p>
+            </div>
+            <div>
+                <p class="font-medium text-brand-900 pb-4">How do I upgrade from a personal to a professional license?</p>
+                <p>
+                    Upgrades are available in our <a href="https://beyondco.de/login" class="underline">licensing backend</a> where you can manage your license key activations.
+                </p>
+            </div>
+            <div>
+                <p class="font-medium text-brand-900 pb-4">Where can I download HELO?</p>
+                <p>
+                    You can download the latest version of HELO in our <a href="https://beyondco.de/login" class="underline">licensing backend</a>.
+                </p>
+            </div>
+            <div>
+                <p class="font-medium text-brand-900 pb-4">How do I use HELO with ...?</p>
+                <p>
+                    Please check the HELO documentation at the <a href="https://docs.beyondco.de/helo/1.0/getting-started/configuration.html" target="_blank" class="underline">Beyond Code Documentation</a>.
+                </p>
+            </div>
+            <div>
+                <p class="font-medium text-brand-900 pb-4">How do I use feature ... in HELO?</p>
+                <p>
+                    Please check the HELO documentation at the <a href="https://docs.beyondco.de/helo/1.0/getting-started/installation.html" target="_blank" class="underline">Beyond Code Documentation</a>.
+                </p>
+            </div>
+            <div>
+                <p class="font-medium text-brand-900 pb-4">Technical Support</p>
+                <p>
+                    Unfortunately, we can't provide in-depth technical support for all different local development setups, but you can always get community support <a href="https://github.com/beyondcode/helo-community" target="_blank" class="underline">here</a>.
+                </p>
+            </div>
+            <div>
+                <p class="font-medium text-brand-900 pb-4">Sales Support</p>
+                <p>
+                    In case you need help with your purchase, please send an email to support@beyondco.de. We track down lost emails, process refunds, or link licenses with Beyond Code accounts.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="bg-white">
+    <div class="relative container mx-auto max-w-7xl">
+        <div class="md:shadow-lg p-14 text-white bg-brand-900 xl:rounded-lg flex md:flex-row flex-col items-center md:justify-between">
+            <div>
+                <h4 class="text-2xl font-brand text-center md:text-left pb-4 md:pb-0">Want product news<br class="block md:hidden"> and updates?</h4>
+                <span class="text-gray-300">Sign up for the Beyond Code newsletter to stay up to date.</span>
+            </div>
+            <form action="/newsletter" method="post">
+                <input type="hidden" name="_token" value="dtoxssT3fAVv6WV7FNaBvf5wF7CjI9bRkLw8VOsE">                <div class="group rounded-lg border-2 border-opacity-20 hover:border-2 hover:border-opacity-40 focus-within:border-2 focus-within:border-brand-200-hover focus-within:text-white flex mt-6 p-2">
+                    <input type="email" name="email" required class="outline-none bg-brand-900 rounded-lg pr-16 text-opacity-40 group-hover:placeholder-opacity-40 focus:text-white placeholder-opacity-20"  placeholder="Enter email address" />
+                    <button type="submit" class="text-brand-200 font-medium focus:outline-none focus:bg-brand-200-focus rounded py-1 px-2 whitespace-no-wrap">Sign up</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="bg-gray-200 -mt-20">
+    <div class="container mx-auto max-w-2xl pb-16 px-8 md:pl-16">
+        <div class="pt-32 text-center">
+            <img src="https://beyondco.de/images/logo.png" class="h-8 inline-block" />
+            <div class="text-brand-900 pt-8 font-medium flex flex-col md:flex-row justify-between">
+                <a href="https://docs.beyondco.de/helo/1.0/getting-started/installation.html?ref=helo-site" class="py-2">Docs</a>
+                <a href="https://beyondco.de/?ref=helo-site" class="py-2">About</a>
+                <a href="https://beyondco.de/?ref=helo-site#free-stuff" class="py-2">Open Source</a>
+                <a href="https://beyondco.de/?ref=helo-site#paid-stuff" class="py-2">Other Products</a>
+                <a href="https://beyondco.de/?ref=helo-site#footer" class="py-2">Imprint</a>
+                <a href="https://beyondco.de/helo-eula" class="py-2">EULA</a>
+            </div>
+        </div>
+    </div>
+    <div class="border-t border-gray-300  container max-w-7xl mx-auto px-8 md:pl-16 py-8">
+        <div class="flex">
+            <div class="text-gray-500">
+                &copy; 2022 Beyond Code GmbH. All rights reserved.
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+        function openCheckout(productId, overrideLink) {
+        if (typeof fathom !== 'undefined') {
+            fathom('trackGoal', 'NEMRUCIP', 0);
+        }
+
+        if (productId === 588995) {
+            Paddle.Checkout.open({
+                product: productId,
+                override: overrideLink,
+                successCallback: function(data) {
+                    if (typeof fathom !== 'undefined') {
+                        fathom('trackGoal', 'SNW3V7GI', data.checkout.prices.vendor.total * 100);
+                    }
+                },
+                upsell: 588997,
+                upsellTitle: 'HELO - Professional',
+                upsellText: 'HELO Professional allows you to share emails with your colleagues and clients from your local development environment and gives you unlimited remote inboxes that you can use in staging and production environments. ',
+                upsellAction: 'Go Pro',
+            });
+        } else {
+            Paddle.Checkout.open({
+                product: productId,
+                override: overrideLink,
+                successCallback: function(data) {
+                    if (typeof fathom !== 'undefined') {
+                        fathom('trackGoal', 'SNW3V7GI', data.checkout.prices.vendor.total * 100);
+                    }
+                }
+            });
+        }
+
+    }
+    
+    function featureSliderData() {
+        return {
+            tab: 'views',
+            tabIndex: 0,
+            tabs: ['views', 'links', 'spam', 'sharing', 'testing'],
+            interval: null,
+            progress: 0,
+            setTab(tab) {
+                this.progress = 0;
+                this.tab = tab;
+                this.tabIndex = this.tabs.indexOf(tab);
+            },
+            start() {
+                let mql = window.matchMedia('(max-width: 766px)');
+
+                let listener = (e) => {
+                    if (e.matches) {
+                        this.tabIndex = this.tabs.indexOf(this.tab);
+                        this.progress = 0;
+                        this.interval = setInterval(() => {
+                            this.progress += 1;
+                            if (this.progress >= 100) {
+                                this.progress = 0;
+
+                                let currentIndex = this.tabs.indexOf(this.tab);
+                                this.tabIndex = currentIndex +1;
+                                if (this.tabIndex >= this.tabs.length) {
+                                    this.tabIndex = 0;
+                                }
+                                this.tab = this.tabs[currentIndex + 1] || 'views';
+                            }
+                        }, 100);
+                    } else {
+                        clearInterval(this.interval);
+                    }
+                };
+
+                mql.addListener(listener);
+                listener(mql)
+            }
+        };
+    }
+
+    function testimonialSliderData() {
+        return {
+            activeSlide: 0,
+            interval: null,
+            setActiveSlide(slide) {
+                this.activeSlide = slide;
+                clearInterval(this.interval);
+                this.start();
+            },
+            totalSlides: 6,
+            start() {
+                this.interval = setInterval(() => {
+                    if (this.activeSlide === (this.totalSlides-1)) {
+                        this.activeSlide = 0;
+                    } else {
+                        this.activeSlide++;
+                    }
+                }, 5000);
+            }
+        }
+    };
+</script>
+
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</body>
+</html>

@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Terminology - OAuth 2.0 Server</title>
+<meta name="description" content="A standards compliant OAuth 2.0 server">
+<link rel="icon" type="image/x-icon" href="//theme.thephpleague.com/img/favicon.ico" />
+<link rel="apple-touch-icon-precomposed" href="//theme.thephpleague.com/img/apple-touch-icon-precomposed.png">
+<link rel="stylesheet" href="//theme.thephpleague.com/css/all.css">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css" />
+<style>
+        menu .tool {
+            margin: 15px 0 0 0;
+            padding: 0 45px;
+        }
+        menu .search {
+            display: inline-block;
+            width: 100%;
+            padding: 7px 10px;
+            color: #6abcdd;
+            font-size: 14px;
+            font-family: "Museo Sans 300";
+            border: 0;
+            outline: 0;
+            background: #22303f;
+            border-radius: 3px;
+        }
+	</style>
+</head>
+<body>
+<section class="all_packages">
+<a href="http://thephpleague.com/">
+<img src="//theme.thephpleague.com/img/loep_logo.png" width="195" height="200" alt="The League of Extraordinary Packages">
+</a>
+<h2>Our Packages:</h2>
+<ul>
+
+</ul>
+</section>
+<header>
+<a class="logo" href="/">
+<span class="name">OAuth 2.0 Server</span>
+<span class="tagline">PHP, meet OAuth 2</span>
+</a>
+<a href="http://thephpleague.com/" class="league">
+Presented by The League of Extraordinary Packages
+</a>
+</header>
+<input type="checkbox" id="menu">
+<label for="menu" onclick>
+<div class="closed">&#9776; Menu</div>
+<div class="open">&#9776; Hide Menu</div>
+</label>
+<main>
+<menu>
+<div class="tool">
+<input id="search" class="search" placeholder="Search&hellip;">
+</div>
+<h2>Getting Started</h2>
+<ul>
+<li>
+<a href="/">Introduction</a>
+</li>
+<li class="selected">
+<a href="/terminology/">Terminology</a>
+</li>
+<li>
+<a href="/requirements/">Requirements</a>
+</li>
+<li>
+<a href="/installation/">Installation</a>
+</li>
+<li>
+<a href="/upgrade-guide/">Upgrade Guide</a>
+</li>
+<li>
+<a href="/database-setup/">Database Setup</a>
+</li>
+<li>
+<a href="/framework-integrations/">Framework Integrations</a>
+</li>
+<li>
+<a href="/v5-security-improvements/">V5 Security Improvements</a>
+</li>
+<li>
+<a href="/V4-docs/">V4 Docs</a>
+</li>
+</ul>
+<h2>Authorization Server</h2>
+<ul>
+<li>
+<a href="/authorization-server/which-grant/">Which Grant?</a>
+</li>
+<li>
+<a href="/authorization-server/client-credentials-grant/">Client Credentials Grant</a>
+</li>
+<li>
+<a href="/authorization-server/resource-owner-password-credentials-grant/">Password Grant</a>
+</li>
+<li>
+ <a href="/authorization-server/auth-code-grant/">Authorization Code Grant</a>
+</li>
+<li>
+<a href="/authorization-server/implicit-grant/">Implicit Grant</a>
+</li>
+<li>
+<a href="/authorization-server/refresh-token-grant/">Refresh Token Grant</a>
+</li>
+<li>
+<a href="/authorization-server/events/">Domain Events</a>
+</li>
+</ul>
+<h2>Resource Server</h2>
+<ul>
+<li>
+<a href="/resource-server/securing-your-api/">Securing your API</a>
+</li>
+</ul>
+<h2>Repository Interfaces</h2>
+<ul>
+<li>
+<a href="/access-token-repository-interface/">Access Token Repository Interface</a>
+</li>
+<li>
+<a href="/client-repository-interface/">Client Repository Interface</a>
+</li>
+<li>
+<a href="/refresh-token-repository-interface/">Refresh Token Repository Interface</a>
+</li>
+<li>
+<a href="/scope-repository-interface/">Scope Repository Interface</a>
+</li>
+<li>
+<a href="/auth-code-repository-interface/">Auth Code Repository Interface</a>
+</li>
+<li>
+<a href="/user-repository-interface/">User Repository Interface</a>
+</li>
+</ul>
+</menu>
+<article>
+<h1 id="terminology">Terminology</h1>
+<ul>
+<li><code class="language-plaintext highlighter-rouge">Access token</code> - A token used to access protected resources.</li>
+<li><code class="language-plaintext highlighter-rouge">Authorization code</code> - An intermediary token generated when a user authorizes a client to access protected resources on their behalf. The client receives this token and exchanges it for an access token.</li>
+<li><code class="language-plaintext highlighter-rouge">Authorization server</code> - A server which issues access tokens after successfully authenticating a client and resource owner, and authorizing the request.</li>
+<li><code class="language-plaintext highlighter-rouge">Client</code> - An application which accesses protected resources on behalf of the resource owner (such as a user). The client could be hosted on a server, desktop, mobile or other device.</li>
+<li><code class="language-plaintext highlighter-rouge">Grant</code> - A grant is a method of acquiring an access token.</li>
+<li><code class="language-plaintext highlighter-rouge">Resource server</code> - A server which sits in front of protected resources (for example “tweets”, users’ photos, or personal data) and is capable of accepting and responding to protected resource requests using access tokens.</li>
+<li><code class="language-plaintext highlighter-rouge">Resource owner</code> - The user who authorizes an application to access their account. The application’s access to the user’s account is limited to the “scope” of the authorization granted (e.g. read or write access).</li>
+<li><code class="language-plaintext highlighter-rouge">Scope</code> - A permission.</li>
+<li><code class="language-plaintext highlighter-rouge">JWT</code> - A JSON Web Token is a method for representing claims securely between two parties as defined in <a href="https://tools.ietf.org/html/rfc7519">RFC 7519</a>.</li>
+</ul>
+</article>
+</main>
+<footer>
+<span>&copy; Copyright <a href="http://thephpleague.com">The League of Extraordinary Packages</a>.</span>
+<span>Site design by <a href="http://reinink.ca">Jonathan Reinink</a>.</span>
+</footer>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="//theme.thephpleague.com/js/scripts.js"></script>
+<script src="//theme.thephpleague.com/js/prism.js"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script>
+<script type="text/javascript"> docsearch({
+    apiKey: '8dd21e312297ec1560d4bace1405d856',
+    indexName: 'oauth2-thephpleague',
+    inputSelector: '#search'
+});
+</script>
+<script>
+        (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+        function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+        e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+        e.src='//www.google-analytics.com/analytics.js';
+        r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+        ga('create','UA-46050814-5');ga('send','pageview');
+    </script>
+</body>
+</html>

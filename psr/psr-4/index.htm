@@ -1,0 +1,268 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <title>PSR-4: Autoloader - PHP-FIG</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <!-- Place favicon.ico in the root directory -->
+
+    <link rel="stylesheet" href="/css/all.css?BGPQK5YPXHQD2XFJ5JN6PAC7GFWLIGXGKRYT55TQNNNEBY5XPHFA====">
+    <link rel="stylesheet" href="/css/hljs_default.css?BGPQK5YPXHQD2XFJ5JN6PAC7GFWLIGXGKRYT55TQNNNEBY5XPHFA====">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700,700i|Oswald|Source+Code+Pro">
+
+    <link rel="preconnect" href="https://ajax.googleapis.com" pr="1.0" />
+    <link rel="preconnect" href="https://ssl.google-analytics.com" pr="0.8" />
+
+    <link rel="alternate" type="application/atom+xml" href="/atom.xml" title="PHP-FIG Blog Feed" />
+
+    <meta name="og:title" content="PSR-4: Autoloader - PHP-FIG" />
+
+    <meta name="twitter:title" content="PSR-4: Autoloader - PHP-FIG" />
+    <meta name="twitter:site" content="@phpfig" />
+    <meta name="twitter:creator" content="@phpfig" />
+
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:image" content="https://www.php-fig.org/img/social-banner.png" />
+    <meta property="og:image" content="https://www.php-fig.org/img/social-banner.png" />
+
+    <meta property="og:type"  content="website" />
+
+    <meta name="description" content="We're a group of established PHP projects whose goal is to talk about commonalities between our projects and find ways we can work better together.">
+    <meta name="twitter:description" content="We&#039;re a group of established PHP projects whose goal is to talk about commonalities between our projects and find ways we can work better together." />
+    <meta name="og:description" content="We&#039;re a group of established PHP projects whose goal is to talk about commonalities between our projects and find ways we can work better together." />
+
+</head>
+<body>
+
+<header class="site_header">
+    <div class="center">
+        <a class="site_logo" href="/">
+            <span class="site_logo__short_name">PHP-FIG</span>
+            <span class="site_logo__long_name">The PHP Framework Interop Group</span>
+        </a>
+        <nav class="site_menu">
+            <label class="site_menu__dropdown_button" for="site_menu__dropdown_checkbox">Menu</label>
+            <input class="site_menu__dropdown_checkbox" id="site_menu__dropdown_checkbox" type="checkbox">
+            <ul class="site_menu__list">
+                <li class="site_menu__item">
+                    <a class="site_menu__link " href="/">Home</a>
+                </li>
+                <li class="site_menu__item">
+                    <a class="site_menu__link " href="/blog">Blog</a>
+                </li>
+                <li class="site_menu__item">
+                    <a class="site_menu__link site_menu__link--active" href="/psr">PSRs</a>
+                </li>
+                <li class="site_menu__item">
+                    <a class="site_menu__link " href="/personnel">Personnel</a>
+                </li>
+                <li class="site_menu__item">
+                    <a class="site_menu__link " href="/bylaws">Bylaws</a>
+                </li>
+                <li class="site_menu__item">
+                    <a class="site_menu__link " href="/faqs">FAQs</a>
+                </li>
+                <li class="site_menu__item">
+                    <a class="site_menu__link " href="/get-involved">Get Involved</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<div class="page_content">
+    <div class="page_banner">
+    <div class="center">
+        <h1 class="page_banner__title">
+                        PSR-4: Autoloader
+                    </h1>
+    </div>
+</div>
+
+<div class="center">
+    <div class="page_content__padding">
+                    <div class="columns">
+    <div class="columns__column columns__column--8">
+        <div class="markdown">
+                                            <h1>Autoloader<a id="autoloader" href="#autoloader" name="autoloader" class="heading-permalink" aria-hidden="true" title="Permalink">¶</a></h1>
+<p>The key words &quot;MUST&quot;, &quot;MUST NOT&quot;, &quot;REQUIRED&quot;, &quot;SHALL&quot;, &quot;SHALL NOT&quot;, &quot;SHOULD&quot;,
+&quot;SHOULD NOT&quot;, &quot;RECOMMENDED&quot;, &quot;MAY&quot;, and &quot;OPTIONAL&quot; in this document are to be
+interpreted as described in <a href="http://tools.ietf.org/html/rfc2119">RFC 2119</a>.</p>
+<h2>1. Overview<a id="1-overview" href="#1-overview" name="1-overview" class="heading-permalink" aria-hidden="true" title="Permalink">¶</a></h2>
+<p>This PSR describes a specification for <a href="http://php.net/autoload">autoloading</a> classes from file
+paths. It is fully interoperable, and can be used in addition to any other
+autoloading specification, including <a href="https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-0.md">PSR-0</a>. This PSR also describes where
+to place files that will be autoloaded according to the specification.</p>
+<h2>2. Specification<a id="2-specification" href="#2-specification" name="2-specification" class="heading-permalink" aria-hidden="true" title="Permalink">¶</a></h2>
+<ol>
+<li>
+<p>The term &quot;class&quot; refers to classes, interfaces, traits, and other similar
+structures.</p>
+</li>
+<li>
+<p>A fully qualified class name has the following form:</p>
+<pre><code class="language- hljs " data-lang=""> \&lt;NamespaceName&gt;(\&lt;SubNamespaceNames&gt;)*\&lt;ClassName&gt;
+</code></pre>
+<ol>
+<li>
+<p>The fully qualified class name MUST have a top-level namespace name,
+also known as a &quot;vendor namespace&quot;.</p>
+</li>
+<li>
+<p>The fully qualified class name MAY have one or more sub-namespace
+names.</p>
+</li>
+<li>
+<p>The fully qualified class name MUST have a terminating class name.</p>
+</li>
+<li>
+<p>Underscores have no special meaning in any portion of the fully
+qualified class name.</p>
+</li>
+<li>
+<p>Alphabetic characters in the fully qualified class name MAY be any
+combination of lower case and upper case.</p>
+</li>
+<li>
+<p>All class names MUST be referenced in a case-sensitive fashion.</p>
+</li>
+</ol>
+</li>
+<li>
+<p>When loading a file that corresponds to a fully qualified class name ...</p>
+<ol>
+<li>
+<p>A contiguous series of one or more leading namespace and sub-namespace
+names, not including the leading namespace separator, in the fully
+qualified class name (a &quot;namespace prefix&quot;) corresponds to at least one
+&quot;base directory&quot;.</p>
+</li>
+<li>
+<p>The contiguous sub-namespace names after the &quot;namespace prefix&quot;
+correspond to a subdirectory within a &quot;base directory&quot;, in which the
+namespace separators represent directory separators. The subdirectory
+name MUST match the case of the sub-namespace names.</p>
+</li>
+<li>
+<p>The terminating class name corresponds to a file name ending in <code>.php</code>.
+The file name MUST match the case of the terminating class name.</p>
+</li>
+</ol>
+</li>
+<li>
+<p>Autoloader implementations MUST NOT throw exceptions, MUST NOT raise errors
+of any level, and SHOULD NOT return a value.</p>
+</li>
+</ol>
+<h2>3. Examples<a id="3-examples" href="#3-examples" name="3-examples" class="heading-permalink" aria-hidden="true" title="Permalink">¶</a></h2>
+<p>The table below shows the corresponding file path for a given fully qualified
+class name, namespace prefix, and base directory.</p>
+<table>
+<thead>
+<tr>
+<th>Fully Qualified Class Name</th>
+<th>Namespace Prefix</th>
+<th>Base Directory</th>
+<th>Resulting File Path</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>\Acme\Log\Writer\File_Writer</td>
+<td>Acme\Log\Writer</td>
+<td>./acme-log-writer/lib/</td>
+<td>./acme-log-writer/lib/File_Writer.php</td>
+</tr>
+<tr>
+<td>\Aura\Web\Response\Status</td>
+<td>Aura\Web</td>
+<td>/path/to/aura-web/src/</td>
+<td>/path/to/aura-web/src/Response/Status.php</td>
+</tr>
+<tr>
+<td>\Symfony\Core\Request</td>
+<td>Symfony\Core</td>
+<td>./vendor/Symfony/Core/</td>
+<td>./vendor/Symfony/Core/Request.php</td>
+</tr>
+<tr>
+<td>\Zend\Acl</td>
+<td>Zend</td>
+<td>/usr/includes/Zend/</td>
+<td>/usr/includes/Zend/Acl.php</td>
+</tr>
+</tbody>
+</table>
+<p>For example implementations of autoloaders conforming to the specification,
+please see the <a href="https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-4-autoloader-examples.md">examples file</a>. Example implementations MUST NOT be regarded
+as part of the specification and MAY change at any time.</p>
+
+                    </div>
+    </div>
+        <div class="columns__column columns__column--4 columns__column--padding_left">
+        <nav class="sidebar">
+            <h2 class="sidebar__title">Additional Info:</h2>
+            <ul class="sidebar__list">
+                                    <li class="sidebar__item">
+                        <a class="sidebar__link sidebar__link--active"
+                           href="">PSR-4: Autoloader</a>
+                    </li>
+                                    <li class="sidebar__item">
+                        <a class="sidebar__link "
+                           href="/psr/psr-4/meta">PSR-4 Meta Document</a>
+                    </li>
+                                    <li class="sidebar__item">
+                        <a class="sidebar__link "
+                           href="/psr/psr-4/examples">PSR-4 Example Implementations</a>
+                    </li>
+                            </ul>
+        </nav>
+    </div>
+    </div>
+
+            </div>
+</div>
+</div>
+
+<div class="site_footer_links">
+    <div class="center">
+        <div class="site_footer_links__content">
+            <ul class="site_footer_links__list">
+                <li class="site_footer_links__item site_footer_links__item--twitter">
+                    <a class="site_footer_links__link" href="https://twitter.com/phpfig">Follow us on Twitter</a>
+                </li>
+                <li class="site_footer_links__item site_footer_links__item--discord">
+                    <a class="site_footer_links__link" href="https://discord.gg/php-fig">Discuss on Discord</a>
+                </li>
+                <li class="site_footer_links__item site_footer_links__item--github">
+                    <a class="site_footer_links__link" href="https://github.com/php-fig">Contribute via GitHub</a>
+                </li>
+                <li class="site_footer_links__item site_footer_links__item--mailing_list">
+                    <a class="site_footer_links__link" href="https://groups.google.com/forum/?fromgroups#!forum/php-fig">Join our mailing list</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<footer class="site_footer">
+    <div class="center">
+        <span class="site_footer__section">&copy; <script type="text/javascript">document.write(new Date().getFullYear());</script> PHP Framework Interop Group.</span>
+        <span class="site_footer__section">Site design by <a class="site_footer__link" href="https://twitter.com/reinink" target="_blank">Jonathan Reinink</a>.</span>
+        <span class="site_footer__section platform_sh_widget">Hosting sponsored by the <a title="platform.sh" href="https://platform.sh/?utm_campaign=sponsored_sites&utm_source=php_fig" target="_blank"><img class="platformsh-logo" src="/img/platform-sh-logo.png" alt="platform.sh logo" style="padding: 0 3px 0 3px;height: 1.1em; vertical-align: text-bottom;"/></a> <a class="site_footer__link" href="https://platform.sh/?utm_campaign=sponsored_sites&utm_source=php_fig" target="_blank">PHP PaaS</a></span>
+    </div>
+</footer>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="/js/main.js"></script>
+<script type="text/javascript">
+    var _gaq = _gaq || [];_gaq.push(['_setAccount','UA-1997599-8']);_gaq.push(['_setDomainName','php-fig.org']);_gaq.push(['_trackPageview']);
+    (function(){var ga=document.createElement('script');ga.type='text/javascript';ga.async=true;ga.src='https://ssl.google-analytics.com/ga.js';var s=document.getElementsByTagName('script')[0];s.parentNode.insertBefore(ga,s);})();
+</script>
+
+</body>
+</html>

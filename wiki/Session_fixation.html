@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<title>Session fixation - Wikipedia</title>
+<script>document.documentElement.className="client-js";RLCONF={"wgBreakFrames":false,"wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgRequestId":"e58a5da1-97f3-4236-bcf0-ec1d2d69fb73","wgCSPNonce":false,"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"Session_fixation","wgTitle":"Session fixation","wgCurRevisionId":1049712397,"wgRevisionId":1049712397,"wgArticleId":3764708,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["Articles lacking in-text citations from April 2012","All articles lacking in-text citations","All articles with unsourced statements","Articles with unsourced statements from August 2010","Articles that may contain original research from July 2019",
+"All articles that may contain original research","Web security exploits"],"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgRelevantPageName":"Session_fixation","wgRelevantArticleId":3764708,"wgIsProbablyEditable":true,"wgRelevantPageIsProbablyEditable":true,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgFlaggedRevsParams":{"tags":{"status":{"levels":-1}}},"wgVisualEditor":{"pageLanguageCode":"en","pageLanguageDir":"ltr","pageVariantFallbacks":"en"},"wgMFDisplayWikibaseDescriptions":{"search":true,"nearby":true,"watchlist":true,"tagline":false},"wgWMESchemaEditAttemptStepOversample":false,"wgWMEPageLength":20000,"wgNoticeProject":"wikipedia","wgMediaViewerOnClick":true,"wgMediaViewerEnabledByDefault":true,"wgPopupsFlags":10,"wgULSCurrentAutonym":"English","wgEditSubmitButtonLabelPublish":true,"wgCentralAuthMobileDomain":false,"wgULSPosition":"interlanguage","wgULSisCompactLinksEnabled":true,"wgWikibaseItemId":"Q2274575","wgGENewcomerTasksGuidanceEnabled":true,
+"wgGEAskQuestionEnabled":false,"wgGELinkRecommendationsFrontendEnabled":false};RLSTATE={"ext.globalCssJs.user.styles":"ready","site.styles":"ready","user.styles":"ready","ext.globalCssJs.user":"ready","user":"ready","user.options":"loading","ext.cite.styles":"ready","ext.pygments":"ready","skins.vector.styles.legacy":"ready","ext.visualEditor.desktopArticleTarget.noscript":"ready","ext.wikimediaBadges":"ready","ext.uls.interlanguage":"ready","wikibase.client.init":"ready"};RLPAGEMODULES=["ext.cite.ux-enhancements","site","mediawiki.page.ready","mediawiki.toc","skins.vector.legacy.js","ext.gadget.ReferenceTooltips","ext.gadget.charinsert","ext.gadget.extra-toolbar-buttons","ext.gadget.refToolbar","ext.gadget.switcher","mmv.head","mmv.bootstrap.autostart","ext.visualEditor.desktopArticleTarget.init","ext.visualEditor.targetLoader","ext.eventLogging","ext.wikimediaEvents","ext.navigationTiming","ext.cx.eventlogging.campaigns","ext.centralNotice.geoIP","ext.centralNotice.startUp",
+"ext.centralauth.centralautologin","ext.popups","ext.uls.compactlinks","ext.uls.interface","ext.growthExperiments.SuggestedEditSession"];</script>
+<script>(RLQ=window.RLQ||[]).push(function(){mw.loader.implement("user.options@1i9g4",function($,jQuery,require,module){mw.user.tokens.set({"patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});});});</script>
+<link rel="stylesheet" href="/w/load.php?lang=en&amp;modules=ext.cite.styles%7Cext.pygments%2CwikimediaBadges%7Cext.uls.interlanguage%7Cext.visualEditor.desktopArticleTarget.noscript%7Cskins.vector.styles.legacy%7Cwikibase.client.init&amp;only=styles&amp;skin=vector"/>
+<script async="" src="/w/load.php?lang=en&amp;modules=startup&amp;only=scripts&amp;raw=1&amp;skin=vector"></script>
+<meta name="ResourceLoaderDynamicStyles" content=""/>
+<link rel="stylesheet" href="/w/load.php?lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=vector"/>
+<meta name="generator" content="MediaWiki 1.38.0-wmf.25"/>
+<meta name="referrer" content="origin"/>
+<meta name="referrer" content="origin-when-crossorigin"/>
+<meta name="referrer" content="origin-when-cross-origin"/>
+<meta name="format-detection" content="telephone=no"/>
+<meta property="og:title" content="Session fixation - Wikipedia"/>
+<meta property="og:type" content="website"/>
+<link rel="preconnect" href="//upload.wikimedia.org"/>
+<link rel="alternate" media="only screen and (max-width: 720px)" href="//en.m.wikipedia.org/wiki/Session_fixation"/>
+<link rel="alternate" type="application/x-wiki" title="Edit this page" href="/w/index.php?title=Session_fixation&amp;action=edit"/>
+<link rel="apple-touch-icon" href="/static/apple-touch/wikipedia.png"/>
+<link rel="shortcut icon" href="/static/favicon/wikipedia.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="/w/opensearch_desc.php" title="Wikipedia (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="//en.wikipedia.org/w/api.php?action=rsd"/>
+<link rel="license" href="https://creativecommons.org/licenses/by-sa/3.0/"/>
+<link rel="canonical" href="https://en.wikipedia.org/wiki/Session_fixation"/>
+<link rel="dns-prefetch" href="//meta.wikimedia.org" />
+<link rel="dns-prefetch" href="//login.wikimedia.org"/>
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject mw-editable page-Session_fixation rootpage-Session_fixation skin-vector action-view skin-vector-legacy"><div id="mw-page-base" class="noprint"></div>
+<div id="mw-head-base" class="noprint"></div>
+<div id="content" class="mw-body" role="main">
+	<a id="top"></a>
+	<div id="siteNotice"><!-- CentralNotice --></div>
+	<div class="mw-indicators">
+	</div>
+	<h1 id="firstHeading" class="firstHeading mw-first-heading">Session fixation</h1>
+	<div id="bodyContent" class="vector-body">
+		<div id="siteSub" class="noprint">From Wikipedia, the free encyclopedia</div>
+		<div id="contentSub"></div>
+		<div id="contentSub2"></div>
+		
+		<div id="jump-to-nav"></div>
+		<a class="mw-jump-link" href="#mw-head">Jump to navigation</a>
+		<a class="mw-jump-link" href="#searchInput">Jump to search</a>
+		<div id="mw-content-text" class="mw-body-content mw-content-ltr" lang="en" dir="ltr"><div class="mw-parser-output"><table class="box-More_footnotes plainlinks metadata ambox ambox-style ambox-More_footnotes" role="presentation"><tbody><tr><td class="mbox-image"><div style="width:52px"><img alt="" src="//upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Text_document_with_red_question_mark.svg/40px-Text_document_with_red_question_mark.svg.png" decoding="async" width="40" height="40" srcset="//upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Text_document_with_red_question_mark.svg/60px-Text_document_with_red_question_mark.svg.png 1.5x, //upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Text_document_with_red_question_mark.svg/80px-Text_document_with_red_question_mark.svg.png 2x" data-file-width="48" data-file-height="48" /></div></td><td class="mbox-text"><div class="mbox-text-span">This article includes a list of general <a href="/wiki/Wikipedia:Citing_sources" title="Wikipedia:Citing sources">references</a>, but <b>it lacks sufficient corresponding <a href="/wiki/Wikipedia:Citing_sources#Inline_citations" title="Wikipedia:Citing sources">inline citations</a></b>.<span class="hide-when-compact"> Please help to <a href="/wiki/Wikipedia:WikiProject_Fact_and_Reference_Check" class="mw-redirect" title="Wikipedia:WikiProject Fact and Reference Check">improve</a> this article by <a href="/wiki/Wikipedia:When_to_cite" title="Wikipedia:When to cite">introducing</a> more precise citations.</span>  <span class="date-container"><i>(<span class="date">April 2012</span>)</i></span><span class="hide-when-compact"><i> (<small><a href="/wiki/Help:Maintenance_template_removal" title="Help:Maintenance template removal">Learn how and when to remove this template message</a></small>)</i></span></div></td></tr></tbody></table>
+<p>In computer network security, <b>session fixation attacks</b> attempt to <a href="/wiki/Exploit_(computer_security)" title="Exploit (computer security)">exploit</a> the vulnerability of a system that allows one person to fixate (find or set) another person's <a href="/wiki/Session_ID" title="Session ID">session identifier</a>.  Most session fixation attacks are web based, and most rely on session identifiers being accepted from <a href="/wiki/Uniform_Resource_Locator" class="mw-redirect" title="Uniform Resource Locator">URLs</a> (<a href="/wiki/Query_string" title="Query string">query string</a>) or POST data.
+</p>
+<div id="toc" class="toc" role="navigation" aria-labelledby="mw-toc-heading"><input type="checkbox" role="button" id="toctogglecheckbox" class="toctogglecheckbox" style="display:none" /><div class="toctitle" lang="en" dir="ltr"><h2 id="mw-toc-heading">Contents</h2><span class="toctogglespan"><label class="toctogglelabel" for="toctogglecheckbox"></label></span></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="#Attack_scenarios"><span class="tocnumber">1</span> <span class="toctext">Attack scenarios</span></a>
+<ul>
+<li class="toclevel-2 tocsection-2"><a href="#A_simple_attack_scenario"><span class="tocnumber">1.1</span> <span class="toctext">A simple attack scenario</span></a></li>
+<li class="toclevel-2 tocsection-3"><a href="#Attack_using_server_generated_SID"><span class="tocnumber">1.2</span> <span class="toctext">Attack using server generated SID</span></a></li>
+<li class="toclevel-2 tocsection-4"><a href="#Attacks_using_cross-subdomain_cookie"><span class="tocnumber">1.3</span> <span class="toctext">Attacks using cross-subdomain cookie</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-5"><a href="#Countermeasures"><span class="tocnumber">2</span> <span class="toctext">Countermeasures</span></a>
+<ul>
+<li class="toclevel-2 tocsection-6"><a href="#Do_not_accept_session_identifiers_from_GET_/_POST_variables"><span class="tocnumber">2.1</span> <span class="toctext">Do not accept session identifiers from GET / POST variables</span></a>
+<ul>
+<li class="toclevel-3 tocsection-7"><a href="#Best_solution:_Identity_confirmation"><span class="tocnumber">2.1.1</span> <span class="toctext">Best solution: Identity confirmation</span></a></li>
+<li class="toclevel-3 tocsection-8"><a href="#Solution:_Store_session_identifiers_in_HTTP_cookies"><span class="tocnumber">2.1.2</span> <span class="toctext">Solution: Store session identifiers in HTTP cookies</span></a></li>
+<li class="toclevel-3 tocsection-9"><a href="#Solution:_Utilize_SSL_/_TLS_session_identifier"><span class="tocnumber">2.1.3</span> <span class="toctext">Solution: Utilize SSL / TLS session identifier</span></a></li>
+</ul>
+</li>
+<li class="toclevel-2 tocsection-10"><a href="#Regenerate_SID_on_each_request"><span class="tocnumber">2.2</span> <span class="toctext">Regenerate SID on each request</span></a></li>
+<li class="toclevel-2 tocsection-11"><a href="#Accept_only_server-generated_SIDs"><span class="tocnumber">2.3</span> <span class="toctext">Accept only server-generated SIDs</span></a></li>
+<li class="toclevel-2 tocsection-12"><a href="#Logout_function"><span class="tocnumber">2.4</span> <span class="toctext">Logout function</span></a></li>
+<li class="toclevel-2 tocsection-13"><a href="#Time-out_old_SIDs"><span class="tocnumber">2.5</span> <span class="toctext">Time-out old SIDs</span></a></li>
+<li class="toclevel-2 tocsection-14"><a href="#Destroy_session_if_Referrer_is_suspicious"><span class="tocnumber">2.6</span> <span class="toctext">Destroy session if Referrer is suspicious</span></a></li>
+<li class="toclevel-2 tocsection-15"><a href="#Verify_that_additional_information_is_consistent_throughout_session"><span class="tocnumber">2.7</span> <span class="toctext">Verify that additional information is consistent throughout session</span></a>
+<ul>
+<li class="toclevel-3 tocsection-16"><a href="#User_Agent"><span class="tocnumber">2.7.1</span> <span class="toctext">User Agent</span></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-17"><a href="#Defense_in_depth"><span class="tocnumber">3</span> <span class="toctext">Defense in depth</span></a></li>
+<li class="toclevel-1 tocsection-18"><a href="#See_also"><span class="tocnumber">4</span> <span class="toctext">See also</span></a></li>
+<li class="toclevel-1 tocsection-19"><a href="#References"><span class="tocnumber">5</span> <span class="toctext">References</span></a></li>
+<li class="toclevel-1 tocsection-20"><a href="#External_links"><span class="tocnumber">6</span> <span class="toctext">External links</span></a></li>
+</ul>
+</div>
+
+<h2><span class="mw-headline" id="Attack_scenarios">Attack scenarios</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Session_fixation&amp;action=edit&amp;section=1" title="Edit section: Attack scenarios">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+<p><a href="/wiki/Alice_and_Bob" title="Alice and Bob">Alice</a> has an account at the bank <code>http://unsafe.example.com/</code>
+</p><p><a href="/wiki/Alice_and_Bob" title="Alice and Bob">Mallory</a> intends to target Alice's money from her bank.
+</p><p>Alice has a reasonable level of trust in Mallory, and will visit links Mallory sends her.
+</p>
+<h3><span class="mw-headline" id="A_simple_attack_scenario">A simple attack scenario</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Session_fixation&amp;action=edit&amp;section=2" title="Edit section: A simple attack scenario">edit</a><span class="mw-editsection-bracket">]</span></span></h3>
+<p>Straightforward scenario:
+</p>
+<ol><li>Mallory has determined that <code>http://unsafe.example.com/</code> accepts any session identifier, accepts session identifiers from query strings and has no security validation. <code>http://unsafe.example.com/</code> is thus not secure.</li>
+<li>Mallory sends Alice an e-mail: "Hey, check this out, there is a cool new account summary feature on our bank, <code>http://unsafe.example.com/?SID=I_WILL_KNOW_THE_SID</code>". Mallory is trying to fixate the SID to <code>I_WILL_KNOW_THE_SID</code>.</li>
+<li>Alice is interested and visits <code>http://unsafe.example.com/?SID=I_WILL_KNOW_THE_SID</code>. The usual log-on screen pops up, and Alice logs on.</li>
+<li>Mallory visits <code>http://unsafe.example.com/?SID=I_WILL_KNOW_THE_SID</code> and now has unlimited access to Alice's account.</li></ol>
+<h3><span class="mw-headline" id="Attack_using_server_generated_SID">Attack using server generated SID</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Session_fixation&amp;action=edit&amp;section=3" title="Edit section: Attack using server generated SID">edit</a><span class="mw-editsection-bracket">]</span></span></h3>
+<p>A misconception is that if a server only accepts server-generated session identifiers, it is safe from fixation. This is <b>false</b>.
+</p><p>Scenario:
+</p>
+<ol><li>Mallory visits <code>http://vulnerable.example.com/</code> and checks which SID is returned. For example, the server may respond: <code>Set-Cookie: SID=0D6441FEA4496C2</code>.</li>
+<li>Mallory is now able to send Alice an e-mail: "Check out this new cool feature on our bank, <code>http://vulnerable.example.com/?SID=0D6441FEA4496C2</code>."</li>
+<li>Alice logs on, with fixated session identifier <code>SID=0D6441FEA4496C2</code>.</li>
+<li>Mallory visits <code>http://vulnerable.example.com/?SID=0D6441FEA4496C2</code> and now has unlimited access to Alice's account.</li></ol>
+<h3><span class="mw-headline" id="Attacks_using_cross-subdomain_cookie">Attacks using cross-subdomain cookie</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Session_fixation&amp;action=edit&amp;section=4" title="Edit section: Attacks using cross-subdomain cookie">edit</a><span class="mw-editsection-bracket">]</span></span></h3>
+<p>This type of attack is similar to a cross-site cookie attack except that, it does not rely on the vulnerability of the user's browser.  Rather, it relies on the fact that wildcard cookies can be set by a subdomain and, that those cookies may affect other subdomains.
+</p><p>Scenario:
+</p>
+<ol><li>A web site <code>www.example.com</code> hands out subdomains to untrusted third parties</li>
+<li>One such party, Mallory, who now controls <code>evil.example.com</code>, lures Alice to his site</li>
+<li>A visit to <code>evil.example.com</code> sets a session cookie with the domain <code>.example.com</code> on Alice's browser</li>
+<li>When Alice visits <code>www.example.com</code> this cookie will be sent with the request and Alice will have the session specified by Mallory's cookie.</li>
+<li>If Alice now logs on, Mallory can use her account.</li></ol>
+<p>When this attack is complete, Mallory can gain access to <code>www.example.com</code> as Alice.
+</p><p>It is not essential that a user login to exploit session fixation attacks<sup id="cite_ref-1" class="reference"><a href="#cite_note-1">&#91;1&#93;</a></sup> and, although these unauthenticated attacks are not constrained to cross-sub-domain cookie attacks, the implications of sub-domain attacks are relevant to these unauthenticated scenarios.  For example, Mallory may provide a URL from their evil site, fixating a session into an unauthenticated scenario, and use those techniques to exploit their target.  This includes scenarios exploiting both the unauthenticated scenarios (e.g. forms or registration) as well as the ability to feed the user an established session to bypass the login completely.
+</p><p>Consider, for example, that Mallory may create a user <i>A1ice</i> on <i>www.example.com</i> and login that user to capture a current, valid session identifier.  Mallory then entraps Alice with a URL from <i>evil.example.com</i> which fixates that session cookie in Alice's browser (as described above) and redirects to <i>www.example.com</i> for finalizing a particular transaction (or, in fact, broader use).  Mallory is thus able to ghost the session from their original login, scraping data and executing operations as 'A1ice' on 'www.example.com'.  If Alice was successfully duped and saved her credit card to the account, Mallory might then make purchases using that card.
+</p>
+<h2><span class="mw-headline" id="Countermeasures">Countermeasures</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Session_fixation&amp;action=edit&amp;section=5" title="Edit section: Countermeasures">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+<h3><span id="Do_not_accept_session_identifiers_from_GET_.2F_POST_variables"></span><span class="mw-headline" id="Do_not_accept_session_identifiers_from_GET_/_POST_variables">Do not accept session identifiers from GET / POST variables</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Session_fixation&amp;action=edit&amp;section=6" title="Edit section: Do not accept session identifiers from GET / POST variables">edit</a><span class="mw-editsection-bracket">]</span></span></h3>
+<p>Session identifiers in URL (query string, GET variables) or POST variables are not recommended as they simplify this attack &#8211; it is easy to make links or forms that set GET / POST variables.
+</p>
+<ul><li>The SID is leaked to other people as users cut &amp; paste "interesting links" from the address bar into chats, forums, communities, etc.</li>
+<li>The SID is stored in many places (browser history log, web server log, proxy logs, ...)</li></ul>
+<p>Note: Cookies are shared between tabs and popped up browser windows. If your system requires to be hit with the same domain (www.example.com/?code=site1 and www.example.com/?code=site2 ), cookies may conflict with one another between tabs.
+</p><p>It may be required to send the session identifier on the URL in order to overcome this limitation. If possible use site1.example.com or site2.example.com so there is no domain conflicts in the cookies. This may incur costs with extra SSL certificates.
+</p><p>This behavior can be seen on many sites by opening another tab and trying to do side by side search results. One of the sessions will become unusable.
+</p>
+<h4><span class="mw-headline" id="Best_solution:_Identity_confirmation">Best solution: Identity confirmation</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Session_fixation&amp;action=edit&amp;section=7" title="Edit section: Best solution: Identity confirmation">edit</a><span class="mw-editsection-bracket">]</span></span></h4>
+<p>This attack can be largely avoided by changing the session ID when users log in. If every request specific to a user requires the user to be authenticated with ("logged into") the site, an attacker would need to know the id of the victim's log-in session. When the victim visits the link with the fixed session id, however, they will need to log into their account in order to do anything "important" as themselves. At this point, their session id will change, and the attacker will not be able to do anything "important" with the anonymous session ID.
+</p><p>A similar technique can be used to solve the <a href="/wiki/Phishing" title="Phishing">phishing</a> problem. If the user protects their account with two passwords, then it can be solved to a great extent.
+</p><p>This technique is also useful against <a href="/wiki/Cross-site_request_forgery" title="Cross-site request forgery">cross-site request forgery</a> attacks.
+</p>
+<h4><span class="mw-headline" id="Solution:_Store_session_identifiers_in_HTTP_cookies">Solution: Store session identifiers in HTTP cookies</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Session_fixation&amp;action=edit&amp;section=8" title="Edit section: Solution: Store session identifiers in HTTP cookies">edit</a><span class="mw-editsection-bracket">]</span></span></h4>
+<p>The session identifier on most modern systems is stored by default in an <a href="/wiki/HTTP_cookie" title="HTTP cookie">HTTP cookie</a>, which has a moderate level of security as long as the session system disregards GET/POST values.<sup class="noprint Inline-Template Template-Fact" style="white-space:nowrap;">&#91;<i><a href="/wiki/Wikipedia:Citation_needed" title="Wikipedia:Citation needed"><span title="This claim needs references to reliable sources. (August 2010)">citation needed</span></a></i>&#93;</sup> However, this solution is vulnerable to <a href="/wiki/Cross-site_request_forgery" title="Cross-site request forgery">cross-site request forgery</a>, and it does not meet the <a href="/wiki/Representational_state_transfer#Stateless" title="Representational state transfer">statelessness requirement of REST</a>.
+</p>
+<h4><span id="Solution:_Utilize_SSL_.2F_TLS_session_identifier"></span><span class="mw-headline" id="Solution:_Utilize_SSL_/_TLS_session_identifier">Solution: Utilize SSL / TLS session identifier</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Session_fixation&amp;action=edit&amp;section=9" title="Edit section: Solution: Utilize SSL / TLS session identifier">edit</a><span class="mw-editsection-bracket">]</span></span></h4>
+<p>When enabling <a href="/wiki/HTTPS" title="HTTPS">HTTPS</a> security, some systems allow applications to obtain the <a href="/wiki/Transport_Layer_Security" title="Transport Layer Security">SSL / TLS</a> session identifier. Use of the SSL/TLS session identifier is very secure, but many web development languages do not provide robust built-in functionality for this.
+</p>
+<h3><span class="mw-headline" id="Regenerate_SID_on_each_request">Regenerate SID on each request</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Session_fixation&amp;action=edit&amp;section=10" title="Edit section: Regenerate SID on each request">edit</a><span class="mw-editsection-bracket">]</span></span></h3>
+<p>A countermeasure against session fixation is to generate a new session identifier (SID) on each request. If this is done, then even though an attacker may trick a user into accepting a known SID, the SID will be invalid when the attacker attempts to re-use the SID. Implementation of such a system is simple, as demonstrated by the following:
+</p>
+<ul><li>Get previous Session Identifier <code>OLD_SID</code> from HTTP request.</li>
+<li>If <code>OLD_SID</code> is null, empty, or no session with SID=<code>OLD_SID</code> exists, create a new session.</li>
+<li>Generate new session identifier <code>NEW_SID</code> with a secure random number generator.</li>
+<li>Let session be identified by SID=<code>NEW_SID</code> (and no longer by SID=<code>OLD_SID</code>)</li>
+<li>Transmit new SID to client.</li></ul>
+<p>Example:
+</p><p>If Mallory successfully tricks Alice into visiting <code>http://victim.example.com/?SID=I_KNOW_THE_SID</code>, this HTTP request is sent to <code>victim.example.com</code>:
+</p>
+<div class="mw-highlight mw-highlight-lang-http mw-content-ltr" dir="ltr"><pre><span></span><span class="nf">GET</span> <span class="nn">/?SID=I_KNOW_THE_SID</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">victim.example.com</span>
+</pre></div>
+<p><code>victim.example.com</code> accepts <code>SID=I_KNOW_THE_SID</code>, which would normally be bad. However, <code>victim.example.com</code> is secure because it performs session regeneration. <code>victim.example.com</code> gets the following response:
+</p>
+<div class="mw-highlight mw-highlight-lang-http mw-content-ltr" dir="ltr"><pre><span></span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Set-Cookie</span><span class="o">:</span> <span class="l">SID=3134998145AB331F</span>
+</pre></div>
+<p>Alice will now use <code>SID=3134998145AB331F</code> that is unknown to Mallory, and <code>SID=I_KNOW_THE_SID</code> is invalid. Mallory is thus unsuccessful in the session fixation attempt.
+</p><p>Unfortunately session regeneration is not always possible. Problems are known to occur when third-party software such as ActiveX or Java applets are used, and when browser plugins communicate with the server. Third-party software could cause logouts, or the session could be split into two separate sessions.
+</p><p>If the implementation of sessions includes transmitting the SID through GET or POST variables, then this might also render the "back" button in most browsers unusable, as the user would then be using an older, invalid, session identifier from a previous request.
+</p>
+<h3><span class="mw-headline" id="Accept_only_server-generated_SIDs">Accept only server-generated SIDs</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Session_fixation&amp;action=edit&amp;section=11" title="Edit section: Accept only server-generated SIDs">edit</a><span class="mw-editsection-bracket">]</span></span></h3>
+<p>One way to improve security is not to accept session identifiers that were not generated by the server. However, as noted above, this does not prevent all session fixation attacks.
+</p>
+<div class="mw-highlight mw-highlight-lang-php mw-content-ltr" dir="ltr"><pre><span></span><span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$_SESSION</span><span class="p">[</span><span class="s1">&#39;SERVER_GENERATED_SID&#39;</span><span class="p">]))</span> <span class="p">{</span>
+    <span class="nb">session_destroy</span><span class="p">();</span> <span class="c1">// Destroy all data in session</span>
+<span class="p">}</span>
+<span class="nb">session_regenerate_id</span><span class="p">();</span> <span class="c1">// Generate a new session identifier</span>
+<span class="nv">$_SESSION</span><span class="p">[</span><span class="s1">&#39;SERVER_GENERATED_SID&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="k">true</span><span class="p">;</span>
+</pre></div>
+<h3><span class="mw-headline" id="Logout_function">Logout function</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Session_fixation&amp;action=edit&amp;section=12" title="Edit section: Logout function">edit</a><span class="mw-editsection-bracket">]</span></span></h3>
+<p>A logout function is useful as it allows users to indicate that a session should not allow further requests. Thus attacks can only be effective while a session is active. Note that the following code performs no <a href="/wiki/Cross-site_request_forgery" title="Cross-site request forgery">Cross-site request forgery</a> checks, potentially allowing an attacker to force users to log out of the web application.
+</p>
+<div class="mw-highlight mw-highlight-lang-php mw-content-ltr" dir="ltr"><pre><span></span><span class="k">if</span> <span class="p">(</span><span class="nx">logout</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nb">session_destroy</span><span class="p">();</span> <span class="c1">// Destroy all data in session</span>
+<span class="p">}</span>
+</pre></div>
+<h3><span class="mw-headline" id="Time-out_old_SIDs">Time-out old SIDs</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Session_fixation&amp;action=edit&amp;section=13" title="Edit section: Time-out old SIDs">edit</a><span class="mw-editsection-bracket">]</span></span></h3>
+<p>This defense is simple to implement and has the advantage of providing a measure of protection against unauthorized users accessing an authorized user's account by using a machine that may have been left unattended.
+</p><p>Store a session variable containing a time stamp of the last access made by that SID. When that SID is used again, compare the current timestamp with the one stored in the session. If the difference is greater than a predefined number, say 5 minutes, destroy the session. Otherwise, update the session variable with the current timestamp.
+</p>
+<h3><span class="mw-headline" id="Destroy_session_if_Referrer_is_suspicious">Destroy session if Referrer is suspicious</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Session_fixation&amp;action=edit&amp;section=14" title="Edit section: Destroy session if Referrer is suspicious">edit</a><span class="mw-editsection-bracket">]</span></span></h3>
+<p>When visiting a page, most web browsers will set the <a href="/wiki/Referrer" class="mw-redirect" title="Referrer">Referrer</a> header &#8211; the page that contained the link that you followed to get to this page.
+</p><p>When the user is logged into a site that is not likely to be linked to from outside that site (e.g., banking websites, or <a href="/wiki/Webmail" title="Webmail">webmail</a>), and the site is not the kind of site where users would remain logged in for any great length of time, the Referrer should be from that site. Any other Referrer should be considered suspicious.  However,  if the originating request is from a HTTPS page,  then the referrer will be stripped, so you cannot depend on this security system.
+</p><p>For example, <code>http://vulnerable.example.com/</code> could employ the following security check:
+</p>
+<div class="mw-highlight mw-highlight-lang-php mw-content-ltr" dir="ltr"><pre><span></span><span class="k">if</span> <span class="p">(</span><span class="nb">strpos</span><span class="p">(</span><span class="nv">$_SERVER</span><span class="p">[</span><span class="s1">&#39;HTTP_REFERER&#39;</span><span class="p">],</span> <span class="s1">&#39;http://vulnerable.example.com/&#39;</span><span class="p">)</span> <span class="o">!==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nb">session_destroy</span><span class="p">();</span> <span class="c1">// Destroy all data in session</span>
+<span class="p">}</span>
+<span class="nb">session_regenerate_id</span><span class="p">();</span> <span class="c1">// Generate a new session identifier</span>
+</pre></div>
+<h3><span class="mw-headline" id="Verify_that_additional_information_is_consistent_throughout_session">Verify that additional information is consistent throughout session</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Session_fixation&amp;action=edit&amp;section=15" title="Edit section: Verify that additional information is consistent throughout session">edit</a><span class="mw-editsection-bracket">]</span></span></h3>
+<p>One way to further improve security is to ensure that the user appears to be the same end user (client). This makes it a bit harder to perform session fixation and other attacks.
+</p><p>As more and more networks begin to conform to RFC 3704 and other anti-<a href="/wiki/Spoofing_attack" title="Spoofing attack">spoofing</a> practices, the <a href="/wiki/IP_address" title="IP address">IP address</a> becomes more reliable as a "same source" identifier. Therefore, the security of a web site can be improved by verifying that the source IP address is consistent throughout a session.
+</p><p>This could be performed in this manner:
+</p>
+<div class="mw-highlight mw-highlight-lang-php mw-content-ltr" dir="ltr"><pre><span></span><span class="k">if</span> <span class="p">(</span><span class="nv">$_SERVER</span><span class="p">[</span><span class="s1">&#39;REMOTE_ADDR&#39;</span><span class="p">]</span> <span class="o">!=</span> <span class="nv">$_SESSION</span><span class="p">[</span><span class="s1">&#39;PREV_REMOTEADDR&#39;</span><span class="p">])</span> <span class="p">{</span>
+    <span class="nb">session_destroy</span><span class="p">();</span> <span class="c1">// Destroy all data in session</span>
+<span class="p">}</span>
+<span class="nb">session_regenerate_id</span><span class="p">();</span> <span class="c1">// Generate a new session identifier</span>
+<span class="nv">$_SESSION</span><span class="p">[</span><span class="s1">&#39;PREV_REMOTEADDR&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nv">$_SERVER</span><span class="p">[</span><span class="s1">&#39;REMOTE_ADDR&#39;</span><span class="p">];</span>
+</pre></div>
+<p>However, there are some points to consider before employing this approach.
+</p>
+<ul><li>Several users may share one IP address. It is not uncommon for an entire building to share one IP address using <a href="/wiki/Network_address_translation" title="Network address translation">NAT</a>.</li>
+<li>One user may have an inconsistent IP address. This is true for users behind proxies (such as <a href="/wiki/AOL" title="AOL">AOL</a> customers). It is also true for some mobile/roaming users, as well as users that are behind load balanced Internet connections. Users with <a href="/wiki/IPv6#Privacy" title="IPv6">IPv6 Privacy Extensions</a> enabled may also change their IPv6 privacy addresses at any time.</li>
+<li>It will not work reliably with dual stack clients as requests will move between IPv4 and IPv6.</li>
+<li>It will not work reliably with mobile users, as mobile users roam between addresses as well.</li></ul>
+<p>For some sites, the added security outweighs the lack of convenience, and for others it does not.
+</p>
+<h4><span class="mw-headline" id="User_Agent">User Agent</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Session_fixation&amp;action=edit&amp;section=16" title="Edit section: User Agent">edit</a><span class="mw-editsection-bracket">]</span></span></h4>
+<p>Browsers identify themselves by "User-Agent" HTTP headers. This header does not normally change during use; it would be extremely suspicious if that were to happen. A web application might make use of User-Agent detection in attempt to prevent malicious users from stealing sessions. This however is trivial to bypass, as an attacker can easily capture the victim's user-agent with their own site and then spoof it during the attack.  This proposed security system is relying on <a href="/wiki/Security_through_obscurity" title="Security through obscurity">security through obscurity</a>.
+</p>
+<div class="mw-highlight mw-highlight-lang-php mw-content-ltr" dir="ltr"><pre><span></span><span class="k">if</span> <span class="p">(</span><span class="nv">$_SERVER</span><span class="p">[</span><span class="s1">&#39;HTTP_USER_AGENT&#39;</span><span class="p">]</span> <span class="o">!=</span> <span class="nv">$_SESSION</span><span class="p">[</span><span class="s1">&#39;PREV_USERAGENT&#39;</span><span class="p">])</span> <span class="p">{</span>
+    <span class="nb">session_destroy</span><span class="p">();</span> <span class="c1">// Destroy all data in session</span>
+<span class="p">}</span>
+<span class="nb">session_regenerate_id</span><span class="p">();</span> <span class="c1">// Generate a new session identifier</span>
+<span class="nv">$_SESSION</span><span class="p">[</span><span class="s1">&#39;PREV_USERAGENT&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nv">$_SERVER</span><span class="p">[</span><span class="s1">&#39;HTTP_USER_AGENT&#39;</span><span class="p">];</span>
+</pre></div>
+<p>However, there are some points to consider before employing this approach.
+</p>
+<ul><li>Several users may have same browser User Agent in <a href="/wiki/Internet_caf%C3%A9" title="Internet café">Internet café</a>.</li>
+<li>Several users may have same default browser (ex: Internet Explorer 6 in Windows XP SP3 or mini browser in mobile phone).</li></ul>
+<p>But User Agent may change legally in few cases. Following examples are the same users.
+</p>
+<ul><li>A smartphone whose screen rotated since the last request
+<ul><li><code class="mw-highlight mw-highlight-lang-text mw-content-ltr" id="" style="" dir="ltr">Mozilla/5.0 (Linux; U; Android 2.2; en-us; DROID2 Build/VZW) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1 854X480 motorola DROID2</code></li>
+<li><code class="mw-highlight mw-highlight-lang-text mw-content-ltr" id="" style="" dir="ltr">Mozilla/5.0 (Linux; U; Android 2.2; en-us; DROID2 Build/VZW) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1 480X854 motorola DROID2</code></li></ul></li>
+<li>Internet Explorer compatibility mode:
+<ul><li><code class="mw-highlight mw-highlight-lang-text mw-content-ltr" id="" style="" dir="ltr">Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 5.1; Trident/4.0; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729)</code></li>
+<li><code class="mw-highlight mw-highlight-lang-text mw-content-ltr" id="" style="" dir="ltr">Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; Trident/4.0; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729)</code></li></ul></li>
+<li>A user accessing a web site through a proxy distributed across multiple servers, not all of which are upgraded to the latest version of the proxy software
+<ul><li><code class="mw-highlight mw-highlight-lang-text mw-content-ltr" id="" style="" dir="ltr">Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10.6; en-US; rv:1.9.2) Gecko/20100115 Firefox/3.6 (FlipboardProxy/0.0.5; +http://flipboard.com/browserproxy)</code></li>
+<li><code class="mw-highlight mw-highlight-lang-text mw-content-ltr" id="" style="" dir="ltr">Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10.6; en-US; rv:1.9.2) Gecko/20100115 Firefox/3.6 (FlipboardProxy/1.1; +http://flipboard.com/browserproxy)</code></li></ul></li></ul>
+<h2><span class="mw-headline" id="Defense_in_depth">Defense in depth</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Session_fixation&amp;action=edit&amp;section=17" title="Edit section: Defense in depth">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+<style data-mw-deduplicate="TemplateStyles:r1033289096">.mw-parser-output .hatnote{font-style:italic}.mw-parser-output div.hatnote{padding-left:1.6em;margin-bottom:0.5em}.mw-parser-output .hatnote i{font-style:normal}.mw-parser-output .hatnote+link+.hatnote{margin-top:-0.5em}</style><div role="note" class="hatnote navigation-not-searchable">Main article: <a href="/wiki/Defense_in_depth_(computing)" title="Defense in depth (computing)">Defense in depth (computing)</a></div>
+<table class="box-Original_research plainlinks metadata ambox ambox-content ambox-Original_research" role="presentation"><tbody><tr><td class="mbox-image"><div style="width:52px"><img alt="" src="//upload.wikimedia.org/wikipedia/en/thumb/b/b4/Ambox_important.svg/40px-Ambox_important.svg.png" decoding="async" width="40" height="40" srcset="//upload.wikimedia.org/wikipedia/en/thumb/b/b4/Ambox_important.svg/60px-Ambox_important.svg.png 1.5x, //upload.wikimedia.org/wikipedia/en/thumb/b/b4/Ambox_important.svg/80px-Ambox_important.svg.png 2x" data-file-width="40" data-file-height="40" /></div></td><td class="mbox-text"><div class="mbox-text-span">This section <b>possibly contains <a href="/wiki/Wikipedia:No_original_research" title="Wikipedia:No original research">original research</a></b>.<span class="hide-when-compact"> Please <a class="external text" href="https://en.wikipedia.org/w/index.php?title=Session_fixation&amp;action=edit">improve it</a> by <a href="/wiki/Wikipedia:Verifiability" title="Wikipedia:Verifiability">verifying</a> the claims made and adding <a href="/wiki/Wikipedia:Citing_sources#Inline_citations" title="Wikipedia:Citing sources">inline citations</a>. Statements consisting only of original research should be removed.</span>  <span class="date-container"><i>(<span class="date">July 2019</span>)</i></span><span class="hide-when-compact"><i> (<small><a href="/wiki/Help:Maintenance_template_removal" title="Help:Maintenance template removal">Learn how and when to remove this template message</a></small>)</i></span></div></td></tr></tbody></table>
+<p><a href="/wiki/Defense_in_depth_(computing)" title="Defense in depth (computing)">Defense in depth</a> is to combine several countermeasures. The idea is simple: if one obstacle is trivial to overcome, several obstacles could be very hard to overcome.
+</p><p>A defense in depth strategy could involve:
+</p>
+<ul><li>Enable HTTPS (to protect against other problems)</li>
+<li>Correct configuration (do not accept external SIDs, set time-out, etc.)</li>
+<li>Perform session_regeneration, support log-out, etc.</li></ul>
+<p>HTTP referrers are not passed with SSL/TLS (HTTPS).
+</p><p>The following PHP script demonstrates several such countermeasures combined in a defense in depth manner:
+</p>
+<div class="mw-highlight mw-highlight-lang-php mw-content-ltr" dir="ltr"><pre><span></span><span class="k">if</span> <span class="p">(</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;LOGOUT&#39;</span><span class="p">])</span> <span class="o">||</span>
+    <span class="nv">$_SERVER</span><span class="p">[</span><span class="s1">&#39;REMOTE_ADDR&#39;</span><span class="p">]</span> <span class="o">!==</span> <span class="nv">$_SESSION</span><span class="p">[</span><span class="s1">&#39;PREV_REMOTEADDR&#39;</span><span class="p">]</span> <span class="o">||</span>
+    <span class="nv">$_SERVER</span><span class="p">[</span><span class="s1">&#39;HTTP_USER_AGENT&#39;</span><span class="p">]</span> <span class="o">!==</span> <span class="nv">$_SESSION</span><span class="p">[</span><span class="s1">&#39;PREV_USERAGENT&#39;</span><span class="p">])</span> <span class="p">{</span>
+    <span class="nb">session_destroy</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="nb">session_regenerate_id</span><span class="p">();</span> <span class="c1">// Generate a new session identifier</span>
+
+<span class="nv">$_SESSION</span><span class="p">[</span><span class="s1">&#39;PREV_USERAGENT&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nv">$_SERVER</span><span class="p">[</span><span class="s1">&#39;HTTP_USER_AGENT&#39;</span><span class="p">];</span>
+<span class="nv">$_SESSION</span><span class="p">[</span><span class="s1">&#39;PREV_REMOTEADDR&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nv">$_SERVER</span><span class="p">[</span><span class="s1">&#39;REMOTE_ADDR&#39;</span><span class="p">];</span>
+</pre></div>
+<p>Note that this code checks the current REMOTE_ADDR (the user's IP address) and User-agent against the REMOTE_ADDR and User-agent of the previous request. This might be inconvenient for some sites as discussed above.
+</p>
+<h2><span class="mw-headline" id="See_also">See also</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Session_fixation&amp;action=edit&amp;section=18" title="Edit section: See also">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+<ul><li><a href="/wiki/Session_poisoning" title="Session poisoning">Session poisoning</a></li>
+<li><a href="/wiki/Privilege_escalation" title="Privilege escalation">Privilege escalation</a></li></ul>
+<h2><span class="mw-headline" id="References">References</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Session_fixation&amp;action=edit&amp;section=19" title="Edit section: References">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+<style data-mw-deduplicate="TemplateStyles:r1011085734">.mw-parser-output .reflist{font-size:90%;margin-bottom:0.5em;list-style-type:decimal}.mw-parser-output .reflist .references{font-size:100%;margin-bottom:0;list-style-type:inherit}.mw-parser-output .reflist-columns-2{column-width:30em}.mw-parser-output .reflist-columns-3{column-width:25em}.mw-parser-output .reflist-columns{margin-top:0.3em}.mw-parser-output .reflist-columns ol{margin-top:0}.mw-parser-output .reflist-columns li{page-break-inside:avoid;break-inside:avoid-column}.mw-parser-output .reflist-upper-alpha{list-style-type:upper-alpha}.mw-parser-output .reflist-upper-roman{list-style-type:upper-roman}.mw-parser-output .reflist-lower-alpha{list-style-type:lower-alpha}.mw-parser-output .reflist-lower-greek{list-style-type:lower-greek}.mw-parser-output .reflist-lower-roman{list-style-type:lower-roman}</style><div class="reflist reflist-columns references-column-width" style="column-width: 30em;">
+<ol class="references">
+<li id="cite_note-1"><span class="mw-cite-backlink"><b><a href="#cite_ref-1">^</a></b></span> <span class="reference-text"><a rel="nofollow" class="external text" href="http://www.christian-schneider.net/UnauthenticatedSessionFixationAttacks.html#main">Article about unauthenticated Session-Fixation attacks</a></span>
+</li>
+</ol></div>
+<h2><span class="mw-headline" id="External_links">External links</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Session_fixation&amp;action=edit&amp;section=20" title="Edit section: External links">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+<ul><li><a rel="nofollow" class="external text" href="http://shiflett.org/articles/session-fixation">Security Corner: Session Fixation</a></li>
+<li><a rel="nofollow" class="external text" href="http://www.acros.si/papers/session_fixation.pdf">Session Fixation Vulnerability in Web-based Applications</a> (PDF)</li>
+<li>Session Fixation Video example</li>
+<li><a rel="nofollow" class="external text" href="http://projects.webappsec.org/w/page/13246978/Threat%20Classification">The Web Application Security Consortium Threat Classification </a></li></ul>
+<!-- 
+NewPP limit report
+Parsed by mw1393
+Cached time: 20220302151901
+Cache expiry: 1814400
+Reduced expiry: false
+Complications: []
+CPU time usage: 0.161 seconds
+Real time usage: 0.383 seconds
+Preprocessor visited node count: 847/1000000
+Post‐expand include size: 12439/2097152 bytes
+Template argument size: 1633/2097152 bytes
+Highest expansion depth: 13/100
+Expensive parser function count: 4/500
+Unstrip recursion depth: 0/20
+Unstrip post‐expand size: 10642/5000000 bytes
+Lua time usage: 0.057/10.000 seconds
+Lua memory usage: 1688542/52428800 bytes
+Number of Wikibase entities loaded: 0/400
+-->
+<!--
+Transclusion expansion time report (%,ms,calls,template)
+100.00%  350.969      1 -total
+ 50.77%  178.193      6 Template:Code
+ 21.72%   76.232      1 Template:More_footnotes
+ 12.87%   45.182      2 Template:Ambox
+  9.85%   34.583      1 Template:Citation_needed
+  9.04%   31.740      1 Template:Main
+  8.42%   29.543      1 Template:Fix
+  4.02%   14.108      1 Template:Reflist
+  3.00%   10.529      2 Template:Category_handler
+  2.86%   10.030      1 Template:Delink
+-->
+
+<!-- Saved in parser cache with key enwiki:pcache:idhash:3764708-0!canonical and timestamp 20220302151900 and revision id 1049712397. Serialized with JSON.
+ -->
+</div><noscript><img src="//en.wikipedia.org/wiki/Special:CentralAutoLogin/start?type=1x1" alt="" title="" width="1" height="1" style="border: none; position: absolute;" /></noscript>
+<div class="printfooter">Retrieved from "<a dir="ltr" href="https://en.wikipedia.org/w/index.php?title=Session_fixation&amp;oldid=1049712397">https://en.wikipedia.org/w/index.php?title=Session_fixation&amp;oldid=1049712397</a>"</div></div>
+		<div id="catlinks" class="catlinks" data-mw="interface"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="/wiki/Help:Category" title="Help:Category">Categories</a>: <ul><li><a href="/wiki/Category:Web_security_exploits" title="Category:Web security exploits">Web security exploits</a></li></ul></div><div id="mw-hidden-catlinks" class="mw-hidden-catlinks mw-hidden-cats-hidden">Hidden categories: <ul><li><a href="/wiki/Category:Articles_lacking_in-text_citations_from_April_2012" title="Category:Articles lacking in-text citations from April 2012">Articles lacking in-text citations from April 2012</a></li><li><a href="/wiki/Category:All_articles_lacking_in-text_citations" title="Category:All articles lacking in-text citations">All articles lacking in-text citations</a></li><li><a href="/wiki/Category:All_articles_with_unsourced_statements" title="Category:All articles with unsourced statements">All articles with unsourced statements</a></li><li><a href="/wiki/Category:Articles_with_unsourced_statements_from_August_2010" title="Category:Articles with unsourced statements from August 2010">Articles with unsourced statements from August 2010</a></li><li><a href="/wiki/Category:Articles_that_may_contain_original_research_from_July_2019" title="Category:Articles that may contain original research from July 2019">Articles that may contain original research from July 2019</a></li><li><a href="/wiki/Category:All_articles_that_may_contain_original_research" title="Category:All articles that may contain original research">All articles that may contain original research</a></li></ul></div></div>
+	</div>
+</div>
+<div id='mw-data-after-content'>
+	<div class="read-more-container"></div>
+</div>
+
+<div id="mw-navigation">
+	<h2>Navigation menu</h2>
+	<div id="mw-head">
+		
+<nav id="p-personal" class="mw-portlet mw-portlet-personal vector-user-menu-legacy vector-menu" aria-labelledby="p-personal-label" role="navigation" 
+	 >
+	<label id="p-personal-label" aria-label="" class="vector-menu-heading">
+		<span class="vector-menu-heading-label">Personal tools</span>
+	</label>
+	<div class="vector-menu-content">
+		
+		<ul class="vector-menu-content-list"><li id="pt-anonuserpage" class="mw-list-item"><span>Not logged in</span></li><li id="pt-anontalk" class="mw-list-item"><a href="/wiki/Special:MyTalk" title="Discussion about edits from this IP address [n]" accesskey="n"><span>Talk</span></a></li><li id="pt-anoncontribs" class="mw-list-item"><a href="/wiki/Special:MyContributions" title="A list of edits made from this IP address [y]" accesskey="y"><span>Contributions</span></a></li><li id="pt-createaccount" class="mw-list-item"><a href="/w/index.php?title=Special:CreateAccount&amp;returnto=Session+fixation" title="You are encouraged to create an account and log in; however, it is not mandatory"><span>Create account</span></a></li><li id="pt-login" class="mw-list-item"><a href="/w/index.php?title=Special:UserLogin&amp;returnto=Session+fixation" title="You&#039;re encouraged to log in; however, it&#039;s not mandatory. [o]" accesskey="o"><span>Log in</span></a></li></ul>
+		
+	</div>
+</nav>
+
+		<div id="left-navigation">
+			
+<nav id="p-namespaces" class="mw-portlet mw-portlet-namespaces vector-menu vector-menu-tabs" aria-labelledby="p-namespaces-label" role="navigation" 
+	 >
+	<label id="p-namespaces-label" aria-label="" class="vector-menu-heading">
+		<span class="vector-menu-heading-label">Namespaces</span>
+	</label>
+	<div class="vector-menu-content">
+		
+		<ul class="vector-menu-content-list"><li id="ca-nstab-main" class="selected mw-list-item"><a href="/wiki/Session_fixation" title="View the content page [c]" accesskey="c"><span>Article</span></a></li><li id="ca-talk" class="mw-list-item"><a href="/wiki/Talk:Session_fixation" rel="discussion" title="Discuss improvements to the content page [t]" accesskey="t"><span>Talk</span></a></li></ul>
+		
+	</div>
+</nav>
+
+			
+<nav id="p-variants" class="mw-portlet mw-portlet-variants emptyPortlet vector-menu-dropdown-noicon vector-menu vector-menu-dropdown" aria-labelledby="p-variants-label" role="navigation" 
+	 >
+	<input type="checkbox"
+		id="p-variants-checkbox"
+		role="button"
+		aria-haspopup="true"
+		data-event-name="ui.dropdown-p-variants"
+		class="vector-menu-checkbox" aria-labelledby="p-variants-label" />
+	<label id="p-variants-label" aria-label="Change language variant" class="vector-menu-heading">
+		<span class="vector-menu-heading-label">English</span>
+			<span class="vector-menu-checkbox-expanded">expanded</span>
+			<span class="vector-menu-checkbox-collapsed">collapsed</span>
+	</label>
+	<div class="vector-menu-content">
+		
+		<ul class="vector-menu-content-list"></ul>
+		
+	</div>
+</nav>
+
+		</div>
+		<div id="right-navigation">
+			
+<nav id="p-views" class="mw-portlet mw-portlet-views vector-menu vector-menu-tabs" aria-labelledby="p-views-label" role="navigation" 
+	 >
+	<label id="p-views-label" aria-label="" class="vector-menu-heading">
+		<span class="vector-menu-heading-label">Views</span>
+	</label>
+	<div class="vector-menu-content">
+		
+		<ul class="vector-menu-content-list"><li id="ca-view" class="selected mw-list-item"><a href="/wiki/Session_fixation"><span>Read</span></a></li><li id="ca-edit" class="mw-list-item"><a href="/w/index.php?title=Session_fixation&amp;action=edit" title="Edit this page [e]" accesskey="e"><span>Edit</span></a></li><li id="ca-history" class="mw-list-item"><a href="/w/index.php?title=Session_fixation&amp;action=history" title="Past revisions of this page [h]" accesskey="h"><span>View history</span></a></li></ul>
+		
+	</div>
+</nav>
+
+			
+<nav id="p-cactions" class="mw-portlet mw-portlet-cactions emptyPortlet vector-menu-dropdown-noicon vector-menu vector-menu-dropdown" aria-labelledby="p-cactions-label" role="navigation"  title="More options"
+	 >
+	<input type="checkbox"
+		id="p-cactions-checkbox"
+		role="button"
+		aria-haspopup="true"
+		data-event-name="ui.dropdown-p-cactions"
+		class="vector-menu-checkbox" aria-labelledby="p-cactions-label" />
+	<label id="p-cactions-label" aria-label="" class="vector-menu-heading">
+		<span class="vector-menu-heading-label">More</span>
+			<span class="vector-menu-checkbox-expanded">expanded</span>
+			<span class="vector-menu-checkbox-collapsed">collapsed</span>
+	</label>
+	<div class="vector-menu-content">
+		
+		<ul class="vector-menu-content-list"></ul>
+		
+	</div>
+</nav>
+
+			
+<div id="p-search" role="search" class="vector-search-box-vue  vector-search-box-show-thumbnail vector-search-box-auto-expand-width vector-search-box">
+	<div>
+			<h3 >
+				<label for="searchInput">Search</label>
+			</h3>
+		<form action="/w/index.php" id="searchform"
+			class="vector-search-box-form">
+			<div id="simpleSearch"
+				class="vector-search-box-inner"
+				 data-search-loc="header-navigation">
+				<input class="vector-search-box-input"
+					 type="search" name="search" placeholder="Search Wikipedia" aria-label="Search Wikipedia" autocapitalize="sentences" title="Search Wikipedia [f]" accesskey="f" id="searchInput"
+				/>
+				<input type="hidden" name="title" value="Special:Search"/>
+				<input id="mw-searchButton"
+					 class="searchButton mw-fallbackSearchButton" type="submit" name="fulltext" title="Search Wikipedia for this text" value="Search" />
+				<input id="searchButton"
+					 class="searchButton" type="submit" name="go" title="Go to a page with this exact name if it exists" value="Go" />
+			</div>
+		</form>
+	</div>
+</div>
+
+		</div>
+	</div>
+	
+
+<div id="mw-panel">
+	<div id="p-logo" role="banner">
+		<a class="mw-wiki-logo" href="/wiki/Main_Page"
+			title="Visit the main page"></a>
+	</div>
+	
+<nav id="p-navigation" class="mw-portlet mw-portlet-navigation vector-menu vector-menu-portal portal" aria-labelledby="p-navigation-label" role="navigation" 
+	 >
+	<label id="p-navigation-label" aria-label="" class="vector-menu-heading">
+		<span class="vector-menu-heading-label">Navigation</span>
+	</label>
+	<div class="vector-menu-content">
+		
+		<ul class="vector-menu-content-list"><li id="n-mainpage-description" class="mw-list-item"><a href="/wiki/Main_Page" icon="home" title="Visit the main page [z]" accesskey="z"><span>Main page</span></a></li><li id="n-contents" class="mw-list-item"><a href="/wiki/Wikipedia:Contents" title="Guides to browsing Wikipedia"><span>Contents</span></a></li><li id="n-currentevents" class="mw-list-item"><a href="/wiki/Portal:Current_events" title="Articles related to current events"><span>Current events</span></a></li><li id="n-randompage" class="mw-list-item"><a href="/wiki/Special:Random" icon="die" title="Visit a randomly selected article [x]" accesskey="x"><span>Random article</span></a></li><li id="n-aboutsite" class="mw-list-item"><a href="/wiki/Wikipedia:About" title="Learn about Wikipedia and how it works"><span>About Wikipedia</span></a></li><li id="n-contactpage" class="mw-list-item"><a href="//en.wikipedia.org/wiki/Wikipedia:Contact_us" title="How to contact Wikipedia"><span>Contact us</span></a></li><li id="n-sitesupport" class="mw-list-item"><a href="https://donate.wikimedia.org/wiki/Special:FundraiserRedirector?utm_source=donate&amp;utm_medium=sidebar&amp;utm_campaign=C13_en.wikipedia.org&amp;uselang=en" title="Support us by donating to the Wikimedia Foundation"><span>Donate</span></a></li></ul>
+		
+	</div>
+</nav>
+
+	
+<nav id="p-interaction" class="mw-portlet mw-portlet-interaction vector-menu vector-menu-portal portal" aria-labelledby="p-interaction-label" role="navigation" 
+	 >
+	<label id="p-interaction-label" aria-label="" class="vector-menu-heading">
+		<span class="vector-menu-heading-label">Contribute</span>
+	</label>
+	<div class="vector-menu-content">
+		
+		<ul class="vector-menu-content-list"><li id="n-help" class="mw-list-item"><a href="/wiki/Help:Contents" icon="help" title="Guidance on how to use and edit Wikipedia"><span>Help</span></a></li><li id="n-introduction" class="mw-list-item"><a href="/wiki/Help:Introduction" title="Learn how to edit Wikipedia"><span>Learn to edit</span></a></li><li id="n-portal" class="mw-list-item"><a href="/wiki/Wikipedia:Community_portal" title="The hub for editors"><span>Community portal</span></a></li><li id="n-recentchanges" class="mw-list-item"><a href="/wiki/Special:RecentChanges" icon="recentChanges" title="A list of recent changes to Wikipedia [r]" accesskey="r"><span>Recent changes</span></a></li><li id="n-upload" class="mw-list-item"><a href="/wiki/Wikipedia:File_Upload_Wizard" title="Add images or other media for use on Wikipedia"><span>Upload file</span></a></li></ul>
+		
+	</div>
+</nav>
+
+<nav id="p-tb" class="mw-portlet mw-portlet-tb vector-menu vector-menu-portal portal" aria-labelledby="p-tb-label" role="navigation" 
+	 >
+	<label id="p-tb-label" aria-label="" class="vector-menu-heading">
+		<span class="vector-menu-heading-label">Tools</span>
+	</label>
+	<div class="vector-menu-content">
+		
+		<ul class="vector-menu-content-list"><li id="t-whatlinkshere" class="mw-list-item"><a href="/wiki/Special:WhatLinksHere/Session_fixation" title="List of all English Wikipedia pages containing links to this page [j]" accesskey="j"><span>What links here</span></a></li><li id="t-recentchangeslinked" class="mw-list-item"><a href="/wiki/Special:RecentChangesLinked/Session_fixation" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k"><span>Related changes</span></a></li><li id="t-upload" class="mw-list-item"><a href="/wiki/Wikipedia:File_Upload_Wizard" title="Upload files [u]" accesskey="u"><span>Upload file</span></a></li><li id="t-specialpages" class="mw-list-item"><a href="/wiki/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q"><span>Special pages</span></a></li><li id="t-permalink" class="mw-list-item"><a href="/w/index.php?title=Session_fixation&amp;oldid=1049712397" title="Permanent link to this revision of this page"><span>Permanent link</span></a></li><li id="t-info" class="mw-list-item"><a href="/w/index.php?title=Session_fixation&amp;action=info" title="More information about this page"><span>Page information</span></a></li><li id="t-cite" class="mw-list-item"><a href="/w/index.php?title=Special:CiteThisPage&amp;page=Session_fixation&amp;id=1049712397&amp;wpFormIdentifier=titleform" title="Information on how to cite this page"><span>Cite this page</span></a></li><li id="t-wikibase" class="mw-list-item"><a href="https://www.wikidata.org/wiki/Special:EntityPage/Q2274575" title="Structured data on this page hosted by Wikidata [g]" accesskey="g"><span>Wikidata item</span></a></li></ul>
+		
+	</div>
+</nav>
+
+<nav id="p-coll-print_export" class="mw-portlet mw-portlet-coll-print_export vector-menu vector-menu-portal portal" aria-labelledby="p-coll-print_export-label" role="navigation" 
+	 >
+	<label id="p-coll-print_export-label" aria-label="" class="vector-menu-heading">
+		<span class="vector-menu-heading-label">Print/export</span>
+	</label>
+	<div class="vector-menu-content">
+		
+		<ul class="vector-menu-content-list"><li id="coll-download-as-rl" class="mw-list-item"><a href="/w/index.php?title=Special:DownloadAsPdf&amp;page=Session_fixation&amp;action=show-download-screen" title="Download this page as a PDF file"><span>Download as PDF</span></a></li><li id="t-print" class="mw-list-item"><a href="/w/index.php?title=Session_fixation&amp;printable=yes" title="Printable version of this page [p]" accesskey="p"><span>Printable version</span></a></li></ul>
+		
+	</div>
+</nav>
+
+<nav id="p-wikibase-otherprojects" class="mw-portlet mw-portlet-wikibase-otherprojects vector-menu vector-menu-portal portal" aria-labelledby="p-wikibase-otherprojects-label" role="navigation" 
+	 >
+	<label id="p-wikibase-otherprojects-label" aria-label="" class="vector-menu-heading">
+		<span class="vector-menu-heading-label">In other projects</span>
+	</label>
+	<div class="vector-menu-content">
+		
+		<ul class="vector-menu-content-list"><li class="wb-otherproject-link wb-otherproject-wikibooks mw-list-item"><a href="https://en.wikibooks.org/wiki/Web_Application_Security_Guide/Session_fixation" hreflang="en"><span>Wikibooks</span></a></li></ul>
+		
+	</div>
+</nav>
+
+	
+<nav id="p-lang" class="mw-portlet mw-portlet-lang vector-menu vector-menu-portal portal" aria-labelledby="p-lang-label" role="navigation" 
+	 >
+	<label id="p-lang-label" aria-label="" class="vector-menu-heading">
+		<span class="vector-menu-heading-label">Languages</span>
+	</label>
+	<div class="vector-menu-content">
+		
+		<ul class="vector-menu-content-list"><li class="interlanguage-link interwiki-cs mw-list-item"><a href="https://cs.wikipedia.org/wiki/Session_fixation" title="Session fixation – Czech" lang="cs" hreflang="cs" class="interlanguage-link-target"><span>Čeština</span></a></li><li class="interlanguage-link interwiki-de mw-list-item"><a href="https://de.wikipedia.org/wiki/Session_Fixation" title="Session Fixation – German" lang="de" hreflang="de" class="interlanguage-link-target"><span>Deutsch</span></a></li><li class="interlanguage-link interwiki-fr mw-list-item"><a href="https://fr.wikipedia.org/wiki/Fixation_de_session" title="Fixation de session – French" lang="fr" hreflang="fr" class="interlanguage-link-target"><span>Français</span></a></li></ul>
+		<div class="after-portlet after-portlet-lang"><span class="wb-langlinks-edit wb-langlinks-link"><a href="https://www.wikidata.org/wiki/Special:EntityPage/Q2274575#sitelinks-wikipedia" title="Edit interlanguage links" class="wbc-editpage">Edit links</a></span></div>
+	</div>
+</nav>
+
+</div>
+
+</div>
+
+<footer id="footer" class="mw-footer" role="contentinfo" >
+	<ul id="footer-info">
+	<li id="footer-info-lastmod"> This page was last edited on 13 October 2021, at 11:55<span class="anonymous-show">&#160;(UTC)</span>.</li>
+	<li id="footer-info-copyright">Text is available under the <a rel="license" href="//en.wikipedia.org/wiki/Wikipedia:Text_of_Creative_Commons_Attribution-ShareAlike_3.0_Unported_License">Creative Commons Attribution-ShareAlike License 3.0</a><a rel="license" href="//creativecommons.org/licenses/by-sa/3.0/" style="display:none;"></a>;
+additional terms may apply.  By using this site, you agree to the <a href="//foundation.wikimedia.org/wiki/Terms_of_Use">Terms of Use</a> and <a href="//foundation.wikimedia.org/wiki/Privacy_policy">Privacy Policy</a>. Wikipedia® is a registered trademark of the <a href="//www.wikimediafoundation.org/">Wikimedia Foundation, Inc.</a>, a non-profit organization.</li>
+</ul>
+
+	<ul id="footer-places">
+	<li id="footer-places-privacy"><a href="https://foundation.wikimedia.org/wiki/Privacy_policy" class="extiw" title="wmf:Privacy policy">Privacy policy</a></li>
+	<li id="footer-places-about"><a href="/wiki/Wikipedia:About" title="Wikipedia:About">About Wikipedia</a></li>
+	<li id="footer-places-disclaimer"><a href="/wiki/Wikipedia:General_disclaimer" title="Wikipedia:General disclaimer">Disclaimers</a></li>
+	<li id="footer-places-contact"><a href="//en.wikipedia.org/wiki/Wikipedia:Contact_us">Contact Wikipedia</a></li>
+	<li id="footer-places-mobileview"><a href="//en.m.wikipedia.org/w/index.php?title=Session_fixation&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li>
+	<li id="footer-places-developers"><a href="https://www.mediawiki.org/wiki/Special:MyLanguage/How_to_contribute">Developers</a></li>
+	<li id="footer-places-statslink"><a href="https://stats.wikimedia.org/#/en.wikipedia.org">Statistics</a></li>
+	<li id="footer-places-cookiestatement"><a href="https://foundation.wikimedia.org/wiki/Cookie_statement">Cookie statement</a></li>
+</ul>
+
+	<ul id="footer-icons" class="noprint">
+	<li id="footer-copyrightico"><a href="https://wikimediafoundation.org/"><img src="/static/images/footer/wikimedia-button.png" srcset="/static/images/footer/wikimedia-button-1.5x.png 1.5x, /static/images/footer/wikimedia-button-2x.png 2x" width="88" height="31" alt="Wikimedia Foundation" loading="lazy" /></a></li>
+	<li id="footer-poweredbyico"><a href="https://www.mediawiki.org/"><img src="/static/images/footer/poweredby_mediawiki_88x31.png" alt="Powered by MediaWiki" srcset="/static/images/footer/poweredby_mediawiki_132x47.png 1.5x, /static/images/footer/poweredby_mediawiki_176x62.png 2x" width="88" height="31" loading="lazy"/></a></li>
+</ul>
+
+</footer>
+
+<script>(RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgPageParseReport":{"limitreport":{"cputime":"0.161","walltime":"0.383","ppvisitednodes":{"value":847,"limit":1000000},"postexpandincludesize":{"value":12439,"limit":2097152},"templateargumentsize":{"value":1633,"limit":2097152},"expansiondepth":{"value":13,"limit":100},"expensivefunctioncount":{"value":4,"limit":500},"unstrip-depth":{"value":0,"limit":20},"unstrip-size":{"value":10642,"limit":5000000},"entityaccesscount":{"value":0,"limit":400},"timingprofile":["100.00%  350.969      1 -total"," 50.77%  178.193      6 Template:Code"," 21.72%   76.232      1 Template:More_footnotes"," 12.87%   45.182      2 Template:Ambox","  9.85%   34.583      1 Template:Citation_needed","  9.04%   31.740      1 Template:Main","  8.42%   29.543      1 Template:Fix","  4.02%   14.108      1 Template:Reflist","  3.00%   10.529      2 Template:Category_handler","  2.86%   10.030      1 Template:Delink"]},"scribunto":{"limitreport-timeusage":{"value":"0.057","limit":"10.000"},"limitreport-memusage":{"value":1688542,"limit":52428800}},"cachereport":{"origin":"mw1393","timestamp":"20220302151901","ttl":1814400,"transientcontent":false}}});});</script>
+<script type="application/ld+json">{"@context":"https:\/\/schema.org","@type":"Article","name":"Session fixation","url":"https:\/\/en.wikipedia.org\/wiki\/Session_fixation","sameAs":"http:\/\/www.wikidata.org\/entity\/Q2274575","mainEntity":"http:\/\/www.wikidata.org\/entity\/Q2274575","author":{"@type":"Organization","name":"Contributors to Wikimedia projects"},"publisher":{"@type":"Organization","name":"Wikimedia Foundation, Inc.","logo":{"@type":"ImageObject","url":"https:\/\/www.wikimedia.org\/static\/images\/wmf-hor-googpub.png"}},"datePublished":"2006-01-18T19:54:52Z","dateModified":"2021-10-13T11:55:27Z","headline":"Cyberattack allowing one person to know another person\u2019s session identifier"}</script>
+<script>(RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":161,"wgHostname":"mw1351"});});</script>
+</body>
+</html>

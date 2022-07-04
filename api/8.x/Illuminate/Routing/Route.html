@@ -1,0 +1,5270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="index, follow, all" />
+    <title>Illuminate\Routing\Route | Laravel API</title>
+
+            <link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="../../css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="../../css/doctum.css">
+        <link rel="stylesheet" type="text/css" href="../../fonts/doctum-font.css">
+        <script src="../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../doctum.js"></script>
+        <script async defer src="../../js/bootstrap.min.js"></script>
+        <script async defer src="../../js/autocomplete.min.js"></script>
+        <meta name="MobileOptimized" content="width">
+        <meta name="HandheldFriendly" content="true">
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+
+        <link rel="search"
+          type="application/opensearchdescription+xml"
+          href="https://laravel.com/api/5.5/opensearch.xml"
+          title="Laravel API (5.5)" />
+    <link rel="search"
+          type="application/opensearchdescription+xml"
+          href="https://laravel.com/api/5.8/opensearch.xml"
+          title="Laravel API (5.8)" />
+    <link rel="search"
+          type="application/opensearchdescription+xml"
+          href="https://laravel.com/api/6.x/opensearch.xml"
+          title="Laravel API (6.x)" />
+    <link rel="search"
+          type="application/opensearchdescription+xml"
+          href="https://laravel.com/api/7.x/opensearch.xml"
+          title="Laravel API (7.x)" />
+    <link rel="search"
+          type="application/opensearchdescription+xml"
+          href="https://laravel.com/api/8.x/opensearch.xml"
+          title="Laravel API (8.x)" />
+    <link rel="search"
+          type="application/opensearchdescription+xml"
+          href="https://laravel.com/api/9.x/opensearch.xml"
+          title="Laravel API (9.x)" />
+    <link rel="search"
+          type="application/opensearchdescription+xml"
+          href="https://laravel.com/api/master/opensearch.xml"
+          title="Laravel API (master)" />
+    </head>
+
+    <body id="class" data-name="class:Illuminate_Routing_Route" data-root-path="../../" data-search-index-url="../../doctum-search.json">
+            <div id="content">
+        <div id="left-column">
+                <div id="control-panel">
+                    <form action="#">
+                <select class="form-control" id="version-switcher" name="version">
+                                            <option
+                            value="../../../5.5/index.html"
+                            data-version="5.5" >Laravel 5.5</option>
+                                            <option
+                            value="../../../5.8/index.html"
+                            data-version="5.8" >Laravel 5.8</option>
+                                            <option
+                            value="../../../6.x/index.html"
+                            data-version="6.x" >Laravel 6.x</option>
+                                            <option
+                            value="../../../7.x/index.html"
+                            data-version="7.x" >Laravel 7.x</option>
+                                            <option
+                            value="../../../8.x/index.html"
+                            data-version="8.x" selected>Laravel 8.x</option>
+                                            <option
+                            value="../../../9.x/index.html"
+                            data-version="9.x" >Laravel 9.x</option>
+                                            <option
+                            value="../../../master/index.html"
+                            data-version="master" >Laravel Dev</option>
+                                    </select>
+            </form>
+                <div class="search-bar hidden" id="search-progress-bar-container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" id="search-progress-bar"
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+        </div>
+        <form id="search-form" action="../../search.html">
+            <span class="icon icon-search"></span>
+            <input name="search"
+                   id="doctum-search-auto-complete"
+                   class="typeahead form-control"
+                   type="search"
+                   placeholder="Search"
+                   spellcheck="false"
+                   autocorrect="off"
+                   autocomplete="off"
+                   autocapitalize="off">
+            <div class="auto-complete-results" id="auto-complete-results"></div>
+        </form>
+    </div>
+
+                <div id="api-tree"></div>
+
+        </div>
+        <div id="right-column">
+                <nav id="site-nav" class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-elements">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../../index.html">Laravel API</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-elements">
+                <ul class="nav navbar-nav">
+                                        <li role="presentation" class="dropdown visible-xs-block visible-sm-block">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#"
+                            role="button" aria-haspopup="true" aria-expanded="false">Versions&nbsp;<span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                        <li ><a href="../../../5.5/index.html" data-version="5.5">Laravel 5.5</a></li>
+                        <li ><a href="../../../5.8/index.html" data-version="5.8">Laravel 5.8</a></li>
+                        <li ><a href="../../../6.x/index.html" data-version="6.x">Laravel 6.x</a></li>
+                        <li ><a href="../../../7.x/index.html" data-version="7.x">Laravel 7.x</a></li>
+                        <li class="active"><a href="../../../8.x/index.html" data-version="8.x">Laravel 8.x</a></li>
+                        <li ><a href="../../../9.x/index.html" data-version="9.x">Laravel 9.x</a></li>
+                        <li ><a href="../../../master/index.html" data-version="master">Laravel Dev</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="../../classes.html">Classes</a></li>
+                    <li><a href="../../namespaces.html">Namespaces</a></li>
+                    <li><a href="../../interfaces.html">Interfaces</a></li>
+                    <li><a href="../../traits.html">Traits</a></li>
+                    <li><a href="../../doc-index.html">Index</a></li>
+                    <li><a href="../../search.html">Search</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+                        <div class="namespace-breadcrumbs">
+            <ol class="breadcrumb">
+                <li><span class="label label-default">class</span></li>
+                        <li><a href="../../Illuminate.html">Illuminate</a></li><li class="backslash">\</li><li><a href="../../Illuminate/Routing.html">Routing</a></li><li class="backslash">\</li><li>Route</li>
+            </ol>
+        </div>
+                <div id="page-content">
+    <div class="page-header">
+        <h1>Route    
+            </h1>
+    </div>
+
+    
+    <p>        class
+    <strong>Route</strong>        (<a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Routing/Route.php">View source</a>)
+</p>
+
+        
+    
+        
+
+            
+                <h2>Traits</h2>
+
+        
+    <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-6">
+                    <a href="../../Illuminate/Routing/CreatesRegularExpressionRouteConstraints.html"><abbr title="Illuminate\Routing\CreatesRegularExpressionRouteConstraints">CreatesRegularExpressionRouteConstraints</abbr></a>    </div>
+                <div class="col-md-6"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                    <a href="../../Illuminate/Support/Traits/Macroable.html"><abbr title="Illuminate\Support\Traits\Macroable">Macroable</abbr></a>    </div>
+                <div class="col-md-6"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                    <a href="../../Illuminate/Routing/RouteDependencyResolverTrait.html"><abbr title="Illuminate\Routing\RouteDependencyResolverTrait">RouteDependencyResolverTrait</abbr></a>    </div>
+                <div class="col-md-6"></div>
+            </div>
+            </div>
+    
+    
+            <h2>Properties</h2>
+
+            <table class="table table-condensed">
+                    <tr>
+                <td class="type" id="property_macros">
+                    static                    protected                                        array
+                                                                                
+                                    </td>
+                <td>$macros</td>
+                <td class="last"><p>The registered string macros.</p></td>
+                <td><small>from&nbsp;<a href="../../Illuminate/Support/Traits/Macroable.html#property_macros">
+<abbr title="Illuminate\Support\Traits\Macroable">Macroable</abbr></a></small></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_uri">
+                                                                                string
+                                                                                
+                                    </td>
+                <td>$uri</td>
+                <td class="last"><p>The URI pattern the route responds to.</p></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_methods">
+                                                                                array
+                                                                                
+                                    </td>
+                <td>$methods</td>
+                <td class="last"><p>The HTTP methods the route responds to.</p></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_action">
+                                                                                array
+                                                                                
+                                    </td>
+                <td>$action</td>
+                <td class="last"><p>The route action array.</p></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_isFallback">
+                                                                                bool
+                                                                                
+                                    </td>
+                <td>$isFallback</td>
+                <td class="last"><p>Indicates whether the route is a fallback route.</p></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_controller">
+                                                                                mixed
+                                                                                
+                                    </td>
+                <td>$controller</td>
+                <td class="last"><p>The controller instance.</p></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_defaults">
+                                                                                array
+                                                                                
+                                    </td>
+                <td>$defaults</td>
+                <td class="last"><p>The default values for the route.</p></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_wheres">
+                                                                                array
+                                                                                
+                                    </td>
+                <td>$wheres</td>
+                <td class="last"><p>The regular expression requirements.</p></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_parameters">
+                                                                                array|null
+                                                                                
+                                    </td>
+                <td>$parameters</td>
+                <td class="last"><p>The array of matched parameters.</p></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_parameterNames">
+                                                                                array|null
+                                                                                
+                                    </td>
+                <td>$parameterNames</td>
+                <td class="last"><p>The parameter names for the route.</p></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_originalParameters">
+                                        protected                                        array
+                                                                                
+                                    </td>
+                <td>$originalParameters</td>
+                <td class="last"><p>The array of the matched parameters' original values.</p></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_withTrashedBindings">
+                                        protected                                        bool
+                                                                                
+                                    </td>
+                <td>$withTrashedBindings</td>
+                <td class="last"><p>Indicates &quot;trashed&quot; models can be retrieved when resolving implicit model bindings for this route.</p></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_lockSeconds">
+                                        protected                                        int|null
+                                                                                
+                                    </td>
+                <td>$lockSeconds</td>
+                <td class="last"><p>Indicates the maximum number of seconds the route should acquire a session lock for.</p></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_waitSeconds">
+                                        protected                                        int|null
+                                                                                
+                                    </td>
+                <td>$waitSeconds</td>
+                <td class="last"><p>Indicates the maximum number of seconds the route should wait while attempting to acquire a session lock.</p></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_computedMiddleware">
+                                                                                array|null
+                                                                                
+                                    </td>
+                <td>$computedMiddleware</td>
+                <td class="last"><p>The computed gathered middleware.</p></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_compiled">
+                                                                                <abbr title="Symfony\Component\Routing\CompiledRoute">CompiledRoute</abbr>
+                                                                                
+                                    </td>
+                <td>$compiled</td>
+                <td class="last"><p>The compiled version of the route.</p></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_router">
+                                        protected                                        <a href="../../Illuminate/Routing/Router.html"><abbr title="Illuminate\Routing\Router">Router</abbr></a>
+                                                                                
+                                    </td>
+                <td>$router</td>
+                <td class="last"><p>The router instance used by the route.</p></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_container">
+                                        protected                                        <a href="../../Illuminate/Container/Container.html"><abbr title="Illuminate\Container\Container">Container</abbr></a>
+                                                                                
+                                    </td>
+                <td>$container</td>
+                <td class="last"><p>The container instance used by the route.</p></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_bindingFields">
+                                        protected                                        array
+                                                                                
+                                    </td>
+                <td>$bindingFields</td>
+                <td class="last"><p>The fields that implicit binding should use for a given parameter.</p></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_validators">
+                    static                                                            array
+                                                                                
+                                    </td>
+                <td>$validators</td>
+                <td class="last"><p>The validators used by the routes.</p></td>
+                <td></td>
+            </tr>
+            </table>
+
+    
+            <h2>Methods</h2>
+
+            <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-2 type">
+                    $this
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_whereAlpha">whereAlpha</a>(array|string $parameters)
+        
+                                            <p><p>Specify that the given route parameters must be alphabetic.</p></p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Illuminate/Routing/CreatesRegularExpressionRouteConstraints.html#method_whereAlpha">
+<abbr title="Illuminate\Routing\CreatesRegularExpressionRouteConstraints">CreatesRegularExpressionRouteConstraints</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    $this
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_whereAlphaNumeric">whereAlphaNumeric</a>(array|string $parameters)
+        
+                                            <p><p>Specify that the given route parameters must be alphanumeric.</p></p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Illuminate/Routing/CreatesRegularExpressionRouteConstraints.html#method_whereAlphaNumeric">
+<abbr title="Illuminate\Routing\CreatesRegularExpressionRouteConstraints">CreatesRegularExpressionRouteConstraints</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    $this
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_whereNumber">whereNumber</a>(array|string $parameters)
+        
+                                            <p><p>Specify that the given route parameters must be numeric.</p></p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Illuminate/Routing/CreatesRegularExpressionRouteConstraints.html#method_whereNumber">
+<abbr title="Illuminate\Routing\CreatesRegularExpressionRouteConstraints">CreatesRegularExpressionRouteConstraints</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    $this
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_whereUuid">whereUuid</a>(array|string $parameters)
+        
+                                            <p><p>Specify that the given route parameters must be UUIDs.</p></p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Illuminate/Routing/CreatesRegularExpressionRouteConstraints.html#method_whereUuid">
+<abbr title="Illuminate\Routing\CreatesRegularExpressionRouteConstraints">CreatesRegularExpressionRouteConstraints</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    $this
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_assignExpressionToParameters">assignExpressionToParameters</a>(array|string $parameters, string $expression)
+        
+                                            <p><p>Apply the given regular expression to the given parameters.</p></p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Illuminate/Routing/CreatesRegularExpressionRouteConstraints.html#method_assignExpressionToParameters">
+<abbr title="Illuminate\Routing\CreatesRegularExpressionRouteConstraints">CreatesRegularExpressionRouteConstraints</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_macro">macro</a>(string $name, object|callable $macro)
+        
+                                            <p><p>Register a custom macro.</p></p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Illuminate/Support/Traits/Macroable.html#method_macro">
+<abbr title="Illuminate\Support\Traits\Macroable">Macroable</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_mixin">mixin</a>(object $mixin, bool $replace = true)
+        
+                                            <p><p>Mix another object into the class.</p></p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Illuminate/Support/Traits/Macroable.html#method_mixin">
+<abbr title="Illuminate\Support\Traits\Macroable">Macroable</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_hasMacro">hasMacro</a>(string $name)
+        
+                                            <p><p>Checks if macro is registered.</p></p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Illuminate/Support/Traits/Macroable.html#method_hasMacro">
+<abbr title="Illuminate\Support\Traits\Macroable">Macroable</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_flushMacros">flushMacros</a>()
+        
+                                            <p><p>Flush the existing macros.</p></p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Illuminate/Support/Traits/Macroable.html#method_flushMacros">
+<abbr title="Illuminate\Support\Traits\Macroable">Macroable</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;mixed
+                </div>
+                <div class="col-md-8">
+                    <a href="#method___callStatic">__callStatic</a>(string $method, array $parameters)
+        
+                                            <p><p>Dynamically handle calls to the class.</p></p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Illuminate/Support/Traits/Macroable.html#method___callStatic">
+<abbr title="Illuminate\Support\Traits\Macroable">Macroable</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    mixed
+                </div>
+                <div class="col-md-8">
+                    <a href="#method___call">__call</a>(string $method, array $parameters)
+        
+                                            <p><p>Dynamically handle calls to the class.</p></p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Illuminate/Support/Traits/Macroable.html#method___call">
+<abbr title="Illuminate\Support\Traits\Macroable">Macroable</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_resolveClassMethodDependencies">resolveClassMethodDependencies</a>(array $parameters, object $instance, string $method)
+        
+                                            <p><p>Resolve the object method's type-hinted dependencies.</p></p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Illuminate/Routing/RouteDependencyResolverTrait.html#method_resolveClassMethodDependencies">
+<abbr title="Illuminate\Routing\RouteDependencyResolverTrait">RouteDependencyResolverTrait</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_resolveMethodDependencies">resolveMethodDependencies</a>(array $parameters, <a target="_blank" rel="noopener" href="https://www.php.net/ReflectionFunctionAbstract">ReflectionFunctionAbstract</a> $reflector)
+        
+                                            <p><p>Resolve the given method's type-hinted dependencies.</p></p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Illuminate/Routing/RouteDependencyResolverTrait.html#method_resolveMethodDependencies">
+<abbr title="Illuminate\Routing\RouteDependencyResolverTrait">RouteDependencyResolverTrait</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    mixed
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_transformDependency">transformDependency</a>(<a target="_blank" rel="noopener" href="https://www.php.net/ReflectionParameter">ReflectionParameter</a> $parameter, array $parameters, object $skippableValue)
+        
+                                            <p><p>Attempt to transform the given parameter into a class instance.</p></p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Illuminate/Routing/RouteDependencyResolverTrait.html#method_transformDependency">
+<abbr title="Illuminate\Routing\RouteDependencyResolverTrait">RouteDependencyResolverTrait</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_alreadyInParameters">alreadyInParameters</a>(string $class, array $parameters)
+        
+                                            <p><p>Determine if an object of the given class is in a list of parameters.</p></p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Illuminate/Routing/RouteDependencyResolverTrait.html#method_alreadyInParameters">
+<abbr title="Illuminate\Routing\RouteDependencyResolverTrait">RouteDependencyResolverTrait</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_spliceIntoParameters">spliceIntoParameters</a>(array $parameters, string $offset, mixed $value)
+        
+                                            <p><p>Splice the given value into the parameter list.</p></p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Illuminate/Routing/RouteDependencyResolverTrait.html#method_spliceIntoParameters">
+<abbr title="Illuminate\Routing\RouteDependencyResolverTrait">RouteDependencyResolverTrait</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method___construct">__construct</a>(array|string $methods, string $uri, <a target="_blank" rel="noopener" href="https://www.php.net/Closure">Closure</a>|array $action)
+        
+                                            <p><p>Create a new Route instance.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_parseAction">parseAction</a>(callable|array|null $action)
+        
+                                            <p><p>Parse the route action into a standard array.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    mixed
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_run">run</a>()
+        
+                                            <p><p>Run the route action and return the response.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_isControllerAction">isControllerAction</a>()
+        
+                                            <p><p>Checks whether the route's action is a controller.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    mixed
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_runCallable">runCallable</a>()
+        
+                                            <p><p>Run the route action and return the response.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_isSerializedClosure">isSerializedClosure</a>()
+        
+                                            <p><p>Determine if the route action is a serialized Closure.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    mixed
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_runController">runController</a>()
+        
+                                            <p><p>Run the route action and return the response.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    mixed
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getController">getController</a>()
+        
+                                            <p><p>Get the controller instance for the route.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getControllerMethod">getControllerMethod</a>()
+        
+                                            <p><p>Get the controller method used for the route.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_parseControllerCallback">parseControllerCallback</a>()
+        
+                                            <p><p>Parse the controller.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_matches">matches</a>(<a href="../../Illuminate/Http/Request.html"><abbr title="Illuminate\Http\Request">Request</abbr></a> $request, bool $includingMethod = true)
+        
+                                            <p><p>Determine if the route matches a given request.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="Symfony\Component\Routing\CompiledRoute">CompiledRoute</abbr>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_compileRoute">compileRoute</a>()
+        
+                                            <p><p>Compile the route into a Symfony CompiledRoute instance.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    $this
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_bind">bind</a>(<a href="../../Illuminate/Http/Request.html"><abbr title="Illuminate\Http\Request">Request</abbr></a> $request)
+        
+                                            <p><p>Bind the route to a given request for execution.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_hasParameters">hasParameters</a>()
+        
+                                            <p><p>Determine if the route has parameters.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_hasParameter">hasParameter</a>(string $name)
+        
+                                            <p><p>Determine a given parameter exists from the route.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string|object|null
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_parameter">parameter</a>(string $name, string|object|null $default = null)
+        
+                                            <p><p>Get a given parameter from the route.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string|null
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_originalParameter">originalParameter</a>(string $name, string|null $default = null)
+        
+                                            <p><p>Get original value of a given parameter from the route.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_setParameter">setParameter</a>(string $name, string|object|null $value)
+        
+                                            <p><p>Set a parameter to the given value.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_forgetParameter">forgetParameter</a>(string $name)
+        
+                                            <p><p>Unset a parameter on the route if it is set.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_parameters">parameters</a>()
+        
+                                            <p><p>Get the key / value list of parameters for the route.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_originalParameters">originalParameters</a>()
+        
+                                            <p><p>Get the key / value list of original parameters for the route.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_parametersWithoutNulls">parametersWithoutNulls</a>()
+        
+                                            <p><p>Get the key / value list of parameters without null values.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_parameterNames">parameterNames</a>()
+        
+                                            <p><p>Get all of the parameter names for the route.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_compileParameterNames">compileParameterNames</a>()
+        
+                                            <p><p>Get the parameter names for the route.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_signatureParameters">signatureParameters</a>(string|null $subClass = null)
+        
+                                            <p><p>Get the parameters that are listed in the route / controller signature.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string|null
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_bindingFieldFor">bindingFieldFor</a>(string|int $parameter)
+        
+                                            <p><p>Get the binding field for the given parameter.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_bindingFields">bindingFields</a>()
+        
+                                            <p><p>Get the binding fields for the route.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    $this
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_setBindingFields">setBindingFields</a>(array $bindingFields)
+        
+                                            <p><p>Set the binding fields for the route.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_parentOfParameter">parentOfParameter</a>(string $parameter)
+        
+                                            <p><p>Get the parent parameter of the given parameter.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    $this
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_withTrashed">withTrashed</a>(bool $withTrashed = true)
+        
+                                            <p><p>Allow &quot;trashed&quot; models to be retrieved when resolving implicit model bindings for this route.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_allowsTrashedBindings">allowsTrashedBindings</a>()
+        
+                                            <p><p>Determines if the route allows &quot;trashed&quot; models to be retrieved when resolving implicit model bindings.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    $this
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_defaults">defaults</a>(string $key, mixed $value)
+        
+                                            <p><p>Set a default value for the route.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    $this
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_setDefaults">setDefaults</a>(array $defaults)
+        
+                                            <p><p>Set the default values for the route.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    $this
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_where">where</a>(array|string $name, string|null $expression = null)
+        
+                                            <p><p>Set a regular expression requirement on the route.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_parseWhere">parseWhere</a>(array|string $name, string $expression)
+        
+                                            <p><p>Parse arguments to the where method into an array.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    $this
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_setWheres">setWheres</a>(array $wheres)
+        
+                                            <p><p>Set a list of regular expression requirements on the route.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    $this
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_fallback">fallback</a>()
+        
+                                            <p><p>Mark this route as a fallback route.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    $this
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_setFallback">setFallback</a>(bool $isFallback)
+        
+                                            <p><p>Set the fallback value.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_methods">methods</a>()
+        
+                                            <p><p>Get the HTTP verbs the route responds to.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_httpOnly">httpOnly</a>()
+        
+                                            <p><p>Determine if the route only responds to HTTP requests.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_httpsOnly">httpsOnly</a>()
+        
+                                            <p><p>Determine if the route only responds to HTTPS requests.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_secure">secure</a>()
+        
+                                            <p><p>Determine if the route only responds to HTTPS requests.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    $this|string|null
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_domain">domain</a>(string|null $domain = null)
+        
+                                            <p><p>Get or set the domain for the route.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string|null
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getDomain">getDomain</a>()
+        
+                                            <p><p>Get the domain defined for the route.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string|null
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getPrefix">getPrefix</a>()
+        
+                                            <p><p>Get the prefix of the route instance.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    $this
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_prefix">prefix</a>(string $prefix)
+        
+                                            <p><p>Add a prefix to the route URI.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_updatePrefixOnAction">updatePrefixOnAction</a>(string $prefix)
+        
+                                            <p><p>Update the &quot;prefix&quot; attribute on the action array.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_uri">uri</a>()
+        
+                                            <p><p>Get the URI associated with the route.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    $this
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_setUri">setUri</a>(string $uri)
+        
+                                            <p><p>Set the URI that the route responds to.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_parseUri">parseUri</a>(string $uri)
+        
+                                            <p><p>Parse the route URI and normalize / store any implicit binding fields.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string|null
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getName">getName</a>()
+        
+                                            <p><p>Get the name of the route instance.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    $this
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_name">name</a>(string $name)
+        
+                                            <p><p>Add or change the route name.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_named">named</a>(mixed ...$patterns)
+        
+                                            <p><p>Determine whether the route's name matches the given patterns.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    $this
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_uses">uses</a>(<a target="_blank" rel="noopener" href="https://www.php.net/Closure">Closure</a>|array|string $action)
+        
+                                            <p><p>Set the handler for the route.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_addGroupNamespaceToStringUses">addGroupNamespaceToStringUses</a>(string $action)
+        
+                                            <p><p>Parse a string based action for the &quot;uses&quot; fluent method.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getActionName">getActionName</a>()
+        
+                                            <p><p>Get the action name for the route.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getActionMethod">getActionMethod</a>()
+        
+                                            <p><p>Get the method name of the route action.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    mixed
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getAction">getAction</a>(string|null $key = null)
+        
+                                            <p><p>Get the action array or one of its properties for the route.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    $this
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_setAction">setAction</a>(array $action)
+        
+                                            <p><p>Set the action array for the route.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a target="_blank" rel="noopener" href="https://www.php.net/Closure">Closure</a>|null
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getMissing">getMissing</a>()
+        
+                                            <p><p>Get the value of the action that should be taken on a missing model exception.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    $this
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_missing">missing</a>(<a target="_blank" rel="noopener" href="https://www.php.net/Closure">Closure</a> $missing)
+        
+                                            <p><p>Define the callable that should be invoked on a missing model exception.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_gatherMiddleware">gatherMiddleware</a>()
+        
+                                            <p><p>Get all middleware, including the ones from the controller.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    $this|array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_middleware">middleware</a>(array|string|null $middleware = null)
+        
+                                            <p><p>Get or set the middlewares attached to the route.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    $this
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_can">can</a>(string $ability, array|string $models = [])
+        
+                                            <p><p>Specify that the &quot;Authorize&quot; / &quot;can&quot; middleware should be applied to the route with the given options.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_controllerMiddleware">controllerMiddleware</a>()
+        
+                                            <p><p>Get the middleware for the route's controller.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    $this|array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_withoutMiddleware">withoutMiddleware</a>(array|string $middleware)
+        
+                                            <p><p>Specify middleware that should be removed from the given route.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_excludedMiddleware">excludedMiddleware</a>()
+        
+                                            <p><p>Get the middleware should be removed from the route.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_scopeBindings">scopeBindings</a>()
+        
+                                            <p><p>Indicate that the route should enforce scoping of multiple implicit Eloquent bindings.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_enforcesScopedBindings">enforcesScopedBindings</a>()
+        
+                                            <p><p>Determine if the route should enforce scoping of multiple implicit Eloquent bindings.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    $this
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_block">block</a>(int|null $lockSeconds = 10, int|null $waitSeconds = 10)
+        
+                                            <p><p>Specify that the route should not allow concurrent requests from the same session.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    $this
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_withoutBlocking">withoutBlocking</a>()
+        
+                                            <p><p>Specify that the route should allow concurrent requests from the same session.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    int|null
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_locksFor">locksFor</a>()
+        
+                                            <p><p>Get the maximum number of seconds the route's session lock should be held for.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    int|null
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_waitsFor">waitsFor</a>()
+        
+                                            <p><p>Get the maximum number of seconds to wait while attempting to acquire a session lock.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../Illuminate/Routing/Contracts/ControllerDispatcher.html"><abbr title="Illuminate\Routing\Contracts\ControllerDispatcher">ControllerDispatcher</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_controllerDispatcher">controllerDispatcher</a>()
+        
+                                            <p><p>Get the dispatcher for the route's controller.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getValidators">getValidators</a>()
+        
+                                            <p><p>Get the route validators for the instance.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="Symfony\Component\Routing\Route">Route</abbr>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_toSymfonyRoute">toSymfonyRoute</a>()
+        
+                                            <p><p>Convert the route to a Symfony route.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getOptionalParameterNames">getOptionalParameterNames</a>()
+        
+                                            <p><p>Get the optional parameter names for the route.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="Symfony\Component\Routing\CompiledRoute">CompiledRoute</abbr>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getCompiled">getCompiled</a>()
+        
+                                            <p><p>Get the compiled version of the route.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    $this
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_setRouter">setRouter</a>(<a href="../../Illuminate/Routing/Router.html"><abbr title="Illuminate\Routing\Router">Router</abbr></a> $router)
+        
+                                            <p><p>Set the router instance on the route.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    $this
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_setContainer">setContainer</a>(<a href="../../Illuminate/Container/Container.html"><abbr title="Illuminate\Container\Container">Container</abbr></a> $container)
+        
+                                            <p><p>Set the container instance on the route.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_prepareForSerialization">prepareForSerialization</a>()
+        
+                                            <p><p>Prepare the route instance for serialization.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    mixed
+                </div>
+                <div class="col-md-8">
+                    <a href="#method___get">__get</a>(string $key)
+        
+                                            <p><p>Dynamically access route parameters.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+            </div>
+
+
+        <h2>Details</h2>
+
+            <div id="method-details">
+                    <div class="method-item">
+                    <h3 id="method_whereAlpha">
+        <div class="location">in <a href="../../Illuminate/Routing/CreatesRegularExpressionRouteConstraints.html#method_whereAlpha">
+<abbr title="Illuminate\Routing\CreatesRegularExpressionRouteConstraints">CreatesRegularExpressionRouteConstraints</abbr></a> <a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Routing/CreatesRegularExpressionRouteConstraints.php#L15">at line 15</a></div>
+        <code>                    $this
+    <strong>whereAlpha</strong>(array|string $parameters)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Specify that the given route parameters must be alphabetic.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array|string</td>
+                <td>$parameters</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>$this</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_whereAlphaNumeric">
+        <div class="location">in <a href="../../Illuminate/Routing/CreatesRegularExpressionRouteConstraints.html#method_whereAlphaNumeric">
+<abbr title="Illuminate\Routing\CreatesRegularExpressionRouteConstraints">CreatesRegularExpressionRouteConstraints</abbr></a> <a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Routing/CreatesRegularExpressionRouteConstraints.php#L26">at line 26</a></div>
+        <code>                    $this
+    <strong>whereAlphaNumeric</strong>(array|string $parameters)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Specify that the given route parameters must be alphanumeric.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array|string</td>
+                <td>$parameters</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>$this</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_whereNumber">
+        <div class="location">in <a href="../../Illuminate/Routing/CreatesRegularExpressionRouteConstraints.html#method_whereNumber">
+<abbr title="Illuminate\Routing\CreatesRegularExpressionRouteConstraints">CreatesRegularExpressionRouteConstraints</abbr></a> <a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Routing/CreatesRegularExpressionRouteConstraints.php#L37">at line 37</a></div>
+        <code>                    $this
+    <strong>whereNumber</strong>(array|string $parameters)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Specify that the given route parameters must be numeric.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array|string</td>
+                <td>$parameters</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>$this</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_whereUuid">
+        <div class="location">in <a href="../../Illuminate/Routing/CreatesRegularExpressionRouteConstraints.html#method_whereUuid">
+<abbr title="Illuminate\Routing\CreatesRegularExpressionRouteConstraints">CreatesRegularExpressionRouteConstraints</abbr></a> <a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Routing/CreatesRegularExpressionRouteConstraints.php#L48">at line 48</a></div>
+        <code>                    $this
+    <strong>whereUuid</strong>(array|string $parameters)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Specify that the given route parameters must be UUIDs.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array|string</td>
+                <td>$parameters</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>$this</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_assignExpressionToParameters">
+        <div class="location">in <a href="../../Illuminate/Routing/CreatesRegularExpressionRouteConstraints.html#method_assignExpressionToParameters">
+<abbr title="Illuminate\Routing\CreatesRegularExpressionRouteConstraints">CreatesRegularExpressionRouteConstraints</abbr></a> <a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Routing/CreatesRegularExpressionRouteConstraints.php#L60">at line 60</a></div>
+        <code>            protected        $this
+    <strong>assignExpressionToParameters</strong>(array|string $parameters, string $expression)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Apply the given regular expression to the given parameters.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array|string</td>
+                <td>$parameters</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$expression</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>$this</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_macro">
+        <div class="location">in <a href="../../Illuminate/Support/Traits/Macroable.html#method_macro">
+<abbr title="Illuminate\Support\Traits\Macroable">Macroable</abbr></a> <a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Macroable/Traits/Macroable.php#L26">at line 26</a></div>
+        <code>        static            void
+    <strong>macro</strong>(string $name, object|callable $macro)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Register a custom macro.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$name</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>object|callable</td>
+                <td>$macro</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_mixin">
+        <div class="location">in <a href="../../Illuminate/Support/Traits/Macroable.html#method_mixin">
+<abbr title="Illuminate\Support\Traits\Macroable">Macroable</abbr></a> <a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Macroable/Traits/Macroable.php#L40">at line 40</a></div>
+        <code>        static            void
+    <strong>mixin</strong>(object $mixin, bool $replace = true)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Mix another object into the class.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>object</td>
+                <td>$mixin</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>bool</td>
+                <td>$replace</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a target="_blank" rel="noopener" href="https://www.php.net/ReflectionException">ReflectionException</a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_hasMacro">
+        <div class="location">in <a href="../../Illuminate/Support/Traits/Macroable.html#method_hasMacro">
+<abbr title="Illuminate\Support\Traits\Macroable">Macroable</abbr></a> <a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Macroable/Traits/Macroable.php#L60">at line 60</a></div>
+        <code>        static            bool
+    <strong>hasMacro</strong>(string $name)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Checks if macro is registered.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$name</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_flushMacros">
+        <div class="location">in <a href="../../Illuminate/Support/Traits/Macroable.html#method_flushMacros">
+<abbr title="Illuminate\Support\Traits\Macroable">Macroable</abbr></a> <a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Macroable/Traits/Macroable.php#L70">at line 70</a></div>
+        <code>        static            void
+    <strong>flushMacros</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Flush the existing macros.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method___callStatic">
+        <div class="location">in <a href="../../Illuminate/Support/Traits/Macroable.html#method___callStatic">
+<abbr title="Illuminate\Support\Traits\Macroable">Macroable</abbr></a> <a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Macroable/Traits/Macroable.php#L84">at line 84</a></div>
+        <code>        static            mixed
+    <strong>__callStatic</strong>(string $method, array $parameters)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Dynamically handle calls to the class.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$method</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$parameters</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>mixed</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a target="_blank" rel="noopener" href="https://www.php.net/BadMethodCallException">BadMethodCallException</a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method___call">
+        <div class="location">in <a href="../../Illuminate/Support/Traits/Macroable.html#method___call">
+<abbr title="Illuminate\Support\Traits\Macroable">Macroable</abbr></a> <a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Macroable/Traits/Macroable.php#L110">at line 110</a></div>
+        <code>                    mixed
+    <strong>__call</strong>(string $method, array $parameters)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Dynamically handle calls to the class.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$method</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$parameters</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>mixed</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a target="_blank" rel="noopener" href="https://www.php.net/BadMethodCallException">BadMethodCallException</a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_resolveClassMethodDependencies">
+        <div class="location">in <a href="../../Illuminate/Routing/RouteDependencyResolverTrait.html#method_resolveClassMethodDependencies">
+<abbr title="Illuminate\Routing\RouteDependencyResolverTrait">RouteDependencyResolverTrait</abbr></a> <a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Routing/RouteDependencyResolverTrait.php#L21">at line 21</a></div>
+        <code>            protected        array
+    <strong>resolveClassMethodDependencies</strong>(array $parameters, object $instance, string $method)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Resolve the object method's type-hinted dependencies.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$parameters</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>object</td>
+                <td>$instance</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$method</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_resolveMethodDependencies">
+        <div class="location">in <a href="../../Illuminate/Routing/RouteDependencyResolverTrait.html#method_resolveMethodDependencies">
+<abbr title="Illuminate\Routing\RouteDependencyResolverTrait">RouteDependencyResolverTrait</abbr></a> <a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Routing/RouteDependencyResolverTrait.php#L39">at line 39</a></div>
+        <code>                    array
+    <strong>resolveMethodDependencies</strong>(array $parameters, <a target="_blank" rel="noopener" href="https://www.php.net/ReflectionFunctionAbstract">ReflectionFunctionAbstract</a> $reflector)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Resolve the given method's type-hinted dependencies.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$parameters</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a target="_blank" rel="noopener" href="https://www.php.net/ReflectionFunctionAbstract">ReflectionFunctionAbstract</a></td>
+                <td>$reflector</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_transformDependency">
+        <div class="location">in <a href="../../Illuminate/Routing/RouteDependencyResolverTrait.html#method_transformDependency">
+<abbr title="Illuminate\Routing\RouteDependencyResolverTrait">RouteDependencyResolverTrait</abbr></a> <a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Routing/RouteDependencyResolverTrait.php#L71">at line 71</a></div>
+        <code>            protected        mixed
+    <strong>transformDependency</strong>(<a target="_blank" rel="noopener" href="https://www.php.net/ReflectionParameter">ReflectionParameter</a> $parameter, array $parameters, object $skippableValue)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Attempt to transform the given parameter into a class instance.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a target="_blank" rel="noopener" href="https://www.php.net/ReflectionParameter">ReflectionParameter</a></td>
+                <td>$parameter</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$parameters</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>object</td>
+                <td>$skippableValue</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>mixed</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_alreadyInParameters">
+        <div class="location">in <a href="../../Illuminate/Routing/RouteDependencyResolverTrait.html#method_alreadyInParameters">
+<abbr title="Illuminate\Routing\RouteDependencyResolverTrait">RouteDependencyResolverTrait</abbr></a> <a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Routing/RouteDependencyResolverTrait.php#L92">at line 92</a></div>
+        <code>            protected        bool
+    <strong>alreadyInParameters</strong>(string $class, array $parameters)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Determine if an object of the given class is in a list of parameters.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$class</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$parameters</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_spliceIntoParameters">
+        <div class="location">in <a href="../../Illuminate/Routing/RouteDependencyResolverTrait.html#method_spliceIntoParameters">
+<abbr title="Illuminate\Routing\RouteDependencyResolverTrait">RouteDependencyResolverTrait</abbr></a> <a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Routing/RouteDependencyResolverTrait.php#L107">at line 107</a></div>
+        <code>            protected        void
+    <strong>spliceIntoParameters</strong>(array $parameters, string $offset, mixed $value)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Splice the given value into the parameter list.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$parameters</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$offset</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>mixed</td>
+                <td>$value</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method___construct">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Routing/Route.php#L168">at line 168</a></div>
+        <code>                    void
+    <strong>__construct</strong>(array|string $methods, string $uri, <a target="_blank" rel="noopener" href="https://www.php.net/Closure">Closure</a>|array $action)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Create a new Route instance.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array|string</td>
+                <td>$methods</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$uri</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a target="_blank" rel="noopener" href="https://www.php.net/Closure">Closure</a>|array</td>
+                <td>$action</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_parseAction">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Routing/Route.php#L189">at line 189</a></div>
+        <code>            protected        array
+    <strong>parseAction</strong>(callable|array|null $action)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Parse the route action into a standard array.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>callable|array|null</td>
+                <td>$action</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a target="_blank" rel="noopener" href="https://www.php.net/UnexpectedValueException">UnexpectedValueException</a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_run">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Routing/Route.php#L199">at line 199</a></div>
+        <code>                    mixed
+    <strong>run</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Run the route action and return the response.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>mixed</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_isControllerAction">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Routing/Route.php#L219">at line 219</a></div>
+        <code>            protected        bool
+    <strong>isControllerAction</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Checks whether the route's action is a controller.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_runCallable">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Routing/Route.php#L229">at line 229</a></div>
+        <code>            protected        mixed
+    <strong>runCallable</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Run the route action and return the response.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>mixed</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_isSerializedClosure">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Routing/Route.php#L247">at line 247</a></div>
+        <code>            protected        bool
+    <strong>isSerializedClosure</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Determine if the route action is a serialized Closure.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_runController">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Routing/Route.php#L259">at line 259</a></div>
+        <code>            protected        mixed
+    <strong>runController</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Run the route action and return the response.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>mixed</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><abbr title="Symfony\Component\HttpKernel\Exception\NotFoundHttpException">NotFoundHttpException</abbr></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getController">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Routing/Route.php#L271">at line 271</a></div>
+        <code>                    mixed
+    <strong>getController</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Get the controller instance for the route.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>mixed</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getControllerMethod">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Routing/Route.php#L287">at line 287</a></div>
+        <code>            protected        string
+    <strong>getControllerMethod</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Get the controller method used for the route.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_parseControllerCallback">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Routing/Route.php#L297">at line 297</a></div>
+        <code>            protected        array
+    <strong>parseControllerCallback</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Parse the controller.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_matches">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Routing/Route.php#L309">at line 309</a></div>
+        <code>                    bool
+    <strong>matches</strong>(<a href="../../Illuminate/Http/Request.html"><abbr title="Illuminate\Http\Request">Request</abbr></a> $request, bool $includingMethod = true)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Determine if the route matches a given request.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../Illuminate/Http/Request.html"><abbr title="Illuminate\Http\Request">Request</abbr></a></td>
+                <td>$request</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>bool</td>
+                <td>$includingMethod</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_compileRoute">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Routing/Route.php#L331">at line 331</a></div>
+        <code>            protected        <abbr title="Symfony\Component\Routing\CompiledRoute">CompiledRoute</abbr>
+    <strong>compileRoute</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Compile the route into a Symfony CompiledRoute instance.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="Symfony\Component\Routing\CompiledRoute">CompiledRoute</abbr></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_bind">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Routing/Route.php#L346">at line 346</a></div>
+        <code>                    $this
+    <strong>bind</strong>(<a href="../../Illuminate/Http/Request.html"><abbr title="Illuminate\Http\Request">Request</abbr></a> $request)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Bind the route to a given request for execution.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../Illuminate/Http/Request.html"><abbr title="Illuminate\Http\Request">Request</abbr></a></td>
+                <td>$request</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>$this</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_hasParameters">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Routing/Route.php#L363">at line 363</a></div>
+        <code>                    bool
+    <strong>hasParameters</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Determine if the route has parameters.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_hasParameter">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Routing/Route.php#L374">at line 374</a></div>
+        <code>                    bool
+    <strong>hasParameter</strong>(string $name)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Determine a given parameter exists from the route.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$name</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_parameter">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Routing/Route.php#L390">at line 390</a></div>
+        <code>                    string|object|null
+    <strong>parameter</strong>(string $name, string|object|null $default = null)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Get a given parameter from the route.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$name</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string|object|null</td>
+                <td>$default</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string|object|null</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_originalParameter">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Routing/Route.php#L402">at line 402</a></div>
+        <code>                    string|null
+    <strong>originalParameter</strong>(string $name, string|null $default = null)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Get original value of a given parameter from the route.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$name</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string|null</td>
+                <td>$default</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string|null</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setParameter">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Routing/Route.php#L414">at line 414</a></div>
+        <code>                    void
+    <strong>setParameter</strong>(string $name, string|object|null $value)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Set a parameter to the given value.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$name</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string|object|null</td>
+                <td>$value</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_forgetParameter">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Routing/Route.php#L427">at line 427</a></div>
+        <code>                    void
+    <strong>forgetParameter</strong>(string $name)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Unset a parameter on the route if it is set.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$name</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_parameters">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Routing/Route.php#L441">at line 441</a></div>
+        <code>                    array
+    <strong>parameters</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Get the key / value list of parameters for the route.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a target="_blank" rel="noopener" href="https://www.php.net/LogicException">LogicException</a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_originalParameters">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Routing/Route.php#L457">at line 457</a></div>
+        <code>                    array
+    <strong>originalParameters</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Get the key / value list of original parameters for the route.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a target="_blank" rel="noopener" href="https://www.php.net/LogicException">LogicException</a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_parametersWithoutNulls">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Routing/Route.php#L471">at line 471</a></div>
+        <code>                    array
+    <strong>parametersWithoutNulls</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Get the key / value list of parameters without null values.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_parameterNames">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Routing/Route.php#L483">at line 483</a></div>
+        <code>                    array
+    <strong>parameterNames</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Get all of the parameter names for the route.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_compileParameterNames">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Routing/Route.php#L497">at line 497</a></div>
+        <code>            protected        array
+    <strong>compileParameterNames</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Get the parameter names for the route.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_signatureParameters">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Routing/Route.php#L512">at line 512</a></div>
+        <code>                    array
+    <strong>signatureParameters</strong>(string|null $subClass = null)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Get the parameters that are listed in the route / controller signature.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string|null</td>
+                <td>$subClass</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_bindingFieldFor">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Routing/Route.php#L523">at line 523</a></div>
+        <code>                    string|null
+    <strong>bindingFieldFor</strong>(string|int $parameter)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Get the binding field for the given parameter.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string|int</td>
+                <td>$parameter</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string|null</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_bindingFields">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Routing/Route.php#L535">at line 535</a></div>
+        <code>                    array
+    <strong>bindingFields</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Get the binding fields for the route.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setBindingFields">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Routing/Route.php#L546">at line 546</a></div>
+        <code>                    $this
+    <strong>setBindingFields</strong>(array $bindingFields)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Set the binding fields for the route.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$bindingFields</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>$this</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_parentOfParameter">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Routing/Route.php#L559">at line 559</a></div>
+        <code>                    string
+    <strong>parentOfParameter</strong>(string $parameter)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Get the parent parameter of the given parameter.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$parameter</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_withTrashed">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Routing/Route.php#L576">at line 576</a></div>
+        <code>                    $this
+    <strong>withTrashed</strong>(bool $withTrashed = true)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Allow &quot;trashed&quot; models to be retrieved when resolving implicit model bindings for this route.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>bool</td>
+                <td>$withTrashed</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>$this</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_allowsTrashedBindings">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Routing/Route.php#L588">at line 588</a></div>
+        <code>                    bool
+    <strong>allowsTrashedBindings</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Determines if the route allows &quot;trashed&quot; models to be retrieved when resolving implicit model bindings.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_defaults">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Routing/Route.php#L600">at line 600</a></div>
+        <code>                    $this
+    <strong>defaults</strong>(string $key, mixed $value)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Set a default value for the route.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$key</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>mixed</td>
+                <td>$value</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>$this</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setDefaults">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Routing/Route.php#L613">at line 613</a></div>
+        <code>                    $this
+    <strong>setDefaults</strong>(array $defaults)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Set the default values for the route.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$defaults</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>$this</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_where">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Routing/Route.php#L627">at line 627</a></div>
+        <code>                    $this
+    <strong>where</strong>(array|string $name, string|null $expression = null)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Set a regular expression requirement on the route.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array|string</td>
+                <td>$name</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string|null</td>
+                <td>$expression</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>$this</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_parseWhere">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Routing/Route.php#L643">at line 643</a></div>
+        <code>            protected        array
+    <strong>parseWhere</strong>(array|string $name, string $expression)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Parse arguments to the where method into an array.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array|string</td>
+                <td>$name</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$expression</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setWheres">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Routing/Route.php#L654">at line 654</a></div>
+        <code>                    $this
+    <strong>setWheres</strong>(array $wheres)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Set a list of regular expression requirements on the route.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$wheres</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>$this</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_fallback">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Routing/Route.php#L668">at line 668</a></div>
+        <code>                    $this
+    <strong>fallback</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Mark this route as a fallback route.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>$this</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setFallback">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Routing/Route.php#L681">at line 681</a></div>
+        <code>                    $this
+    <strong>setFallback</strong>(bool $isFallback)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Set the fallback value.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>bool</td>
+                <td>$isFallback</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>$this</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_methods">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Routing/Route.php#L693">at line 693</a></div>
+        <code>                    array
+    <strong>methods</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Get the HTTP verbs the route responds to.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_httpOnly">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Routing/Route.php#L703">at line 703</a></div>
+        <code>                    bool
+    <strong>httpOnly</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Determine if the route only responds to HTTP requests.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_httpsOnly">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Routing/Route.php#L713">at line 713</a></div>
+        <code>                    bool
+    <strong>httpsOnly</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Determine if the route only responds to HTTPS requests.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_secure">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Routing/Route.php#L723">at line 723</a></div>
+        <code>                    bool
+    <strong>secure</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Determine if the route only responds to HTTPS requests.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_domain">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Routing/Route.php#L734">at line 734</a></div>
+        <code>                    $this|string|null
+    <strong>domain</strong>(string|null $domain = null)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Get or set the domain for the route.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string|null</td>
+                <td>$domain</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>$this|string|null</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getDomain">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Routing/Route.php#L756">at line 756</a></div>
+        <code>                    string|null
+    <strong>getDomain</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Get the domain defined for the route.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string|null</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getPrefix">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Routing/Route.php#L767">at line 767</a></div>
+        <code>                    string|null
+    <strong>getPrefix</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Get the prefix of the route instance.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string|null</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_prefix">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Routing/Route.php#L778">at line 778</a></div>
+        <code>                    $this
+    <strong>prefix</strong>(string $prefix)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Add a prefix to the route URI.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$prefix</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>$this</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_updatePrefixOnAction">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Routing/Route.php#L795">at line 795</a></div>
+        <code>            protected        void
+    <strong>updatePrefixOnAction</strong>(string $prefix)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Update the &quot;prefix&quot; attribute on the action array.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$prefix</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_uri">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Routing/Route.php#L807">at line 807</a></div>
+        <code>                    string
+    <strong>uri</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Get the URI associated with the route.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setUri">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Routing/Route.php#L818">at line 818</a></div>
+        <code>                    $this
+    <strong>setUri</strong>(string $uri)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Set the URI that the route responds to.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$uri</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>$this</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_parseUri">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Routing/Route.php#L831">at line 831</a></div>
+        <code>            protected        string
+    <strong>parseUri</strong>(string $uri)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Parse the route URI and normalize / store any implicit binding fields.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$uri</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getName">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Routing/Route.php#L845">at line 845</a></div>
+        <code>                    string|null
+    <strong>getName</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Get the name of the route instance.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string|null</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_name">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Routing/Route.php#L856">at line 856</a></div>
+        <code>                    $this
+    <strong>name</strong>(string $name)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Add or change the route name.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$name</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>$this</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_named">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Routing/Route.php#L869">at line 869</a></div>
+        <code>                    bool
+    <strong>named</strong>(mixed ...$patterns)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Determine whether the route's name matches the given patterns.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>mixed</td>
+                <td>...$patterns</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_uses">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Routing/Route.php#L890">at line 890</a></div>
+        <code>                    $this
+    <strong>uses</strong>(<a target="_blank" rel="noopener" href="https://www.php.net/Closure">Closure</a>|array|string $action)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Set the handler for the route.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a target="_blank" rel="noopener" href="https://www.php.net/Closure">Closure</a>|array|string</td>
+                <td>$action</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>$this</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_addGroupNamespaceToStringUses">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Routing/Route.php#L910">at line 910</a></div>
+        <code>            protected        string
+    <strong>addGroupNamespaceToStringUses</strong>(string $action)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Parse a string based action for the &quot;uses&quot; fluent method.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$action</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getActionName">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Routing/Route.php#L926">at line 926</a></div>
+        <code>                    string
+    <strong>getActionName</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Get the action name for the route.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getActionMethod">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Routing/Route.php#L936">at line 936</a></div>
+        <code>                    string
+    <strong>getActionMethod</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Get the method name of the route action.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getAction">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Routing/Route.php#L947">at line 947</a></div>
+        <code>                    mixed
+    <strong>getAction</strong>(string|null $key = null)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Get the action array or one of its properties for the route.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string|null</td>
+                <td>$key</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>mixed</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setAction">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Routing/Route.php#L958">at line 958</a></div>
+        <code>                    $this
+    <strong>setAction</strong>(array $action)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Set the action array for the route.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$action</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>$this</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getMissing">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Routing/Route.php#L974">at line 974</a></div>
+        <code>                    <a target="_blank" rel="noopener" href="https://www.php.net/Closure">Closure</a>|null
+    <strong>getMissing</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Get the value of the action that should be taken on a missing model exception.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a target="_blank" rel="noopener" href="https://www.php.net/Closure">Closure</a>|null</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_missing">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Routing/Route.php#L991">at line 991</a></div>
+        <code>                    $this
+    <strong>missing</strong>(<a target="_blank" rel="noopener" href="https://www.php.net/Closure">Closure</a> $missing)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Define the callable that should be invoked on a missing model exception.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a target="_blank" rel="noopener" href="https://www.php.net/Closure">Closure</a></td>
+                <td>$missing</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>$this</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_gatherMiddleware">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Routing/Route.php#L1003">at line 1003</a></div>
+        <code>                    array
+    <strong>gatherMiddleware</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Get all middleware, including the ones from the controller.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_middleware">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Routing/Route.php#L1022">at line 1022</a></div>
+        <code>                    $this|array
+    <strong>middleware</strong>(array|string|null $middleware = null)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Get or set the middlewares attached to the route.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array|string|null</td>
+                <td>$middleware</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>$this|array</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_can">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Routing/Route.php#L1050">at line 1050</a></div>
+        <code>                    $this
+    <strong>can</strong>(string $ability, array|string $models = [])
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Specify that the &quot;Authorize&quot; / &quot;can&quot; middleware should be applied to the route with the given options.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$ability</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array|string</td>
+                <td>$models</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>$this</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_controllerMiddleware">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Routing/Route.php#L1062">at line 1062</a></div>
+        <code>                    array
+    <strong>controllerMiddleware</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Get the middleware for the route's controller.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_withoutMiddleware">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Routing/Route.php#L1079">at line 1079</a></div>
+        <code>                    $this|array
+    <strong>withoutMiddleware</strong>(array|string $middleware)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Specify middleware that should be removed from the given route.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array|string</td>
+                <td>$middleware</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>$this|array</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_excludedMiddleware">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Routing/Route.php#L1093">at line 1093</a></div>
+        <code>                    array
+    <strong>excludedMiddleware</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Get the middleware should be removed from the route.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_scopeBindings">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Routing/Route.php#L1103">at line 1103</a></div>
+        <code>                    bool
+    <strong>scopeBindings</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Indicate that the route should enforce scoping of multiple implicit Eloquent bindings.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_enforcesScopedBindings">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Routing/Route.php#L1115">at line 1115</a></div>
+        <code>                    bool
+    <strong>enforcesScopedBindings</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Determine if the route should enforce scoping of multiple implicit Eloquent bindings.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_block">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Routing/Route.php#L1127">at line 1127</a></div>
+        <code>                    $this
+    <strong>block</strong>(int|null $lockSeconds = 10, int|null $waitSeconds = 10)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Specify that the route should not allow concurrent requests from the same session.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>int|null</td>
+                <td>$lockSeconds</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>int|null</td>
+                <td>$waitSeconds</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>$this</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_withoutBlocking">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Routing/Route.php#L1140">at line 1140</a></div>
+        <code>                    $this
+    <strong>withoutBlocking</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Specify that the route should allow concurrent requests from the same session.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>$this</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_locksFor">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Routing/Route.php#L1150">at line 1150</a></div>
+        <code>                    int|null
+    <strong>locksFor</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Get the maximum number of seconds the route's session lock should be held for.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>int|null</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_waitsFor">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Routing/Route.php#L1160">at line 1160</a></div>
+        <code>                    int|null
+    <strong>waitsFor</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Get the maximum number of seconds to wait while attempting to acquire a session lock.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>int|null</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_controllerDispatcher">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Routing/Route.php#L1170">at line 1170</a></div>
+        <code>                    <a href="../../Illuminate/Routing/Contracts/ControllerDispatcher.html"><abbr title="Illuminate\Routing\Contracts\ControllerDispatcher">ControllerDispatcher</abbr></a>
+    <strong>controllerDispatcher</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Get the dispatcher for the route's controller.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../Illuminate/Routing/Contracts/ControllerDispatcher.html"><abbr title="Illuminate\Routing\Contracts\ControllerDispatcher">ControllerDispatcher</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getValidators">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Routing/Route.php#L1184">at line 1184</a></div>
+        <code>        static            array
+    <strong>getValidators</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Get the route validators for the instance.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_toSymfonyRoute">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Routing/Route.php#L1204">at line 1204</a></div>
+        <code>                    <abbr title="Symfony\Component\Routing\Route">Route</abbr>
+    <strong>toSymfonyRoute</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Convert the route to a Symfony route.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="Symfony\Component\Routing\Route">Route</abbr></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getOptionalParameterNames">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Routing/Route.php#L1218">at line 1218</a></div>
+        <code>            protected        array
+    <strong>getOptionalParameterNames</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Get the optional parameter names for the route.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getCompiled">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Routing/Route.php#L1230">at line 1230</a></div>
+        <code>                    <abbr title="Symfony\Component\Routing\CompiledRoute">CompiledRoute</abbr>
+    <strong>getCompiled</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Get the compiled version of the route.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="Symfony\Component\Routing\CompiledRoute">CompiledRoute</abbr></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setRouter">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Routing/Route.php#L1241">at line 1241</a></div>
+        <code>                    $this
+    <strong>setRouter</strong>(<a href="../../Illuminate/Routing/Router.html"><abbr title="Illuminate\Routing\Router">Router</abbr></a> $router)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Set the router instance on the route.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../Illuminate/Routing/Router.html"><abbr title="Illuminate\Routing\Router">Router</abbr></a></td>
+                <td>$router</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>$this</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setContainer">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Routing/Route.php#L1254">at line 1254</a></div>
+        <code>                    $this
+    <strong>setContainer</strong>(<a href="../../Illuminate/Container/Container.html"><abbr title="Illuminate\Container\Container">Container</abbr></a> $container)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Set the container instance on the route.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../Illuminate/Container/Container.html"><abbr title="Illuminate\Container\Container">Container</abbr></a></td>
+                <td>$container</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>$this</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_prepareForSerialization">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Routing/Route.php#L1268">at line 1268</a></div>
+        <code>                    void
+    <strong>prepareForSerialization</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Prepare the route instance for serialization.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a target="_blank" rel="noopener" href="https://www.php.net/LogicException">LogicException</a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method___get">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Routing/Route.php#L1295">at line 1295</a></div>
+        <code>                    mixed
+    <strong>__get</strong>(string $key)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Dynamically access route parameters.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$key</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>mixed</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+            </div>
+
+    
+</div><div id="footer">
+        Generated by <a href="https://github.com/code-lts/doctum">Doctum, a API Documentation generator and fork of Sami</a>.</div></div>
+    </div>
+    </body>
+
+</html>

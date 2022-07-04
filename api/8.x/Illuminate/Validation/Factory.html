@@ -1,0 +1,1165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="index, follow, all" />
+    <title>Illuminate\Validation\Factory | Laravel API</title>
+
+            <link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="../../css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="../../css/doctum.css">
+        <link rel="stylesheet" type="text/css" href="../../fonts/doctum-font.css">
+        <script src="../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../doctum.js"></script>
+        <script async defer src="../../js/bootstrap.min.js"></script>
+        <script async defer src="../../js/autocomplete.min.js"></script>
+        <meta name="MobileOptimized" content="width">
+        <meta name="HandheldFriendly" content="true">
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+
+        <link rel="search"
+          type="application/opensearchdescription+xml"
+          href="https://laravel.com/api/5.5/opensearch.xml"
+          title="Laravel API (5.5)" />
+    <link rel="search"
+          type="application/opensearchdescription+xml"
+          href="https://laravel.com/api/5.8/opensearch.xml"
+          title="Laravel API (5.8)" />
+    <link rel="search"
+          type="application/opensearchdescription+xml"
+          href="https://laravel.com/api/6.x/opensearch.xml"
+          title="Laravel API (6.x)" />
+    <link rel="search"
+          type="application/opensearchdescription+xml"
+          href="https://laravel.com/api/7.x/opensearch.xml"
+          title="Laravel API (7.x)" />
+    <link rel="search"
+          type="application/opensearchdescription+xml"
+          href="https://laravel.com/api/8.x/opensearch.xml"
+          title="Laravel API (8.x)" />
+    <link rel="search"
+          type="application/opensearchdescription+xml"
+          href="https://laravel.com/api/9.x/opensearch.xml"
+          title="Laravel API (9.x)" />
+    <link rel="search"
+          type="application/opensearchdescription+xml"
+          href="https://laravel.com/api/master/opensearch.xml"
+          title="Laravel API (master)" />
+    </head>
+
+    <body id="class" data-name="class:Illuminate_Validation_Factory" data-root-path="../../" data-search-index-url="../../doctum-search.json">
+            <div id="content">
+        <div id="left-column">
+                <div id="control-panel">
+                    <form action="#">
+                <select class="form-control" id="version-switcher" name="version">
+                                            <option
+                            value="../../../5.5/index.html"
+                            data-version="5.5" >Laravel 5.5</option>
+                                            <option
+                            value="../../../5.8/index.html"
+                            data-version="5.8" >Laravel 5.8</option>
+                                            <option
+                            value="../../../6.x/index.html"
+                            data-version="6.x" >Laravel 6.x</option>
+                                            <option
+                            value="../../../7.x/index.html"
+                            data-version="7.x" >Laravel 7.x</option>
+                                            <option
+                            value="../../../8.x/index.html"
+                            data-version="8.x" selected>Laravel 8.x</option>
+                                            <option
+                            value="../../../9.x/index.html"
+                            data-version="9.x" >Laravel 9.x</option>
+                                            <option
+                            value="../../../master/index.html"
+                            data-version="master" >Laravel Dev</option>
+                                    </select>
+            </form>
+                <div class="search-bar hidden" id="search-progress-bar-container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" id="search-progress-bar"
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+        </div>
+        <form id="search-form" action="../../search.html">
+            <span class="icon icon-search"></span>
+            <input name="search"
+                   id="doctum-search-auto-complete"
+                   class="typeahead form-control"
+                   type="search"
+                   placeholder="Search"
+                   spellcheck="false"
+                   autocorrect="off"
+                   autocomplete="off"
+                   autocapitalize="off">
+            <div class="auto-complete-results" id="auto-complete-results"></div>
+        </form>
+    </div>
+
+                <div id="api-tree"></div>
+
+        </div>
+        <div id="right-column">
+                <nav id="site-nav" class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-elements">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../../index.html">Laravel API</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-elements">
+                <ul class="nav navbar-nav">
+                                        <li role="presentation" class="dropdown visible-xs-block visible-sm-block">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#"
+                            role="button" aria-haspopup="true" aria-expanded="false">Versions&nbsp;<span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                        <li ><a href="../../../5.5/index.html" data-version="5.5">Laravel 5.5</a></li>
+                        <li ><a href="../../../5.8/index.html" data-version="5.8">Laravel 5.8</a></li>
+                        <li ><a href="../../../6.x/index.html" data-version="6.x">Laravel 6.x</a></li>
+                        <li ><a href="../../../7.x/index.html" data-version="7.x">Laravel 7.x</a></li>
+                        <li class="active"><a href="../../../8.x/index.html" data-version="8.x">Laravel 8.x</a></li>
+                        <li ><a href="../../../9.x/index.html" data-version="9.x">Laravel 9.x</a></li>
+                        <li ><a href="../../../master/index.html" data-version="master">Laravel Dev</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="../../classes.html">Classes</a></li>
+                    <li><a href="../../namespaces.html">Namespaces</a></li>
+                    <li><a href="../../interfaces.html">Interfaces</a></li>
+                    <li><a href="../../traits.html">Traits</a></li>
+                    <li><a href="../../doc-index.html">Index</a></li>
+                    <li><a href="../../search.html">Search</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+                        <div class="namespace-breadcrumbs">
+            <ol class="breadcrumb">
+                <li><span class="label label-default">class</span></li>
+                        <li><a href="../../Illuminate.html">Illuminate</a></li><li class="backslash">\</li><li><a href="../../Illuminate/Validation.html">Validation</a></li><li class="backslash">\</li><li>Factory</li>
+            </ol>
+        </div>
+                <div id="page-content">
+    <div class="page-header">
+        <h1>Factory    
+            </h1>
+    </div>
+
+    
+    <p>        class
+    <strong>Factory</strong>        implements        <a href="../../Illuminate/Contracts/Validation/Factory.html"><abbr title="Illuminate\Contracts\Validation\Factory">Factory</abbr></a>        (<a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Validation/Factory.php">View source</a>)
+</p>
+
+        
+    
+        
+
+            
+        
+    
+            <h2>Properties</h2>
+
+            <table class="table table-condensed">
+                    <tr>
+                <td class="type" id="property_translator">
+                                        protected                                        <a href="../../Illuminate/Contracts/Translation/Translator.html"><abbr title="Illuminate\Contracts\Translation\Translator">Translator</abbr></a>
+                                                                                
+                                    </td>
+                <td>$translator</td>
+                <td class="last"><p>The Translator implementation.</p></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_verifier">
+                                        protected                                        <a href="../../Illuminate/Validation/PresenceVerifierInterface.html"><abbr title="Illuminate\Validation\PresenceVerifierInterface">PresenceVerifierInterface</abbr></a>
+                                                                                
+                                    </td>
+                <td>$verifier</td>
+                <td class="last"><p>The Presence Verifier implementation.</p></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_container">
+                                        protected                                        <a href="../../Illuminate/Contracts/Container/Container.html"><abbr title="Illuminate\Contracts\Container\Container">Container</abbr></a>
+                                                                                
+                                    </td>
+                <td>$container</td>
+                <td class="last"><p>The IoC container instance.</p></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_extensions">
+                                        protected                                        array
+                                                                                
+                                    </td>
+                <td>$extensions</td>
+                <td class="last"><p>All of the custom validator extensions.</p></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_implicitExtensions">
+                                        protected                                        array
+                                                                                
+                                    </td>
+                <td>$implicitExtensions</td>
+                <td class="last"><p>All of the custom implicit validator extensions.</p></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_dependentExtensions">
+                                        protected                                        array
+                                                                                
+                                    </td>
+                <td>$dependentExtensions</td>
+                <td class="last"><p>All of the custom dependent validator extensions.</p></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_replacers">
+                                        protected                                        array
+                                                                                
+                                    </td>
+                <td>$replacers</td>
+                <td class="last"><p>All of the custom validator message replacers.</p></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_fallbackMessages">
+                                        protected                                        array
+                                                                                
+                                    </td>
+                <td>$fallbackMessages</td>
+                <td class="last"><p>All of the fallback messages for custom rules.</p></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_excludeUnvalidatedArrayKeys">
+                                        protected                                        bool
+                                                                                
+                                    </td>
+                <td>$excludeUnvalidatedArrayKeys</td>
+                <td class="last"><p>Indicates that unvalidated array keys should be excluded, even if the parent array was validated.</p></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_resolver">
+                                        protected                                        <a target="_blank" rel="noopener" href="https://www.php.net/Closure">Closure</a>
+                                                                                
+                                    </td>
+                <td>$resolver</td>
+                <td class="last"><p>The Validator resolver instance.</p></td>
+                <td></td>
+            </tr>
+            </table>
+
+    
+            <h2>Methods</h2>
+
+            <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method___construct">__construct</a>(<a href="../../Illuminate/Contracts/Translation/Translator.html"><abbr title="Illuminate\Contracts\Translation\Translator">Translator</abbr></a> $translator, <a href="../../Illuminate/Contracts/Container/Container.html"><abbr title="Illuminate\Contracts\Container\Container">Container</abbr></a> $container = null)
+        
+                                            <p><p>Create a new Validator factory instance.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../Illuminate/Contracts/Validation/Validator.html"><abbr title="Illuminate\Contracts\Validation\Validator">Validator</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_make">make</a>(array $data, array $rules, array $messages = [], array $customAttributes = [])
+        
+                                            <p><p>Create a new Validator instance.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_validate">validate</a>(array $data, array $rules, array $messages = [], array $customAttributes = [])
+        
+                                            <p><p>Validate the given data against the provided rules.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../Illuminate/Validation/Validator.html"><abbr title="Illuminate\Validation\Validator">Validator</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_resolve">resolve</a>(array $data, array $rules, array $messages, array $customAttributes)
+        
+                                            <p><p>Resolve a new Validator instance.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_addExtensions">addExtensions</a>(<a href="../../Illuminate/Validation/Validator.html"><abbr title="Illuminate\Validation\Validator">Validator</abbr></a> $validator)
+        
+                                            <p><p>Add the extensions to a validator instance.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_extend">extend</a>(string $rule, <a target="_blank" rel="noopener" href="https://www.php.net/Closure">Closure</a>|string $extension, string|null $message = null)
+        
+                                            <p><p>Register a custom validator extension.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_extendImplicit">extendImplicit</a>(string $rule, <a target="_blank" rel="noopener" href="https://www.php.net/Closure">Closure</a>|string $extension, string|null $message = null)
+        
+                                            <p><p>Register a custom implicit validator extension.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_extendDependent">extendDependent</a>(string $rule, <a target="_blank" rel="noopener" href="https://www.php.net/Closure">Closure</a>|string $extension, string|null $message = null)
+        
+                                            <p><p>Register a custom dependent validator extension.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_replacer">replacer</a>(string $rule, <a target="_blank" rel="noopener" href="https://www.php.net/Closure">Closure</a>|string $replacer)
+        
+                                            <p><p>Register a custom validator message replacer.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_excludeUnvalidatedArrayKeys">excludeUnvalidatedArrayKeys</a>()
+        
+                                            <p><p>Indicate that unvalidated array keys should be excluded, even if the parent array was validated.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_resolver">resolver</a>(<a target="_blank" rel="noopener" href="https://www.php.net/Closure">Closure</a> $resolver)
+        
+                                            <p><p>Set the Validator instance resolver.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../Illuminate/Contracts/Translation/Translator.html"><abbr title="Illuminate\Contracts\Translation\Translator">Translator</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getTranslator">getTranslator</a>()
+        
+                                            <p><p>Get the Translator implementation.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../Illuminate/Validation/PresenceVerifierInterface.html"><abbr title="Illuminate\Validation\PresenceVerifierInterface">PresenceVerifierInterface</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getPresenceVerifier">getPresenceVerifier</a>()
+        
+                                            <p><p>Get the Presence Verifier implementation.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_setPresenceVerifier">setPresenceVerifier</a>(<a href="../../Illuminate/Validation/PresenceVerifierInterface.html"><abbr title="Illuminate\Validation\PresenceVerifierInterface">PresenceVerifierInterface</abbr></a> $presenceVerifier)
+        
+                                            <p><p>Set the Presence Verifier implementation.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../Illuminate/Contracts/Container/Container.html"><abbr title="Illuminate\Contracts\Container\Container">Container</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getContainer">getContainer</a>()
+        
+                                            <p><p>Get the container instance used by the validation factory.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    $this
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_setContainer">setContainer</a>(<a href="../../Illuminate/Contracts/Container/Container.html"><abbr title="Illuminate\Contracts\Container\Container">Container</abbr></a> $container)
+        
+                                            <p><p>Set the container instance used by the validation factory.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+            </div>
+
+
+        <h2>Details</h2>
+
+            <div id="method-details">
+                    <div class="method-item">
+                    <h3 id="method___construct">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Validation/Factory.php#L90">at line 90</a></div>
+        <code>                    void
+    <strong>__construct</strong>(<a href="../../Illuminate/Contracts/Translation/Translator.html"><abbr title="Illuminate\Contracts\Translation\Translator">Translator</abbr></a> $translator, <a href="../../Illuminate/Contracts/Container/Container.html"><abbr title="Illuminate\Contracts\Container\Container">Container</abbr></a> $container = null)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Create a new Validator factory instance.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../Illuminate/Contracts/Translation/Translator.html"><abbr title="Illuminate\Contracts\Translation\Translator">Translator</abbr></a></td>
+                <td>$translator</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../Illuminate/Contracts/Container/Container.html"><abbr title="Illuminate\Contracts\Container\Container">Container</abbr></a></td>
+                <td>$container</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_make">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Validation/Factory.php#L105">at line 105</a></div>
+        <code>                    <a href="../../Illuminate/Contracts/Validation/Validator.html"><abbr title="Illuminate\Contracts\Validation\Validator">Validator</abbr></a>
+    <strong>make</strong>(array $data, array $rules, array $messages = [], array $customAttributes = [])
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Create a new Validator instance.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$data</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$rules</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$messages</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$customAttributes</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../Illuminate/Contracts/Validation/Validator.html"><abbr title="Illuminate\Contracts\Validation\Validator">Validator</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_validate">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Validation/Factory.php#L143">at line 143</a></div>
+        <code>                    array
+    <strong>validate</strong>(array $data, array $rules, array $messages = [], array $customAttributes = [])
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Validate the given data against the provided rules.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$data</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$rules</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$messages</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$customAttributes</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../Illuminate/Validation/ValidationException.html"><abbr title="Illuminate\Validation\ValidationException">ValidationException</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_resolve">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Validation/Factory.php#L157">at line 157</a></div>
+        <code>            protected        <a href="../../Illuminate/Validation/Validator.html"><abbr title="Illuminate\Validation\Validator">Validator</abbr></a>
+    <strong>resolve</strong>(array $data, array $rules, array $messages, array $customAttributes)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Resolve a new Validator instance.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$data</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$rules</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$messages</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$customAttributes</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../Illuminate/Validation/Validator.html"><abbr title="Illuminate\Validation\Validator">Validator</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_addExtensions">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Validation/Factory.php#L172">at line 172</a></div>
+        <code>            protected        void
+    <strong>addExtensions</strong>(<a href="../../Illuminate/Validation/Validator.html"><abbr title="Illuminate\Validation\Validator">Validator</abbr></a> $validator)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Add the extensions to a validator instance.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../Illuminate/Validation/Validator.html"><abbr title="Illuminate\Validation\Validator">Validator</abbr></a></td>
+                <td>$validator</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_extend">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Validation/Factory.php#L196">at line 196</a></div>
+        <code>                    void
+    <strong>extend</strong>(string $rule, <a target="_blank" rel="noopener" href="https://www.php.net/Closure">Closure</a>|string $extension, string|null $message = null)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Register a custom validator extension.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$rule</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a target="_blank" rel="noopener" href="https://www.php.net/Closure">Closure</a>|string</td>
+                <td>$extension</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string|null</td>
+                <td>$message</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_extendImplicit">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Validation/Factory.php#L213">at line 213</a></div>
+        <code>                    void
+    <strong>extendImplicit</strong>(string $rule, <a target="_blank" rel="noopener" href="https://www.php.net/Closure">Closure</a>|string $extension, string|null $message = null)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Register a custom implicit validator extension.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$rule</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a target="_blank" rel="noopener" href="https://www.php.net/Closure">Closure</a>|string</td>
+                <td>$extension</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string|null</td>
+                <td>$message</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_extendDependent">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Validation/Factory.php#L230">at line 230</a></div>
+        <code>                    void
+    <strong>extendDependent</strong>(string $rule, <a target="_blank" rel="noopener" href="https://www.php.net/Closure">Closure</a>|string $extension, string|null $message = null)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Register a custom dependent validator extension.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$rule</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a target="_blank" rel="noopener" href="https://www.php.net/Closure">Closure</a>|string</td>
+                <td>$extension</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string|null</td>
+                <td>$message</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_replacer">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Validation/Factory.php#L246">at line 246</a></div>
+        <code>                    void
+    <strong>replacer</strong>(string $rule, <a target="_blank" rel="noopener" href="https://www.php.net/Closure">Closure</a>|string $replacer)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Register a custom validator message replacer.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$rule</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a target="_blank" rel="noopener" href="https://www.php.net/Closure">Closure</a>|string</td>
+                <td>$replacer</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_excludeUnvalidatedArrayKeys">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Validation/Factory.php#L256">at line 256</a></div>
+        <code>                    void
+    <strong>excludeUnvalidatedArrayKeys</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Indicate that unvalidated array keys should be excluded, even if the parent array was validated.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_resolver">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Validation/Factory.php#L267">at line 267</a></div>
+        <code>                    void
+    <strong>resolver</strong>(<a target="_blank" rel="noopener" href="https://www.php.net/Closure">Closure</a> $resolver)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Set the Validator instance resolver.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a target="_blank" rel="noopener" href="https://www.php.net/Closure">Closure</a></td>
+                <td>$resolver</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getTranslator">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Validation/Factory.php#L277">at line 277</a></div>
+        <code>                    <a href="../../Illuminate/Contracts/Translation/Translator.html"><abbr title="Illuminate\Contracts\Translation\Translator">Translator</abbr></a>
+    <strong>getTranslator</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Get the Translator implementation.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../Illuminate/Contracts/Translation/Translator.html"><abbr title="Illuminate\Contracts\Translation\Translator">Translator</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getPresenceVerifier">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Validation/Factory.php#L287">at line 287</a></div>
+        <code>                    <a href="../../Illuminate/Validation/PresenceVerifierInterface.html"><abbr title="Illuminate\Validation\PresenceVerifierInterface">PresenceVerifierInterface</abbr></a>
+    <strong>getPresenceVerifier</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Get the Presence Verifier implementation.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../Illuminate/Validation/PresenceVerifierInterface.html"><abbr title="Illuminate\Validation\PresenceVerifierInterface">PresenceVerifierInterface</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setPresenceVerifier">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Validation/Factory.php#L298">at line 298</a></div>
+        <code>                    void
+    <strong>setPresenceVerifier</strong>(<a href="../../Illuminate/Validation/PresenceVerifierInterface.html"><abbr title="Illuminate\Validation\PresenceVerifierInterface">PresenceVerifierInterface</abbr></a> $presenceVerifier)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Set the Presence Verifier implementation.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../Illuminate/Validation/PresenceVerifierInterface.html"><abbr title="Illuminate\Validation\PresenceVerifierInterface">PresenceVerifierInterface</abbr></a></td>
+                <td>$presenceVerifier</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getContainer">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Validation/Factory.php#L308">at line 308</a></div>
+        <code>                    <a href="../../Illuminate/Contracts/Container/Container.html"><abbr title="Illuminate\Contracts\Container\Container">Container</abbr></a>
+    <strong>getContainer</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Get the container instance used by the validation factory.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../Illuminate/Contracts/Container/Container.html"><abbr title="Illuminate\Contracts\Container\Container">Container</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setContainer">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Validation/Factory.php#L319">at line 319</a></div>
+        <code>                    $this
+    <strong>setContainer</strong>(<a href="../../Illuminate/Contracts/Container/Container.html"><abbr title="Illuminate\Contracts\Container\Container">Container</abbr></a> $container)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Set the container instance used by the validation factory.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../Illuminate/Contracts/Container/Container.html"><abbr title="Illuminate\Contracts\Container\Container">Container</abbr></a></td>
+                <td>$container</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>$this</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+            </div>
+
+    
+</div><div id="footer">
+        Generated by <a href="https://github.com/code-lts/doctum">Doctum, a API Documentation generator and fork of Sami</a>.</div></div>
+    </div>
+    </body>
+
+</html>

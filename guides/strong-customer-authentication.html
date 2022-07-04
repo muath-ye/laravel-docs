@@ -1,0 +1,4309 @@
+<!DOCTYPE html>
+<html lang="en" id="sca-guide" class="guide" >
+
+<head>
+  
+    <meta charset="utf-8">
+    <meta name="google-site-verification" content="f0LCrdI6z4Fo8zld4sHCgo5SiUE4EYYRUa6KVeX3Mw8" />
+    <meta name="msvalidate.01" content="4C77784AFD61498FA0764E14D1631D53" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>PSD2: Strong Customer Authentication</title>
+
+    <meta name="description" content="Stripe’s guide to what internet businesses need to know about the new European PSD2 law.">
+
+
+    <link rel="shortcut icon" href="/favicon.ico">
+
+    <link rel="apple-touch-icon-precomposed" href="/img/apple-touch-icon/180x180.png">
+    <link rel="icon" href="/img/apple-touch-icon/180x180.png">
+
+
+    <link rel="image_src" type="image/png" href="https://stripe.com/img/v3/guides/social.png">
+
+      <link
+    rel="alternate"
+    href="https://stripe.com/de-ae/guides/strong-customer-authentication"
+    hreflang="de-AE"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/ae/guides/strong-customer-authentication"
+    hreflang="en-AE"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/en-gb-ae/guides/strong-customer-authentication"
+    hreflang="en-GB-AE"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/es-419-ae/guides/strong-customer-authentication"
+    hreflang="es-419-AE"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/es-ae/guides/strong-customer-authentication"
+    hreflang="es-AE"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/fr-ae/guides/strong-customer-authentication"
+    hreflang="fr-AE"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/fr-ca-ae/guides/strong-customer-authentication"
+    hreflang="fr-CA-AE"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/id-ae/guides/strong-customer-authentication"
+    hreflang="id-AE"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/it-ae/guides/strong-customer-authentication"
+    hreflang="it-AE"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/ja-ae/guides/strong-customer-authentication"
+    hreflang="ja-AE"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/nl-ae/guides/strong-customer-authentication"
+    hreflang="nl-AE"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/pt-br-ae/guides/strong-customer-authentication"
+    hreflang="pt-BR-AE"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/sv-ae/guides/strong-customer-authentication"
+    hreflang="sv-AE"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/th-ae/guides/strong-customer-authentication"
+    hreflang="th-AE"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/zh-cn-ae/guides/strong-customer-authentication"
+    hreflang="zh-CN-AE"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/at/guides/strong-customer-authentication"
+    hreflang="de-AT"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/en-at/guides/strong-customer-authentication"
+    hreflang="en-AT"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/en-gb-at/guides/strong-customer-authentication"
+    hreflang="en-GB-AT"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/es-419-at/guides/strong-customer-authentication"
+    hreflang="es-419-AT"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/es-at/guides/strong-customer-authentication"
+    hreflang="es-AT"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/fr-at/guides/strong-customer-authentication"
+    hreflang="fr-AT"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/fr-ca-at/guides/strong-customer-authentication"
+    hreflang="fr-CA-AT"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/id-at/guides/strong-customer-authentication"
+    hreflang="id-AT"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/it-at/guides/strong-customer-authentication"
+    hreflang="it-AT"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/ja-at/guides/strong-customer-authentication"
+    hreflang="ja-AT"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/nl-at/guides/strong-customer-authentication"
+    hreflang="nl-AT"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/pt-br-at/guides/strong-customer-authentication"
+    hreflang="pt-BR-AT"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/sv-at/guides/strong-customer-authentication"
+    hreflang="sv-AT"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/th-at/guides/strong-customer-authentication"
+    hreflang="th-AT"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/zh-cn-at/guides/strong-customer-authentication"
+    hreflang="zh-CN-AT"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/de-au/guides/strong-customer-authentication"
+    hreflang="de-AU"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/en-au/guides/strong-customer-authentication"
+    hreflang="en-AU"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/au/guides/strong-customer-authentication"
+    hreflang="en-GB-AU"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/es-419-au/guides/strong-customer-authentication"
+    hreflang="es-419-AU"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/es-au/guides/strong-customer-authentication"
+    hreflang="es-AU"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/fr-au/guides/strong-customer-authentication"
+    hreflang="fr-AU"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/fr-ca-au/guides/strong-customer-authentication"
+    hreflang="fr-CA-AU"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/id-au/guides/strong-customer-authentication"
+    hreflang="id-AU"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/it-au/guides/strong-customer-authentication"
+    hreflang="it-AU"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/ja-au/guides/strong-customer-authentication"
+    hreflang="ja-AU"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/nl-au/guides/strong-customer-authentication"
+    hreflang="nl-AU"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/pt-br-au/guides/strong-customer-authentication"
+    hreflang="pt-BR-AU"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/sv-au/guides/strong-customer-authentication"
+    hreflang="sv-AU"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/th-au/guides/strong-customer-authentication"
+    hreflang="th-AU"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/zh-cn-au/guides/strong-customer-authentication"
+    hreflang="zh-CN-AU"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/de-be/guides/strong-customer-authentication"
+    hreflang="de-BE"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/en-be/guides/strong-customer-authentication"
+    hreflang="en-BE"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/en-gb-be/guides/strong-customer-authentication"
+    hreflang="en-GB-BE"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/es-419-be/guides/strong-customer-authentication"
+    hreflang="es-419-BE"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/es-be/guides/strong-customer-authentication"
+    hreflang="es-BE"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/fr-be/guides/strong-customer-authentication"
+    hreflang="fr-BE"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/fr-ca-be/guides/strong-customer-authentication"
+    hreflang="fr-CA-BE"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/id-be/guides/strong-customer-authentication"
+    hreflang="id-BE"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/it-be/guides/strong-customer-authentication"
+    hreflang="it-BE"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/ja-be/guides/strong-customer-authentication"
+    hreflang="ja-BE"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/nl-be/guides/strong-customer-authentication"
+    hreflang="nl-BE"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/pt-br-be/guides/strong-customer-authentication"
+    hreflang="pt-BR-BE"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/sv-be/guides/strong-customer-authentication"
+    hreflang="sv-BE"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/th-be/guides/strong-customer-authentication"
+    hreflang="th-BE"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/zh-cn-be/guides/strong-customer-authentication"
+    hreflang="zh-CN-BE"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/de-bg/guides/strong-customer-authentication"
+    hreflang="de-BG"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/en-bg/guides/strong-customer-authentication"
+    hreflang="en-BG"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/en-gb-bg/guides/strong-customer-authentication"
+    hreflang="en-GB-BG"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/es-419-bg/guides/strong-customer-authentication"
+    hreflang="es-419-BG"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/es-bg/guides/strong-customer-authentication"
+    hreflang="es-BG"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/fr-bg/guides/strong-customer-authentication"
+    hreflang="fr-BG"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/fr-ca-bg/guides/strong-customer-authentication"
+    hreflang="fr-CA-BG"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/id-bg/guides/strong-customer-authentication"
+    hreflang="id-BG"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/it-bg/guides/strong-customer-authentication"
+    hreflang="it-BG"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/ja-bg/guides/strong-customer-authentication"
+    hreflang="ja-BG"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/nl-bg/guides/strong-customer-authentication"
+    hreflang="nl-BG"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/pt-br-bg/guides/strong-customer-authentication"
+    hreflang="pt-BR-BG"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/sv-bg/guides/strong-customer-authentication"
+    hreflang="sv-BG"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/th-bg/guides/strong-customer-authentication"
+    hreflang="th-BG"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/zh-cn-bg/guides/strong-customer-authentication"
+    hreflang="zh-CN-BG"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/de-br/guides/strong-customer-authentication"
+    hreflang="de-BR"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/en-br/guides/strong-customer-authentication"
+    hreflang="en-BR"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/en-gb-br/guides/strong-customer-authentication"
+    hreflang="en-GB-BR"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/es-419-br/guides/strong-customer-authentication"
+    hreflang="es-419-BR"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/es-br/guides/strong-customer-authentication"
+    hreflang="es-BR"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/fr-br/guides/strong-customer-authentication"
+    hreflang="fr-BR"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/fr-ca-br/guides/strong-customer-authentication"
+    hreflang="fr-CA-BR"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/id-br/guides/strong-customer-authentication"
+    hreflang="id-BR"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/it-br/guides/strong-customer-authentication"
+    hreflang="it-BR"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/ja-br/guides/strong-customer-authentication"
+    hreflang="ja-BR"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/nl-br/guides/strong-customer-authentication"
+    hreflang="nl-BR"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/br/guides/strong-customer-authentication"
+    hreflang="pt-BR-BR"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/sv-br/guides/strong-customer-authentication"
+    hreflang="sv-BR"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/th-br/guides/strong-customer-authentication"
+    hreflang="th-BR"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/zh-cn-br/guides/strong-customer-authentication"
+    hreflang="zh-CN-BR"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/de-ca/guides/strong-customer-authentication"
+    hreflang="de-CA"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/en-ca/guides/strong-customer-authentication"
+    hreflang="en-CA"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/en-gb-ca/guides/strong-customer-authentication"
+    hreflang="en-GB-CA"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/es-419-ca/guides/strong-customer-authentication"
+    hreflang="es-419-CA"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/es-ca/guides/strong-customer-authentication"
+    hreflang="es-CA"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/fr-ca/guides/strong-customer-authentication"
+    hreflang="fr-CA"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/fr-ca-ca/guides/strong-customer-authentication"
+    hreflang="fr-CA-CA"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/id-ca/guides/strong-customer-authentication"
+    hreflang="id-CA"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/it-ca/guides/strong-customer-authentication"
+    hreflang="it-CA"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/ja-ca/guides/strong-customer-authentication"
+    hreflang="ja-CA"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/nl-ca/guides/strong-customer-authentication"
+    hreflang="nl-CA"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/pt-br-ca/guides/strong-customer-authentication"
+    hreflang="pt-BR-CA"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/sv-ca/guides/strong-customer-authentication"
+    hreflang="sv-CA"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/th-ca/guides/strong-customer-authentication"
+    hreflang="th-CA"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/zh-cn-ca/guides/strong-customer-authentication"
+    hreflang="zh-CN-CA"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/de-ch/guides/strong-customer-authentication"
+    hreflang="de-CH"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/en-ch/guides/strong-customer-authentication"
+    hreflang="en-CH"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/en-gb-ch/guides/strong-customer-authentication"
+    hreflang="en-GB-CH"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/es-419-ch/guides/strong-customer-authentication"
+    hreflang="es-419-CH"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/es-ch/guides/strong-customer-authentication"
+    hreflang="es-CH"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/fr-ch/guides/strong-customer-authentication"
+    hreflang="fr-CH"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/fr-ca-ch/guides/strong-customer-authentication"
+    hreflang="fr-CA-CH"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/id-ch/guides/strong-customer-authentication"
+    hreflang="id-CH"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/it-ch/guides/strong-customer-authentication"
+    hreflang="it-CH"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/ja-ch/guides/strong-customer-authentication"
+    hreflang="ja-CH"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/nl-ch/guides/strong-customer-authentication"
+    hreflang="nl-CH"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/pt-br-ch/guides/strong-customer-authentication"
+    hreflang="pt-BR-CH"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/sv-ch/guides/strong-customer-authentication"
+    hreflang="sv-CH"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/th-ch/guides/strong-customer-authentication"
+    hreflang="th-CH"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/zh-cn-ch/guides/strong-customer-authentication"
+    hreflang="zh-CN-CH"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/de-cy/guides/strong-customer-authentication"
+    hreflang="de-CY"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/en-cy/guides/strong-customer-authentication"
+    hreflang="en-CY"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/en-gb-cy/guides/strong-customer-authentication"
+    hreflang="en-GB-CY"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/es-419-cy/guides/strong-customer-authentication"
+    hreflang="es-419-CY"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/es-cy/guides/strong-customer-authentication"
+    hreflang="es-CY"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/fr-cy/guides/strong-customer-authentication"
+    hreflang="fr-CY"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/fr-ca-cy/guides/strong-customer-authentication"
+    hreflang="fr-CA-CY"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/id-cy/guides/strong-customer-authentication"
+    hreflang="id-CY"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/it-cy/guides/strong-customer-authentication"
+    hreflang="it-CY"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/ja-cy/guides/strong-customer-authentication"
+    hreflang="ja-CY"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/nl-cy/guides/strong-customer-authentication"
+    hreflang="nl-CY"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/pt-br-cy/guides/strong-customer-authentication"
+    hreflang="pt-BR-CY"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/sv-cy/guides/strong-customer-authentication"
+    hreflang="sv-CY"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/th-cy/guides/strong-customer-authentication"
+    hreflang="th-CY"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/zh-cn-cy/guides/strong-customer-authentication"
+    hreflang="zh-CN-CY"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/de-cz/guides/strong-customer-authentication"
+    hreflang="de-CZ"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/en-cz/guides/strong-customer-authentication"
+    hreflang="en-CZ"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/en-gb-cz/guides/strong-customer-authentication"
+    hreflang="en-GB-CZ"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/es-419-cz/guides/strong-customer-authentication"
+    hreflang="es-419-CZ"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/es-cz/guides/strong-customer-authentication"
+    hreflang="es-CZ"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/fr-cz/guides/strong-customer-authentication"
+    hreflang="fr-CZ"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/fr-ca-cz/guides/strong-customer-authentication"
+    hreflang="fr-CA-CZ"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/id-cz/guides/strong-customer-authentication"
+    hreflang="id-CZ"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/it-cz/guides/strong-customer-authentication"
+    hreflang="it-CZ"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/ja-cz/guides/strong-customer-authentication"
+    hreflang="ja-CZ"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/nl-cz/guides/strong-customer-authentication"
+    hreflang="nl-CZ"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/pt-br-cz/guides/strong-customer-authentication"
+    hreflang="pt-BR-CZ"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/sv-cz/guides/strong-customer-authentication"
+    hreflang="sv-CZ"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/th-cz/guides/strong-customer-authentication"
+    hreflang="th-CZ"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/zh-cn-cz/guides/strong-customer-authentication"
+    hreflang="zh-CN-CZ"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/de/guides/strong-customer-authentication"
+    hreflang="de-DE"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/en-de/guides/strong-customer-authentication"
+    hreflang="en-DE"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/en-gb-de/guides/strong-customer-authentication"
+    hreflang="en-GB-DE"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/es-419-de/guides/strong-customer-authentication"
+    hreflang="es-419-DE"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/es-de/guides/strong-customer-authentication"
+    hreflang="es-DE"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/fr-de/guides/strong-customer-authentication"
+    hreflang="fr-DE"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/fr-ca-de/guides/strong-customer-authentication"
+    hreflang="fr-CA-DE"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/id-de/guides/strong-customer-authentication"
+    hreflang="id-DE"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/it-de/guides/strong-customer-authentication"
+    hreflang="it-DE"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/ja-de/guides/strong-customer-authentication"
+    hreflang="ja-DE"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/nl-de/guides/strong-customer-authentication"
+    hreflang="nl-DE"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/pt-br-de/guides/strong-customer-authentication"
+    hreflang="pt-BR-DE"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/sv-de/guides/strong-customer-authentication"
+    hreflang="sv-DE"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/th-de/guides/strong-customer-authentication"
+    hreflang="th-DE"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/zh-cn-de/guides/strong-customer-authentication"
+    hreflang="zh-CN-DE"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/de-dk/guides/strong-customer-authentication"
+    hreflang="de-DK"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/en-dk/guides/strong-customer-authentication"
+    hreflang="en-DK"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/en-gb-dk/guides/strong-customer-authentication"
+    hreflang="en-GB-DK"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/es-419-dk/guides/strong-customer-authentication"
+    hreflang="es-419-DK"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/es-dk/guides/strong-customer-authentication"
+    hreflang="es-DK"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/fr-dk/guides/strong-customer-authentication"
+    hreflang="fr-DK"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/fr-ca-dk/guides/strong-customer-authentication"
+    hreflang="fr-CA-DK"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/id-dk/guides/strong-customer-authentication"
+    hreflang="id-DK"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/it-dk/guides/strong-customer-authentication"
+    hreflang="it-DK"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/ja-dk/guides/strong-customer-authentication"
+    hreflang="ja-DK"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/nl-dk/guides/strong-customer-authentication"
+    hreflang="nl-DK"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/pt-br-dk/guides/strong-customer-authentication"
+    hreflang="pt-BR-DK"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/sv-dk/guides/strong-customer-authentication"
+    hreflang="sv-DK"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/th-dk/guides/strong-customer-authentication"
+    hreflang="th-DK"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/zh-cn-dk/guides/strong-customer-authentication"
+    hreflang="zh-CN-DK"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/de-ee/guides/strong-customer-authentication"
+    hreflang="de-EE"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/en-ee/guides/strong-customer-authentication"
+    hreflang="en-EE"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/en-gb-ee/guides/strong-customer-authentication"
+    hreflang="en-GB-EE"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/es-419-ee/guides/strong-customer-authentication"
+    hreflang="es-419-EE"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/es-ee/guides/strong-customer-authentication"
+    hreflang="es-EE"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/fr-ee/guides/strong-customer-authentication"
+    hreflang="fr-EE"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/fr-ca-ee/guides/strong-customer-authentication"
+    hreflang="fr-CA-EE"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/id-ee/guides/strong-customer-authentication"
+    hreflang="id-EE"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/it-ee/guides/strong-customer-authentication"
+    hreflang="it-EE"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/ja-ee/guides/strong-customer-authentication"
+    hreflang="ja-EE"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/nl-ee/guides/strong-customer-authentication"
+    hreflang="nl-EE"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/pt-br-ee/guides/strong-customer-authentication"
+    hreflang="pt-BR-EE"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/sv-ee/guides/strong-customer-authentication"
+    hreflang="sv-EE"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/th-ee/guides/strong-customer-authentication"
+    hreflang="th-EE"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/zh-cn-ee/guides/strong-customer-authentication"
+    hreflang="zh-CN-EE"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/de-es/guides/strong-customer-authentication"
+    hreflang="de-ES"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/en-es/guides/strong-customer-authentication"
+    hreflang="en-ES"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/en-gb-es/guides/strong-customer-authentication"
+    hreflang="en-GB-ES"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/es-419-es/guides/strong-customer-authentication"
+    hreflang="es-419-ES"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/es/guides/strong-customer-authentication"
+    hreflang="es-ES"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/fr-es/guides/strong-customer-authentication"
+    hreflang="fr-ES"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/fr-ca-es/guides/strong-customer-authentication"
+    hreflang="fr-CA-ES"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/id-es/guides/strong-customer-authentication"
+    hreflang="id-ES"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/it-es/guides/strong-customer-authentication"
+    hreflang="it-ES"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/ja-es/guides/strong-customer-authentication"
+    hreflang="ja-ES"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/nl-es/guides/strong-customer-authentication"
+    hreflang="nl-ES"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/pt-br-es/guides/strong-customer-authentication"
+    hreflang="pt-BR-ES"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/sv-es/guides/strong-customer-authentication"
+    hreflang="sv-ES"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/th-es/guides/strong-customer-authentication"
+    hreflang="th-ES"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/zh-cn-es/guides/strong-customer-authentication"
+    hreflang="zh-CN-ES"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/de-fi/guides/strong-customer-authentication"
+    hreflang="de-FI"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/en-fi/guides/strong-customer-authentication"
+    hreflang="en-FI"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/en-gb-fi/guides/strong-customer-authentication"
+    hreflang="en-GB-FI"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/es-419-fi/guides/strong-customer-authentication"
+    hreflang="es-419-FI"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/es-fi/guides/strong-customer-authentication"
+    hreflang="es-FI"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/fr-fi/guides/strong-customer-authentication"
+    hreflang="fr-FI"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/fr-ca-fi/guides/strong-customer-authentication"
+    hreflang="fr-CA-FI"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/id-fi/guides/strong-customer-authentication"
+    hreflang="id-FI"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/it-fi/guides/strong-customer-authentication"
+    hreflang="it-FI"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/ja-fi/guides/strong-customer-authentication"
+    hreflang="ja-FI"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/nl-fi/guides/strong-customer-authentication"
+    hreflang="nl-FI"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/pt-br-fi/guides/strong-customer-authentication"
+    hreflang="pt-BR-FI"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/sv-fi/guides/strong-customer-authentication"
+    hreflang="sv-FI"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/th-fi/guides/strong-customer-authentication"
+    hreflang="th-FI"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/zh-cn-fi/guides/strong-customer-authentication"
+    hreflang="zh-CN-FI"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/de-fr/guides/strong-customer-authentication"
+    hreflang="de-FR"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/en-fr/guides/strong-customer-authentication"
+    hreflang="en-FR"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/en-gb-fr/guides/strong-customer-authentication"
+    hreflang="en-GB-FR"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/es-419-fr/guides/strong-customer-authentication"
+    hreflang="es-419-FR"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/es-fr/guides/strong-customer-authentication"
+    hreflang="es-FR"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/fr/guides/strong-customer-authentication"
+    hreflang="fr-FR"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/fr-ca-fr/guides/strong-customer-authentication"
+    hreflang="fr-CA-FR"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/id-fr/guides/strong-customer-authentication"
+    hreflang="id-FR"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/it-fr/guides/strong-customer-authentication"
+    hreflang="it-FR"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/ja-fr/guides/strong-customer-authentication"
+    hreflang="ja-FR"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/nl-fr/guides/strong-customer-authentication"
+    hreflang="nl-FR"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/pt-br-fr/guides/strong-customer-authentication"
+    hreflang="pt-BR-FR"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/sv-fr/guides/strong-customer-authentication"
+    hreflang="sv-FR"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/th-fr/guides/strong-customer-authentication"
+    hreflang="th-FR"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/zh-cn-fr/guides/strong-customer-authentication"
+    hreflang="zh-CN-FR"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/de-gb/guides/strong-customer-authentication"
+    hreflang="de-GB"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/en-gb/guides/strong-customer-authentication"
+    hreflang="en-GB"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/gb/guides/strong-customer-authentication"
+    hreflang="en-GB-GB"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/es-419-gb/guides/strong-customer-authentication"
+    hreflang="es-419-GB"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/es-gb/guides/strong-customer-authentication"
+    hreflang="es-GB"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/fr-gb/guides/strong-customer-authentication"
+    hreflang="fr-GB"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/fr-ca-gb/guides/strong-customer-authentication"
+    hreflang="fr-CA-GB"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/id-gb/guides/strong-customer-authentication"
+    hreflang="id-GB"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/it-gb/guides/strong-customer-authentication"
+    hreflang="it-GB"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/ja-gb/guides/strong-customer-authentication"
+    hreflang="ja-GB"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/nl-gb/guides/strong-customer-authentication"
+    hreflang="nl-GB"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/pt-br-gb/guides/strong-customer-authentication"
+    hreflang="pt-BR-GB"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/sv-gb/guides/strong-customer-authentication"
+    hreflang="sv-GB"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/th-gb/guides/strong-customer-authentication"
+    hreflang="th-GB"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/zh-cn-gb/guides/strong-customer-authentication"
+    hreflang="zh-CN-GB"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/de-gr/guides/strong-customer-authentication"
+    hreflang="de-GR"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/en-gr/guides/strong-customer-authentication"
+    hreflang="en-GR"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/en-gb-gr/guides/strong-customer-authentication"
+    hreflang="en-GB-GR"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/es-419-gr/guides/strong-customer-authentication"
+    hreflang="es-419-GR"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/es-gr/guides/strong-customer-authentication"
+    hreflang="es-GR"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/fr-gr/guides/strong-customer-authentication"
+    hreflang="fr-GR"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/fr-ca-gr/guides/strong-customer-authentication"
+    hreflang="fr-CA-GR"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/id-gr/guides/strong-customer-authentication"
+    hreflang="id-GR"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/it-gr/guides/strong-customer-authentication"
+    hreflang="it-GR"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/ja-gr/guides/strong-customer-authentication"
+    hreflang="ja-GR"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/nl-gr/guides/strong-customer-authentication"
+    hreflang="nl-GR"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/pt-br-gr/guides/strong-customer-authentication"
+    hreflang="pt-BR-GR"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/sv-gr/guides/strong-customer-authentication"
+    hreflang="sv-GR"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/th-gr/guides/strong-customer-authentication"
+    hreflang="th-GR"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/zh-cn-gr/guides/strong-customer-authentication"
+    hreflang="zh-CN-GR"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/de-hk/guides/strong-customer-authentication"
+    hreflang="de-HK"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/en-hk/guides/strong-customer-authentication"
+    hreflang="en-HK"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/en-gb-hk/guides/strong-customer-authentication"
+    hreflang="en-GB-HK"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/es-419-hk/guides/strong-customer-authentication"
+    hreflang="es-419-HK"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/es-hk/guides/strong-customer-authentication"
+    hreflang="es-HK"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/fr-hk/guides/strong-customer-authentication"
+    hreflang="fr-HK"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/fr-ca-hk/guides/strong-customer-authentication"
+    hreflang="fr-CA-HK"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/id-hk/guides/strong-customer-authentication"
+    hreflang="id-HK"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/it-hk/guides/strong-customer-authentication"
+    hreflang="it-HK"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/ja-hk/guides/strong-customer-authentication"
+    hreflang="ja-HK"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/nl-hk/guides/strong-customer-authentication"
+    hreflang="nl-HK"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/pt-br-hk/guides/strong-customer-authentication"
+    hreflang="pt-BR-HK"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/sv-hk/guides/strong-customer-authentication"
+    hreflang="sv-HK"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/th-hk/guides/strong-customer-authentication"
+    hreflang="th-HK"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/zh-cn-hk/guides/strong-customer-authentication"
+    hreflang="zh-CN-HK"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/de-hu/guides/strong-customer-authentication"
+    hreflang="de-HU"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/en-hu/guides/strong-customer-authentication"
+    hreflang="en-HU"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/en-gb-hu/guides/strong-customer-authentication"
+    hreflang="en-GB-HU"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/es-419-hu/guides/strong-customer-authentication"
+    hreflang="es-419-HU"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/es-hu/guides/strong-customer-authentication"
+    hreflang="es-HU"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/fr-hu/guides/strong-customer-authentication"
+    hreflang="fr-HU"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/fr-ca-hu/guides/strong-customer-authentication"
+    hreflang="fr-CA-HU"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/id-hu/guides/strong-customer-authentication"
+    hreflang="id-HU"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/it-hu/guides/strong-customer-authentication"
+    hreflang="it-HU"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/ja-hu/guides/strong-customer-authentication"
+    hreflang="ja-HU"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/nl-hu/guides/strong-customer-authentication"
+    hreflang="nl-HU"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/pt-br-hu/guides/strong-customer-authentication"
+    hreflang="pt-BR-HU"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/sv-hu/guides/strong-customer-authentication"
+    hreflang="sv-HU"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/th-hu/guides/strong-customer-authentication"
+    hreflang="th-HU"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/zh-cn-hu/guides/strong-customer-authentication"
+    hreflang="zh-CN-HU"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/de-ie/guides/strong-customer-authentication"
+    hreflang="de-IE"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/en-ie/guides/strong-customer-authentication"
+    hreflang="en-IE"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/ie/guides/strong-customer-authentication"
+    hreflang="en-GB-IE"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/es-419-ie/guides/strong-customer-authentication"
+    hreflang="es-419-IE"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/es-ie/guides/strong-customer-authentication"
+    hreflang="es-IE"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/fr-ie/guides/strong-customer-authentication"
+    hreflang="fr-IE"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/fr-ca-ie/guides/strong-customer-authentication"
+    hreflang="fr-CA-IE"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/id-ie/guides/strong-customer-authentication"
+    hreflang="id-IE"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/it-ie/guides/strong-customer-authentication"
+    hreflang="it-IE"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/ja-ie/guides/strong-customer-authentication"
+    hreflang="ja-IE"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/nl-ie/guides/strong-customer-authentication"
+    hreflang="nl-IE"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/pt-br-ie/guides/strong-customer-authentication"
+    hreflang="pt-BR-IE"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/sv-ie/guides/strong-customer-authentication"
+    hreflang="sv-IE"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/th-ie/guides/strong-customer-authentication"
+    hreflang="th-IE"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/zh-cn-ie/guides/strong-customer-authentication"
+    hreflang="zh-CN-IE"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/de-in/guides/strong-customer-authentication"
+    hreflang="de-IN"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/en-in/guides/strong-customer-authentication"
+    hreflang="en-IN"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/in/guides/strong-customer-authentication"
+    hreflang="en-GB-IN"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/es-419-in/guides/strong-customer-authentication"
+    hreflang="es-419-IN"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/es-in/guides/strong-customer-authentication"
+    hreflang="es-IN"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/fr-in/guides/strong-customer-authentication"
+    hreflang="fr-IN"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/fr-ca-in/guides/strong-customer-authentication"
+    hreflang="fr-CA-IN"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/id-in/guides/strong-customer-authentication"
+    hreflang="id-IN"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/it-in/guides/strong-customer-authentication"
+    hreflang="it-IN"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/ja-in/guides/strong-customer-authentication"
+    hreflang="ja-IN"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/nl-in/guides/strong-customer-authentication"
+    hreflang="nl-IN"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/pt-br-in/guides/strong-customer-authentication"
+    hreflang="pt-BR-IN"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/sv-in/guides/strong-customer-authentication"
+    hreflang="sv-IN"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/th-in/guides/strong-customer-authentication"
+    hreflang="th-IN"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/zh-cn-in/guides/strong-customer-authentication"
+    hreflang="zh-CN-IN"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/de-it/guides/strong-customer-authentication"
+    hreflang="de-IT"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/en-it/guides/strong-customer-authentication"
+    hreflang="en-IT"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/en-gb-it/guides/strong-customer-authentication"
+    hreflang="en-GB-IT"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/es-419-it/guides/strong-customer-authentication"
+    hreflang="es-419-IT"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/es-it/guides/strong-customer-authentication"
+    hreflang="es-IT"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/fr-it/guides/strong-customer-authentication"
+    hreflang="fr-IT"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/fr-ca-it/guides/strong-customer-authentication"
+    hreflang="fr-CA-IT"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/id-it/guides/strong-customer-authentication"
+    hreflang="id-IT"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/it/guides/strong-customer-authentication"
+    hreflang="it-IT"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/ja-it/guides/strong-customer-authentication"
+    hreflang="ja-IT"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/nl-it/guides/strong-customer-authentication"
+    hreflang="nl-IT"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/pt-br-it/guides/strong-customer-authentication"
+    hreflang="pt-BR-IT"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/sv-it/guides/strong-customer-authentication"
+    hreflang="sv-IT"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/th-it/guides/strong-customer-authentication"
+    hreflang="th-IT"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/zh-cn-it/guides/strong-customer-authentication"
+    hreflang="zh-CN-IT"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/de-jp/guides/strong-customer-authentication"
+    hreflang="de-JP"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/en-jp/guides/strong-customer-authentication"
+    hreflang="en-JP"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/en-gb-jp/guides/strong-customer-authentication"
+    hreflang="en-GB-JP"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/es-419-jp/guides/strong-customer-authentication"
+    hreflang="es-419-JP"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/es-jp/guides/strong-customer-authentication"
+    hreflang="es-JP"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/fr-jp/guides/strong-customer-authentication"
+    hreflang="fr-JP"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/fr-ca-jp/guides/strong-customer-authentication"
+    hreflang="fr-CA-JP"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/id-jp/guides/strong-customer-authentication"
+    hreflang="id-JP"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/it-jp/guides/strong-customer-authentication"
+    hreflang="it-JP"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/jp/guides/strong-customer-authentication"
+    hreflang="ja-JP"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/nl-jp/guides/strong-customer-authentication"
+    hreflang="nl-JP"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/pt-br-jp/guides/strong-customer-authentication"
+    hreflang="pt-BR-JP"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/sv-jp/guides/strong-customer-authentication"
+    hreflang="sv-JP"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/th-jp/guides/strong-customer-authentication"
+    hreflang="th-JP"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/zh-cn-jp/guides/strong-customer-authentication"
+    hreflang="zh-CN-JP"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/de-lt/guides/strong-customer-authentication"
+    hreflang="de-LT"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/en-lt/guides/strong-customer-authentication"
+    hreflang="en-LT"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/en-gb-lt/guides/strong-customer-authentication"
+    hreflang="en-GB-LT"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/es-419-lt/guides/strong-customer-authentication"
+    hreflang="es-419-LT"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/es-lt/guides/strong-customer-authentication"
+    hreflang="es-LT"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/fr-lt/guides/strong-customer-authentication"
+    hreflang="fr-LT"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/fr-ca-lt/guides/strong-customer-authentication"
+    hreflang="fr-CA-LT"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/id-lt/guides/strong-customer-authentication"
+    hreflang="id-LT"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/it-lt/guides/strong-customer-authentication"
+    hreflang="it-LT"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/ja-lt/guides/strong-customer-authentication"
+    hreflang="ja-LT"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/nl-lt/guides/strong-customer-authentication"
+    hreflang="nl-LT"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/pt-br-lt/guides/strong-customer-authentication"
+    hreflang="pt-BR-LT"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/sv-lt/guides/strong-customer-authentication"
+    hreflang="sv-LT"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/th-lt/guides/strong-customer-authentication"
+    hreflang="th-LT"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/zh-cn-lt/guides/strong-customer-authentication"
+    hreflang="zh-CN-LT"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/de-lu/guides/strong-customer-authentication"
+    hreflang="de-LU"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/en-lu/guides/strong-customer-authentication"
+    hreflang="en-LU"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/en-gb-lu/guides/strong-customer-authentication"
+    hreflang="en-GB-LU"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/es-419-lu/guides/strong-customer-authentication"
+    hreflang="es-419-LU"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/es-lu/guides/strong-customer-authentication"
+    hreflang="es-LU"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/fr-lu/guides/strong-customer-authentication"
+    hreflang="fr-LU"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/fr-ca-lu/guides/strong-customer-authentication"
+    hreflang="fr-CA-LU"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/id-lu/guides/strong-customer-authentication"
+    hreflang="id-LU"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/it-lu/guides/strong-customer-authentication"
+    hreflang="it-LU"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/ja-lu/guides/strong-customer-authentication"
+    hreflang="ja-LU"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/nl-lu/guides/strong-customer-authentication"
+    hreflang="nl-LU"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/pt-br-lu/guides/strong-customer-authentication"
+    hreflang="pt-BR-LU"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/sv-lu/guides/strong-customer-authentication"
+    hreflang="sv-LU"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/th-lu/guides/strong-customer-authentication"
+    hreflang="th-LU"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/zh-cn-lu/guides/strong-customer-authentication"
+    hreflang="zh-CN-LU"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/de-lv/guides/strong-customer-authentication"
+    hreflang="de-LV"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/en-lv/guides/strong-customer-authentication"
+    hreflang="en-LV"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/en-gb-lv/guides/strong-customer-authentication"
+    hreflang="en-GB-LV"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/es-419-lv/guides/strong-customer-authentication"
+    hreflang="es-419-LV"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/es-lv/guides/strong-customer-authentication"
+    hreflang="es-LV"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/fr-lv/guides/strong-customer-authentication"
+    hreflang="fr-LV"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/fr-ca-lv/guides/strong-customer-authentication"
+    hreflang="fr-CA-LV"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/id-lv/guides/strong-customer-authentication"
+    hreflang="id-LV"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/it-lv/guides/strong-customer-authentication"
+    hreflang="it-LV"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/ja-lv/guides/strong-customer-authentication"
+    hreflang="ja-LV"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/nl-lv/guides/strong-customer-authentication"
+    hreflang="nl-LV"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/pt-br-lv/guides/strong-customer-authentication"
+    hreflang="pt-BR-LV"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/sv-lv/guides/strong-customer-authentication"
+    hreflang="sv-LV"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/th-lv/guides/strong-customer-authentication"
+    hreflang="th-LV"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/zh-cn-lv/guides/strong-customer-authentication"
+    hreflang="zh-CN-LV"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/de-mt/guides/strong-customer-authentication"
+    hreflang="de-MT"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/en-mt/guides/strong-customer-authentication"
+    hreflang="en-MT"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/en-gb-mt/guides/strong-customer-authentication"
+    hreflang="en-GB-MT"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/es-419-mt/guides/strong-customer-authentication"
+    hreflang="es-419-MT"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/es-mt/guides/strong-customer-authentication"
+    hreflang="es-MT"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/fr-mt/guides/strong-customer-authentication"
+    hreflang="fr-MT"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/fr-ca-mt/guides/strong-customer-authentication"
+    hreflang="fr-CA-MT"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/id-mt/guides/strong-customer-authentication"
+    hreflang="id-MT"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/it-mt/guides/strong-customer-authentication"
+    hreflang="it-MT"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/ja-mt/guides/strong-customer-authentication"
+    hreflang="ja-MT"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/nl-mt/guides/strong-customer-authentication"
+    hreflang="nl-MT"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/pt-br-mt/guides/strong-customer-authentication"
+    hreflang="pt-BR-MT"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/sv-mt/guides/strong-customer-authentication"
+    hreflang="sv-MT"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/th-mt/guides/strong-customer-authentication"
+    hreflang="th-MT"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/zh-cn-mt/guides/strong-customer-authentication"
+    hreflang="zh-CN-MT"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/de-mx/guides/strong-customer-authentication"
+    hreflang="de-MX"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/en-mx/guides/strong-customer-authentication"
+    hreflang="en-MX"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/en-gb-mx/guides/strong-customer-authentication"
+    hreflang="en-GB-MX"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/mx/guides/strong-customer-authentication"
+    hreflang="es-419-MX"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/es-mx/guides/strong-customer-authentication"
+    hreflang="es-MX"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/fr-mx/guides/strong-customer-authentication"
+    hreflang="fr-MX"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/fr-ca-mx/guides/strong-customer-authentication"
+    hreflang="fr-CA-MX"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/id-mx/guides/strong-customer-authentication"
+    hreflang="id-MX"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/it-mx/guides/strong-customer-authentication"
+    hreflang="it-MX"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/ja-mx/guides/strong-customer-authentication"
+    hreflang="ja-MX"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/nl-mx/guides/strong-customer-authentication"
+    hreflang="nl-MX"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/pt-br-mx/guides/strong-customer-authentication"
+    hreflang="pt-BR-MX"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/sv-mx/guides/strong-customer-authentication"
+    hreflang="sv-MX"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/th-mx/guides/strong-customer-authentication"
+    hreflang="th-MX"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/zh-cn-mx/guides/strong-customer-authentication"
+    hreflang="zh-CN-MX"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/de-my/guides/strong-customer-authentication"
+    hreflang="de-MY"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/en-my/guides/strong-customer-authentication"
+    hreflang="en-MY"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/en-gb-my/guides/strong-customer-authentication"
+    hreflang="en-GB-MY"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/es-419-my/guides/strong-customer-authentication"
+    hreflang="es-419-MY"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/es-my/guides/strong-customer-authentication"
+    hreflang="es-MY"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/fr-my/guides/strong-customer-authentication"
+    hreflang="fr-MY"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/fr-ca-my/guides/strong-customer-authentication"
+    hreflang="fr-CA-MY"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/id-my/guides/strong-customer-authentication"
+    hreflang="id-MY"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/it-my/guides/strong-customer-authentication"
+    hreflang="it-MY"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/ja-my/guides/strong-customer-authentication"
+    hreflang="ja-MY"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/nl-my/guides/strong-customer-authentication"
+    hreflang="nl-MY"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/pt-br-my/guides/strong-customer-authentication"
+    hreflang="pt-BR-MY"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/sv-my/guides/strong-customer-authentication"
+    hreflang="sv-MY"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/th-my/guides/strong-customer-authentication"
+    hreflang="th-MY"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/zh-cn-my/guides/strong-customer-authentication"
+    hreflang="zh-CN-MY"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/de-nl/guides/strong-customer-authentication"
+    hreflang="de-NL"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/en-nl/guides/strong-customer-authentication"
+    hreflang="en-NL"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/en-gb-nl/guides/strong-customer-authentication"
+    hreflang="en-GB-NL"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/es-419-nl/guides/strong-customer-authentication"
+    hreflang="es-419-NL"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/es-nl/guides/strong-customer-authentication"
+    hreflang="es-NL"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/fr-nl/guides/strong-customer-authentication"
+    hreflang="fr-NL"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/fr-ca-nl/guides/strong-customer-authentication"
+    hreflang="fr-CA-NL"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/id-nl/guides/strong-customer-authentication"
+    hreflang="id-NL"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/it-nl/guides/strong-customer-authentication"
+    hreflang="it-NL"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/ja-nl/guides/strong-customer-authentication"
+    hreflang="ja-NL"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/nl/guides/strong-customer-authentication"
+    hreflang="nl-NL"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/pt-br-nl/guides/strong-customer-authentication"
+    hreflang="pt-BR-NL"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/sv-nl/guides/strong-customer-authentication"
+    hreflang="sv-NL"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/th-nl/guides/strong-customer-authentication"
+    hreflang="th-NL"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/zh-cn-nl/guides/strong-customer-authentication"
+    hreflang="zh-CN-NL"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/de-no/guides/strong-customer-authentication"
+    hreflang="de-NO"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/en-no/guides/strong-customer-authentication"
+    hreflang="en-NO"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/en-gb-no/guides/strong-customer-authentication"
+    hreflang="en-GB-NO"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/es-419-no/guides/strong-customer-authentication"
+    hreflang="es-419-NO"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/es-no/guides/strong-customer-authentication"
+    hreflang="es-NO"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/fr-no/guides/strong-customer-authentication"
+    hreflang="fr-NO"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/fr-ca-no/guides/strong-customer-authentication"
+    hreflang="fr-CA-NO"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/id-no/guides/strong-customer-authentication"
+    hreflang="id-NO"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/it-no/guides/strong-customer-authentication"
+    hreflang="it-NO"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/ja-no/guides/strong-customer-authentication"
+    hreflang="ja-NO"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/nl-no/guides/strong-customer-authentication"
+    hreflang="nl-NO"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/pt-br-no/guides/strong-customer-authentication"
+    hreflang="pt-BR-NO"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/sv-no/guides/strong-customer-authentication"
+    hreflang="sv-NO"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/th-no/guides/strong-customer-authentication"
+    hreflang="th-NO"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/zh-cn-no/guides/strong-customer-authentication"
+    hreflang="zh-CN-NO"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/de-nz/guides/strong-customer-authentication"
+    hreflang="de-NZ"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/en-nz/guides/strong-customer-authentication"
+    hreflang="en-NZ"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/nz/guides/strong-customer-authentication"
+    hreflang="en-GB-NZ"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/es-419-nz/guides/strong-customer-authentication"
+    hreflang="es-419-NZ"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/es-nz/guides/strong-customer-authentication"
+    hreflang="es-NZ"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/fr-nz/guides/strong-customer-authentication"
+    hreflang="fr-NZ"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/fr-ca-nz/guides/strong-customer-authentication"
+    hreflang="fr-CA-NZ"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/id-nz/guides/strong-customer-authentication"
+    hreflang="id-NZ"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/it-nz/guides/strong-customer-authentication"
+    hreflang="it-NZ"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/ja-nz/guides/strong-customer-authentication"
+    hreflang="ja-NZ"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/nl-nz/guides/strong-customer-authentication"
+    hreflang="nl-NZ"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/pt-br-nz/guides/strong-customer-authentication"
+    hreflang="pt-BR-NZ"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/sv-nz/guides/strong-customer-authentication"
+    hreflang="sv-NZ"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/th-nz/guides/strong-customer-authentication"
+    hreflang="th-NZ"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/zh-cn-nz/guides/strong-customer-authentication"
+    hreflang="zh-CN-NZ"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/de-pl/guides/strong-customer-authentication"
+    hreflang="de-PL"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/en-pl/guides/strong-customer-authentication"
+    hreflang="en-PL"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/en-gb-pl/guides/strong-customer-authentication"
+    hreflang="en-GB-PL"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/es-419-pl/guides/strong-customer-authentication"
+    hreflang="es-419-PL"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/es-pl/guides/strong-customer-authentication"
+    hreflang="es-PL"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/fr-pl/guides/strong-customer-authentication"
+    hreflang="fr-PL"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/fr-ca-pl/guides/strong-customer-authentication"
+    hreflang="fr-CA-PL"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/id-pl/guides/strong-customer-authentication"
+    hreflang="id-PL"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/it-pl/guides/strong-customer-authentication"
+    hreflang="it-PL"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/ja-pl/guides/strong-customer-authentication"
+    hreflang="ja-PL"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/nl-pl/guides/strong-customer-authentication"
+    hreflang="nl-PL"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/pt-br-pl/guides/strong-customer-authentication"
+    hreflang="pt-BR-PL"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/sv-pl/guides/strong-customer-authentication"
+    hreflang="sv-PL"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/th-pl/guides/strong-customer-authentication"
+    hreflang="th-PL"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/zh-cn-pl/guides/strong-customer-authentication"
+    hreflang="zh-CN-PL"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/de-pt/guides/strong-customer-authentication"
+    hreflang="de-PT"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/en-pt/guides/strong-customer-authentication"
+    hreflang="en-PT"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/en-gb-pt/guides/strong-customer-authentication"
+    hreflang="en-GB-PT"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/es-419-pt/guides/strong-customer-authentication"
+    hreflang="es-419-PT"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/es-pt/guides/strong-customer-authentication"
+    hreflang="es-PT"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/fr-pt/guides/strong-customer-authentication"
+    hreflang="fr-PT"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/fr-ca-pt/guides/strong-customer-authentication"
+    hreflang="fr-CA-PT"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/id-pt/guides/strong-customer-authentication"
+    hreflang="id-PT"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/it-pt/guides/strong-customer-authentication"
+    hreflang="it-PT"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/ja-pt/guides/strong-customer-authentication"
+    hreflang="ja-PT"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/nl-pt/guides/strong-customer-authentication"
+    hreflang="nl-PT"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/pt-br-pt/guides/strong-customer-authentication"
+    hreflang="pt-BR-PT"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/sv-pt/guides/strong-customer-authentication"
+    hreflang="sv-PT"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/th-pt/guides/strong-customer-authentication"
+    hreflang="th-PT"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/zh-cn-pt/guides/strong-customer-authentication"
+    hreflang="zh-CN-PT"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/de-ro/guides/strong-customer-authentication"
+    hreflang="de-RO"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/en-ro/guides/strong-customer-authentication"
+    hreflang="en-RO"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/en-gb-ro/guides/strong-customer-authentication"
+    hreflang="en-GB-RO"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/es-419-ro/guides/strong-customer-authentication"
+    hreflang="es-419-RO"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/es-ro/guides/strong-customer-authentication"
+    hreflang="es-RO"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/fr-ro/guides/strong-customer-authentication"
+    hreflang="fr-RO"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/fr-ca-ro/guides/strong-customer-authentication"
+    hreflang="fr-CA-RO"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/id-ro/guides/strong-customer-authentication"
+    hreflang="id-RO"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/it-ro/guides/strong-customer-authentication"
+    hreflang="it-RO"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/ja-ro/guides/strong-customer-authentication"
+    hreflang="ja-RO"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/nl-ro/guides/strong-customer-authentication"
+    hreflang="nl-RO"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/pt-br-ro/guides/strong-customer-authentication"
+    hreflang="pt-BR-RO"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/sv-ro/guides/strong-customer-authentication"
+    hreflang="sv-RO"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/th-ro/guides/strong-customer-authentication"
+    hreflang="th-RO"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/zh-cn-ro/guides/strong-customer-authentication"
+    hreflang="zh-CN-RO"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/de-se/guides/strong-customer-authentication"
+    hreflang="de-SE"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/en-se/guides/strong-customer-authentication"
+    hreflang="en-SE"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/en-gb-se/guides/strong-customer-authentication"
+    hreflang="en-GB-SE"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/es-419-se/guides/strong-customer-authentication"
+    hreflang="es-419-SE"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/es-se/guides/strong-customer-authentication"
+    hreflang="es-SE"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/fr-se/guides/strong-customer-authentication"
+    hreflang="fr-SE"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/fr-ca-se/guides/strong-customer-authentication"
+    hreflang="fr-CA-SE"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/id-se/guides/strong-customer-authentication"
+    hreflang="id-SE"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/it-se/guides/strong-customer-authentication"
+    hreflang="it-SE"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/ja-se/guides/strong-customer-authentication"
+    hreflang="ja-SE"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/nl-se/guides/strong-customer-authentication"
+    hreflang="nl-SE"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/pt-br-se/guides/strong-customer-authentication"
+    hreflang="pt-BR-SE"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/se/guides/strong-customer-authentication"
+    hreflang="sv-SE"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/th-se/guides/strong-customer-authentication"
+    hreflang="th-SE"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/zh-cn-se/guides/strong-customer-authentication"
+    hreflang="zh-CN-SE"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/de-sg/guides/strong-customer-authentication"
+    hreflang="de-SG"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/en-sg/guides/strong-customer-authentication"
+    hreflang="en-SG"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/en-gb-sg/guides/strong-customer-authentication"
+    hreflang="en-GB-SG"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/es-419-sg/guides/strong-customer-authentication"
+    hreflang="es-419-SG"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/es-sg/guides/strong-customer-authentication"
+    hreflang="es-SG"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/fr-sg/guides/strong-customer-authentication"
+    hreflang="fr-SG"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/fr-ca-sg/guides/strong-customer-authentication"
+    hreflang="fr-CA-SG"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/id-sg/guides/strong-customer-authentication"
+    hreflang="id-SG"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/it-sg/guides/strong-customer-authentication"
+    hreflang="it-SG"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/ja-sg/guides/strong-customer-authentication"
+    hreflang="ja-SG"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/nl-sg/guides/strong-customer-authentication"
+    hreflang="nl-SG"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/pt-br-sg/guides/strong-customer-authentication"
+    hreflang="pt-BR-SG"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/sv-sg/guides/strong-customer-authentication"
+    hreflang="sv-SG"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/th-sg/guides/strong-customer-authentication"
+    hreflang="th-SG"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/zh-cn-sg/guides/strong-customer-authentication"
+    hreflang="zh-CN-SG"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/de-si/guides/strong-customer-authentication"
+    hreflang="de-SI"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/en-si/guides/strong-customer-authentication"
+    hreflang="en-SI"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/en-gb-si/guides/strong-customer-authentication"
+    hreflang="en-GB-SI"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/es-419-si/guides/strong-customer-authentication"
+    hreflang="es-419-SI"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/es-si/guides/strong-customer-authentication"
+    hreflang="es-SI"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/fr-si/guides/strong-customer-authentication"
+    hreflang="fr-SI"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/fr-ca-si/guides/strong-customer-authentication"
+    hreflang="fr-CA-SI"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/id-si/guides/strong-customer-authentication"
+    hreflang="id-SI"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/it-si/guides/strong-customer-authentication"
+    hreflang="it-SI"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/ja-si/guides/strong-customer-authentication"
+    hreflang="ja-SI"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/nl-si/guides/strong-customer-authentication"
+    hreflang="nl-SI"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/pt-br-si/guides/strong-customer-authentication"
+    hreflang="pt-BR-SI"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/sv-si/guides/strong-customer-authentication"
+    hreflang="sv-SI"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/th-si/guides/strong-customer-authentication"
+    hreflang="th-SI"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/zh-cn-si/guides/strong-customer-authentication"
+    hreflang="zh-CN-SI"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/de-sk/guides/strong-customer-authentication"
+    hreflang="de-SK"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/en-sk/guides/strong-customer-authentication"
+    hreflang="en-SK"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/en-gb-sk/guides/strong-customer-authentication"
+    hreflang="en-GB-SK"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/es-419-sk/guides/strong-customer-authentication"
+    hreflang="es-419-SK"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/es-sk/guides/strong-customer-authentication"
+    hreflang="es-SK"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/fr-sk/guides/strong-customer-authentication"
+    hreflang="fr-SK"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/fr-ca-sk/guides/strong-customer-authentication"
+    hreflang="fr-CA-SK"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/id-sk/guides/strong-customer-authentication"
+    hreflang="id-SK"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/it-sk/guides/strong-customer-authentication"
+    hreflang="it-SK"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/ja-sk/guides/strong-customer-authentication"
+    hreflang="ja-SK"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/nl-sk/guides/strong-customer-authentication"
+    hreflang="nl-SK"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/pt-br-sk/guides/strong-customer-authentication"
+    hreflang="pt-BR-SK"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/sv-sk/guides/strong-customer-authentication"
+    hreflang="sv-SK"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/th-sk/guides/strong-customer-authentication"
+    hreflang="th-SK"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/zh-cn-sk/guides/strong-customer-authentication"
+    hreflang="zh-CN-SK"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/de-us/guides/strong-customer-authentication"
+    hreflang="de-US"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/guides/strong-customer-authentication"
+    hreflang="en-US"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/en-gb-us/guides/strong-customer-authentication"
+    hreflang="en-GB-US"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/es-419-us/guides/strong-customer-authentication"
+    hreflang="es-419-US"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/es-us/guides/strong-customer-authentication"
+    hreflang="es-US"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/fr-us/guides/strong-customer-authentication"
+    hreflang="fr-US"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/fr-ca-us/guides/strong-customer-authentication"
+    hreflang="fr-CA-US"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/id-us/guides/strong-customer-authentication"
+    hreflang="id-US"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/it-us/guides/strong-customer-authentication"
+    hreflang="it-US"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/ja-us/guides/strong-customer-authentication"
+    hreflang="ja-US"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/nl-us/guides/strong-customer-authentication"
+    hreflang="nl-US"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/pt-br-us/guides/strong-customer-authentication"
+    hreflang="pt-BR-US"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/sv-us/guides/strong-customer-authentication"
+    hreflang="sv-US"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/th-us/guides/strong-customer-authentication"
+    hreflang="th-US"
+  >
+  <link
+    rel="alternate"
+    href="https://stripe.com/zh-cn-us/guides/strong-customer-authentication"
+    hreflang="zh-CN-US"
+  >
+
+<link rel="canonical" href="https://stripe.com/guides/strong-customer-authentication">
+
+
+    <meta property="og:title" content="PSD2: Strong Customer Authentication">
+    <meta property="og:url" content="https://stripe.com/guides/strong-customer-authentication">
+    <meta property="og:description" content="Stripe’s guide to what internet businesses need to know about the new European PSD2 law.">
+    <meta property="og:image" content="https://stripe.com/img/v3/guides/social.png">
+
+      <meta name="twitter:card" content="summary_large_image">
+      <meta name="twitter:image" content="https://stripe.com/img/v3/guides/social.png">
+    <meta name="twitter:site" content="@stripe">
+    <meta name="twitter:title" content="PSD2: Strong Customer Authentication">
+    <meta name="twitter:description" content="Stripe’s guide to what internet businesses need to know about the new European PSD2 law.">
+
+    <script type="application/json" id="sentry-config">{&quot;enabled&quot;:true,&quot;dsn&quot;:&quot;https://8ca50a25374f408699e0eda3eb47e7f9@errors.stripe.com/101&quot;,&quot;release&quot;:&quot;b5b578108959cc23d5959091e3e2336d8fd4aa08&quot;,&quot;environment&quot;:&quot;development&quot;,&quot;project&quot;:&quot;site&quot;}</script>
+<script src="https://b.stripecdn.com/site-srv/assets/compiled/js/sentry-6edcacb5d7eca4f65f3e.min.js"></script>
+
+    <script type="text/javascript"  nonce="HtIpvbDjKo6yvmH5grrIgw==">  window.allow_third_party_analytics = true
+</script>
+
+
+    <script type="application/json" id="strut_files">{&quot;v3/shared/navigation_ie10.css&quot;:&quot;/assets/compiled/js/../css/sprockets-css-v3/shared/navigation_ie10-7b5ad25cfcc44fb15bda.min.css&quot;}</script>
+
+    <script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Corporation",
+    "name": "Stripe",
+    "url": "https://stripe.com/",
+    "logo": "https://stripe.com/img/about/logos/logos/blue.png",
+    "contactPoint" : [
+      {
+        "@type" : "ContactPoint",
+        "url": "https://stripe.com/contact",
+        "email": "info@stripe.com",
+        "contactType": "customer support"
+      }
+    ],
+    "sameAs": [
+      "https://www.facebook.com/StripeHQ/",
+      "https://twitter.com/stripe",
+      "https://www.linkedin.com/company/stripe"
+    ]
+  }
+</script>
+
+    <script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Country",
+    "address": {
+      "addressCountry": "US"
+    }
+  }
+</script>
+
+      <link rel="preload" href="/fonts/stripe-icons.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/camphor-ss/300-light.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/camphor-ss/400-regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/camphor-ss/500-medium.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/camphor-ss/600-bold.woff2" as="font" type="font/woff2" crossorigin>
+
+
+<script type="text/javascript"  nonce="HtIpvbDjKo6yvmH5grrIgw==">        !function(){if('PerformanceLongTaskTiming' in window){var g=window.__tti={e:[]};
+        g.o=new PerformanceObserver(function(l){g.e=g.e.concat(l.getEntries())});
+        g.o.observe({entryTypes:['longtask']})}}();
+</script>
+      <link rel="preconnect" href="https://b.stripecdn.com" crossorigin>
+<link rel="dns-prefetch" href="https://b.stripecdn.com">
+
+            <link rel="preload" href="https://b.stripecdn.com/mkt-statics-srv/assets/d5dd9f5d.woff2" as="font" crossorigin>
+          
+
+              <link rel="stylesheet" href="https://b.stripecdn.com/mkt-statics-srv/assets/fonts-7169f37b56df5d5443a4.css">
+            
+
+              <link rel="stylesheet" href="https://b.stripecdn.com/mkt-statics-srv/assets/global-730646536b138514c493.css">
+            
+
+              <link rel="stylesheet" href="https://b.stripecdn.com/mkt-statics-srv/assets/White-73217c69a48471fd98e8.css">
+            
+
+              <link rel="stylesheet" href="https://b.stripecdn.com/mkt-statics-srv/assets/Light-5c30604af39d9cc9b79f.css">
+            
+
+              <link rel="stylesheet" href="https://b.stripecdn.com/mkt-statics-srv/assets/Dark-d7eeb4bdd3930e710fde.css">
+            
+
+              <link rel="stylesheet" href="https://b.stripecdn.com/mkt-statics-srv/assets/SemiDark-01965070ac426d50721f.css">
+            
+
+              <link rel="stylesheet" href="https://b.stripecdn.com/mkt-statics-srv/assets/Transparent-9557d139ec0eb51031f4.css">
+            
+
+              <link rel="stylesheet" href="https://b.stripecdn.com/mkt-statics-srv/assets/Legacy-ffa4f24cd3ca18798c6a.css">
+            
+
+              <link rel="stylesheet" href="https://b.stripecdn.com/mkt-statics-srv/assets/LegacyLight-f26a67a334dbe7f1128d.css">
+            
+
+              <link rel="stylesheet" href="https://b.stripecdn.com/mkt-statics-srv/assets/LegacyDark-ba43e61db7ab8eab1abb.css">
+            
+
+              <link rel="stylesheet" href="https://b.stripecdn.com/mkt-statics-srv/assets/Chroma-58b51bd44ce8685b525f.css">
+            
+
+              <link rel="stylesheet" href="https://b.stripecdn.com/mkt-statics-srv/assets/CottonCandy-6a505def01cf201704bd.css">
+            
+
+              <link rel="stylesheet" href="https://b.stripecdn.com/mkt-statics-srv/assets/LemonLime-a1d1d1561ebd96027702.css">
+            
+
+              <link rel="stylesheet" href="https://b.stripecdn.com/mkt-statics-srv/assets/Overcast-81fe349430811fb7e7a0.css">
+            
+
+              <link rel="stylesheet" href="https://b.stripecdn.com/mkt-statics-srv/assets/Pomegranate-273498031195fdadbc2b.css">
+            
+
+              <link rel="stylesheet" href="https://b.stripecdn.com/mkt-statics-srv/assets/Slate-bc2bc8abf6c1a4bdaaf9.css">
+            
+
+              <link rel="stylesheet" href="https://b.stripecdn.com/mkt-statics-srv/assets/Sunburst-a883cb3d33b1332bbc9a.css">
+            
+
+              <link rel="stylesheet" href="https://b.stripecdn.com/mkt-statics-srv/assets/Sunset-852ef64feef5cc52c82c.css">
+            
+
+              <link rel="stylesheet" href="https://b.stripecdn.com/mkt-statics-srv/assets/Twilight-a0fb80954aa848011ab6.css">
+            
+
+              <link rel="stylesheet" href="https://b.stripecdn.com/mkt-statics-srv/assets/Wintergreen-2a184b526d0f98be2716.css">
+            
+
+              <link rel="stylesheet" href="https://b.stripecdn.com/mkt-statics-srv/assets/Layout-d0a1314359727e7b19e4.css">
+            
+
+              <link rel="stylesheet" href="https://b.stripecdn.com/mkt-statics-srv/assets/LegacySiteHeader-b89d9592d14ac5229acd.css">
+            
+
+              <link rel="stylesheet" href="https://b.stripecdn.com/mkt-statics-srv/assets/SiteHeader-e4abdc11149630d1df87.css">
+            
+
+              <link rel="stylesheet" href="https://b.stripecdn.com/mkt-statics-srv/assets/UserLogo-cdeb780ce35b369d3a71.css">
+            
+
+              <link rel="stylesheet" href="https://b.stripecdn.com/mkt-statics-srv/assets/Initializer-e6584dc6db1064b1495d.css">
+            
+
+        <script type="application/json" data-js-script-registry>
+          [{"critical":true,"path":"https://b.stripecdn.com/mkt-statics-srv/assets/SiteHeader-f84b7250.js"},{"critical":true,"path":"https://b.stripecdn.com/mkt-statics-srv/assets/Initializer-cf1e8366.js"},{"critical":true,"path":"https://b.stripecdn.com/mkt-statics-srv/assets/LoaderScript-2d8e1d56.js"}]
+        </script>
+      
+
+        <script type="module" src="https://b.stripecdn.com/mkt-statics-srv/assets/Bootstrapper-64877444.js"></script>
+        <script type="text/javascript" src="https://b.stripecdn.com/mkt-statics-srv/assets/Prelude-9c012a73.js"></script>
+      
+
+      <link rel="stylesheet" href="/assets/compiled/js/../css/sprockets-css-v3/default-6ab4e899dfe38a17465a.min.css">
+  <link rel="stylesheet" href="/assets/compiled/js/../css/sprockets-css-v3/guides/collect_email-7975cd56932af70c36d6.min.css">
+  <link rel="stylesheet" href="/assets/compiled/js/../css/sprockets-css-v3/guides/sca_guide/index-4f662a062a791b7f27d9.min.css">
+
+  <script defer src="https://b.stripecdn.com/site-srv/assets/compiled/js/sprockets-js-v3/external/animate.min-36fc9931821c7d8b10e7.min.js"></script>
+  <script defer src="https://b.stripecdn.com/site-srv/assets/compiled/js/sprockets-js-v3/external/stickyfill.min-55d35e98f6d32aa4e3b7.min.js"></script>
+
+  <script defer src="https://b.stripecdn.com/site-srv/assets/compiled/js/sprockets-js-v3/default-1b9190645ae88f1378a0.min.js"></script>
+  <script defer src="https://b.stripecdn.com/site-srv/assets/compiled/js/sprockets-js-v3/shared/collect_email-5b2bd71e3c81fef15b50.min.js"></script>
+  <script defer src="https://b.stripecdn.com/site-srv/assets/compiled/js/sprockets-js-v3/guides/guide-92a0a5c5da003995b275.min.js"></script>
+
+
+
+
+    <meta content="1" name="csrf-token" />
+    <meta content="stripe.com" name="stripe-domain">
+
+</head>
+
+  <body>
+
+    <template class="TrackingSandboxTemplate">
+  <iframe
+    class="TrackingSandbox"
+    src=""
+    sandbox="allow-same-origin allow-scripts"
+  ></iframe>
+</template>
+    <template id="source-attribution-loader">
+  <script defer
+    src="https://b.stripecdn.com/mkt-statics-srv/assets/imt-dd9433c9bf50094f1480474f636fa819.js"
+    data-store_url="https://b.stripecdn.com/mkt-statics-srv/assets/store-2ffb13c289c0d3c29bd48e9ef47e5721.html">
+  </script>
+</template>
+    <script src="https://b.stripecdn.com/site-srv/assets/compiled/js/tracking-ae8614c71b44db09ea26.min.js"></script>
+
+    
+
+      <div class="MktRoot container-lg">
+  <header
+    class='
+      SiteHeader
+      SiteHeader--noTransitions
+      SiteHeader--excludesNav
+      theme--LegacyLight
+      flavor--Slate
+      accent--Slate
+      
+      
+    '
+    data-js-controller='SiteHeader'
+  >
+    
+    <div class='SiteHeader__container'>
+      <div class='SiteHeader__navContainer'>
+        <h1 class='SiteHeader__logo'>
+          <a href='https://stripe.com/'
+            class='SiteHeader__logoLink'
+            data-js-controller="AnalyticsButton"
+            data-analytics-category='Navigation'
+            data-analytics-action='Clicked'
+            data-analytics-label='Stripe Logo'
+          >
+            <svg viewBox="0 0 60 25" xmlns="http://www.w3.org/2000/svg" width="60" height="25" class="UserLogo variant-- "><title>Stripe logo</title><path fill="var(--userLogoColor, #0A2540)" d="M59.64 14.28h-8.06c.19 1.93 1.6 2.55 3.2 2.55 1.64 0 2.96-.37 4.05-.95v3.32a8.33 8.33 0 0 1-4.56 1.1c-4.01 0-6.83-2.5-6.83-7.48 0-4.19 2.39-7.52 6.3-7.52 3.92 0 5.96 3.28 5.96 7.5 0 .4-.04 1.26-.06 1.48zm-5.92-5.62c-1.03 0-2.17.73-2.17 2.58h4.25c0-1.85-1.07-2.58-2.08-2.58zM40.95 20.3c-1.44 0-2.32-.6-2.9-1.04l-.02 4.63-4.12.87V5.57h3.76l.08 1.02a4.7 4.7 0 0 1 3.23-1.29c2.9 0 5.62 2.6 5.62 7.4 0 5.23-2.7 7.6-5.65 7.6zM40 8.95c-.95 0-1.54.34-1.97.81l.02 6.12c.4.44.98.78 1.95.78 1.52 0 2.54-1.65 2.54-3.87 0-2.15-1.04-3.84-2.54-3.84zM28.24 5.57h4.13v14.44h-4.13V5.57zm0-4.7L32.37 0v3.36l-4.13.88V.88zm-4.32 9.35v9.79H19.8V5.57h3.7l.12 1.22c1-1.77 3.07-1.41 3.62-1.22v3.79c-.52-.17-2.29-.43-3.32.86zm-8.55 4.72c0 2.43 2.6 1.68 3.12 1.46v3.36c-.55.3-1.54.54-2.89.54a4.15 4.15 0 0 1-4.27-4.24l.01-13.17 4.02-.86v3.54h3.14V9.1h-3.13v5.85zm-4.91.7c0 2.97-2.31 4.66-5.73 4.66a11.2 11.2 0 0 1-4.46-.93v-3.93c1.38.75 3.1 1.31 4.46 1.31.92 0 1.53-.24 1.53-1C6.26 13.77 0 14.51 0 9.95 0 7.04 2.28 5.3 5.62 5.3c1.36 0 2.72.2 4.09.75v3.88a9.23 9.23 0 0 0-4.1-1.06c-.86 0-1.44.25-1.44.9 0 1.85 6.29.97 6.29 5.88z" fill-rule="evenodd"/></svg>
+          </a>
+        </h1>
+
+        
+      </div>
+    </div>
+
+    
+  </header>
+
+<script data-experiment-id="rDkSblf2R0KSVsFB-tQsTQ">try {
+  window.Experiments.useTreatment(
+    document.currentScript,
+    document.currentScript.dataset.experimentId
+  );
+} catch (err) {
+  console.error(
+    `Could not swap components for experiment ${document.currentScript.dataset.experimentId}`, err
+  );
+}
+</script>
+
+<script>(() => {
+  function displayContentForState(state) {
+    document
+      .querySelectorAll(`template[data-mount-on-state="${state}"]`)
+      .forEach((template) => document
+        .querySelectorAll(template.dataset.mountTarget)
+        .forEach((target) => {
+          while (target.firstChild) target.removeChild(target.firstChild);
+          target.appendChild(template.content.cloneNode(true));
+        }));
+  }
+  const match = document.cookie.match(/(?:^|;) *site-auth=([^;]+);/);
+  displayContentForState(
+    match && match[1] === '1' ? 'logged-in' : 'logged-out'
+  );
+})();
+</script>
+  </div>
+
+    
+
+    <div class="globalContent">
+      
+<div class="container-lg">
+  <div class="guide-navigation ">
+    <div class="bread-crumbs">
+      <a href="/guides">Guides</a>
+      <span class="bread-crumbs-title xs-hide">Strong Customer Authentication</span>
+    </div>
+  </div>
+</div>
+
+
+<main>
+  <div class='StripeBackground'>
+    <div class='stripe s0'></div>
+    <div class='stripe s2'></div>
+    <div class='stripe s3'></div>
+    <div class='stripe s4'></div>
+  </div>
+
+
+  <header class='container-lg content-container guide-header'>
+    <div class="title-container">
+      <h1 id='guide_title' class='common-PageTitle'>Strong Customer Authentication</h1>
+      <p class="common-IntroText guide-SubTitle">What internet businesses need to know about the new European regulation</p>
+    </div>
+  </header>
+
+  <div class="guide-container container-lg">
+    <div class="guide-sidebar">
+      <aside class="byline">
+        <img class="cocoman" src="/img/v3/guides/sca_guide/cocoman.jpeg" alt="Photo of guide author Michael Cocoman" />
+        <img class="olivier" src="/img/v3/guides/sca_guide/olivier.jpeg" alt="Photo of guide author Olivier Godement" />
+        <h4>Michael Cocoman &amp; Olivier Godement</h4>
+        <p>Michael Cocoman is Head of Regulatory at Stripe and works on expanding our global product offering. Olivier Godement is a Product Manager at Stripe who drives authentication efforts to help businesses prepare for Strong Customer Authentication.</p>
+      </aside>
+      <nav class="toc">
+        <ul></ul>
+        <div class="cta">
+          <p>Accepting payments in Europe?</p>
+          <a href="/payments" class="common-BodyText common-Link common-Link--arrow">Learn more about Stripe</a>
+        </div>
+      </nav>
+    </div>
+    <article class="guide-content xs-order-2 md-order--1" data-subtitle-chapters="on">
+      <p><em>Last updated on 12 May 2021</em></p>
+
+<h1 id="introduction">Introduction</h1>
+
+<p>On 14 September 2019, new requirements for authenticating online payments were introduced in Europe as part of the <a href="https://en.wikipedia.org/wiki/Payment_Services_Directive#Revised_Directive_on_Payment_Services_(PSD2)">second Payment Services Directive (PSD2)</a>. We expect these requirements to be enforced <a href="https://support.stripe.com/questions/strong-customer-authentication-sca-enforcement-date">over the course of 2020 and 2021</a>.</p>
+
+<p>In this guide we’ll take a closer look at these new requirements known as Strong Customer Authentication (SCA) and the kinds of payments they impact. We’ll also cover the exemptions that can be used for low-risk transactions to offer a frictionless checkout experience.</p>
+
+<p>We’ve published a <a href="https://support.stripe.com/questions/strong-customer-authentication-sca-enforcement-date">separate page</a> with the latest information on the SCA enforcement timeline, as well as a <a href="/guides/sca-payment-flows">guide</a> to help you identify when to add authentication in your customer journey. Visit our <a href="/payments/strong-customer-authentication">site</a> for more information on Stripe’s SCA-ready products.</p>
+
+      <aside class="sign-up-callout">
+        <div class="intro-copy column">
+          <h4>Stay updated on Strong Customer Authentication</h4>
+          <p>We’re working closely with policymakers, regulators, and the wider payments industry to make any changes as seamless as possible. Sign up to stay informed on regulatory and product updates.</p>
+        </div>
+        <a href="#signup" id="sign-up-button" class="common-Button common-Button--default" data-analytics-action="sign_up_button" data-analytics-source="intro_box">Get notified</a>
+      </aside>
+
+<h1 id="what-is-strong-customer-authentication">What is Strong Customer Authentication?</h1>
+
+<p>Strong Customer Authentication (SCA) is a new European regulatory requirement to reduce fraud and make online and contactless offline payments more secure. To accept payments and meet SCA requirements, you need to build additional authentication into your checkout flow. SCA requires authentication to use at least two of the following three elements.</p>
+<div class="sca-elements">
+  <div class="sca-element">
+    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 206 206">
+  <defs>
+    <polygon id="padlock-a" points="0 45.202 97 45.202 97 112.284 0 112.284"/>
+  </defs>
+  <g fill="none" fill-rule="evenodd">
+    <circle cx="103" cy="103" r="103" fill="#C4F0FF" fill-rule="nonzero"/>
+    <g transform="translate(55 46.266)">
+      <path fill="#91D7F6" fill-rule="nonzero" d="M23.1801471,49.5530106 L13.1948529,49.5530106 L13.1948529,34.932524 C13.1948529,16.0260923 28.5946282,0.734126984 47.6341324,0.734126984 L49.3662243,0.734126984 C68.405679,0.734126984 83.8051471,16.0260432 83.8051471,34.932524 L83.8051471,49.5530106 L73.8198529,49.5530106 L73.8198529,34.932524 C73.8198529,21.5022533 62.8909533,10.6496825 49.3662243,10.6496825 L47.6341324,10.6496825 C34.1093164,10.6496825 23.1801471,21.5023395 23.1801471,34.932524 L23.1801471,49.5530106 Z"/>
+      <mask id="padlock-b" fill="#fff">
+        <use xlink:href="#padlock-a"/>
+      </mask>
+      <path fill="#3297D3" d="M48.4999643,60.6826551 C42.7840967,60.6826551 38.1070563,65.3266764 38.1070563,71.003332 C38.1070563,74.7871788 40.1857805,78.2271683 43.3036886,79.9471631 L43.3036886,91.6436232 C43.3036886,94.5676497 45.5553724,96.8036075 48.4999643,96.8036075 C51.4445563,96.8036075 53.6962401,94.5676497 53.6962401,91.6436232 L53.6962401,79.9471631 C56.8141482,78.2271683 58.8928724,74.7871788 58.8928724,71.003332 C58.8928724,65.3266764 54.215832,60.6826551 48.4999643,60.6826551 Z M86.6070563,45.2023482 L10.3928724,45.2023482 C4.67664816,45.2023482 -3.56617647e-05,49.8463694 -3.56617647e-05,55.5226709 L-3.56617647e-05,101.963592 C-3.56617647e-05,107.640247 4.67664816,112.284269 10.3928724,112.284269 L86.6070563,112.284269 C92.3232805,112.284269 96.9999643,107.640247 96.9999643,101.963592 L96.9999643,55.5226709 C96.9999643,49.8463694 92.3232805,45.2023482 86.6070563,45.2023482 Z" mask="url(#padlock-b)"/>
+    </g>
+  </g>
+</svg>
+
+
+    <div class="sca-element-info">
+      <span class="sca-element-title">Something the customer <em>KNOWS</em></span>
+      <span class="sca-element-paragraph">(e.g., password or PIN)</span>
+    </div>
+  </div>
+
+  <div class="sca-element">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 206 206">
+  <g fill="none">
+    <circle cx="103" cy="103" r="103" fill="#C4F0FF"/>
+    <polygon fill="#45B2E8" points="69.99 56 136.981 56 136.981 150 69.99 150" opacity=".4"/>
+    <path fill="#3297D3" d="M127.757282,166 L79.2135922,166 C72.5111074,166 67.0776699,160.403559 67.0776699,153.5 L67.0776699,53.5 C67.0776699,46.5964406 72.5111074,41 79.2135922,41 L127.757282,41 C134.459766,41 139.893204,46.5964406 139.893204,53.5 L139.893204,153.5 C139.893204,160.403559 134.459766,166 127.757282,166 Z M133.825243,59.75 L73.1456311,59.75 L73.1456311,147.25 L133.825243,147.25 L133.825243,59.75 Z"/>
+  </g>
+</svg>
+
+
+    <div class="sca-element-info">
+      <span class="sca-element-title">Something the customer <em>HAS</em></span>
+      <span class="sca-element-paragraph">(e.g., phone or hardware token)</span>
+    </div>
+  </div>
+
+  <div class="sca-element">
+    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 206 206">
+  <defs>
+    <polygon id="fingerprint-a" points=".779 .867 57.5 .867 57.5 64.716 .779 64.716"/>
+    <polygon id="fingerprint-c" points=".311 0 59.969 0 59.969 41.861 .311 41.861"/>
+    <polygon id="fingerprint-e" points="0 .076 12.413 .076 12.413 43.089 0 43.089"/>
+  </defs>
+  <g fill="none" fill-rule="evenodd">
+    <circle cx="103" cy="103" r="103" fill="#C4F0FF" fill-rule="nonzero"/>
+    <g transform="translate(40 39)">
+      <path fill="#3297D3" d="M59.248675,126.999206 L51.311175,122.538331 C53.1764875,119.077581 55.7403,113.068894 55.7403,112.441831 L63.503175,115.870831 C63.503175,118.760081 62.0029875,121.887456 59.248675,126.999206"/>
+      <path fill="#91D7F6" d="M66.0741312,108.977112 L57.5730687,105.762425 C61.5735687,94.776925 62.1371312,77.4493625 57.9858187,63.1698 L66.6853187,60.53455 C71.3922562,76.7349875 70.7493187,96.1183625 66.0741312,108.977112"/>
+      <path fill="#3297D3" d="M57.01665,50.0888 L51.8969625,42.452925 C54.2544,40.8098625 56.5007125,40.166925 63.2079,39.13505 C78.305025,36.8093625 91.576525,53.1764875 89.2667125,84.299425 C88.5047125,94.6658 87.5998375,102.674737 86.5759,108.6993 C85.6789625,113.985675 84.6947125,117.692487 83.5675875,120.367425 C83.0913375,121.486612 82.5992125,122.4153 82.03565,123.280487 C81.765775,123.693237 81.1545875,124.558425 81.130775,124.598112 C81.1149,124.629862 78.4717125,123.129675 73.2012125,120.105487 C73.3917125,119.764175 73.3917125,119.764175 73.5663375,119.486362 C76.00315,115.739862 76.2968375,115.057237 77.6462125,107.119737 C78.6145875,101.420612 79.4877125,93.697425 80.2338375,83.600925 C81.321275,68.900675 78.9479625,58.9708625 74.2965875,53.2399875 C71.224775,49.4458625 67.256025,47.8663 64.5652125,48.27905 C59.128025,49.120425 57.9135875,49.469675 57.01665,50.0888"/>
+      <g transform="translate(69.5)">
+        <mask id="fingerprint-b" fill="#fff">
+          <use xlink:href="#fingerprint-a"/>
+        </mask>
+        <path fill="#91D7F6" d="M57.5007938,64.716025 L48.4361688,64.716025 C48.4361688,36.8315875 27.8701063,13.4318375 0.77941875,10.042525 L1.88273125,0.866775 C33.4898563,4.8117125 57.5007938,32.140525 57.5007938,64.716025" mask="url(#fingerprint-b)"/>
+      </g>
+      <g transform="translate(5)">
+        <mask id="fingerprint-d" fill="#fff">
+          <use xlink:href="#fingerprint-c"/>
+        </mask>
+        <path fill="#91D7F6" d="M59.9692312,0.022225 L59.7311062,9.2694125 C59.2389812,9.2535375 58.7468562,9.2535375 58.2547312,9.2535375 C36.5932937,9.2535375 17.2734187,22.183725 8.57391875,41.8607875 L0.31098125,38.0507875 C10.4630437,15.0876 33.0055437,-0.0015875 58.2547312,-0.0015875 C58.8262312,-0.0015875 59.3977312,0.00635 59.9692312,0.022225" mask="url(#fingerprint-d)"/>
+      </g>
+      <g transform="translate(0 43.688)">
+        <mask id="fingerprint-f" fill="#fff">
+          <use xlink:href="#fingerprint-e"/>
+        </mask>
+        <path fill="#3297D3" d="M3.36470625,0.07590625 L11.9451437,3.07628125 C10.0480812,8.72778125 9.06383125,14.6967812 9.06383125,20.7927812 C9.06383125,27.3888437 10.2068312,33.8182187 12.4134562,39.8665937 L3.91239375,43.0892187 C1.33270625,36.0089687 -0.00079375,28.4921562 -0.00079375,20.7927812 C-0.00079375,13.6728437 1.14220625,6.69578125 3.36470625,0.07590625" mask="url(#fingerprint-f)"/>
+      </g>
+      <path fill="#91D7F6" d="M40.3820312 121.247694L32.5239062 116.628069C38.8104062 105.499694 42.2235312 94.1490687 41.4297812 83.7906312 41.2710312 81.7824437 41.0646562 80.0123812 40.5963437 76.5595687 38.3579687 59.8749437 39.1834687 52.9137562 47.9305937 45.7938187L53.5900312 53.0248812C48.2719062 57.3508187 47.7559687 61.7164437 49.5815937 75.3054437 50.0657812 78.9170062 50.2959687 80.8220062 50.4705937 83.0683187 51.4310312 95.5778187 47.5019687 108.642944 40.3820312 121.247694M78.4026563 32.6945625L82.8952813 24.653875C107.660281 39.0921875 115.724781 63.7301875 105.993406 111.450438L97.1192813 109.56925C106.104531 65.4605625 99.3894062 44.9183125 78.4026563 32.6945625"/>
+      <path fill="#3297D3" d="M23.8132937,109.883575 L16.3599812,104.621012 C19.6302312,99.7950125 22.7337937,89.4603875 21.9400437,83.658075 C21.5272937,80.6815125 20.8446687,69.402325 19.9556687,65.211325 C18.3761062,57.8215125 23.0909812,44.04995 31.2189812,34.5011375 C42.0854187,21.7217625 57.7619812,16.5306375 76.8754812,22.1345125 L74.3672312,31.0245125 C58.7382937,26.444575 46.6812312,30.4292 38.0611062,40.5653875 C31.6634812,48.0901375 27.9169812,59.03595 28.8139187,63.242825 C29.8219812,67.98945 30.5522312,79.7607625 30.9173562,82.3722 C32.0682937,90.7145125 28.2821062,103.279575 23.8132937,109.883575"/>
+    </g>
+  </g>
+</svg>
+
+
+    <div class="sca-element-info">
+      <span class="sca-element-title">Something the customer <em>IS</em></span>
+      <span class="sca-element-paragraph">(e.g., fingerprint or face recognition)</span>
+    </div>
+  </div>
+</div>
+
+
+<p>(If you would like to read the original SCA requirements, they are set out in the <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=uriserv:OJ.L_.2018.069.01.0023.01.ENG&amp;toc=OJ:L:2018:069:TOC">Regulatory Technical Standards</a> or RTS.)</p>
+
+<p>Banks will need to start declining payments that require SCA and don’t meet these criteria. Although the regulation was introduced on 14 September 2019, we expect these requirements to be enforced by regulators <a href="https://support.stripe.com/questions/strong-customer-authentication-sca-enforcement-date">over the course of 2020 and 2021</a>.</p>
+
+<h1 id="when-is-strong-customer-authentication-required">When is Strong Customer Authentication required?</h1>
+
+<p>Strong Customer Authentication applies to “customer-initiated” online and contactless offline payments within Europe. As a result, most card payments and all bank transfers require SCA. Recurring direct debits on the other hand are considered “merchant-initiated” and don’t require strong authentication.</p>
+
+<p>For online card payments, these requirements apply to transactions where both the business and the cardholder’s bank are located in the <a href="https://en.wikipedia.org/wiki/European_Economic_Area">European Economic Area (EEA)</a>. (We expect SCA regulation to be enforced in the UK, <a href="https://www.fca.org.uk/publications/consultation-papers/cp18-44-brexit-regulatory-technical-standards-strong-customer-authentication">regardless of the outcome of Brexit</a>.)</p>
+
+<h1 id="how-to-authenticate-a-payment">How to authenticate a payment</h1>
+
+<p>Currently, the most common way of authenticating an online card payment relies on 3D Secure—an authentication standard supported by the vast majority of European cards. Applying 3D Secure typically adds an extra step after the checkout where the cardholder is prompted by their bank to provide additional information to complete a payment (e.g., a one-time code sent to their phone or fingerprint authentication through their mobile banking app).</p>
+
+<p><a href="https://stripe.com/guides/3d-secure-2">3D Secure 2</a>—the new version of the authentication protocol rolling out in 2019—will be the main method for authenticating online card payments and meeting the new SCA requirements. This new version introduces a better user experience that will help minimise some of the friction that authentication adds into the checkout flow.</p>
+
+<p>Offline card transactions typically fulfill authentication requirements with PIN entry.</p>
+
+<p>Other card-based payment methods such as <a href="https://stripe.com/payments/payment-methods-guide#apple-pay">Apple Pay</a> or <a href="https://stripe.com/payments/payment-methods-guide#google-pay">Google Pay</a> already support payment flows with a built-in layer of authentication (biometric or password). These can be a great way for businesses to offer a frictionless checkout experience while meeting the new requirements.</p>
+
+<p>We also expect many common European payment methods, such as <a href="https://stripe.com/payments/payment-methods-guide#ideal">iDEAL</a>, <a href="https://stripe.com/payments/payment-methods-guide#bancontact">Bancontact</a>, or <a href="https://stripe.com/payments/payment-methods-guide#multibanco">Multibanco</a>, to follow the new SCA rules without any major changes to their user experience.</p>
+
+<h1 id="exemptions-to-strong-customer-authentication">Exemptions to Strong Customer Authentication</h1>
+
+<p>Under this new regulation, specific types of low-risk payments may be exempted from Strong Customer Authentication. Payment providers like Stripe are able to request these exemptions when processing the payment. The cardholder’s bank will then receive the request, assess the risk level of the transaction, and ultimately decide whether to approve the exemption or whether authentication is still necessary.</p>
+
+<p>Building authentication into your checkout flow introduces an extra step that can add friction and increase customer drop-off. Using exemptions for low-risk payments can reduce the number of times you will need to authenticate a customer and reduce friction. We have designed our new <a href="https://stripe.com/sca">SCA-ready payments products</a> to let you take advantage of exemptions when possible to help protect your conversion.</p>
+
+<p>The most relevant exemptions for internet businesses are:</p>
+
+<h2 id="low-risk-transactions">Low-risk transactions</h2>
+
+<p>A payment provider (like Stripe) is allowed to do a real-time risk analysis to determine whether to apply SCA to a transaction. This may only be possible if the payment provider’s or bank’s overall fraud rates for card payments do not exceed the following thresholds:</p>
+
+<ul>
+  <li>0.13% to exempt transactions below €100</li>
+  <li>0.06% to exempt transactions below €250</li>
+  <li>0.01% to exempt transactions below €500</li>
+</ul>
+
+<p>These thresholds will be converted to local equivalent amounts where relevant.</p>
+
+<p>In cases, where only the payment provider’s fraud rate is below the threshold, but the cardholder’s bank is above it, we expect the bank to decline the exemption and require authentication.</p>
+
+<aside class="list-item-callout">We expect this to be one of the most useful exemptions for businesses and one of the most widely supported by banks. <a href="/radar">Stripe Radar’s</a> comprehensive, real-time risk assessment allows us to support this exemption for our users.</aside>
+
+<h2 id="payments-below-30">Payments below €30</h2>
+<p>This is another exemption that can be used for payments of a low amount. Transactions below €30 are considered “low value” and may be exempted from SCA. Banks however need to request authentication if the exemption has been used five times since the cardholder’s last successful authentication or if the sum of previously exempted payments exceeds €100. The cardholder’s bank needs to track the number of times this exemption has been used and decide whether authentication is necessary.</p>
+
+<aside class="list-item-callout">Due to the strict limitations of this exemption, we expect the low-risk transaction exemption to be more relevant for most payments. We do, however, support this exemption for our users.</aside>
+
+<h2 id="fixed-amount-subscriptions">Fixed-amount subscriptions</h2>
+
+<p>This exemption can apply when the customer makes a series of recurring payments for the same amount, to the same business. SCA is required for the customer’s first payment—subsequent charges however may be exempted from SCA.</p>
+
+<aside class="list-item-callout">We expect this exemption to be very useful for subscription businesses and broadly supported by European banks. We enable this exemption for Stripe users. If you’re using <a href="/billing#sca">Stripe Billing</a> to create subscriptions, we automatically apply this exemption when relevant and can help manage authentication requests in case the exemption is rejected by the customer’s bank.</aside>
+
+<h2 id="merchant-initiated-transactions-including-variable-subscriptions">Merchant-initiated transactions (including variable subscriptions)</h2>
+
+<p>Payments made with saved cards when the customer is not present in the checkout flow (sometimes called “off-session”) may qualify as merchant-initiated transactions. These payments technically fall outside the scope of SCA. In practice, marking a payment as a “merchant-initiated transaction” will be similar to requesting an exemption. And like any other exemption, it is still up to the bank to decide whether authentication is needed for the transaction.</p>
+
+<p>To use merchant-initiated transactions, you need to authenticate the card either when it’s being saved or on the first payment. Finally, you need to get an agreement from the customer (also referred to as a “mandate”), in order to charge their card at a later point.</p>
+
+<aside class="list-item-callout">This is a vital use case for business models that rely on delayed payments, charge variable amount subscriptions, or bill for add-ons. We expect it to be supported by most European banks and accepted if the transaction is considered low-risk by the bank.<br /><br /><a href="/docs/payments/more-payment-scenarios">Stripe's new API</a> lets you authenticate a card when it's being saved for later use and mark subsequent payments as &quot;merchant-initiated transactions.&quot;</aside>
+
+<h2 id="trusted-beneficiaries">Trusted beneficiaries</h2>
+
+<p>When completing authentication for a payment, customers may have the option to allowlist a business they trust to avoid having to authenticate future purchases. These businesses are then included on a list of “trusted beneficiaries” maintained by the customer’s bank or payment service provider.</p>
+
+<aside class="list-item-callout">While allowlisting has the potential to make repeat purchases or subscriptions more convenient for customers, so far the adoption of this feature among banks has been slow. We expect that it is not broadly supported by banks yet, but support this exemption for our users when available.</aside>
+
+<h2 id="phone-sales">Phone sales</h2>
+
+<p>Card details collected over the phone fall outside the scope of SCA and do not require authentication. This type of payment is sometimes referred to as “Mail Order and Telephone Orders” (MOTO). Similar to exempted payments, MOTO transactions need to be flagged as such—with the cardholder’s bank making the final decision to accept or reject the transaction.</p>
+
+<aside class="list-item-callout">This is an important use case for any business accepting payments over the phone and one we expect to be widely supported by banks. <a href="https://support.stripe.com/questions/phone-orders">Payments created through the Stripe Dashboard</a> are automatically marked as MOTO payments.<br /><br />
+If your business is PCI-compliant and you’ve built your own system to accept phone orders, our new payments APIs let you mark a payment as MOTO. Please <a href="https://support.stripe.com/contact">contact us</a> to enable this feature on your Stripe account and to access the technical documentation.</aside>
+
+<h2 id="corporate-payments">Corporate payments</h2>
+
+<p>This exemption may cover payments that are made with “lodged” cards (e.g., where a corporate card used for managing employee travel expenses is held directly with an online travel agent), as well as corporate payments made using virtual card numbers (which are also used in the travel sector).</p>
+
+<aside class="list-item-callout">We expect this exemption to have low practical use outside of the travel industry due to its very narrow scope. The exemption itself can only be requested by the cardholder’s bank, as neither the business, nor payment providers (like Stripe) are able to detect whether a card belongs in these categories.</aside>
+
+<h1 id="what-happens-if-an-exemption-fails">What happens if an exemption fails?</h1>
+
+<p>While exemptions may be very useful, it’s important to remember that it’s ultimately the cardholder’s bank that decides whether or not to accept an exemption. Banks can return new decline codes for payments that failed due to missing authentication. These payments then have to be resubmitted to the customer with a request for Strong Customer Authentication. Stripe’s <a href="https://stripe.com/sca">SCA-ready products</a> automatically trigger this extra authentication when required by banks.</p>
+
+<p>If your business is impacted by SCA, we recommend preparing for a fallback in case an exemption is rejected and your customer needs to authenticate. This is particularly important if you charge your customers when they’re not actively in your checkout flow (i.e., when they are off-session) and your customer needs to return to your website or app to authenticate. Read our <a href="/guides/sca-payment-flows">guide on designing payment flows for SCA</a> for more information.</p>
+
+<h1 id="how-stripe-helps-you-meet-strong-customer-authentication-requirements">How Stripe helps you meet Strong Customer Authentication requirements</h1>
+
+<p>The changes introduced by this new regulation are set to deeply affect internet commerce in Europe. And although we expect these requirements to only be <a href="https://support.stripe.com/questions/strong-customer-authentication-sca-enforcement-date">enforced over the course of 2020 and 2021</a>, impacted businesses that don’t prepare for these new requirements could see their conversion rates significantly drop as SCA enforcement ramps across European banks.</p>
+
+<p>In addition to supporting new authentication methods like <a href="https://stripe.com/guides/3d-secure-2">3D Secure 2</a>, we believe successful handling of exemptions is a key component for building a first-class payments experience that minimises friction.
+Our new payments products optimise for different regulatory, bank, and card network rules and apply relevant exemptions for low-risk payments, so as to only trigger 3D Secure when required. And as these rules change, we’ll be able to maintain and update this SCA logic in real time—taking into account each country’s enforcement timeline.</p>
+
+<p>We have released a new foundational <a href="https://stripe.com/docs/payments/payment-intents">payments API</a> that uses Stripe’s SCA logic to apply the right exemption and trigger 3D Secure when necessary. Our new <a href="https://stripe.com/docs/payments/checkout">Checkout</a>, as well as <a href="https://stripe.com/billing#sca">Stripe Billing</a> are both built on top of this API and can dynamically apply 3D Secure when required.</p>
+
+<p><a href="https://stripe.com/sca">Learn more</a> about Stripe’s SCA-ready products. If you have any questions or feedback, please <a href="mailto:sca-feedback@stripe.com">let us know</a>!</p>
+
+      <aside class="collect-email-guide" id="signup">
+            <div class="mask-container container-lg">
+    <div class="collect-email-partial">
+      <div class="intro-copy column">
+        <div class="collect-header">
+          <h4  class='common-UppercaseText'>
+            Stay connected
+          </h4>
+          
+          <p class='common-BodyText'>
+            Share your email so Stripe can send you updates on Strong Customer Authentication, guides, and industry news.
+          </p>
+        </div>
+        <form class='collect-form'
+          action=''
+          
+        >
+          <div class='collect-input email'>
+            <input id='collect-email-input-email' class='email-field' required="required" type='email'
+              name='cm-flilkk-flilkk'
+              placeholder='jenny.rosen@example.com'
+              value=''
+              pattern='[\s\S]+@[\s\S]+\.[\s\S]+$'
+            >
+            <input id='collect-email-input-list' type='hidden' name='list' value='scaguides' />
+            <input type='hidden' name='csrf-token' value='1' />
+            <button id='collect-email-input-submit' class='submit-button' type='submit'>Notify me</button>
+          </div>
+          <p class='collect-error email'>Please enter a valid email address.</p>
+          <p class='collect-error connection'>
+            You might have had an internet hiccup. Try again?
+          </p>
+          <div class="email-privacy-notice">
+            <p>
+              You can unsubscribe at any time.
+              Read our <a href="/privacy">privacy policy</a>.
+            </p>
+          </div>
+        </form>
+      </div>
+
+      <div class='collect-success column'>
+        <img class='icon' src='/img/v3/common/success.svg' alt="Green checkmark">
+
+        <h4>Stay connected</h4>
+
+        <p class='common-BodyText'>
+            We’ll let you know when we publish new guides or updates.         </p>
+      </div>
+    </div>
+  </div>
+
+      </aside>
+      <a href="/guides" class="common-Link common-Link--arrowL">Back to guides</a>
+    </article>
+  </div>
+</main>
+
+<div class="image-container">
+  <div class="overlay"></div>
+  <div class="image">
+    <div class="shadow"></div>
+    <img />
+  </div>
+</div>
+
+
+    </div>
+
+    <footer class='globalFooter'>
+
+    <article class='globalFooterCTA'>
+  <div class='container-lg'>
+
+    <div class='content'>
+      <h1 class='title'>
+        <span class='subtitle'>
+          Ready to get started?
+        </span>
+          Get in touch or create an account.
+      </h1>
+    </div>
+
+    <div class='common-ButtonGroup buttons'>
+      <a
+        href="/contact/sales"
+        class='common-Button common-Button--default'
+        data-analytics-action="contact_sales"
+        data-analytics-source="footer_cta"
+      >
+        Contact sales
+      </a>
+
+      <a
+        class='common-Button'
+        href="https://dashboard.stripe.com/register/connect"
+        data-analytics-action="create_account"
+        data-analytics-source="footer_cta"
+        data-convert-cta="dashboard_register"
+      >
+        Create Stripe Account
+      </a>
+    </div>
+  </div>
+</article>
+
+
+
+  <article class='globalFooterNav'>
+  <div class='container-lg'>
+
+    <ul class="metaNav">
+
+        <li class="select country">
+          <a class="rootLink item-country"><svg width="13" height="13"><path d="M1.543,7L6,7,5.979,11.462a0.536,0.536,0,0,0,1.016.24l4.941-9.931a0.537,0.537,0,0,0-.72-0.721L1.3,5.985A0.537,0.537,0,0,0,1.543,7Z"/></svg>
+United States</a>
+
+          <div class="popup countryPicker">
+            <div class="countryList">
+              <h4><a href="https://dashboard.stripe.com/login">Sign up instantly</a></h4>
+              <div class="columns">
+                <ul class='optionList'>
+                  <li>
+                    <a href="/en-au/guides/strong-customer-authentication" data-country="AU" data-set-country="AU" class="common-FlagIcon common-FlagIcon--au">
+                      <span>Australia</span>
+                      
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/en-at/guides/strong-customer-authentication" data-country="AT" data-set-country="AT" class="common-FlagIcon common-FlagIcon--at">
+                      <span>Austria</span>
+                      
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/en-be/guides/strong-customer-authentication" data-country="BE" data-set-country="BE" class="common-FlagIcon common-FlagIcon--be">
+                      <span>Belgium</span>
+                      
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/en-br/guides/strong-customer-authentication" data-country="BR" data-set-country="BR" class="common-FlagIcon common-FlagIcon--br">
+                      <span>Brazil</span>
+                      
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/en-bg/guides/strong-customer-authentication" data-country="BG" data-set-country="BG" class="common-FlagIcon common-FlagIcon--bg">
+                      <span>Bulgaria</span>
+                      
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/en-ca/guides/strong-customer-authentication" data-country="CA" data-set-country="CA" class="common-FlagIcon common-FlagIcon--ca">
+                      <span>Canada</span>
+                      
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/en-cy/guides/strong-customer-authentication" data-country="CY" data-set-country="CY" class="common-FlagIcon common-FlagIcon--cy">
+                      <span>Cyprus</span>
+                      
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/en-cz/guides/strong-customer-authentication" data-country="CZ" data-set-country="CZ" class="common-FlagIcon common-FlagIcon--cz">
+                      <span>Czech Republic</span>
+                      
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/en-dk/guides/strong-customer-authentication" data-country="DK" data-set-country="DK" class="common-FlagIcon common-FlagIcon--dk">
+                      <span>Denmark</span>
+                      
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/en-ee/guides/strong-customer-authentication" data-country="EE" data-set-country="EE" class="common-FlagIcon common-FlagIcon--ee">
+                      <span>Estonia</span>
+                      
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/en-fi/guides/strong-customer-authentication" data-country="FI" data-set-country="FI" class="common-FlagIcon common-FlagIcon--fi">
+                      <span>Finland</span>
+                      
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/en-fr/guides/strong-customer-authentication" data-country="FR" data-set-country="FR" class="common-FlagIcon common-FlagIcon--fr">
+                      <span>France</span>
+                      
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/en-de/guides/strong-customer-authentication" data-country="DE" data-set-country="DE" class="common-FlagIcon common-FlagIcon--de">
+                      <span>Germany</span>
+                      
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/en-gr/guides/strong-customer-authentication" data-country="GR" data-set-country="GR" class="common-FlagIcon common-FlagIcon--gr">
+                      <span>Greece</span>
+                      
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/en-hk/guides/strong-customer-authentication" data-country="HK" data-set-country="HK" class="common-FlagIcon common-FlagIcon--hk">
+                      <span>Hong Kong</span>
+                      
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/en-hu/guides/strong-customer-authentication" data-country="HU" data-set-country="HU" class="common-FlagIcon common-FlagIcon--hu">
+                      <span>Hungary</span>
+                      
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/en-in/guides/strong-customer-authentication" data-country="IN" data-set-country="IN" class="common-FlagIcon common-FlagIcon--in">
+                      <span>India</span>
+                      <em class="badge">Preview</em>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/en-ie/guides/strong-customer-authentication" data-country="IE" data-set-country="IE" class="common-FlagIcon common-FlagIcon--ie">
+                      <span>Ireland</span>
+                      
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/en-it/guides/strong-customer-authentication" data-country="IT" data-set-country="IT" class="common-FlagIcon common-FlagIcon--it">
+                      <span>Italy</span>
+                      
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/en-jp/guides/strong-customer-authentication" data-country="JP" data-set-country="JP" class="common-FlagIcon common-FlagIcon--jp">
+                      <span>Japan</span>
+                      
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/en-lv/guides/strong-customer-authentication" data-country="LV" data-set-country="LV" class="common-FlagIcon common-FlagIcon--lv">
+                      <span>Latvia</span>
+                      
+                    </a>
+                  </li>
+                </ul>
+                <ul class='optionList'>
+                  <li>
+                    <a href="/en-lt/guides/strong-customer-authentication" data-country="LT" data-set-country="LT" class="common-FlagIcon common-FlagIcon--lt">
+                      <span>Lithuania</span>
+                      
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/en-lu/guides/strong-customer-authentication" data-country="LU" data-set-country="LU" class="common-FlagIcon common-FlagIcon--lu">
+                      <span>Luxembourg</span>
+                      
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/en-my/guides/strong-customer-authentication" data-country="MY" data-set-country="MY" class="common-FlagIcon common-FlagIcon--my">
+                      <span>Malaysia</span>
+                      
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/en-mt/guides/strong-customer-authentication" data-country="MT" data-set-country="MT" class="common-FlagIcon common-FlagIcon--mt">
+                      <span>Malta</span>
+                      
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/en-mx/guides/strong-customer-authentication" data-country="MX" data-set-country="MX" class="common-FlagIcon common-FlagIcon--mx">
+                      <span>Mexico</span>
+                      
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/en-nl/guides/strong-customer-authentication" data-country="NL" data-set-country="NL" class="common-FlagIcon common-FlagIcon--nl">
+                      <span>Netherlands</span>
+                      
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/en-nz/guides/strong-customer-authentication" data-country="NZ" data-set-country="NZ" class="common-FlagIcon common-FlagIcon--nz">
+                      <span>New Zealand</span>
+                      
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/en-no/guides/strong-customer-authentication" data-country="NO" data-set-country="NO" class="common-FlagIcon common-FlagIcon--no">
+                      <span>Norway</span>
+                      
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/en-pl/guides/strong-customer-authentication" data-country="PL" data-set-country="PL" class="common-FlagIcon common-FlagIcon--pl">
+                      <span>Poland</span>
+                      
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/en-pt/guides/strong-customer-authentication" data-country="PT" data-set-country="PT" class="common-FlagIcon common-FlagIcon--pt">
+                      <span>Portugal</span>
+                      
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/en-ro/guides/strong-customer-authentication" data-country="RO" data-set-country="RO" class="common-FlagIcon common-FlagIcon--ro">
+                      <span>Romania</span>
+                      
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/en-sg/guides/strong-customer-authentication" data-country="SG" data-set-country="SG" class="common-FlagIcon common-FlagIcon--sg">
+                      <span>Singapore</span>
+                      
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/en-sk/guides/strong-customer-authentication" data-country="SK" data-set-country="SK" class="common-FlagIcon common-FlagIcon--sk">
+                      <span>Slovakia</span>
+                      
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/en-si/guides/strong-customer-authentication" data-country="SI" data-set-country="SI" class="common-FlagIcon common-FlagIcon--si">
+                      <span>Slovenia</span>
+                      
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/en-es/guides/strong-customer-authentication" data-country="ES" data-set-country="ES" class="common-FlagIcon common-FlagIcon--es">
+                      <span>Spain</span>
+                      
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/en-se/guides/strong-customer-authentication" data-country="SE" data-set-country="SE" class="common-FlagIcon common-FlagIcon--se">
+                      <span>Sweden</span>
+                      
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/en-ch/guides/strong-customer-authentication" data-country="CH" data-set-country="CH" class="common-FlagIcon common-FlagIcon--ch">
+                      <span>Switzerland</span>
+                      
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/ae/guides/strong-customer-authentication" data-country="AE" data-set-country="AE" class="common-FlagIcon common-FlagIcon--ae">
+                      <span>United Arab Emirates</span>
+                      
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/en-gb/guides/strong-customer-authentication" data-country="GB" data-set-country="GB" class="common-FlagIcon common-FlagIcon--gb">
+                      <span>United Kingdom</span>
+                      
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/us/guides/strong-customer-authentication" data-country="US" data-set-country="US" class="common-FlagIcon common-FlagIcon--us selected">
+                      <span>United States</span>
+                      
+                    </a>
+                  </li>
+                </ul>
+               </div>
+            </div>
+
+            <div class="sidebar">
+              <div class="countryList">
+                <h4><a href="/global">Request an invite</a></h4>
+                <ul class='optionList'>
+                  <li>
+                    <a class="common-FlagIcon common-FlagIcon--hr"
+                      href="https://stripe.com/global#HR">
+                      <span>Croatia</span>
+                      <em class="badge">Preview</em>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="common-FlagIcon common-FlagIcon--gi"
+                      href="https://stripe.com/global#GI">
+                      <span>Gibraltar</span>
+                      <em class="badge">Preview</em>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="common-FlagIcon common-FlagIcon--id"
+                      href="https://stripe.com/global#ID">
+                      <span>Indonesia</span>
+                      <em class="badge">Preview</em>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="common-FlagIcon common-FlagIcon--li"
+                      href="https://stripe.com/global#LI">
+                      <span>Liechtenstein</span>
+                      <em class="badge">Preview</em>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="common-FlagIcon common-FlagIcon--ph"
+                      href="https://stripe.com/global#PH">
+                      <span>Philippines</span>
+                      <em class="badge">Preview</em>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="common-FlagIcon common-FlagIcon--th"
+                      href="https://stripe.com/global#TH">
+                      <span>Thailand</span>
+                      
+                    </a>
+                  </li>
+                </ul>
+              </div>
+
+              <a class="globalLink" href="/global#signup-form">
+                <span>More countries coming soon.</span>
+                <strong>Sign up to get notified</strong>
+              </a>
+            </div>
+          </div>
+
+        </li>
+
+        <li class="select language">
+          <a class="rootLink item-language"><svg width="13" height="13"><path d="M8.079,9.837L6.116,12.3A0.654,0.654,0,0,1,5,11.841V9.852C2.488,9.351,1,7.6,1,5.5,1,3.015,3.087,1,6.5,1S12,3.015,12,5.5A4.5,4.5,0,0,1,8.079,9.837Z"/></svg>
+English (United States)</a>
+
+          <div class="popup languagePicker">
+            <ul class='optionList'>
+              <li>
+                <a data-language="id" data-set-locale="id" href="/id-us/guides/strong-customer-authentication" class="">
+                  <span>Bahasa Indonesia</span>
+                </a>
+              </li>
+              <li>
+                <a data-language="de" data-set-locale="de" href="/de-us/guides/strong-customer-authentication" class="">
+                  <span>Deutsch</span>
+                </a>
+              </li>
+              <li>
+                <a data-language="en-GB" data-set-locale="en-GB" href="/en-gb-us/guides/strong-customer-authentication" class="">
+                  <span>English (United Kingdom)</span>
+                </a>
+              </li>
+              <li>
+                <a data-language="en" data-set-locale="en" href="/us/guides/strong-customer-authentication" class="selected">
+                  <span>English (United States)</span>
+                </a>
+              </li>
+              <li>
+                <a data-language="es-419" data-set-locale="es-419" href="/es-419-us/guides/strong-customer-authentication" class="">
+                  <span>Español (América Latina)</span>
+                </a>
+              </li>
+              <li>
+                <a data-language="es" data-set-locale="es" href="/es-us/guides/strong-customer-authentication" class="">
+                  <span>Español (España)</span>
+                </a>
+              </li>
+              <li>
+                <a data-language="fr-CA" data-set-locale="fr-CA" href="/fr-ca-us/guides/strong-customer-authentication" class="">
+                  <span>Français (Canada)</span>
+                </a>
+              </li>
+              <li>
+                <a data-language="fr" data-set-locale="fr" href="/fr-us/guides/strong-customer-authentication" class="">
+                  <span>Français (France)</span>
+                </a>
+              </li>
+              <li>
+                <a data-language="it" data-set-locale="it" href="/it-us/guides/strong-customer-authentication" class="">
+                  <span>Italiano</span>
+                </a>
+              </li>
+              <li>
+                <a data-language="nl" data-set-locale="nl" href="/nl-us/guides/strong-customer-authentication" class="">
+                  <span>Nederlands</span>
+                </a>
+              </li>
+              <li>
+                <a data-language="pt-BR" data-set-locale="pt-BR" href="/pt-br-us/guides/strong-customer-authentication" class="">
+                  <span>Português (Brasil)</span>
+                </a>
+              </li>
+              <li>
+                <a data-language="sv" data-set-locale="sv" href="/sv-us/guides/strong-customer-authentication" class="">
+                  <span>Svenska</span>
+                </a>
+              </li>
+              <li>
+                <a data-language="th" data-set-locale="th" href="/th-us/guides/strong-customer-authentication" class="">
+                  <span>ไทย</span>
+                </a>
+              </li>
+              <li>
+                <a data-language="ja" data-set-locale="ja" href="/ja-us/guides/strong-customer-authentication" class="">
+                  <span>日本語</span>
+                </a>
+              </li>
+              <li>
+                <a data-language="zh-CN" data-set-locale="zh-CN" href="/zh-cn-us/guides/strong-customer-authentication" class="">
+                  <span>简体中文</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+
+        </li>
+
+      <li class="space"></li>
+
+
+      <li class="copyright">&copy; Stripe</li>
+    </ul>
+
+    <div class="siteNav">
+      <div class="column">
+        <h4>Products</h4>
+        <div class="splitColumn">
+          <ul>
+            <li><a href="/atlas"><strong>Atlas</strong></a></li>
+            <li><a href="https://stripe.com/billing"><strong>Billing</strong></a></li>
+            <li><a href="https://stripe.com/capital"><strong>Capital</strong></a></li>
+            <li><a href="https://stripe.com/payments/checkout"><strong>Checkout</strong></a></li>
+            <li><a href="https://stripe.com/climate"><strong>Climate</strong></a></li>
+            <li><a href="https://stripe.com/connect"><strong>Connect</strong></a></li>
+            <li><a href="/corporate-card"><strong>Corporate Card</strong></a></li>
+            <li><a href="https://stripe.com/payments/elements"><strong>Elements</strong></a></li>
+            <li><a href="https://stripe.com/invoicing"><strong>Invoicing</strong></a></li>
+            <li><a href="https://stripe.com/issuing"><strong>Issuing</strong></a></li>
+            <li><a href="https://stripe.com/payments"><strong>Payments</strong></a></li>
+            <li><a href="https://stripe.com/payments/payment-links"><strong>Payment Links</strong></a></li>
+            <li><a href="https://stripe.com/connect/payouts"><strong>Payouts</strong></a></li>
+            <li><a href="/radar"><strong>Radar</strong></a></li>
+            <li><a href="https://stripe.com/tax"><strong>Tax</strong></a></li>
+            <li><a href="https://stripe.com/terminal"><strong>Terminal</strong></a></li>
+            <li><a href="https://stripe.com/treasury"><strong>Treasury</strong></a></li>
+          </ul>
+          <ul>
+              <li><a href="/saas">SaaS</a></li>
+            <li><a href="https://stripe.com/use-cases/platforms">Platforms</a></li>
+            <li><a href="https://stripe.com/use-cases/marketplaces">Marketplaces</a></li>
+            <li><a href="https://stripe.com/use-cases/ecommerce">Ecommerce</a></li>
+            <li class="long-link"><a href="https://stripe.com/use-cases/creator-economy">Creator Economy</a></li>
+            <li><a href="/pricing">Pricing</a></li>
+            <li><a href="/global">Global</a></li>
+            <li><a href="/guides">Guides</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="column">
+        <h4>Developers</h4>
+        <ul>
+          <li><a href="/docs">Documentation</a></li>
+          <li><a href="/docs/api">API reference</a></li>
+          <li><a href="https://status.stripe.com">API status</a></li>
+          <li><a href="/open-source">Open source</a></li>
+        </ul>
+      </div>
+      <div class="column">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="/about">About</a></li>
+          <li><a href="/enterprise">Enterprise</a></li>
+          <li><a href="https://stripe.com/customers">Customers</a></li>
+          <li><a href="/partners">Partners</a></li>
+          <li><a href="/partner-program">Partner Program</a></li>
+          <li><a href="/jobs">Jobs</a></li>
+          <li><a href="https://stripe.com/blog">Blog</a></li>
+            <li><a href="/newsroom">Newsroom</a></li>
+          <li><a href="/blog/first-negative-emissions-purchases">Environment</a></li>
+        </ul>
+      </div>
+      <div class="column">
+        <h4>Resources</h4>
+        <ul>
+          <li>
+            <a href="https://support.stripe.com">Support</a>
+          </li>
+          <li><a href="/contact">Contact</a></li>
+          <li><a href="/privacy">Privacy &amp; terms</a></li>
+          <li><a href="/spc/licenses">Licenses</a></li>
+          <li><a href="/sitemap">Sitemap</a></li>
+            <li><a href="https://stripe.com/cookie-settings">Cookie settings</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</article>
+
+
+</footer>
+
+
+    <script type="application/json" id="site-feature-flags">
+      {"test_experiment_0":false,"analytics_id_holdback":false,"merchant_token_holdback":false}
+    </script>
+
+    
+    
+
+
+<script type="application/json" id="site-analytics-config">{&quot;generalAnalyticsConfig&quot;:{&quot;ga&quot;:{},&quot;flags&quot;:{&quot;test_experiment_0&quot;:false,&quot;analytics_id_holdback&quot;:false,&quot;merchant_token_holdback&quot;:false},&quot;locale&quot;:&quot;en&quot;,&quot;treatments&quot;:{&quot;test_experiment_0&quot;:&quot;control&quot;}},&quot;siteSpecificAnalyticsConfig&quot;:{&quot;pageId&quot;:&quot;guides/strong-customer-authentication-updated&quot;,&quot;trackPageViewed&quot;:true,&quot;gtmConfig&quot;:{&quot;event&quot;:&quot;dataLayer-initialized&quot;,&quot;user-id&quot;:null,&quot;account-id&quot;:null,&quot;merchant-id&quot;:null,&quot;user-role&quot;:null,&quot;products-enabled&quot;:null,&quot;page-category&quot;:null,&quot;language&quot;:&quot;en&quot;,&quot;country&quot;:&quot;US&quot;,&quot;signed-in&quot;:false,&quot;signup-type&quot;:null}}}</script>
+
+
+  <script src="https://b.stripecdn.com/site-srv/assets/compiled/js/sprockets-js-v3/shared/same-site-34d30c35d076790c8f42.min.js"></script>
+<noscript><img alt="" height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=742650679237989&ev=PageView&noscript=1" /></noscript>
+
+<img height="1" width="1" style="display:none;" alt="" src="https://dc.ads.linkedin.com/collect/?pid=332772&fmt=gif" />
+
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W8NSNKQ"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+
+<script src="https://b.stripecdn.com/site-srv/assets/compiled/js/site-analytics-4a7d8116d210b6dbb125.min.js"></script>
+<script defer src="https://js.stripe.com/internal/v2/analytics.min.js"></script>
+<script defer src="https://js.stripe.com/v2/stripe-m-preview.js"></script>
+
+
+
+  <script data-sandbox-url="https://b.stripecdn.com/site-srv/assets/files/sandbox-v2-aba2b8dee729e152e1ce26611bcccabda1aea527a69d895c9e9d784acedb7ac1.html" data-sandbox-id="b8e0c4b6-0e67-4c19-877a-ffd45d101a57" data-munchkin-id="072-MDK-283" data-source-url="/guides/strong-customer-authentication"></script>
+
+
+
+    
+<script defer src="https://b.stripecdn.com/site-srv/assets/compiled/js/cookie-banner-d4dec09685a6a4287935.min.js"></script>
+
+<div class="NotificationContainer">
+  <div
+    class="NotificationContainer__notification"
+    rel="cookie-notification"
+    data-js-accepted-message="OK! We'll only set cookies that are absolutely necessary for our systems to function."
+    aria-hidden="true"
+    hidden
+  >
+    <div class="NotificationContainer__content">
+        <span class="NotificationContainer__copy" rel="cookie-copy">
+          We use cookies to improve your experience and for marketing. Learn more in our <a
+  class="common-Link"
+  target="_blank"
+  href="/cookies-policy/legal"
+  data-analytics-action="cookies policy"
+  data-analytics-source="cookie notification"
+>
+cookie policy</a>.
+        </span>
+        <div class="NotificationContainer__actions" rel="cookie-actions">
+          <a
+            href="https://stripe.com/cookie-settings"
+            class="common-Button common-Button--default"
+            target="_blank"
+            rel="manage-cookies"
+            data-analytics-action="manage cookies"
+            data-analytics-source="cookie notification"
+          >Manage cookies</a>
+
+          <button
+            class="common-Button common-Button--default"
+            rel="accept-all-cookies"
+            data-analytics-action="accept all cookies"
+            data-analytics-source="cookie notification"
+          >Accept all</button>
+        </div>
+
+        <button
+          class="NotificationContainer__closeButton"
+          rel="dismiss-cookie-notification"
+          data-analytics-action="close (reject all cookies)"
+          data-analytics-source="cookie notification"
+        >Close
+        </button>
+    </div>
+  </div>
+
+</div>
+
+
+    <link type="text/css" rel="stylesheet" href="//fast.fonts.net/t/1.css?apiType=css&amp;projectid=4414faae-0f1e-48be-9319-851fc710f613">
+  </body>
+
+</html>

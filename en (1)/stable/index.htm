@@ -1,0 +1,344 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+  
+  <!-- Licensed under the Apache 2.0 License -->
+  <link rel="stylesheet" type="text/css" href="_static/fonts/open-sans/stylesheet.css" />
+  <!-- Licensed under the SIL Open Font License -->
+  <link rel="stylesheet" type="text/css" href="_static/fonts/source-serif-pro/source-serif-pro.css" />
+  <link rel="stylesheet" type="text/css" href="_static/css/bootstrap.min.css" />
+  <link rel="stylesheet" type="text/css" href="_static/css/bootstrap-theme.min.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+    <title>Guzzle, PHP HTTP client &mdash; Guzzle Documentation</title>
+    
+    <link rel="stylesheet" href="_static/guzzle.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="https://assets.readthedocs.org/static/css/badge_only.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="https://assets.readthedocs.org/static/javascript/readthedocs-doc-embed.js"></script>
+    <link rel="top" title="Guzzle Documentation" href="#" />
+    <link rel="next" title="Overview" href="overview.html" />
+  
+   
+
+  
+<!-- RTD Extra Head -->
+
+    <!--
+    Always link to the latest version, as canonical.
+    http://docs.readthedocs.org/en/latest/canonical.html
+    -->
+    <link rel="canonical" href="https://docs.guzzlephp.org/en/stable/" />
+
+<link rel="stylesheet" href="https://assets.readthedocs.org/static/css/readthedocs-doc-embed.css" type="text/css" />
+
+<script type="application/json" id="READTHEDOCS_DATA">{"ad_free": false, "api_host": "https://readthedocs.org", "build_date": "2021-10-18T09:53:21Z", "builder": "sphinx", "canonical_url": "https://docs.guzzlephp.org/en/stable/", "commit": "868b3571", "docroot": "/docs/", "features": {"docsearch_disabled": false}, "global_analytics_code": "UA-17997319-1", "language": "en", "page": "index", "programming_language": "php", "project": "guzzle", "proxied_api_host": "/_", "source_suffix": ".rst", "subprojects": {}, "theme": "guzzle_sphinx_theme", "user_analytics_code": "UA-22752917-1", "version": "stable"}</script>
+
+<!--
+Using this variable directly instead of using `JSON.parse` is deprecated.
+The READTHEDOCS_DATA global variable will be removed in the future.
+-->
+<script type="text/javascript">
+READTHEDOCS_DATA = JSON.parse(document.getElementById('READTHEDOCS_DATA').innerHTML);
+</script>
+
+<script type="text/javascript" src="https://assets.readthedocs.org/static/javascript/readthedocs-analytics.js" async="async"></script>
+
+<!-- end RTD <extrahead> -->
+</head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="overview.html" title="Overview"
+             accesskey="N">next</a> |</li>
+        <li class="nav-item nav-item-0"><a href="#">Guzzle 7</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="container-wrapper">
+
+      <div id="mobile-toggle">
+        <a href="#"><span class="glyphicon glyphicon-align-justify" aria-hidden="true"></span></a>
+      </div>
+  <div id="left-column">
+    <div class="sphinxsidebar"><a href="
+    #" class="text-logo">Guzzle 7</a>
+<div class="sidebar-block">
+  <div class="sidebar-wrapper">
+    <h2>Table Of Contents</h2>
+  </div>
+  <div class="sidebar-toc">
+    
+    
+      <ul>
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quickstart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="request-options.html">Request Options</a></li>
+<li class="toctree-l1"><a class="reference internal" href="psr7.html">Guzzle and PSR-7</a></li>
+<li class="toctree-l1"><a class="reference internal" href="handlers-and-middleware.html">Handlers and Middleware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="testing.html">Testing Guzzle Clients</a></li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">FAQ</a></li>
+</ul>
+
+    
+  </div>
+</div>
+<div class="sidebar-block">
+  <div class="sidebar-wrapper">
+    <div id="main-search">
+      <form class="form-inline" action="search.html" method="GET" role="form">
+        <div class="input-group">
+          <input name="q" type="text" class="form-control" placeholder="Search...">
+        </div>
+        <input type="hidden" name="check_keywords" value="yes" />
+        <input type="hidden" name="area" value="default" />
+      </form>
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
+        <div id="right-column">
+          
+          <div role="navigation" aria-label="breadcrumbs navigation">
+            <ol class="breadcrumb">
+              <li><a href="#">Docs</a></li>
+              
+              <li>Guzzle, PHP HTTP client</li>
+            </ol>
+          </div>
+          
+          <div class="document clearer body">
+            
+  <div class="section" id="guzzle-documentation">
+<h1>Guzzle Documentation<a class="headerlink" href="#guzzle-documentation" title="Permalink to this headline">¶</a></h1>
+<p>Guzzle is a PHP HTTP client that makes it easy to send HTTP requests and
+trivial to integrate with web services.</p>
+<ul class="simple">
+<li>Simple interface for building query strings, POST requests, streaming large
+uploads, streaming large downloads, using HTTP cookies, uploading JSON data,
+etc...</li>
+<li>Can send both synchronous and asynchronous requests using the same interface.</li>
+<li>Uses PSR-7 interfaces for requests, responses, and streams. This allows you
+to utilize other PSR-7 compatible libraries with Guzzle.</li>
+<li>Abstracts away the underlying HTTP transport, allowing you to write
+environment and transport agnostic code; i.e., no hard dependency on cURL,
+PHP streams, sockets, or non-blocking event loops.</li>
+<li>Middleware system allows you to augment and compose client behavior.</li>
+</ul>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="nv">$client</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">GuzzleHttp\Client</span><span class="p">();</span>
+<span class="nv">$res</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">request</span><span class="p">(</span><span class="s1">&#39;GET&#39;</span><span class="p">,</span> <span class="s1">&#39;https://api.github.com/user&#39;</span><span class="p">,</span> <span class="p">[</span>
+    <span class="s1">&#39;auth&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">&#39;user&#39;</span><span class="p">,</span> <span class="s1">&#39;pass&#39;</span><span class="p">]</span>
+<span class="p">]);</span>
+<span class="k">echo</span> <span class="nv">$res</span><span class="o">-&gt;</span><span class="na">getStatusCode</span><span class="p">();</span>
+<span class="c1">// &quot;200&quot;</span>
+<span class="k">echo</span> <span class="nv">$res</span><span class="o">-&gt;</span><span class="na">getHeader</span><span class="p">(</span><span class="s1">&#39;content-type&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">];</span>
+<span class="c1">// &#39;application/json; charset=utf8&#39;</span>
+<span class="k">echo</span> <span class="nv">$res</span><span class="o">-&gt;</span><span class="na">getBody</span><span class="p">();</span>
+<span class="c1">// {&quot;type&quot;:&quot;User&quot;...&#39;</span>
+
+<span class="c1">// Send an asynchronous request.</span>
+<span class="nv">$request</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\GuzzleHttp\Psr7\Request</span><span class="p">(</span><span class="s1">&#39;GET&#39;</span><span class="p">,</span> <span class="s1">&#39;http://httpbin.org&#39;</span><span class="p">);</span>
+<span class="nv">$promise</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">sendAsync</span><span class="p">(</span><span class="nv">$request</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">then</span><span class="p">(</span><span class="k">function</span> <span class="p">(</span><span class="nv">$response</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="s1">&#39;I completed! &#39;</span> <span class="o">.</span> <span class="nv">$response</span><span class="o">-&gt;</span><span class="na">getBody</span><span class="p">();</span>
+<span class="p">});</span>
+<span class="nv">$promise</span><span class="o">-&gt;</span><span class="na">wait</span><span class="p">();</span>
+</pre></div>
+</div>
+<div class="section" id="user-guide">
+<h2>User Guide<a class="headerlink" href="#user-guide" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#requirements">Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#installation">Installation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="overview.html#bleeding-edge">Bleeding edge</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#license">License</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#contributing">Contributing</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="overview.html#guidelines">Guidelines</a></li>
+<li class="toctree-l3"><a class="reference internal" href="overview.html#running-the-tests">Running the tests</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#reporting-a-security-vulnerability">Reporting a security vulnerability</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quickstart</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#making-a-request">Making a Request</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="quickstart.html#creating-a-client">Creating a Client</a></li>
+<li class="toctree-l3"><a class="reference internal" href="quickstart.html#sending-requests">Sending Requests</a></li>
+<li class="toctree-l3"><a class="reference internal" href="quickstart.html#async-requests">Async Requests</a></li>
+<li class="toctree-l3"><a class="reference internal" href="quickstart.html#concurrent-requests">Concurrent requests</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#using-responses">Using Responses</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#query-string-parameters">Query String Parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#uploading-data">Uploading Data</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="quickstart.html#post-form-requests">POST/Form Requests</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#cookies">Cookies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#redirects">Redirects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#exceptions">Exceptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#environment-variables">Environment Variables</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="quickstart.html#relevant-ini-settings">Relevant ini Settings</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="request-options.html">Request Options</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="request-options.html#allow-redirects">allow_redirects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="request-options.html#auth">auth</a></li>
+<li class="toctree-l2"><a class="reference internal" href="request-options.html#body">body</a></li>
+<li class="toctree-l2"><a class="reference internal" href="request-options.html#cert">cert</a></li>
+<li class="toctree-l2"><a class="reference internal" href="request-options.html#cookies">cookies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="request-options.html#connect-timeout">connect_timeout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="request-options.html#debug">debug</a></li>
+<li class="toctree-l2"><a class="reference internal" href="request-options.html#decode-content">decode_content</a></li>
+<li class="toctree-l2"><a class="reference internal" href="request-options.html#delay">delay</a></li>
+<li class="toctree-l2"><a class="reference internal" href="request-options.html#expect">expect</a></li>
+<li class="toctree-l2"><a class="reference internal" href="request-options.html#force-ip-resolve">force_ip_resolve</a></li>
+<li class="toctree-l2"><a class="reference internal" href="request-options.html#form-params">form_params</a></li>
+<li class="toctree-l2"><a class="reference internal" href="request-options.html#headers">headers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="request-options.html#http-errors">http_errors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="request-options.html#idn-conversion">idn_conversion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="request-options.html#json">json</a></li>
+<li class="toctree-l2"><a class="reference internal" href="request-options.html#multipart">multipart</a></li>
+<li class="toctree-l2"><a class="reference internal" href="request-options.html#on-headers">on_headers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="request-options.html#on-stats">on_stats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="request-options.html#progress">progress</a></li>
+<li class="toctree-l2"><a class="reference internal" href="request-options.html#proxy">proxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="request-options.html#query">query</a></li>
+<li class="toctree-l2"><a class="reference internal" href="request-options.html#read-timeout">read_timeout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="request-options.html#sink">sink</a></li>
+<li class="toctree-l2"><a class="reference internal" href="request-options.html#ssl-key">ssl_key</a></li>
+<li class="toctree-l2"><a class="reference internal" href="request-options.html#stream">stream</a></li>
+<li class="toctree-l2"><a class="reference internal" href="request-options.html#synchronous">synchronous</a></li>
+<li class="toctree-l2"><a class="reference internal" href="request-options.html#verify">verify</a></li>
+<li class="toctree-l2"><a class="reference internal" href="request-options.html#timeout">timeout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="request-options.html#version">version</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="psr7.html">Guzzle and PSR-7</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="psr7.html#headers">Headers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="psr7.html#accessing-headers">Accessing Headers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="psr7.html#complex-headers">Complex Headers</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="psr7.html#body">Body</a></li>
+<li class="toctree-l2"><a class="reference internal" href="psr7.html#requests">Requests</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="psr7.html#request-methods">Request Methods</a></li>
+<li class="toctree-l3"><a class="reference internal" href="psr7.html#request-uri">Request URI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="psr7.html#scheme">Scheme</a></li>
+<li class="toctree-l3"><a class="reference internal" href="psr7.html#host">Host</a></li>
+<li class="toctree-l3"><a class="reference internal" href="psr7.html#port">Port</a></li>
+<li class="toctree-l3"><a class="reference internal" href="psr7.html#path">Path</a></li>
+<li class="toctree-l3"><a class="reference internal" href="psr7.html#query-string">Query string</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="psr7.html#responses">Responses</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="psr7.html#start-line">Start-Line</a></li>
+<li class="toctree-l3"><a class="reference internal" href="psr7.html#id2">Body</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="psr7.html#streams">Streams</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="psr7.html#creating-streams">Creating Streams</a></li>
+<li class="toctree-l3"><a class="reference internal" href="psr7.html#metadata">Metadata</a></li>
+<li class="toctree-l3"><a class="reference internal" href="psr7.html#stream-decorators">Stream Decorators</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="handlers-and-middleware.html">Handlers and Middleware</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="handlers-and-middleware.html#handlers">Handlers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="handlers-and-middleware.html#middleware">Middleware</a></li>
+<li class="toctree-l2"><a class="reference internal" href="handlers-and-middleware.html#handlerstack">HandlerStack</a></li>
+<li class="toctree-l2"><a class="reference internal" href="handlers-and-middleware.html#creating-a-handler">Creating a Handler</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="testing.html">Testing Guzzle Clients</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="testing.html#mock-handler">Mock Handler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="testing.html#history-middleware">History Middleware</a></li>
+<li class="toctree-l2"><a class="reference internal" href="testing.html#test-web-server">Test Web Server</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="testing.html#using-the-test-server">Using the test server</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">FAQ</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="faq.html#does-guzzle-require-curl">Does Guzzle require cURL?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="faq.html#can-guzzle-send-asynchronous-requests">Can Guzzle send asynchronous requests?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="faq.html#how-can-i-add-custom-curl-options">How can I add custom cURL options?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="faq.html#how-can-i-add-custom-stream-context-options">How can I add custom stream context options?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="faq.html#why-am-i-getting-an-ssl-verification-error">Why am I getting an SSL verification error?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="faq.html#what-is-this-maximum-function-nesting-error">What is this Maximum function nesting error?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="faq.html#why-am-i-getting-a-417-error-response">Why am I getting a 417 error response?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="faq.html#how-can-i-track-redirected-requests">How can I track redirected requests?</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+
+          </div>
+            
+  <div class="footer-relations">
+    
+      <div class="pull-right">
+        <a class="btn btn-default" href="overview.html" title="next chapter (use the right arrow)">Overview</a>
+      </div>
+    </div>
+    <div class="clearer"></div>
+  
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="overview.html" title="Overview"
+             >next</a> |</li>
+        <li class="nav-item nav-item-0"><a href="#">Guzzle 7</a> &raquo;</li> 
+      </ul>
+    </div>
+<script type="text/javascript">
+  $("#mobile-toggle a").click(function () {
+    $("#left-column").toggle();
+  });
+</script>
+<script type="text/javascript" src="_static/js/bootstrap.js"></script>
+  <div class="footer">
+    &copy; Copyright 2015, Michael Dowling. Created using <a href="http://sphinx.pocoo.org/">Sphinx</a>.
+  </div>
+  </body>
+</html>

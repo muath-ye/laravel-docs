@@ -1,0 +1,1321 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>LARACON Online | The WINTER edition of the official Laravel Online conference</title>
+        <meta name="description" content="Laracon Online is an annual online gathering of people who are passionate about building amazing applications with the Laravel web framework.">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="LARACON Online | The WINTER edition of the official Laravel Online conference" />
+        <meta property="og:description" content="Laracon Online is an annual online gathering of people who are passionate about building amazing applications with the Laravel web framework." />
+        <meta property="og:url" content="https://laracon.net" />
+        <meta property="og:site_name" content="LARACON Online | The WINTER edition of the official Laravel Online conference" />
+        <meta property="og:locale" content="en_US" />
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:site" content="@LaraconOnline" />
+        <meta name="twitter:title" content="LARACON Online | The WINTER edition of the official Laravel Online conference" />
+        <meta name="twitter:description" content="Laracon Online is an annual online gathering of people who are passionate about building amazing applications with the Laravel web framework." />
+        <meta property="og:image" content="https://laracon.net/winter22/socialcard.png" />
+        <meta property="og:image:width" content="1920" />
+        <meta property="og:image:height" content="1080" />
+        <meta name="twitter:image" content="https://laracon.net/winter22/socialcard.png" />
+        <meta name="twitter:image:alt" content="LARACON Online | The WINTER edition of the official Laravel Online conference" />
+        <meta property="og:image:alt" content="Laracon Online is an annual online gathering of people who are passionate about building amazing applications with the Laravel web framework." />
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@900&display=swap&text=ABCDEFGHIJKLMNOPQRSTUVWXYZ?!">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@900&display=swap&text=ABCDEFGHIJKLMNOPQRSTUVWXYZ?!" media="print" onload="this.media='all'">
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <link rel="stylesheet" href="/winter22/style.min.css">
+        <script defer src="/winter22/app.min.js?v=4"></script>
+    </head>
+    <body class="dark:bg-white dark:text-gray-900 text-white bg-black">
+
+        <nav id="menu" x-cloak x-data
+            class="whitespace-nowrap md:w-full md:py-3 md:space-x-4 container z-10 flex items-center justify-center w-auto p-1 text-sm font-bold uppercase">
+            <a href="#speakers" class="hover:bg-gray-600 dark:hover:bg-gray-200 md:block dark:text-gray-900 hidden px-6 py-3 text-white transition rounded-full">
+                Speakers
+            </a>
+            <a href="#schedule" class="hover:bg-gray-600 dark:hover:bg-gray-200 md:block dark:text-gray-900 hidden px-6 py-3 text-white transition rounded-full">
+                Schedule
+            </a>
+            <a href="#partners" class="hover:bg-gray-600 dark:hover:bg-gray-200 md:block dark:text-gray-900 hidden px-6 py-3 text-white transition rounded-full">
+                Partners
+            </a>
+            <a href="#preparty" class="hover:bg-gray-600 dark:hover:bg-gray-200 md:block dark:text-gray-900 hidden px-6 py-3 text-white transition rounded-full">
+                Preparty
+            </a>
+            <a href="https://store.laracon.net/?rel=laracon" class="lg:block hover:bg-gray-600 dark:hover:bg-gray-200 md:block dark:text-gray-900 hidden px-6 py-3 text-white transition rounded-full">
+                Merch
+            </a>
+            <a href="https://laracon.net/swag" class="lg:block hover:bg-gray-600 dark:hover:bg-gray-200 md:block dark:text-gray-900 hidden px-6 py-3 text-white transition rounded-full">
+                Swag
+            </a>
+            <a href="https://www.youtube.com/channel/UC8381r3eNzmJnd6dNO7z3vA/playlists" rel="external" target="_blank"
+                class="hover:bg-gray-600 md:block hidden px-6 py-3 text-white transition bg-gray-800 rounded-full">
+                Past videos
+            </a>
+            
+        </nav>
+
+        <header class="md:flex-row md:pb-0 md:container flex flex-col-reverse items-stretch justify-center flex-grow pb-12">
+            <div class="md:flex md:pl-12 _bg-red-500 z-10 items-center justify-center">
+                <div class="dark:text-gray-900 text-gray-50 text-center">
+                    <svg class="w-[300px] sm:w-[350px] md:mt-0 -mt-6 fill-current" viewBox="0 0 850 360">
+                        <path d="M827.9,48.4c-0.4-7.9-0.8-16-2.7-23.7c-1-4-6.4-2.5-6,1.4c1.1,12.3,2.9,24.4,2.9,36.8c0,11.4-0.5,23.4-3.3,34.4 c-1.1,4.2-2.7,8.4-5.5,11.8c-3.5,4.2-8.8,5.3-14,6.1c-12,1.7-24.5,2.1-36.6,1.5c-5.8-0.3-11.8-0.7-17.4-2.2 c-5.2-1.4-8.3-4.6-10.2-9.6c-3.9-10.6-4.6-23-5.4-34.2c-0.8-11.9-1.7-23.9-1.5-35.8c0.1-5.7,0.5-11.6,2.1-17.1 c1.5-5.2,4.8-8.2,10-9.7c12.3-3.6,26-3.6,38.7-3.3c6.8,0.2,13.6,0.5,20.4,0.8c5.7,0.3,13.9,0.5,16.9,6.3c0.3,0.6,1.2,0.4,1.2-0.3 c0.2-13.1-17.1-12.3-26.1-12.8c-14-0.9-28.2-1.1-42.2,0.8c-5.6,0.8-11.6,1.6-16.6,4.5c-4.8,2.8-7.5,7.2-9,12.5 c-3.6,13.3-2.6,27.4-2,40.9c0.6,13.8,1.5,27.7,4.3,41.3c1.1,5.4,2.5,10.8,5.8,15.2c3.5,4.7,8.6,6.8,14.3,7.8 c13.7,2.6,27.8,2.1,41.7,1.2c11.5-0.7,25.5-1.1,32.4-11.9c3.2-5,4.5-11.1,5.4-16.8c1.2-7.5,1.8-15,2.2-22.6 C828.3,64.2,828.3,56.3,827.9,48.4z M774.6,70.2c0,0,0.1-0.1,0.1-0.2c0.1-0.1,0.3-0.4,0.4-0.4c0.1-0.1,0.3-0.2,0.4-0.3c0,0,0.3-0.2,0.4-0.2 c0.1-0.1,0.3-0.1,0.4-0.2c0.1,0,0.1-0.1,0.2-0.1c0,0,0,0,0.1,0c0.8-0.2,1.7-0.4,2.2-0.5c1.1,0,2.2,0,3.3,0c0.5,0,1,0.1,1.4,0.1 c0.6,0.1,1.1-0.1,1.8-0.1c0.9,0,1.6-1.1,0.8-1.8c-0.4-0.4-0.6-0.8-1.1-1.1c-0.4-0.3-0.9-0.6-1.4-0.9c-1.1-0.6-2.2-1.1-3.4-1.4 c-2.4-0.6-4.7-0.4-7,0.6c-4.6,1.9-5.7,6.8-6.2,11.2c-0.5,4.8-0.6,9.7-0.2,14.5c0.2,2.5,0.5,5,0.9,7.5c0.3,2.1,0.7,4.3,1.9,6.1 c1.5,2.3,3.7,3.5,6.4,3.9c1,0.2,2,0.1,3,0c1.4-0.1,2.8-0.2,4.1-0.9c1-0.6,1.6-1.7,1.3-2.9c-0.3-1.2-1.3-1.8-2.4-2 c-0.8-0.1-1.9,0.1-2.5,0.1c-0.5,0.1-1.5,0.1-2.2,0c-0.1,0-0.7-0.1-0.7-0.1c-0.3-0.1-0.6-0.2-0.9-0.3c0,0-0.3-0.2-0.4-0.2 c-0.1-0.1-0.3-0.2-0.3-0.2c0,0-0.3-0.3-0.3-0.3c-0.7-1.1-0.9-2.6-1.1-4.1c-0.3-1.9-0.5-3.8-0.6-5.7c-0.1-1.5-0.2-3.1-0.2-4.6 c0.4,0,0.9,0,1.3-0.1c1.4-0.1,2.8,0,4.2,0.1c1.4,0.1,2.7-1,3-2.4c0.1-0.6,0.1-1.3-0.3-1.9c-0.4-0.7-1-1.1-1.7-1.4 c-0.5-0.2-1-0.2-1.5-0.1c-0.1,0-0.2,0-0.4,0c-0.5-0.1-0.9,0.1-1.3,0.3c-0.9,0.1-1.7,0.3-2.6,0.5c-0.3,0.1-0.6,0.2-0.9,0.3 c0-1,0.1-2,0.1-3c0.1-1,0.1-2,0.2-3c0-0.4,0.1-0.8,0.1-1.2c0-0.2,0-0.3,0.1-0.5c0,0,0.1-0.5,0.1-0.6c0.1-0.7,0.3-1.3,0.6-2 c0.2-0.6,0.1-0.2,0.1-0.1C774.4,70.6,774.5,70.4,774.6,70.2z M807.9,103.9c1.7,0.2,3.2-1,3.2-2.7c0.1-5.5,0-11.3-2.8-16.2c-1.2-2.1-2.9-4-4.9-5.4c2.4-1.8,4.2-4.1,5.1-7 c1.4-5-1-11.1-6.5-12.3c-2.7-0.6-5.6,0-7.6,2c-1.7,1.7-2.5,4.1-2.9,6.5c-1,5.7-1.5,11.6-1.5,17.4c0,3.2,0.2,6.4,0.6,9.5 c0.4,3.3,0.8,6.7,2.5,9.6c0.5,0.8,1.9,0.7,2.1-0.3c0.5-2.4,0.4-4.8,0.3-7.2c-0.1-2.4-0.2-4.9-0.2-7.3c0-2.5,0.1-4.9,0.2-7.4 c0.1,0,0.3,0,0.4,0c0.2,0,0.5,0,0.7,0c0.1,0,0.3,0,0.4,0c0.4,0.1,0.9,0.2,1.3,0.3c0.1,0,0.3,0.1,0.4,0.2c0,0,0.3,0.2,0.4,0.2 c0.4,0.2,0.9,0.5,1.3,0.8c0,0,0.1,0.1,0.1,0.1c0,0,0.1,0.1,0.1,0.1c0.1,0.1,0.3,0.3,0.4,0.4c0.4,0.3,0.7,0.7,1,1.1 c0.1,0.1,0.1,0.1,0.1,0.1c0,0,0,0,0.1,0.1c0.1,0.2,0.3,0.4,0.4,0.6c0.3,0.4,0.5,0.9,0.8,1.3c1.8,3.6,1.8,8.2,1.9,12.5 C805.2,102.3,806.5,103.7,807.9,103.9z M803.1,70.2c-0.1,0.3-0.1,0.5-0.2,0.8c-0.2,0.6-0.2,0.5-0.4,1c-0.5,1-0.8,1.4-1.7,2.1 c-1.2,1.2-3,2.1-4.7,2.8c0-0.4,0.1-0.7,0.1-1.1c0.3-2.2,0.5-4.4,1-6.5c0.1-0.7,0.4-1.7,0.6-2.2c0,0,0.3-0.6,0.3-0.5 c0.1-0.1,0.2-0.3,0.3-0.4c0,0,0.1-0.1,0.2-0.2c0.1-0.1,0.1-0.1,0.1-0.1c0,0,0.1-0.1,0.2-0.1c0.1,0,0.1-0.1,0.1-0.1 c0.2-0.1,0.3-0.1,0.5-0.1c0.1,0,0.1,0,0.1,0c0,0,0,0,0.1,0c0.2,0,0.5,0,0.7,0c-0.1,0-0.5-0.1,0.1,0c0.2,0,0.4,0.1,0.6,0.2 c0.6,0.2,0.2,0.1,0.1,0c0.3,0.1,0.5,0.3,0.7,0.4c-0.3-0.3,0.7,0.8,0.4,0.5c0.1,0.2,0.2,0.3,0.3,0.5c0,0,0.1,0.2,0.1,0.2 c0.2,0.4,0.3,0.8,0.3,1.2c0,0,0,0,0,0c0,0,0,0.1,0,0.1c0,0.3,0,0.6,0,0.9C803.1,69.9,803.1,70.1,803.1,70.2z M812,53.4c-0.3-6-0.6-12-1-18.1c-0.2-2.9-0.4-5.9-0.7-8.8c-0.3-3.2-0.5-6.4-1-9.5c-0.2-1.3-1.8-2.2-3.1-2 c-1.3,0.2-2.5,1.3-2.4,2.7c0.1,2.9,0.5,5.9,0.7,8.8c0.2,3,0.4,6,0.6,9c0,0.7,0.1,1.4,0.1,2.2c-3-6.7-6.1-13.3-9.2-20 c-0.6-1.2-2.3-1.8-3.5-1.4c-1.4,0.4-2.1,1.6-2.3,3c-0.7,6.5-1.1,13-1.4,19.6c-0.1,3.2-0.1,6.4-0.2,9.6c0,1.6,0,3.2,0.1,4.8 c0.1,1.8,0.2,3.3,1.1,4.9c0.4,0.7,1.3,0.6,1.7,0c0.9-1.5,1.1-3,1.4-4.7c0.2-1.6,0.4-3.2,0.5-4.8c0.3-3.3,0.6-6.5,0.9-9.8 c0.2-2.6,0.5-5.3,0.8-7.9c3.6,8,7.3,16,11.1,24C807.6,57.7,812.1,56.3,812,53.4z M758.7,52.3c0,0,0.1,0,0.1,0c0,0,0,0,0.1-0.1C759.1,52,758.7,52.3,758.7,52.3z M767.1,32.7c0-2.4-0.1-4.8-0.2-7.2c0-1.3-0.1-2.5-0.2-3.8c-0.1-1.6,0-3-0.7-4.5c-0.5-1.2-2.2-1.7-3.3-1.3 c-1,0.3-1.7,1.1-2,2.1l0,0c-0.4,1-0.2,2.1-0.2,3.2c0,0.9,0.1,1.9,0.1,2.8c0.1,1.9,0.1,3.7,0.2,5.6c0.1,3.7,0.1,7.3,0,11 c-0.1,1.9-0.2,3.7-0.3,5.6c-0.1,0.9-0.2,1.8-0.3,2.7c0,0.1,0,0.1,0,0.1c0,0.1,0,0.3-0.1,0.4c-0.1,0.5-0.2,0.9-0.3,1.3 c0,0.1-0.1,0.2-0.1,0.4c0,0.1-0.1,0.2-0.1,0.2c-0.1,0.1-0.3,0.4-0.3,0.5c-0.1,0.1-0.2,0.2-0.3,0.3c0,0-0.2,0.2-0.2,0.2 c0.4,0-0.3,0.1-0.1,0c0.1,0-0.6-0.1-0.5,0c-0.2-0.1-0.5-0.2-0.5-0.2c-0.2-0.1-0.3-0.2-0.5-0.3c0,0-0.1-0.1-0.2-0.1 c-0.1-0.1-0.2-0.2-0.2-0.2c-0.2-0.2-0.4-0.4-0.6-0.6c-0.1-0.1-0.2-0.2-0.3-0.3c0,0-0.1-0.1-0.1-0.2c-0.3-0.4-0.5-0.7-0.7-1.1 c-0.2-0.4-0.4-0.8-0.6-1.2c0,0-0.1-0.2-0.1-0.2c0-0.1-0.2-0.5-0.2-0.6c-0.3-0.8-0.5-1.6-0.6-2.4c0,0,0,0,0,0c0,0,0-0.1,0-0.1 c0-0.2,0-0.4,0-0.7c0-0.5,0-1,0-1.5c0.1-1.7-1.5-3.2-3.2-3.2c-1.8,0.1-3.1,1.4-3.2,3.2c-0.2,3.4-0.4,6.2-1.6,9.5 c-0.1,0.3-0.5,1.1-0.9,1.6c-0.1,0.1-0.1,0.2-0.2,0.2c0,0.1-0.2,0.2-0.2,0.2c-0.1,0.1-0.2,0.2-0.3,0.3c0,0,0,0,0,0.1 c0,0-0.1,0-0.1,0.1c0,0-0.1,0.1-0.1,0.1c0,0,0,0,0,0c0.2-0.2,0-0.1-0.1,0c-0.1,0-0.1,0-0.1,0c-0.1-0.1-0.2-0.2-0.3-0.3 c0,0,0-0.1-0.1-0.1c-0.1-0.1-0.2-0.3-0.2-0.4c0,0,0-0.1,0-0.2c0-0.2-0.2-1-0.2-0.8c-0.2-0.9-0.1-1.9-0.1-2.8l-0.1-5.9 c-0.1-3.9-0.2-7.7-0.4-11.6c-0.1-2.2-0.2-4.3-0.4-6.5c-0.1-1.2-0.1-2.4-0.3-3.5c-0.2-1.1-0.6-2.2-0.9-3.2c-0.4-1.5-2.8-1.6-3.2,0 c-0.2,1-0.5,2-0.7,3c-0.3,1.3-0.2,2.6-0.2,3.9c-0.1,2.2-0.1,4.5-0.2,6.7c-0.1,4.5,0,9.1,0,13.6c0.1,4.2-0.6,9.5,3,12.6 c1.8,1.5,4.2,2.2,6.5,1.4c2.1-0.7,3.7-2.3,4.7-4.2c0.3-0.5,0.6-1.1,0.8-1.6c1.2,1.4,2.6,2.6,4.4,3.3c2.2,0.9,4.8,0.7,6.7-0.6 c3.9-2.6,4.2-7.3,4.5-11.6C767,41.5,767.1,37.1,767.1,32.7z M774.4,52.8c-1.2,0-2.3,0.1-3.4,0.7c-1.3,0.6-1.1,2.4,0,3.1c0.8,0.5,1.8,0.7,2.8,0.9c1.1,0.2,2.2,0.3,3.2,0.5 c0.9,0.1,1.8,0.2,2.7,0.3c1.2,0.1,2.7,0.5,3.8-0.3c0,0,0,0,0,0c0.2-0.1,0.4-0.2,0.5-0.4c1-1,1.1-2.8,0-3.8c-1.1-1.1-2.5-1-3.9-1 c0.1-1.3,0-2.5,0-3.8c0-1.4,0-2.8-0.1-4.2c-0.1-2.8-0.2-5.7-0.2-8.5c-0.1-2.8-0.2-5.5-0.3-8.3c-0.1-1.4-0.2-2.8-0.3-4.2 c0-0.3-0.1-0.5-0.1-0.8c0.6,0,1.2,0,1.8,0c1.5,0,3-1.3,2.9-2.9c-0.1-1.6-1.3-3-2.9-2.9c-0.9,0-1.7,0.1-2.5,0.2 c-1,0.1-1.9,0.2-2.9,0.3c-1.7,0.3-5.7,0.9-4.4,3.4c0.3,0.6,0.9,0.8,1.6,1.1c0.4,0.1,0.7,0.3,1.1,0.3c0.5,0.1,1,0.1,1.4,0.2 c0,0.4-0.1,0.8-0.1,1.2c-0.1,1.3-0.2,2.7-0.2,4c-0.1,2.9-0.2,5.8-0.2,8.7c0,2.8-0.1,5.7-0.1,8.5c0,2.4-0.2,4.9,0,7.3 C774.5,52.4,774.5,52.6,774.4,52.8C774.5,52.8,774.5,52.8,774.4,52.8z M757.8,70.9c0.4,0,0.8,0,1.2-0.1c0.3,0,0.5,0,0.8,0c0.2,0,0.3,0,0.4,0c1.2,0.2,2.4,0,3.3-0.9c0.9-0.9,1.2-2.2,0.9-3.4 c-0.6-2.1-2.6-2.8-4.3-2.3c0,0,0-0.1,0.1-0.1c-0.6,0.2-1.5,0.3-2.4,0.4c-1,0.1-2,0.2-3,0.4c-2,0.3-3.9,0.6-5.9,0.9 c-1.8,0.3-3.6,0.7-5.4,1.1c-1.9,0.5-4.2,1-5.7,2.3c-1.2,1-0.5,3,0.9,3.4c1.9,0.5,4,0,5.9-0.3c1.5-0.2,3-0.4,4.5-0.6 c0,1.1,0,2.2,0,3.3c0,3.3,0.2,6.6,0.3,9.9c0.1,3.2,0.3,6.4,0.5,9.7c0.2,3.4,0.3,6.9,0.8,10.3c0,0,0,0,0,0c0.3,1.1,1.2,2,2.4,2.2 c1.8,0.2,3.4-1.1,3.4-2.9c0-3.3-0.4-6.7-0.6-10.1c-0.2-3.4-0.5-6.7-0.7-10.1c-0.3-3.4-0.5-6.7-0.9-10.1c-0.1-0.9-0.2-1.7-0.3-2.6 c0.4,0,0.8-0.1,1.1-0.1C755.9,71,756.9,71,757.8,70.9z"/>
+                        <path d="M517.5,248C493.2,211.8,488.9,98.1,548,98.6c7.4,0.1,14.7,2.5,20.4,7.3c20.5,17.2-1.4,39.2-14.2,21.6 c-3.8-5.2-10.5-4-14.5,0.2c-17.4,18.5-17,86.5,4.2,109.2c4.5,4.8,11.3,7.3,17.6,4.6c0,0,0,0,0,0c1.8-0.6,3.2-2.1,3.9-3.9l2-4.9 c0.3-0.8,0.7-1.5,1.1-2.2c4.2-6.3,13.4-7.8,19.7-2.5C609.8,245.8,557.4,302.1,517.5,248z M312.2,267.6c-2.6-6.9-4.9-15.6-6.1-20.3 c-1-4.1-1.5-8.3-1.5-12.5c0-4.9,0.5-9.9,0.2-14.9c-0.2-11.1-14.1-17.4-22.1-9.1c-7.3,8.4-0.3,20.8-11.2,29.2 c-17.1,13.2-36.8-2.7-37.8-23.1c-1-20.9,5-38.5,21.4-46.5c0.9-0.4,1.8-0.7,2.7-1c9.2-2.9,16.2,2,20.4,8.2c0.9,1.4,1.6,2.8,1.8,4 c0.4,2.8,0.5,3.2,0.5,3.2c2.3,10.3,18.6,11.8,21.5,0.5c5.2-55.1-70.2-45.9-86.2-7.7c-20.1,48,11.5,115.3,66.6,86.4 c2.8,10,6.8,19.5,11.9,28.4c1.3,2.3,3,4.4,5.2,6c13.8,10.6,28-6.4,17.1-22.2C315,273.4,313.4,270.6,312.2,267.6z M777.3,154.6 c-0.6-17.1-25.4-17.5-26.7-0.9c0,0.6-0.8,3.7-0.9,4.3c-3.3,50.7-19.4,69.6-19.4,69.6s-3.8-86.1-28.7-80.9c-6,1.3-9.4,5.6-9.8,12.9 c-1.6,27.6-7.8,69.2-41.6,91.3c-5.2,3.4-5.1,12.4,0,16.7c17.8,14.8,56.2-37,55.3-55.5c1.4,30.3-6.2,55.3,4.3,62.5 c15.5,10.7,57.4-35.9,65.7-89.4C777.7,170.8,778.1,164.8,777.3,154.6z M229.3,307.6c-4.6,5-13,6.9-19.1,0 c-21.7-24.5-44.6-48.1-71.9-66.1c-13.7,31.6-48,55-73.7,31.8c-7.5-6.8-12.6-15.8-14.1-25.8c-5.7-38.4,42.6-64.4,77.4-42.8 c12.5-27.9,20.6-57.6,24.6-87.9c-0.1,0.7,1.6-16.6,2.2-24.5c0.3-14.5,22.3-14.5,22.4,0c0.9,43.2-9,86.4-26.9,125.6 c2.5,1.7,5,3.4,7.4,5.1C173.4,235.4,248.2,287.1,229.3,307.6z M116,227.9c-1.5-0.8-8.5-4.9-16-5.4c-9-0.5-27.1,6.8-23.5,22.3 c0.6,2.4,1.5,4.4,2.9,6.5l0.5,0.7c12.5,12.9,25.3-4.7,31.3-15.9C112.8,233.4,114.4,230.7,116,227.9z M491.5,290.5 c-2.8-1.1-5.3-2.9-7.4-5.2c-6.3-7-11.9-14.8-16.3-23.1c-28,26-69.9,5.7-80.8-27.4c-7.8-19.4-8.3-42.7,0.3-62 c-2.4-12.6-4.7-25.2-7-37.9c-7,4.4-14.4,8.1-22.1,11.1c10.8,37.7,10.9,80.2-4.9,116.6c-6,11.6-25,3.5-21.2-8.9 c2.2-8.2,4.6-16.3,6.1-24.6c3.3-15.2,2.9-40.2,1.3-50.7c-1-8.6-3.1-17-5.5-25.3c-27.5,8-59.8-18-47.9-43.6c3.1-6.6,8.4-12,15.2-14.7 c18.9-7.4,41.1,7.4,47.8,26.6c0,0,0,0,0,0c9.8-4.1,20.7-10.3,29.3-17.7c1.2-1,2.5-2,3.9-2.8c24.5-13.7,22,31.9,26.7,46.5 c53.3-32.3,87.6,39.1,60.6,47.3c-2.8,0.9-5.8,0.7-8.4-0.7c-9.2-5.1-2.4-19.6-15.3-26.2c-10.4-6.5-23.7-1.2-30.4,8 c0.1-0.2-3.4,4.8-5.1,8.8c0-0.1,0.1-0.1,0.1-0.2c-9.3,22.7,2.3,69.2,33.6,61.2c-0.1,0.1-0.2,0.1-0.3,0.2c0.3-0.2,2.5-1,1.4-0.8 c1.1-0.6,2.2-1.1,3.2-1.7c-0.1,0.1-0.2,0.2-0.4,0.4c1.7-1.4,3.2-2.9,4.6-4.6c-0.1,0.1-0.2,0.2-0.4,0.3c3.1-4.6,4.3-10.5,3-15.9 c0,0,0,0,0,0c-3.4-16.1,21.2-24.3,25.4-7.8c0.1,0.5,0.4,1.7,0.5,2.2c2.5,14,7.6,27.4,15.2,39.5c0.5,0.9,1.6,2.4,2.4,3.6 c0.6,0.9,1.3,1.7,2.1,2.4C516.6,276,507.2,296.5,491.5,290.5z M326.3,128.9c-0.9-1.4-7-13.8-14.9-15.7c-3.5-0.5-5.2,1.7-5.5,5.2 C305.8,125,325.3,128.7,326.3,128.9z M588.4,143.6c39.9-42.8,108,10.3,75,60.7C622.3,260.5,540.6,195,588.4,143.6z M646.6,175 c-0.3-14.2-11-25.1-25.2-22c-12.8,2.8-21.5,12.1-22,25.2c-0.6,14.4,11.1,23.8,25.2,22C637.6,198.5,646.9,188.1,646.6,175z"/>
+                        <path d="M431.1,359.4c-3.5,1.2-8.2,0.1-11.9-0.1c-1.8-0.1-3.4-1.5-3.4-3.4c0.1-13.5,0-26.9,1.2-40.3c0.2-2,2.9-2,3.1,0 c1.5,12.3,1.8,24.6,2.3,36.9c3.2,0,6.6,0,9.4,1.2C434.5,355,433.4,358.6,431.1,359.4z M380.7,325.6c0.8,5.4,0.8,10.9,0,16.3 c-0.9,6.2-3.9,21.7-13.7,17.3c-3.9-1.8-5.6-6.4-6.9-10.2c-1.7-4.9-2.5-10.2-2.4-15.4c0-3,0.5-6.9,1.6-10.3c0.5-2.9,1.6-5.7,4-7.9 c3.5-3.1,8.7-3.8,12.4-0.7C379,317.4,380.2,321.6,380.7,325.6z M374.3,325.2c-0.6-2.8-2.2-7.7-5.9-5.5c-3.6,2.1-3.5,7.6-3.7,11.2 c-0.1,1.4-0.9,2.2-1.8,2.5c0.1,2.2,0.3,4.2,0.6,5.8c0.6,4,1.8,8.1,3.7,11.7c0.6,1.1,1.5,3.1,3,2.8c1.2-0.3,2-2.4,2.3-3.4 C375.3,342.6,375.9,333.2,374.3,325.2z M409.3,323.7c-0.2-3.3-0.1-6.8-0.9-10c-0.7-2.7-5.5-3.1-5.9,0c-0.9,6.3,0.2,13.3,0.5,19.7 c0.1,1.6,0.2,3.3,0.2,4.9c-1.2-2.3-2.4-4.5-3.7-6.8c-1.7-3.2-3.5-6.3-5.4-9.5c-1.7-3-3.4-6.1-6.2-8.2c-0.3-0.2-0.6-0.2-1-0.1 c-0.7-0.1-1.4,0.3-1.5,1.1c-1.1,6.7-0.4,13.8-0.2,20.5c0.2,6.6,0.2,13.3,0.7,20c-0.1,0.4-0.1,0.8,0,1.2c0.1,0.4,0.2,0.7,0.2,1.1 c0.7,3.5,6.4,2.7,6.2-0.8c-0.2-7.1-1-14.3-1.6-21.4c-0.2-2.8-0.4-5.6-0.6-8.4c1.2,2.6,2.4,5.2,3.7,7.8c3.5,6.9,6.9,13.8,10.4,20.6 c1.6,3,6.7,1.7,6.5-1.8c-0.4-6.7-0.7-13.5-1.1-20.2C409.7,330.2,409.5,327,409.3,323.7z M507.9,353.1c-2.1-0.2-4.3,0.9-6.4,0.1 c-2.1-0.8-2.3-3.6-2.7-5.5c-0.7-3.1-1.1-6.3-1.4-9.5c1.4,0,2.8-0.1,4.2-0.2c2.2-0.2,4.3-0.1,5.9-1.7c1.2-1.2,1-3.4-0.5-4.2 c-2.1-1.1-3.9-0.4-6.1,0.1c-1.3,0.3-2.5,0.5-3.7,0.9c0-0.1,0-0.2,0-0.4c-0.1-4.1-0.4-9,1.1-13c0.8-2,2.3-3.9,4.3-4.7 c1.5-0.6,3.2-0.5,4.7-1c0.1,0,0.2-0.1,0.2-0.2c-0.3-5.3-8.2-3.3-10.7-1.2c-5.2,4.3-5.5,12.1-5.6,18.3c-0.1,7.3,0.2,15.8,2.7,22.7 c2.2,6.1,10,8.2,15.5,5C512,356.9,510.6,353.4,507.9,353.1z M481.1,312.2c-0.8-4.2-7.2-2.4-6.4,1.8c1.5,7.7,2.7,15.8,3.2,23.8 c-0.8-1.6-1.6-3.2-2.4-4.7c-3.4-6.6-7-13.6-12.1-19c-1.5-1.6-4.8,0.1-3.9,2.3c0,0,0,0.1,0.1,0.1c-0.5,2.5-0.4,5.1-0.5,7.7 c-0.1,3.7-0.1,7.5,0,11.2c0.2,7.2,0.5,14.4,0.9,21.5c-0.5,3.6,6.4,4.7,6.2,0.2c-0.3-7.5-0.8-15-1.5-22.4c-0.3-3.2-0.6-6.3-1-9.5 c1.8,3.4,3.7,6.8,5.4,10.2c3.2,6.7,5.8,13.6,8.7,20.5c1.3,3.2,6.8,3.3,6.6-0.9c-0.2-7.2,0-14.4-0.6-21.7 C483.4,326.2,482.4,319.2,481.1,312.2z M452.4,354.9c-1.1-0.8-2.5-1-3.8-0.9c0.2-1.7-0.1-3.4-0.2-5.3c-0.3-3.9-0.5-7.7-0.8-11.6 c-0.2-3.6-0.4-7.3-0.7-10.9c-0.1-1.8-0.1-3.9-0.3-5.9c0.9,0,1.8,0,2.7,0c4.1,0.1,4-6.6,0-6.3c-4.3,0.4-9.9,0-13.8,2.1 c-1,0.5-1.1,2.3,0,2.8c1.6,0.7,3.4,1.1,5.3,1.2c-0.1,1.8,0.1,3.7,0.2,5.3c0.1,3.9,0.3,7.7,0.4,11.6c0.1,3.6,0.3,7.3,0.4,10.9 c0.1,2.2-0.2,4.6,0.4,6.6c-1.3,0.2-2.6,0.5-3.9,0.9c-1.2,0.3-1.1,2,0,2.3c2.4,0.8,4.6,1.3,7.1,1.6c2.4,0.3,4.9,1.1,7.1-0.3 C454,358.1,453.9,356,452.4,354.9z"/>
+                    </svg>
+                    <p class="md:text-lg lg:text-xl md:leading-tight md:my-3 my-1 text-base leading-snug">
+
+                    </p>
+                    <h2 class="md:text-2xl w-full mb-2 text-lg font-bold">
+                        Free on YouTube <br /> February 9<sup>th</sup>
+                    </h2>
+                    <p>
+                        <a href="https://www.youtube.com/watch?v=0Rq-yHAwYjQ" target="_blank" tabindex="-1"
+                            class="btn gradient-blue whitespace-nowrap inline-block mx-auto">
+                            Watch on YouTube
+                        </a>
+                    </p>
+                </div>
+            </div>
+            <div x-data="_x_modes()"
+                class="md:-mt-12 md:-ml-12 justify-self-center flex w-full select-none">
+                <iframe x-bind:src="list[mode]" frameborder="0"
+                    src="https://player.vimeo.com/video/667327738?h=fa2162a49d&background=1&transparent=1"
+                    x-bind:class="{ invisible:hide }"
+                    class="w-full md:min-w-[400px] pointer-events-none min-h-[400px] md:w-[880px] md:h-[880px] mx-auto">
+                </iframe>
+                <aside class="sm:flex bottom-1 right-1 bg-gray-800/75 fixed z-50 flex-col items-center hidden p-1 space-y-1 rounded-full">
+                    <button type="button" tabindex="-1" x-on:click="dark"
+                        class="hover:bg-gray-600 dark:hover:bg-gray-200 hover:text-white dark:hover:text-gray-800 focus:outline-none flex-center w-9 h-9 text-white rounded-full">
+                        <svg class="w-6 h-6 -mt-[2px] -mr-[2px] fill-current" viewBox="0 0 24 24" fill="none">
+                            <path d="M17.715 15.15A6.5 6.5 0 0 1 9 6.035C6.106 6.922 4 9.645 4 12.867c0 3.94 3.153 7.136 7.042 7.136 3.101 0 5.734-2.032 6.673-4.853Z" fill-rule="evenodd" clip-rule="evenodd" opacity=".4"></path>
+                            <path d="m17.715 15.15.95.316a1 1 0 0 0-1.445-1.185l.495.869ZM9 6.035l.846.534a1 1 0 0 0-1.14-1.49L9 6.035Zm8.221 8.246a5.47 5.47 0 0 1-2.72.718v2a7.47 7.47 0 0 0 3.71-.98l-.99-1.738Zm-2.72.718A5.5 5.5 0 0 1 9 9.5H7a7.5 7.5 0 0 0 7.5 7.5v-2ZM9 9.5c0-1.079.31-2.082.845-2.93L8.153 5.5A7.47 7.47 0 0 0 7 9.5h2Zm-4 3.368C5 10.089 6.815 7.75 9.292 6.99L8.706 5.08C5.397 6.094 3 9.201 3 12.867h2Zm6.042 6.136C7.718 19.003 5 16.268 5 12.867H3c0 4.48 3.588 8.136 8.042 8.136v-2Zm5.725-4.17c-.81 2.433-3.074 4.17-5.725 4.17v2c3.552 0 6.553-2.327 7.622-5.537l-1.897-.632Z"></path>
+                            <path d="M17 3a1 1 0 0 1 1 1 2 2 0 0 0 2 2 1 1 0 1 1 0 2 2 2 0 0 0-2 2 1 1 0 1 1-2 0 2 2 0 0 0-2-2 1 1 0 1 1 0-2 2 2 0 0 0 2-2 1 1 0 0 1 1-1Z" fill-rule="evenodd" clip-rule="evenodd"></path>
+                        </svg>
+                    </button>
+                    <button type="button" tabindex="-1" x-on:click="light"
+                        class="hover:bg-gray-600 dark:hover:bg-gray-200 hover:text-white dark:hover:text-gray-800 focus:outline-none flex-center w-9 h-9 text-white rounded-full">
+                        <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path class="fill-current stroke-current" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" fill-opacity=".4" ></path>
+                            <path class="stroke-current" d="M12 4v1M17.66 6.344l-.828.828M20.005 12.004h-1M17.66 17.664l-.828-.828M12 20.01V19M6.34 17.664l.835-.836M3.995 12.004h1.01M6 6l.835.836"></path>
+                        </svg>
+                    </button>
+                    <button type="button" tabindex="-1" x-on:click="anaglyph"
+                        class="hover:bg-gray-600 dark:hover:bg-gray-200 hover:text-white dark:hover:text-gray-800 focus:outline-none flex-center w-9 h-9 text-white rounded-full">
+                        <svg class="w-6 h-6 stroke-current" fill="none" viewBox="0 0 24 24">
+                            <path d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+                        </svg>
+                    </button>
+                </aside>
+            </div>
+        </header>
+
+        <section id="about" class="bg-gradient-to-br from-black dark:from-gray-50 to-gray-900 dark:to-gray-100">
+            <article class="md:w-2/3 lg:w-1/2 container relative mx-auto">
+                <h2 class="h2 work-sans text-3d font-black leading-none text-center">About</h2>
+                <h3 class="h3 text-center">The largest Laravel event of the year <br />streaming free on YouTube.</h3>
+                <p class="p">For the first time ever we'll be streaming Laracon for free on YouTube allowing us to reach the entire Laravel community. This is a huge
+                    moment (and experiment) for us. Thank you to our incredible <a href="#partners" class="font-bold">partners</a> for helping us achieve this!</p>
+                <p class="p"><b>All talks are brand new</b>, never before presented at any Laracon, and presented live during the event. We have 17 amazing speakers lined up including a keynote from Taylor Otwell on the state of Laravel and what's new in Laravel 9.</p>
+
+                <style>.embed-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; } .embed-container iframe, .embed-container object, .embed-container embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }</style>
+                <div class='embed-container'><iframe src='https://www.youtube.com/embed/0Rq-yHAwYjQ' frameborder='0' allowfullscreen></iframe></div>
+
+                <p class="mt-6 text-center">
+                    <a href="https://www.youtube.com/watch?v=0Rq-yHAwYjQ" rel="external" target="_blank"
+                       class="btn gradient-yellow whitespace-nowrap inline-block mx-auto">
+                        Watch it now
+                    </a>
+                </p>
+
+                <div style="max-width:600px;margin-top:48px;margin-left: auto;margin-right: auto;">
+                    <h4 class="h4">Can't watch it <span class="mr-[3px] text-red-600">●</span>LIVE?</h4>
+                    <p><b>No problem</b>, all talks will be recorded and available online for viewing at your convenience shortly after the conference ends.</p>
+                </div>
+                
+            </article>
+            <img class="sm:block lazy absolute top-0 left-0 hidden -mt-24 pointer-events-none select-none md:w-[224px]" data-src="/winter22/elements-1.png" width="144" alt="" />
+            <img class="sm:block lazy absolute bottom-0 right-0 hidden -mb-24 pointer-events-none select-none md:w-[276px]" data-src="/winter22/elements-2.png" width="144" alt="" />
+        </section>
+
+        <section id="speakers" class="md:block container relative hidden" x-data>
+            <h2 class="h2 work-sans text-3d font-black text-center">Speakers</h2>
+            <p class="h3 font-bold text-center">Say <u>hi</u> to the group…</p>
+            <ul class="lg:grid-cols-6 md:grid-cols-5 sm:grid-cols-3 grid justify-center gap-3">
+
+                <li>
+                    <a href="https://twitter.com/taylorotwell" rel="external" target="_blank"
+                        class="md:hover:blur-sm flex transition cursor-pointer">
+                        <img class="lazy" data-src="/winter22/speakers/taylor-otwell.png" alt="metahead of Taylor Otwell by flicknelson">
+                    </a>
+                    <h3 class="-mt-3 text-4xl font-black leading-none text-center uppercase select-none">
+                        <a href="https://twitter.com/taylorotwell" rel="external" target="_blank">
+                            Taylor <small class="block text-sm">Otwell</small>
+                        </a>
+                    </h3>
+                </li>
+
+                <li>
+                    <a href="https://twitter.com/calebporzio" rel="external" target="_blank"
+                        class="md:hover:blur-sm flex transition cursor-pointer">
+                        <img class="lazy" data-src="/winter22/speakers/caleb-porzio.png" alt="metahead of Caleb Porzio by flicknelson">
+                    </a>
+                    <h3 class="-mt-3 text-4xl font-black leading-none text-center uppercase select-none">
+                        <a href="https://twitter.com/calebporzio" rel="external" target="_blank">
+                            Caleb <small class="block text-sm">Porzio</small>
+                        </a>
+                    </h3>
+                </li>
+
+                <li>
+                    <a href="https://twitter.com/shrutibalasa" rel="external" target="_blank"
+                        class="md:hover:blur-sm flex transition cursor-pointer">
+                        <img class="lazy" data-src="/winter22/speakers/shruti-balasa.png" alt="metahead of Shruti Balasa by flicknelson">
+                    </a>
+                    <h3 class="-mt-3 text-4xl font-black leading-none text-center uppercase select-none">
+                        <a href="https://twitter.com/shrutibalasa" rel="external" target="_blank">
+                            Shruti <small class="block text-sm">Balasa</small>
+                        </a>
+                    </h3>
+                </li>
+
+                <li>
+                    <a href="https://twitter.com/marcelpociot" rel="external" target="_blank"
+                        class="md:hover:blur-sm flex transition cursor-pointer">
+                        <img class="lazy" data-src="/winter22/speakers/marcel-pociot.png" alt="metahead of Marcel Pociot by flicknelson">
+                    </a>
+                    <h3 class="-mt-3 text-4xl font-black leading-none text-center uppercase select-none">
+                        <a href="https://twitter.com/marcelpociot" rel="external" target="_blank">
+                            Marcel <small class="block text-sm">Pociot</small>
+                        </a>
+                    </h3>
+                </li>
+
+                <li>
+                    <a href="https://twitter.com/erikaheidi" rel="external" target="_blank"
+                        class="md:hover:blur-sm flex transition cursor-pointer">
+                        <img class="lazy" data-src="/winter22/speakers/erika-heidi.png" alt="metahead of Erika Heidi by flicknelson">
+                    </a>
+                    <h3 class="-mt-3 text-4xl font-black leading-none text-center uppercase select-none">
+                        <a href="https://twitter.com/erikaheidi" rel="external" target="_blank">
+                            Erika <small class="block text-sm">Heidi</small>
+                        </a>
+                    </h3>
+                </li>
+
+                <li>
+                    <a href="https://twitter.com/LukeDowning19" rel="external" target="_blank"
+                        class="md:hover:blur-sm flex transition cursor-pointer">
+                        <img class="lazy" data-src="/winter22/speakers/luke-downing.png" alt="metahead of Like Downing flicknelson">
+                    </a>
+                    <h3 class="-mt-3 text-4xl font-black leading-none text-center uppercase select-none">
+                        <a href="https://twitter.com/LukeDowning19" rel="external" target="_blank">
+                            Luke <small class="block text-sm">Downing</small>
+                        </a>
+                    </h3>
+                </li>
+
+                <li>
+                    <a href="https://twitter.com/freekmurze" rel="external" target="_blank"
+                        class="md:hover:blur-sm flex transition cursor-pointer">
+                        <img class="lazy" data-src="/winter22/speakers/freek-van-der-herten.png" alt="metahead of Freek Van der Herten by flicknelson">
+                    </a>
+                    <h3 class="-mt-3 text-4xl font-black leading-none text-center uppercase select-none">
+                        <a href="https://twitter.com/freekmurze" rel="external" target="_blank">
+                            Freek <small class="block text-sm">Van der Herten</small>
+                        </a>
+                    </h3>
+                </li>
+
+                <li>
+                    <a href="https://twitter.com/zuzana_kunckova" rel="external" target="_blank"
+                        class="md:hover:blur-sm flex transition cursor-pointer">
+                        <img class="lazy" data-src="/winter22/speakers/zuzana-kunckova.png" alt="metahead of Zuzana Kunckovaby flicknelson">
+                    </a>
+                    <h3 class="-mt-3 text-4xl font-black leading-none text-center uppercase select-none">
+                        <a href="https://twitter.com/zuzana_kunckova" rel="external" target="_blank">
+                            Zuzana <small class="block text-sm">Kunckova</small>
+                        </a>
+                    </h3>
+                </li>
+
+                <li>
+                    <a href="https://twitter.com/aarondfrancis" rel="external" target="_blank"
+                        class="md:hover:blur-sm flex transition cursor-pointer">
+                        <img class="lazy" data-src="/winter22/speakers/aaron-francis.png" alt="metahead of Aaron Francis flicknelson">
+                    </a>
+                    <h3 class="-mt-3 text-4xl font-black leading-none text-center uppercase select-none">
+                        <a href="https://twitter.com/aarondfrancis" rel="external" target="_blank">
+                            Aaron <small class="block text-sm">Francis</small>
+                        </a>
+                    </h3>
+                </li>
+
+                <li>
+                    <a href="https://twitter.com/JustSteveKing" rel="external" target="_blank"
+                        class="md:hover:blur-sm flex transition cursor-pointer">
+                        <img class="lazy" data-src="/winter22/speakers/steve-mcdougall.png" alt="metahead of Steve McDougall flicknelson">
+                    </a>
+                    <h3 class="-mt-3 text-4xl font-black leading-none text-center uppercase select-none">
+                        <a href="https://twitter.com/JustSteveKing" rel="external" target="_blank">
+                            Steve <small class="block text-sm">McDougall</small>
+                        </a>
+                    </h3>
+                </li>
+
+                <li>
+                    <a href="https://twitter.com/avosalmon" rel="external" target="_blank"
+                        class="md:hover:blur-sm flex transition cursor-pointer">
+                        <img class="lazy" data-src="/winter22/speakers/ryuta-hamasaki.png" alt="metahead of Ryuta Hamasaki flicknelson">
+                    </a>
+                    <h3 class="-mt-3 text-4xl font-black leading-none text-center uppercase select-none">
+                        <a href="https://twitter.com/avosalmon" rel="external" target="_blank">
+                            Ryuta <small class="block text-sm">Hamasaki</small>
+                        </a>
+                    </h3>
+                </li>
+
+                <li>
+                    <img class="lazy" data-src="/winter22/speakers/kristin-collins.png" alt="metahead of Kristin Collins flicknelson">
+                    <h3 class="-mt-3 text-4xl font-black leading-none text-center uppercase select-none">
+                        Kristin <small class="block text-sm">Collins</small>
+                    </h3>
+                </li>
+
+                <li>
+                    <a href="https://twitter.com/valorin" rel="external" target="_blank"
+                        class="md:hover:blur-sm flex transition cursor-pointer">
+                        <img class="lazy" data-src="/winter22/speakers/stephen-reescarter.png" alt="metahead of Stephen Rees-Carter flicknelson">
+                    </a>
+                    <h3 class="-mt-3 text-4xl font-black leading-none text-center uppercase select-none">
+                        <a href="https://twitter.com/valorin" rel="external" target="_blank">
+                            Stephen <small class="block text-sm">Rees-Carter</small>
+                        </a>
+                    </h3>
+                </li>
+
+                <li>
+                    <a href="https://twitter.com/rorycmcdaniel" rel="external" target="_blank"
+                        class="md:hover:blur-sm flex transition cursor-pointer">
+                        <img class="lazy" data-src="/winter22/speakers/rory-mcdaniel.png" alt="metahead of Rory McDaniel flicknelson">
+                    </a>
+                    <h3 class="-mt-3 text-4xl font-black leading-none text-center uppercase select-none">
+                        <a href="https://twitter.com/rorycmcdaniel" rel="external" target="_blank">
+                            Rory <small class="block text-sm">McDaniel</small>
+                        </a>
+                    </h3>
+                </li>
+
+                <li>
+                    <a href="https://twitter.com/codyssia" rel="external" target="_blank"
+                       class="md:hover:blur-sm flex transition cursor-pointer">
+                        <img class="lazy" data-src="/winter22/speakers/polly-washburn.png" alt="metahead of Polly Washburn flicknelson">
+                    </a>
+                    <h3 class="-mt-3 text-4xl font-black leading-none text-center uppercase select-none">
+                        Polly <small class="block text-sm">Washburn</small>
+                    </h3>
+                </li>
+
+                <li>
+                    <a href="https://twitter.com/ashleyhindle" rel="external" target="_blank"
+                        class="md:hover:blur-sm flex transition cursor-pointer">
+                        <img class="lazy" data-src="/winter22/speakers/ashley-hindle.png" alt="metahead of Ashley Hindle flicknelson">
+                    </a>
+                    <h3 class="-mt-3 text-4xl font-black leading-none text-center uppercase select-none">
+                        <a href="https://twitter.com/ashleyhindle" rel="external" target="_blank">
+                            Ashley <small class="block text-sm">Hindle</small>
+                        </a>
+                    </h3>
+                </li>
+
+                <li>
+                    <a href="https://twitter.com/morrislaptop" rel="external" target="_blank"
+                        class="md:hover:blur-sm flex transition cursor-pointer">
+                        <img class="lazy" data-src="/winter22/speakers/craig-morris.png" alt="metahead of Craig Morris flicknelson">
+                    </a>
+                    <h3 class="-mt-3 text-4xl font-black leading-none text-center uppercase select-none">
+                        <a href="https://twitter.com/morrislaptop" rel="external" target="_blank">
+                            Craig <small class="block text-sm">Morris</small>
+                        </a>
+                    </h3>
+                </li>
+
+            </ul>
+        </section>
+
+        <section id="schedule" class="relative" x-data="_x_schedule()">
+            <div class="text-center">
+                <h2 class="h2 work-sans text-3d font-black">Schedule</h2>
+                <p class="h3 mb-0">Learn and be <u>inspired</u> <span id="schedule-in" hidden>in…</span></p>
+                <ul class="font-tabular flex justify-center my-3 space-x-2 leading-none uppercase select-none"
+                    x-cloak x-show="diff>0" x-data="_x_countdown()">
+                    <li class="md:w-24 md:h-20 dark:shadow-none flex flex-col items-center justify-center w-20 h-16 text-white bg-gray-700 rounded shadow-md"
+                        x-bind:class="{ 'text-transparent':!d }">
+                        <b x-text="d" class="md:text-4xl tabular-nums block text-2xl font-bold">00</b>
+                        <span class="md:tracking-wide md:text-sm text-xs font-bold">days</span>
+                    </li>
+                    <li class="md:w-24 md:h-20 dark:shadow-none flex flex-col items-center justify-center w-20 h-16 text-white bg-gray-700 rounded shadow-md"
+                        x-bind:class="{ 'text-transparent':!h }">
+                        <b x-text="h" class="md:text-4xl tabular-nums block text-2xl font-bold">00</b>
+                        <span class="md:tracking-wide md:text-sm text-xs font-bold">hours</span>
+                    </li>
+                    <li class="md:w-24 md:h-20 dark:shadow-none flex flex-col items-center justify-center w-20 h-16 text-white bg-gray-700 rounded shadow-md"
+                        x-bind:class="{ 'text-transparent':!m }">
+                        <b x-text="m" class="md:text-4xl tabular-nums block text-2xl font-bold">00</b>
+                        <span class="md:tracking-wide md:text-sm text-xs font-bold">minutes</span>
+                    </li>
+                    <li class="md:w-24 md:h-20 dark:shadow-none flex flex-col items-center justify-center w-20 h-16 text-white bg-gray-700 rounded shadow-md"
+                        x-bind:class="{ 'text-transparent':!s }">
+                        <b x-text="s" class="md:text-4xl tabular-nums block text-2xl font-bold">00</b>
+                        <span class="md:tracking-wide md:text-sm text-xs font-bold">seconds</span>
+                    </li>
+                </ul>
+                <p class="p">
+                    <b>10 smooth-pace</b> talks from a wide
+                    <br class="md:hidden block">variety of topics <br>and <b>7 lightning-talks</b>
+                    <br class="md:hidden block">to supercharge your skills.
+                </p>
+                <p x-show="tz" class="mt-3">
+                    All times are in <b x-text="tz"></b>
+                </p>
+            </div>
+            <ul x-cloak class="lg:grid-cols-5 md:grid-cols-4 sm:grid-cols-2 container grid justify-center gap-3 mt-6 leading-none">
+
+                <li class="relative mb-3" x-data>
+                    <div class="relative block">
+                        <figure class="w-full h-40 overflow-hidden bg-gray-300 rounded-md">
+                            <img data-src="/winter22/speakers/front-man.gif"
+                                 alt="Front Man"
+                                 x-bind:class="{ ungrayscale:dt[17].done||dt[17].live }"
+                                 class="grayscale lazy object-cover w-full h-full"
+                            />
+                        </figure>
+                        <small x-cloak x-bind:class="{ 'bg-red-600':dt[16].live }" class="live">
+                            <svg x-cloak x-show="dt[17].live" class="w-3 h-3 mr-1 fill-current" viewBox="0 0 24 24"><use href="#icon:live"></use></svg>
+                            <span x-text="dt[17].done?dt[18].time:dt[17].live?'Live':'Scheduled'">Scheduled</span>
+                        </small>
+                    </div>
+                    <div class="px-1">
+                        <p class="mt-3 text-lg font-black leading-tight">
+                            Opening
+                        </p>
+                        <p class="mt-1.5 leading-tight font-bold text-sm text-gray-500">
+                            Front Man
+                        </p>
+                        <p class="mt-1.5 text-sm text-gray-500">
+                            <b x-cloak x-show="dt[17].live" class="live-now">LIVE NOW</b>
+                            <time x-show="!dt[17].live" x-text="dt[17].date" datetime="2022-02-09T08:55:00-04:00">
+                                Scheduled for February 9th, 8:55
+                            </time>
+                        </p>
+                    </div>
+                </li>
+                <li class="relative mb-3">
+                    <a x-bind:href="dt[0].link||null" target="_blank" rel="external" tabindex="-1"
+                        class="relative block cursor-pointer">
+                        <figure class="w-full h-40 overflow-hidden bg-gray-300 rounded-md">
+                            <img data-src="/winter22/speakers/luke-downing.gif"
+                                alt="Speaker: Luke Downing"
+                                x-bind:class="{ ungrayscale:dt[0].done||dt[0].live }"
+                                class="grayscale lazy object-cover w-full h-full"
+                            />
+                        </figure>
+                        <small x-cloak x-bind:class="{ 'bg-red-600':dt[0].live }" class="live">
+                            <svg x-cloak x-show="dt[0].live" class="w-3 h-3 mr-1 fill-current" viewBox="0 0 24 24"><use href="#icon:live"></use></svg>
+                            <span x-text="dt[0].done?dt[0].time:dt[0].live?'Live':'Scheduled'">Scheduled</span>
+                        </small>
+                    </a>
+                    <div class="px-1">
+                        <p class="hover:underline mt-3 text-lg font-black leading-tight">
+                            <a x-bind:href="dt[0].link||null" target="_blank" rel="external" tabindex="-1">
+                                Actions are a <br>Dev's Best Friend
+                            </a>
+                        </p>
+                        <p class="mt-1.5 leading-tight font-bold text-sm text-gray-500">
+                            Luke Downing
+                        </p>
+                        <p class="mt-1.5 text-sm text-gray-500">
+                            <b x-cloak x-show="dt[0].live" class="live-now">LIVE NOW</b>
+                            <time x-show="!dt[0].live" x-text="dt[0].date" datetime="2022-02-09T09:00:00-04:00">
+                                Scheduled for 9 February, 09:00
+                            </time>
+                        </p>
+                    </div>
+                </li>
+
+                <li class="relative mb-3">
+                    <a x-bind:href="dt[1].link||null" target="_blank" rel="external" tabindex="-1"
+                        class="relative block cursor-pointer">
+                        <figure class="relative w-full h-40 overflow-hidden bg-gray-300 rounded-md">
+                            <img data-src="/winter22/speakers/ryuta-hamasaki.gif"
+                                alt="Speaker: Ryuta Hamasaki"
+                                x-bind:class="{ ungrayscale:dt[1].done||dt[1].live }"
+                                class="grayscale lazy object-cover w-full h-full"
+                            />
+                        </figure>
+                        <small x-cloak x-bind:class="{ 'bg-red-600':dt[1].live }" class="live">
+                            <svg x-cloak x-show="dt[1].live" class="w-3 h-3 mr-1 fill-current" viewBox="0 0 24 24"><use href="#icon:live"></use></svg>
+                            <span x-text="dt[1].done?dt[1].time:dt[1].live?'Live':'Scheduled'">Scheduled</span>
+                        </small>
+                    </a>
+                    <div class="px-1">
+                        <p class="hover:underline mt-3 text-lg font-black leading-tight">
+                            <a x-bind:href="dt[1].link||null" target="_blank" rel="external" tabindex="-1">
+                                Modularising <br>the Monolith
+                            </a>
+                        </p>
+                        <p class="mt-1.5 leading-tight font-bold text-sm text-gray-500">
+                            Ryuta Hamasaki
+                        </p>
+                        <p class="mt-1.5 text-sm text-gray-500">
+                            <b x-cloak x-show="dt[1].live" class="live-now">LIVE NOW</b>
+                            <time x-show="!dt[1].live" x-text="dt[1].date" datetime="2022-02-09T09:40:00-04:00">
+                                Scheduled for 9 February, 09:40
+                            </time>
+                        </p>
+                    </div>
+                </li>
+
+                <li class="relative mb-3">
+                    <a x-bind:href="dt[2].link||null" target="_blank" rel="external" tabindex="-1"
+                        class="relative block cursor-pointer">
+                        <figure class="w-full h-40 overflow-hidden bg-gray-300 rounded-md">
+                            <img data-src="/winter22/speakers/polly-washburn.gif"
+                                alt="Speaker: Polly Washburn"
+                                x-bind:class="{ ungrayscale:dt[2].done||dt[2].live }"
+                                class="grayscale lazy object-cover w-full h-full"
+                            />
+                        </figure>
+                        <small x-cloak x-bind:class="{ 'bg-red-600':dt[2].live }" class="live">
+                            <svg x-cloak x-show="dt[2].live" class="w-3 h-3 mr-1 fill-current" viewBox="0 0 24 24"><use href="#icon:live"></use></svg>
+                            <span x-text="dt[2].done?dt[2].time:dt[2].live?'Live':'Scheduled'">Scheduled</span>
+                        </small>
+                    </a>
+                    <div class="px-1">
+                        <p class="hover:underline mt-3 text-lg font-black leading-tight">
+                            <a x-bind:href="dt[2].link||null" target="_blank" rel="external" tabindex="-1">
+                                Digital Nomadding in <br>the Time of COVID
+                            </a>
+                        </p>
+                        <p class="mt-1.5 leading-tight font-bold text-sm text-gray-500">
+                            Polly Washburn
+                        </p>
+                        <p class="mt-1.5 text-sm text-gray-500">
+                            <b x-cloak x-show="dt[2].live" class="live-now">LIVE NOW</b>
+                            <time x-show="!dt[2].live" x-text="dt[2].date" datetime="2022-02-09T10:20:00-04:00">
+                                Scheduled for 9 February, 10:20
+                            </time>
+                        </p>
+                    </div>
+                </li>
+
+                <li class="relative mb-3">
+                    <a x-bind:href="dt[3].link||null" target="_blank" rel="external" tabindex="-1"
+                        class="relative block cursor-pointer">
+                        <figure class="w-full h-40 overflow-hidden bg-gray-300 rounded-md">
+                            <img data-src="/winter22/speakers/craig-morris.gif"
+                                alt="Speaker: Craig Morris"
+                                x-bind:class="{ ungrayscale:dt[3].done||dt[3].live }"
+                                class="grayscale lazy object-cover w-full h-full"
+                            />
+                        </figure>
+                        <small x-cloak x-bind:class="{ 'bg-red-600':dt[3].live }" class="live">
+                            <svg x-cloak x-show="dt[3].live" class="w-3 h-3 mr-1 fill-current" viewBox="0 0 24 24"><use href="#icon:live"></use></svg>
+                            <span x-text="dt[3].done?dt[3].time:dt[3].live?'Live':'Scheduled'">Scheduled</span>
+                        </small>
+                    </a>
+                    <div class="px-1">
+                        <p class="hover:underline mt-3 text-lg font-black leading-tight">
+                            <a x-bind:href="dt[3].link||null" target="_blank" rel="external" tabindex="-1">
+                                Typing In and Out <br>of Laravel
+                            </a>
+                        </p>
+                        <p class="mt-1.5 leading-tight font-bold text-sm text-gray-500">
+                            Craig Morris
+                        </p>
+                        <p class="mt-1.5 text-sm text-gray-500">
+                            <b x-cloak x-show="dt[3].live" class="live-now">LIVE NOW</b>
+                            <time x-show="!dt[3].live" x-text="dt[3].date" datetime="2022-02-09T10:35:00-04:00">
+                                Scheduled for 9 February, 10:35
+                            </time>
+                        </p>
+                    </div>
+                </li>
+
+                <li class="relative mb-3">
+                    <a x-bind:href="dt[4].link||null" target="_blank" rel="external" tabindex="-1"
+                        class="relative block cursor-pointer">
+                        <figure class="w-full h-40 overflow-hidden bg-gray-300 rounded-md">
+                            <img data-src="/winter22/speakers/shruti-balasa.gif"
+                                alt="Speaker: Shruti Balasa"
+                                x-bind:class="{ ungrayscale:dt[4].done||dt[4].live }"
+                                class="grayscale lazy object-cover w-full h-full"
+                            />
+                        </figure>
+                        <small x-cloak x-bind:class="{ 'bg-red-600':dt[4].live }" class="live">
+                            <svg x-cloak x-show="dt[4].live" class="w-3 h-3 mr-1 fill-current" viewBox="0 0 24 24"><use href="#icon:live"></use></svg>
+                            <span x-text="dt[4].done?dt[4].time:dt[4].live?'Live':'Scheduled'">Scheduled</span>
+                        </small>
+                    </a>
+                    <div class="px-1">
+                        <p class="hover:underline mt-3 text-lg font-black leading-tight">
+                            <a x-bind:href="dt[4].link||null" target="_blank" rel="external" tabindex="-1">
+                                Everything Flex
+                            </a>
+                        </p>
+                        <p class="mt-1.5 leading-tight font-bold text-sm text-gray-500">
+                            Shruti Balasa
+                        </p>
+                        <p class="mt-1.5 text-sm text-gray-500">
+                            <b x-cloak x-show="dt[4].live" class="live-now">LIVE NOW</b>
+                            <time x-show="!dt[4].live" x-text="dt[4].date" datetime="2022-02-09T10:50:00-04:00">
+                                Scheduled for 9 February, 10:50
+                            </time>
+                        </p>
+                    </div>
+                </li>
+
+                <li class="relative mb-3">
+                    <a x-bind:href="dt[5].link||null" target="_blank" rel="external" tabindex="-1"
+                        class="relative block cursor-pointer">
+                        <figure class="w-full h-40 overflow-hidden bg-gray-300 rounded-md">
+                            <img data-src="/winter22/speakers/kristin-collins.gif"
+                                alt="Speaker: Kristin Collins"
+                                x-bind:class="{ ungrayscale:dt[5].done||dt[5].live }"
+                                class="grayscale lazy object-cover w-full h-full"
+                            />
+                        </figure>
+                        <small x-cloak x-bind:class="{ 'bg-red-600':dt[5].live }" class="live">
+                            <svg x-cloak x-show="dt[5].live" class="w-3 h-3 mr-1 fill-current" viewBox="0 0 24 24"><use href="#icon:live"></use></svg>
+                            <span x-text="dt[5].done?dt[5].time:dt[5].live?'Live':'Scheduled'">Scheduled</span>
+                        </small>
+                    </a>
+                    <div class="px-1">
+                        <p class="hover:underline mt-3 text-lg font-black leading-tight">
+                            <a x-bind:href="dt[5].link||null" target="_blank" rel="external" tabindex="-1">
+                                Dealing with Criticism
+                            </a>
+                        </p>
+                        <p class="mt-1.5 leading-tight font-bold text-sm text-gray-500">
+                            Kristin Collins
+                        </p>
+                        <p class="mt-1.5 text-sm text-gray-500">
+                            <b x-cloak x-show="dt[5].live" class="live-now">LIVE NOW</b>
+                            <time x-show="!dt[5].live" x-text="dt[5].date" datetime="2022-02-09T11:20:00-04:00">
+                                Scheduled for 9 February, 11:20
+                            </time>
+                        </p>
+                    </div>
+                </li>
+
+                <li class="relative mb-3">
+                    <a x-bind:href="dt[6].link||null" target="_blank" rel="external" tabindex="-1"
+                        class="relative block cursor-pointer">
+                        <figure class="w-full h-40 overflow-hidden bg-gray-300 rounded-md">
+                            <img data-src="/winter22/speakers/aaron-francis.gif"
+                                alt="Speaker: Aaron Francis"
+                                x-bind:class="{ ungrayscale:dt[6].done||dt[6].live }"
+                                class="grayscale lazy object-cover w-full h-full"
+                            />
+                        </figure>
+                        <small x-cloak x-bind:class="{ 'bg-red-600':dt[6].live }" class="live">
+                            <svg x-cloak x-show="dt[6].live" class="w-3 h-3 mr-1 fill-current" viewBox="0 0 24 24"><use href="#icon:live"></use></svg>
+                            <span x-text="dt[6].done?dt[6].time:dt[6].live?'Live':'Scheduled'">Scheduled</span>
+                        </small>
+                    </a>
+                    <div class="px-1">
+                        <p class="hover:underline mt-3 text-lg font-black leading-tight">
+                            <a x-bind:href="dt[6].link||null" target="_blank" rel="external" tabindex="-1">
+                                A Little Bit More Lambda
+                            </a>
+                        </p>
+                        <p class="mt-1.5 leading-tight font-bold text-sm text-gray-500">
+                            Aaron Francis
+                        </p>
+                        <p class="mt-1.5 text-sm text-gray-500">
+                            <b x-cloak x-show="dt[6].live" class="live-now">LIVE NOW</b>
+                            <time x-show="!dt[6].live" x-text="dt[6].date" datetime="2022-02-09T12:00:00-04:00">
+                                Scheduled for 9 February, 12:00
+                            </time>
+                        </p>
+                    </div>
+                </li>
+
+                <li class="relative mb-3">
+                    <a x-bind:href="dt[7].link||null" target="_blank" rel="external" tabindex="-1"
+                        class="relative block cursor-pointer">
+                        <figure class="w-full h-40 overflow-hidden bg-gray-300 rounded-md">
+                            <img data-src="/winter22/speakers/marcel-pociot.gif"
+                                alt="Speaker: Marcel Pociot"
+                                x-bind:class="{ ungrayscale:dt[7].done||dt[7].live }"
+                                class="grayscale lazy object-cover w-full h-full"
+                            />
+                        </figure>
+                        <small x-cloak x-bind:class="{ 'bg-red-600':dt[7].live }" class="live">
+                            <svg x-cloak x-show="dt[7].live" class="w-3 h-3 mr-1 fill-current" viewBox="0 0 24 24"><use href="#icon:live"></use></svg>
+                            <span x-text="dt[7].done?dt[7].time:dt[7].live?'Live':'Scheduled'">Scheduled</span>
+                        </small>
+                    </a>
+                    <div class="px-1">
+                        <p class="hover:underline mt-3 text-lg font-black leading-tight">
+                            <a x-bind:href="dt[7].link||null" target="_blank" rel="external" tabindex="-1">
+                                Web 3.0 and Laravel
+                            </a>
+                        </p>
+                        <p class="mt-1.5 leading-tight font-bold text-sm text-gray-500">
+                            Marcel Pociot
+                        </p>
+                        <p class="mt-1.5 text-sm text-gray-500">
+                            <b x-cloak x-show="dt[7].live" class="live-now">LIVE NOW</b>
+                            <time x-show="!dt[7].live" x-text="dt[7].date" datetime="2022-02-09T12:40:00-04:00">
+                                Scheduled for 9 February, 12:40
+                            </time>
+                        </p>
+                    </div>
+                </li>
+
+                <li class="relative mb-3">
+                    <a x-bind:href="dt[8].link||null" target="_blank" rel="external" tabindex="-1"
+                        class="relative block cursor-pointer">
+                        <figure class="w-full h-40 overflow-hidden bg-gray-300 rounded-md">
+                            <img data-src="/winter22/speakers/taylor-otwell.gif"
+                                alt="Speaker: Taylor Otwell"
+                                x-bind:class="{ ungrayscale:dt[8].done||dt[8].live }"
+                                class="grayscale lazy object-cover w-full h-full"
+                            />
+                        </figure>
+                        <small x-cloak x-bind:class="{ 'bg-red-600':dt[8].live }" class="live">
+                            <svg x-cloak x-show="dt[8].live" class="w-3 h-3 mr-1 fill-current" viewBox="0 0 24 24"><use href="#icon:live"></use></svg>
+                            <span x-text="dt[8].done?dt[8].time:dt[8].live?'Live':'Scheduled'">Scheduled</span>
+                        </small>
+                    </a>
+                    <div class="px-1">
+                        <p class="hover:underline mt-3 text-lg font-black leading-tight">
+                            <a x-bind:href="dt[8].link||null" target="_blank" rel="external" tabindex="-1">
+                                Laravel Update
+                            </a>
+                        </p>
+                        <p class="mt-1.5 leading-tight font-bold text-sm text-gray-500 flex items-center">
+                            <span>Taylor Otwell</span>
+                            <svg class="w-4 h-4 ml-1 fill-current" viewBox="0 0 24 24"><use href="#icon:verified"></use></svg>
+                        </p>
+                        <p class="mt-1.5 text-sm text-gray-500">
+                            <b x-cloak x-show="dt[8].live" class="live-now">LIVE NOW</b>
+                            <time x-show="!dt[8].live" x-text="dt[8].date" datetime="2022-02-09T13:40:00-04:00">
+                                Scheduled for 9 February, 13:40
+                            </time>
+                        </p>
+                    </div>
+                </li>
+
+                <li class="relative mb-3">
+                    <a x-bind:href="dt[9].link||null" target="_blank" rel="external" tabindex="-1"
+                        class="relative block cursor-pointer">
+                        <figure class="w-full h-40 overflow-hidden bg-gray-300 rounded-md">
+                            <img data-src="/winter22/speakers/steve-mcdougall.gif"
+                                alt="Speaker: Steve McDougall"
+                                x-bind:class="{ ungrayscale:dt[9].done||dt[9].live }"
+                                class="grayscale lazy object-cover w-full h-full"
+                            />
+                        </figure>
+                        <small x-cloak x-bind:class="{ 'bg-red-600':dt[9].live }" class="live">
+                            <svg x-cloak x-show="dt[9].live" class="w-3 h-3 mr-1 fill-current" viewBox="0 0 24 24"><use href="#icon:live"></use></svg>
+                            <span x-text="dt[9].done?dt[9].time:dt[9].live?'Live':'Scheduled'">Scheduled</span>
+                        </small>
+                    </a>
+                    <div class="px-1">
+                        <p class="hover:underline mt-3 text-lg font-black leading-tight">
+                            <a x-bind:href="dt[9].link||null" target="_blank" rel="external" tabindex="-1">
+                                How to do API <br>integrations in Laravel
+                            </a>
+                        </p>
+                        <p class="mt-1.5 leading-tight font-bold text-sm text-gray-500">
+                            Steve McDougall
+                        </p>
+                        <p class="mt-1.5 text-sm text-gray-500">
+                            <b x-cloak x-show="dt[9].live" class="live-now">LIVE NOW</b>
+                            <time x-show="!dt[9].live" x-text="dt[9].date" datetime="2022-02-09T14:40:00-04:00">
+                                Scheduled for 9 February, 14:40
+                            </time>
+                        </p>
+                    </div>
+                </li>
+
+                <li class="relative mb-3">
+                    <a x-bind:href="dt[10].link||null" target="_blank" rel="external" tabindex="-1"
+                        class="relative block cursor-pointer">
+                        <figure class="w-full h-40 overflow-hidden bg-gray-300 rounded-md">
+                            <img data-src="/winter22/speakers/caleb-porzio.gif"
+                                alt="Speaker: Caleb Porzio"
+                                x-bind:class="{ ungrayscale:dt[10].done||dt[10].live }"
+                                class="grayscale lazy object-cover w-full h-full"
+                            />
+                        </figure>
+                        <small x-cloak x-bind:class="{ 'bg-red-600':dt[10].live }" class="live">
+                            <svg x-cloak x-show="dt[10].live" class="w-3 h-3 mr-1 fill-current" viewBox="0 0 24 24"><use href="#icon:live"></use></svg>
+                            <span x-text="dt[10].done?dt[10].time:dt[10].live?'Live':'Scheduled'">Scheduled</span>
+                        </small>
+                    </a>
+                    <div class="px-1">
+                        <p class="hover:underline mt-3 text-lg font-black leading-tight">
+                            <a x-bind:href="dt[10].link||null" target="_blank" rel="external" tabindex="-1">
+                                Building Awesome Blade Components With Alpine
+                            </a>
+                        </p>
+                        <p class="mt-1.5 leading-tight font-bold text-sm text-gray-500">
+                            Caleb Porzio
+                        </p>
+                        <p class="mt-1.5 text-sm text-gray-500">
+                            <b x-cloak x-show="dt[10].live" class="live-now">LIVE NOW</b>
+                            <time x-show="!dt[10].live" x-text="dt[10].date" datetime="2022-02-09T15:20:00-04:00">
+                                Scheduled for 9 February, 15:20
+                            </time>
+                        </p>
+                    </div>
+                </li>
+
+                <li class="relative mb-3">
+                    <a x-bind:href="dt[11].link||null" target="_blank" rel="external" tabindex="-1"
+                        class="relative block cursor-pointer">
+                        <figure class="w-full h-40 overflow-hidden bg-gray-300 rounded-md">
+                            <img data-src="/winter22/speakers/freek-van-der-herten.gif"
+                                alt="Speaker: Freek Van der Herten"
+                                x-bind:class="{ ungrayscale:dt[11].done||dt[11].live }"
+                                class="grayscale lazy object-cover w-full h-full"
+                            />
+                        </figure>
+                        <small x-cloak x-bind:class="{ 'bg-red-600':dt[11].live }" class="live">
+                            <svg x-cloak x-show="dt[11].live" class="w-3 h-3 mr-1 fill-current" viewBox="0 0 24 24"><use href="#icon:live"></use></svg>
+                            <span x-text="dt[11].done?dt[11].time:dt[11].live?'Live':'Scheduled'">Scheduled</span>
+                        </small>
+                    </a>
+                    <div class="px-1">
+                        <p class="hover:underline mt-3 text-lg font-black leading-tight">
+                            <a x-bind:href="dt[11].link||null" target="_blank" rel="external" tabindex="-1">
+                                Discovering <br>Route Discovery
+                            </a>
+                        </p>
+                        <p class="mt-1.5 leading-tight font-bold text-sm text-gray-500">
+                            Freek Van der Herten
+                        </p>
+                        <p class="mt-1.5 text-sm text-gray-500">
+                            <b x-cloak x-show="dt[11].live" class="live-now">LIVE NOW</b>
+                            <time x-show="!dt[11].live" x-text="dt[11].date" datetime="2022-02-09T16:20:00-04:00">
+                                Scheduled for 9 February, 16:20
+                            </time>
+                        </p>
+                    </div>
+                </li>
+
+                <li class="relative mb-3">
+                    <a x-bind:href="dt[12].link||null" target="_blank" rel="external" tabindex="-1"
+                        class="relative block cursor-pointer">
+                        <figure class="w-full h-40 overflow-hidden bg-gray-300 rounded-md">
+                            <img data-src="/winter22/speakers/erika-heidi.gif"
+                                alt="Speaker: Erika Heidi"
+                                x-bind:class="{ ungrayscale:dt[12].done||dt[12].live }"
+                                class="grayscale lazy object-cover w-full h-full"
+                            />
+                        </figure>
+                        <small x-cloak x-bind:class="{ 'bg-red-600':dt[12].live }" class="live">
+                            <svg x-cloak x-show="dt[12].live" class="w-3 h-3 mr-1 fill-current" viewBox="0 0 24 24"><use href="#icon:live"></use></svg>
+                            <span x-text="dt[12].done?dt[12].time:dt[12].live?'Live':'Scheduled'">Scheduled</span>
+                        </small>
+                    </a>
+                    <div class="px-1">
+                        <p class="hover:underline mt-3 text-lg font-black leading-tight">
+                            <a x-bind:href="dt[12].link||null" target="_blank" rel="external" tabindex="-1">
+                                The Art of Programming
+                            </a>
+                        </p>
+                        <p class="mt-1.5 leading-tight font-bold text-sm text-gray-500">
+                            Erika Heidi
+                        </p>
+                        <p class="mt-1.5 text-sm text-gray-500">
+                            <b x-cloak x-show="dt[12].live" class="live-now">LIVE NOW</b>
+                            <time x-show="!dt[12].live" x-text="dt[12].date" datetime="2022-02-09T16:35:00-04:00">
+                                Scheduled for 9 February, 16:35
+                            </time>
+                        </p>
+                    </div>
+                </li>
+
+                <li class="relative mb-3">
+                    <a x-bind:href="dt[13].link||null" target="_blank" rel="external" tabindex="-1"
+                        class="relative block cursor-pointer">
+                        <figure class="w-full h-40 overflow-hidden bg-gray-300 rounded-md">
+                            <img data-src="/winter22/speakers/rory-mcdaniel.gif"
+                                alt="Speaker: Rory McDaniel"
+                                x-bind:class="{ ungrayscale:dt[13].done||dt[13].live }"
+                                class="grayscale lazy object-cover w-full h-full"
+                            />
+                        </figure>
+                        <small x-cloak x-bind:class="{ 'bg-red-600':dt[13].live }" class="live">
+                            <svg x-cloak x-show="dt[13].live" class="w-3 h-3 mr-1 fill-current" viewBox="0 0 24 24"><use href="#icon:live"></use></svg>
+                            <span x-text="dt[13].done?dt[13].time:dt[13].live?'Live':'Scheduled'">Scheduled</span>
+                        </small>
+                    </a>
+                    <div class="px-1">
+                        <p class="hover:underline mt-3 text-lg font-black leading-tight">
+                            <a x-bind:href="dt[13].link||null" target="_blank" rel="external" tabindex="-1">
+                                Using Lando for <br>local Development
+                            </a>
+                        </p>
+                        <p class="mt-1.5 leading-tight font-bold text-sm text-gray-500">
+                            Rory McDaniel
+                        </p>
+                        <p class="mt-1.5 text-sm text-gray-500">
+                            <b x-cloak x-show="dt[13].live" class="live-now">LIVE NOW</b>
+                            <time x-show="!dt[13].live" x-text="dt[13].date" datetime="2022-02-09T16:50:00-04:00">
+                                Scheduled for 9 February, 16:50
+                            </time>
+                        </p>
+                    </div>
+                </li>
+
+                <li class="relative mb-3">
+                    <a x-bind:href="dt[14].link||null" target="_blank" rel="external" tabindex="-1"
+                        class="relative block cursor-pointer">
+                        <figure class="w-full h-40 overflow-hidden bg-gray-300 rounded-md">
+                            <img data-src="/winter22/speakers/zuzana-kunckova.gif"
+                                alt="Speaker: Zuzana Kunckova"
+                                x-bind:class="{ ungrayscale:dt[14].done||dt[14].live }"
+                                class="grayscale lazy object-cover w-full h-full"
+                            />
+                        </figure>
+                        <small x-cloak x-bind:class="{ 'bg-red-600':dt[14].live }" class="live">
+                            <svg x-cloak x-show="dt[14].live" class="w-3 h-3 mr-1 fill-current" viewBox="0 0 24 24"><use href="#icon:live"></use></svg>
+                            <span x-text="dt[14].done?dt[14].time:dt[14].live?'Live':'Scheduled'">Scheduled</span>
+                        </small>
+                    </a>
+                    <div class="px-1">
+                        <p class="hover:underline mt-3 text-lg font-black leading-tight">
+                            <a x-bind:href="dt[14].link||null" target="_blank" rel="external" tabindex="-1">
+                                The Jigsaw Challenge
+                            </a>
+                        </p>
+                        <p class="mt-1.5 leading-tight font-bold text-sm text-gray-500">
+                            Zuzana Kunckova
+                        </p>
+                        <p class="mt-1.5 text-sm text-gray-500">
+                            <b x-cloak x-show="dt[14].live" class="live-now">LIVE NOW</b>
+                            <time x-show="!dt[14].live" x-text="dt[14].date" datetime="2022-02-09T17:05:00-04:00">
+                                Scheduled for 9 February, 17:05
+                            </time>
+                        </p>
+                    </div>
+                </li>
+
+                <li class="relative mb-3">
+                    <a x-bind:href="dt[15].link||null" target="_blank" rel="external" tabindex="-1"
+                        class="relative block cursor-pointer">
+                        <figure class="w-full h-40 overflow-hidden bg-gray-300 rounded-md">
+                            <img data-src="/winter22/speakers/ashley-hindle.gif"
+                                alt="Speaker: Ashley Hindle"
+                                x-bind:class="{ ungrayscale:dt[15].done||dt[15].live }"
+                                class="grayscale lazy object-cover w-full h-full"
+                            />
+                        </figure>
+                        <small x-cloak x-bind:class="{ 'bg-red-600':dt[15].live }" class="live">
+                            <svg x-cloak x-show="dt[15].live" class="w-3 h-3 mr-1 fill-current" viewBox="0 0 24 24"><use href="#icon:live"></use></svg>
+                            <span x-text="dt[15].done?dt[15].time:dt[15].live?'Live':'Scheduled'">Scheduled</span>
+                        </small>
+                    </a>
+                    <div class="px-1">
+                        <p class="hover:underline mt-3 text-lg font-black leading-tight">
+                            <a x-bind:href="dt[15].link||null" target="_blank" rel="external" tabindex="-1">
+                                Laravel for millions <br>and some…
+                            </a>
+                        </p>
+                        <p class="mt-1.5 leading-tight font-bold text-sm text-gray-500">
+                            Ashley Hindle
+                        </p>
+                        <p class="mt-1.5 text-sm text-gray-500">
+                            <b x-cloak x-show="dt[15].live" class="live-now">LIVE NOW</b>
+                            <time x-show="!dt[15].live" x-text="dt[15].date" datetime="2022-02-09T17:20:00-04:00">
+                                Scheduled for 9 February, 17:20
+                            </time>
+                        </p>
+                    </div>
+                </li>
+
+                <li class="relative mb-3">
+                    <a x-bind:href="dt[16].link||null" target="_blank" rel="external" tabindex="-1"
+                        class="relative block cursor-pointer">
+                        <figure class="w-full h-40 overflow-hidden bg-gray-300 rounded-md">
+                            <img data-src="/winter22/speakers/stephen-reescarter.gif"
+                                alt="Speaker: Ashley Hindle"
+                                x-bind:class="{ ungrayscale:dt[16].done||dt[16].live }"
+                                class="grayscale lazy object-cover w-full h-full"
+                            />
+                        </figure>
+                        <small x-cloak x-bind:class="{ 'bg-red-600':dt[16].live }" class="live">
+                            <svg x-cloak x-show="dt[16].live" class="w-3 h-3 mr-1 fill-current" viewBox="0 0 24 24"><use href="#icon:live"></use></svg>
+                            <span x-text="dt[16].done?dt[16].time:dt[16].live?'Live':'Scheduled'">Scheduled</span>
+                        </small>
+                    </a>
+                    <div class="px-1">
+                        <p class="hover:underline mt-3 text-lg font-black leading-tight">
+                            <a x-bind:href="dt[16].link||null" target="_blank" rel="external" tabindex="-1">
+                                Keep Thinking <br>Like a Hacker
+                            </a>
+                        </p>
+                        <p class="mt-1.5 leading-tight font-bold text-sm text-gray-500">
+                            Stephen Rees-Carter
+                        </p>
+                        <p class="mt-1.5 text-sm text-gray-500">
+                            <b x-cloak x-show="dt[16].live" class="live-now">LIVE NOW</b>
+                            <time x-show="!dt[16].live" x-text="dt[16].date" datetime="2022-02-09T18:00:00-04:00">
+                                Scheduled for 9 February, 18:00
+                            </time>
+                        </p>
+                    </div>
+                </li>
+
+            </ul>
+            <img class="hidden sm:block lazy absolute top-0 left-0 mt-24 md:mt-12 pointer-events-none select-none md:w-[162px]" data-src="/winter22/elements-3.png" width="112" alt="random element 3">
+            <img class="md:block lazy absolute top-0 right-0 hidden -mt-24 pointer-events-none select-none" data-src="/winter22/elements-4.png" width="187" alt="random element 4">
+        </section>
+
+        <section id="partners" class="bg-gradient-to-br from-black dark:from-gray-50 to-gray-800 dark:to-gray-200">
+            <div class="container text-center">
+                <article class="mb-12">
+                    <h2 class="h2 md:mt-6 work-sans text-3d font-black">Partners</h2>
+                    <p class="h3 mb-0">They made <u>everything</u> possible…</p>
+                    <p class="p">
+                        For the first time, since 2014, Laracon Online will be <strong class="font-black">FREE FOR ALL</strong>.
+                        <br>This would not be possible without our amazing partners.
+                        <br><b class="text-gradient-yellow">Thank you!</b>
+                    </p>
+                </article>
+
+                <h3 class="mb-1 text-xl font-black text-center uppercase">Gold</h3>
+                <ul class="sm:mb-12 flex flex-wrap justify-center mb-6">
+                    <li>
+                        <h4 class="sr-only">Tighten</h4>
+                        <a class="flex-center w-72 md:w-96 md:h-56 focus:outline inline-block h-40 p-2 m-2 overflow-hidden text-center bg-white rounded shadow"
+                            href="https://tighten.co/?ref=laracon" target="_blank" rel="external">
+                            <img class="lazy object-cover w-full h-full" data-src="/winter22/partners/tighten.jpg" alt="Partner logo: Tighten">
+                        </a>
+                    </li>
+                    <li>
+                        <h4 class="sr-only">JUMP24</h4>
+                        <a class="flex-center w-72 md:w-96 md:h-56 focus:outline inline-block h-40 p-2 m-2 overflow-hidden text-center bg-white rounded shadow"
+                            href="https://jump24.co.uk/?ref=laracon" target="_blank" rel="external">
+                            <img class="lazy object-cover w-full h-full" data-src="/winter22/partners/jump24.jpg" alt="Partner logo: JUMP24">
+                        </a>
+                    </li>
+                    <li>
+                        <h4 class="sr-only">Sentry</h4>
+                        <a class="flex-center w-72 md:w-96 md:h-56 focus:outline inline-block h-40 p-2 m-2 overflow-hidden text-center bg-white rounded shadow"
+                            href="https://sentry.io/?ref=laracon" target="_blank" rel="external">
+                            <img class="lazy object-cover w-full h-full" data-src="/winter22/partners/sentry.jpg" alt="Partner logo: Sentry">
+                        </a>
+                    </li>
+                    <li>
+                        <h4 class="sr-only">Kirschbaum Development</h4>
+                        <a class="flex-center w-72 md:w-96 md:h-56 focus:outline inline-block h-40 p-2 m-2 overflow-hidden text-center bg-white rounded shadow"
+                            href="https://kirschbaumdevelopment.com/?ref=laracon" target="_blank" rel="external">
+                            <img class="lazy object-cover w-full h-full" data-src="/winter22/partners/kirschbaum.jpg" alt="Partner logo: Kirschbaum Development">
+                        </a>
+                    </li>
+                    <li>
+                        <h4 class="sr-only">Vehikl</h4>
+                        <a class="flex-center w-72 md:w-96 md:h-56 focus:outline inline-block h-40 p-2 m-2 overflow-hidden text-center bg-white rounded shadow"
+                            href="https://vehikl.com/?ref=laracon" target="_blank" rel="external">
+                            <img class="lazy object-cover w-full h-full" data-src="/winter22/partners/vehikl.jpg" alt="Partner logo: Vehikl">
+                        </a>
+                    </li>
+                </ul>
+
+                <h3 class="mb-1 text-xl font-black text-center uppercase">Silver</h3>
+                <ul class="sm:mb-12 flex flex-wrap justify-center mb-6">
+                    <li>
+                        <h4 class="sr-only">DevSquad</h4>
+                        <a class="flex-center w-72 md:w-96 md:h-56 focus:outline inline-block h-40 p-2 m-2 overflow-hidden text-center bg-white rounded shadow"
+                            href="https://devsquad.com/?ref=laracon" target="_blank" rel="external">
+                            <img class="lazy object-cover w-full h-full" data-src="/winter22/partners/devsquad.jpg" alt="Partner logo: DevSquad">
+                        </a>
+                    </li>
+                    <li>
+                        <h4 class="sr-only">Tara.ai</h4>
+                        <a class="flex-center w-72 md:w-96 md:h-56 focus:outline inline-block h-40 p-2 m-2 overflow-hidden text-center bg-white rounded shadow"
+                            href="https://tara.ai/?ref=laracon" target="_blank" rel="external">
+                            <img class="lazy object-cover w-full h-full" data-src="/winter22/partners/tara2.jpg" alt="Partner logo: Tara.ai">
+                        </a>
+                    </li>
+                    <li>
+                        <h4 class="sr-only">Linode</h4>
+                        <a class="flex-center w-72 md:w-96 md:h-56 focus:outline inline-block h-40 p-2 m-2 overflow-hidden text-center bg-white rounded shadow"
+                            href="https://linode.com/?ref=laracon" target="_blank" rel="external">
+                            <img class="lazy object-cover w-full h-full" data-src="/winter22/partners/linode.jpg" alt="Partner logo: Linode">
+                        </a>
+                    </li>
+                    <li>
+                        <h4 class="sr-only">AboutYou</h4>
+                        <a class="flex-center w-72 md:w-96 md:h-56 focus:outline inline-block h-40 p-2 m-2 overflow-hidden text-center bg-white rounded shadow"
+                            href="https://corporate.aboutyou.de/en/departments/tech/?ref=laracon" target="_blank" rel="external">
+                            <img class="lazy object-cover w-full h-full" data-src="/winter22/partners/aboutyou.jpg" alt="Partner logo: AboutYou">
+                        </a>
+                    </li>
+                    <li>
+                        <h4 class="sr-only">Curotec</h4>
+                        <a class="flex-center w-72 md:w-96 md:h-56 focus:outline inline-block h-40 p-2 m-2 overflow-hidden text-center bg-white rounded shadow"
+                            href="https://www.curotec.com/services/technologies/laravel/?ref=laracon" target="_blank" rel="external">
+                            <img class="lazy object-cover w-full h-full" data-src="/winter22/partners/curotec.jpg" alt="Partner logo: Curotec">
+                        </a>
+                    </li>
+                </ul>
+
+                <h3 class="mb-1 text-xl font-black text-center uppercase">Community</h3>
+                <ul class="sm:mb-12 flex flex-wrap justify-center mb-6">
+                    <li>
+                        <h4 class="sr-only">Street Group</h4>
+                        <a class="flex-center w-72 md:w-96 md:h-56 focus:outline inline-block h-40 p-2 m-2 overflow-hidden text-center bg-white rounded shadow"
+                           href="https://www.streetgroup.co.uk/?ref=laracon" target="_blank" rel="external">
+                            <img class="lazy object-cover w-full h-full" data-src="/winter22/partners/streetgroup.jpg" alt="Partner logo: Street Group">
+                        </a>
+                    </li>
+                    <li>
+                        <h4 class="sr-only">Honeybadger</h4>
+                        <a class="flex-center w-72 md:w-96 md:h-56 focus:outline inline-block h-40 p-2 m-2 overflow-hidden text-center bg-white rounded shadow"
+                           href="https://www.honeybadger.io/?ref=laracon" target="_blank" rel="external">
+                            <img class="lazy object-cover w-full h-full" data-src="/winter22/partners/honeybadger.png" alt="Partner logo: Honeybadger">
+                        </a>
+                    </li>
+                    <li>
+                        <h4 class="sr-only">Devstats</h4>
+                        <a class="flex-center w-72 md:w-96 md:h-56 focus:outline inline-block h-40 p-2 m-2 overflow-hidden text-center bg-white rounded shadow"
+                           href="https://devstats.com/?ref=laracon" target="_blank" rel="external">
+                            <img class="lazy object-cover w-full h-full" data-src="/winter22/partners/devstats.jpg" alt="Partner logo: Devstats">
+                        </a>
+                    </li>
+                    <li>
+                        <h4 class="sr-only">BeyondCode</h4>
+                        <a class="flex-center w-72 md:w-96 md:h-56 focus:outline inline-block h-40 p-2 m-2 overflow-hidden text-center bg-white rounded shadow"
+                            href="https://beyondco.de/?ref=laracon" target="_blank" rel="external">
+                            <img class="lazy object-cover w-full h-full" data-src="/winter22/partners/beyondcode.jpg" alt="BeyondCode">
+                        </a>
+                    </li>
+                    <li>
+                        <h4 class="sr-only">Clair</h4>
+                        <a class="flex-center w-72 md:w-96 md:h-56 focus:outline inline-block h-40 p-2 m-2 overflow-hidden text-center bg-white rounded shadow"
+                           href="https://getclair.com/?ref=laracon" target="_blank" rel="external">
+                            <img class="lazy object-cover w-full h-full" data-src="/winter22/partners/clair.jpg" alt="Clair">
+                        </a>
+                    </li>
+                    <li>
+                        <h4 class="sr-only">Acto</h4>
+                        <a class="flex-center w-72 md:w-96 md:h-56 focus:outline inline-block h-40 p-2 m-2 overflow-hidden text-center bg-white rounded shadow"
+                           href="https://www.acto.com?utm_source=partnerwebsite&utm_medium=url&utm_campaign=laracon&utm_content=engrecruitment" target="_blank" rel="external">
+                            <img class="lazy object-cover w-full h-full" data-src="/winter22/partners/acto.jpg" alt="Acto">
+                        </a>
+                    </li>
+                    <li>
+                        <h4 class="sr-only">ZipMessage</h4>
+                        <a class="flex-center w-72 md:w-96 md:h-56 focus:outline inline-block h-40 p-2 m-2 overflow-hidden text-center bg-white rounded shadow"
+                           href="https://zipmessage.com/demo?utm_source=partnerwebsite&utm_medium=url&utm_campaign=laracon&utm_content=engrecruitment" target="_blank" rel="external">
+                            <img class="lazy object-cover w-full h-full" data-src="/winter22/partners/zipmessage.jpg" alt="zipmessage">
+                        </a>
+                    </li>
+                    <li>
+                        <h4 class="sr-only">SnapShooter</h4>
+                        <a class="flex-center w-72 md:w-96 md:h-56 focus:outline inline-block h-40 p-2 m-2 overflow-hidden text-center bg-white rounded shadow"
+                           href="https://snapshooter.com/?utm_source=sponsor&utm_medium=banner&utm_campaign=laracon2022" target="_blank" rel="external">
+                            <img class="lazy object-cover w-full h-full" data-src="/winter22/partners/snapshooter.jpg" alt="SnapShooter">
+                        </a>
+                    </li>
+                </ul>
+
+                <h3 class="mb-1 text-xl font-black text-center uppercase">Founding Partners</h3>
+                <ul class="flex flex-wrap justify-center">
+                    <li>
+                        <h4 class="sr-only">Larajobs</h4>
+                        <a class="flex-center w-72 md:w-96 md:h-56 focus:outline inline-block h-40 p-2 m-2 overflow-hidden text-center bg-white rounded shadow"
+                            href="https://larajobs.com/?ref=laracon" target="_blank" rel="external">
+                            <img class="lazy object-cover w-full h-full" data-src="/winter22/partners/larajobs.jpg" alt="Larajobs">
+                        </a>
+                    </li>
+                    <li>
+                        <h4 class="sr-only">Laravel News</h4>
+                        <a class="flex-center w-72 md:w-96 md:h-56 focus:outline inline-block h-40 p-2 m-2 overflow-hidden text-center bg-white rounded shadow" href="https://laravel-news.com/?ref=laracon" target="_blank" rel="external">
+                            <img class="lazy object-cover w-full h-full" data-src="/winter22/partners/laravelnews.jpg" alt="Laravel News">
+                        </a>
+                    </li>
+                    <li>
+                        <h4 class="sr-only">Forge</h4>
+                        <a class="flex-center w-72 md:w-96 md:h-56 focus:outline inline-block h-40 p-2 m-2 overflow-hidden text-center bg-white rounded shadow" href="https://forge.laravel.com/?ref=laracon" target="_blank" rel="external">
+                            <img class="lazy object-cover w-full h-full" data-src="/winter22/partners/forge.jpg" alt="Laravel Forge">
+                        </a>
+                    </li>
+                </ul>
+                <footer class="mt-12 -mb-6 text-center">
+                    <p class="p">Reach <b>the entire Laravel/PHP community</b>, <br>software startups, and founders.</p>
+                    <p class="mt-3">
+                        <a href="/partner"
+                            class="btn gradient-blue whitespace-nowrap inline-block mx-auto">
+                            BECOME A SPONSOR
+                        </a>
+                    </p>
+                </footer>
+            </div>
+            <img class="hidden sm:block lazy absolute top-0 left-0 md:mt-24 pointer-events-none select-none md:w-[218px]" data-src="/winter22/elements-6.png" width="118" alt="random element 6">
+            <img class="hidden sm:block lazy absolute top-0 right-0 -mt-24 pointer-events-none select-none md:w-[269px]" data-src="/winter22/elements-5.png" width="132" alt="random element 5">
+        </section>
+
+        <section id="preparty" class="relative">
+            <article class="md:px-12 container px-8 py-12 mx-auto text-center">
+                <h2 class="h2 work-sans text-3d font-black">Preparty</h2>
+                <p class="p">
+                    Tune in the official preparty no other than the <em>dynamo duo</em>
+                    <br><a class="font-bold" href="https://twitter.com/freekmurze" target="_blank">@<em>freekmurze</em></a> && <a class="font-bold" href="https://twitter.com/christophrumpel" target="_blank">@<em>christophrumpel</em></a> to warm-up the crowd.
+                </p>
+                <p class="mt-3">
+                    Join us on February 8th and help us try catch any secrets from the the upcoming event.
+                </p>
+                <div>
+                    <iframe style="margin: 16px auto;" width="789" height="444" src="https://www.youtube.com/embed/EzKFzUSMz6Q" title="Laracon preparty" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <p class="mt-6">
+                    <a href="https://www.youtube.com/watch?v=EzKFzUSMz6Q" rel="nofollow" target="_blank"
+                        class="btn gradient-yellow whitespace-nowrap inline-block mx-auto">
+                        SET A REMINDER
+                    </a>
+                </p>
+            </article>
+            <img class="hidden sm:block lazy -mt-12 md:-mt-36 absolute top-0 left-0 pointer-events-none select-none md:w-[222px]" data-src="/winter22/elements-7.png" width="122" alt="random element 7">
+            <img class="hidden sm:block lazy absolute top-0 right-0 -mt-12 pointer-events-none select-none md:w-[221px]" data-src="/winter22/elements-8.png" width="121" alt="random element 8">
+        </section>
+
+        <section id="merch" class="bg-gradient-to-br from-black dark:from-gray-100 to-gray-800 dark:to-gray-300">
+            <div class="container relative">
+                <article class="text-center">
+                    <h2 class="h2 worksans text-3d font-black">Merch</h2>
+                    <p class="p">
+                        The official merchandise for this Laracon edition.
+                        <br>Get your t-shirt, posters, stickers, or something special…
+                    </p>
+                    <p class="p">
+                        All of the items will be for sale for a <b>limited time only</b>,
+                        <br>the designs will be retired *forever* on <time datetime="2022-03-09T00:00:00" class="font-bold">March 9th</time>.
+                    </p>
+                    <ul class="sm:grid-cols-4 grid justify-center grid-cols-2 gap-3">
+                        <li class="lazy overflow-hidden rounded"><img data-src="https://cdn.shopify.com/s/files/1/0549/1808/6861/products/white-glossy-mug-15oz-handle-on-left-610ff5048da0c_720x.jpg?v=1628439138" alt=""></li>
+                        <li class="lazy overflow-hidden rounded"><img data-src="https://cdn.shopify.com/s/files/1/0549/1808/6861/products/womens-relaxed-t-shirt-white-front-610ff3e1c315c_720x.jpg?v=1628435429" alt=""></li>
+                        <li class="lazy overflow-hidden rounded"><img data-src="https://cdn.shopify.com/s/files/1/0549/1808/6861/products/unisex-lightweight-zip-hoodie-charcoal-black-triblend-front-610ffc197f191_720x.jpg?v=1628437535" alt=""></li>
+                        <li class="lazy overflow-hidden rounded"><img data-src="https://cdn.shopify.com/s/files/1/0549/1808/6861/products/snapback-black-front-610fe52bb9dba_1296x.jpg?v=1628431841" alt=""></li>
+                    </ul>
+                    <p class="mt-6">
+                        <a href="https://store.laracon.net?rel=laracon" rel="external" target="_blank"
+                            class="btn gradient-blue whitespace-nowrap inline-block mx-auto">
+                            GET YOUR SWAG
+                        </a>
+                    </p>
+                </article>
+            </div>
+        </section>
+
+        <section id="cherrymates" class="md:pt-32 relative pt-12 pb-0">
+            <article class="md:w-2/3 md:rounded-xl container relative z-10 mx-auto text-center select-none">
+                <p class="work-sans lg:text-5xl md:text-4xl sm:text-2xl mb-0 text-xl font-bold leading-none uppercase">
+                    The <u>heads</u> that <br dir> brought you this page
+                </p>
+                <h3 class="lg:text-xl mt-2 mb-0 text-base">
+                    <a href="https://twitter.com/caneco" target="_blank" tabindex="-1">@caneco  <em class="sm:inline hidden not-italic">(the developer)</em></a> && <a href="https://twitter.com/flicknelson" target="_blank" tabindex="-1">@flicknelson  <em class="sm:inline hidden not-italic">(the illustrator)</em></a>
+                </h3>
+            </article>
+            <div class="md:mt-12 relative mt-6 text-center select-none" x-data="_x_wack()">
+                <button type="button" tabindex="-1" x-on:click="whack(0)"
+                    class="hand-left absolute bottom-0 left-0 z-40 block w-1/2 h-[200px] sm:h-[300px]">
+                </button>
+                <button type="button" tabindex="-1" x-on:click="whack(1)"
+                    class="hand-right absolute bottom-0 right-0 z-40 block w-1/2 h-[200px] sm:h-[300px]">
+                </button>
+                <p class="text-gradient-yellow dark:text-black text-3d md:text-4xl text-3xl font-black text-transparent text-white uppercase select-none">
+                    <span x-text="points">0</span> points
+                </p>
+                <a target="_blank" rel="external"
+                    x-cloak
+                    x-show="points"
+                    x-bind:href="'https://twitter.com/intent/tweet?text=Whack%20'+points+'/255%0a🟦 🟨 🟦 🟨 🟦&url=%0a%0ahttps://laracon.net%3Fwhack'"
+                    x-bind:disabled="!points"
+                    class="btn gradient-blue whitespace-nowrap sm:w-72 w-60 absolute inset-x-0 z-50 inline-block mx-auto">
+                    Share this score
+                </a>
+                <svg class="w-full sm:w-[780px] overflow-hidden mt-24" viewbox="0 0 780 269">
+                    <image x-bind:href="'/winter22/whack-board-lvl'+level+'-bg.png'" width="780" height="143" x="0" y="127"/>
+                    <image width="175" height="265" x="180" y="10"
+                        x-bind:class="{ '!translate-y-0':head[0], '!translate-y-full':head[2] }"
+                        x-bind:href="hurt[0]?'/winter22/whack-caneco-2.png':'/winter22/whack-caneco-1.png'"
+                        class="translate-y-44 transition duration-300 ease-in-out"
+                    />
+                    <image width="177" height="243" x="420" y="15"
+                        x-bind:class="{ '!translate-y-0':head[1], '!translate-y-full':head[2] }"
+                        x-bind:href="hurt[1]?'/winter22/whack-flick-2.png':'/winter22/whack-flick-1.png'"
+                        class="translate-y-44 transition duration-300 ease-in-out"
+                    />
+                    <image x-bind:href="'/winter22/whack-board-lvl'+level+'-fg.png'" width="780" height="46" x="0" y="224"/>
+                    <image href="/winter22/taytay.png" width="85" height="179" x="52" y="55"
+                        x-show="winner"
+                        x-transition:enter="transition origin-bottom-left ease-out duration-300"
+                        x-transition:enter-start="opacity-0 scale-90"
+                        x-transition:enter-end="opacity-100 scale-100"
+                    />
+                    <image href="/winter22/thankyou.png" width="115" height="127" x="625" y="120"
+                        x-show="winner"
+                        x-transition:enter="transition origin-bottom-right ease-out duration-300"
+                        x-transition:enter-start="opacity-0 scale-90"
+                        x-transition:enter-end="opacity-100 scale-100"
+                    />
+                </svg>
+                <img href="/winter22/whack-caneco-2.png" alt="preload that whack of caneco" class="absolute invisible pointer-events-none">
+                <img href="/winter22/whack-flick-2.png" alt="preload that whack of flick" class="absolute invisible pointer-events-none">
+                <audio x-ref="pain-1"><source src="/winter22/pain-1.mp3" type="audio/mpeg"></audio>
+                <audio x-ref="pain-2"><source src="/winter22/pain-2.mp3" type="audio/mpeg"></audio>
+            </div>
+        </section>
+
+        <footer id="footer" class="lg:py-24 md:py-12 bg-gradient-to-br from-gray-900 dark:from-gray-50 to-black dark:to-gray-200 dark:text-gray-600 py-6 text-gray-400">
+            <div class="sm:text-sm container text-xs text-center select-none">
+                <p>
+                    Produced by
+                    <a class="hover:underline focus:outline hover:text-white dark:hover:text-black dark:text-gray-800 font-medium text-gray-300" href="https://userscape.com" rel="external" target="_blank">UserScape</a>,
+                    <a class="hover:underline focus:outline hover:text-white dark:hover:text-black dark:text-gray-800 font-medium text-gray-300" href="https://laravel-news.com" rel="external" target="_blank">Laravel News</a>,
+                    <a class="hover:underline focus:outline hover:text-white dark:hover:text-black dark:text-gray-800 font-medium text-gray-300" href="https://laravel.com" rel="external" target="_blank">Laravel</a>
+                    <span class="sm:inline hidden">|</span>
+                    <br class="sm:hidden block"> Developed by
+                    <a href="https://twitter.com/caneco" rel="external" target="_blank"
+                        class="hover:underline focus:outline hover:text-white dark:hover:text-black dark:text-gray-800 font-medium text-gray-300">
+                        Caneco
+                    </a>
+                    <span>|</span> Illustrated by
+                    <a href="https://nelsonribeiro.com/?ref=laracon" rel="external" target="_blank"
+                        class="hover:underline focus:outline hover:text-white dark:hover:text-black dark:text-gray-800 font-medium text-gray-300" >
+                        FlickNelson
+                    </a>
+                </p>
+                <p>
+                    Copyright &copy; <span x-data x-text="(new Date).getFullYear()">2022</span> <a href="https://userscape.com?ref=laracon" rel="external" target="_blank" class="hover:underline focus:outline hover:text-white dark:hover:text-black dark:text-gray-800 font-medium text-gray-300">UserScape</a>
+                </p>
+            </div>
+            <i x-data="{ init() { if (window.location.search == '?whack') setTimeout(() => window.scrollTo(0, document.body.scrollHeight), 1e3) } }"></i>
+        </footer>
+
+        <svg hidden>
+            <defs>
+                <g id="icon:camera-off"><path d="M5.1 23l-1.6-1.3 17-19.4 1.5 1.2z"/><path d="M4.2 18l10.3-11.9c-.2-.1-.3-.1-.5-.1h-12c-1.1 0-2 .9-2 2v8c0 1.1.9 2 2 2h2.2zM6.8 18h7.2c1.1 0 2-.9 2-2v-8c0-.2 0-.4-.1-.5l-9.1 10.5zM18 10.2v3.6l6 4.2v-12z" /></g>
+                <g id="icon:live"><path d="M6.043 19.496l-1.482 1.505c-2.791-2.201-4.561-5.413-4.561-9.001s1.77-6.8 4.561-9l1.482 1.504c-2.326 1.835-3.804 4.512-3.804 7.496s1.478 5.661 3.804 7.496zm.675-7.496c0-1.791.887-3.397 2.282-4.498l-1.481-1.502c-1.86 1.467-3.04 3.608-3.04 6s1.18 4.533 3.04 6l1.481-1.502c-1.396-1.101-2.282-2.707-2.282-4.498zm15.043 0c0-2.984-1.478-5.661-3.804-7.496l1.482-1.504c2.791 2.2 4.561 5.412 4.561 9s-1.77 6.8-4.561 9.001l-1.482-1.505c2.326-1.835 3.804-4.512 3.804-7.496zm-6.761 4.498l1.481 1.502c1.86-1.467 3.04-3.608 3.04-6s-1.18-4.533-3.04-6l-1.481 1.502c1.396 1.101 2.282 2.707 2.282 4.498s-.886 3.397-2.282 4.498zm-3-7.498c-1.656 0-3 1.343-3 3s1.344 3 3 3 3-1.343 3-3-1.344-3-3-3z"></path></g>
+                <g id="icon:microphone-off"><path d="M5.1 23l-1.6-1.3 17-19.4 1.5 1.2z"/><path d="M16 11v-3.6l-6.1 7c.6.4 1.3.6 2.1.6 2.2 0 4-1.8 4-4zM7.2 14.5c-.8-1-1.2-2.2-1.2-3.5v-2h-2v2c0 1.9.7 3.7 1.8 5.1l1.4-1.6zM16 4.3v-.3c0-2.2-1.8-4-4-4s-4 1.8-4 4v7c0 .7.2 1.4.5 2l7.5-8.7zM13 20h-2v2h-4v2h10v-2h-4zM18 11c0 3.3-2.7 6-6 6-1.3 0-2.4-.4-3.4-1.1l-1.3 1.5c1.3 1 3 1.6 4.7 1.6 4.4 0 8-3.6 8-8v-2h-2v2z" /></g>
+                <g id="icon:microphone"><path d="M16 11c0 2.209-1.791 4-4 4s-4-1.791-4-4v-7c0-2.209 1.791-4 4-4s4 1.791 4 4v7zm4-2v2c0 4.418-3.582 8-8 8s-8-3.582-8-8v-2h2v2c0 3.309 2.691 6 6 6s6-2.691 6-6v-2h2zm-7 13v-2h-2v2h-4v2h10v-2h-4z" /></g>
+                <g id="icon:share"><path d="M0 4v16h24v-16h-24zm11 7h-3l4-5 4 5h-3v6h-2v-6z" /></g>
+                <g id="icon:users"><path d="M16 20h-16v-.8c0-1.7.1-2.7 2.1-3.1 2.2-.5 4.5-1 3.4-2.9-3.1-5.9-.9-9.2 2.5-9.2 3.3 0 5.6 3.2 2.5 9.1-1 2 1.1 2.4 3.4 2.9 2.3.6 2.1 1.8 2.1 4zm8-.6c0-1.3-.1-2-1.6-2.3-1.7-.4-3.3-.7-2.5-2.2 2.3-4.5.6-6.9-1.9-6.9-1.7 0-3 1.1-3 3.1 0 5.2 3 2.4 3 8.9h6v-.6z" /></g>
+                <g id="icon:verified"><path d="M23.334 11.96c-.713-.726-.872-1.829-.393-2.727.342-.64.366-1.401.064-2.062-.301-.66-.893-1.142-1.601-1.302-.991-.225-1.722-1.067-1.803-2.081-.059-.723-.451-1.378-1.062-1.77-.609-.393-1.367-.478-2.05-.229-.956.347-2.026.032-2.642-.776-.44-.576-1.124-.915-1.85-.915-.725 0-1.409.339-1.849.915-.613.809-1.683 1.124-2.639.777-.682-.248-1.44-.163-2.05.229-.61.392-1.003 1.047-1.061 1.77-.082 1.014-.812 1.857-1.803 2.081-.708.16-1.3.642-1.601 1.302s-.277 1.422.065 2.061c.479.897.32 2.001-.392 2.727-.509.517-.747 1.242-.644 1.96s.536 1.347 1.17 1.7c.888.495 1.352 1.51 1.144 2.505-.147.71.044 1.448.519 1.996.476.549 1.18.844 1.902.798 1.016-.063 1.953.54 2.317 1.489.259.678.82 1.195 1.517 1.399.695.204 1.447.072 2.031-.357.819-.603 1.936-.603 2.754 0 .584.43 1.336.562 2.031.357.697-.204 1.258-.722 1.518-1.399.363-.949 1.301-1.553 2.316-1.489.724.046 1.427-.249 1.902-.798.475-.548.667-1.286.519-1.996-.207-.995.256-2.01 1.145-2.505.633-.354 1.065-.982 1.169-1.7s-.135-1.443-.643-1.96zm-12.584 5.43l-4.5-4.364 1.857-1.857 2.643 2.506 5.643-5.784 1.857 1.857-7.5 7.642z"></path></g>
+                <g id="icon:bolt"><path d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clip-rule="evenodd"  fill-rule="evenodd"></path></g>
+            </defs>
+        </svg>
+    </body>
+    <script defer src="/winter22/vendor.min.js"></script>
+</html>

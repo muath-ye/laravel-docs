@@ -1,0 +1,1768 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Database: Query Builder - Laravel - The PHP Framework For Web Artisans</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+        <link rel="canonical" href="queries.html">
+    
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="../../img/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../../img/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../../img/favicon/favicon-16x16.png">
+    <link rel="manifest" href="../../img/favicon/site.webmanifest">
+    <link rel="mask-icon" href="../../img/favicon/safari-pinned-tab.svg" color="#ff2d20">
+    <link rel="shortcut icon" href="../../img/favicon/favicon.ico">
+    <meta name="msapplication-TileColor" content="#ff2d20">
+    <meta name="msapplication-config" content="/img/favicon/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
+    
+    <link rel="stylesheet" href="../../assets/css/ins2wgm.css">
+    <link rel="stylesheet" type="text/css" href="../../css/app.css?id=e59564080d0a323bcdb7">
+
+    <script>
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+        if (localStorage.theme === 'system') {
+            if (e.matches) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+        }
+    });
+
+    function updateTheme() {
+        if (!('theme' in localStorage)) {
+            localStorage.theme = 'system';
+        }
+
+        switch (localStorage.theme) {
+            case 'system':
+                if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                    document.documentElement.classList.add('dark');
+                } else {
+                    document.documentElement.classList.remove('dark');
+                }
+                document.documentElement.setAttribute('color-theme', 'system');
+                break;
+
+            case 'dark':
+                document.documentElement.classList.add('dark');
+                document.documentElement.setAttribute('color-theme', 'dark');
+                break;
+
+            case 'light':
+                document.documentElement.classList.remove('dark');
+                document.documentElement.setAttribute('color-theme', 'light');
+                break;
+        }
+    }
+
+    updateTheme();
+</script>
+</head>
+<body x-data="{
+        navIsOpen: false,
+        searchIsOpen: false,
+        search: '',
+    }" class="language-php h-full w-full font-sans text-gray-900 antialiased">
+
+     <a id="skip-to-content-link" href="#main-content" class="absolute bg-gray-100 px-4 py-2 top-3 left-3 text-gray-700 shadow-xl">
+    Skip to content
+</a>
+ 
+    <div class="relative overflow-auto dark:bg-dark-700" id="docsScreen">
+        <div class="relative lg:flex lg:items-start">
+            <aside x-init="init()" x-data="{
+                    navIsOpen: false,
+                    init() {
+                        this.$watch('navIsOpen', (val) => {
+                            if (val) {
+                                document.body.classList.add('overflow-hidden');
+                            } else {
+                                document.body.classList.remove('overflow-hidden');
+                            }
+                        });
+                    }
+                }" class="hidden fixed top-0 bottom-0 left-0 z-20 h-full w-16 flex flex-col bg-gradient-to-b from-gray-100 to-white transition-all duration-300 overflow-hidden lg:sticky lg:w-80 lg:flex-shrink-0 lg:flex lg:justify-end lg:items-end 2xl:max-w-lg 2xl:w-full dark:from-dark-800 dark:to-dark-700" :class="{ 'w-64': navIsOpen }" @click.away="navIsOpen = false" @keydown.window.escape="navIsOpen = false">
+                <div class="relative min-h-0 flex-1 flex flex-col xl:w-80">
+                    <a href="../../index.htm" class="flex items-center py-8 px-4 lg:px-8 xl:px-16">
+                        <img class="w-8 h-8 flex-shrink-0 transition-all duration-300 lg:w-12 lg:h-12" :class="{ 'w-12 h-12': navIsOpen }" src="../../img/logomark.min.svg" alt="Laravel" width="50" height="52">
+                        <img x-show="navIsOpen" x-cloak="" class="ml-4 transition-all duration-300 lg:hidden" x-transition:enter="duration-250 ease-out" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" x-transition:leave="duration-250 ease-in" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0" src="../../img/logotype.min.svg" alt="Laravel" width="114" height="29">
+                        <img src="../../img/logotype.min.svg" alt="Laravel" class="hidden ml-4 lg:block" width="114" height="29">
+                    </a>
+                    <div class="overflow-y-auto overflow-x-hidden px-4 lg:overflow-hidden lg:px-8 xl:px-16">
+                        <nav x-show="navIsOpen" x-cloak="" class="mt-4 lg:hidden">
+                            <div class="docs_sidebar">
+                                <ul>
+<li>
+<h2>Prologue</h2>
+<ul>
+<li><a href="releases.html">Release Notes</a></li>
+<li><a href="upgrade.html">Upgrade Guide</a></li>
+<li><a href="contributions.html">Contribution Guide</a></li>
+</ul>
+</li>
+<li>
+<h2>Getting Started</h2>
+<ul>
+<li><a href="installation.html">Installation</a></li>
+<li><a href="configuration.html">Configuration</a></li>
+<li><a href="structure.html">Directory Structure</a></li>
+<li><a href="starter-kits.html">Starter Kits</a></li>
+<li><a href="deployment.html">Deployment</a></li>
+</ul>
+</li>
+<li>
+<h2>Architecture Concepts</h2>
+<ul>
+<li><a href="lifecycle.html">Request Lifecycle</a></li>
+<li><a href="container.html">Service Container</a></li>
+<li><a href="providers.html">Service Providers</a></li>
+<li><a href="facades.html">Facades</a></li>
+</ul>
+</li>
+<li>
+<h2>The Basics</h2>
+<ul>
+<li><a href="routing.html">Routing</a></li>
+<li><a href="middleware.html">Middleware</a></li>
+<li><a href="csrf.html">CSRF Protection</a></li>
+<li><a href="controllers.html">Controllers</a></li>
+<li><a href="requests.html">Requests</a></li>
+<li><a href="responses.html">Responses</a></li>
+<li><a href="views.html">Views</a></li>
+<li><a href="blade.html">Blade Templates</a></li>
+<li><a href="urls.html">URL Generation</a></li>
+<li><a href="session.html">Session</a></li>
+<li><a href="validation.html">Validation</a></li>
+<li><a href="errors.html">Error Handling</a></li>
+<li><a href="logging.html">Logging</a></li>
+</ul>
+</li>
+<li>
+<h2>Digging Deeper</h2>
+<ul>
+<li><a href="artisan.html">Artisan Console</a></li>
+<li><a href="broadcasting.html">Broadcasting</a></li>
+<li><a href="cache.html">Cache</a></li>
+<li><a href="collections.html">Collections</a></li>
+<li><a href="mix.html">Compiling Assets</a></li>
+<li><a href="contracts.html">Contracts</a></li>
+<li><a href="events.html">Events</a></li>
+<li><a href="filesystem.html">File Storage</a></li>
+<li><a href="helpers.html">Helpers</a></li>
+<li><a href="http-client.html">HTTP Client</a></li>
+<li><a href="localization.html">Localization</a></li>
+<li><a href="mail.html">Mail</a></li>
+<li><a href="notifications.html">Notifications</a></li>
+<li><a href="packages.html">Package Development</a></li>
+<li><a href="queues.html">Queues</a></li>
+<li><a href="rate-limiting.html">Rate Limiting</a></li>
+<li><a href="scheduling.html">Task Scheduling</a></li>
+</ul>
+</li>
+<li>
+<h2>Security</h2>
+<ul>
+<li><a href="authentication.html">Authentication</a></li>
+<li><a href="authorization.html">Authorization</a></li>
+<li><a href="verification.html">Email Verification</a></li>
+<li><a href="encryption.html">Encryption</a></li>
+<li><a href="hashing.html">Hashing</a></li>
+<li><a href="passwords.html">Password Reset</a></li>
+</ul>
+</li>
+<li>
+<h2>Database</h2>
+<ul>
+<li><a href="database.html">Getting Started</a></li>
+<li><a href="queries.html">Query Builder</a></li>
+<li><a href="pagination.html">Pagination</a></li>
+<li><a href="migrations.html">Migrations</a></li>
+<li><a href="seeding.html">Seeding</a></li>
+<li><a href="redis.html">Redis</a></li>
+</ul>
+</li>
+<li>
+<h2>Eloquent ORM</h2>
+<ul>
+<li><a href="eloquent.html">Getting Started</a></li>
+<li><a href="eloquent-relationships.html">Relationships</a></li>
+<li><a href="eloquent-collections.html">Collections</a></li>
+<li><a href="eloquent-mutators.html">Mutators / Casts</a></li>
+<li><a href="eloquent-resources.html">API Resources</a></li>
+<li><a href="eloquent-serialization.html">Serialization</a></li>
+</ul>
+</li>
+<li>
+<h2>Testing</h2>
+<ul>
+<li><a href="testing.html">Getting Started</a></li>
+<li><a href="http-tests.html">HTTP Tests</a></li>
+<li><a href="console-tests.html">Console Tests</a></li>
+<li><a href="dusk.html">Browser Tests</a></li>
+<li><a href="database-testing.html">Database</a></li>
+<li><a href="mocking.html">Mocking</a></li>
+</ul>
+</li>
+<li>
+<h2>Packages</h2>
+<ul>
+<li><a href="starter-kits.html#laravel-breeze">Breeze</a></li>
+<li><a href="billing.html">Cashier (Stripe)</a></li>
+<li><a href="cashier-paddle.html">Cashier (Paddle)</a></li>
+<li><a href="dusk.html">Dusk</a></li>
+<li><a href="envoy.html">Envoy</a></li>
+<li><a href="fortify.html">Fortify</a></li>
+<li><a href="homestead.html">Homestead</a></li>
+<li><a href="horizon.html">Horizon</a></li>
+<li><a href="../../index-6.htm">Jetstream</a></li>
+<li><a href="octane.html">Octane</a></li>
+<li><a href="passport.html">Passport</a></li>
+<li><a href="sail.html">Sail</a></li>
+<li><a href="sanctum.html">Sanctum</a></li>
+<li><a href="scout.html">Scout</a></li>
+<li><a href="socialite.html">Socialite</a></li>
+<li><a href="telescope.html">Telescope</a></li>
+<li><a href="valet.html">Valet</a></li>
+</ul>
+</li>
+<li><a href="/api/8.x">API Documentation</a></li>
+</ul>
+                            </div>
+                        </nav>
+                        <nav id="indexed-nav" class="hidden lg:block lg:mt-4">
+                            <div class="docs_sidebar">
+                                <ul>
+<li>
+<h2>Prologue</h2>
+<ul>
+<li><a href="releases.html">Release Notes</a></li>
+<li><a href="upgrade.html">Upgrade Guide</a></li>
+<li><a href="contributions.html">Contribution Guide</a></li>
+</ul>
+</li>
+<li>
+<h2>Getting Started</h2>
+<ul>
+<li><a href="installation.html">Installation</a></li>
+<li><a href="configuration.html">Configuration</a></li>
+<li><a href="structure.html">Directory Structure</a></li>
+<li><a href="starter-kits.html">Starter Kits</a></li>
+<li><a href="deployment.html">Deployment</a></li>
+</ul>
+</li>
+<li>
+<h2>Architecture Concepts</h2>
+<ul>
+<li><a href="lifecycle.html">Request Lifecycle</a></li>
+<li><a href="container.html">Service Container</a></li>
+<li><a href="providers.html">Service Providers</a></li>
+<li><a href="facades.html">Facades</a></li>
+</ul>
+</li>
+<li>
+<h2>The Basics</h2>
+<ul>
+<li><a href="routing.html">Routing</a></li>
+<li><a href="middleware.html">Middleware</a></li>
+<li><a href="csrf.html">CSRF Protection</a></li>
+<li><a href="controllers.html">Controllers</a></li>
+<li><a href="requests.html">Requests</a></li>
+<li><a href="responses.html">Responses</a></li>
+<li><a href="views.html">Views</a></li>
+<li><a href="blade.html">Blade Templates</a></li>
+<li><a href="urls.html">URL Generation</a></li>
+<li><a href="session.html">Session</a></li>
+<li><a href="validation.html">Validation</a></li>
+<li><a href="errors.html">Error Handling</a></li>
+<li><a href="logging.html">Logging</a></li>
+</ul>
+</li>
+<li>
+<h2>Digging Deeper</h2>
+<ul>
+<li><a href="artisan.html">Artisan Console</a></li>
+<li><a href="broadcasting.html">Broadcasting</a></li>
+<li><a href="cache.html">Cache</a></li>
+<li><a href="collections.html">Collections</a></li>
+<li><a href="mix.html">Compiling Assets</a></li>
+<li><a href="contracts.html">Contracts</a></li>
+<li><a href="events.html">Events</a></li>
+<li><a href="filesystem.html">File Storage</a></li>
+<li><a href="helpers.html">Helpers</a></li>
+<li><a href="http-client.html">HTTP Client</a></li>
+<li><a href="localization.html">Localization</a></li>
+<li><a href="mail.html">Mail</a></li>
+<li><a href="notifications.html">Notifications</a></li>
+<li><a href="packages.html">Package Development</a></li>
+<li><a href="queues.html">Queues</a></li>
+<li><a href="rate-limiting.html">Rate Limiting</a></li>
+<li><a href="scheduling.html">Task Scheduling</a></li>
+</ul>
+</li>
+<li>
+<h2>Security</h2>
+<ul>
+<li><a href="authentication.html">Authentication</a></li>
+<li><a href="authorization.html">Authorization</a></li>
+<li><a href="verification.html">Email Verification</a></li>
+<li><a href="encryption.html">Encryption</a></li>
+<li><a href="hashing.html">Hashing</a></li>
+<li><a href="passwords.html">Password Reset</a></li>
+</ul>
+</li>
+<li>
+<h2>Database</h2>
+<ul>
+<li><a href="database.html">Getting Started</a></li>
+<li><a href="queries.html">Query Builder</a></li>
+<li><a href="pagination.html">Pagination</a></li>
+<li><a href="migrations.html">Migrations</a></li>
+<li><a href="seeding.html">Seeding</a></li>
+<li><a href="redis.html">Redis</a></li>
+</ul>
+</li>
+<li>
+<h2>Eloquent ORM</h2>
+<ul>
+<li><a href="eloquent.html">Getting Started</a></li>
+<li><a href="eloquent-relationships.html">Relationships</a></li>
+<li><a href="eloquent-collections.html">Collections</a></li>
+<li><a href="eloquent-mutators.html">Mutators / Casts</a></li>
+<li><a href="eloquent-resources.html">API Resources</a></li>
+<li><a href="eloquent-serialization.html">Serialization</a></li>
+</ul>
+</li>
+<li>
+<h2>Testing</h2>
+<ul>
+<li><a href="testing.html">Getting Started</a></li>
+<li><a href="http-tests.html">HTTP Tests</a></li>
+<li><a href="console-tests.html">Console Tests</a></li>
+<li><a href="dusk.html">Browser Tests</a></li>
+<li><a href="database-testing.html">Database</a></li>
+<li><a href="mocking.html">Mocking</a></li>
+</ul>
+</li>
+<li>
+<h2>Packages</h2>
+<ul>
+<li><a href="starter-kits.html#laravel-breeze">Breeze</a></li>
+<li><a href="billing.html">Cashier (Stripe)</a></li>
+<li><a href="cashier-paddle.html">Cashier (Paddle)</a></li>
+<li><a href="dusk.html">Dusk</a></li>
+<li><a href="envoy.html">Envoy</a></li>
+<li><a href="fortify.html">Fortify</a></li>
+<li><a href="homestead.html">Homestead</a></li>
+<li><a href="horizon.html">Horizon</a></li>
+<li><a href="../../index-6.htm">Jetstream</a></li>
+<li><a href="octane.html">Octane</a></li>
+<li><a href="passport.html">Passport</a></li>
+<li><a href="sail.html">Sail</a></li>
+<li><a href="sanctum.html">Sanctum</a></li>
+<li><a href="scout.html">Scout</a></li>
+<li><a href="socialite.html">Socialite</a></li>
+<li><a href="telescope.html">Telescope</a></li>
+<li><a href="valet.html">Valet</a></li>
+</ul>
+</li>
+<li><a href="/api/8.x">API Documentation</a></li>
+</ul>
+                            </div>
+                        </nav>
+
+                        
+                        
+                        
+                                            </div>
+                    <div class="sticky bottom-0 flex-1 flex flex-col justify-end lg:hidden">
+                        <div class="py-4 px-4 bg-white">
+                            <button class="relative ml-1 w-6 h-6 text-red-600 lg:hidden focus:outline-none focus:shadow-outline" aria-label="Menu" @click.prevent="navIsOpen = !navIsOpen">
+                                <svg x-show.transition.opacity="! navIsOpen" class="absolute inset-0 w-6 h-6" viewbox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+                                <svg x-show.transition.opacity="navIsOpen" x-cloak="" class="absolute inset-0 w-6 h-6" viewbox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+
+            <header class="lg:hidden" @keydown.window.escape="navIsOpen = false" @click.away="navIsOpen = false">
+                <div class="relative mx-auto w-full py-10 bg-white transition duration-200 dark:bg-dark-700">
+                    <div class="mx-auto px-8 sm:px-16 flex items-center justify-between">
+                        <a href="../../index.htm" class="flex items-center">
+                            <img class="" src="../../img/logomark.min.svg" alt="Laravel">
+                            <img class="hidden ml-5 sm:block" src="../../img/logotype.min.svg" alt="Laravel">
+                        </a>
+                        <div class="flex-1 flex items-center justify-end">
+                            <button id="header__sun" onclick="toSystemMode()" title="Switch to system theme" class="relative w-10 h-10 focus:outline-none focus:shadow-outline text-gray-500">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-sun" width="24" height="24" viewbox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                    <circle cx="12" cy="12" r="4"></circle>
+                                    <path d="M3 12h1m8 -9v1m8 8h1m-9 8v1m-6.4 -15.4l.7 .7m12.1 -.7l-.7 .7m0 11.4l.7 .7m-12.1 -.7l-.7 .7"></path>
+                                 </svg>
+                            </button>
+                            <button id="header__moon" onclick="toLightMode()" title="Switch to light mode" class="relative w-10 h-10 focus:outline-none focus:shadow-outline text-gray-500">
+                                <svg style="width:24px;height:24px" viewbox="0 0 24 24">
+                                    <path fill="currentColor" d="M17.75,4.09L15.22,6.03L16.13,9.09L13.5,7.28L10.87,9.09L11.78,6.03L9.25,4.09L12.44,4L13.5,1L14.56,4L17.75,4.09M21.25,11L19.61,12.25L20.2,14.23L18.5,13.06L16.8,14.23L17.39,12.25L15.75,11L17.81,10.95L18.5,9L19.19,10.95L21.25,11M18.97,15.95C19.8,15.87 20.69,17.05 20.16,17.8C19.84,18.25 19.5,18.67 19.08,19.07C15.17,23 8.84,23 4.94,19.07C1.03,15.17 1.03,8.83 4.94,4.93C5.34,4.53 5.76,4.17 6.21,3.85C6.96,3.32 8.14,4.21 8.06,5.04C7.79,7.9 8.75,10.87 10.95,13.06C13.14,15.26 16.1,16.22 18.97,15.95M17.33,17.97C14.5,17.81 11.7,16.64 9.53,14.5C7.36,12.31 6.2,9.5 6.04,6.68C3.23,9.82 3.34,14.64 6.35,17.66C9.37,20.67 14.19,20.78 17.33,17.97Z"></path>
+                                </svg>
+                            </button>
+                            <button id="header__indeterminate" onclick="toDarkMode()" title="Switch to dark mode" class="relative w-10 h-10 focus:outline-none focus:shadow-outline text-gray-500">
+                                <svg style="width:24px;height:24px" viewbox="0 0 24 24">
+                                    <path fill="currentColor" d="M12 2A10 10 0 0 0 2 12A10 10 0 0 0 12 22A10 10 0 0 0 22 12A10 10 0 0 0 12 2M12 4A8 8 0 0 1 20 12A8 8 0 0 1 12 20V4Z"></path>
+                                </svg>
+                            </button>
+                            <button class="ml-2 relative w-10 h-10 p-2 text-red-600 lg:hidden focus:outline-none focus:shadow-outline" aria-label="Menu" @click.prevent="navIsOpen = !navIsOpen">
+                                <svg x-show.transition.opacity="! navIsOpen" class="absolute inset-0 mt-2 ml-2 w-6 h-6" viewbox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+                                <svg x-show.transition.opacity="navIsOpen" x-cloak="" class="absolute inset-0 mt-2 ml-2 w-6 h-6" viewbox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                            </button>
+                        </div>
+                    </div>
+                    <span :class="{ 'shadow-sm': navIsOpen }" class="absolute inset-0 z-20 pointer-events-none"></span>
+                </div>
+                <div x-show="navIsOpen" x-transition:enter="duration-150" x-transition:leave="duration-100 ease-in" x-cloak="">
+                    <nav x-show="navIsOpen" x-cloak="" class="absolute w-full transform origin-top shadow-sm z-10" x-transition:enter="duration-150 ease-out" x-transition:enter-start="opacity-0 -translate-y-8 scale-75" x-transition:enter-end="opacity-100 scale-100" x-transition:leave="duration-100 ease-in" x-transition:leave-start="opacity-100 scale-100" x-transition:leave-end="opacity-0 -translate-y-8 scale-75">
+                        <div class="relative p-8 bg-white docs_sidebar dark:bg-dark-600">
+                            <ul>
+<li>
+<h2>Prologue</h2>
+<ul>
+<li><a href="releases.html">Release Notes</a></li>
+<li><a href="upgrade.html">Upgrade Guide</a></li>
+<li><a href="contributions.html">Contribution Guide</a></li>
+</ul>
+</li>
+<li>
+<h2>Getting Started</h2>
+<ul>
+<li><a href="installation.html">Installation</a></li>
+<li><a href="configuration.html">Configuration</a></li>
+<li><a href="structure.html">Directory Structure</a></li>
+<li><a href="starter-kits.html">Starter Kits</a></li>
+<li><a href="deployment.html">Deployment</a></li>
+</ul>
+</li>
+<li>
+<h2>Architecture Concepts</h2>
+<ul>
+<li><a href="lifecycle.html">Request Lifecycle</a></li>
+<li><a href="container.html">Service Container</a></li>
+<li><a href="providers.html">Service Providers</a></li>
+<li><a href="facades.html">Facades</a></li>
+</ul>
+</li>
+<li>
+<h2>The Basics</h2>
+<ul>
+<li><a href="routing.html">Routing</a></li>
+<li><a href="middleware.html">Middleware</a></li>
+<li><a href="csrf.html">CSRF Protection</a></li>
+<li><a href="controllers.html">Controllers</a></li>
+<li><a href="requests.html">Requests</a></li>
+<li><a href="responses.html">Responses</a></li>
+<li><a href="views.html">Views</a></li>
+<li><a href="blade.html">Blade Templates</a></li>
+<li><a href="urls.html">URL Generation</a></li>
+<li><a href="session.html">Session</a></li>
+<li><a href="validation.html">Validation</a></li>
+<li><a href="errors.html">Error Handling</a></li>
+<li><a href="logging.html">Logging</a></li>
+</ul>
+</li>
+<li>
+<h2>Digging Deeper</h2>
+<ul>
+<li><a href="artisan.html">Artisan Console</a></li>
+<li><a href="broadcasting.html">Broadcasting</a></li>
+<li><a href="cache.html">Cache</a></li>
+<li><a href="collections.html">Collections</a></li>
+<li><a href="mix.html">Compiling Assets</a></li>
+<li><a href="contracts.html">Contracts</a></li>
+<li><a href="events.html">Events</a></li>
+<li><a href="filesystem.html">File Storage</a></li>
+<li><a href="helpers.html">Helpers</a></li>
+<li><a href="http-client.html">HTTP Client</a></li>
+<li><a href="localization.html">Localization</a></li>
+<li><a href="mail.html">Mail</a></li>
+<li><a href="notifications.html">Notifications</a></li>
+<li><a href="packages.html">Package Development</a></li>
+<li><a href="queues.html">Queues</a></li>
+<li><a href="rate-limiting.html">Rate Limiting</a></li>
+<li><a href="scheduling.html">Task Scheduling</a></li>
+</ul>
+</li>
+<li>
+<h2>Security</h2>
+<ul>
+<li><a href="authentication.html">Authentication</a></li>
+<li><a href="authorization.html">Authorization</a></li>
+<li><a href="verification.html">Email Verification</a></li>
+<li><a href="encryption.html">Encryption</a></li>
+<li><a href="hashing.html">Hashing</a></li>
+<li><a href="passwords.html">Password Reset</a></li>
+</ul>
+</li>
+<li>
+<h2>Database</h2>
+<ul>
+<li><a href="database.html">Getting Started</a></li>
+<li><a href="queries.html">Query Builder</a></li>
+<li><a href="pagination.html">Pagination</a></li>
+<li><a href="migrations.html">Migrations</a></li>
+<li><a href="seeding.html">Seeding</a></li>
+<li><a href="redis.html">Redis</a></li>
+</ul>
+</li>
+<li>
+<h2>Eloquent ORM</h2>
+<ul>
+<li><a href="eloquent.html">Getting Started</a></li>
+<li><a href="eloquent-relationships.html">Relationships</a></li>
+<li><a href="eloquent-collections.html">Collections</a></li>
+<li><a href="eloquent-mutators.html">Mutators / Casts</a></li>
+<li><a href="eloquent-resources.html">API Resources</a></li>
+<li><a href="eloquent-serialization.html">Serialization</a></li>
+</ul>
+</li>
+<li>
+<h2>Testing</h2>
+<ul>
+<li><a href="testing.html">Getting Started</a></li>
+<li><a href="http-tests.html">HTTP Tests</a></li>
+<li><a href="console-tests.html">Console Tests</a></li>
+<li><a href="dusk.html">Browser Tests</a></li>
+<li><a href="database-testing.html">Database</a></li>
+<li><a href="mocking.html">Mocking</a></li>
+</ul>
+</li>
+<li>
+<h2>Packages</h2>
+<ul>
+<li><a href="starter-kits.html#laravel-breeze">Breeze</a></li>
+<li><a href="billing.html">Cashier (Stripe)</a></li>
+<li><a href="cashier-paddle.html">Cashier (Paddle)</a></li>
+<li><a href="dusk.html">Dusk</a></li>
+<li><a href="envoy.html">Envoy</a></li>
+<li><a href="fortify.html">Fortify</a></li>
+<li><a href="homestead.html">Homestead</a></li>
+<li><a href="horizon.html">Horizon</a></li>
+<li><a href="../../index-6.htm">Jetstream</a></li>
+<li><a href="octane.html">Octane</a></li>
+<li><a href="passport.html">Passport</a></li>
+<li><a href="sail.html">Sail</a></li>
+<li><a href="sanctum.html">Sanctum</a></li>
+<li><a href="scout.html">Scout</a></li>
+<li><a href="socialite.html">Socialite</a></li>
+<li><a href="telescope.html">Telescope</a></li>
+<li><a href="valet.html">Valet</a></li>
+</ul>
+</li>
+<li><a href="/api/8.x">API Documentation</a></li>
+</ul>
+                        </div>
+                    </nav>
+                </div>
+            </header>
+
+            <section class="flex-1 dark:bg-dark-700">
+                <div class="max-w-screen-lg px-8 sm:px-16 lg:px-24">
+                    <div class="flex flex-col items-end lg:mt-8 lg:flex-row-reverse">
+                        <div class="hidden lg:flex items-center justify-center ml-8">
+                            <button id="header__sun" onclick="toSystemMode()" title="Switch to system theme" class="relative w-10 h-10 focus:outline-none focus:shadow-outline text-gray-500">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-sun" width="24" height="24" viewbox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                    <circle cx="12" cy="12" r="4"></circle>
+                                    <path d="M3 12h1m8 -9v1m8 8h1m-9 8v1m-6.4 -15.4l.7 .7m12.1 -.7l-.7 .7m0 11.4l.7 .7m-12.1 -.7l-.7 .7"></path>
+                                 </svg>
+                            </button>
+                            <button id="header__moon" onclick="toLightMode()" title="Switch to light mode" class="relative w-10 h-10 focus:outline-none focus:shadow-outline text-gray-500">
+                                <svg style="width:24px;height:24px" viewbox="0 0 24 24">
+                                    <path fill="currentColor" d="M17.75,4.09L15.22,6.03L16.13,9.09L13.5,7.28L10.87,9.09L11.78,6.03L9.25,4.09L12.44,4L13.5,1L14.56,4L17.75,4.09M21.25,11L19.61,12.25L20.2,14.23L18.5,13.06L16.8,14.23L17.39,12.25L15.75,11L17.81,10.95L18.5,9L19.19,10.95L21.25,11M18.97,15.95C19.8,15.87 20.69,17.05 20.16,17.8C19.84,18.25 19.5,18.67 19.08,19.07C15.17,23 8.84,23 4.94,19.07C1.03,15.17 1.03,8.83 4.94,4.93C5.34,4.53 5.76,4.17 6.21,3.85C6.96,3.32 8.14,4.21 8.06,5.04C7.79,7.9 8.75,10.87 10.95,13.06C13.14,15.26 16.1,16.22 18.97,15.95M17.33,17.97C14.5,17.81 11.7,16.64 9.53,14.5C7.36,12.31 6.2,9.5 6.04,6.68C3.23,9.82 3.34,14.64 6.35,17.66C9.37,20.67 14.19,20.78 17.33,17.97Z"></path>
+                                </svg>
+                            </button>
+                            <button id="header__indeterminate" onclick="toDarkMode()" title="Switch to dark mode" class="relative w-10 h-10 focus:outline-none focus:shadow-outline text-gray-500">
+                                <svg style="width:24px;height:24px" viewbox="0 0 24 24">
+                                    <path fill="currentColor" d="M12 2A10 10 0 0 0 2 12A10 10 0 0 0 12 22A10 10 0 0 0 22 12A10 10 0 0 0 12 2M12 4A8 8 0 0 1 20 12A8 8 0 0 1 12 20V4Z"></path>
+                                </svg>
+                            </button>
+                        </div>
+                        <div class="w-full lg:w-64 lg:pl-12">
+                            <div>
+                                <label class="text-gray-600 text-xs tracking-widest uppercase dark:text-gray-500" for="version-switch">Version</label>
+                                <div x-data="" class="relative w-full bg-white border-b border-gray-600 border-opacity-50 transition-all duration-500 focus-within:border-gray-600 dark:bg-gray-800">
+                                    <select id="version-switcher" aria-label="Laravel version" class="appearance-none flex-1 w-full px-0 py-1 placeholder-gray-900 tracking-wide bg-white focus:outline-none dark:bg-dark-700 dark:text-gray-400 dark:placeholder-gray-500" @change="window.location = $event.target.value">
+                                                                                    <option value="http://laravel.test/docs/muathye/queries">Muathye</option>
+                                                                                    <option value="http://laravel.test/docs/master/queries">Master</option>
+                                                                                    <option selected="" value="http://laravel.test/docs/8.x/queries">8.x</option>
+                                                                                    <option value="http://laravel.test/docs/7.x/queries">7.x</option>
+                                                                                    <option value="http://laravel.test/docs/6.x/queries">6.x</option>
+                                                                                    <option value="http://laravel.test/docs/5.8/queries">5.8</option>
+                                                                                    <option value="http://laravel.test/docs/5.7/queries">5.7</option>
+                                                                                    <option value="http://laravel.test/docs/5.6/queries">5.6</option>
+                                                                                    <option value="http://laravel.test/docs/5.5/queries">5.5</option>
+                                                                                    <option value="http://laravel.test/docs/5.4/queries">5.4</option>
+                                                                                    <option value="http://laravel.test/docs/5.3/queries">5.3</option>
+                                                                                    <option value="http://laravel.test/docs/5.2/queries">5.2</option>
+                                                                                    <option value="http://laravel.test/docs/5.1/queries">5.1</option>
+                                                                                    <option value="http://laravel.test/docs/5.0/queries">5.0</option>
+                                                                                    <option value="http://laravel.test/docs/4.2/queries">4.2</option>
+                                                                            </select>
+                                    <img class="absolute inset-y-0 right-0 mt-2.5 w-2.5 h-2.5 text-gray-900 pointer-events-none" id="docs_search__version_arrow" src="../../img/icons/drop_arrow.min.svg" alt="">
+                                    <img class="absolute inset-y-0 right-0 mt-2.5 w-2.5 h-2.5 text-gray-900 pointer-events-none" id="docs_search__version_arrow_dark" src="../../img/icons/drop_arrow.dark.min.svg" alt="">
+                                </div>
+                            </div>
+                        </div>
+                        <div x-data="searchComponent()" x-init="init()" class="relative mt-8 flex justify-end w-full lg:mt-0">
+                            <div class="relative w-full border-b border-gray-600 border-opacity-50 overflow-hidden transition-all duration-500 focus-within:border-gray-600" @click="searchIsOpen = true" @click.away="clear" @keydown.window.escape="clear" @keydown.window="handleSlashKey">
+                                <svg class="absolute inset-y-0 left-0 mt-1 w-5 h-5 text-gray-900 pointer-events-none dark:text-gray-500" fill="none" viewbox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                                <input x-model.debouce.200ms="search" x-ref="searchInput" class="flex-1 w-full pl-8 pr-4 py-1 placeholder-gray-900 tracking-wide bg-white focus:outline-none dark:bg-dark-700 dark:text-gray-400 dark:placeholder-gray-500" placeholder="Search Docs (Press '/')" aria-label="Search in the documentation" @keydown.arrow-up.prevent="focusPreviousResult()" @keydown.arrow-down.prevent="focusNextResult()">
+                            </div>
+                            <div x-show="hits.length" x-cloak="" class="absolute w-full mt-8 pt-px divide-y divide-gray-200 shadow-sm z-30 dark:divide-dark-500">
+    <template x-for="(hit, index) in hits" :key="index">
+        <a :id="'search-result-' + index" :href="hit.url" class="search-result block px-4 py-3 bg-gray-100 transition-colors duration-200 hover:bg-gray-200 focus:outline-none focus:bg-gray-200 dark:bg-dark-600 dark:text-gray-400 dark:focus:bg-dark-500 dark:hover:bg-dark-500" @keydown.arrow-up.prevent="focusPreviousResult(index)" @keydown.arrow-down.prevent="focusNextResult(index)">
+            <div x-show="hit._highlightResult.hierarchy.lvl0" class="text-sm font-medium" x-html="hit._highlightResult.hierarchy.lvl0 ? hit._highlightResult.hierarchy.lvl0.value : ''"></div>
+            <div class="mt-2">
+                <div x-show="hit._highlightResult.hierarchy.lvl1" class="text-sm">
+                    <span class="text-red-600 opacity-75">#</span> <span x-html="hit._highlightResult.hierarchy.lvl1 ? hit._highlightResult.hierarchy.lvl1.value : ''"></span>
+                </div>
+
+                <div x-show="hit._highlightResult.hierarchy.lvl2" class="text-sm">
+                    > <span x-html="hit._highlightResult.hierarchy.lvl2 ? hit._highlightResult.hierarchy.lvl2.value : ''"></span>
+                </div>
+
+                <div x-show="hit._highlightResult.hierarchy.lvl3" class="text-sm">
+                    > <span x-html="hit._highlightResult.hierarchy.lvl3 ? hit._highlightResult.hierarchy.lvl3.value : ''"></span>
+                </div>
+
+                <div x-show="hit._highlightResult.hierarchy.lvl4" class="text-sm">
+                    > <span x-html="hit._highlightResult.hierarchy.lvl4 ? hit._highlightResult.hierarchy.lvl4.value : ''"></span>
+                </div>
+
+                <div x-show="hit._highlightResult.hierarchy.lvl5" class="text-sm">
+                    > <span x-html="hit._highlightResult.hierarchy.lvl5 ? hit._highlightResult.hierarchy.lvl5.value : ''"></span>
+                </div>
+            </div>
+        </a>
+    </template>
+	<div class="bg-gray-100 flex justify-end dark:bg-dark-600 dark:text-gray-400">
+		<a class="px-4 py-2 inline-block" target="_blank" href="../../index-9.htm?utm_source=laravel&utm_medium=link&utm_campaign=laravel_documentation_search">
+            <img width="105" src="../../img/icons/algolia.min.svg" id="docs_search__algolia" alt="Algolia">
+            <img width="105" src="../../img/icons/algolia.dark.min.svg" id="docs_search__algolia_dark" alt="Algolia">
+		</a>
+	</div>
+</div>
+
+<div x-show="search && ! hits.length" x-cloak="" class="absolute w-full mt-8 pt-px divide-y divide-gray-200 shadow-sm z-30 dark:divide-dark-500">
+	<div class="px-4 py-2 bg-gray-100 dark:bg-dark-600 dark:text-gray-400">
+		<div class="text-sm" x-text="`We didn't find any result for '${search}'. Sorry!`"></div>
+	</div>
+	<div class="bg-gray-100 flex justify-end dark:bg-dark-600 dark:text-gray-400">
+		<a class="px-4 py-2 inline-block" target="_blank" href="../../index-9.htm?utm_source=laravel&utm_medium=link&utm_campaign=laravel_documentation_search">
+            <img width="105" src="../../img/icons/algolia.min.svg" id="docs_search__algolia" alt="Algolia">
+            <img width="105" src="../../img/icons/algolia.dark.min.svg" id="docs_search__algolia_dark" alt="Algolia">
+		</a>
+	</div>
+</div>
+                        </div>
+                    </div>
+
+                    <section class="mt-8 md:mt-16">
+                        <section class="docs_main max-w-prose">
+                            
+                                                         <div id="main-content">
+    <h1>Database: Query Builder</h1>
+<ul>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#running-database-queries">Running Database Queries</a>
+<ul>
+<li><a href="#chunking-results">Chunking Results</a></li>
+<li><a href="#streaming-results-lazily">Streaming Results Lazily</a></li>
+<li><a href="#aggregates">Aggregates</a></li>
+</ul></li>
+<li><a href="#select-statements">Select Statements</a></li>
+<li><a href="#raw-expressions">Raw Expressions</a></li>
+<li><a href="#joins">Joins</a></li>
+<li><a href="#unions">Unions</a></li>
+<li><a href="#basic-where-clauses">Basic Where Clauses</a>
+<ul>
+<li><a href="#where-clauses">Where Clauses</a></li>
+<li><a href="#or-where-clauses">Or Where Clauses</a></li>
+<li><a href="#json-where-clauses">JSON Where Clauses</a></li>
+<li><a href="#additional-where-clauses">Additional Where Clauses</a></li>
+<li><a href="#logical-grouping">Logical Grouping</a></li>
+</ul></li>
+<li><a href="#advanced-where-clauses">Advanced Where Clauses</a>
+<ul>
+<li><a href="#where-exists-clauses">Where Exists Clauses</a></li>
+<li><a href="#subquery-where-clauses">Subquery Where Clauses</a></li>
+</ul></li>
+<li><a href="#ordering-grouping-limit-and-offset">Ordering, Grouping, Limit &amp; Offset</a>
+<ul>
+<li><a href="#ordering">Ordering</a></li>
+<li><a href="#grouping">Grouping</a></li>
+<li><a href="#limit-and-offset">Limit &amp; Offset</a></li>
+</ul></li>
+<li><a href="#conditional-clauses">Conditional Clauses</a></li>
+<li><a href="#insert-statements">Insert Statements</a>
+<ul>
+<li><a href="#upserts">Upserts</a></li>
+</ul></li>
+<li><a href="#update-statements">Update Statements</a>
+<ul>
+<li><a href="#updating-json-columns">Updating JSON Columns</a></li>
+<li><a href="#increment-and-decrement">Increment &amp; Decrement</a></li>
+</ul></li>
+<li><a href="#delete-statements">Delete Statements</a></li>
+<li><a href="#pessimistic-locking">Pessimistic Locking</a></li>
+<li><a href="#debugging">Debugging</a></li>
+</ul>
+<p><a name="introduction"></a></p>
+<h2 id="introduction">Introduction</h2>
+<p>Laravel's database query builder provides a convenient, fluent interface to creating and running database queries. It can be used to perform most database operations in your application and works perfectly with all of Laravel's supported database systems.</p>
+<p>The Laravel query builder uses PDO parameter binding to protect your application against SQL injection attacks. There is no need to clean or sanitize strings passed to the query builder as query bindings.</p>
+<blockquote>
+<p>{note} PDO does not support binding column names. Therefore, you should never allow user input to dictate the column names referenced by your queries, including &quot;order by&quot; columns.</p>
+</blockquote>
+<p><a name="running-database-queries"></a></p>
+<h2 id="running-database-queries">Running Database Queries</h2>
+<p><a name="retrieving-all-rows-from-a-table"></a></p>
+<h4 id="retrieving-all-rows-from-a-table">Retrieving All Rows From A Table</h4>
+<p>You may use the <code>table</code> method provided by the <code>DB</code> facade to begin a query. The <code>table</code> method returns a fluent query builder instance for the given table, allowing you to chain more constraints onto the query and then finally retrieve the results of the query using the <code>get</code> method:</p>
+<pre><code>&lt;?php
+
+namespace App\Http\Controllers;
+
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
+
+class UserController extends Controller
+{
+    /**
+     * Show a list of all of the application's users.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        $users = DB::table('users')-&gt;get();
+
+        return view('user.index', ['users' =&gt; $users]);
+    }
+}</code></pre>
+<p>The <code>get</code> method returns an <code>Illuminate\Support\Collection</code> instance containing the results of the query where each result is an instance of the PHP <code>stdClass</code> object. You may access each column's value by accessing the column as a property of the object:</p>
+<pre><code>use Illuminate\Support\Facades\DB;
+
+$users = DB::table('users')-&gt;get();
+
+foreach ($users as $user) {
+    echo $user-&gt;name;
+}</code></pre>
+<blockquote>
+<p>{tip} Laravel collections provide a variety of extremely powerful methods for mapping and reducing data. For more information on Laravel collections, check out the <a href="collections.html">collection documentation</a>.</p>
+</blockquote>
+<p><a name="retrieving-a-single-row-column-from-a-table"></a></p>
+<h4 id="retrieving-a-single-row-column-from-a-table">Retrieving A Single Row / Column From A Table</h4>
+<p>If you just need to retrieve a single row from a database table, you may use the <code>DB</code> facade's <code>first</code> method. This method will return a single <code>stdClass</code> object:</p>
+<pre><code>$user = DB::table('users')-&gt;where('name', 'John')-&gt;first();
+
+return $user-&gt;email;</code></pre>
+<p>If you don't need an entire row, you may extract a single value from a record using the <code>value</code> method. This method will return the value of the column directly:</p>
+<pre><code>$email = DB::table('users')-&gt;where('name', 'John')-&gt;value('email');</code></pre>
+<p>To retrieve a single row by its <code>id</code> column value, use the <code>find</code> method:</p>
+<pre><code>$user = DB::table('users')-&gt;find(3);</code></pre>
+<p><a name="retrieving-a-list-of-column-values"></a></p>
+<h4 id="retrieving-a-list-of-column-values">Retrieving A List Of Column Values</h4>
+<p>If you would like to retrieve an <code>Illuminate\Support\Collection</code> instance containing the values of a single column, you may use the <code>pluck</code> method. In this example, we'll retrieve a collection of user titles:</p>
+<pre><code>use Illuminate\Support\Facades\DB;
+
+$titles = DB::table('users')-&gt;pluck('title');
+
+foreach ($titles as $title) {
+    echo $title;
+}</code></pre>
+<p>You may specify the column that the resulting collection should use as its keys by providing a second argument to the <code>pluck</code> method:</p>
+<pre><code>$titles = DB::table('users')-&gt;pluck('title', 'name');
+
+foreach ($titles as $name =&gt; $title) {
+    echo $title;
+}</code></pre>
+<p><a name="chunking-results"></a></p>
+<h3 id="chunking-results">Chunking Results</h3>
+<p>If you need to work with thousands of database records, consider using the <code>chunk</code> method provided by the <code>DB</code> facade. This method retrieves a small chunk of results at a time and feeds each chunk into a closure for processing. For example, let's retrieve the entire <code>users</code> table in chunks of 100 records at a time:</p>
+<pre><code>use Illuminate\Support\Facades\DB;
+
+DB::table('users')-&gt;orderBy('id')-&gt;chunk(100, function ($users) {
+    foreach ($users as $user) {
+        //
+    }
+});</code></pre>
+<p>You may stop further chunks from being processed by returning <code>false</code> from the closure:</p>
+<pre><code>DB::table('users')-&gt;orderBy('id')-&gt;chunk(100, function ($users) {
+    // Process the records...
+
+    return false;
+});</code></pre>
+<p>If you are updating database records while chunking results, your chunk results could change in unexpected ways. If you plan to update the retrieved records while chunking, it is always best to use the <code>chunkById</code> method instead. This method will automatically paginate the results based on the record's primary key:</p>
+<pre><code>DB::table('users')-&gt;where('active', false)
+    -&gt;chunkById(100, function ($users) {
+        foreach ($users as $user) {
+            DB::table('users')
+                -&gt;where('id', $user-&gt;id)
+                -&gt;update(['active' =&gt; true]);
+        }
+    });</code></pre>
+<blockquote>
+<p>{note} When updating or deleting records inside the chunk callback, any changes to the primary key or foreign keys could affect the chunk query. This could potentially result in records not being included in the chunked results.</p>
+</blockquote>
+<p><a name="streaming-results-lazily"></a></p>
+<h3 id="streaming-results-lazily">Streaming Results Lazily</h3>
+<p>The <code>lazy</code> method works similarly to <a href="#chunking-results">the <code>chunk</code> method</a> in the sense that it executes the query in chunks. However, instead of passing each chunk into a callback, the <code>lazy()</code> method returns a <a href="collections.html#lazy-collections"><code>LazyCollection</code></a>, which lets you interact with the results as a single stream:</p>
+<pre><code class="language-php">use Illuminate\Support\Facades\DB;
+
+DB::table('users')-&gt;orderBy('id')-&gt;lazy()-&gt;each(function ($user) {
+    //
+});</code></pre>
+<p>Once again, if you plan to update the retrieved records while iterating over them, it is best to use the <code>lazyById</code> or <code>lazyByIdDesc</code> methods instead. These methods will automatically paginate the results based on the record's primary key:</p>
+<pre><code class="language-php">DB::table('users')-&gt;where('active', false)
+    -&gt;lazyById()-&gt;each(function ($user) {
+        DB::table('users')
+            -&gt;where('id', $user-&gt;id)
+            -&gt;update(['active' =&gt; true]);
+    });</code></pre>
+<blockquote>
+<p>{note} When updating or deleting records while iterating over them, any changes to the primary key or foreign keys could affect the chunk query. This could potentially result in records not being included in the results.</p>
+</blockquote>
+<p><a name="aggregates"></a></p>
+<h3 id="aggregates">Aggregates</h3>
+<p>The query builder also provides a variety of methods for retrieving aggregate values like <code>count</code>, <code>max</code>, <code>min</code>, <code>avg</code>, and <code>sum</code>. You may call any of these methods after constructing your query:</p>
+<pre><code>use Illuminate\Support\Facades\DB;
+
+$users = DB::table('users')-&gt;count();
+
+$price = DB::table('orders')-&gt;max('price');</code></pre>
+<p>Of course, you may combine these methods with other clauses to fine-tune how your aggregate value is calculated:</p>
+<pre><code>$price = DB::table('orders')
+                -&gt;where('finalized', 1)
+                -&gt;avg('price');</code></pre>
+<p><a name="determining-if-records-exist"></a></p>
+<h4 id="determining-if-records-exist">Determining If Records Exist</h4>
+<p>Instead of using the <code>count</code> method to determine if any records exist that match your query's constraints, you may use the <code>exists</code> and <code>doesntExist</code> methods:</p>
+<pre><code>if (DB::table('orders')-&gt;where('finalized', 1)-&gt;exists()) {
+    // ...
+}
+
+if (DB::table('orders')-&gt;where('finalized', 1)-&gt;doesntExist()) {
+    // ...
+}</code></pre>
+<p><a name="select-statements"></a></p>
+<h2 id="select-statements">Select Statements</h2>
+<p><a name="specifying-a-select-clause"></a></p>
+<h4 id="specifying-a-select-clause">Specifying A Select Clause</h4>
+<p>You may not always want to select all columns from a database table. Using the <code>select</code> method, you can specify a custom &quot;select&quot; clause for the query:</p>
+<pre><code>use Illuminate\Support\Facades\DB;
+
+$users = DB::table('users')
+            -&gt;select('name', 'email as user_email')
+            -&gt;get();</code></pre>
+<p>The <code>distinct</code> method allows you to force the query to return distinct results:</p>
+<pre><code>$users = DB::table('users')-&gt;distinct()-&gt;get();</code></pre>
+<p>If you already have a query builder instance and you wish to add a column to its existing select clause, you may use the <code>addSelect</code> method:</p>
+<pre><code>$query = DB::table('users')-&gt;select('name');
+
+$users = $query-&gt;addSelect('age')-&gt;get();</code></pre>
+<p><a name="raw-expressions"></a></p>
+<h2 id="raw-expressions">Raw Expressions</h2>
+<p>Sometimes you may need to insert an arbitrary string into a query. To create a raw string expression, you may use the <code>raw</code> method provided by the <code>DB</code> facade:</p>
+<pre><code>$users = DB::table('users')
+             -&gt;select(DB::raw('count(*) as user_count, status'))
+             -&gt;where('status', '&lt;&gt;', 1)
+             -&gt;groupBy('status')
+             -&gt;get();</code></pre>
+<blockquote>
+<p>{note} Raw statements will be injected into the query as strings, so you should be extremely careful to avoid creating SQL injection vulnerabilities.</p>
+</blockquote>
+<p><a name="raw-methods"></a></p>
+<h3 id="raw-methods">Raw Methods</h3>
+<p>Instead of using the <code>DB::raw</code> method, you may also use the following methods to insert a raw expression into various parts of your query. <strong>Remember, Laravel can not guarantee that any query using raw expressions is protected against SQL injection vulnerabilities.</strong></p>
+<p><a name="selectraw"></a></p>
+<h4 id="selectraw"><code>selectRaw</code></h4>
+<p>The <code>selectRaw</code> method can be used in place of <code>addSelect(DB::raw(...))</code>. This method accepts an optional array of bindings as its second argument:</p>
+<pre><code>$orders = DB::table('orders')
+                -&gt;selectRaw('price * ? as price_with_tax', [1.0825])
+                -&gt;get();</code></pre>
+<p><a name="whereraw-orwhereraw"></a></p>
+<h4 id="whereraw-orwhereraw"><code>whereRaw / orWhereRaw</code></h4>
+<p>The <code>whereRaw</code> and <code>orWhereRaw</code> methods can be used to inject a raw &quot;where&quot; clause into your query. These methods accept an optional array of bindings as their second argument:</p>
+<pre><code>$orders = DB::table('orders')
+                -&gt;whereRaw('price &gt; IF(state = "TX", ?, 100)', [200])
+                -&gt;get();</code></pre>
+<p><a name="havingraw-orhavingraw"></a></p>
+<h4 id="havingraw-orhavingraw"><code>havingRaw / orHavingRaw</code></h4>
+<p>The <code>havingRaw</code> and <code>orHavingRaw</code> methods may be used to provide a raw string as the value of the &quot;having&quot; clause. These methods accept an optional array of bindings as their second argument:</p>
+<pre><code>$orders = DB::table('orders')
+                -&gt;select('department', DB::raw('SUM(price) as total_sales'))
+                -&gt;groupBy('department')
+                -&gt;havingRaw('SUM(price) &gt; ?', [2500])
+                -&gt;get();</code></pre>
+<p><a name="orderbyraw"></a></p>
+<h4 id="orderbyraw"><code>orderByRaw</code></h4>
+<p>The <code>orderByRaw</code> method may be used to provide a raw string as the value of the &quot;order by&quot; clause:</p>
+<pre><code>$orders = DB::table('orders')
+                -&gt;orderByRaw('updated_at - created_at DESC')
+                -&gt;get();</code></pre>
+<p><a name="groupbyraw"></a></p>
+<h3 id="groupbyraw"><code>groupByRaw</code></h3>
+<p>The <code>groupByRaw</code> method may be used to provide a raw string as the value of the <code>group by</code> clause:</p>
+<pre><code>$orders = DB::table('orders')
+                -&gt;select('city', 'state')
+                -&gt;groupByRaw('city, state')
+                -&gt;get();</code></pre>
+<p><a name="joins"></a></p>
+<h2 id="joins">Joins</h2>
+<p><a name="inner-join-clause"></a></p>
+<h4 id="inner-join-clause">Inner Join Clause</h4>
+<p>The query builder may also be used to add join clauses to your queries. To perform a basic &quot;inner join&quot;, you may use the <code>join</code> method on a query builder instance. The first argument passed to the <code>join</code> method is the name of the table you need to join to, while the remaining arguments specify the column constraints for the join. You may even join multiple tables in a single query:</p>
+<pre><code>use Illuminate\Support\Facades\DB;
+
+$users = DB::table('users')
+            -&gt;join('contacts', 'users.id', '=', 'contacts.user_id')
+            -&gt;join('orders', 'users.id', '=', 'orders.user_id')
+            -&gt;select('users.*', 'contacts.phone', 'orders.price')
+            -&gt;get();</code></pre>
+<p><a name="left-join-right-join-clause"></a></p>
+<h4 id="left-join-right-join-clause">Left Join / Right Join Clause</h4>
+<p>If you would like to perform a &quot;left join&quot; or &quot;right join&quot; instead of an &quot;inner join&quot;, use the <code>leftJoin</code> or <code>rightJoin</code> methods. These methods have the same signature as the <code>join</code> method:</p>
+<pre><code>$users = DB::table('users')
+            -&gt;leftJoin('posts', 'users.id', '=', 'posts.user_id')
+            -&gt;get();
+
+$users = DB::table('users')
+            -&gt;rightJoin('posts', 'users.id', '=', 'posts.user_id')
+            -&gt;get();</code></pre>
+<p><a name="cross-join-clause"></a></p>
+<h4 id="cross-join-clause">Cross Join Clause</h4>
+<p>You may use the <code>crossJoin</code> method to perform a &quot;cross join&quot;. Cross joins generate a cartesian product between the first table and the joined table:</p>
+<pre><code>$sizes = DB::table('sizes')
+            -&gt;crossJoin('colors')
+            -&gt;get();</code></pre>
+<p><a name="advanced-join-clauses"></a></p>
+<h4 id="advanced-join-clauses">Advanced Join Clauses</h4>
+<p>You may also specify more advanced join clauses. To get started, pass a closure as the second argument to the <code>join</code> method. The closure will receive a <code>Illuminate\Database\Query\JoinClause</code> instance which allows you to specify constraints on the &quot;join&quot; clause:</p>
+<pre><code>DB::table('users')
+        -&gt;join('contacts', function ($join) {
+            $join-&gt;on('users.id', '=', 'contacts.user_id')-&gt;orOn(...);
+        })
+        -&gt;get();</code></pre>
+<p>If you would like to use a &quot;where&quot; clause on your joins, you may use the <code>where</code> and <code>orWhere</code> methods provided by the <code>JoinClause</code> instance. Instead of comparing two columns, these methods will compare the column against a value:</p>
+<pre><code>DB::table('users')
+        -&gt;join('contacts', function ($join) {
+            $join-&gt;on('users.id', '=', 'contacts.user_id')
+                 -&gt;where('contacts.user_id', '&gt;', 5);
+        })
+        -&gt;get();</code></pre>
+<p><a name="subquery-joins"></a></p>
+<h4 id="subquery-joins">Subquery Joins</h4>
+<p>You may use the <code>joinSub</code>, <code>leftJoinSub</code>, and <code>rightJoinSub</code> methods to join a query to a subquery. Each of these methods receives three arguments: the subquery, its table alias, and a closure that defines the related columns. In this example, we will retrieve a collection of users where each user record also contains the <code>created_at</code> timestamp of the user's most recently published blog post:</p>
+<pre><code>$latestPosts = DB::table('posts')
+                   -&gt;select('user_id', DB::raw('MAX(created_at) as last_post_created_at'))
+                   -&gt;where('is_published', true)
+                   -&gt;groupBy('user_id');
+
+$users = DB::table('users')
+        -&gt;joinSub($latestPosts, 'latest_posts', function ($join) {
+            $join-&gt;on('users.id', '=', 'latest_posts.user_id');
+        })-&gt;get();</code></pre>
+<p><a name="unions"></a></p>
+<h2 id="unions">Unions</h2>
+<p>The query builder also provides a convenient method to &quot;union&quot; two or more queries together. For example, you may create an initial query and use the <code>union</code> method to union it with more queries:</p>
+<pre><code>use Illuminate\Support\Facades\DB;
+
+$first = DB::table('users')
+            -&gt;whereNull('first_name');
+
+$users = DB::table('users')
+            -&gt;whereNull('last_name')
+            -&gt;union($first)
+            -&gt;get();</code></pre>
+<p>In addition to the <code>union</code> method, the query builder provides a <code>unionAll</code> method. Queries that are combined using the <code>unionAll</code> method will not have their duplicate results removed. The <code>unionAll</code> method has the same method signature as the <code>union</code> method.</p>
+<p><a name="basic-where-clauses"></a></p>
+<h2 id="basic-where-clauses">Basic Where Clauses</h2>
+<p><a name="where-clauses"></a></p>
+<h3 id="where-clauses">Where Clauses</h3>
+<p>You may use the query builder's <code>where</code> method to add &quot;where&quot; clauses to the query. The most basic call to the <code>where</code> method requires three arguments. The first argument is the name of the column. The second argument is an operator, which can be any of the database's supported operators. The third argument is the value to compare against the column's value.</p>
+<p>For example, the following query retrieves users where the value of the <code>votes</code> column is equal to <code>100</code> and the value of the <code>age</code> column is greater than <code>35</code>:</p>
+<pre><code>$users = DB::table('users')
+                -&gt;where('votes', '=', 100)
+                -&gt;where('age', '&gt;', 35)
+                -&gt;get();</code></pre>
+<p>For convenience, if you want to verify that a column is <code>=</code> to a given value, you may pass the value as the second argument to the <code>where</code> method. Laravel will assume you would like to use the <code>=</code> operator:</p>
+<pre><code>$users = DB::table('users')-&gt;where('votes', 100)-&gt;get();</code></pre>
+<p>As previously mentioned, you may use any operator that is supported by your database system:</p>
+<pre><code>$users = DB::table('users')
+                -&gt;where('votes', '&gt;=', 100)
+                -&gt;get();
+
+$users = DB::table('users')
+                -&gt;where('votes', '&lt;&gt;', 100)
+                -&gt;get();
+
+$users = DB::table('users')
+                -&gt;where('name', 'like', 'T%')
+                -&gt;get();</code></pre>
+<p>You may also pass an array of conditions to the <code>where</code> function. Each element of the array should be an array containing the three arguments typically passed to the <code>where</code> method:</p>
+<pre><code>$users = DB::table('users')-&gt;where([
+    ['status', '=', '1'],
+    ['subscribed', '&lt;&gt;', '1'],
+])-&gt;get();</code></pre>
+<blockquote>
+<p>{note} PDO does not support binding column names. Therefore, you should never allow user input to dictate the column names referenced by your queries, including &quot;order by&quot; columns.</p>
+</blockquote>
+<p><a name="or-where-clauses"></a></p>
+<h3 id="or-where-clauses">Or Where Clauses</h3>
+<p>When chaining together calls to the query builder's <code>where</code> method, the &quot;where&quot; clauses will be joined together using the <code>and</code> operator. However, you may use the <code>orWhere</code> method to join a clause to the query using the <code>or</code> operator. The <code>orWhere</code> method accepts the same arguments as the <code>where</code> method:</p>
+<pre><code>$users = DB::table('users')
+                    -&gt;where('votes', '&gt;', 100)
+                    -&gt;orWhere('name', 'John')
+                    -&gt;get();</code></pre>
+<p>If you need to group an &quot;or&quot; condition within parentheses, you may pass a closure as the first argument to the <code>orWhere</code> method:</p>
+<pre><code>$users = DB::table('users')
+            -&gt;where('votes', '&gt;', 100)
+            -&gt;orWhere(function($query) {
+                $query-&gt;where('name', 'Abigail')
+                      -&gt;where('votes', '&gt;', 50);
+            })
+            -&gt;get();</code></pre>
+<p>The example above will produce the following SQL:</p>
+<pre><code class="language-sql">select * from users where votes &gt; 100 or (name = 'Abigail' and votes &gt; 50)</code></pre>
+<blockquote>
+<p>{note} You should always group <code>orWhere</code> calls in order to avoid unexpected behavior when global scopes are applied.</p>
+</blockquote>
+<p><a name="json-where-clauses"></a></p>
+<h3 id="json-where-clauses">JSON Where Clauses</h3>
+<p>Laravel also supports querying JSON column types on databases that provide support for JSON column types. Currently, this includes MySQL 5.7+, PostgreSQL, SQL Server 2016, and SQLite 3.9.0 (with the <a href="../../json1.html">JSON1 extension</a>). To query a JSON column, use the <code>-&gt;</code> operator:</p>
+<pre><code>$users = DB::table('users')
+                -&gt;where('preferences-&gt;dining-&gt;meal', 'salad')
+                -&gt;get();</code></pre>
+<p>You may use <code>whereJsonContains</code> to query JSON arrays. This feature is not supported by the SQLite database:</p>
+<pre><code>$users = DB::table('users')
+                -&gt;whereJsonContains('options-&gt;languages', 'en')
+                -&gt;get();</code></pre>
+<p>If your application uses the MySQL or PostgreSQL databases, you may pass an array of values to the <code>whereJsonContains</code> method:</p>
+<pre><code>$users = DB::table('users')
+                -&gt;whereJsonContains('options-&gt;languages', ['en', 'de'])
+                -&gt;get();</code></pre>
+<p>You may use <code>whereJsonLength</code> method to query JSON arrays by their length:</p>
+<pre><code>$users = DB::table('users')
+                -&gt;whereJsonLength('options-&gt;languages', 0)
+                -&gt;get();
+
+$users = DB::table('users')
+                -&gt;whereJsonLength('options-&gt;languages', '&gt;', 1)
+                -&gt;get();</code></pre>
+<p><a name="additional-where-clauses"></a></p>
+<h3 id="additional-where-clauses">Additional Where Clauses</h3>
+<p><strong>whereBetween / orWhereBetween</strong></p>
+<p>The <code>whereBetween</code> method verifies that a column's value is between two values:</p>
+<pre><code>$users = DB::table('users')
+           -&gt;whereBetween('votes', [1, 100])
+           -&gt;get();</code></pre>
+<p><strong>whereNotBetween / orWhereNotBetween</strong></p>
+<p>The <code>whereNotBetween</code> method verifies that a column's value lies outside of two values:</p>
+<pre><code>$users = DB::table('users')
+                    -&gt;whereNotBetween('votes', [1, 100])
+                    -&gt;get();</code></pre>
+<p><strong>whereIn / whereNotIn / orWhereIn / orWhereNotIn</strong></p>
+<p>The <code>whereIn</code> method verifies that a given column's value is contained within the given array:</p>
+<pre><code>$users = DB::table('users')
+                    -&gt;whereIn('id', [1, 2, 3])
+                    -&gt;get();</code></pre>
+<p>The <code>whereNotIn</code> method verifies that the given column's value is not contained in the given array:</p>
+<pre><code>$users = DB::table('users')
+                    -&gt;whereNotIn('id', [1, 2, 3])
+                    -&gt;get();</code></pre>
+<blockquote>
+<p>{note} If you are adding a large array of integer bindings to your query, the <code>whereIntegerInRaw</code> or <code>whereIntegerNotInRaw</code> methods may be used to greatly reduce your memory usage.</p>
+</blockquote>
+<p><strong>whereNull / whereNotNull / orWhereNull / orWhereNotNull</strong></p>
+<p>The <code>whereNull</code> method verifies that the value of the given column is <code>NULL</code>:</p>
+<pre><code>$users = DB::table('users')
+                -&gt;whereNull('updated_at')
+                -&gt;get();</code></pre>
+<p>The <code>whereNotNull</code> method verifies that the column's value is not <code>NULL</code>:</p>
+<pre><code>$users = DB::table('users')
+                -&gt;whereNotNull('updated_at')
+                -&gt;get();</code></pre>
+<p><strong>whereDate / whereMonth / whereDay / whereYear / whereTime</strong></p>
+<p>The <code>whereDate</code> method may be used to compare a column's value against a date:</p>
+<pre><code>$users = DB::table('users')
+                -&gt;whereDate('created_at', '2016-12-31')
+                -&gt;get();</code></pre>
+<p>The <code>whereMonth</code> method may be used to compare a column's value against a specific month:</p>
+<pre><code>$users = DB::table('users')
+                -&gt;whereMonth('created_at', '12')
+                -&gt;get();</code></pre>
+<p>The <code>whereDay</code> method may be used to compare a column's value against a specific day of the month:</p>
+<pre><code>$users = DB::table('users')
+                -&gt;whereDay('created_at', '31')
+                -&gt;get();</code></pre>
+<p>The <code>whereYear</code> method may be used to compare a column's value against a specific year:</p>
+<pre><code>$users = DB::table('users')
+                -&gt;whereYear('created_at', '2016')
+                -&gt;get();</code></pre>
+<p>The <code>whereTime</code> method may be used to compare a column's value against a specific time:</p>
+<pre><code>$users = DB::table('users')
+                -&gt;whereTime('created_at', '=', '11:20:45')
+                -&gt;get();</code></pre>
+<p><strong>whereColumn / orWhereColumn</strong></p>
+<p>The <code>whereColumn</code> method may be used to verify that two columns are equal:</p>
+<pre><code>$users = DB::table('users')
+                -&gt;whereColumn('first_name', 'last_name')
+                -&gt;get();</code></pre>
+<p>You may also pass a comparison operator to the <code>whereColumn</code> method:</p>
+<pre><code>$users = DB::table('users')
+                -&gt;whereColumn('updated_at', '&gt;', 'created_at')
+                -&gt;get();</code></pre>
+<p>You may also pass an array of column comparisons to the <code>whereColumn</code> method. These conditions will be joined using the <code>and</code> operator:</p>
+<pre><code>$users = DB::table('users')
+                -&gt;whereColumn([
+                    ['first_name', '=', 'last_name'],
+                    ['updated_at', '&gt;', 'created_at'],
+                ])-&gt;get();</code></pre>
+<p><a name="logical-grouping"></a></p>
+<h3 id="logical-grouping">Logical Grouping</h3>
+<p>Sometimes you may need to group several &quot;where&quot; clauses within parentheses in order to achieve your query's desired logical grouping. In fact, you should generally always group calls to the <code>orWhere</code> method in parentheses in order to avoid unexpected query behavior. To accomplish this, you may pass a closure to the <code>where</code> method:</p>
+<pre><code>$users = DB::table('users')
+           -&gt;where('name', '=', 'John')
+           -&gt;where(function ($query) {
+               $query-&gt;where('votes', '&gt;', 100)
+                     -&gt;orWhere('title', '=', 'Admin');
+           })
+           -&gt;get();</code></pre>
+<p>As you can see, passing a closure into the <code>where</code> method instructs the query builder to begin a constraint group. The closure will receive a query builder instance which you can use to set the constraints that should be contained within the parenthesis group. The example above will produce the following SQL:</p>
+<pre><code class="language-sql">select * from users where name = 'John' and (votes &gt; 100 or title = 'Admin')</code></pre>
+<blockquote>
+<p>{note} You should always group <code>orWhere</code> calls in order to avoid unexpected behavior when global scopes are applied.</p>
+</blockquote>
+<p><a name="advanced-where-clauses"></a></p>
+<h3 id="advanced-where-clauses">Advanced Where Clauses</h3>
+<p><a name="where-exists-clauses"></a></p>
+<h3 id="where-exists-clauses">Where Exists Clauses</h3>
+<p>The <code>whereExists</code> method allows you to write &quot;where exists&quot; SQL clauses. The <code>whereExists</code> method accepts a closure which will receive a query builder instance, allowing you to define the query that should be placed inside of the &quot;exists&quot; clause:</p>
+<pre><code>$users = DB::table('users')
+           -&gt;whereExists(function ($query) {
+               $query-&gt;select(DB::raw(1))
+                     -&gt;from('orders')
+                     -&gt;whereColumn('orders.user_id', 'users.id');
+           })
+           -&gt;get();</code></pre>
+<p>The query above will produce the following SQL:</p>
+<pre><code class="language-sql">select * from users
+where exists (
+    select 1
+    from orders
+    where orders.user_id = users.id
+)</code></pre>
+<p><a name="subquery-where-clauses"></a></p>
+<h3 id="subquery-where-clauses">Subquery Where Clauses</h3>
+<p>Sometimes you may need to construct a &quot;where&quot; clause that compares the results of a subquery to a given value. You may accomplish this by passing a closure and a value to the <code>where</code> method. For example, the following query will retrieve all users who have a recent &quot;membership&quot; of a given type;</p>
+<pre><code>use App\Models\User;
+
+$users = User::where(function ($query) {
+    $query-&gt;select('type')
+        -&gt;from('membership')
+        -&gt;whereColumn('membership.user_id', 'users.id')
+        -&gt;orderByDesc('membership.start_date')
+        -&gt;limit(1);
+}, 'Pro')-&gt;get();</code></pre>
+<p>Or, you may need to construct a &quot;where&quot; clause that compares a column to the results of a subquery. You may accomplish this by passing a column, operator, and closure to the <code>where</code> method. For example, the following query will retrieve all income records where the amount is less than average;</p>
+<pre><code>use App\Models\Income;
+
+$incomes = Income::where('amount', '&lt;', function ($query) {
+    $query-&gt;selectRaw('avg(i.amount)')-&gt;from('incomes as i');
+})-&gt;get();</code></pre>
+<p><a name="ordering-grouping-limit-and-offset"></a></p>
+<h2 id="ordering-grouping-limit-and-offset">Ordering, Grouping, Limit &amp; Offset</h2>
+<p><a name="ordering"></a></p>
+<h3 id="ordering">Ordering</h3>
+<p><a name="orderby"></a></p>
+<h4 id="orderby">The <code>orderBy</code> Method</h4>
+<p>The <code>orderBy</code> method allows you to sort the results of the query by a given column. The first argument accepted by the <code>orderBy</code> method should be the column you wish to sort by, while the second argument determines the direction of the sort and may be either <code>asc</code> or <code>desc</code>:</p>
+<pre><code>$users = DB::table('users')
+                -&gt;orderBy('name', 'desc')
+                -&gt;get();</code></pre>
+<p>To sort by multiple columns, you may simply invoke <code>orderBy</code> as many times as necessary:</p>
+<pre><code>$users = DB::table('users')
+                -&gt;orderBy('name', 'desc')
+                -&gt;orderBy('email', 'asc')
+                -&gt;get();</code></pre>
+<p><a name="latest-oldest"></a></p>
+<h4 id="latest-oldest">The <code>latest</code> &amp; <code>oldest</code> Methods</h4>
+<p>The <code>latest</code> and <code>oldest</code> methods allow you to easily order results by date. By default, the result will be ordered by the table's <code>created_at</code> column. Or, you may pass the column name that you wish to sort by:</p>
+<pre><code>$user = DB::table('users')
+                -&gt;latest()
+                -&gt;first();</code></pre>
+<p><a name="random-ordering"></a></p>
+<h4 id="random-ordering">Random Ordering</h4>
+<p>The <code>inRandomOrder</code> method may be used to sort the query results randomly. For example, you may use this method to fetch a random user:</p>
+<pre><code>$randomUser = DB::table('users')
+                -&gt;inRandomOrder()
+                -&gt;first();</code></pre>
+<p><a name="removing-existing-orderings"></a></p>
+<h4 id="removing-existing-orderings">Removing Existing Orderings</h4>
+<p>The <code>reorder</code> method removes all of the &quot;order by&quot; clauses that have previously been applied to the query:</p>
+<pre><code>$query = DB::table('users')-&gt;orderBy('name');
+
+$unorderedUsers = $query-&gt;reorder()-&gt;get();</code></pre>
+<p>You may pass a column and direction when calling the <code>reorder</code> method in order to remove all existing &quot;order by&quot; clauses and apply an entirely new order to the query:</p>
+<pre><code>$query = DB::table('users')-&gt;orderBy('name');
+
+$usersOrderedByEmail = $query-&gt;reorder('email', 'desc')-&gt;get();</code></pre>
+<p><a name="grouping"></a></p>
+<h3 id="grouping">Grouping</h3>
+<p><a name="groupby-having"></a></p>
+<h4 id="groupby-having">The <code>groupBy</code> &amp; <code>having</code> Methods</h4>
+<p>As you might expect, the <code>groupBy</code> and <code>having</code> methods may be used to group the query results. The <code>having</code> method's signature is similar to that of the <code>where</code> method:</p>
+<pre><code>$users = DB::table('users')
+                -&gt;groupBy('account_id')
+                -&gt;having('account_id', '&gt;', 100)
+                -&gt;get();</code></pre>
+<p>You can use the <code>havingBetween</code> method to filter the results within a given range:</p>
+<pre><code>$report = DB::table('orders')
+                -&gt;selectRaw('count(id) as number_of_orders, customer_id')
+                -&gt;groupBy('customer_id')
+                -&gt;havingBetween('number_of_orders', [5, 15])
+                -&gt;get();</code></pre>
+<p>You may pass multiple arguments to the <code>groupBy</code> method to group by multiple columns:</p>
+<pre><code>$users = DB::table('users')
+                -&gt;groupBy('first_name', 'status')
+                -&gt;having('account_id', '&gt;', 100)
+                -&gt;get();</code></pre>
+<p>To build more advanced <code>having</code> statements, see the <a href="#raw-methods"><code>havingRaw</code></a> method.</p>
+<p><a name="limit-and-offset"></a></p>
+<h3 id="limit-and-offset">Limit &amp; Offset</h3>
+<p><a name="skip-take"></a></p>
+<h4 id="skip-take">The <code>skip</code> &amp; <code>take</code> Methods</h4>
+<p>You may use the <code>skip</code> and <code>take</code> methods to limit the number of results returned from the query or to skip a given number of results in the query:</p>
+<pre><code>$users = DB::table('users')-&gt;skip(10)-&gt;take(5)-&gt;get();</code></pre>
+<p>Alternatively, you may use the <code>limit</code> and <code>offset</code> methods. These methods are functionally equivalent to the <code>take</code> and <code>skip</code> methods, respectively:</p>
+<pre><code>$users = DB::table('users')
+                -&gt;offset(10)
+                -&gt;limit(5)
+                -&gt;get();</code></pre>
+<p><a name="conditional-clauses"></a></p>
+<h2 id="conditional-clauses">Conditional Clauses</h2>
+<p>Sometimes you may want certain query clauses to apply to a query based on another condition. For instance, you may only want to apply a <code>where</code> statement if a given input value is present on the incoming HTTP request. You may accomplish this using the <code>when</code> method:</p>
+<pre><code>$role = $request-&gt;input('role');
+
+$users = DB::table('users')
+                -&gt;when($role, function ($query, $role) {
+                    return $query-&gt;where('role_id', $role);
+                })
+                -&gt;get();</code></pre>
+<p>The <code>when</code> method only executes the given closure when the first argument is <code>true</code>. If the first argument is <code>false</code>, the closure will not be executed. So, in the example above, the closure given to the <code>when</code> method will only be invoked if the <code>role</code> field is present on the incoming request and evaluates to <code>true</code>.</p>
+<p>You may pass another closure as the third argument to the <code>when</code> method. This closure will only execute if the first argument evaluates as <code>false</code>. To illustrate how this feature may be used, we will use it to configure the default ordering of a query:</p>
+<pre><code>$sortByVotes = $request-&gt;input('sort_by_votes');
+
+$users = DB::table('users')
+                -&gt;when($sortByVotes, function ($query, $sortByVotes) {
+                    return $query-&gt;orderBy('votes');
+                }, function ($query) {
+                    return $query-&gt;orderBy('name');
+                })
+                -&gt;get();</code></pre>
+<p><a name="insert-statements"></a></p>
+<h2 id="insert-statements">Insert Statements</h2>
+<p>The query builder also provides an <code>insert</code> method that may be used to insert records into the database table. The <code>insert</code> method accepts an array of column names and values:</p>
+<pre><code>DB::table('users')-&gt;insert([
+    'email' =&gt; 'kayla@example.com',
+    'votes' =&gt; 0
+]);</code></pre>
+<p>You may insert several records at once by passing an array of arrays. Each array represents a record that should be inserted into the table:</p>
+<pre><code>DB::table('users')-&gt;insert([
+    ['email' =&gt; 'picard@example.com', 'votes' =&gt; 0],
+    ['email' =&gt; 'janeway@example.com', 'votes' =&gt; 0],
+]);</code></pre>
+<p>The <code>insertOrIgnore</code> method will ignore errors while inserting records into the database:</p>
+<pre><code>DB::table('users')-&gt;insertOrIgnore([
+    ['id' =&gt; 1, 'email' =&gt; 'sisko@example.com'],
+    ['id' =&gt; 2, 'email' =&gt; 'archer@example.com'],
+]);</code></pre>
+<blockquote>
+<p>{note} <code>insertOrIgnore</code> will ignore duplicate records and also may ignore other types of errors depending on the database engine. For example, <code>insertOrIgnore</code> will <a href="../../doc/refman/8.0/en/sql-mode.html#ignore-effect-on-execution">bypass MySQL's strict mode</a>.</p>
+</blockquote>
+<p><a name="auto-incrementing-ids"></a></p>
+<h4 id="auto-incrementing-ids">Auto-Incrementing IDs</h4>
+<p>If the table has an auto-incrementing id, use the <code>insertGetId</code> method to insert a record and then retrieve the ID:</p>
+<pre><code>$id = DB::table('users')-&gt;insertGetId(
+    ['email' =&gt; 'john@example.com', 'votes' =&gt; 0]
+);</code></pre>
+<blockquote>
+<p>{note} When using PostgreSQL the <code>insertGetId</code> method expects the auto-incrementing column to be named <code>id</code>. If you would like to retrieve the ID from a different &quot;sequence&quot;, you may pass the column name as the second parameter to the <code>insertGetId</code> method.</p>
+</blockquote>
+<p><a name="upserts"></a></p>
+<h3 id="upserts">Upserts</h3>
+<p>The <code>upsert</code> method will insert records that do not exist and update the records that already exist with new values that you may specify. The method's first argument consists of the values to insert or update, while the second argument lists the column(s) that uniquely identify records within the associated table. The method's third and final argument is an array of columns that should be updated if a matching record already exists in the database:</p>
+<pre><code>DB::table('flights')-&gt;upsert([
+    ['departure' =&gt; 'Oakland', 'destination' =&gt; 'San Diego', 'price' =&gt; 99],
+    ['departure' =&gt; 'Chicago', 'destination' =&gt; 'New York', 'price' =&gt; 150]
+], ['departure', 'destination'], ['price']);</code></pre>
+<p>In the example above, Laravel will attempt to insert two records. If a record already exists with the same <code>departure</code> and <code>destination</code> column values, Laravel will update that record's <code>price</code> column.</p>
+<blockquote>
+<p>{note} All databases except SQL Server require the columns in the second argument of the <code>upsert</code> method to have a &quot;primary&quot; or &quot;unique&quot; index. In addition, the MySQL database driver ignores the second argument of the <code>upsert</code> method and always uses the &quot;primary&quot; and &quot;unique&quot; indexes of the table to detect existing records.</p>
+</blockquote>
+<p><a name="update-statements"></a></p>
+<h2 id="update-statements">Update Statements</h2>
+<p>In addition to inserting records into the database, the query builder can also update existing records using the <code>update</code> method. The <code>update</code> method, like the <code>insert</code> method, accepts an array of column and value pairs indicating the columns to be updated. You may constrain the <code>update</code> query using <code>where</code> clauses:</p>
+<pre><code>$affected = DB::table('users')
+              -&gt;where('id', 1)
+              -&gt;update(['votes' =&gt; 1]);</code></pre>
+<p><a name="update-or-insert"></a></p>
+<h4 id="update-or-insert">Update Or Insert</h4>
+<p>Sometimes you may want to update an existing record in the database or create it if no matching record exists. In this scenario, the <code>updateOrInsert</code> method may be used. The <code>updateOrInsert</code> method accepts two arguments: an array of conditions by which to find the record, and an array of column and value pairs indicating the columns to be updated.</p>
+<p>The <code>updateOrInsert</code> method will attempt to locate a matching database record using the first argument's column and value pairs. If the record exists, it will be updated with the values in the second argument. If the record can not be found, a new record will be inserted with the merged attributes of both arguments:</p>
+<pre><code>DB::table('users')
+    -&gt;updateOrInsert(
+        ['email' =&gt; 'john@example.com', 'name' =&gt; 'John'],
+        ['votes' =&gt; '2']
+    );</code></pre>
+<p><a name="updating-json-columns"></a></p>
+<h3 id="updating-json-columns">Updating JSON Columns</h3>
+<p>When updating a JSON column, you should use <code>-&gt;</code> syntax to update the appropriate key in the JSON object. This operation is supported on MySQL 5.7+ and PostgreSQL 9.5+:</p>
+<pre><code>$affected = DB::table('users')
+              -&gt;where('id', 1)
+              -&gt;update(['options-&gt;enabled' =&gt; true]);</code></pre>
+<p><a name="increment-and-decrement"></a></p>
+<h3 id="increment-and-decrement">Increment &amp; Decrement</h3>
+<p>The query builder also provides convenient methods for incrementing or decrementing the value of a given column. Both of these methods accept at least one argument: the column to modify. A second argument may be provided to specify the amount by which the column should be incremented or decremented:</p>
+<pre><code>DB::table('users')-&gt;increment('votes');
+
+DB::table('users')-&gt;increment('votes', 5);
+
+DB::table('users')-&gt;decrement('votes');
+
+DB::table('users')-&gt;decrement('votes', 5);</code></pre>
+<p>You may also specify additional columns to update during the operation:</p>
+<pre><code>DB::table('users')-&gt;increment('votes', 1, ['name' =&gt; 'John']);</code></pre>
+<p><a name="delete-statements"></a></p>
+<h2 id="delete-statements">Delete Statements</h2>
+<p>The query builder's <code>delete</code> method may be used to delete records from the table. You may constrain <code>delete</code> statements by adding &quot;where&quot; clauses before calling the <code>delete</code> method:</p>
+<pre><code>DB::table('users')-&gt;delete();
+
+DB::table('users')-&gt;where('votes', '&gt;', 100)-&gt;delete();</code></pre>
+<p>If you wish to truncate an entire table, which will remove all records from the table and reset the auto-incrementing ID to zero, you may use the <code>truncate</code> method:</p>
+<pre><code>DB::table('users')-&gt;truncate();</code></pre>
+<p><a name="table-truncation-and-postgresql"></a></p>
+<h4 id="table-truncation-and-postgresql">Table Truncation &amp; PostgreSQL</h4>
+<p>When truncating a PostgreSQL database, the <code>CASCADE</code> behavior will be applied. This means that all foreign key related records in other tables will be deleted as well.</p>
+<p><a name="pessimistic-locking"></a></p>
+<h2 id="pessimistic-locking">Pessimistic Locking</h2>
+<p>The query builder also includes a few functions to help you achieve &quot;pessimistic locking&quot; when executing your <code>select</code> statements. To execute a statement with a &quot;shared lock&quot;, you may call the <code>sharedLock</code> method. A shared lock prevents the selected rows from being modified until your transaction is committed:</p>
+<pre><code>DB::table('users')
+        -&gt;where('votes', '&gt;', 100)
+        -&gt;sharedLock()
+        -&gt;get();</code></pre>
+<p>Alternatively, you may use the <code>lockForUpdate</code> method. A &quot;for update&quot; lock prevents the selected records from being modified or from being selected with another shared lock:</p>
+<pre><code>DB::table('users')
+        -&gt;where('votes', '&gt;', 100)
+        -&gt;lockForUpdate()
+        -&gt;get();</code></pre>
+<p><a name="debugging"></a></p>
+<h2 id="debugging">Debugging</h2>
+<p>You may use the <code>dd</code> and <code>dump</code> methods while building a query to dump the current query bindings and SQL. The <code>dd</code> method will display the debug information and then stop executing the request. The <code>dump</code> method will display the debug information but allow the request to continue executing:</p>
+<pre><code>DB::table('users')-&gt;where('votes', '&gt;', 100)-&gt;dd();
+
+DB::table('users')-&gt;where('votes', '&gt;', 100)-&gt;dump();</code></pre>
+</div>
+ 
+                                                        <button onclick="topFunction()" id="toTheTop" title="Go to top" class="fixed bottom-5 right-5 h-15 w-15 hidden">
+                                <span class="topChevron"></span>
+                            </button>
+                                                    </section>
+                    </section>
+                </div>
+            </section>
+        </div>
+    </div>
+    <script>
+        mybutton = document.getElementById('toTheTop');
+        window.onscroll = function() {scrollFunction()};
+        function scrollFunction() {
+            carbonAds = document.getElementById('carbonads');
+            if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+                mybutton.style.setProperty('display', 'block', 'important');
+                if (carbonAds) {
+                    carbonAds.classList.add('move-top');
+                }
+            } else {
+                mybutton.style.display = 'none';
+                if (carbonAds) {
+                    carbonAds.classList.remove('move-top');
+                }
+            }
+        }
+        function topFunction() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        }
+    </script>
+
+<footer class="relative z-30 dark:bg-dark-700">
+    <div class="relative z-20 overflow-x-hidden">
+        <div class="relative max-w-screen-2xl mx-auto sm:px-8">
+            <div class="absolute inset-0 flex flex-col px-4 lg:px-12 xl:px-16">
+                <div class="flex-1"></div>
+                <div class="flex-1 bg-gray-100 dark:bg-dark-900"></div>
+            </div>
+            <div class="relative max-w-screen-xl mx-auto px-8">
+                <section class="relative z-10 p-6 bg-white shadow-lg md:flex md:items-center md:p-12 lg:p-16 dark:bg-dark-600">
+                    <div class="content md:pr-12">
+                        <h2 class="text-3xl tracking-tight sm:text-4xl md:mt-4 xl:text-5xl dark:text-gray-200">Become a Laravel Partner</h2>
+                        <p class="mt-3 max-w-xl text-gray-600 sm:mt-5 md:max-w-2xl md:mt-8 md:text-lg dark:text-gray-400">Laravel Partners are elite shops providing top-notch Laravel development and consulting. Each of our partners can help you craft a beautiful, well-architected project.</p>
+                    </div>
+                                             <a class="group relative h-12 inline-flex w-64 border border-red-600 sm:w-56 focus:outline-none mt-8" href="../../index-8.htm">
+    <span class="absolute inset-0 inline-flex items-center justify-center self-stretch px-6 text-white text-center font-medium bg-red-600 ring-1 ring-red-600 ring-offset-1 ring-offset-red-600 transform transition-transform group-hover:-translate-y-1 group-hover:-translate-x-1 group-focus:-translate-y-1 group-focus:-translate-x-1">
+        Our Partners
+    </span>
+</a>
+ 
+                                    </section>
+            </div>
+        </div>
+
+        <div class="max-w-screen-2xl mx-auto px-4 lg:px-12 xl:px-16">
+            <div class="px-8 pb-12 bg-gray-100 xl:px-20 dark:bg-dark-900">
+                <div>
+                    <img class="-mt-2 max-w-4xl w-full transform -translate-x-12 lg:-translate-x-24 xl:-translate-x-40" src="../../img/logotype.min.svg" alt="Laravel" width="114" height="29" loading="lazy">
+                </div>
+                <div class="mt-6 sm:mt-12 md:flex">
+                    <div class="divide-y divide-gray-600 divide-opacity-25 sm:hidden">
+                                                    <div x-data="{ expanded: false }" class="py-4">
+                                <button class="-mx-2 px-2 w-full flex items-center justify-between py-2 font-bold dark:text-gray-200" @click="expanded = ! expanded">
+                                    <span>Highlights</span>
+                                    <span class="transform transition-transform" :class="{ 'rotate-45': expanded }">&plus;</span>
+                                </button>
+                                <div x-show="expanded" x-cloak="" class="py-2 transition transform" x-transition:enter="duration-250 ease-out" x-transition:enter-start="opacity-0 -translate-y-8" x-transition:enter-end="opacity-100" x-transition:leave="duration-250 ease-in" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0 -translate-y-8">
+                                    <ul class="space-y-2 text-gray-600 text-sm dark:text-gray-500">
+                                                                                    <li><a href="/team">Our Team</a></li>
+                                                                                    <li><a href="releases.html">Release Notes</a></li>
+                                                                                    <li><a href="installation.html">Getting Started</a></li>
+                                                                                    <li><a href="routing.html">Routing</a></li>
+                                                                                    <li><a href="blade.html">Blade Templates</a></li>
+                                                                                    <li><a href="authentication.html">Authentication</a></li>
+                                                                                    <li><a href="authorization.html">Authorization</a></li>
+                                                                                    <li><a href="artisan.html">Artisan Console</a></li>
+                                                                                    <li><a href="database.html">Database</a></li>
+                                                                                    <li><a href="eloquent.html">Eloquent ORM</a></li>
+                                                                                    <li><a href="testing.html">Testing</a></li>
+                                                                            </ul>
+                                </div>
+                            </div>
+                                                    <div x-data="{ expanded: false }" class="py-4">
+                                <button class="-mx-2 px-2 w-full flex items-center justify-between py-2 font-bold dark:text-gray-200" @click="expanded = ! expanded">
+                                    <span>Resources</span>
+                                    <span class="transform transition-transform" :class="{ 'rotate-45': expanded }">&plus;</span>
+                                </button>
+                                <div x-show="expanded" x-cloak="" class="py-2 transition transform" x-transition:enter="duration-250 ease-out" x-transition:enter-start="opacity-0 -translate-y-8" x-transition:enter-end="opacity-100" x-transition:leave="duration-250 ease-in" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0 -translate-y-8">
+                                    <ul class="space-y-2 text-gray-600 text-sm dark:text-gray-500">
+                                                                                    <li><a href="../../index-10.htm">Laracasts</a></li>
+                                                                                    <li><a href="../../index-7.htm">Laravel News</a></li>
+                                                                                    <li><a href="../../index-13.htm">Laracon</a></li>
+                                                                                    <li><a href="../../winter-2022/index.htm">Laracon EU</a></li>
+                                                                                    <li><a href="../../index-14.htm">Jobs</a></li>
+                                                                                    <li><a href="../../index-16.htm">Certification</a></li>
+                                                                                    <li><a href="../../discuss.html">Forums</a></li>
+                                                                            </ul>
+                                </div>
+                            </div>
+                                                    <div x-data="{ expanded: false }" class="py-4">
+                                <button class="-mx-2 px-2 w-full flex items-center justify-between py-2 font-bold dark:text-gray-200" @click="expanded = ! expanded">
+                                    <span>Partners</span>
+                                    <span class="transform transition-transform" :class="{ 'rotate-45': expanded }">&plus;</span>
+                                </button>
+                                <div x-show="expanded" x-cloak="" class="py-2 transition transform" x-transition:enter="duration-250 ease-out" x-transition:enter-start="opacity-0 -translate-y-8" x-transition:enter-end="opacity-100" x-transition:leave="duration-250 ease-in" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0 -translate-y-8">
+                                    <ul class="space-y-2 text-gray-600 text-sm dark:text-gray-500">
+                                                                                    <li><a href="../../index-17.htm">Vehikl</a></li>
+                                                                                    <li><a href="../../index-18.htm">Tighten</a></li>
+                                                                                    <li><a href="../../index-19.htm">64 Robots</a></li>
+                                                                                    <li><a href="../../index-20.htm">Kirschbaum</a></li>
+                                                                                    <li><a href="../../services/technologies/laravel/index.htm">Curotec</a></li>
+                                                                                    <li><a href="../../index-21.htm">Jump24</a></li>
+                                                                                    <li><a href="../../index-22.htm">A2 Design</a></li>
+                                                                                    <li><a href="../../app/uploads/2019/08/INTRO-Pitch-I-AY-Tech.pdf?utm_source=laravelpartnersfindoutmore&amp;utm_medium=socialgroups&amp;utm_campaign=tech">ABOUT YOU</a></li>
+                                                                                    <li><a href="../../index-23.htm">Byte 5</a></li>
+                                                                                    <li><a href="../../index-24.htm">Cubet</a></li>
+                                                                                    <li><a href="../../what-we-do/technology-implementation/laravel.html?utm_source=Laravel%20Partner&amp;utm_medium=Sponsorship">Cyber-Duck</a></li>
+                                                                                    <li><a href="../../index-25.htm">DevSquad</a></li>
+                                                                                    <li><a href="../../index-26.htm">Ideil</a></li>
+                                                                                    <li><a href="../../index-27.htm">Romega Software</a></li>
+                                                                                    <li><a href="../../index-28.htm">Worksome</a></li>
+                                                                                    <li><a href="../../index.html?utm_source=laravel&amp;utm_medium=laravel.com&amp;utm_campaign=patreon-sponsors">WebReinvent</a></li>
+                                                                            </ul>
+                                </div>
+                            </div>
+                                                    <div x-data="{ expanded: false }" class="py-4">
+                                <button class="-mx-2 px-2 w-full flex items-center justify-between py-2 font-bold dark:text-gray-200" @click="expanded = ! expanded">
+                                    <span>Ecosystem</span>
+                                    <span class="transform transition-transform" :class="{ 'rotate-45': expanded }">&plus;</span>
+                                </button>
+                                <div x-show="expanded" x-cloak="" class="py-2 transition transform" x-transition:enter="duration-250 ease-out" x-transition:enter-start="opacity-0 -translate-y-8" x-transition:enter-end="opacity-100" x-transition:leave="duration-250 ease-in" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0 -translate-y-8">
+                                    <ul class="space-y-2 text-gray-600 text-sm dark:text-gray-500">
+                                                                                    <li><a href="billing.html">Cashier</a></li>
+                                                                                    <li><a href="dusk.html">Dusk</a></li>
+                                                                                    <li><a href="broadcasting.html">Echo</a></li>
+                                                                                    <li><a href="../../index-3.htm">Envoyer</a></li>
+                                                                                    <li><a href="../../index-2.htm">Forge</a></li>
+                                                                                    <li><a href="homestead.html">Homestead</a></li>
+                                                                                    <li><a href="horizon.html">Horizon</a></li>
+                                                                                    <li><a href="../9.x.html">Lumen</a></li>
+                                                                                    <li><a href="mix.html">Mix</a></li>
+                                                                                    <li><a href="../../index-4.htm">Nova</a></li>
+                                                                                    <li><a href="passport.html">Passport</a></li>
+                                                                                    <li><a href="scout.html">Scout</a></li>
+                                                                                    <li><a href="socialite.html">Socialite</a></li>
+                                                                                    <li><a href="../../index-5.htm">Spark</a></li>
+                                                                                    <li><a href="telescope.html">Telescope</a></li>
+                                                                                    <li><a href="valet.html">Valet</a></li>
+                                                                                    <li><a href="../../index-1.htm">Vapor</a></li>
+                                                                            </ul>
+                                </div>
+                            </div>
+                                            </div>
+                    <div class="hidden sm:grid sm:grid-cols-2 sm:gap-x-4 sm:gap-y-8 md:w-1/2 lg:w-3/4 lg:grid-cols-4">
+                                                    <div>
+                                <span class="font-bold dark:text-gray-200">Highlights</span>
+                                <div class="mt-6">
+                                    <ul class="space-y-3 text-gray-600 text-sm dark:text-gray-500">
+                                                                                    <li>
+                                                <a href="/team" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Our Team</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="releases.html" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Release Notes</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="installation.html" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Getting Started</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="routing.html" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Routing</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="blade.html" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Blade Templates</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="authentication.html" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Authentication</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="authorization.html" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Authorization</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="artisan.html" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Artisan Console</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="database.html" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Database</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="eloquent.html" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Eloquent ORM</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="testing.html" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Testing</a>
+                                            </li>
+                                                                            </ul>
+                                </div>
+                            </div>
+                                                    <div>
+                                <span class="font-bold dark:text-gray-200">Resources</span>
+                                <div class="mt-6">
+                                    <ul class="space-y-3 text-gray-600 text-sm dark:text-gray-500">
+                                                                                    <li>
+                                                <a href="../../index-10.htm" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Laracasts</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="../../index-7.htm" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Laravel News</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="../../index-13.htm" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Laracon</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="../../winter-2022/index.htm" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Laracon EU</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="../../index-14.htm" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Jobs</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="../../index-16.htm" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Certification</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="../../discuss.html" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Forums</a>
+                                            </li>
+                                                                            </ul>
+                                </div>
+                            </div>
+                                                    <div>
+                                <span class="font-bold dark:text-gray-200">Partners</span>
+                                <div class="mt-6">
+                                    <ul class="space-y-3 text-gray-600 text-sm dark:text-gray-500">
+                                                                                    <li>
+                                                <a href="../../index-17.htm" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Vehikl</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="../../index-18.htm" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Tighten</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="../../index-19.htm" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">64 Robots</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="../../index-20.htm" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Kirschbaum</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="../../services/technologies/laravel/index.htm" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Curotec</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="../../index-21.htm" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Jump24</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="../../index-22.htm" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">A2 Design</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="../../app/uploads/2019/08/INTRO-Pitch-I-AY-Tech.pdf?utm_source=laravelpartnersfindoutmore&amp;utm_medium=socialgroups&amp;utm_campaign=tech" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">ABOUT YOU</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="../../index-23.htm" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Byte 5</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="../../index-24.htm" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Cubet</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="../../what-we-do/technology-implementation/laravel.html?utm_source=Laravel%20Partner&amp;utm_medium=Sponsorship" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Cyber-Duck</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="../../index-25.htm" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">DevSquad</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="../../index-26.htm" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Ideil</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="../../index-27.htm" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Romega Software</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="../../index-28.htm" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Worksome</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="../../index.html?utm_source=laravel&amp;utm_medium=laravel.com&amp;utm_campaign=patreon-sponsors" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">WebReinvent</a>
+                                            </li>
+                                                                            </ul>
+                                </div>
+                            </div>
+                                                    <div>
+                                <span class="font-bold dark:text-gray-200">Ecosystem</span>
+                                <div class="mt-6">
+                                    <ul class="space-y-3 text-gray-600 text-sm dark:text-gray-500">
+                                                                                    <li>
+                                                <a href="billing.html" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Cashier</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="dusk.html" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Dusk</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="broadcasting.html" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Echo</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="../../index-3.htm" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Envoyer</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="../../index-2.htm" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Forge</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="homestead.html" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Homestead</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="horizon.html" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Horizon</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="../9.x.html" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Lumen</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="mix.html" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Mix</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="../../index-4.htm" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Nova</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="passport.html" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Passport</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="scout.html" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Scout</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="socialite.html" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Socialite</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="../../index-5.htm" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Spark</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="telescope.html" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Telescope</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="valet.html" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Valet</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="../../index-1.htm" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Vapor</a>
+                                            </li>
+                                                                            </ul>
+                                </div>
+                            </div>
+                                            </div>
+                    <div class="mt-10 max-w-md md:mt-0 md:w-1/2 lg:w-1/4">
+                        <p class="text-xs text-gray-600 sm:text-sm dark:text-gray-500">Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in most web projects.</p>
+                        <p class="mt-6 text-xs text-gray-600 text-opacity-75 sm:text-sm dark:text-gray-500">
+                            Laravel is a Trademark of Taylor Otwell.<br>Copyright &copy; 2011-2022 Laravel LLC.
+                        </p>
+                        <ul class="mt-6 flex items-center space-x-3">
+                            <li>
+                                <a href="../../laravelphp.html">
+                                    <img id="footer__twitter" class="w-6 h-6" src="../../img/social/twitter.min.svg" alt="Twitter" width="24" height="20" loading="lazy">
+                                    <img id="footer__twitter_dark" class="w-6 h-6" src="../../img/social/twitter.dark.min.svg" alt="Twitter" width="24" height="20" loading="lazy">
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../../laravel.html">
+                                    <img id="footer__github" class="w-6 h-6" src="../../img/social/github.min.svg" alt="GitHub" width="24" height="24" loading="lazy">
+                                    <img id="footer__github_dark" class="w-6 h-6" src="../../img/social/github.dark.min.svg" alt="GitHub" width="24" height="24" loading="lazy">
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../../invite/mPZNm7A.html">
+                                    <img id="footer__discord" class="w-6 h-6" src="../../img/social/discord.min.svg" alt="Discord" width="21" height="24" loading="lazy">
+                                    <img id="footer__discord_dark" class="w-6 h-6" src="../../img/social/discord.dark.min.svg" alt="Discord" width="21" height="24" loading="lazy">
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../../laravelphp-1.html">
+                                    <img id="footer__youtube" class="w-6 h-6" src="../../img/social/youtube.min.svg" alt="YouTube" width="169" height="150" loading="lazy">
+                                    <img id="footer__youtube_dark" class="w-6 h-6" src="../../img/social/youtube.dark.min.svg" alt="YouTube" width="169" height="150" loading="lazy">
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="flex justify-center py-6">
+            <a href="../../index.htm" class="logomark">
+                <img class="w-9 h-9" src="../../img/logomark.min.svg" alt="Laravel" width="50" height="52" loading="lazy">
+            </a>
+        </div>
+    </div>
+</footer>
+
+<script>
+    var algolia_app_id = 'ITGXQG9N0J';
+    var algolia_search_key = '29e3498a066622afdacafa73072c548d';
+    var version = '8.x';
+</script>
+
+<script src="../../js/app.js?id=22821ba61048c5ed17c4"></script>
+</body>
+</html>

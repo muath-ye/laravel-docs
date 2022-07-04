@@ -1,0 +1,2076 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Database: Migrations - Laravel - The PHP Framework For Web Artisans</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+        <link rel="canonical" href="migrations.html">
+    
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="../../img/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../../img/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../../img/favicon/favicon-16x16.png">
+    <link rel="manifest" href="../../img/favicon/site.webmanifest">
+    <link rel="mask-icon" href="../../img/favicon/safari-pinned-tab.svg" color="#ff2d20">
+    <link rel="shortcut icon" href="../../img/favicon/favicon.ico">
+    <meta name="msapplication-TileColor" content="#ff2d20">
+    <meta name="msapplication-config" content="/img/favicon/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
+    
+    <link rel="stylesheet" href="../../assets/css/ins2wgm.css">
+    <link rel="stylesheet" type="text/css" href="../../css/app.css?id=e59564080d0a323bcdb7">
+
+    <script>
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+        if (localStorage.theme === 'system') {
+            if (e.matches) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+        }
+    });
+
+    function updateTheme() {
+        if (!('theme' in localStorage)) {
+            localStorage.theme = 'system';
+        }
+
+        switch (localStorage.theme) {
+            case 'system':
+                if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                    document.documentElement.classList.add('dark');
+                } else {
+                    document.documentElement.classList.remove('dark');
+                }
+                document.documentElement.setAttribute('color-theme', 'system');
+                break;
+
+            case 'dark':
+                document.documentElement.classList.add('dark');
+                document.documentElement.setAttribute('color-theme', 'dark');
+                break;
+
+            case 'light':
+                document.documentElement.classList.remove('dark');
+                document.documentElement.setAttribute('color-theme', 'light');
+                break;
+        }
+    }
+
+    updateTheme();
+</script>
+</head>
+<body x-data="{
+        navIsOpen: false,
+        searchIsOpen: false,
+        search: '',
+    }" class="language-php h-full w-full font-sans text-gray-900 antialiased">
+
+     <a id="skip-to-content-link" href="#main-content" class="absolute bg-gray-100 px-4 py-2 top-3 left-3 text-gray-700 shadow-xl">
+    Skip to content
+</a>
+ 
+    <div class="relative overflow-auto dark:bg-dark-700" id="docsScreen">
+        <div class="relative lg:flex lg:items-start">
+            <aside x-init="init()" x-data="{
+                    navIsOpen: false,
+                    init() {
+                        this.$watch('navIsOpen', (val) => {
+                            if (val) {
+                                document.body.classList.add('overflow-hidden');
+                            } else {
+                                document.body.classList.remove('overflow-hidden');
+                            }
+                        });
+                    }
+                }" class="hidden fixed top-0 bottom-0 left-0 z-20 h-full w-16 flex flex-col bg-gradient-to-b from-gray-100 to-white transition-all duration-300 overflow-hidden lg:sticky lg:w-80 lg:flex-shrink-0 lg:flex lg:justify-end lg:items-end 2xl:max-w-lg 2xl:w-full dark:from-dark-800 dark:to-dark-700" :class="{ 'w-64': navIsOpen }" @click.away="navIsOpen = false" @keydown.window.escape="navIsOpen = false">
+                <div class="relative min-h-0 flex-1 flex flex-col xl:w-80">
+                    <a href="../../index.htm" class="flex items-center py-8 px-4 lg:px-8 xl:px-16">
+                        <img class="w-8 h-8 flex-shrink-0 transition-all duration-300 lg:w-12 lg:h-12" :class="{ 'w-12 h-12': navIsOpen }" src="../../img/logomark.min.svg" alt="Laravel" width="50" height="52">
+                        <img x-show="navIsOpen" x-cloak="" class="ml-4 transition-all duration-300 lg:hidden" x-transition:enter="duration-250 ease-out" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" x-transition:leave="duration-250 ease-in" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0" src="../../img/logotype.min.svg" alt="Laravel" width="114" height="29">
+                        <img src="../../img/logotype.min.svg" alt="Laravel" class="hidden ml-4 lg:block" width="114" height="29">
+                    </a>
+                    <div class="overflow-y-auto overflow-x-hidden px-4 lg:overflow-hidden lg:px-8 xl:px-16">
+                        <nav x-show="navIsOpen" x-cloak="" class="mt-4 lg:hidden">
+                            <div class="docs_sidebar">
+                                <ul>
+<li>
+<h2>Prologue</h2>
+<ul>
+<li><a href="releases.html">Release Notes</a></li>
+<li><a href="upgrade.html">Upgrade Guide</a></li>
+<li><a href="contributions.html">Contribution Guide</a></li>
+</ul>
+</li>
+<li>
+<h2>Getting Started</h2>
+<ul>
+<li><a href="installation.html">Installation</a></li>
+<li><a href="configuration.html">Configuration</a></li>
+<li><a href="structure.html">Directory Structure</a></li>
+<li><a href="starter-kits.html">Starter Kits</a></li>
+<li><a href="deployment.html">Deployment</a></li>
+</ul>
+</li>
+<li>
+<h2>Architecture Concepts</h2>
+<ul>
+<li><a href="lifecycle.html">Request Lifecycle</a></li>
+<li><a href="container.html">Service Container</a></li>
+<li><a href="providers.html">Service Providers</a></li>
+<li><a href="facades.html">Facades</a></li>
+</ul>
+</li>
+<li>
+<h2>The Basics</h2>
+<ul>
+<li><a href="routing.html">Routing</a></li>
+<li><a href="middleware.html">Middleware</a></li>
+<li><a href="csrf.html">CSRF Protection</a></li>
+<li><a href="controllers.html">Controllers</a></li>
+<li><a href="requests.html">Requests</a></li>
+<li><a href="responses.html">Responses</a></li>
+<li><a href="views.html">Views</a></li>
+<li><a href="blade.html">Blade Templates</a></li>
+<li><a href="urls.html">URL Generation</a></li>
+<li><a href="session.html">Session</a></li>
+<li><a href="validation.html">Validation</a></li>
+<li><a href="errors.html">Error Handling</a></li>
+<li><a href="logging.html">Logging</a></li>
+</ul>
+</li>
+<li>
+<h2>Digging Deeper</h2>
+<ul>
+<li><a href="artisan.html">Artisan Console</a></li>
+<li><a href="broadcasting.html">Broadcasting</a></li>
+<li><a href="cache.html">Cache</a></li>
+<li><a href="collections.html">Collections</a></li>
+<li><a href="mix.html">Compiling Assets</a></li>
+<li><a href="contracts.html">Contracts</a></li>
+<li><a href="events.html">Events</a></li>
+<li><a href="filesystem.html">File Storage</a></li>
+<li><a href="helpers.html">Helpers</a></li>
+<li><a href="http-client.html">HTTP Client</a></li>
+<li><a href="localization.html">Localization</a></li>
+<li><a href="mail.html">Mail</a></li>
+<li><a href="notifications.html">Notifications</a></li>
+<li><a href="packages.html">Package Development</a></li>
+<li><a href="queues.html">Queues</a></li>
+<li><a href="rate-limiting.html">Rate Limiting</a></li>
+<li><a href="scheduling.html">Task Scheduling</a></li>
+</ul>
+</li>
+<li>
+<h2>Security</h2>
+<ul>
+<li><a href="authentication.html">Authentication</a></li>
+<li><a href="authorization.html">Authorization</a></li>
+<li><a href="verification.html">Email Verification</a></li>
+<li><a href="encryption.html">Encryption</a></li>
+<li><a href="hashing.html">Hashing</a></li>
+<li><a href="passwords.html">Password Reset</a></li>
+</ul>
+</li>
+<li>
+<h2>Database</h2>
+<ul>
+<li><a href="database.html">Getting Started</a></li>
+<li><a href="queries.html">Query Builder</a></li>
+<li><a href="pagination.html">Pagination</a></li>
+<li><a href="migrations.html">Migrations</a></li>
+<li><a href="seeding.html">Seeding</a></li>
+<li><a href="redis.html">Redis</a></li>
+</ul>
+</li>
+<li>
+<h2>Eloquent ORM</h2>
+<ul>
+<li><a href="eloquent.html">Getting Started</a></li>
+<li><a href="eloquent-relationships.html">Relationships</a></li>
+<li><a href="eloquent-collections.html">Collections</a></li>
+<li><a href="eloquent-mutators.html">Mutators / Casts</a></li>
+<li><a href="eloquent-resources.html">API Resources</a></li>
+<li><a href="eloquent-serialization.html">Serialization</a></li>
+</ul>
+</li>
+<li>
+<h2>Testing</h2>
+<ul>
+<li><a href="testing.html">Getting Started</a></li>
+<li><a href="http-tests.html">HTTP Tests</a></li>
+<li><a href="console-tests.html">Console Tests</a></li>
+<li><a href="dusk.html">Browser Tests</a></li>
+<li><a href="database-testing.html">Database</a></li>
+<li><a href="mocking.html">Mocking</a></li>
+</ul>
+</li>
+<li>
+<h2>Packages</h2>
+<ul>
+<li><a href="starter-kits.html#laravel-breeze">Breeze</a></li>
+<li><a href="billing.html">Cashier (Stripe)</a></li>
+<li><a href="cashier-paddle.html">Cashier (Paddle)</a></li>
+<li><a href="dusk.html">Dusk</a></li>
+<li><a href="envoy.html">Envoy</a></li>
+<li><a href="fortify.html">Fortify</a></li>
+<li><a href="homestead.html">Homestead</a></li>
+<li><a href="horizon.html">Horizon</a></li>
+<li><a href="../../index-6.htm">Jetstream</a></li>
+<li><a href="octane.html">Octane</a></li>
+<li><a href="passport.html">Passport</a></li>
+<li><a href="sail.html">Sail</a></li>
+<li><a href="sanctum.html">Sanctum</a></li>
+<li><a href="scout.html">Scout</a></li>
+<li><a href="socialite.html">Socialite</a></li>
+<li><a href="telescope.html">Telescope</a></li>
+<li><a href="valet.html">Valet</a></li>
+</ul>
+</li>
+<li><a href="/api/8.x">API Documentation</a></li>
+</ul>
+                            </div>
+                        </nav>
+                        <nav id="indexed-nav" class="hidden lg:block lg:mt-4">
+                            <div class="docs_sidebar">
+                                <ul>
+<li>
+<h2>Prologue</h2>
+<ul>
+<li><a href="releases.html">Release Notes</a></li>
+<li><a href="upgrade.html">Upgrade Guide</a></li>
+<li><a href="contributions.html">Contribution Guide</a></li>
+</ul>
+</li>
+<li>
+<h2>Getting Started</h2>
+<ul>
+<li><a href="installation.html">Installation</a></li>
+<li><a href="configuration.html">Configuration</a></li>
+<li><a href="structure.html">Directory Structure</a></li>
+<li><a href="starter-kits.html">Starter Kits</a></li>
+<li><a href="deployment.html">Deployment</a></li>
+</ul>
+</li>
+<li>
+<h2>Architecture Concepts</h2>
+<ul>
+<li><a href="lifecycle.html">Request Lifecycle</a></li>
+<li><a href="container.html">Service Container</a></li>
+<li><a href="providers.html">Service Providers</a></li>
+<li><a href="facades.html">Facades</a></li>
+</ul>
+</li>
+<li>
+<h2>The Basics</h2>
+<ul>
+<li><a href="routing.html">Routing</a></li>
+<li><a href="middleware.html">Middleware</a></li>
+<li><a href="csrf.html">CSRF Protection</a></li>
+<li><a href="controllers.html">Controllers</a></li>
+<li><a href="requests.html">Requests</a></li>
+<li><a href="responses.html">Responses</a></li>
+<li><a href="views.html">Views</a></li>
+<li><a href="blade.html">Blade Templates</a></li>
+<li><a href="urls.html">URL Generation</a></li>
+<li><a href="session.html">Session</a></li>
+<li><a href="validation.html">Validation</a></li>
+<li><a href="errors.html">Error Handling</a></li>
+<li><a href="logging.html">Logging</a></li>
+</ul>
+</li>
+<li>
+<h2>Digging Deeper</h2>
+<ul>
+<li><a href="artisan.html">Artisan Console</a></li>
+<li><a href="broadcasting.html">Broadcasting</a></li>
+<li><a href="cache.html">Cache</a></li>
+<li><a href="collections.html">Collections</a></li>
+<li><a href="mix.html">Compiling Assets</a></li>
+<li><a href="contracts.html">Contracts</a></li>
+<li><a href="events.html">Events</a></li>
+<li><a href="filesystem.html">File Storage</a></li>
+<li><a href="helpers.html">Helpers</a></li>
+<li><a href="http-client.html">HTTP Client</a></li>
+<li><a href="localization.html">Localization</a></li>
+<li><a href="mail.html">Mail</a></li>
+<li><a href="notifications.html">Notifications</a></li>
+<li><a href="packages.html">Package Development</a></li>
+<li><a href="queues.html">Queues</a></li>
+<li><a href="rate-limiting.html">Rate Limiting</a></li>
+<li><a href="scheduling.html">Task Scheduling</a></li>
+</ul>
+</li>
+<li>
+<h2>Security</h2>
+<ul>
+<li><a href="authentication.html">Authentication</a></li>
+<li><a href="authorization.html">Authorization</a></li>
+<li><a href="verification.html">Email Verification</a></li>
+<li><a href="encryption.html">Encryption</a></li>
+<li><a href="hashing.html">Hashing</a></li>
+<li><a href="passwords.html">Password Reset</a></li>
+</ul>
+</li>
+<li>
+<h2>Database</h2>
+<ul>
+<li><a href="database.html">Getting Started</a></li>
+<li><a href="queries.html">Query Builder</a></li>
+<li><a href="pagination.html">Pagination</a></li>
+<li><a href="migrations.html">Migrations</a></li>
+<li><a href="seeding.html">Seeding</a></li>
+<li><a href="redis.html">Redis</a></li>
+</ul>
+</li>
+<li>
+<h2>Eloquent ORM</h2>
+<ul>
+<li><a href="eloquent.html">Getting Started</a></li>
+<li><a href="eloquent-relationships.html">Relationships</a></li>
+<li><a href="eloquent-collections.html">Collections</a></li>
+<li><a href="eloquent-mutators.html">Mutators / Casts</a></li>
+<li><a href="eloquent-resources.html">API Resources</a></li>
+<li><a href="eloquent-serialization.html">Serialization</a></li>
+</ul>
+</li>
+<li>
+<h2>Testing</h2>
+<ul>
+<li><a href="testing.html">Getting Started</a></li>
+<li><a href="http-tests.html">HTTP Tests</a></li>
+<li><a href="console-tests.html">Console Tests</a></li>
+<li><a href="dusk.html">Browser Tests</a></li>
+<li><a href="database-testing.html">Database</a></li>
+<li><a href="mocking.html">Mocking</a></li>
+</ul>
+</li>
+<li>
+<h2>Packages</h2>
+<ul>
+<li><a href="starter-kits.html#laravel-breeze">Breeze</a></li>
+<li><a href="billing.html">Cashier (Stripe)</a></li>
+<li><a href="cashier-paddle.html">Cashier (Paddle)</a></li>
+<li><a href="dusk.html">Dusk</a></li>
+<li><a href="envoy.html">Envoy</a></li>
+<li><a href="fortify.html">Fortify</a></li>
+<li><a href="homestead.html">Homestead</a></li>
+<li><a href="horizon.html">Horizon</a></li>
+<li><a href="../../index-6.htm">Jetstream</a></li>
+<li><a href="octane.html">Octane</a></li>
+<li><a href="passport.html">Passport</a></li>
+<li><a href="sail.html">Sail</a></li>
+<li><a href="sanctum.html">Sanctum</a></li>
+<li><a href="scout.html">Scout</a></li>
+<li><a href="socialite.html">Socialite</a></li>
+<li><a href="telescope.html">Telescope</a></li>
+<li><a href="valet.html">Valet</a></li>
+</ul>
+</li>
+<li><a href="/api/8.x">API Documentation</a></li>
+</ul>
+                            </div>
+                        </nav>
+
+                        
+                        
+                        
+                                            </div>
+                    <div class="sticky bottom-0 flex-1 flex flex-col justify-end lg:hidden">
+                        <div class="py-4 px-4 bg-white">
+                            <button class="relative ml-1 w-6 h-6 text-red-600 lg:hidden focus:outline-none focus:shadow-outline" aria-label="Menu" @click.prevent="navIsOpen = !navIsOpen">
+                                <svg x-show.transition.opacity="! navIsOpen" class="absolute inset-0 w-6 h-6" viewbox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+                                <svg x-show.transition.opacity="navIsOpen" x-cloak="" class="absolute inset-0 w-6 h-6" viewbox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+
+            <header class="lg:hidden" @keydown.window.escape="navIsOpen = false" @click.away="navIsOpen = false">
+                <div class="relative mx-auto w-full py-10 bg-white transition duration-200 dark:bg-dark-700">
+                    <div class="mx-auto px-8 sm:px-16 flex items-center justify-between">
+                        <a href="../../index.htm" class="flex items-center">
+                            <img class="" src="../../img/logomark.min.svg" alt="Laravel">
+                            <img class="hidden ml-5 sm:block" src="../../img/logotype.min.svg" alt="Laravel">
+                        </a>
+                        <div class="flex-1 flex items-center justify-end">
+                            <button id="header__sun" onclick="toSystemMode()" title="Switch to system theme" class="relative w-10 h-10 focus:outline-none focus:shadow-outline text-gray-500">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-sun" width="24" height="24" viewbox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                    <circle cx="12" cy="12" r="4"></circle>
+                                    <path d="M3 12h1m8 -9v1m8 8h1m-9 8v1m-6.4 -15.4l.7 .7m12.1 -.7l-.7 .7m0 11.4l.7 .7m-12.1 -.7l-.7 .7"></path>
+                                 </svg>
+                            </button>
+                            <button id="header__moon" onclick="toLightMode()" title="Switch to light mode" class="relative w-10 h-10 focus:outline-none focus:shadow-outline text-gray-500">
+                                <svg style="width:24px;height:24px" viewbox="0 0 24 24">
+                                    <path fill="currentColor" d="M17.75,4.09L15.22,6.03L16.13,9.09L13.5,7.28L10.87,9.09L11.78,6.03L9.25,4.09L12.44,4L13.5,1L14.56,4L17.75,4.09M21.25,11L19.61,12.25L20.2,14.23L18.5,13.06L16.8,14.23L17.39,12.25L15.75,11L17.81,10.95L18.5,9L19.19,10.95L21.25,11M18.97,15.95C19.8,15.87 20.69,17.05 20.16,17.8C19.84,18.25 19.5,18.67 19.08,19.07C15.17,23 8.84,23 4.94,19.07C1.03,15.17 1.03,8.83 4.94,4.93C5.34,4.53 5.76,4.17 6.21,3.85C6.96,3.32 8.14,4.21 8.06,5.04C7.79,7.9 8.75,10.87 10.95,13.06C13.14,15.26 16.1,16.22 18.97,15.95M17.33,17.97C14.5,17.81 11.7,16.64 9.53,14.5C7.36,12.31 6.2,9.5 6.04,6.68C3.23,9.82 3.34,14.64 6.35,17.66C9.37,20.67 14.19,20.78 17.33,17.97Z"></path>
+                                </svg>
+                            </button>
+                            <button id="header__indeterminate" onclick="toDarkMode()" title="Switch to dark mode" class="relative w-10 h-10 focus:outline-none focus:shadow-outline text-gray-500">
+                                <svg style="width:24px;height:24px" viewbox="0 0 24 24">
+                                    <path fill="currentColor" d="M12 2A10 10 0 0 0 2 12A10 10 0 0 0 12 22A10 10 0 0 0 22 12A10 10 0 0 0 12 2M12 4A8 8 0 0 1 20 12A8 8 0 0 1 12 20V4Z"></path>
+                                </svg>
+                            </button>
+                            <button class="ml-2 relative w-10 h-10 p-2 text-red-600 lg:hidden focus:outline-none focus:shadow-outline" aria-label="Menu" @click.prevent="navIsOpen = !navIsOpen">
+                                <svg x-show.transition.opacity="! navIsOpen" class="absolute inset-0 mt-2 ml-2 w-6 h-6" viewbox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+                                <svg x-show.transition.opacity="navIsOpen" x-cloak="" class="absolute inset-0 mt-2 ml-2 w-6 h-6" viewbox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                            </button>
+                        </div>
+                    </div>
+                    <span :class="{ 'shadow-sm': navIsOpen }" class="absolute inset-0 z-20 pointer-events-none"></span>
+                </div>
+                <div x-show="navIsOpen" x-transition:enter="duration-150" x-transition:leave="duration-100 ease-in" x-cloak="">
+                    <nav x-show="navIsOpen" x-cloak="" class="absolute w-full transform origin-top shadow-sm z-10" x-transition:enter="duration-150 ease-out" x-transition:enter-start="opacity-0 -translate-y-8 scale-75" x-transition:enter-end="opacity-100 scale-100" x-transition:leave="duration-100 ease-in" x-transition:leave-start="opacity-100 scale-100" x-transition:leave-end="opacity-0 -translate-y-8 scale-75">
+                        <div class="relative p-8 bg-white docs_sidebar dark:bg-dark-600">
+                            <ul>
+<li>
+<h2>Prologue</h2>
+<ul>
+<li><a href="releases.html">Release Notes</a></li>
+<li><a href="upgrade.html">Upgrade Guide</a></li>
+<li><a href="contributions.html">Contribution Guide</a></li>
+</ul>
+</li>
+<li>
+<h2>Getting Started</h2>
+<ul>
+<li><a href="installation.html">Installation</a></li>
+<li><a href="configuration.html">Configuration</a></li>
+<li><a href="structure.html">Directory Structure</a></li>
+<li><a href="starter-kits.html">Starter Kits</a></li>
+<li><a href="deployment.html">Deployment</a></li>
+</ul>
+</li>
+<li>
+<h2>Architecture Concepts</h2>
+<ul>
+<li><a href="lifecycle.html">Request Lifecycle</a></li>
+<li><a href="container.html">Service Container</a></li>
+<li><a href="providers.html">Service Providers</a></li>
+<li><a href="facades.html">Facades</a></li>
+</ul>
+</li>
+<li>
+<h2>The Basics</h2>
+<ul>
+<li><a href="routing.html">Routing</a></li>
+<li><a href="middleware.html">Middleware</a></li>
+<li><a href="csrf.html">CSRF Protection</a></li>
+<li><a href="controllers.html">Controllers</a></li>
+<li><a href="requests.html">Requests</a></li>
+<li><a href="responses.html">Responses</a></li>
+<li><a href="views.html">Views</a></li>
+<li><a href="blade.html">Blade Templates</a></li>
+<li><a href="urls.html">URL Generation</a></li>
+<li><a href="session.html">Session</a></li>
+<li><a href="validation.html">Validation</a></li>
+<li><a href="errors.html">Error Handling</a></li>
+<li><a href="logging.html">Logging</a></li>
+</ul>
+</li>
+<li>
+<h2>Digging Deeper</h2>
+<ul>
+<li><a href="artisan.html">Artisan Console</a></li>
+<li><a href="broadcasting.html">Broadcasting</a></li>
+<li><a href="cache.html">Cache</a></li>
+<li><a href="collections.html">Collections</a></li>
+<li><a href="mix.html">Compiling Assets</a></li>
+<li><a href="contracts.html">Contracts</a></li>
+<li><a href="events.html">Events</a></li>
+<li><a href="filesystem.html">File Storage</a></li>
+<li><a href="helpers.html">Helpers</a></li>
+<li><a href="http-client.html">HTTP Client</a></li>
+<li><a href="localization.html">Localization</a></li>
+<li><a href="mail.html">Mail</a></li>
+<li><a href="notifications.html">Notifications</a></li>
+<li><a href="packages.html">Package Development</a></li>
+<li><a href="queues.html">Queues</a></li>
+<li><a href="rate-limiting.html">Rate Limiting</a></li>
+<li><a href="scheduling.html">Task Scheduling</a></li>
+</ul>
+</li>
+<li>
+<h2>Security</h2>
+<ul>
+<li><a href="authentication.html">Authentication</a></li>
+<li><a href="authorization.html">Authorization</a></li>
+<li><a href="verification.html">Email Verification</a></li>
+<li><a href="encryption.html">Encryption</a></li>
+<li><a href="hashing.html">Hashing</a></li>
+<li><a href="passwords.html">Password Reset</a></li>
+</ul>
+</li>
+<li>
+<h2>Database</h2>
+<ul>
+<li><a href="database.html">Getting Started</a></li>
+<li><a href="queries.html">Query Builder</a></li>
+<li><a href="pagination.html">Pagination</a></li>
+<li><a href="migrations.html">Migrations</a></li>
+<li><a href="seeding.html">Seeding</a></li>
+<li><a href="redis.html">Redis</a></li>
+</ul>
+</li>
+<li>
+<h2>Eloquent ORM</h2>
+<ul>
+<li><a href="eloquent.html">Getting Started</a></li>
+<li><a href="eloquent-relationships.html">Relationships</a></li>
+<li><a href="eloquent-collections.html">Collections</a></li>
+<li><a href="eloquent-mutators.html">Mutators / Casts</a></li>
+<li><a href="eloquent-resources.html">API Resources</a></li>
+<li><a href="eloquent-serialization.html">Serialization</a></li>
+</ul>
+</li>
+<li>
+<h2>Testing</h2>
+<ul>
+<li><a href="testing.html">Getting Started</a></li>
+<li><a href="http-tests.html">HTTP Tests</a></li>
+<li><a href="console-tests.html">Console Tests</a></li>
+<li><a href="dusk.html">Browser Tests</a></li>
+<li><a href="database-testing.html">Database</a></li>
+<li><a href="mocking.html">Mocking</a></li>
+</ul>
+</li>
+<li>
+<h2>Packages</h2>
+<ul>
+<li><a href="starter-kits.html#laravel-breeze">Breeze</a></li>
+<li><a href="billing.html">Cashier (Stripe)</a></li>
+<li><a href="cashier-paddle.html">Cashier (Paddle)</a></li>
+<li><a href="dusk.html">Dusk</a></li>
+<li><a href="envoy.html">Envoy</a></li>
+<li><a href="fortify.html">Fortify</a></li>
+<li><a href="homestead.html">Homestead</a></li>
+<li><a href="horizon.html">Horizon</a></li>
+<li><a href="../../index-6.htm">Jetstream</a></li>
+<li><a href="octane.html">Octane</a></li>
+<li><a href="passport.html">Passport</a></li>
+<li><a href="sail.html">Sail</a></li>
+<li><a href="sanctum.html">Sanctum</a></li>
+<li><a href="scout.html">Scout</a></li>
+<li><a href="socialite.html">Socialite</a></li>
+<li><a href="telescope.html">Telescope</a></li>
+<li><a href="valet.html">Valet</a></li>
+</ul>
+</li>
+<li><a href="/api/8.x">API Documentation</a></li>
+</ul>
+                        </div>
+                    </nav>
+                </div>
+            </header>
+
+            <section class="flex-1 dark:bg-dark-700">
+                <div class="max-w-screen-lg px-8 sm:px-16 lg:px-24">
+                    <div class="flex flex-col items-end lg:mt-8 lg:flex-row-reverse">
+                        <div class="hidden lg:flex items-center justify-center ml-8">
+                            <button id="header__sun" onclick="toSystemMode()" title="Switch to system theme" class="relative w-10 h-10 focus:outline-none focus:shadow-outline text-gray-500">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-sun" width="24" height="24" viewbox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                    <circle cx="12" cy="12" r="4"></circle>
+                                    <path d="M3 12h1m8 -9v1m8 8h1m-9 8v1m-6.4 -15.4l.7 .7m12.1 -.7l-.7 .7m0 11.4l.7 .7m-12.1 -.7l-.7 .7"></path>
+                                 </svg>
+                            </button>
+                            <button id="header__moon" onclick="toLightMode()" title="Switch to light mode" class="relative w-10 h-10 focus:outline-none focus:shadow-outline text-gray-500">
+                                <svg style="width:24px;height:24px" viewbox="0 0 24 24">
+                                    <path fill="currentColor" d="M17.75,4.09L15.22,6.03L16.13,9.09L13.5,7.28L10.87,9.09L11.78,6.03L9.25,4.09L12.44,4L13.5,1L14.56,4L17.75,4.09M21.25,11L19.61,12.25L20.2,14.23L18.5,13.06L16.8,14.23L17.39,12.25L15.75,11L17.81,10.95L18.5,9L19.19,10.95L21.25,11M18.97,15.95C19.8,15.87 20.69,17.05 20.16,17.8C19.84,18.25 19.5,18.67 19.08,19.07C15.17,23 8.84,23 4.94,19.07C1.03,15.17 1.03,8.83 4.94,4.93C5.34,4.53 5.76,4.17 6.21,3.85C6.96,3.32 8.14,4.21 8.06,5.04C7.79,7.9 8.75,10.87 10.95,13.06C13.14,15.26 16.1,16.22 18.97,15.95M17.33,17.97C14.5,17.81 11.7,16.64 9.53,14.5C7.36,12.31 6.2,9.5 6.04,6.68C3.23,9.82 3.34,14.64 6.35,17.66C9.37,20.67 14.19,20.78 17.33,17.97Z"></path>
+                                </svg>
+                            </button>
+                            <button id="header__indeterminate" onclick="toDarkMode()" title="Switch to dark mode" class="relative w-10 h-10 focus:outline-none focus:shadow-outline text-gray-500">
+                                <svg style="width:24px;height:24px" viewbox="0 0 24 24">
+                                    <path fill="currentColor" d="M12 2A10 10 0 0 0 2 12A10 10 0 0 0 12 22A10 10 0 0 0 22 12A10 10 0 0 0 12 2M12 4A8 8 0 0 1 20 12A8 8 0 0 1 12 20V4Z"></path>
+                                </svg>
+                            </button>
+                        </div>
+                        <div class="w-full lg:w-64 lg:pl-12">
+                            <div>
+                                <label class="text-gray-600 text-xs tracking-widest uppercase dark:text-gray-500" for="version-switch">Version</label>
+                                <div x-data="" class="relative w-full bg-white border-b border-gray-600 border-opacity-50 transition-all duration-500 focus-within:border-gray-600 dark:bg-gray-800">
+                                    <select id="version-switcher" aria-label="Laravel version" class="appearance-none flex-1 w-full px-0 py-1 placeholder-gray-900 tracking-wide bg-white focus:outline-none dark:bg-dark-700 dark:text-gray-400 dark:placeholder-gray-500" @change="window.location = $event.target.value">
+                                                                                    <option value="http://laravel.test/docs/muathye/migrations">Muathye</option>
+                                                                                    <option value="http://laravel.test/docs/master/migrations">Master</option>
+                                                                                    <option selected="" value="http://laravel.test/docs/8.x/migrations">8.x</option>
+                                                                                    <option value="http://laravel.test/docs/7.x/migrations">7.x</option>
+                                                                                    <option value="http://laravel.test/docs/6.x/migrations">6.x</option>
+                                                                                    <option value="http://laravel.test/docs/5.8/migrations">5.8</option>
+                                                                                    <option value="http://laravel.test/docs/5.7/migrations">5.7</option>
+                                                                                    <option value="http://laravel.test/docs/5.6/migrations">5.6</option>
+                                                                                    <option value="http://laravel.test/docs/5.5/migrations">5.5</option>
+                                                                                    <option value="http://laravel.test/docs/5.4/migrations">5.4</option>
+                                                                                    <option value="http://laravel.test/docs/5.3/migrations">5.3</option>
+                                                                                    <option value="http://laravel.test/docs/5.2/migrations">5.2</option>
+                                                                                    <option value="http://laravel.test/docs/5.1/migrations">5.1</option>
+                                                                                    <option value="http://laravel.test/docs/5.0/migrations">5.0</option>
+                                                                                    <option value="http://laravel.test/docs/4.2/migrations">4.2</option>
+                                                                            </select>
+                                    <img class="absolute inset-y-0 right-0 mt-2.5 w-2.5 h-2.5 text-gray-900 pointer-events-none" id="docs_search__version_arrow" src="../../img/icons/drop_arrow.min.svg" alt="">
+                                    <img class="absolute inset-y-0 right-0 mt-2.5 w-2.5 h-2.5 text-gray-900 pointer-events-none" id="docs_search__version_arrow_dark" src="../../img/icons/drop_arrow.dark.min.svg" alt="">
+                                </div>
+                            </div>
+                        </div>
+                        <div x-data="searchComponent()" x-init="init()" class="relative mt-8 flex justify-end w-full lg:mt-0">
+                            <div class="relative w-full border-b border-gray-600 border-opacity-50 overflow-hidden transition-all duration-500 focus-within:border-gray-600" @click="searchIsOpen = true" @click.away="clear" @keydown.window.escape="clear" @keydown.window="handleSlashKey">
+                                <svg class="absolute inset-y-0 left-0 mt-1 w-5 h-5 text-gray-900 pointer-events-none dark:text-gray-500" fill="none" viewbox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                                <input x-model.debouce.200ms="search" x-ref="searchInput" class="flex-1 w-full pl-8 pr-4 py-1 placeholder-gray-900 tracking-wide bg-white focus:outline-none dark:bg-dark-700 dark:text-gray-400 dark:placeholder-gray-500" placeholder="Search Docs (Press '/')" aria-label="Search in the documentation" @keydown.arrow-up.prevent="focusPreviousResult()" @keydown.arrow-down.prevent="focusNextResult()">
+                            </div>
+                            <div x-show="hits.length" x-cloak="" class="absolute w-full mt-8 pt-px divide-y divide-gray-200 shadow-sm z-30 dark:divide-dark-500">
+    <template x-for="(hit, index) in hits" :key="index">
+        <a :id="'search-result-' + index" :href="hit.url" class="search-result block px-4 py-3 bg-gray-100 transition-colors duration-200 hover:bg-gray-200 focus:outline-none focus:bg-gray-200 dark:bg-dark-600 dark:text-gray-400 dark:focus:bg-dark-500 dark:hover:bg-dark-500" @keydown.arrow-up.prevent="focusPreviousResult(index)" @keydown.arrow-down.prevent="focusNextResult(index)">
+            <div x-show="hit._highlightResult.hierarchy.lvl0" class="text-sm font-medium" x-html="hit._highlightResult.hierarchy.lvl0 ? hit._highlightResult.hierarchy.lvl0.value : ''"></div>
+            <div class="mt-2">
+                <div x-show="hit._highlightResult.hierarchy.lvl1" class="text-sm">
+                    <span class="text-red-600 opacity-75">#</span> <span x-html="hit._highlightResult.hierarchy.lvl1 ? hit._highlightResult.hierarchy.lvl1.value : ''"></span>
+                </div>
+
+                <div x-show="hit._highlightResult.hierarchy.lvl2" class="text-sm">
+                    > <span x-html="hit._highlightResult.hierarchy.lvl2 ? hit._highlightResult.hierarchy.lvl2.value : ''"></span>
+                </div>
+
+                <div x-show="hit._highlightResult.hierarchy.lvl3" class="text-sm">
+                    > <span x-html="hit._highlightResult.hierarchy.lvl3 ? hit._highlightResult.hierarchy.lvl3.value : ''"></span>
+                </div>
+
+                <div x-show="hit._highlightResult.hierarchy.lvl4" class="text-sm">
+                    > <span x-html="hit._highlightResult.hierarchy.lvl4 ? hit._highlightResult.hierarchy.lvl4.value : ''"></span>
+                </div>
+
+                <div x-show="hit._highlightResult.hierarchy.lvl5" class="text-sm">
+                    > <span x-html="hit._highlightResult.hierarchy.lvl5 ? hit._highlightResult.hierarchy.lvl5.value : ''"></span>
+                </div>
+            </div>
+        </a>
+    </template>
+	<div class="bg-gray-100 flex justify-end dark:bg-dark-600 dark:text-gray-400">
+		<a class="px-4 py-2 inline-block" target="_blank" href="../../index-9.htm?utm_source=laravel&utm_medium=link&utm_campaign=laravel_documentation_search">
+            <img width="105" src="../../img/icons/algolia.min.svg" id="docs_search__algolia" alt="Algolia">
+            <img width="105" src="../../img/icons/algolia.dark.min.svg" id="docs_search__algolia_dark" alt="Algolia">
+		</a>
+	</div>
+</div>
+
+<div x-show="search && ! hits.length" x-cloak="" class="absolute w-full mt-8 pt-px divide-y divide-gray-200 shadow-sm z-30 dark:divide-dark-500">
+	<div class="px-4 py-2 bg-gray-100 dark:bg-dark-600 dark:text-gray-400">
+		<div class="text-sm" x-text="`We didn't find any result for '${search}'. Sorry!`"></div>
+	</div>
+	<div class="bg-gray-100 flex justify-end dark:bg-dark-600 dark:text-gray-400">
+		<a class="px-4 py-2 inline-block" target="_blank" href="../../index-9.htm?utm_source=laravel&utm_medium=link&utm_campaign=laravel_documentation_search">
+            <img width="105" src="../../img/icons/algolia.min.svg" id="docs_search__algolia" alt="Algolia">
+            <img width="105" src="../../img/icons/algolia.dark.min.svg" id="docs_search__algolia_dark" alt="Algolia">
+		</a>
+	</div>
+</div>
+                        </div>
+                    </div>
+
+                    <section class="mt-8 md:mt-16">
+                        <section class="docs_main max-w-prose">
+                            
+                                                         <div id="main-content">
+    <h1>Database: Migrations</h1>
+<ul>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#generating-migrations">Generating Migrations</a>
+<ul>
+<li><a href="#squashing-migrations">Squashing Migrations</a></li>
+</ul></li>
+<li><a href="#migration-structure">Migration Structure</a></li>
+<li><a href="#running-migrations">Running Migrations</a>
+<ul>
+<li><a href="#rolling-back-migrations">Rolling Back Migrations</a></li>
+</ul></li>
+<li><a href="#tables">Tables</a>
+<ul>
+<li><a href="#creating-tables">Creating Tables</a></li>
+<li><a href="#updating-tables">Updating Tables</a></li>
+<li><a href="#renaming-and-dropping-tables">Renaming / Dropping Tables</a></li>
+</ul></li>
+<li><a href="#columns">Columns</a>
+<ul>
+<li><a href="#creating-columns">Creating Columns</a></li>
+<li><a href="#available-column-types">Available Column Types</a></li>
+<li><a href="#column-modifiers">Column Modifiers</a></li>
+<li><a href="#modifying-columns">Modifying Columns</a></li>
+<li><a href="#dropping-columns">Dropping Columns</a></li>
+</ul></li>
+<li><a href="#indexes">Indexes</a>
+<ul>
+<li><a href="#creating-indexes">Creating Indexes</a></li>
+<li><a href="#renaming-indexes">Renaming Indexes</a></li>
+<li><a href="#dropping-indexes">Dropping Indexes</a></li>
+<li><a href="#foreign-key-constraints">Foreign Key Constraints</a></li>
+</ul></li>
+<li><a href="#events">Events</a></li>
+</ul>
+<p><a name="introduction"></a></p>
+<h2 id="introduction">Introduction</h2>
+<p>Migrations are like version control for your database, allowing your team to define and share the application's database schema definition. If you have ever had to tell a teammate to manually add a column to their local database schema after pulling in your changes from source control, you've faced the problem that database migrations solve.</p>
+<p>The Laravel <code>Schema</code> <a href="facades.html">facade</a> provides database agnostic support for creating and manipulating tables across all of Laravel's supported database systems. Typically, migrations will use this facade to create and modify database tables and columns.</p>
+<p><a name="generating-migrations"></a></p>
+<h2 id="generating-migrations">Generating Migrations</h2>
+<p>You may use the <code>make:migration</code> <a href="artisan.html">Artisan command</a> to generate a database migration. The new migration will be placed in your <code>database/migrations</code> directory. Each migration filename contains a timestamp that allows Laravel to determine the order of the migrations:</p>
+<pre><code>php artisan make:migration create_flights_table</code></pre>
+<p>Laravel will use the name of the migration to attempt to guess the name of the table and whether or not the migration will be creating a new table. If Laravel is able to determine the table name from the migration name, Laravel will pre-fill the generated migration file with the specified table. Otherwise, you may simply specify the table in the migration file manually.</p>
+<p>If you would like to specify a custom path for the generated migration, you may use the <code>--path</code> option when executing the <code>make:migration</code> command. The given path should be relative to your application's base path.</p>
+<blockquote>
+<p>{tip} Migration stubs may be customized using <a href="artisan.html#stub-customization">stub publishing</a>.</p>
+</blockquote>
+<p><a name="squashing-migrations"></a></p>
+<h3 id="squashing-migrations">Squashing Migrations</h3>
+<p>As you build your application, you may accumulate more and more migrations over time. This can lead to your <code>database/migrations</code> directory becoming bloated with potentially hundreds of migrations. If you would like, you may &quot;squash&quot; your migrations into a single SQL file. To get started, execute the <code>schema:dump</code> command:</p>
+<pre><code>php artisan schema:dump
+
+// Dump the current database schema and prune all existing migrations...
+php artisan schema:dump --prune</code></pre>
+<p>When you execute this command, Laravel will write a &quot;schema&quot; file to your application's <code>database/schema</code> directory. Now, when you attempt to migrate your database and no other migrations have been executed, Laravel will execute the schema file's SQL statements first. After executing the schema file's statements, Laravel will execute any remaining migrations that were not part of the schema dump.</p>
+<p>You should commit your database schema file to source control so that other new developers on your team may quickly create your application's initial database structure.</p>
+<blockquote>
+<p>{note} Migration squashing is only available for the MySQL, PostgreSQL, and SQLite databases and utilizes the database's command-line client. Schema dumps may not be restored to in-memory SQLite databases.</p>
+</blockquote>
+<p><a name="migration-structure"></a></p>
+<h2 id="migration-structure">Migration Structure</h2>
+<p>A migration class contains two methods: <code>up</code> and <code>down</code>. The <code>up</code> method is used to add new tables, columns, or indexes to your database, while the <code>down</code> method should reverse the operations performed by the <code>up</code> method.</p>
+<p>Within both of these methods, you may use the Laravel schema builder to expressively create and modify tables. To learn about all of the methods available on the <code>Schema</code> builder, <a href="#creating-tables">check out its documentation</a>. For example, the following migration creates a <code>flights</code> table:</p>
+<pre><code>&lt;?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+class CreateFlightsTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('flights', function (Blueprint $table) {
+            $table-&gt;id();
+            $table-&gt;string('name');
+            $table-&gt;string('airline');
+            $table-&gt;timestamps();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::drop('flights');
+    }
+}</code></pre>
+<p><a name="anonymous-migrations"></a></p>
+<h4 id="anonymous-migrations">Anonymous Migrations</h4>
+<p>As you may have noticed in the example above, Laravel will automatically assign a class name to all of the migrations that you generate using the <code>make:migration</code> command. However, if you wish, you may return an anonymous class from your migration file. This is primarily useful if your application accumulates many migrations and two of them have a class name collision:</p>
+<pre><code>&lt;?php
+
+use Illuminate\Database\Migrations\Migration;
+
+return new class extends Migration
+{
+    //
+};</code></pre>
+<p><a name="setting-the-migration-connection"></a></p>
+<h4 id="setting-the-migration-connection">Setting The Migration Connection</h4>
+<p>If your migration will be interacting with a database connection other than your application's default database connection, you should set the <code>$connection</code> property of your migration:</p>
+<pre><code>/**
+ * The database connection that should be used by the migration.
+ *
+ * @var string
+ */
+protected $connection = 'pgsql';
+
+/**
+ * Run the migrations.
+ *
+ * @return void
+ */
+public function up()
+{
+    //
+}</code></pre>
+<p><a name="running-migrations"></a></p>
+<h2 id="running-migrations">Running Migrations</h2>
+<p>To run all of your outstanding migrations, execute the <code>migrate</code> Artisan command:</p>
+<pre><code>php artisan migrate</code></pre>
+<p>If you would like to see which migrations have run thus far, you may use the <code>migrate:status</code> Artisan command:</p>
+<pre><code>php artisan migrate:status</code></pre>
+<p><a name="forcing-migrations-to-run-in-production"></a></p>
+<h4 id="forcing-migrations-to-run-in-production">Forcing Migrations To Run In Production</h4>
+<p>Some migration operations are destructive, which means they may cause you to lose data. In order to protect you from running these commands against your production database, you will be prompted for confirmation before the commands are executed. To force the commands to run without a prompt, use the <code>--force</code> flag:</p>
+<pre><code>php artisan migrate --force</code></pre>
+<p><a name="rolling-back-migrations"></a></p>
+<h3 id="rolling-back-migrations">Rolling Back Migrations</h3>
+<p>To roll back the latest migration operation, you may use the <code>rollback</code> Artisan command. This command rolls back the last &quot;batch&quot; of migrations, which may include multiple migration files:</p>
+<pre><code>php artisan migrate:rollback</code></pre>
+<p>You may roll back a limited number of migrations by providing the <code>step</code> option to the <code>rollback</code> command. For example, the following command will roll back the last five migrations:</p>
+<pre><code>php artisan migrate:rollback --step=5</code></pre>
+<p>The <code>migrate:reset</code> command will roll back all of your application's migrations:</p>
+<pre><code>php artisan migrate:reset</code></pre>
+<p><a name="roll-back-migrate-using-a-single-command"></a></p>
+<h4 id="roll-back-migrate-using-a-single-command">Roll Back &amp; Migrate Using A Single Command</h4>
+<p>The <code>migrate:refresh</code> command will roll back all of your migrations and then execute the <code>migrate</code> command. This command effectively re-creates your entire database:</p>
+<pre><code>php artisan migrate:refresh
+
+// Refresh the database and run all database seeds...
+php artisan migrate:refresh --seed</code></pre>
+<p>You may roll back and re-migrate a limited number of migrations by providing the <code>step</code> option to the <code>refresh</code> command. For example, the following command will roll back and re-migrate the last five migrations:</p>
+<pre><code>php artisan migrate:refresh --step=5</code></pre>
+<p><a name="drop-all-tables-migrate"></a></p>
+<h4 id="drop-all-tables-migrate">Drop All Tables &amp; Migrate</h4>
+<p>The <code>migrate:fresh</code> command will drop all tables from the database and then execute the <code>migrate</code> command:</p>
+<pre><code>php artisan migrate:fresh
+
+php artisan migrate:fresh --seed</code></pre>
+<blockquote>
+<p>{note} The <code>migrate:fresh</code> command will drop all database tables regardless of their prefix. This command should be used with caution when developing on a database that is shared with other applications.</p>
+</blockquote>
+<p><a name="tables"></a></p>
+<h2 id="tables">Tables</h2>
+<p><a name="creating-tables"></a></p>
+<h3 id="creating-tables">Creating Tables</h3>
+<p>To create a new database table, use the <code>create</code> method on the <code>Schema</code> facade. The <code>create</code> method accepts two arguments: the first is the name of the table, while the second is a closure which receives a <code>Blueprint</code> object that may be used to define the new table:</p>
+<pre><code>use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+Schema::create('users', function (Blueprint $table) {
+    $table-&gt;id();
+    $table-&gt;string('name');
+    $table-&gt;string('email');
+    $table-&gt;timestamps();
+});</code></pre>
+<p>When creating the table, you may use any of the schema builder's <a href="#creating-columns">column methods</a> to define the table's columns.</p>
+<p><a name="checking-for-table-column-existence"></a></p>
+<h4 id="checking-for-table-column-existence">Checking For Table / Column Existence</h4>
+<p>You may check for the existence of a table or column using the <code>hasTable</code> and <code>hasColumn</code> methods:</p>
+<pre><code>if (Schema::hasTable('users')) {
+    // The "users" table exists...
+}
+
+if (Schema::hasColumn('users', 'email')) {
+    // The "users" table exists and has an "email" column...
+}</code></pre>
+<p><a name="database-connection-table-options"></a></p>
+<h4 id="database-connection-table-options">Database Connection &amp; Table Options</h4>
+<p>If you want to perform a schema operation on a database connection that is not your application's default connection, use the <code>connection</code> method:</p>
+<pre><code>Schema::connection('sqlite')-&gt;create('users', function (Blueprint $table) {
+    $table-&gt;id();
+});</code></pre>
+<p>In addition, a few other properties and methods may be used to define other aspects of the table's creation. The <code>engine</code> property may be used to specify the table's storage engine when using MySQL:</p>
+<pre><code>Schema::create('users', function (Blueprint $table) {
+    $table-&gt;engine = 'InnoDB';
+
+    // ...
+});</code></pre>
+<p>The <code>charset</code> and <code>collation</code> properties may be used to specify the character set and collation for the created table when using MySQL:</p>
+<pre><code>Schema::create('users', function (Blueprint $table) {
+    $table-&gt;charset = 'utf8mb4';
+    $table-&gt;collation = 'utf8mb4_unicode_ci';
+
+    // ...
+});</code></pre>
+<p>The <code>temporary</code> method may be used to indicate that the table should be &quot;temporary&quot;. Temporary tables are only visible to the current connection's database session and are dropped automatically when the connection is closed:</p>
+<pre><code>Schema::create('calculations', function (Blueprint $table) {
+    $table-&gt;temporary();
+
+    // ...
+});</code></pre>
+<p><a name="updating-tables"></a></p>
+<h3 id="updating-tables">Updating Tables</h3>
+<p>The <code>table</code> method on the <code>Schema</code> facade may be used to update existing tables. Like the <code>create</code> method, the <code>table</code> method accepts two arguments: the name of the table and a closure that receives a <code>Blueprint</code> instance you may use to add columns or indexes to the table:</p>
+<pre><code>use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+Schema::table('users', function (Blueprint $table) {
+    $table-&gt;integer('votes');
+});</code></pre>
+<p><a name="renaming-and-dropping-tables"></a></p>
+<h3 id="renaming-and-dropping-tables">Renaming / Dropping Tables</h3>
+<p>To rename an existing database table, use the <code>rename</code> method:</p>
+<pre><code>use Illuminate\Support\Facades\Schema;
+
+Schema::rename($from, $to);</code></pre>
+<p>To drop an existing table, you may use the <code>drop</code> or <code>dropIfExists</code> methods:</p>
+<pre><code>Schema::drop('users');
+
+Schema::dropIfExists('users');</code></pre>
+<p><a name="renaming-tables-with-foreign-keys"></a></p>
+<h4 id="renaming-tables-with-foreign-keys">Renaming Tables With Foreign Keys</h4>
+<p>Before renaming a table, you should verify that any foreign key constraints on the table have an explicit name in your migration files instead of letting Laravel assign a convention based name. Otherwise, the foreign key constraint name will refer to the old table name.</p>
+<p><a name="columns"></a></p>
+<h2 id="columns">Columns</h2>
+<p><a name="creating-columns"></a></p>
+<h3 id="creating-columns">Creating Columns</h3>
+<p>The <code>table</code> method on the <code>Schema</code> facade may be used to update existing tables. Like the <code>create</code> method, the <code>table</code> method accepts two arguments: the name of the table and a closure that receives an <code>Illuminate\Database\Schema\Blueprint</code> instance you may use to add columns to the table:</p>
+<pre><code>use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+Schema::table('users', function (Blueprint $table) {
+    $table-&gt;integer('votes');
+});</code></pre>
+<p><a name="available-column-types"></a></p>
+<h3 id="available-column-types">Available Column Types</h3>
+<p>The schema builder blueprint offers a variety of methods that correspond to the different types of columns you can add to your database tables. Each of the available methods are listed in the table below:</p>
+<style>
+    #collection-method-list > p {
+        column-count: 3; -moz-column-count: 3; -webkit-column-count: 3;
+        column-gap: 2em; -moz-column-gap: 2em; -webkit-column-gap: 2em;
+    }
+
+    #collection-method-list a {
+        display: block;
+    }
+</style>
+<div id="collection-method-list">
+<p><a href="#column-method-bigIncrements">bigIncrements</a>
+<a href="#column-method-bigInteger">bigInteger</a>
+<a href="#column-method-binary">binary</a>
+<a href="#column-method-boolean">boolean</a>
+<a href="#column-method-char">char</a>
+<a href="#column-method-dateTimeTz">dateTimeTz</a>
+<a href="#column-method-dateTime">dateTime</a>
+<a href="#column-method-date">date</a>
+<a href="#column-method-decimal">decimal</a>
+<a href="#column-method-double">double</a>
+<a href="#column-method-enum">enum</a>
+<a href="#column-method-float">float</a>
+<a href="#column-method-foreignId">foreignId</a>
+<a href="#column-method-foreignIdFor">foreignIdFor</a>
+<a href="#column-method-foreignUuid">foreignUuid</a>
+<a href="#column-method-geometryCollection">geometryCollection</a>
+<a href="#column-method-geometry">geometry</a>
+<a href="#column-method-id">id</a>
+<a href="#column-method-increments">increments</a>
+<a href="#column-method-integer">integer</a>
+<a href="#column-method-ipAddress">ipAddress</a>
+<a href="#column-method-json">json</a>
+<a href="#column-method-jsonb">jsonb</a>
+<a href="#column-method-lineString">lineString</a>
+<a href="#column-method-longText">longText</a>
+<a href="#column-method-macAddress">macAddress</a>
+<a href="#column-method-mediumIncrements">mediumIncrements</a>
+<a href="#column-method-mediumInteger">mediumInteger</a>
+<a href="#column-method-mediumText">mediumText</a>
+<a href="#column-method-morphs">morphs</a>
+<a href="#column-method-multiLineString">multiLineString</a>
+<a href="#column-method-multiPoint">multiPoint</a>
+<a href="#column-method-multiPolygon">multiPolygon</a>
+<a href="#column-method-nullableMorphs">nullableMorphs</a>
+<a href="#column-method-nullableTimestamps">nullableTimestamps</a>
+<a href="#column-method-nullableUuidMorphs">nullableUuidMorphs</a>
+<a href="#column-method-point">point</a>
+<a href="#column-method-polygon">polygon</a>
+<a href="#column-method-rememberToken">rememberToken</a>
+<a href="#column-method-set">set</a>
+<a href="#column-method-smallIncrements">smallIncrements</a>
+<a href="#column-method-smallInteger">smallInteger</a>
+<a href="#column-method-softDeletesTz">softDeletesTz</a>
+<a href="#column-method-softDeletes">softDeletes</a>
+<a href="#column-method-string">string</a>
+<a href="#column-method-text">text</a>
+<a href="#column-method-timeTz">timeTz</a>
+<a href="#column-method-time">time</a>
+<a href="#column-method-timestampTz">timestampTz</a>
+<a href="#column-method-timestamp">timestamp</a>
+<a href="#column-method-timestampsTz">timestampsTz</a>
+<a href="#column-method-timestamps">timestamps</a>
+<a href="#column-method-tinyIncrements">tinyIncrements</a>
+<a href="#column-method-tinyInteger">tinyInteger</a>
+<a href="#column-method-tinyText">tinyText</a>
+<a href="#column-method-unsignedBigInteger">unsignedBigInteger</a>
+<a href="#column-method-unsignedDecimal">unsignedDecimal</a>
+<a href="#column-method-unsignedInteger">unsignedInteger</a>
+<a href="#column-method-unsignedMediumInteger">unsignedMediumInteger</a>
+<a href="#column-method-unsignedSmallInteger">unsignedSmallInteger</a>
+<a href="#column-method-unsignedTinyInteger">unsignedTinyInteger</a>
+<a href="#column-method-uuidMorphs">uuidMorphs</a>
+<a href="#column-method-uuid">uuid</a>
+<a href="#column-method-year">year</a></p>
+</div>
+<p><a name="column-method-bigIncrements"></a></p>
+<h4 id="column-method-bigIncrements" id="collection-method"><code>bigIncrements()</code></h4>
+<p>The <code>bigIncrements</code> method creates an auto-incrementing <code>UNSIGNED BIGINT</code> (primary key) equivalent column:</p>
+<pre><code>$table-&gt;bigIncrements('id');</code></pre>
+<p><a name="column-method-bigInteger"></a></p>
+<h4 id="column-method-bigInteger" id="collection-method"><code>bigInteger()</code></h4>
+<p>The <code>bigInteger</code> method creates a <code>BIGINT</code> equivalent column:</p>
+<pre><code>$table-&gt;bigInteger('votes');</code></pre>
+<p><a name="column-method-binary"></a></p>
+<h4 id="column-method-binary" id="collection-method"><code>binary()</code></h4>
+<p>The <code>binary</code> method creates a <code>BLOB</code> equivalent column:</p>
+<pre><code>$table-&gt;binary('photo');</code></pre>
+<p><a name="column-method-boolean"></a></p>
+<h4 id="column-method-boolean" id="collection-method"><code>boolean()</code></h4>
+<p>The <code>boolean</code> method creates a <code>BOOLEAN</code> equivalent column:</p>
+<pre><code>$table-&gt;boolean('confirmed');</code></pre>
+<p><a name="column-method-char"></a></p>
+<h4 id="column-method-char" id="collection-method"><code>char()</code></h4>
+<p>The <code>char</code> method creates a <code>CHAR</code> equivalent column with of a given length:</p>
+<pre><code>$table-&gt;char('name', 100);</code></pre>
+<p><a name="column-method-dateTimeTz"></a></p>
+<h4 id="column-method-dateTimeTz" id="collection-method"><code>dateTimeTz()</code></h4>
+<p>The <code>dateTimeTz</code> method creates a <code>DATETIME</code> (with timezone) equivalent column with an optional precision (total digits):</p>
+<pre><code>$table-&gt;dateTimeTz('created_at', $precision = 0);</code></pre>
+<p><a name="column-method-dateTime"></a></p>
+<h4 id="column-method-dateTime" id="collection-method"><code>dateTime()</code></h4>
+<p>The <code>dateTime</code> method creates a <code>DATETIME</code> equivalent column with an optional precision (total digits):</p>
+<pre><code>$table-&gt;dateTime('created_at', $precision = 0);</code></pre>
+<p><a name="column-method-date"></a></p>
+<h4 id="column-method-date" id="collection-method"><code>date()</code></h4>
+<p>The <code>date</code> method creates a <code>DATE</code> equivalent column:</p>
+<pre><code>$table-&gt;date('created_at');</code></pre>
+<p><a name="column-method-decimal"></a></p>
+<h4 id="column-method-decimal" id="collection-method"><code>decimal()</code></h4>
+<p>The <code>decimal</code> method creates a <code>DECIMAL</code> equivalent column with the given precision (total digits) and scale (decimal digits):</p>
+<pre><code>$table-&gt;decimal('amount', $precision = 8, $scale = 2);</code></pre>
+<p><a name="column-method-double"></a></p>
+<h4 id="column-method-double" id="collection-method"><code>double()</code></h4>
+<p>The <code>double</code> method creates a <code>DOUBLE</code> equivalent column with the given precision (total digits) and scale (decimal digits):</p>
+<pre><code>$table-&gt;double('amount', 8, 2);</code></pre>
+<p><a name="column-method-enum"></a></p>
+<h4 id="column-method-enum" id="collection-method"><code>enum()</code></h4>
+<p>The <code>enum</code> method creates a <code>ENUM</code> equivalent column with the given valid values:</p>
+<pre><code>$table-&gt;enum('difficulty', ['easy', 'hard']);</code></pre>
+<p><a name="column-method-float"></a></p>
+<h4 id="column-method-float" id="collection-method"><code>float()</code></h4>
+<p>The <code>float</code> method creates a <code>FLOAT</code> equivalent column with the given precision (total digits) and scale (decimal digits):</p>
+<pre><code>$table-&gt;float('amount', 8, 2);</code></pre>
+<p><a name="column-method-foreignId"></a></p>
+<h4 id="column-method-foreignId" id="collection-method"><code>foreignId()</code></h4>
+<p>The <code>foreignId</code> method creates an <code>UNSIGNED BIGINT</code> equivalent column:</p>
+<pre><code>$table-&gt;foreignId('user_id');</code></pre>
+<p><a name="column-method-foreignIdFor"></a></p>
+<h4 id="column-method-foreignIdFor" id="collection-method"><code>foreignIdFor()</code></h4>
+<p>The <code>foreignIdFor</code> method adds a <code>{column}_id UNSIGNED BIGINT</code> equivalent column for a given model class:</p>
+<pre><code>$table-&gt;foreignIdFor(User::class);</code></pre>
+<p><a name="column-method-foreignUuid"></a></p>
+<h4 id="column-method-foreignUuid" id="collection-method"><code>foreignUuid()</code></h4>
+<p>The <code>foreignUuid</code> method creates a <code>UUID</code> equivalent column:</p>
+<pre><code>$table-&gt;foreignUuid('user_id');</code></pre>
+<p><a name="column-method-geometryCollection"></a></p>
+<h4 id="column-method-geometryCollection" id="collection-method"><code>geometryCollection()</code></h4>
+<p>The <code>geometryCollection</code> method creates a <code>GEOMETRYCOLLECTION</code> equivalent column:</p>
+<pre><code>$table-&gt;geometryCollection('positions');</code></pre>
+<p><a name="column-method-geometry"></a></p>
+<h4 id="column-method-geometry" id="collection-method"><code>geometry()</code></h4>
+<p>The <code>geometry</code> method creates a <code>GEOMETRY</code> equivalent column:</p>
+<pre><code>$table-&gt;geometry('positions');</code></pre>
+<p><a name="column-method-id"></a></p>
+<h4 id="column-method-id" id="collection-method"><code>id()</code></h4>
+<p>The <code>id</code> method is an alias of the <code>bigIncrements</code> method. By default, the method will create an <code>id</code> column; however, you may pass a column name if you would like to assign a different name to the column:</p>
+<pre><code>$table-&gt;id();</code></pre>
+<p><a name="column-method-increments"></a></p>
+<h4 id="column-method-increments" id="collection-method"><code>increments()</code></h4>
+<p>The <code>increments</code> method creates an auto-incrementing <code>UNSIGNED INTEGER</code> equivalent column as a primary key:</p>
+<pre><code>$table-&gt;increments('id');</code></pre>
+<p><a name="column-method-integer"></a></p>
+<h4 id="column-method-integer" id="collection-method"><code>integer()</code></h4>
+<p>The <code>integer</code> method creates an <code>INTEGER</code> equivalent column:</p>
+<pre><code>$table-&gt;integer('votes');</code></pre>
+<p><a name="column-method-ipAddress"></a></p>
+<h4 id="column-method-ipAddress" id="collection-method"><code>ipAddress()</code></h4>
+<p>The <code>ipAddress</code> method creates a <code>VARCHAR</code> equivalent column:</p>
+<pre><code>$table-&gt;ipAddress('visitor');</code></pre>
+<p><a name="column-method-json"></a></p>
+<h4 id="column-method-json" id="collection-method"><code>json()</code></h4>
+<p>The <code>json</code> method creates a <code>JSON</code> equivalent column:</p>
+<pre><code>$table-&gt;json('options');</code></pre>
+<p><a name="column-method-jsonb"></a></p>
+<h4 id="column-method-jsonb" id="collection-method"><code>jsonb()</code></h4>
+<p>The <code>jsonb</code> method creates a <code>JSONB</code> equivalent column:</p>
+<pre><code>$table-&gt;jsonb('options');</code></pre>
+<p><a name="column-method-lineString"></a></p>
+<h4 id="column-method-lineString" id="collection-method"><code>lineString()</code></h4>
+<p>The <code>lineString</code> method creates a <code>LINESTRING</code> equivalent column:</p>
+<pre><code>$table-&gt;lineString('positions');</code></pre>
+<p><a name="column-method-longText"></a></p>
+<h4 id="column-method-longText" id="collection-method"><code>longText()</code></h4>
+<p>The <code>longText</code> method creates a <code>LONGTEXT</code> equivalent column:</p>
+<pre><code>$table-&gt;longText('description');</code></pre>
+<p><a name="column-method-macAddress"></a></p>
+<h4 id="column-method-macAddress" id="collection-method"><code>macAddress()</code></h4>
+<p>The <code>macAddress</code> method creates a column that is intended to hold a MAC address. Some database systems, such as PostgreSQL, have a dedicated column type for this type of data. Other database systems will use a string equivalent column:</p>
+<pre><code>$table-&gt;macAddress('device');</code></pre>
+<p><a name="column-method-mediumIncrements"></a></p>
+<h4 id="column-method-mediumIncrements" id="collection-method"><code>mediumIncrements()</code></h4>
+<p>The <code>mediumIncrements</code> method creates an auto-incrementing <code>UNSIGNED MEDIUMINT</code> equivalent column as a primary key:</p>
+<pre><code>$table-&gt;mediumIncrements('id');</code></pre>
+<p><a name="column-method-mediumInteger"></a></p>
+<h4 id="column-method-mediumInteger" id="collection-method"><code>mediumInteger()</code></h4>
+<p>The <code>mediumInteger</code> method creates a <code>MEDIUMINT</code> equivalent column:</p>
+<pre><code>$table-&gt;mediumInteger('votes');</code></pre>
+<p><a name="column-method-mediumText"></a></p>
+<h4 id="column-method-mediumText" id="collection-method"><code>mediumText()</code></h4>
+<p>The <code>mediumText</code> method creates a <code>MEDIUMTEXT</code> equivalent column:</p>
+<pre><code>$table-&gt;mediumText('description');</code></pre>
+<p><a name="column-method-morphs"></a></p>
+<h4 id="column-method-morphs" id="collection-method"><code>morphs()</code></h4>
+<p>The <code>morphs</code> method is a convenience method that adds a <code>{column}_id</code> <code>UNSIGNED BIGINT</code> equivalent column and a <code>{column}_type</code> <code>VARCHAR</code> equivalent column.</p>
+<p>This method is intended to be used when defining the columns necessary for a polymorphic <a href="eloquent-relationships.html">Eloquent relationship</a>. In the following example, <code>taggable_id</code> and <code>taggable_type</code> columns would be created:</p>
+<pre><code>$table-&gt;morphs('taggable');</code></pre>
+<p><a name="column-method-multiLineString"></a></p>
+<h4 id="column-method-multiLineString" id="collection-method"><code>multiLineString()</code></h4>
+<p>The <code>multiLineString</code> method creates a <code>MULTILINESTRING</code> equivalent column:</p>
+<pre><code>$table-&gt;multiLineString('positions');</code></pre>
+<p><a name="column-method-multiPoint"></a></p>
+<h4 id="column-method-multiPoint" id="collection-method"><code>multiPoint()</code></h4>
+<p>The <code>multiPoint</code> method creates a <code>MULTIPOINT</code> equivalent column:</p>
+<pre><code>$table-&gt;multiPoint('positions');</code></pre>
+<p><a name="column-method-multiPolygon"></a></p>
+<h4 id="column-method-multiPolygon" id="collection-method"><code>multiPolygon()</code></h4>
+<p>The <code>multiPolygon</code> method creates a <code>MULTIPOLYGON</code> equivalent column:</p>
+<pre><code>$table-&gt;multiPolygon('positions');</code></pre>
+<p><a name="column-method-nullableTimestamps"></a></p>
+<h4 id="column-method-nullableTimestamps" id="collection-method"><code>nullableTimestamps()</code></h4>
+<p>The <code>nullableTimestamps</code> method is an alias of the <a href="#column-method-timestamps">timestamps</a> method:</p>
+<pre><code>$table-&gt;nullableTimestamps(0);</code></pre>
+<p><a name="column-method-nullableMorphs"></a></p>
+<h4 id="column-method-nullableMorphs" id="collection-method"><code>nullableMorphs()</code></h4>
+<p>The method is similar to the <a href="#column-method-morphs">morphs</a> method; however, the columns that are created will be &quot;nullable&quot;:</p>
+<pre><code>$table-&gt;nullableMorphs('taggable');</code></pre>
+<p><a name="column-method-nullableUuidMorphs"></a></p>
+<h4 id="column-method-nullableUuidMorphs" id="collection-method"><code>nullableUuidMorphs()</code></h4>
+<p>The method is similar to the <a href="#column-method-uuidMorphs">uuidMorphs</a> method; however, the columns that are created will be &quot;nullable&quot;:</p>
+<pre><code>$table-&gt;nullableUuidMorphs('taggable');</code></pre>
+<p><a name="column-method-point"></a></p>
+<h4 id="column-method-point" id="collection-method"><code>point()</code></h4>
+<p>The <code>point</code> method creates a <code>POINT</code> equivalent column:</p>
+<pre><code>$table-&gt;point('position');</code></pre>
+<p><a name="column-method-polygon"></a></p>
+<h4 id="column-method-polygon" id="collection-method"><code>polygon()</code></h4>
+<p>The <code>polygon</code> method creates a <code>POLYGON</code> equivalent column:</p>
+<pre><code>$table-&gt;polygon('position');</code></pre>
+<p><a name="column-method-rememberToken"></a></p>
+<h4 id="column-method-rememberToken" id="collection-method"><code>rememberToken()</code></h4>
+<p>The <code>rememberToken</code> method creates a nullable, <code>VARCHAR(100)</code> equivalent column that is intended to store the current &quot;remember me&quot; <a href="authentication.html#remembering-users">authentication token</a>:</p>
+<pre><code>$table-&gt;rememberToken();</code></pre>
+<p><a name="column-method-set"></a></p>
+<h4 id="column-method-set" id="collection-method"><code>set()</code></h4>
+<p>The <code>set</code> method creates a <code>SET</code> equivalent column with the given list of valid values:</p>
+<pre><code>$table-&gt;set('flavors', ['strawberry', 'vanilla']);</code></pre>
+<p><a name="column-method-smallIncrements"></a></p>
+<h4 id="column-method-smallIncrements" id="collection-method"><code>smallIncrements()</code></h4>
+<p>The <code>smallIncrements</code> method creates an auto-incrementing <code>UNSIGNED SMALLINT</code> equivalent column as a primary key:</p>
+<pre><code>$table-&gt;smallIncrements('id');</code></pre>
+<p><a name="column-method-smallInteger"></a></p>
+<h4 id="column-method-smallInteger" id="collection-method"><code>smallInteger()</code></h4>
+<p>The <code>smallInteger</code> method creates a <code>SMALLINT</code> equivalent column:</p>
+<pre><code>$table-&gt;smallInteger('votes');</code></pre>
+<p><a name="column-method-softDeletesTz"></a></p>
+<h4 id="column-method-softDeletesTz" id="collection-method"><code>softDeletesTz()</code></h4>
+<p>The <code>softDeletesTz</code> method adds a nullable <code>deleted_at</code> <code>TIMESTAMP</code> (with timezone) equivalent column with an optional precision (total digits). This column is intended to store the <code>deleted_at</code> timestamp needed for Eloquent's &quot;soft delete&quot; functionality:</p>
+<pre><code>$table-&gt;softDeletesTz($column = 'deleted_at', $precision = 0);</code></pre>
+<p><a name="column-method-softDeletes"></a></p>
+<h4 id="column-method-softDeletes" id="collection-method"><code>softDeletes()</code></h4>
+<p>The <code>softDeletes</code> method adds a nullable <code>deleted_at</code> <code>TIMESTAMP</code> equivalent column with an optional precision (total digits). This column is intended to store the <code>deleted_at</code> timestamp needed for Eloquent's &quot;soft delete&quot; functionality:</p>
+<pre><code>$table-&gt;softDeletes($column = 'deleted_at', $precision = 0);</code></pre>
+<p><a name="column-method-string"></a></p>
+<h4 id="column-method-string" id="collection-method"><code>string()</code></h4>
+<p>The <code>string</code> method creates a <code>VARCHAR</code> equivalent column of the given length:</p>
+<pre><code>$table-&gt;string('name', 100);</code></pre>
+<p><a name="column-method-text"></a></p>
+<h4 id="column-method-text" id="collection-method"><code>text()</code></h4>
+<p>The <code>text</code> method creates a <code>TEXT</code> equivalent column:</p>
+<pre><code>$table-&gt;text('description');</code></pre>
+<p><a name="column-method-timeTz"></a></p>
+<h4 id="column-method-timeTz" id="collection-method"><code>timeTz()</code></h4>
+<p>The <code>timeTz</code> method creates a <code>TIME</code> (with timezone) equivalent column with an optional precision (total digits):</p>
+<pre><code>$table-&gt;timeTz('sunrise', $precision = 0);</code></pre>
+<p><a name="column-method-time"></a></p>
+<h4 id="column-method-time" id="collection-method"><code>time()</code></h4>
+<p>The <code>time</code> method creates a <code>TIME</code> equivalent column with an optional precision (total digits):</p>
+<pre><code>$table-&gt;time('sunrise', $precision = 0);</code></pre>
+<p><a name="column-method-timestampTz"></a></p>
+<h4 id="column-method-timestampTz" id="collection-method"><code>timestampTz()</code></h4>
+<p>The <code>timestampTz</code> method creates a <code>TIMESTAMP</code> (with timezone) equivalent column with an optional precision (total digits):</p>
+<pre><code>$table-&gt;timestampTz('added_at', $precision = 0);</code></pre>
+<p><a name="column-method-timestamp"></a></p>
+<h4 id="column-method-timestamp" id="collection-method"><code>timestamp()</code></h4>
+<p>The <code>timestamp</code> method creates a <code>TIMESTAMP</code> equivalent column with an optional precision (total digits):</p>
+<pre><code>$table-&gt;timestamp('added_at', $precision = 0);</code></pre>
+<p><a name="column-method-timestampsTz"></a></p>
+<h4 id="column-method-timestampsTz" id="collection-method"><code>timestampsTz()</code></h4>
+<p>The <code>timestampsTz</code> method creates <code>created_at</code> and <code>updated_at</code> <code>TIMESTAMP</code> (with timezone) equivalent columns with an optional precision (total digits):</p>
+<pre><code>$table-&gt;timestampsTz($precision = 0);</code></pre>
+<p><a name="column-method-timestamps"></a></p>
+<h4 id="column-method-timestamps" id="collection-method"><code>timestamps()</code></h4>
+<p>The <code>timestamps</code> method creates <code>created_at</code> and <code>updated_at</code> <code>TIMESTAMP</code> equivalent columns with an optional precision (total digits):</p>
+<pre><code>$table-&gt;timestamps($precision = 0);</code></pre>
+<p><a name="column-method-tinyIncrements"></a></p>
+<h4 id="column-method-tinyIncrements" id="collection-method"><code>tinyIncrements()</code></h4>
+<p>The <code>tinyIncrements</code> method creates an auto-incrementing <code>UNSIGNED TINYINT</code> equivalent column as a primary key:</p>
+<pre><code>$table-&gt;tinyIncrements('id');</code></pre>
+<p><a name="column-method-tinyInteger"></a></p>
+<h4 id="column-method-tinyInteger" id="collection-method"><code>tinyInteger()</code></h4>
+<p>The <code>tinyInteger</code> method creates a <code>TINYINT</code> equivalent column:</p>
+<pre><code>$table-&gt;tinyInteger('votes');</code></pre>
+<p><a name="column-method-tinyText"></a></p>
+<h4 id="column-method-tinyText" id="collection-method"><code>tinyText()</code></h4>
+<p>The <code>tinyText</code> method creates a <code>TINYTEXT</code> equivalent column:</p>
+<pre><code>$table-&gt;tinyText('notes');</code></pre>
+<p><a name="column-method-unsignedBigInteger"></a></p>
+<h4 id="column-method-unsignedBigInteger" id="collection-method"><code>unsignedBigInteger()</code></h4>
+<p>The <code>unsignedBigInteger</code> method creates an <code>UNSIGNED BIGINT</code> equivalent column:</p>
+<pre><code>$table-&gt;unsignedBigInteger('votes');</code></pre>
+<p><a name="column-method-unsignedDecimal"></a></p>
+<h4 id="column-method-unsignedDecimal" id="collection-method"><code>unsignedDecimal()</code></h4>
+<p>The <code>unsignedDecimal</code> method creates an <code>UNSIGNED DECIMAL</code> equivalent column with an optional precision (total digits) and scale (decimal digits):</p>
+<pre><code>$table-&gt;unsignedDecimal('amount', $precision = 8, $scale = 2);</code></pre>
+<p><a name="column-method-unsignedInteger"></a></p>
+<h4 id="column-method-unsignedInteger" id="collection-method"><code>unsignedInteger()</code></h4>
+<p>The <code>unsignedInteger</code> method creates an <code>UNSIGNED INTEGER</code> equivalent column:</p>
+<pre><code>$table-&gt;unsignedInteger('votes');</code></pre>
+<p><a name="column-method-unsignedMediumInteger"></a></p>
+<h4 id="column-method-unsignedMediumInteger" id="collection-method"><code>unsignedMediumInteger()</code></h4>
+<p>The <code>unsignedMediumInteger</code> method creates an <code>UNSIGNED MEDIUMINT</code> equivalent column:</p>
+<pre><code>$table-&gt;unsignedMediumInteger('votes');</code></pre>
+<p><a name="column-method-unsignedSmallInteger"></a></p>
+<h4 id="column-method-unsignedSmallInteger" id="collection-method"><code>unsignedSmallInteger()</code></h4>
+<p>The <code>unsignedSmallInteger</code> method creates an <code>UNSIGNED SMALLINT</code> equivalent column:</p>
+<pre><code>$table-&gt;unsignedSmallInteger('votes');</code></pre>
+<p><a name="column-method-unsignedTinyInteger"></a></p>
+<h4 id="column-method-unsignedTinyInteger" id="collection-method"><code>unsignedTinyInteger()</code></h4>
+<p>The <code>unsignedTinyInteger</code> method creates an <code>UNSIGNED TINYINT</code> equivalent column:</p>
+<pre><code>$table-&gt;unsignedTinyInteger('votes');</code></pre>
+<p><a name="column-method-uuidMorphs"></a></p>
+<h4 id="column-method-uuidMorphs" id="collection-method"><code>uuidMorphs()</code></h4>
+<p>The <code>uuidMorphs</code> method is a convenience method that adds a <code>{column}_id</code> <code>CHAR(36)</code> equivalent column and a <code>{column}_type</code> <code>VARCHAR</code> equivalent column.</p>
+<p>This method is intended to be used when defining the columns necessary for a polymorphic <a href="eloquent-relationships.html">Eloquent relationship</a> that use UUID identifiers. In the following example, <code>taggable_id</code> and <code>taggable_type</code> columns would be created:</p>
+<pre><code>$table-&gt;uuidMorphs('taggable');</code></pre>
+<p><a name="column-method-uuid"></a></p>
+<h4 id="column-method-uuid" id="collection-method"><code>uuid()</code></h4>
+<p>The <code>uuid</code> method creates a <code>UUID</code> equivalent column:</p>
+<pre><code>$table-&gt;uuid('id');</code></pre>
+<p><a name="column-method-year"></a></p>
+<h4 id="column-method-year" id="collection-method"><code>year()</code></h4>
+<p>The <code>year</code> method creates a <code>YEAR</code> equivalent column:</p>
+<pre><code>$table-&gt;year('birth_year');</code></pre>
+<p><a name="column-modifiers"></a></p>
+<h3 id="column-modifiers">Column Modifiers</h3>
+<p>In addition to the column types listed above, there are several column &quot;modifiers&quot; you may use when adding a column to a database table. For example, to make the column &quot;nullable&quot;, you may use the <code>nullable</code> method:</p>
+<pre><code>use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+Schema::table('users', function (Blueprint $table) {
+    $table-&gt;string('email')-&gt;nullable();
+});</code></pre>
+<p>The following table contains all of the available column modifiers. This list does not include <a href="#creating-indexes">index modifiers</a>:</p>
+<table>
+<thead>
+<tr>
+<th>Modifier</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>-&gt;after('column')</code></td>
+<td>Place the column &quot;after&quot; another column (MySQL).</td>
+</tr>
+<tr>
+<td><code>-&gt;autoIncrement()</code></td>
+<td>Set INTEGER columns as auto-incrementing (primary key).</td>
+</tr>
+<tr>
+<td><code>-&gt;charset('utf8mb4')</code></td>
+<td>Specify a character set for the column (MySQL).</td>
+</tr>
+<tr>
+<td><code>-&gt;collation('utf8mb4_unicode_ci')</code></td>
+<td>Specify a collation for the column (MySQL/PostgreSQL/SQL Server).</td>
+</tr>
+<tr>
+<td><code>-&gt;comment('my comment')</code></td>
+<td>Add a comment to a column (MySQL/PostgreSQL).</td>
+</tr>
+<tr>
+<td><code>-&gt;default($value)</code></td>
+<td>Specify a &quot;default&quot; value for the column.</td>
+</tr>
+<tr>
+<td><code>-&gt;first()</code></td>
+<td>Place the column &quot;first&quot; in the table (MySQL).</td>
+</tr>
+<tr>
+<td><code>-&gt;from($integer)</code></td>
+<td>Set the starting value of an auto-incrementing field (MySQL / PostgreSQL).</td>
+</tr>
+<tr>
+<td><code>-&gt;nullable($value = true)</code></td>
+<td>Allow NULL values to be inserted into the column.</td>
+</tr>
+<tr>
+<td><code>-&gt;storedAs($expression)</code></td>
+<td>Create a stored generated column (MySQL / PostgreSQL).</td>
+</tr>
+<tr>
+<td><code>-&gt;unsigned()</code></td>
+<td>Set INTEGER columns as UNSIGNED (MySQL).</td>
+</tr>
+<tr>
+<td><code>-&gt;useCurrent()</code></td>
+<td>Set TIMESTAMP columns to use CURRENT_TIMESTAMP as default value.</td>
+</tr>
+<tr>
+<td><code>-&gt;useCurrentOnUpdate()</code></td>
+<td>Set TIMESTAMP columns to use CURRENT_TIMESTAMP when a record is updated.</td>
+</tr>
+<tr>
+<td><code>-&gt;virtualAs($expression)</code></td>
+<td>Create a virtual generated column (MySQL).</td>
+</tr>
+<tr>
+<td><code>-&gt;generatedAs($expression)</code></td>
+<td>Create an identity column with specified sequence options (PostgreSQL).</td>
+</tr>
+<tr>
+<td><code>-&gt;always()</code></td>
+<td>Defines the precedence of sequence values over input for an identity column (PostgreSQL).</td>
+</tr>
+<tr>
+<td><code>-&gt;isGeometry()</code></td>
+<td>Set spatial column type to <code>geometry</code> - the default type is <code>geography</code> (PostgreSQL).</td>
+</tr>
+</tbody>
+</table>
+<p><a name="default-expressions"></a></p>
+<h4 id="default-expressions">Default Expressions</h4>
+<p>The <code>default</code> modifier accepts a value or an <code>Illuminate\Database\Query\Expression</code> instance. Using an <code>Expression</code> instance will prevent Laravel from wrapping the value in quotes and allow you to use database specific functions. One situation where this is particularly useful is when you need to assign default values to JSON columns:</p>
+<pre><code>&lt;?php
+
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Query\Expression;
+use Illuminate\Database\Migrations\Migration;
+
+class CreateFlightsTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('flights', function (Blueprint $table) {
+            $table-&gt;id();
+            $table-&gt;json('movies')-&gt;default(new Expression('(JSON_ARRAY())'));
+            $table-&gt;timestamps();
+        });
+    }
+}</code></pre>
+<blockquote>
+<p>{note} Support for default expressions depends on your database driver, database version, and the field type. Please refer to your database's documentation.</p>
+</blockquote>
+<p><a name="column-order"></a></p>
+<h4 id="column-order">Column Order</h4>
+<p>When using the MySQL database, the <code>after</code> method may be used to add columns after an existing column in the schema:</p>
+<pre><code>$table-&gt;after('password', function ($table) {
+    $table-&gt;string('address_line1');
+    $table-&gt;string('address_line2');
+    $table-&gt;string('city');
+});</code></pre>
+<p><a name="modifying-columns"></a></p>
+<h3 id="modifying-columns">Modifying Columns</h3>
+<p><a name="prerequisites"></a></p>
+<h4 id="prerequisites">Prerequisites</h4>
+<p>Before modifying a column, you must install the <code>doctrine/dbal</code> package using the Composer package manager. The Doctrine DBAL library is used to determine the current state of the column and to create the SQL queries needed to make the requested changes to your column:</p>
+<pre><code>composer require doctrine/dbal</code></pre>
+<p>If you plan to modify columns created using the <code>timestamp</code> method, you must also add the following configuration to your application's <code>config/database.php</code> configuration file:</p>
+<pre><code class="language-php">use Illuminate\Database\DBAL\TimestampType;
+
+'dbal' =&gt; [
+    'types' =&gt; [
+        'timestamp' =&gt; TimestampType::class,
+    ],
+],</code></pre>
+<blockquote>
+<p>{note} If your application is using Microsoft SQL Server, please ensure that you install <code>doctrine/dbal:^3.0</code>.</p>
+</blockquote>
+<p><a name="updating-column-attributes"></a></p>
+<h4 id="updating-column-attributes">Updating Column Attributes</h4>
+<p>The <code>change</code> method allows you to modify the type and attributes of existing columns. For example, you may wish to increase the size of a <code>string</code> column. To see the <code>change</code> method in action, let's increase the size of the <code>name</code> column from 25 to 50. To accomplish this, we simply define the new state of the column and then call the <code>change</code> method:</p>
+<pre><code>Schema::table('users', function (Blueprint $table) {
+    $table-&gt;string('name', 50)-&gt;change();
+});</code></pre>
+<p>We could also modify a column to be nullable:</p>
+<pre><code>Schema::table('users', function (Blueprint $table) {
+    $table-&gt;string('name', 50)-&gt;nullable()-&gt;change();
+});</code></pre>
+<blockquote>
+<p>{note} The following column types can be modified: <code>bigInteger</code>, <code>binary</code>, <code>boolean</code>, <code>date</code>, <code>dateTime</code>, <code>dateTimeTz</code>, <code>decimal</code>, <code>integer</code>, <code>json</code>, <code>longText</code>, <code>mediumText</code>, <code>smallInteger</code>, <code>string</code>, <code>text</code>, <code>time</code>, <code>unsignedBigInteger</code>, <code>unsignedInteger</code>, <code>unsignedSmallInteger</code>, and <code>uuid</code>.  To modify a <code>timestamp</code> column type a <a href="#prerequisites">Doctrine type must be registered</a>.</p>
+</blockquote>
+<p><a name="renaming-columns"></a></p>
+<h4 id="renaming-columns">Renaming Columns</h4>
+<p>To rename a column, you may use the <code>renameColumn</code> method provided by the schema builder blueprint. Before renaming a column, ensure that you have installed the <code>doctrine/dbal</code> library via the Composer package manager:</p>
+<pre><code>Schema::table('users', function (Blueprint $table) {
+    $table-&gt;renameColumn('from', 'to');
+});</code></pre>
+<blockquote>
+<p>{note} Renaming an <code>enum</code> column is not currently supported.</p>
+</blockquote>
+<p><a name="dropping-columns"></a></p>
+<h3 id="dropping-columns">Dropping Columns</h3>
+<p>To drop a column, you may use the <code>dropColumn</code> method on the schema builder blueprint. If your application is utilizing an SQLite database, you must install the <code>doctrine/dbal</code> package via the Composer package manager before the <code>dropColumn</code> method may be used:</p>
+<pre><code>Schema::table('users', function (Blueprint $table) {
+    $table-&gt;dropColumn('votes');
+});</code></pre>
+<p>You may drop multiple columns from a table by passing an array of column names to the <code>dropColumn</code> method:</p>
+<pre><code>Schema::table('users', function (Blueprint $table) {
+    $table-&gt;dropColumn(['votes', 'avatar', 'location']);
+});</code></pre>
+<blockquote>
+<p>{note} Dropping or modifying multiple columns within a single migration while using an SQLite database is not supported.</p>
+</blockquote>
+<p><a name="available-command-aliases"></a></p>
+<h4 id="available-command-aliases">Available Command Aliases</h4>
+<p>Laravel provides several convenient methods related to dropping common types of columns. Each of these methods is described in the table below:</p>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>$table-&gt;dropMorphs('morphable');</code></td>
+<td>Drop the <code>morphable_id</code> and <code>morphable_type</code> columns.</td>
+</tr>
+<tr>
+<td><code>$table-&gt;dropRememberToken();</code></td>
+<td>Drop the <code>remember_token</code> column.</td>
+</tr>
+<tr>
+<td><code>$table-&gt;dropSoftDeletes();</code></td>
+<td>Drop the <code>deleted_at</code> column.</td>
+</tr>
+<tr>
+<td><code>$table-&gt;dropSoftDeletesTz();</code></td>
+<td>Alias of <code>dropSoftDeletes()</code> method.</td>
+</tr>
+<tr>
+<td><code>$table-&gt;dropTimestamps();</code></td>
+<td>Drop the <code>created_at</code> and <code>updated_at</code> columns.</td>
+</tr>
+<tr>
+<td><code>$table-&gt;dropTimestampsTz();</code></td>
+<td>Alias of <code>dropTimestamps()</code> method.</td>
+</tr>
+</tbody>
+</table>
+<p><a name="indexes"></a></p>
+<h2 id="indexes">Indexes</h2>
+<p><a name="creating-indexes"></a></p>
+<h3 id="creating-indexes">Creating Indexes</h3>
+<p>The Laravel schema builder supports several types of indexes. The following example creates a new <code>email</code> column and specifies that its values should be unique. To create the index, we can chain the <code>unique</code> method onto the column definition:</p>
+<pre><code>use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+Schema::table('users', function (Blueprint $table) {
+    $table-&gt;string('email')-&gt;unique();
+});</code></pre>
+<p>Alternatively, you may create the index after defining the column. To do so, you should call the <code>unique</code> method on the schema builder blueprint. This method accepts the name of the column that should receive a unique index:</p>
+<pre><code>$table-&gt;unique('email');</code></pre>
+<p>You may even pass an array of columns to an index method to create a compound (or composite) index:</p>
+<pre><code>$table-&gt;index(['account_id', 'created_at']);</code></pre>
+<p>When creating an index, Laravel will automatically generate an index name based on the table, column names, and the index type, but you may pass a second argument to the method to specify the index name yourself:</p>
+<pre><code>$table-&gt;unique('email', 'unique_email');</code></pre>
+<p><a name="available-index-types"></a></p>
+<h4 id="available-index-types">Available Index Types</h4>
+<p>Laravel's schema builder blueprint class provides methods for creating each type of index supported by Laravel. Each index method accepts an optional second argument to specify the name of the index. If omitted, the name will be derived from the names of the table and column(s) used for the index, as well as the index type. Each of the available index methods is described in the table below:</p>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>$table-&gt;primary('id');</code></td>
+<td>Adds a primary key.</td>
+</tr>
+<tr>
+<td><code>$table-&gt;primary(['id', 'parent_id']);</code></td>
+<td>Adds composite keys.</td>
+</tr>
+<tr>
+<td><code>$table-&gt;unique('email');</code></td>
+<td>Adds a unique index.</td>
+</tr>
+<tr>
+<td><code>$table-&gt;index('state');</code></td>
+<td>Adds an index.</td>
+</tr>
+<tr>
+<td><code>$table-&gt;fulltext('body');</code></td>
+<td>Adds a fulltext index (MySQL/PostgreSQL).</td>
+</tr>
+<tr>
+<td><code>$table-&gt;fulltext('body')-&gt;language('english');</code></td>
+<td>Adds a fulltext index of the specified language (PostgreSQL).</td>
+</tr>
+<tr>
+<td><code>$table-&gt;spatialIndex('location');</code></td>
+<td>Adds a spatial index (except SQLite).</td>
+</tr>
+</tbody>
+</table>
+<p><a name="index-lengths-mysql-mariadb"></a></p>
+<h4 id="index-lengths-mysql-mariadb">Index Lengths &amp; MySQL / MariaDB</h4>
+<p>By default, Laravel uses the <code>utf8mb4</code> character set. If you are running a version of MySQL older than the 5.7.7 release or MariaDB older than the 10.2.2 release, you may need to manually configure the default string length generated by migrations in order for MySQL to create indexes for them. You may configure the default string length by calling the <code>Schema::defaultStringLength</code> method within the <code>boot</code> method of your <code>App\Providers\AppServiceProvider</code> class:</p>
+<pre><code>use Illuminate\Support\Facades\Schema;
+
+/**
+ * Bootstrap any application services.
+ *
+ * @return void
+ */
+public function boot()
+{
+    Schema::defaultStringLength(191);
+}</code></pre>
+<p>Alternatively, you may enable the <code>innodb_large_prefix</code> option for your database. Refer to your database's documentation for instructions on how to properly enable this option.</p>
+<p><a name="renaming-indexes"></a></p>
+<h3 id="renaming-indexes">Renaming Indexes</h3>
+<p>To rename an index, you may use the <code>renameIndex</code> method provided by the schema builder blueprint. This method accepts the current index name as its first argument and the desired name as its second argument:</p>
+<pre><code>$table-&gt;renameIndex('from', 'to')</code></pre>
+<p><a name="dropping-indexes"></a></p>
+<h3 id="dropping-indexes">Dropping Indexes</h3>
+<p>To drop an index, you must specify the index's name. By default, Laravel automatically assigns an index name based on the table name, the name of the indexed column, and the index type. Here are some examples:</p>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>$table-&gt;dropPrimary('users_id_primary');</code></td>
+<td>Drop a primary key from the &quot;users&quot; table.</td>
+</tr>
+<tr>
+<td><code>$table-&gt;dropUnique('users_email_unique');</code></td>
+<td>Drop a unique index from the &quot;users&quot; table.</td>
+</tr>
+<tr>
+<td><code>$table-&gt;dropIndex('geo_state_index');</code></td>
+<td>Drop a basic index from the &quot;geo&quot; table.</td>
+</tr>
+<tr>
+<td><code>$table-&gt;dropSpatialIndex('geo_location_spatialindex');</code></td>
+<td>Drop a spatial index from the &quot;geo&quot; table  (except SQLite).</td>
+</tr>
+</tbody>
+</table>
+<p>If you pass an array of columns into a method that drops indexes, the conventional index name will be generated based on the table name, columns, and index type:</p>
+<pre><code>Schema::table('geo', function (Blueprint $table) {
+    $table-&gt;dropIndex(['state']); // Drops index 'geo_state_index'
+});</code></pre>
+<p><a name="foreign-key-constraints"></a></p>
+<h3 id="foreign-key-constraints">Foreign Key Constraints</h3>
+<p>Laravel also provides support for creating foreign key constraints, which are used to force referential integrity at the database level. For example, let's define a <code>user_id</code> column on the <code>posts</code> table that references the <code>id</code> column on a <code>users</code> table:</p>
+<pre><code>use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+Schema::table('posts', function (Blueprint $table) {
+    $table-&gt;unsignedBigInteger('user_id');
+
+    $table-&gt;foreign('user_id')-&gt;references('id')-&gt;on('users');
+});</code></pre>
+<p>Since this syntax is rather verbose, Laravel provides additional, terser methods that use conventions to provide a better developer experience. When using the <code>foreignId</code> method to create your column, the example above can be rewritten like so:</p>
+<pre><code>Schema::table('posts', function (Blueprint $table) {
+    $table-&gt;foreignId('user_id')-&gt;constrained();
+});</code></pre>
+<p>The <code>foreignId</code> method creates an <code>UNSIGNED BIGINT</code> equivalent column, while the <code>constrained</code> method will use conventions to determine the table and column name being referenced. If your table name does not match Laravel's conventions, you may specify the table name by passing it as an argument to the <code>constrained</code> method:</p>
+<pre><code>Schema::table('posts', function (Blueprint $table) {
+    $table-&gt;foreignId('user_id')-&gt;constrained('users');
+});</code></pre>
+<p>You may also specify the desired action for the &quot;on delete&quot; and &quot;on update&quot; properties of the constraint:</p>
+<pre><code>$table-&gt;foreignId('user_id')
+      -&gt;constrained()
+      -&gt;onUpdate('cascade')
+      -&gt;onDelete('cascade');</code></pre>
+<p>An alternative, expressive syntax is also provided for these actions:</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>$table-&gt;cascadeOnUpdate();</code></td>
+<td>Updates should cascade.</td>
+</tr>
+<tr>
+<td><code>$table-&gt;restrictOnUpdate();</code></td>
+<td>Updates should be restricted.</td>
+</tr>
+<tr>
+<td><code>$table-&gt;cascadeOnDelete();</code></td>
+<td>Deletes should cascade.</td>
+</tr>
+<tr>
+<td><code>$table-&gt;restrictOnDelete();</code></td>
+<td>Deletes should be restricted.</td>
+</tr>
+<tr>
+<td><code>$table-&gt;nullOnDelete();</code></td>
+<td>Deletes should set the foreign key value to null.</td>
+</tr>
+</tbody>
+</table>
+<p>Any additional <a href="#column-modifiers">column modifiers</a> must be called before the <code>constrained</code> method:</p>
+<pre><code>$table-&gt;foreignId('user_id')
+      -&gt;nullable()
+      -&gt;constrained();</code></pre>
+<p><a name="dropping-foreign-keys"></a></p>
+<h4 id="dropping-foreign-keys">Dropping Foreign Keys</h4>
+<p>To drop a foreign key, you may use the <code>dropForeign</code> method, passing the name of the foreign key constraint to be deleted as an argument. Foreign key constraints use the same naming convention as indexes. In other words, the foreign key constraint name is based on the name of the table and the columns in the constraint, followed by a &quot;_foreign&quot; suffix:</p>
+<pre><code>$table-&gt;dropForeign('posts_user_id_foreign');</code></pre>
+<p>Alternatively, you may pass an array containing the column name that holds the foreign key to the <code>dropForeign</code> method. The array will be converted to a foreign key constraint name using Laravel's constraint naming conventions:</p>
+<pre><code>$table-&gt;dropForeign(['user_id']);</code></pre>
+<p><a name="toggling-foreign-key-constraints"></a></p>
+<h4 id="toggling-foreign-key-constraints">Toggling Foreign Key Constraints</h4>
+<p>You may enable or disable foreign key constraints within your migrations by using the following methods:</p>
+<pre><code>Schema::enableForeignKeyConstraints();
+
+Schema::disableForeignKeyConstraints();</code></pre>
+<blockquote>
+<p>{note} SQLite disables foreign key constraints by default. When using SQLite, make sure to <a href="database.html#configuration">enable foreign key support</a> in your database configuration before attempting to create them in your migrations. In addition, SQLite only supports foreign keys upon creation of the table and <a href="../../omitted.html">not when tables are altered</a>.</p>
+</blockquote>
+<p><a name="events"></a></p>
+<h2 id="events">Events</h2>
+<p>For convenience, each migration operation will dispatch an <a href="events.html">event</a>. All of the following events extend the base <code>Illuminate\Database\Events\MigrationEvent</code> class:</p>
+<table>
+<thead>
+<tr>
+<th>Class</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Illuminate\Database\Events\MigrationsStarted</code></td>
+<td>A batch of migrations is about to be executed.</td>
+</tr>
+<tr>
+<td><code>Illuminate\Database\Events\MigrationsEnded</code></td>
+<td>A batch of migrations has finished executing.</td>
+</tr>
+<tr>
+<td><code>Illuminate\Database\Events\MigrationStarted</code></td>
+<td>A single migration is about to be executed.</td>
+</tr>
+<tr>
+<td><code>Illuminate\Database\Events\MigrationEnded</code></td>
+<td>A single migration has finished executing.</td>
+</tr>
+</tbody>
+</table>
+</div>
+ 
+                                                        <button onclick="topFunction()" id="toTheTop" title="Go to top" class="fixed bottom-5 right-5 h-15 w-15 hidden">
+                                <span class="topChevron"></span>
+                            </button>
+                                                    </section>
+                    </section>
+                </div>
+            </section>
+        </div>
+    </div>
+    <script>
+        mybutton = document.getElementById('toTheTop');
+        window.onscroll = function() {scrollFunction()};
+        function scrollFunction() {
+            carbonAds = document.getElementById('carbonads');
+            if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+                mybutton.style.setProperty('display', 'block', 'important');
+                if (carbonAds) {
+                    carbonAds.classList.add('move-top');
+                }
+            } else {
+                mybutton.style.display = 'none';
+                if (carbonAds) {
+                    carbonAds.classList.remove('move-top');
+                }
+            }
+        }
+        function topFunction() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        }
+    </script>
+
+<footer class="relative z-30 dark:bg-dark-700">
+    <div class="relative z-20 overflow-x-hidden">
+        <div class="relative max-w-screen-2xl mx-auto sm:px-8">
+            <div class="absolute inset-0 flex flex-col px-4 lg:px-12 xl:px-16">
+                <div class="flex-1"></div>
+                <div class="flex-1 bg-gray-100 dark:bg-dark-900"></div>
+            </div>
+            <div class="relative max-w-screen-xl mx-auto px-8">
+                <section class="relative z-10 p-6 bg-white shadow-lg md:flex md:items-center md:p-12 lg:p-16 dark:bg-dark-600">
+                    <div class="content md:pr-12">
+                        <h2 class="text-3xl tracking-tight sm:text-4xl md:mt-4 xl:text-5xl dark:text-gray-200">Become a Laravel Partner</h2>
+                        <p class="mt-3 max-w-xl text-gray-600 sm:mt-5 md:max-w-2xl md:mt-8 md:text-lg dark:text-gray-400">Laravel Partners are elite shops providing top-notch Laravel development and consulting. Each of our partners can help you craft a beautiful, well-architected project.</p>
+                    </div>
+                                             <a class="group relative h-12 inline-flex w-64 border border-red-600 sm:w-56 focus:outline-none mt-8" href="../../index-8.htm">
+    <span class="absolute inset-0 inline-flex items-center justify-center self-stretch px-6 text-white text-center font-medium bg-red-600 ring-1 ring-red-600 ring-offset-1 ring-offset-red-600 transform transition-transform group-hover:-translate-y-1 group-hover:-translate-x-1 group-focus:-translate-y-1 group-focus:-translate-x-1">
+        Our Partners
+    </span>
+</a>
+ 
+                                    </section>
+            </div>
+        </div>
+
+        <div class="max-w-screen-2xl mx-auto px-4 lg:px-12 xl:px-16">
+            <div class="px-8 pb-12 bg-gray-100 xl:px-20 dark:bg-dark-900">
+                <div>
+                    <img class="-mt-2 max-w-4xl w-full transform -translate-x-12 lg:-translate-x-24 xl:-translate-x-40" src="../../img/logotype.min.svg" alt="Laravel" width="114" height="29" loading="lazy">
+                </div>
+                <div class="mt-6 sm:mt-12 md:flex">
+                    <div class="divide-y divide-gray-600 divide-opacity-25 sm:hidden">
+                                                    <div x-data="{ expanded: false }" class="py-4">
+                                <button class="-mx-2 px-2 w-full flex items-center justify-between py-2 font-bold dark:text-gray-200" @click="expanded = ! expanded">
+                                    <span>Highlights</span>
+                                    <span class="transform transition-transform" :class="{ 'rotate-45': expanded }">&plus;</span>
+                                </button>
+                                <div x-show="expanded" x-cloak="" class="py-2 transition transform" x-transition:enter="duration-250 ease-out" x-transition:enter-start="opacity-0 -translate-y-8" x-transition:enter-end="opacity-100" x-transition:leave="duration-250 ease-in" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0 -translate-y-8">
+                                    <ul class="space-y-2 text-gray-600 text-sm dark:text-gray-500">
+                                                                                    <li><a href="/team">Our Team</a></li>
+                                                                                    <li><a href="releases.html">Release Notes</a></li>
+                                                                                    <li><a href="installation.html">Getting Started</a></li>
+                                                                                    <li><a href="routing.html">Routing</a></li>
+                                                                                    <li><a href="blade.html">Blade Templates</a></li>
+                                                                                    <li><a href="authentication.html">Authentication</a></li>
+                                                                                    <li><a href="authorization.html">Authorization</a></li>
+                                                                                    <li><a href="artisan.html">Artisan Console</a></li>
+                                                                                    <li><a href="database.html">Database</a></li>
+                                                                                    <li><a href="eloquent.html">Eloquent ORM</a></li>
+                                                                                    <li><a href="testing.html">Testing</a></li>
+                                                                            </ul>
+                                </div>
+                            </div>
+                                                    <div x-data="{ expanded: false }" class="py-4">
+                                <button class="-mx-2 px-2 w-full flex items-center justify-between py-2 font-bold dark:text-gray-200" @click="expanded = ! expanded">
+                                    <span>Resources</span>
+                                    <span class="transform transition-transform" :class="{ 'rotate-45': expanded }">&plus;</span>
+                                </button>
+                                <div x-show="expanded" x-cloak="" class="py-2 transition transform" x-transition:enter="duration-250 ease-out" x-transition:enter-start="opacity-0 -translate-y-8" x-transition:enter-end="opacity-100" x-transition:leave="duration-250 ease-in" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0 -translate-y-8">
+                                    <ul class="space-y-2 text-gray-600 text-sm dark:text-gray-500">
+                                                                                    <li><a href="../../index-10.htm">Laracasts</a></li>
+                                                                                    <li><a href="../../index-7.htm">Laravel News</a></li>
+                                                                                    <li><a href="../../index-13.htm">Laracon</a></li>
+                                                                                    <li><a href="../../winter-2022/index.htm">Laracon EU</a></li>
+                                                                                    <li><a href="../../index-14.htm">Jobs</a></li>
+                                                                                    <li><a href="../../index-16.htm">Certification</a></li>
+                                                                                    <li><a href="../../discuss.html">Forums</a></li>
+                                                                            </ul>
+                                </div>
+                            </div>
+                                                    <div x-data="{ expanded: false }" class="py-4">
+                                <button class="-mx-2 px-2 w-full flex items-center justify-between py-2 font-bold dark:text-gray-200" @click="expanded = ! expanded">
+                                    <span>Partners</span>
+                                    <span class="transform transition-transform" :class="{ 'rotate-45': expanded }">&plus;</span>
+                                </button>
+                                <div x-show="expanded" x-cloak="" class="py-2 transition transform" x-transition:enter="duration-250 ease-out" x-transition:enter-start="opacity-0 -translate-y-8" x-transition:enter-end="opacity-100" x-transition:leave="duration-250 ease-in" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0 -translate-y-8">
+                                    <ul class="space-y-2 text-gray-600 text-sm dark:text-gray-500">
+                                                                                    <li><a href="../../index-17.htm">Vehikl</a></li>
+                                                                                    <li><a href="../../index-18.htm">Tighten</a></li>
+                                                                                    <li><a href="../../index-19.htm">64 Robots</a></li>
+                                                                                    <li><a href="../../index-20.htm">Kirschbaum</a></li>
+                                                                                    <li><a href="../../services/technologies/laravel/index.htm">Curotec</a></li>
+                                                                                    <li><a href="../../index-21.htm">Jump24</a></li>
+                                                                                    <li><a href="../../index-22.htm">A2 Design</a></li>
+                                                                                    <li><a href="../../app/uploads/2019/08/INTRO-Pitch-I-AY-Tech.pdf?utm_source=laravelpartnersfindoutmore&amp;utm_medium=socialgroups&amp;utm_campaign=tech">ABOUT YOU</a></li>
+                                                                                    <li><a href="../../index-23.htm">Byte 5</a></li>
+                                                                                    <li><a href="../../index-24.htm">Cubet</a></li>
+                                                                                    <li><a href="../../what-we-do/technology-implementation/laravel.html?utm_source=Laravel%20Partner&amp;utm_medium=Sponsorship">Cyber-Duck</a></li>
+                                                                                    <li><a href="../../index-25.htm">DevSquad</a></li>
+                                                                                    <li><a href="../../index-26.htm">Ideil</a></li>
+                                                                                    <li><a href="../../index-27.htm">Romega Software</a></li>
+                                                                                    <li><a href="../../index-28.htm">Worksome</a></li>
+                                                                                    <li><a href="../../index.html?utm_source=laravel&amp;utm_medium=laravel.com&amp;utm_campaign=patreon-sponsors">WebReinvent</a></li>
+                                                                            </ul>
+                                </div>
+                            </div>
+                                                    <div x-data="{ expanded: false }" class="py-4">
+                                <button class="-mx-2 px-2 w-full flex items-center justify-between py-2 font-bold dark:text-gray-200" @click="expanded = ! expanded">
+                                    <span>Ecosystem</span>
+                                    <span class="transform transition-transform" :class="{ 'rotate-45': expanded }">&plus;</span>
+                                </button>
+                                <div x-show="expanded" x-cloak="" class="py-2 transition transform" x-transition:enter="duration-250 ease-out" x-transition:enter-start="opacity-0 -translate-y-8" x-transition:enter-end="opacity-100" x-transition:leave="duration-250 ease-in" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0 -translate-y-8">
+                                    <ul class="space-y-2 text-gray-600 text-sm dark:text-gray-500">
+                                                                                    <li><a href="billing.html">Cashier</a></li>
+                                                                                    <li><a href="dusk.html">Dusk</a></li>
+                                                                                    <li><a href="broadcasting.html">Echo</a></li>
+                                                                                    <li><a href="../../index-3.htm">Envoyer</a></li>
+                                                                                    <li><a href="../../index-2.htm">Forge</a></li>
+                                                                                    <li><a href="homestead.html">Homestead</a></li>
+                                                                                    <li><a href="horizon.html">Horizon</a></li>
+                                                                                    <li><a href="../9.x.html">Lumen</a></li>
+                                                                                    <li><a href="mix.html">Mix</a></li>
+                                                                                    <li><a href="../../index-4.htm">Nova</a></li>
+                                                                                    <li><a href="passport.html">Passport</a></li>
+                                                                                    <li><a href="scout.html">Scout</a></li>
+                                                                                    <li><a href="socialite.html">Socialite</a></li>
+                                                                                    <li><a href="../../index-5.htm">Spark</a></li>
+                                                                                    <li><a href="telescope.html">Telescope</a></li>
+                                                                                    <li><a href="valet.html">Valet</a></li>
+                                                                                    <li><a href="../../index-1.htm">Vapor</a></li>
+                                                                            </ul>
+                                </div>
+                            </div>
+                                            </div>
+                    <div class="hidden sm:grid sm:grid-cols-2 sm:gap-x-4 sm:gap-y-8 md:w-1/2 lg:w-3/4 lg:grid-cols-4">
+                                                    <div>
+                                <span class="font-bold dark:text-gray-200">Highlights</span>
+                                <div class="mt-6">
+                                    <ul class="space-y-3 text-gray-600 text-sm dark:text-gray-500">
+                                                                                    <li>
+                                                <a href="/team" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Our Team</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="releases.html" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Release Notes</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="installation.html" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Getting Started</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="routing.html" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Routing</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="blade.html" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Blade Templates</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="authentication.html" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Authentication</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="authorization.html" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Authorization</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="artisan.html" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Artisan Console</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="database.html" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Database</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="eloquent.html" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Eloquent ORM</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="testing.html" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Testing</a>
+                                            </li>
+                                                                            </ul>
+                                </div>
+                            </div>
+                                                    <div>
+                                <span class="font-bold dark:text-gray-200">Resources</span>
+                                <div class="mt-6">
+                                    <ul class="space-y-3 text-gray-600 text-sm dark:text-gray-500">
+                                                                                    <li>
+                                                <a href="../../index-10.htm" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Laracasts</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="../../index-7.htm" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Laravel News</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="../../index-13.htm" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Laracon</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="../../winter-2022/index.htm" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Laracon EU</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="../../index-14.htm" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Jobs</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="../../index-16.htm" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Certification</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="../../discuss.html" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Forums</a>
+                                            </li>
+                                                                            </ul>
+                                </div>
+                            </div>
+                                                    <div>
+                                <span class="font-bold dark:text-gray-200">Partners</span>
+                                <div class="mt-6">
+                                    <ul class="space-y-3 text-gray-600 text-sm dark:text-gray-500">
+                                                                                    <li>
+                                                <a href="../../index-17.htm" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Vehikl</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="../../index-18.htm" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Tighten</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="../../index-19.htm" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">64 Robots</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="../../index-20.htm" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Kirschbaum</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="../../services/technologies/laravel/index.htm" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Curotec</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="../../index-21.htm" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Jump24</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="../../index-22.htm" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">A2 Design</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="../../app/uploads/2019/08/INTRO-Pitch-I-AY-Tech.pdf?utm_source=laravelpartnersfindoutmore&amp;utm_medium=socialgroups&amp;utm_campaign=tech" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">ABOUT YOU</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="../../index-23.htm" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Byte 5</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="../../index-24.htm" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Cubet</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="../../what-we-do/technology-implementation/laravel.html?utm_source=Laravel%20Partner&amp;utm_medium=Sponsorship" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Cyber-Duck</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="../../index-25.htm" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">DevSquad</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="../../index-26.htm" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Ideil</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="../../index-27.htm" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Romega Software</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="../../index-28.htm" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Worksome</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="../../index.html?utm_source=laravel&amp;utm_medium=laravel.com&amp;utm_campaign=patreon-sponsors" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">WebReinvent</a>
+                                            </li>
+                                                                            </ul>
+                                </div>
+                            </div>
+                                                    <div>
+                                <span class="font-bold dark:text-gray-200">Ecosystem</span>
+                                <div class="mt-6">
+                                    <ul class="space-y-3 text-gray-600 text-sm dark:text-gray-500">
+                                                                                    <li>
+                                                <a href="billing.html" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Cashier</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="dusk.html" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Dusk</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="broadcasting.html" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Echo</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="../../index-3.htm" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Envoyer</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="../../index-2.htm" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Forge</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="homestead.html" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Homestead</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="horizon.html" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Horizon</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="../9.x.html" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Lumen</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="mix.html" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Mix</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="../../index-4.htm" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Nova</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="passport.html" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Passport</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="scout.html" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Scout</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="socialite.html" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Socialite</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="../../index-5.htm" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Spark</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="telescope.html" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Telescope</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="valet.html" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Valet</a>
+                                            </li>
+                                                                                    <li>
+                                                <a href="../../index-1.htm" class="transition-colors hover:text-gray-700 dark:hover:text-gray-400">Vapor</a>
+                                            </li>
+                                                                            </ul>
+                                </div>
+                            </div>
+                                            </div>
+                    <div class="mt-10 max-w-md md:mt-0 md:w-1/2 lg:w-1/4">
+                        <p class="text-xs text-gray-600 sm:text-sm dark:text-gray-500">Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in most web projects.</p>
+                        <p class="mt-6 text-xs text-gray-600 text-opacity-75 sm:text-sm dark:text-gray-500">
+                            Laravel is a Trademark of Taylor Otwell.<br>Copyright &copy; 2011-2022 Laravel LLC.
+                        </p>
+                        <ul class="mt-6 flex items-center space-x-3">
+                            <li>
+                                <a href="../../laravelphp.html">
+                                    <img id="footer__twitter" class="w-6 h-6" src="../../img/social/twitter.min.svg" alt="Twitter" width="24" height="20" loading="lazy">
+                                    <img id="footer__twitter_dark" class="w-6 h-6" src="../../img/social/twitter.dark.min.svg" alt="Twitter" width="24" height="20" loading="lazy">
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../../laravel.html">
+                                    <img id="footer__github" class="w-6 h-6" src="../../img/social/github.min.svg" alt="GitHub" width="24" height="24" loading="lazy">
+                                    <img id="footer__github_dark" class="w-6 h-6" src="../../img/social/github.dark.min.svg" alt="GitHub" width="24" height="24" loading="lazy">
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../../invite/mPZNm7A.html">
+                                    <img id="footer__discord" class="w-6 h-6" src="../../img/social/discord.min.svg" alt="Discord" width="21" height="24" loading="lazy">
+                                    <img id="footer__discord_dark" class="w-6 h-6" src="../../img/social/discord.dark.min.svg" alt="Discord" width="21" height="24" loading="lazy">
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../../laravelphp-1.html">
+                                    <img id="footer__youtube" class="w-6 h-6" src="../../img/social/youtube.min.svg" alt="YouTube" width="169" height="150" loading="lazy">
+                                    <img id="footer__youtube_dark" class="w-6 h-6" src="../../img/social/youtube.dark.min.svg" alt="YouTube" width="169" height="150" loading="lazy">
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="flex justify-center py-6">
+            <a href="../../index.htm" class="logomark">
+                <img class="w-9 h-9" src="../../img/logomark.min.svg" alt="Laravel" width="50" height="52" loading="lazy">
+            </a>
+        </div>
+    </div>
+</footer>
+
+<script>
+    var algolia_app_id = 'ITGXQG9N0J';
+    var algolia_search_key = '29e3498a066622afdacafa73072c548d';
+    var version = '8.x';
+</script>
+
+<script src="../../js/app.js?id=22821ba61048c5ed17c4"></script>
+</body>
+</html>

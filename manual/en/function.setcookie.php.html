@@ -1,0 +1,1674 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>PHP: setcookie - Manual </title>
+
+ <link rel="shortcut icon" href="https://www.php.net/favicon.ico">
+ <link rel="search" type="application/opensearchdescription+xml" href="http://php.net/phpnetimprovedsearch.src" title="Add PHP.net search">
+ <link rel="alternate" type="application/atom+xml" href="https://www.php.net/releases/feed.php" title="PHP Release feed">
+ <link rel="alternate" type="application/atom+xml" href="https://www.php.net/feed.atom" title="PHP: Hypertext Preprocessor">
+
+ <link rel="canonical" href="https://www.php.net/manual/en/function.setcookie.php">
+ <link rel="shorturl" href="https://www.php.net/setcookie">
+ <link rel="alternate" href="https://www.php.net/setcookie" hreflang="x-default">
+
+ <link rel="contents" href="https://www.php.net/manual/en/index.php">
+ <link rel="index" href="https://www.php.net/manual/en/ref.network.php">
+ <link rel="prev" href="https://www.php.net/manual/en/function.pfsockopen.php">
+ <link rel="next" href="https://www.php.net/manual/en/function.setrawcookie.php">
+
+ <link rel="alternate" href="https://www.php.net/manual/en/function.setcookie.php" hreflang="en">
+ <link rel="alternate" href="https://www.php.net/manual/pt_BR/function.setcookie.php" hreflang="pt_BR">
+ <link rel="alternate" href="https://www.php.net/manual/zh/function.setcookie.php" hreflang="zh">
+ <link rel="alternate" href="https://www.php.net/manual/fr/function.setcookie.php" hreflang="fr">
+ <link rel="alternate" href="https://www.php.net/manual/de/function.setcookie.php" hreflang="de">
+ <link rel="alternate" href="https://www.php.net/manual/ja/function.setcookie.php" hreflang="ja">
+ <link rel="alternate" href="https://www.php.net/manual/ru/function.setcookie.php" hreflang="ru">
+ <link rel="alternate" href="https://www.php.net/manual/es/function.setcookie.php" hreflang="es">
+ <link rel="alternate" href="https://www.php.net/manual/tr/function.setcookie.php" hreflang="tr">
+
+<link rel="stylesheet" type="text/css" href="/cached.php?t=1639034403&amp;f=/fonts/Fira/fira.css" media="screen">
+<link rel="stylesheet" type="text/css" href="/cached.php?t=1539765004&amp;f=/fonts/Font-Awesome/css/fontello.css" media="screen">
+<link rel="stylesheet" type="text/css" href="/cached.php?t=1606338002&amp;f=/styles/theme-base.css" media="screen">
+<link rel="stylesheet" type="text/css" href="/cached.php?t=1647366004&amp;f=/styles/theme-medium.css" media="screen">
+
+ <!--[if lte IE 7]>
+ <link rel="stylesheet" type="text/css" href="https://www.php.net/styles/workarounds.ie7.css" media="screen">
+ <![endif]-->
+
+ <!--[if lte IE 8]>
+ <script>
+  window.brokenIE = true;
+ </script>
+ <![endif]-->
+
+ <!--[if lte IE 9]>
+ <link rel="stylesheet" type="text/css" href="https://www.php.net/styles/workarounds.ie9.css" media="screen">
+ <![endif]-->
+
+ <!--[if IE]>
+ <script src="https://www.php.net/js/ext/html5.js"></script>
+ <![endif]-->
+
+ <base href="https://www.php.net/manual/en/function.setcookie.php">
+
+
+</head>
+<body class="docs ">
+
+<nav id="head-nav" class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <a href="/" class="brand"><img src="/images/logos/php-logo.svg" width="48" height="24" alt="php"></a>
+    <div id="mainmenu-toggle-overlay"></div>
+    <input type="checkbox" id="mainmenu-toggle">
+    <ul class="nav">
+      <li class=""><a href="/downloads">Downloads</a></li>
+      <li class="active"><a href="/docs.php">Documentation</a></li>
+      <li class=""><a href="/get-involved" >Get Involved</a></li>
+      <li class=""><a href="/support">Help</a></li>
+      <li class="">
+        <a href="/releases/8.1/index.php">
+          <img src="/images/php8/logo_php8_1.svg" alt="php8.1" height="22" width="60">
+        </a>
+      </li>
+    </ul>
+    <form class="navbar-search" id="topsearch" action="/search.php">
+      <input type="hidden" name="show" value="quickref">
+      <input type="search" name="pattern" class="search-query" placeholder="Search" accesskey="s">
+    </form>
+  </div>
+  <div id="flash-message"></div>
+</nav>
+<div class="headsup"><a href='/index.php#id2022-03-17-1'>PHP 8.0.17 Released!</a></div>
+<nav id="trick"><div><dl>
+<dt><a href='/manual/en/getting-started.php'>Getting Started</a></dt>
+	<dd><a href='/manual/en/introduction.php'>Introduction</a></dd>
+	<dd><a href='/manual/en/tutorial.php'>A simple tutorial</a></dd>
+<dt><a href='/manual/en/langref.php'>Language Reference</a></dt>
+	<dd><a href='/manual/en/language.basic-syntax.php'>Basic syntax</a></dd>
+	<dd><a href='/manual/en/language.types.php'>Types</a></dd>
+	<dd><a href='/manual/en/language.variables.php'>Variables</a></dd>
+	<dd><a href='/manual/en/language.constants.php'>Constants</a></dd>
+	<dd><a href='/manual/en/language.expressions.php'>Expressions</a></dd>
+	<dd><a href='/manual/en/language.operators.php'>Operators</a></dd>
+	<dd><a href='/manual/en/language.control-structures.php'>Control Structures</a></dd>
+	<dd><a href='/manual/en/language.functions.php'>Functions</a></dd>
+	<dd><a href='/manual/en/language.oop5.php'>Classes and Objects</a></dd>
+	<dd><a href='/manual/en/language.namespaces.php'>Namespaces</a></dd>
+	<dd><a href='/manual/en/language.enumerations.php'>Enumerations</a></dd>
+	<dd><a href='/manual/en/language.errors.php'>Errors</a></dd>
+	<dd><a href='/manual/en/language.exceptions.php'>Exceptions</a></dd>
+	<dd><a href='/manual/en/language.fibers.php'>Fibers</a></dd>
+	<dd><a href='/manual/en/language.generators.php'>Generators</a></dd>
+	<dd><a href='/manual/en/language.attributes.php'>Attributes</a></dd>
+	<dd><a href='/manual/en/language.references.php'>References Explained</a></dd>
+	<dd><a href='/manual/en/reserved.variables.php'>Predefined Variables</a></dd>
+	<dd><a href='/manual/en/reserved.exceptions.php'>Predefined Exceptions</a></dd>
+	<dd><a href='/manual/en/reserved.interfaces.php'>Predefined Interfaces and Classes</a></dd>
+	<dd><a href='/manual/en/context.php'>Context options and parameters</a></dd>
+	<dd><a href='/manual/en/wrappers.php'>Supported Protocols and Wrappers</a></dd>
+</dl>
+<dl>
+<dt><a href='/manual/en/security.php'>Security</a></dt>
+	<dd><a href='/manual/en/security.intro.php'>Introduction</a></dd>
+	<dd><a href='/manual/en/security.general.php'>General considerations</a></dd>
+	<dd><a href='/manual/en/security.cgi-bin.php'>Installed as CGI binary</a></dd>
+	<dd><a href='/manual/en/security.apache.php'>Installed as an Apache module</a></dd>
+	<dd><a href='/manual/en/security.sessions.php'>Session Security</a></dd>
+	<dd><a href='/manual/en/security.filesystem.php'>Filesystem Security</a></dd>
+	<dd><a href='/manual/en/security.database.php'>Database Security</a></dd>
+	<dd><a href='/manual/en/security.errors.php'>Error Reporting</a></dd>
+	<dd><a href='/manual/en/security.variables.php'>User Submitted Data</a></dd>
+	<dd><a href='/manual/en/security.hiding.php'>Hiding PHP</a></dd>
+	<dd><a href='/manual/en/security.current.php'>Keeping Current</a></dd>
+<dt><a href='/manual/en/features.php'>Features</a></dt>
+	<dd><a href='/manual/en/features.http-auth.php'>HTTP authentication with PHP</a></dd>
+	<dd><a href='/manual/en/features.cookies.php'>Cookies</a></dd>
+	<dd><a href='/manual/en/features.sessions.php'>Sessions</a></dd>
+	<dd><a href='/manual/en/features.xforms.php'>Dealing with XForms</a></dd>
+	<dd><a href='/manual/en/features.file-upload.php'>Handling file uploads</a></dd>
+	<dd><a href='/manual/en/features.remote-files.php'>Using remote files</a></dd>
+	<dd><a href='/manual/en/features.connection-handling.php'>Connection handling</a></dd>
+	<dd><a href='/manual/en/features.persistent-connections.php'>Persistent Database Connections</a></dd>
+	<dd><a href='/manual/en/features.commandline.php'>Command line usage</a></dd>
+	<dd><a href='/manual/en/features.gc.php'>Garbage Collection</a></dd>
+	<dd><a href='/manual/en/features.dtrace.php'>DTrace Dynamic Tracing</a></dd>
+</dl>
+<dl>
+<dt><a href='/manual/en/funcref.php'>Function Reference</a></dt>
+	<dd><a href='/manual/en/refs.basic.php.php'>Affecting PHP's Behaviour</a></dd>
+	<dd><a href='/manual/en/refs.utilspec.audio.php'>Audio Formats Manipulation</a></dd>
+	<dd><a href='/manual/en/refs.remote.auth.php'>Authentication Services</a></dd>
+	<dd><a href='/manual/en/refs.utilspec.cmdline.php'>Command Line Specific Extensions</a></dd>
+	<dd><a href='/manual/en/refs.compression.php'>Compression and Archive Extensions</a></dd>
+	<dd><a href='/manual/en/refs.crypto.php'>Cryptography Extensions</a></dd>
+	<dd><a href='/manual/en/refs.database.php'>Database Extensions</a></dd>
+	<dd><a href='/manual/en/refs.calendar.php'>Date and Time Related Extensions</a></dd>
+	<dd><a href='/manual/en/refs.fileprocess.file.php'>File System Related Extensions</a></dd>
+	<dd><a href='/manual/en/refs.international.php'>Human Language and Character Encoding Support</a></dd>
+	<dd><a href='/manual/en/refs.utilspec.image.php'>Image Processing and Generation</a></dd>
+	<dd><a href='/manual/en/refs.remote.mail.php'>Mail Related Extensions</a></dd>
+	<dd><a href='/manual/en/refs.math.php'>Mathematical Extensions</a></dd>
+	<dd><a href='/manual/en/refs.utilspec.nontext.php'>Non-Text MIME Output</a></dd>
+	<dd><a href='/manual/en/refs.fileprocess.process.php'>Process Control Extensions</a></dd>
+	<dd><a href='/manual/en/refs.basic.other.php'>Other Basic Extensions</a></dd>
+	<dd><a href='/manual/en/refs.remote.other.php'>Other Services</a></dd>
+	<dd><a href='/manual/en/refs.search.php'>Search Engine Extensions</a></dd>
+	<dd><a href='/manual/en/refs.utilspec.server.php'>Server Specific Extensions</a></dd>
+	<dd><a href='/manual/en/refs.basic.session.php'>Session Extensions</a></dd>
+	<dd><a href='/manual/en/refs.basic.text.php'>Text Processing</a></dd>
+	<dd><a href='/manual/en/refs.basic.vartype.php'>Variable and Type Related Extensions</a></dd>
+	<dd><a href='/manual/en/refs.webservice.php'>Web Services</a></dd>
+	<dd><a href='/manual/en/refs.utilspec.windows.php'>Windows Only Extensions</a></dd>
+	<dd><a href='/manual/en/refs.xml.php'>XML Manipulation</a></dd>
+	<dd><a href='/manual/en/refs.ui.php'>GUI Extensions</a></dd>
+</dl>
+<dl>
+<dt>Keyboard Shortcuts</dt><dt>?</dt>
+<dd>This help</dd>
+<dt>j</dt>
+<dd>Next menu item</dd>
+<dt>k</dt>
+<dd>Previous menu item</dd>
+<dt>g p</dt>
+<dd>Previous man page</dd>
+<dt>g n</dt>
+<dd>Next man page</dd>
+<dt>G</dt>
+<dd>Scroll to bottom</dd>
+<dt>g g</dt>
+<dd>Scroll to top</dd>
+<dt>g h</dt>
+<dd>Goto homepage</dd>
+<dt>g s</dt>
+<dd>Goto search<br>(current page)</dd>
+<dt>/</dt>
+<dd>Focus search box</dd>
+</dl></div></nav>
+<div id="goto">
+    <div class="search">
+         <div class="text"></div>
+         <div class="results"><ul></ul></div>
+   </div>
+</div>
+
+  <div id="breadcrumbs" class="clearfix">
+    <div id="breadcrumbs-inner">
+          <div class="next">
+        <a href="function.setrawcookie.php">
+          setrawcookie &raquo;
+        </a>
+      </div>
+              <div class="prev">
+        <a href="function.pfsockopen.php">
+          &laquo; pfsockopen        </a>
+      </div>
+          <ul>
+            <li><a href='index.php'>PHP Manual</a></li>      <li><a href='funcref.php'>Function Reference</a></li>      <li><a href='refs.remote.other.php'>Other Services</a></li>      <li><a href='book.network.php'>Network</a></li>      <li><a href='ref.network.php'>Network Functions</a></li>      </ul>
+    </div>
+  </div>
+
+
+
+
+<div id="layout" class="clearfix">
+  <section id="layout-content">
+  <div class="page-tools">
+    <div class="change-language">
+      <form action="/manual/change.php" method="get" id="changelang" name="changelang">
+        <fieldset>
+          <label for="changelang-langs">Change language:</label>
+          <select onchange="document.changelang.submit()" name="page" id="changelang-langs">
+            <option value='en/function.setcookie.php' selected="selected">English</option>
+            <option value='pt_BR/function.setcookie.php'>Brazilian Portuguese</option>
+            <option value='zh/function.setcookie.php'>Chinese (Simplified)</option>
+            <option value='fr/function.setcookie.php'>French</option>
+            <option value='de/function.setcookie.php'>German</option>
+            <option value='ja/function.setcookie.php'>Japanese</option>
+            <option value='ru/function.setcookie.php'>Russian</option>
+            <option value='es/function.setcookie.php'>Spanish</option>
+            <option value='tr/function.setcookie.php'>Turkish</option>
+            <option value="help-translate.php">Other</option>
+          </select>
+        </fieldset>
+      </form>
+    </div>
+    <div class="edit-bug">
+      <a href="https://github.com/php/doc-en/blob/master/reference/network/functions/setcookie.xml">Submit a Pull Request</a>
+      <a href="https://github.com/php/doc-en/issues/new?body=From%20manual%20page:%20https:%2F%2Fphp.net%2Ffunction.setcookie%0A%0A---">Report a Bug</a>
+    </div>
+  </div><div id="function.setcookie" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">setcookie</h1>
+  <p class="verinfo">(PHP 4, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">setcookie</span> &mdash; <span class="dc-title">Send a cookie</span></p>
+
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-function.setcookie-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="methodname"><strong>setcookie</strong></span>(<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">string</span> <code class="parameter">$name</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">string</span> <code class="parameter">$value</code><span class="initializer"> = &quot;&quot;</span></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">int</span> <code class="parameter">$expires_or_options</code><span class="initializer"> = 0</span></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">string</span> <code class="parameter">$path</code><span class="initializer"> = &quot;&quot;</span></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">string</span> <code class="parameter">$domain</code><span class="initializer"> = &quot;&quot;</span></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">bool</span> <code class="parameter">$secure</code><span class="initializer"> = <strong><code>false</code></strong></span></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type">bool</span> <code class="parameter">$httponly</code><span class="initializer"> = <strong><code>false</code></strong></span></span><br>): <span class="type">bool</span></div>
+
+  <p class="para rdfs-comment">Alternative signature available as of PHP 7.3.0 (not supported with named parameters):</p>
+  <div class="methodsynopsis dc-description"><span class="methodname"><strong>setcookie</strong></span>(<span class="methodparam"><span class="type">string</span> <code class="parameter">$name</code></span>, <span class="methodparam"><span class="type">string</span> <code class="parameter">$value</code><span class="initializer"> = &quot;&quot;</span></span>, <span class="methodparam"><span class="type">array</span> <code class="parameter">$options</code><span class="initializer"> = []</span></span>): <span class="type">bool</span></div>
+
+  <p class="para rdfs-comment">
+   <span class="function"><strong>setcookie()</strong></span> defines a cookie to be sent along with the
+   rest of the HTTP headers. Like other headers, cookies must be sent
+   <em class="emphasis">before</em> any output from your script (this is a
+   protocol restriction). This requires that you place calls to this function
+   prior to any output, including <code class="literal">&lt;html&gt;</code> and
+   <code class="literal">&lt;head&gt;</code> tags as well as any whitespace.
+  </p>
+  <p class="para">
+   Once the cookies have been set, they can be accessed on the next page load
+   with the <var class="varname"><a href="reserved.variables.cookies.php" class="classname">$_COOKIE</a></var> array.
+   Cookie
+   values may also exist in <var class="varname"><a href="reserved.variables.request.php" class="classname">$_REQUEST</a></var>.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.setcookie-parameters">
+  <h3 class="title">Parameters</h3>
+  <p class="para">
+   <a href="http://www.faqs.org/rfcs/rfc6265" class="link external">&raquo;&nbsp;RFC 6265</a> provides the normative
+   reference on how each <span class="function"><strong>setcookie()</strong></span> parameter is
+   interpreted.
+   <dl>
+    
+     <dt>
+<code class="parameter">name</code></dt>
+
+     <dd>
+
+      <p class="para">
+       The name of the cookie.
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">value</code></dt>
+
+     <dd>
+
+      <p class="para">
+       The value of the cookie.  This value is stored on the clients computer;
+       do not store sensitive information.  Assuming the
+       <code class="parameter">name</code> is <code class="literal">&#039;cookiename&#039;</code>, this
+       value is retrieved through <var class="varname"><a href="reserved.variables.cookies.php" class="classname">$_COOKIE['cookiename']</a></var>
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">expires_or_options</code></dt>
+
+     <dd>
+
+      <p class="para">
+       The time the cookie expires.  This is a Unix timestamp so is
+       in number of seconds since the epoch.  In other words, you&#039;ll
+       most likely set this with the <span class="function"><a href="function.time.php" class="function">time()</a></span> function
+       plus the number of seconds before you want it to expire.  Or
+       you might use <span class="function"><a href="function.mktime.php" class="function">mktime()</a></span>.
+       <code class="literal">time()+60*60*24*30</code> will set the cookie to
+       expire in 30 days. If set to 0, or omitted, the cookie will expire at
+       the end of the session (when the browser closes).
+      </p>
+      <p class="para">
+       <blockquote class="note"><p><strong class="note">Note</strong>: 
+        <p class="para">
+         You may notice the <code class="parameter">expires_or_options</code> parameter takes on a
+         Unix timestamp, as opposed to the date format <code class="literal">Wdy, DD-Mon-YYYY
+         HH:MM:SS GMT</code>, this is because PHP does this conversion
+         internally.
+        </p>
+       </p></blockquote>
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">path</code></dt>
+
+     <dd>
+
+      <p class="para">
+       The path on the server in which the cookie will be available on.
+       If set to <code class="literal">&#039;/&#039;</code>, the cookie will be available
+       within the entire <code class="parameter">domain</code>.  If set to
+       <code class="literal">&#039;/foo/&#039;</code>, the cookie will only be available
+       within the <code class="literal">/foo/</code> directory and all
+       sub-directories such as <code class="literal">/foo/bar/</code> of
+       <code class="parameter">domain</code>.  The default value is the
+       current directory that the cookie is being set in.
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">domain</code></dt>
+
+     <dd>
+
+      <p class="para">
+       The (sub)domain that the cookie is available to. Setting this to a
+       subdomain (such as <code class="literal">&#039;www.example.com&#039;</code>) will make the
+       cookie available to that subdomain and all other sub-domains of it (i.e.
+       w2.www.example.com). To make the cookie available to the whole domain
+       (including all subdomains of it), simply set the value to the domain
+       name (<code class="literal">&#039;example.com&#039;</code>, in this case).
+      </p>
+      <p class="para">
+       Older browsers still implementing the deprecated
+       <a href="http://www.faqs.org/rfcs/rfc2109" class="link external">&raquo;&nbsp;RFC 2109</a> may require a leading
+       <code class="literal">.</code> to match all subdomains.
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">secure</code></dt>
+
+     <dd>
+
+      <p class="para">
+       Indicates that the cookie should only be transmitted over a
+       secure HTTPS connection from the client. When set to <strong><code>true</code></strong>, the
+       cookie will only be set if a secure connection exists.
+       On the server-side, it&#039;s on the programmer to send this
+       kind of cookie only on secure connection (e.g. with respect to
+       <var class="varname"><a href="reserved.variables.server.php" class="classname">$_SERVER["HTTPS"]</a></var>).
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">httponly</code></dt>
+
+     <dd>
+
+      <p class="para">
+       When <strong><code>true</code></strong> the cookie will be made accessible only through the HTTP
+       protocol. This means that the cookie won&#039;t be accessible by
+       scripting languages, such as JavaScript. It has been suggested that
+       this setting can effectively help to reduce identity theft through
+       XSS attacks (although it is not supported by all browsers), but that
+       claim is often disputed.
+       <strong><code>true</code></strong> or <strong><code>false</code></strong>
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">options</code></dt>
+
+     <dd>
+
+      <p class="para">
+       An associative <span class="type">array</span> which may have any of the keys
+       <code class="literal">expires</code>, <code class="literal">path</code>, <code class="literal">domain</code>,
+       <code class="literal">secure</code>, <code class="literal">httponly</code> and <code class="literal">samesite</code>.
+       If any other key is present an error of level <strong><code>E_WARNING</code></strong>
+       is generated. The values have the same meaning as described for the 
+       parameters with the same name. The value of the <code class="literal">samesite</code>
+       element should be either <code class="literal">None</code>, <code class="literal">Lax</code>
+       or <code class="literal">Strict</code>.
+       If any of the allowed options are not given, their default values are the
+       same as the default values of the explicit parameters. If the
+       <code class="literal">samesite</code> element is omitted, no SameSite cookie
+       attribute is set.
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.setcookie-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   If output exists prior to calling this function,
+   <span class="function"><strong>setcookie()</strong></span> will fail and return <strong><code>false</code></strong>. If
+   <span class="function"><strong>setcookie()</strong></span> successfully runs, it will return <strong><code>true</code></strong>.
+   This does not indicate whether the user accepted the cookie.
+  </p>
+ </div>
+
+
+ <div class="refsect1 changelog" id="refsect1-function.setcookie-changelog">
+  <h3 class="title">Changelog</h3>
+  <p class="para">
+   <table class="doctable informaltable">
+    
+     <thead>
+      <tr>
+       <th>Version</th>
+       <th>Description</th>
+      </tr>
+
+     </thead>
+
+     <tbody class="tbody">
+      <tr>
+       <td>7.3.0</td>
+       <td>
+        An alternative signature supporting an <code class="parameter">options</code>
+        array has been added. This signature supports also setting of the
+        SameSite cookie attribute.
+       </td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.setcookie-examples">
+  <h3 class="title">Examples</h3>
+  <p class="para">
+   Some examples follow how to send cookies:
+   <div class="example" id="example-4463">
+    <p><strong>Example #1 <span class="function"><strong>setcookie()</strong></span> send example</strong></p>
+    <div class="example-contents">
+     <div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$value&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'something&nbsp;from&nbsp;somewhere'</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">setcookie</span><span style="color: #007700">(</span><span style="color: #DD0000">"TestCookie"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$value</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">setcookie</span><span style="color: #007700">(</span><span style="color: #DD0000">"TestCookie"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$value</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">time</span><span style="color: #007700">()+</span><span style="color: #0000BB">3600</span><span style="color: #007700">);&nbsp;&nbsp;</span><span style="color: #FF8000">/*&nbsp;expire&nbsp;in&nbsp;1&nbsp;hour&nbsp;*/<br /></span><span style="color: #0000BB">setcookie</span><span style="color: #007700">(</span><span style="color: #DD0000">"TestCookie"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$value</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">time</span><span style="color: #007700">()+</span><span style="color: #0000BB">3600</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"/~rasmus/"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"example.com"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+  <p class="para">
+   Note that the value portion of the cookie will automatically be
+   urlencoded when you send the cookie, and when it is received, it
+   is automatically decoded and assigned to a variable by the same
+   name as the cookie name. If you don&#039;t want this, you can use
+   <span class="function"><a href="function.setrawcookie.php" class="function">setrawcookie()</a></span> instead. To see
+   the contents of our test cookie in a script, simply use one of the
+   following examples:
+  </p>
+  <p class="para">
+   <div class="informalexample">
+    <div class="example-contents">
+     <div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;Print&nbsp;an&nbsp;individual&nbsp;cookie<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$_COOKIE</span><span style="color: #007700">[</span><span style="color: #DD0000">"TestCookie"</span><span style="color: #007700">];<br /><br /></span><span style="color: #FF8000">//&nbsp;Another&nbsp;way&nbsp;to&nbsp;debug/test&nbsp;is&nbsp;to&nbsp;view&nbsp;all&nbsp;cookies<br /></span><span style="color: #0000BB">print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">$_COOKIE</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+  <p class="para">
+   <div class="example" id="example-4464">
+    <p><strong>Example #2 <span class="function"><strong>setcookie()</strong></span> delete example</strong></p>
+    <div class="example-contents"><p>
+     When deleting a cookie you should assure that the expiration date
+     is in the past, to trigger the removal mechanism in your browser.
+     Examples follow how to delete cookies sent in previous example:
+    </p></div>
+    <div class="example-contents">
+     <div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;set&nbsp;the&nbsp;expiration&nbsp;date&nbsp;to&nbsp;one&nbsp;hour&nbsp;ago<br /></span><span style="color: #0000BB">setcookie</span><span style="color: #007700">(</span><span style="color: #DD0000">"TestCookie"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">""</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">time</span><span style="color: #007700">()&nbsp;-&nbsp;</span><span style="color: #0000BB">3600</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">setcookie</span><span style="color: #007700">(</span><span style="color: #DD0000">"TestCookie"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">""</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">time</span><span style="color: #007700">()&nbsp;-&nbsp;</span><span style="color: #0000BB">3600</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"/~rasmus/"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"example.com"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+  <p class="para">
+   <div class="example" id="example-4465">
+    <p><strong>Example #3 <span class="function"><strong>setcookie()</strong></span> and arrays</strong></p>
+    <div class="example-contents"><p>
+     You may also set array cookies by using array notation in the
+     cookie name. This has the effect of setting as many cookies as
+     you have array elements, but when the cookie is received by your
+     script, the values are all placed in an array with the cookie&#039;s
+     name:
+    </p></div>
+    <div class="example-contents">
+     <div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;set&nbsp;the&nbsp;cookies<br /></span><span style="color: #0000BB">setcookie</span><span style="color: #007700">(</span><span style="color: #DD0000">"cookie[three]"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"cookiethree"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">setcookie</span><span style="color: #007700">(</span><span style="color: #DD0000">"cookie[two]"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"cookietwo"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">setcookie</span><span style="color: #007700">(</span><span style="color: #DD0000">"cookie[one]"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"cookieone"</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;after&nbsp;the&nbsp;page&nbsp;reloads,&nbsp;print&nbsp;them&nbsp;out<br /></span><span style="color: #007700">if&nbsp;(isset(</span><span style="color: #0000BB">$_COOKIE</span><span style="color: #007700">[</span><span style="color: #DD0000">'cookie'</span><span style="color: #007700">]))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;foreach&nbsp;(</span><span style="color: #0000BB">$_COOKIE</span><span style="color: #007700">[</span><span style="color: #DD0000">'cookie'</span><span style="color: #007700">]&nbsp;as&nbsp;</span><span style="color: #0000BB">$name&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">$value</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$name&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">htmlspecialchars</span><span style="color: #007700">(</span><span style="color: #0000BB">$name</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$value&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">htmlspecialchars</span><span style="color: #007700">(</span><span style="color: #0000BB">$value</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"</span><span style="color: #0000BB">$name</span><span style="color: #DD0000">&nbsp;:&nbsp;</span><span style="color: #0000BB">$value</span><span style="color: #DD0000">&nbsp;&lt;br&nbsp;/&gt;\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>The above example will output:</p></div>
+    <div class="example-contents screen">
+     <div class="cdata"><pre>
+three : cookiethree
+two : cookietwo
+one : cookieone
+</pre></div>
+    </div>
+   </div>
+   <blockquote class="note"><p><strong class="note">Note</strong>: 
+    <span class="simpara">
+     Using separator characters such as <code class="literal">[</code> and <code class="literal">]</code>
+     as part of the cookie name is not compliant to RFC 6265, section 4, but supposed
+     to be supported by user agents according to RFC 6265, section 5.
+    </span>
+   </p></blockquote>
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 notes" id="refsect1-function.setcookie-notes">
+  <h3 class="title">Notes</h3>
+  <blockquote class="note"><p><strong class="note">Note</strong>: 
+   <p class="para">
+    You can use output buffering to send output prior to the
+    call of this function, with the overhead of all of your output to the
+    browser being buffered in the server until you send it. You can do this
+    by calling <span class="function"><a href="function.ob-start.php" class="function">ob_start()</a></span> and
+    <span class="function"><a href="function.ob-end-flush.php" class="function">ob_end_flush()</a></span> in your script, or setting the
+    <code class="literal">output_buffering</code> configuration directive on in your
+    <var class="filename">php.ini</var> or server configuration files.
+   </p>
+  </p></blockquote>
+  <p class="para">
+   Common Pitfalls:
+   <ul class="itemizedlist">
+    <li class="listitem">
+     <span class="simpara">
+      Cookies will not become visible until the next loading of a page that
+      the cookie should be visible for.  To test if a cookie was successfully
+      set, check for the cookie on a next loading page before the cookie
+      expires.  Expire time is set via the <code class="parameter">expires_or_options</code>
+      parameter.  A nice way to debug the existence of cookies is by
+      simply calling <code class="literal">print_r($_COOKIE);</code>.
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      Cookies must be deleted with the same parameters as they were set with.
+      If the value argument is an empty string, and all other arguments
+      match a previous call to setcookie, then the cookie with the specified
+      name will be deleted from the remote client.
+      This is internally achieved by setting value to <code class="literal">&#039;deleted&#039;</code> and expiration
+      time in the past.
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      Because setting a cookie with a value of <strong><code>false</code></strong> will try to delete the cookie,
+      you should not use boolean values. Instead, use <em class="emphasis">0</em> for <strong><code>false</code></strong>
+      and <em class="emphasis">1</em> for <strong><code>true</code></strong>.
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      Cookies names can be set as array names and will be available to your
+      PHP scripts as arrays but separate cookies are stored on the user&#039;s
+      system. Consider <span class="function"><a href="function.explode.php" class="function">explode()</a></span> to set one cookie with
+      multiple names and values. It is not recommended to use
+      <span class="function"><a href="function.serialize.php" class="function">serialize()</a></span> for this purpose, because it can result
+      in security holes.
+     </span>
+    </li>
+   </ul>
+  </p>
+  <p class="simpara">
+   Multiple calls to <span class="function"><strong>setcookie()</strong></span> are performed in the order called.
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.setcookie-seealso">
+  <h3 class="title">See Also</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function"><a href="function.header.php" class="function" rel="rdfs-seeAlso">header()</a> - Send a raw HTTP header</span></li>
+    <li class="member"><span class="function"><a href="function.setrawcookie.php" class="function" rel="rdfs-seeAlso">setrawcookie()</a> - Send a cookie without urlencoding the cookie value</span></li>
+    <li class="member"><a href="features.cookies.php" class="link">cookies section</a></li>
+    <li class="member"><a href="http://www.faqs.org/rfcs/rfc6265" class="link external">&raquo;&nbsp;RFC 6265</a></li>
+    <li class="member"><a href="http://www.faqs.org/rfcs/rfc2109" class="link external">&raquo;&nbsp;RFC 2109</a></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div>
+<section id="usernotes">
+ <div class="head">
+  <span class="action"><a href="/manual/add-note.php?sect=function.setcookie&amp;redirect=https://www.php.net/manual/en/function.setcookie.php"><img src='/images/notes-add@2x.png' alt='add a note' width='12' height='12'> <small>add a note</small></a></span>
+  <h3 class="title">User Contributed Notes <span class="count">45 notes</span></h3>
+ </div><div id="allnotes">
+  <div class="note" id="110193">  <div class="votes">
+    <div id="Vu110193">
+    <a href="/manual/vote-note.php?id=110193&amp;page=function.setcookie&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd110193">
+    <a href="/manual/vote-note.php?id=110193&amp;page=function.setcookie&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V110193" title="76% like this...">
+    373
+    </div>
+  </div>
+  <a href="#110193" class="name">
+  <strong class="user"><em>walterquez</em></strong></a><a class="genanchor" href="#110193"> &para;</a><div class="date" title="2012-09-28 04:43"><strong>9 years ago</strong></div>
+  <div class="text" id="Hcom110193">
+<div class="phpcode"><code><span class="html">
+Instead of this:<br /><span class="default">&lt;?php setcookie</span><span class="keyword">( </span><span class="string">"TestCookie"</span><span class="keyword">, </span><span class="default">$value</span><span class="keyword">, </span><span class="default">time</span><span class="keyword">()+(</span><span class="default">60</span><span class="keyword">*</span><span class="default">60</span><span class="keyword">*</span><span class="default">24</span><span class="keyword">*</span><span class="default">30</span><span class="keyword">) ); </span><span class="default">?&gt;<br /></span><br />You can this:<br /><span class="default">&lt;?php setcookie</span><span class="keyword">( </span><span class="string">"TestCookie"</span><span class="keyword">, </span><span class="default">$value</span><span class="keyword">, </span><span class="default">strtotime</span><span class="keyword">( </span><span class="string">'+30 days' </span><span class="keyword">) ); </span><span class="default">?&gt;</span>
+</span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="109173">  <div class="votes">
+    <div id="Vu109173">
+    <a href="/manual/vote-note.php?id=109173&amp;page=function.setcookie&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd109173">
+    <a href="/manual/vote-note.php?id=109173&amp;page=function.setcookie&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V109173" title="77% like this...">
+    229
+    </div>
+  </div>
+  <a href="#109173" class="name">
+  <strong class="user"><em>Bachsau</em></strong></a><a class="genanchor" href="#109173"> &para;</a><div class="date" title="2012-06-26 01:49"><strong>9 years ago</strong></div>
+  <div class="text" id="Hcom109173">
+<div class="phpcode"><code><span class="html">
+Want to remove a cookie?<br /><br />Many people do it the complicated way:<br />setcookie('name', 'content', time()-3600);<br /><br />But why do you make it so complicated and risk it not working, when the client's time is wrong? Why fiddle around with time();<br /><br />Here's the easiest way to unset a cookie:<br />setcookie('name', 'content', 1);<br /><br />Thats it.</span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="125242">  <div class="votes">
+    <div id="Vu125242">
+    <a href="/manual/vote-note.php?id=125242&amp;page=function.setcookie&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd125242">
+    <a href="/manual/vote-note.php?id=125242&amp;page=function.setcookie&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V125242" title="73% like this...">
+    45
+    </div>
+  </div>
+  <a href="#125242" class="name">
+  <strong class="user"><em>Anonymous</em></strong></a><a class="genanchor" href="#125242"> &para;</a><div class="date" title="2020-08-04 04:24"><strong>1 year ago</strong></div>
+  <div class="text" id="Hcom125242">
+<div class="phpcode"><code><span class="html">
+Just an example to clarify the use of the array options, especially since Mozilla is going to deprecate / penalise the use of SameSite = none,&nbsp; which is used by default if not using array options. <br /><br /><span class="default">&lt;?php<br />$arr_cookie_options </span><span class="keyword">= array (<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="string">'expires' </span><span class="keyword">=&gt; </span><span class="default">time</span><span class="keyword">() + </span><span class="default">60</span><span class="keyword">*</span><span class="default">60</span><span class="keyword">*</span><span class="default">24</span><span class="keyword">*</span><span class="default">30</span><span class="keyword">, <br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="string">'path' </span><span class="keyword">=&gt; </span><span class="string">'/'</span><span class="keyword">, <br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="string">'domain' </span><span class="keyword">=&gt; </span><span class="string">'.example.com'</span><span class="keyword">, </span><span class="comment">// leading dot for compatibility or use subdomain<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="string">'secure' </span><span class="keyword">=&gt; </span><span class="default">true</span><span class="keyword">,&nbsp; &nbsp;&nbsp; </span><span class="comment">// or false<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="string">'httponly' </span><span class="keyword">=&gt; </span><span class="default">true</span><span class="keyword">,&nbsp; &nbsp; </span><span class="comment">// or false<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="string">'samesite' </span><span class="keyword">=&gt; </span><span class="string">'None' </span><span class="comment">// None || Lax&nbsp; || Strict<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="keyword">);<br /></span><span class="default">setcookie</span><span class="keyword">(</span><span class="string">'TestCookie'</span><span class="keyword">, </span><span class="string">'The Cookie Value'</span><span class="keyword">, </span><span class="default">$arr_cookie_options</span><span class="keyword">);&nbsp; &nbsp; <br /></span><span class="default">?&gt;</span>
+</span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="124644">  <div class="votes">
+    <div id="Vu124644">
+    <a href="/manual/vote-note.php?id=124644&amp;page=function.setcookie&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd124644">
+    <a href="/manual/vote-note.php?id=124644&amp;page=function.setcookie&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V124644" title="68% like this...">
+    14
+    </div>
+  </div>
+  <a href="#124644" class="name">
+  <strong class="user"><em>user at example.com</em></strong></a><a class="genanchor" href="#124644"> &para;</a><div class="date" title="2020-01-23 07:47"><strong>2 years ago</strong></div>
+  <div class="text" id="Hcom124644">
+<div class="phpcode"><code><span class="html">
+As of PHP 7.3.0 the setcookie() method supports the SameSite attribute in its options and will accept None as a valid value.<br /><br />For earlier versions of PHP,&nbsp; you can set the header() directly:<br /><br />header('Set-Cookie: cross-site-cookie=bar; SameSite=None; Secure');</span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="71591">  <div class="votes">
+    <div id="Vu71591">
+    <a href="/manual/vote-note.php?id=71591&amp;page=function.setcookie&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd71591">
+    <a href="/manual/vote-note.php?id=71591&amp;page=function.setcookie&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V71591" title="68% like this...">
+    33
+    </div>
+  </div>
+  <a href="#71591" class="name">
+  <strong class="user"><em>paul nospam AT nospam sitepoint dot com</em></strong></a><a class="genanchor" href="#71591"> &para;</a><div class="date" title="2006-12-06 08:59"><strong>15 years ago</strong></div>
+  <div class="text" id="Hcom71591">
+<div class="phpcode"><code><span class="html">
+Note when setting "array cookies" that a separate cookie is set for each element of the array.<br /><br />On high traffic sites, this can substantially increase the size of subsequent HTTP requests from clients (including requests for static content on the same domain).<br /><br />More importantly though, the cookie specification says that browsers need only accept 20 cookies per domain.&nbsp; This limit is increased to 50 by Firefox, and to 30 by Opera, but IE6 and IE7 enforce the limit of 20 cookie per domain.&nbsp; Any cookies beyond this limit will either knock out an older cookie or be ignored/rejected by the browser.</span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="120794">  <div class="votes">
+    <div id="Vu120794">
+    <a href="/manual/vote-note.php?id=120794&amp;page=function.setcookie&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd120794">
+    <a href="/manual/vote-note.php?id=120794&amp;page=function.setcookie&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V120794" title="67% like this...">
+    19
+    </div>
+  </div>
+  <a href="#120794" class="name">
+  <strong class="user"><em>nacho at casinelli dot com</em></strong></a><a class="genanchor" href="#120794"> &para;</a><div class="date" title="2017-03-12 11:33"><strong>5 years ago</strong></div>
+  <div class="text" id="Hcom120794">
+<div class="phpcode"><code><span class="html">
+It's worth a mention: you should avoid dots on cookie names.<br /><br /><span class="default">&lt;?php<br /></span><span class="comment">// this will actually set 'ace_fontSize' name:<br /></span><span class="default">setcookie</span><span class="keyword">( </span><span class="string">'ace.fontSize'</span><span class="keyword">, </span><span class="default">18 </span><span class="keyword">);<br /></span><span class="default">?&gt;</span>
+</span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="73107">  <div class="votes">
+    <div id="Vu73107">
+    <a href="/manual/vote-note.php?id=73107&amp;page=function.setcookie&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd73107">
+    <a href="/manual/vote-note.php?id=73107&amp;page=function.setcookie&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V73107" title="66% like this...">
+    44
+    </div>
+  </div>
+  <a href="#73107" class="name"><strong class="user"><em>Anonymous</em></strong></a><a class="genanchor" href="#73107"> &para;</a><div class="date" title="2007-02-08 05:13"><strong>15 years ago</strong></div>
+  <div class="text" id="Hcom73107">
+<div class="phpcode"><code><span class="html">
+something that wasn't made clear to me here and totally confused me for a while was that domain names must contain at least two dots (.), hence 'localhost' is invalid and the browser will refuse to set the cookie! instead for localhost you should use false.<br /><br />to make your code work on both localhost and a proper domain, you can do this:<br /><br /><span class="default">&lt;?php<br /><br />$domain </span><span class="keyword">= (</span><span class="default">$_SERVER</span><span class="keyword">[</span><span class="string">'HTTP_HOST'</span><span class="keyword">] != </span><span class="string">'localhost'</span><span class="keyword">) ? </span><span class="default">$_SERVER</span><span class="keyword">[</span><span class="string">'HTTP_HOST'</span><span class="keyword">] : </span><span class="default">false</span><span class="keyword">;<br /></span><span class="default">setcookie</span><span class="keyword">(</span><span class="string">'cookiename'</span><span class="keyword">, </span><span class="string">'data'</span><span class="keyword">, </span><span class="default">time</span><span class="keyword">()+</span><span class="default">60</span><span class="keyword">*</span><span class="default">60</span><span class="keyword">*</span><span class="default">24</span><span class="keyword">*</span><span class="default">365</span><span class="keyword">, </span><span class="string">'/'</span><span class="keyword">, </span><span class="default">$domain</span><span class="keyword">, </span><span class="default">false</span><span class="keyword">);<br /><br /></span><span class="default">?&gt;</span>
+</span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="115356">  <div class="votes">
+    <div id="Vu115356">
+    <a href="/manual/vote-note.php?id=115356&amp;page=function.setcookie&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd115356">
+    <a href="/manual/vote-note.php?id=115356&amp;page=function.setcookie&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V115356" title="66% like this...">
+    11
+    </div>
+  </div>
+  <a href="#115356" class="name">
+  <strong class="user"><em>ellert at vankoperen dot nl</em></strong></a><a class="genanchor" href="#115356"> &para;</a><div class="date" title="2014-07-10 10:58"><strong>7 years ago</strong></div>
+  <div class="text" id="Hcom115356">
+<div class="phpcode"><code><span class="html">
+Caveat: if you use URL RewriteRules to get stuff like this: domain.com/bla/stuf/etc into parameters, you might run into a hickup when setting cookies.<br />At least in my setup a change in one of the parameters resulted in the cookie not being 'there' anymore.<br />The fix is simple: specify the domain. '/' will usualy do fine.</span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="123567">  <div class="votes">
+    <div id="Vu123567">
+    <a href="/manual/vote-note.php?id=123567&amp;page=function.setcookie&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd123567">
+    <a href="/manual/vote-note.php?id=123567&amp;page=function.setcookie&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V123567" title="66% like this...">
+    2
+    </div>
+  </div>
+  <a href="#123567" class="name">
+  <strong class="user"><em>Anonymous</em></strong></a><a class="genanchor" href="#123567"> &para;</a><div class="date" title="2019-01-30 03:49"><strong>3 years ago</strong></div>
+  <div class="text" id="Hcom123567">
+<div class="phpcode"><code><span class="html">
+I haven't seen this mentioned here and had a lot of issues (and created a lot of stupid hacks) before I figured this out.<br /><br />If you have a couple of environments for example, and are trying to set cookies on two domains:<br /><br />example.com (main site)<br />dev.example.com (dev site)<br /><br />In this case your (same named) cookies will interfere with each other if you're trying to set cookies with the domain parameter.&nbsp; <br /><br />Simply use an empty string for the domain parameter and the cookies will refer to each host separately.<br /><br />If you use the subdomain www. on the main site this won't be an issue, but without a subdomain you'll have issues with reading each others' cookies.</span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="125241">  <div class="votes">
+    <div id="Vu125241">
+    <a href="/manual/vote-note.php?id=125241&amp;page=function.setcookie&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd125241">
+    <a href="/manual/vote-note.php?id=125241&amp;page=function.setcookie&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V125241" title="65% like this...">
+    9
+    </div>
+  </div>
+  <a href="#125241" class="name">
+  <strong class="user"><em>synnus at gmail dot com</em></strong></a><a class="genanchor" href="#125241"> &para;</a><div class="date" title="2020-08-03 10:04"><strong>1 year ago</strong></div>
+  <div class="text" id="Hcom125241">
+<div class="phpcode"><code><span class="html">
+The " PHPSESSID " cookie will soon be rejected because its " sameSite " attribute is set to " none " or an invalid value, and without " secure " attribute. To learn more about the "sameSite" attribute, visit <a href="https://developer.mozilla.org/docs/Web/HTTP/Headers/Set-Cookie/SameSite." rel="nofollow" target="_blank">https://developer.mozilla.org/docs/Web/HTTP/Headers/Set-Cookie/SameSite.</a><br /><br /><span class="default">&lt;?php<br /> ini_set</span><span class="keyword">(</span><span class="string">"session.cookie_secure"</span><span class="keyword">, </span><span class="default">1</span><span class="keyword">);<br /> </span><span class="default">session_start</span><span class="keyword">();<br /><br /></span><span class="default">my PHP code </span><span class="keyword">.... <br /><br /></span><span class="default">?&gt;</span>
+</span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="73484">  <div class="votes">
+    <div id="Vu73484">
+    <a href="/manual/vote-note.php?id=73484&amp;page=function.setcookie&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd73484">
+    <a href="/manual/vote-note.php?id=73484&amp;page=function.setcookie&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V73484" title="66% like this...">
+    19
+    </div>
+  </div>
+  <a href="#73484" class="name">
+  <strong class="user"><em>gabe at fijiwebdesign dot com</em></strong></a><a class="genanchor" href="#73484"> &para;</a><div class="date" title="2007-02-25 07:25"><strong>15 years ago</strong></div>
+  <div class="text" id="Hcom73484">
+<div class="phpcode"><code><span class="html">
+If you want to delete all cookies on your domain, you may want to use the value of:<br /><br /><span class="default">&lt;?php $_SERVER</span><span class="keyword">[</span><span class="string">'HTTP_COOKIE'</span><span class="keyword">] </span><span class="default">?&gt;<br /></span><br />rather than:<br /><br /><span class="default">&lt;?php $_COOKIE ?&gt;<br /></span><br />to dertermine the cookie names. <br />If cookie names are in Array notation, eg: user[username] <br />Then PHP will automatically create a corresponding array in $_COOKIE. Instead use $_SERVER['HTTP_COOKIE'] as it mirrors the actual HTTP Request header. <br /><br /><span class="default">&lt;?php<br /><br /></span><span class="comment">// unset cookies<br /></span><span class="keyword">if (isset(</span><span class="default">$_SERVER</span><span class="keyword">[</span><span class="string">'HTTP_COOKIE'</span><span class="keyword">])) {<br />&nbsp; &nbsp; </span><span class="default">$cookies </span><span class="keyword">= </span><span class="default">explode</span><span class="keyword">(</span><span class="string">';'</span><span class="keyword">, </span><span class="default">$_SERVER</span><span class="keyword">[</span><span class="string">'HTTP_COOKIE'</span><span class="keyword">]);<br />&nbsp; &nbsp; foreach(</span><span class="default">$cookies </span><span class="keyword">as </span><span class="default">$cookie</span><span class="keyword">) {<br />&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="default">$parts </span><span class="keyword">= </span><span class="default">explode</span><span class="keyword">(</span><span class="string">'='</span><span class="keyword">, </span><span class="default">$cookie</span><span class="keyword">);<br />&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="default">$name </span><span class="keyword">= </span><span class="default">trim</span><span class="keyword">(</span><span class="default">$parts</span><span class="keyword">[</span><span class="default">0</span><span class="keyword">]);<br />&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="default">setcookie</span><span class="keyword">(</span><span class="default">$name</span><span class="keyword">, </span><span class="string">''</span><span class="keyword">, </span><span class="default">time</span><span class="keyword">()-</span><span class="default">1000</span><span class="keyword">);<br />&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="default">setcookie</span><span class="keyword">(</span><span class="default">$name</span><span class="keyword">, </span><span class="string">''</span><span class="keyword">, </span><span class="default">time</span><span class="keyword">()-</span><span class="default">1000</span><span class="keyword">, </span><span class="string">'/'</span><span class="keyword">);<br />&nbsp; &nbsp; }<br />}<br /><br /></span><span class="default">?&gt;</span>
+</span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="104885">  <div class="votes">
+    <div id="Vu104885">
+    <a href="/manual/vote-note.php?id=104885&amp;page=function.setcookie&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd104885">
+    <a href="/manual/vote-note.php?id=104885&amp;page=function.setcookie&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V104885" title="64% like this...">
+    12
+    </div>
+  </div>
+  <a href="#104885" class="name">
+  <strong class="user"><em>MrXCol</em></strong></a><a class="genanchor" href="#104885"> &para;</a><div class="date" title="2011-07-13 08:27"><strong>10 years ago</strong></div>
+  <div class="text" id="Hcom104885">
+<div class="phpcode"><code><span class="html">
+If you're having problem with IE not accepting session cookies this could help:<br /><br />It seems the IE (6, 7, 8 and 9) do not accept the part 'Expire=0' when setting a session cookie. To fix it just don't put any expire at all. The default behavior when the 'Expire' is not set is to set the cookie as a session one. <br /><br />(Firefox doesn't complains, btw.)</span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="76395">  <div class="votes">
+    <div id="Vu76395">
+    <a href="/manual/vote-note.php?id=76395&amp;page=function.setcookie&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd76395">
+    <a href="/manual/vote-note.php?id=76395&amp;page=function.setcookie&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V76395" title="64% like this...">
+    14
+    </div>
+  </div>
+  <a href="#76395" class="name">
+  <strong class="user"><em>bluewaterbob</em></strong></a><a class="genanchor" href="#76395"> &para;</a><div class="date" title="2007-07-12 11:51"><strong>14 years ago</strong></div>
+  <div class="text" id="Hcom76395">
+<div class="phpcode"><code><span class="html">
+if you are having problems seeing cookies sometimes or deleting cookies sometimes, despite following the advice below, make sure you are setting the cookie with the domain argument. Set it with the dot before the domain as the examples show: ".example.com".&nbsp; I wasn't specifying the domain, and finally realized I was setting the cookie when the browser url had the <a href="http://www.example.com" rel="nofollow" target="_blank">http://www.example.com</a> and later trying to delete it when the url didn't have the www. ie. <a href="http://example.com." rel="nofollow" target="_blank">http://example.com.</a> This also caused the page to be unable to find the cookie when the www. wasn't in the domain.&nbsp; (When you add the domain argument to the setcookie code that creates the cookie, make sure you also add it to the code that deletes the cookie.)</span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="67191">  <div class="votes">
+    <div id="Vu67191">
+    <a href="/manual/vote-note.php?id=67191&amp;page=function.setcookie&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd67191">
+    <a href="/manual/vote-note.php?id=67191&amp;page=function.setcookie&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V67191" title="64% like this...">
+    10
+    </div>
+  </div>
+  <a href="#67191" class="name">
+  <strong class="user"><em>gareth at gw126 dot com</em></strong></a><a class="genanchor" href="#67191"> &para;</a><div class="date" title="2006-06-05 07:38"><strong>15 years ago</strong></div>
+  <div class="text" id="Hcom67191">
+<div class="phpcode"><code><span class="html">
+You can use cookies to prevent a browser refresh repeating some action from a form post... (providing the client is cookie enabled!)<br /><br /><span class="default">&lt;?php<br /></span><span class="comment">//Flag up repeat actions (like credit card transaction, etc)<br /></span><span class="keyword">if(</span><span class="default">count</span><span class="keyword">(</span><span class="default">$_POST</span><span class="keyword">)&gt;</span><span class="default">0</span><span class="keyword">) {<br />&nbsp; &nbsp; </span><span class="default">$lastpost</span><span class="keyword">= isset(</span><span class="default">$_COOKIE</span><span class="keyword">[</span><span class="string">'lastpost'</span><span class="keyword">]) ? </span><span class="default">$_COOKIE</span><span class="keyword">[</span><span class="string">'lastpost'</span><span class="keyword">] : </span><span class="string">''</span><span class="keyword">;<br />&nbsp; &nbsp; if(</span><span class="default">$lastpost</span><span class="keyword">!=</span><span class="default">md5</span><span class="keyword">(</span><span class="default">serialize</span><span class="keyword">(</span><span class="default">$_POST</span><span class="keyword">))) {<br />&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="default">setcookie</span><span class="keyword">(</span><span class="string">'lastpost'</span><span class="keyword">, </span><span class="default">md5</span><span class="keyword">(</span><span class="default">serialize</span><span class="keyword">(</span><span class="default">$_POST</span><span class="keyword">)));<br />&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="default">$_POST</span><span class="keyword">[</span><span class="string">'_REPEATED'</span><span class="keyword">]=</span><span class="default">0</span><span class="keyword">;<br />&nbsp; &nbsp; } else {<br />&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="default">$_POST</span><span class="keyword">[</span><span class="string">'_REPEATED'</span><span class="keyword">]=</span><span class="default">1</span><span class="keyword">;<br />&nbsp; &nbsp; }<br />}<br /><br /></span><span class="comment">//At this point, if $_POST['_REPEATED']==1, then&nbsp; the user<br />//has hit the refresh button; so don't do any actions that you don't<br />//want to repeat!<br /></span><span class="default">?&gt;<br /></span><br />Hope that helps :)<br /><br />Gareth</span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="120491">  <div class="votes">
+    <div id="Vu120491">
+    <a href="/manual/vote-note.php?id=120491&amp;page=function.setcookie&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd120491">
+    <a href="/manual/vote-note.php?id=120491&amp;page=function.setcookie&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V120491" title="63% like this...">
+    5
+    </div>
+  </div>
+  <a href="#120491" class="name">
+  <strong class="user"><em>lferro9000 at gmail dot com</em></strong></a><a class="genanchor" href="#120491"> &para;</a><div class="date" title="2017-01-20 10:55"><strong>5 years ago</strong></div>
+  <div class="text" id="Hcom120491">
+<div class="phpcode"><code><span class="html">
+Of notice, the cookie when set with a zero expire or ommited WILL not expire when the browser closes.<br /><br />What happens is that the browser, when closes the window, if it is a well behaved browser, will delete the cookie from the cookie store.<br /><br />However, the cookie will survive in the server until the garbage collector removes the session, which will happen only when it kicks in and checks the specified session is out of bounds of the setting stated in:<br /><br /><a href="http://php.net/manual/en/session.configuration.php#ini.session.gc-maxlifetime" rel="nofollow" target="_blank">http://php.net/manual/en/session.configuration.php#ini.session.gc-maxlifetime</a><br /><br />Please check also:<br /><br /><a href="http://php.net/manual/en/session.security.ini.php" rel="nofollow" target="_blank">http://php.net/manual/en/session.security.ini.php</a><br /><br />And in case of doubt, PHP runs on the webserver and has no way whatsoever to interact with a browser apart from receiving requests and answering with responses, so assuming that a cookie will be removed from a browser is just an "hint" for the browser. There is no warranty that such will happen as instructed.<br /><br />That is one of the reasons why the cookie values sent to browsers by some platforms are encrypted and timestamped, to ensure that they are actual and not tampered.</span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="94390">  <div class="votes">
+    <div id="Vu94390">
+    <a href="/manual/vote-note.php?id=94390&amp;page=function.setcookie&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd94390">
+    <a href="/manual/vote-note.php?id=94390&amp;page=function.setcookie&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V94390" title="60% like this...">
+    9
+    </div>
+  </div>
+  <a href="#94390" class="name">
+  <strong class="user"><em>Eric</em></strong></a><a class="genanchor" href="#94390"> &para;</a><div class="date" title="2009-11-01 10:57"><strong>12 years ago</strong></div>
+  <div class="text" id="Hcom94390">
+<div class="phpcode"><code><span class="html">
+The server my php code is running on has sessions disabled so I am forced to store a fair bit of arbitrary data in cookies.&nbsp; Using array names was impractical and problematic, so I implemented a splitting routine.&nbsp; I do not serialize any class instances, just arrays and simple objects.<br /><br />In a nutshell, when setting a cookie value, I serialize it, gzcompress it, base64 encode it, break it into pieces and store it as a set of cookies.&nbsp; To fetch the cookie value I get the named piece then iterate through piece names rebuilding the base64 data, then reverse the rest of the process.&nbsp; The only other trick is deleting the pieces correctly.<br /><br />Sessions are better, but if they are not available this is a viable alternative.&nbsp; I chose gz over bz for compression because it looked faster with only slightly worse ratios.<br /><br />Here is a simplified version of my implementation.&nbsp; This is a good starting point but is not suitable for most uses.&nbsp; For example, the domain and path are hard coded and no return values are checked for validity.<br /><br /><span class="default">&lt;?php<br />define</span><span class="keyword">( </span><span class="string">'COOKIE_PORTIONS' </span><span class="keyword">, </span><span class="string">'_piece_' </span><span class="keyword">);<br /><br />function </span><span class="default">clearpieces</span><span class="keyword">( </span><span class="default">$inKey </span><span class="keyword">, </span><span class="default">$inFirst </span><span class="keyword">) {<br />&nbsp; &nbsp; </span><span class="default">$expire </span><span class="keyword">= </span><span class="default">time</span><span class="keyword">()-</span><span class="default">3600</span><span class="keyword">;<br />&nbsp; &nbsp; <br />&nbsp; &nbsp; for ( </span><span class="default">$index </span><span class="keyword">= </span><span class="default">$inFirst </span><span class="keyword">; </span><span class="default">array_key_exists</span><span class="keyword">( </span><span class="default">$inKey</span><span class="keyword">.</span><span class="default">COOKIE_PORTIONS</span><span class="keyword">.</span><span class="default">$index </span><span class="keyword">, </span><span class="default">$_COOKIE </span><span class="keyword">) ; </span><span class="default">$index </span><span class="keyword">+= </span><span class="default">1 </span><span class="keyword">) {<br />&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="default">setcookie</span><span class="keyword">( </span><span class="default">$inKey</span><span class="keyword">.</span><span class="default">COOKIE_PORTIONS</span><span class="keyword">.</span><span class="default">$index </span><span class="keyword">, </span><span class="string">'' </span><span class="keyword">, </span><span class="default">$expire </span><span class="keyword">, </span><span class="string">'/' </span><span class="keyword">, </span><span class="string">'' </span><span class="keyword">, </span><span class="default">0 </span><span class="keyword">);<br />&nbsp; &nbsp; &nbsp; &nbsp; unset( </span><span class="default">$_COOKIE</span><span class="keyword">[</span><span class="default">$inKey</span><span class="keyword">.</span><span class="default">COOKIE_PORTIONS</span><span class="keyword">.</span><span class="default">$index</span><span class="keyword">] );<br />&nbsp; &nbsp; }<br />}<br /><br />function </span><span class="default">clearcookie</span><span class="keyword">( </span><span class="default">$inKey </span><span class="keyword">) {<br />&nbsp; &nbsp; </span><span class="default">clearpieces</span><span class="keyword">( </span><span class="default">$inKey </span><span class="keyword">, </span><span class="default">1 </span><span class="keyword">);<br />&nbsp; &nbsp; </span><span class="default">setcookie</span><span class="keyword">( </span><span class="default">$inKey </span><span class="keyword">, </span><span class="string">'' </span><span class="keyword">, </span><span class="default">time</span><span class="keyword">()-</span><span class="default">3600 </span><span class="keyword">, </span><span class="string">'/' </span><span class="keyword">, </span><span class="string">'' </span><span class="keyword">, </span><span class="default">0 </span><span class="keyword">);<br />&nbsp; &nbsp; unset( </span><span class="default">$_COOKIE</span><span class="keyword">[</span><span class="default">$inKey</span><span class="keyword">] );<br />}<br /><br />function </span><span class="default">storecookie</span><span class="keyword">( </span><span class="default">$inKey </span><span class="keyword">, </span><span class="default">$inValue </span><span class="keyword">, </span><span class="default">$inExpire </span><span class="keyword">) {<br />&nbsp; &nbsp; </span><span class="default">$decode </span><span class="keyword">= </span><span class="default">serialize</span><span class="keyword">( </span><span class="default">$inValue </span><span class="keyword">);<br />&nbsp; &nbsp; </span><span class="default">$decode </span><span class="keyword">= </span><span class="default">gzcompress</span><span class="keyword">( </span><span class="default">$decode </span><span class="keyword">);<br />&nbsp; &nbsp; </span><span class="default">$decode </span><span class="keyword">= </span><span class="default">base64_encode</span><span class="keyword">( </span><span class="default">$decode </span><span class="keyword">);<br />&nbsp; &nbsp; <br />&nbsp; &nbsp; </span><span class="default">$split </span><span class="keyword">= </span><span class="default">str_split</span><span class="keyword">( </span><span class="default">$decode </span><span class="keyword">, </span><span class="default">4000 </span><span class="keyword">);</span><span class="comment">//4k pieces<br />&nbsp; &nbsp; </span><span class="default">$count </span><span class="keyword">= </span><span class="default">count</span><span class="keyword">( </span><span class="default">$split </span><span class="keyword">);<br />&nbsp; &nbsp; <br />&nbsp; &nbsp; for ( </span><span class="default">$index </span><span class="keyword">= </span><span class="default">0 </span><span class="keyword">; </span><span class="default">$index </span><span class="keyword">&lt; </span><span class="default">$count </span><span class="keyword">; </span><span class="default">$index </span><span class="keyword">+= </span><span class="default">1 </span><span class="keyword">) {<br />&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="default">$result </span><span class="keyword">= </span><span class="default">setcookie</span><span class="keyword">( ( </span><span class="default">$index </span><span class="keyword">&gt; </span><span class="default">0 </span><span class="keyword">) ? </span><span class="default">$inKey</span><span class="keyword">.</span><span class="default">COOKIE_PORTIONS</span><span class="keyword">.</span><span class="default">$index </span><span class="keyword">: </span><span class="default">$inKey </span><span class="keyword">, </span><span class="default">$split</span><span class="keyword">[</span><span class="default">$index</span><span class="keyword">] , </span><span class="default">$inExpire </span><span class="keyword">, </span><span class="string">'/' </span><span class="keyword">, </span><span class="string">'' </span><span class="keyword">, </span><span class="default">0 </span><span class="keyword">);<br />&nbsp; &nbsp; }<br />&nbsp; &nbsp; <br />&nbsp; &nbsp; </span><span class="default">clearpieces</span><span class="keyword">( </span><span class="default">$inKey </span><span class="keyword">, </span><span class="default">$count </span><span class="keyword">);<br />}<br /><br />function </span><span class="default">fetchcookie</span><span class="keyword">( </span><span class="default">$inKey </span><span class="keyword">) {<br />&nbsp; &nbsp; </span><span class="default">$decode </span><span class="keyword">= </span><span class="default">$_COOKIE</span><span class="keyword">[</span><span class="default">$inKey</span><span class="keyword">];<br />&nbsp; &nbsp; <br />&nbsp; &nbsp; for ( </span><span class="default">$index </span><span class="keyword">= </span><span class="default">1 </span><span class="keyword">; </span><span class="default">array_key_exists</span><span class="keyword">( </span><span class="default">$inKey</span><span class="keyword">.</span><span class="default">COOKIE_PORTIONS</span><span class="keyword">.</span><span class="default">$index </span><span class="keyword">, </span><span class="default">$_COOKIE </span><span class="keyword">) ; </span><span class="default">$index </span><span class="keyword">+= </span><span class="default">1 </span><span class="keyword">) {<br />&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="default">$decode </span><span class="keyword">.= </span><span class="default">$_COOKIE</span><span class="keyword">[</span><span class="default">$inKey</span><span class="keyword">.</span><span class="default">COOKIE_PORTIONS</span><span class="keyword">.</span><span class="default">$index</span><span class="keyword">];<br />&nbsp; &nbsp; }<br />&nbsp; &nbsp; <br />&nbsp; &nbsp; </span><span class="default">$decode </span><span class="keyword">= </span><span class="default">base64_decode</span><span class="keyword">( </span><span class="default">$decode </span><span class="keyword">);<br />&nbsp; &nbsp; </span><span class="default">$decode </span><span class="keyword">= </span><span class="default">gzuncompress</span><span class="keyword">( </span><span class="default">$decode </span><span class="keyword">);<br />&nbsp; &nbsp; <br />&nbsp; &nbsp; return </span><span class="default">unserialize</span><span class="keyword">( </span><span class="default">$decode </span><span class="keyword">);<br />}<br /></span><span class="default">?&gt;</span>
+</span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="117526">  <div class="votes">
+    <div id="Vu117526">
+    <a href="/manual/vote-note.php?id=117526&amp;page=function.setcookie&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd117526">
+    <a href="/manual/vote-note.php?id=117526&amp;page=function.setcookie&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V117526" title="58% like this...">
+    3
+    </div>
+  </div>
+  <a href="#117526" class="name">
+  <strong class="user"><em>dmitry dot koterov at gmail dot com</em></strong></a><a class="genanchor" href="#117526"> &para;</a><div class="date" title="2015-06-24 05:38"><strong>6 years ago</strong></div>
+  <div class="text" id="Hcom117526">
+<div class="phpcode"><code><span class="html">
+Note that at least in PHP 5.5 setcookie() removes previously set cookies with the same name (even if you've set them via header()), so previously fired Set-Cookie headers with e.g. PHPSESSID name are not flushed to the browser. Even headers_list() doesn't see them after session_start():<br /><br />header("Set-Cookie: PHPSESSID=abc; path=/; domain=.sub.domain.com");<br />header("Set-Cookie: PHPSESSID=abc; path=/; domain=.domain.com");<br />print_r(headers_list()); // here you see two Set-Cookie headers with domains for PHPSESSID<br />session_id('abc');<br />session_start();<br />print_r(headers_list()); // here you don't; you see only one Set-Cookie produced by session_start()</span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="72456">  <div class="votes">
+    <div id="Vu72456">
+    <a href="/manual/vote-note.php?id=72456&amp;page=function.setcookie&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd72456">
+    <a href="/manual/vote-note.php?id=72456&amp;page=function.setcookie&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V72456" title="59% like this...">
+    8
+    </div>
+  </div>
+  <a href="#72456" class="name">
+  <strong class="user"><em>ahmetantmen at msn dot com</em></strong></a><a class="genanchor" href="#72456"> &para;</a><div class="date" title="2007-01-19 03:36"><strong>15 years ago</strong></div>
+  <div class="text" id="Hcom72456">
+<div class="phpcode"><code><span class="html">
+You can be sure about the cookie files contents weren't changed.<br /><br /><span class="default">&lt;?php<br /><br />$Seperator </span><span class="keyword">= </span><span class="string">'--'</span><span class="keyword">;<br /></span><span class="default">$uniqueID </span><span class="keyword">= </span><span class="string">'Ju?hG&amp;F0yh9?=/6*GVfd-d8u6f86hp'</span><span class="keyword">;<br /></span><span class="default">$Data </span><span class="keyword">= </span><span class="string">'Ahmet '</span><span class="keyword">.</span><span class="default">md5</span><span class="keyword">(</span><span class="string">'123456789'</span><span class="keyword">);<br /><br /></span><span class="default">setcookie</span><span class="keyword">(</span><span class="string">'VerifyUser'</span><span class="keyword">, </span><span class="default">$Data</span><span class="keyword">.</span><span class="default">$Seperator</span><span class="keyword">.</span><span class="default">md5</span><span class="keyword">(</span><span class="default">$Data</span><span class="keyword">.</span><span class="default">$uniqueID</span><span class="keyword">));<br /><br />if (</span><span class="default">$_COOKIE</span><span class="keyword">) {<br />&nbsp;&nbsp; </span><span class="default">$Cut </span><span class="keyword">= </span><span class="default">explode</span><span class="keyword">(</span><span class="default">$Seperator</span><span class="keyword">, </span><span class="default">$_COOKIE</span><span class="keyword">[</span><span class="string">'VerifyUser'</span><span class="keyword">]);<br />&nbsp;&nbsp; if (</span><span class="default">md5</span><span class="keyword">(</span><span class="default">$Cut</span><span class="keyword">[</span><span class="default">0</span><span class="keyword">].</span><span class="default">$uniqueID</span><span class="keyword">) === </span><span class="default">$Cut</span><span class="keyword">[</span><span class="default">1</span><span class="keyword">]) {<br />&nbsp; &nbsp; &nbsp;&nbsp; </span><span class="default">$_COOKIE</span><span class="keyword">[</span><span class="string">'VerifyUser'</span><span class="keyword">] = </span><span class="default">$Cut</span><span class="keyword">[</span><span class="default">0</span><span class="keyword">];<br />&nbsp;&nbsp; } else {<br />&nbsp; &nbsp; &nbsp;&nbsp; die(</span><span class="string">'Cookie data is invalid!!!'</span><span class="keyword">);<br />&nbsp;&nbsp; }<br />}<br /><br />echo </span><span class="default">$_COOKIE</span><span class="keyword">[</span><span class="string">'VerifyUser'</span><span class="keyword">];<br /><br /></span><span class="default">?&gt;<br /></span><br />Create a unique id for your site and create a hash with md5($Data.$uniqueID). Attacker can understant that it must be re-hash after change cookie content.<br />But doesn't. Because cannot guess your unique id. Seperate your hash and data with seperator and send that cookie. Control that hash of returned value and your unique id's is same returned hash. Otherwise you have to stop attack. Sorry for my poor english!</span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="119640">  <div class="votes">
+    <div id="Vu119640">
+    <a href="/manual/vote-note.php?id=119640&amp;page=function.setcookie&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd119640">
+    <a href="/manual/vote-note.php?id=119640&amp;page=function.setcookie&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V119640" title="58% like this...">
+    2
+    </div>
+  </div>
+  <a href="#119640" class="name">
+  <strong class="user"><em>byz</em></strong></a><a class="genanchor" href="#119640"> &para;</a><div class="date" title="2016-07-23 02:57"><strong>5 years ago</strong></div>
+  <div class="text" id="Hcom119640">
+<div class="phpcode"><code><span class="html">
+exmaple with test.com；<br /><br />setcookie('empty_domain','value',time()+3600,'')&nbsp; <br /> equal&nbsp; &nbsp; &nbsp;&nbsp; test.com<br /><br />setcookie('test_com_domain','value',time()+3600,'','test.com')&nbsp;&nbsp; <br />equal&nbsp; &nbsp; &nbsp;&nbsp; .test.com<br /><br />setcookie('dot_test_com_domain','value',time()+3600,'','.test.com')&nbsp; <br /> equal&nbsp; &nbsp; &nbsp;&nbsp; .test.com<br /><br />ps:&nbsp;&nbsp; .test.com&nbsp;&nbsp; has its self&nbsp; &nbsp; and child domain</span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="97944">  <div class="votes">
+    <div id="Vu97944">
+    <a href="/manual/vote-note.php?id=97944&amp;page=function.setcookie&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd97944">
+    <a href="/manual/vote-note.php?id=97944&amp;page=function.setcookie&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V97944" title="58% like this...">
+    5
+    </div>
+  </div>
+  <a href="#97944" class="name">
+  <strong class="user"><em>jay at w3prodigy dot com</em></strong></a><a class="genanchor" href="#97944"> &para;</a><div class="date" title="2010-05-17 12:31"><strong>11 years ago</strong></div>
+  <div class="text" id="Hcom97944">
+<div class="phpcode"><code><span class="html">
+You can also delete cookies by supplying setcookie an empty value.<br /><br />setcookie("w3p_cookie", "");</span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="51705">  <div class="votes">
+    <div id="Vu51705">
+    <a href="/manual/vote-note.php?id=51705&amp;page=function.setcookie&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd51705">
+    <a href="/manual/vote-note.php?id=51705&amp;page=function.setcookie&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V51705" title="58% like this...">
+    7
+    </div>
+  </div>
+  <a href="#51705" class="name">
+  <strong class="user"><em>Carl V</em></strong></a><a class="genanchor" href="#51705"> &para;</a><div class="date" title="2005-04-07 08:29"><strong>16 years ago</strong></div>
+  <div class="text" id="Hcom51705">
+<div class="phpcode"><code><span class="html">
+If you want to delete all the cookies set by your domain, you may run the following:<br /><br /><span class="default">&lt;?php<br />$cookiesSet </span><span class="keyword">= </span><span class="default">array_keys</span><span class="keyword">(</span><span class="default">$_COOKIE</span><span class="keyword">);<br />for (</span><span class="default">$x</span><span class="keyword">=</span><span class="default">0</span><span class="keyword">;</span><span class="default">$x</span><span class="keyword">&lt;</span><span class="default">count</span><span class="keyword">(</span><span class="default">$cookiesSet</span><span class="keyword">);</span><span class="default">$x</span><span class="keyword">++) </span><span class="default">setcookie</span><span class="keyword">(</span><span class="default">$cookiesSet</span><span class="keyword">[</span><span class="default">$x</span><span class="keyword">],</span><span class="string">""</span><span class="keyword">,</span><span class="default">time</span><span class="keyword">()-</span><span class="default">1</span><span class="keyword">);<br /></span><span class="default">?&gt;<br /></span><br />Very useful when doing logout scripts and the cookie name may have changed (long story).</span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="102352">  <div class="votes">
+    <div id="Vu102352">
+    <a href="/manual/vote-note.php?id=102352&amp;page=function.setcookie&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd102352">
+    <a href="/manual/vote-note.php?id=102352&amp;page=function.setcookie&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V102352" title="57% like this...">
+    6
+    </div>
+  </div>
+  <a href="#102352" class="name">
+  <strong class="user"><em>jdknock (at) gMaIl (dot) com</em></strong></a><a class="genanchor" href="#102352"> &para;</a><div class="date" title="2011-02-09 09:08"><strong>11 years ago</strong></div>
+  <div class="text" id="Hcom102352">
+<div class="phpcode"><code><span class="html">
+IE7 can have trouble with settings cookies that are embedded in an iframe. The problem lies with a W3C standard called Platform for Privacy Preferences or P3P for short.<br /><br />To overcome, include the header:<br /><br />header('P3P:CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"');<br /><br />before setting the cookie.</span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="72313">  <div class="votes">
+    <div id="Vu72313">
+    <a href="/manual/vote-note.php?id=72313&amp;page=function.setcookie&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd72313">
+    <a href="/manual/vote-note.php?id=72313&amp;page=function.setcookie&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V72313" title="57% like this...">
+    4
+    </div>
+  </div>
+  <a href="#72313" class="name">
+  <strong class="user"><em>stovenator at gmail dot com</em></strong></a><a class="genanchor" href="#72313"> &para;</a><div class="date" title="2007-01-12 06:54"><strong>15 years ago</strong></div>
+  <div class="text" id="Hcom72313">
+<div class="phpcode"><code><span class="html">
+If you are having issues with IE7 and setcookie(), be sure to verify that the cookie is set via http for http sites, and https for https site. <br /><br />Also, if the time is incorrect on your server, IE7 will also disallow those cookies from being set.</span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="125028">  <div class="votes">
+    <div id="Vu125028">
+    <a href="/manual/vote-note.php?id=125028&amp;page=function.setcookie&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd125028">
+    <a href="/manual/vote-note.php?id=125028&amp;page=function.setcookie&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V125028" title="55% like this...">
+    3
+    </div>
+  </div>
+  <a href="#125028" class="name">
+  <strong class="user"><em>Anonymous</em></strong></a><a class="genanchor" href="#125028"> &para;</a><div class="date" title="2020-05-19 12:29"><strong>1 year ago</strong></div>
+  <div class="text" id="Hcom125028">
+<div class="phpcode"><code><span class="html">
+To add the "samesite" attribute, you can concatenate it to the path option until it gets implemented/documented properly<br />Eg:<br /><span class="default">&lt;?php<br />&nbsp; &nbsp; setcookie</span><span class="keyword">(</span><span class="string">'cookie_name'</span><span class="keyword">, </span><span class="string">'cookie_value'</span><span class="keyword">, </span><span class="default">0</span><span class="keyword">, </span><span class="string">'/; SameSite=strict'</span><span class="keyword">);<br /></span><span class="default">?&gt;</span>
+</span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="70959">  <div class="votes">
+    <div id="Vu70959">
+    <a href="/manual/vote-note.php?id=70959&amp;page=function.setcookie&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd70959">
+    <a href="/manual/vote-note.php?id=70959&amp;page=function.setcookie&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V70959" title="57% like this...">
+    3
+    </div>
+  </div>
+  <a href="#70959" class="name">
+  <strong class="user"><em>hansel at gretel dot com</em></strong></a><a class="genanchor" href="#70959"> &para;</a><div class="date" title="2006-11-06 08:12"><strong>15 years ago</strong></div>
+  <div class="text" id="Hcom70959">
+<div class="phpcode"><code><span class="html">
+The following code snippet combines abdullah's and Charles Martin's examples into a powerful combination function (and fixes at least one bug in the process):<br /><br /><span class="default">&lt;?php<br />&nbsp; </span><span class="keyword">function </span><span class="default">set_cookie_fix_domain</span><span class="keyword">(</span><span class="default">$Name</span><span class="keyword">, </span><span class="default">$Value </span><span class="keyword">= </span><span class="string">''</span><span class="keyword">, </span><span class="default">$Expires </span><span class="keyword">= </span><span class="default">0</span><span class="keyword">, </span><span class="default">$Path </span><span class="keyword">= </span><span class="string">''</span><span class="keyword">, </span><span class="default">$Domain </span><span class="keyword">= </span><span class="string">''</span><span class="keyword">, </span><span class="default">$Secure </span><span class="keyword">= </span><span class="default">false</span><span class="keyword">, </span><span class="default">$HTTPOnly </span><span class="keyword">= </span><span class="default">false</span><span class="keyword">)<br />&nbsp; {<br />&nbsp; &nbsp; if (!empty(</span><span class="default">$Domain</span><span class="keyword">))<br />&nbsp; &nbsp; {<br />&nbsp; &nbsp; &nbsp; </span><span class="comment">// Fix the domain to accept domains with and without 'www.'.<br />&nbsp; &nbsp; &nbsp; </span><span class="keyword">if (</span><span class="default">strtolower</span><span class="keyword">(</span><span class="default">substr</span><span class="keyword">(</span><span class="default">$Domain</span><span class="keyword">, </span><span class="default">0</span><span class="keyword">, </span><span class="default">4</span><span class="keyword">)) == </span><span class="string">'www.'</span><span class="keyword">)&nbsp; </span><span class="default">$Domain </span><span class="keyword">= </span><span class="default">substr</span><span class="keyword">(</span><span class="default">$Domain</span><span class="keyword">, </span><span class="default">4</span><span class="keyword">);<br />&nbsp; &nbsp; &nbsp; </span><span class="default">$Domain </span><span class="keyword">= </span><span class="string">'.' </span><span class="keyword">. </span><span class="default">$Domain</span><span class="keyword">;<br /><br />&nbsp; &nbsp; &nbsp; </span><span class="comment">// Remove port information.<br />&nbsp; &nbsp; &nbsp; </span><span class="default">$Port </span><span class="keyword">= </span><span class="default">strpos</span><span class="keyword">(</span><span class="default">$Domain</span><span class="keyword">, </span><span class="string">':'</span><span class="keyword">);<br />&nbsp; &nbsp; &nbsp; if (</span><span class="default">$Port </span><span class="keyword">!== </span><span class="default">false</span><span class="keyword">)&nbsp; </span><span class="default">$Domain </span><span class="keyword">= </span><span class="default">substr</span><span class="keyword">(</span><span class="default">$Domain</span><span class="keyword">, </span><span class="default">0</span><span class="keyword">, </span><span class="default">$Port</span><span class="keyword">);<br />&nbsp; &nbsp; }<br /><br />&nbsp; &nbsp; </span><span class="default">header</span><span class="keyword">(</span><span class="string">'Set-Cookie: ' </span><span class="keyword">. </span><span class="default">rawurlencode</span><span class="keyword">(</span><span class="default">$Name</span><span class="keyword">) . </span><span class="string">'=' </span><span class="keyword">. </span><span class="default">rawurlencode</span><span class="keyword">(</span><span class="default">$Value</span><span class="keyword">)<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; . (empty(</span><span class="default">$Expires</span><span class="keyword">) ? </span><span class="string">'' </span><span class="keyword">: </span><span class="string">'; expires=' </span><span class="keyword">. </span><span class="default">gmdate</span><span class="keyword">(</span><span class="string">'D, d-M-Y H:i:s'</span><span class="keyword">, </span><span class="default">$Expires</span><span class="keyword">) . </span><span class="string">' GMT'</span><span class="keyword">)<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; . (empty(</span><span class="default">$Path</span><span class="keyword">) ? </span><span class="string">'' </span><span class="keyword">: </span><span class="string">'; path=' </span><span class="keyword">. </span><span class="default">$Path</span><span class="keyword">)<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; . (empty(</span><span class="default">$Domain</span><span class="keyword">) ? </span><span class="string">'' </span><span class="keyword">: </span><span class="string">'; domain=' </span><span class="keyword">. </span><span class="default">$Domain</span><span class="keyword">)<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; . (!</span><span class="default">$Secure </span><span class="keyword">? </span><span class="string">'' </span><span class="keyword">: </span><span class="string">'; secure'</span><span class="keyword">)<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; . (!</span><span class="default">$HTTPOnly </span><span class="keyword">? </span><span class="string">'' </span><span class="keyword">: </span><span class="string">'; HttpOnly'</span><span class="keyword">), </span><span class="default">false</span><span class="keyword">);<br />&nbsp; }<br /></span><span class="default">?&gt;<br /></span><br />Basically, if the domain parameter is supplied, it is converted to support a broader range of domains.&nbsp; This behavior may or may not be desireable (e.g. could be a security problem depending on the server) but it makes cookie handling oh-so-much-nicer (IMO).</span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="91140">  <div class="votes">
+    <div id="Vu91140">
+    <a href="/manual/vote-note.php?id=91140&amp;page=function.setcookie&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd91140">
+    <a href="/manual/vote-note.php?id=91140&amp;page=function.setcookie&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V91140" title="56% like this...">
+    5
+    </div>
+  </div>
+  <a href="#91140" class="name">
+  <strong class="user"><em>laffen</em></strong></a><a class="genanchor" href="#91140"> &para;</a><div class="date" title="2009-05-27 01:49"><strong>12 years ago</strong></div>
+  <div class="text" id="Hcom91140">
+<div class="phpcode"><code><span class="html">
+Note that the $_COOKIE variable not will hold multiple cookies with the same name. It is legitimate to set two cookies with the same name to the same host where the sub domain is different. <br /><span class="default">&lt;?php<br />setcookie</span><span class="keyword">(</span><span class="string">"testcookie"</span><span class="keyword">, </span><span class="string">"value1hostonly"</span><span class="keyword">, </span><span class="default">time</span><span class="keyword">(), </span><span class="string">"/"</span><span class="keyword">, </span><span class="string">".example.com"</span><span class="keyword">, </span><span class="default">0</span><span class="keyword">, </span><span class="default">true</span><span class="keyword">);<br /></span><span class="default">setcookie</span><span class="keyword">(</span><span class="string">"testcookie"</span><span class="keyword">, </span><span class="string">"value2subdom"</span><span class="keyword">, </span><span class="default">time</span><span class="keyword">(), </span><span class="string">"/"</span><span class="keyword">, </span><span class="string">"subdom.example.com"</span><span class="keyword">, </span><span class="default">0</span><span class="keyword">, </span><span class="default">true</span><span class="keyword">);<br /></span><span class="default">?&gt;<br /></span>The next request from the browser will have both cookies in the $_SERVER['HTTP_COOKIE'] variable, but only one of them will be found in the $_COOKIE variable. Requests to subdom.example.com will have both cookies, while browser request to example.com or www.example.com only sends the cookie with the "value1hostonly" value.<br /><br /><span class="default">&lt;?php<br />$kaker </span><span class="keyword">= </span><span class="default">explode</span><span class="keyword">(</span><span class="string">";"</span><span class="keyword">, </span><span class="default">$_SERVER</span><span class="keyword">[</span><span class="string">'HTTP_COOKIE'</span><span class="keyword">]);<br />foreach(</span><span class="default">$kaker </span><span class="keyword">as </span><span class="default">$val</span><span class="keyword">){<br />&nbsp; &nbsp; </span><span class="default">$k </span><span class="keyword">= </span><span class="default">explode</span><span class="keyword">(</span><span class="string">"="</span><span class="keyword">, </span><span class="default">$val</span><span class="keyword">);<br />&nbsp; &nbsp; echo </span><span class="default">trim</span><span class="keyword">(</span><span class="default">$k</span><span class="keyword">[</span><span class="default">0</span><span class="keyword">]) . </span><span class="string">" =&gt; " </span><span class="keyword">. </span><span class="default">$k</span><span class="keyword">[</span><span class="default">1</span><span class="keyword">];<br />}<br /><br /></span><span class="comment">// output<br /></span><span class="default">testcookie </span><span class="keyword">=&gt; </span><span class="default">value1hostonly<br />testcookie </span><span class="keyword">=&gt; </span><span class="default">value2subdom<br /><br />?&gt;</span>
+</span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="77276">  <div class="votes">
+    <div id="Vu77276">
+    <a href="/manual/vote-note.php?id=77276&amp;page=function.setcookie&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd77276">
+    <a href="/manual/vote-note.php?id=77276&amp;page=function.setcookie&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V77276" title="56% like this...">
+    6
+    </div>
+  </div>
+  <a href="#77276" class="name">
+  <strong class="user"><em>cwillard at fastmail dot fm</em></strong></a><a class="genanchor" href="#77276"> &para;</a><div class="date" title="2007-08-22 07:55"><strong>14 years ago</strong></div>
+  <div class="text" id="Hcom77276">
+<div class="phpcode"><code><span class="html">
+If you're looking to set multiple values in your cookie (rather than setting multiple cookies) you might find these useful.<br /><br /><span class="default">&lt;?php<br /></span><span class="keyword">function </span><span class="default">build_cookie</span><span class="keyword">(</span><span class="default">$var_array</span><span class="keyword">) {<br />&nbsp; if (</span><span class="default">is_array</span><span class="keyword">(</span><span class="default">$var_array</span><span class="keyword">)) {<br />&nbsp; &nbsp; foreach (</span><span class="default">$var_array </span><span class="keyword">as </span><span class="default">$index </span><span class="keyword">=&gt; </span><span class="default">$data</span><span class="keyword">) {<br />&nbsp; &nbsp; &nbsp; </span><span class="default">$out</span><span class="keyword">.= (</span><span class="default">$data</span><span class="keyword">!=</span><span class="string">""</span><span class="keyword">) ? </span><span class="default">$index</span><span class="keyword">.</span><span class="string">"="</span><span class="keyword">.</span><span class="default">$data</span><span class="keyword">.</span><span class="string">"|" </span><span class="keyword">: </span><span class="string">""</span><span class="keyword">;<br />&nbsp; &nbsp; }<br />&nbsp; }<br />&nbsp; return </span><span class="default">rtrim</span><span class="keyword">(</span><span class="default">$out</span><span class="keyword">,</span><span class="string">"|"</span><span class="keyword">);<br />}<br /><br />function </span><span class="default">break_cookie </span><span class="keyword">(</span><span class="default">$cookie_string</span><span class="keyword">) {<br />&nbsp; </span><span class="default">$array</span><span class="keyword">=</span><span class="default">explode</span><span class="keyword">(</span><span class="string">"|"</span><span class="keyword">,</span><span class="default">$cookie_string</span><span class="keyword">);<br />&nbsp; foreach (</span><span class="default">$array </span><span class="keyword">as </span><span class="default">$i</span><span class="keyword">=&gt;</span><span class="default">$stuff</span><span class="keyword">) {<br />&nbsp; &nbsp; </span><span class="default">$stuff</span><span class="keyword">=</span><span class="default">explode</span><span class="keyword">(</span><span class="string">"="</span><span class="keyword">,</span><span class="default">$stuff</span><span class="keyword">);<br />&nbsp; &nbsp; </span><span class="default">$array</span><span class="keyword">[</span><span class="default">$stuff</span><span class="keyword">[</span><span class="default">0</span><span class="keyword">]]=</span><span class="default">$stuff</span><span class="keyword">[</span><span class="default">1</span><span class="keyword">];<br />&nbsp; &nbsp; unset(</span><span class="default">$array</span><span class="keyword">[</span><span class="default">$i</span><span class="keyword">]);<br />&nbsp; }<br />&nbsp; return </span><span class="default">$array</span><span class="keyword">;<br />}<br /></span><span class="default">?&gt;<br /></span>Hopefully someone finds these useful.</span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="75343">  <div class="votes">
+    <div id="Vu75343">
+    <a href="/manual/vote-note.php?id=75343&amp;page=function.setcookie&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd75343">
+    <a href="/manual/vote-note.php?id=75343&amp;page=function.setcookie&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V75343" title="54% like this...">
+    6
+    </div>
+  </div>
+  <a href="#75343" class="name">
+  <strong class="user"><em>jonathan dot bergeron at rve dot ulaval dot ca</em></strong></a><a class="genanchor" href="#75343"> &para;</a><div class="date" title="2007-05-24 12:05"><strong>14 years ago</strong></div>
+  <div class="text" id="Hcom75343">
+<div class="phpcode"><code><span class="html">
+About the delete part, I found that Firefox only remove the cookie when you submit the same values for all parameters, except the date, which sould be in the past. Submiting blank values didn't work for me.<br /><br />Example :<br />- set -<br /><br /><span class="default">&lt;?php setcookie</span><span class="keyword">( </span><span class="string">"name"</span><span class="keyword">, </span><span class="string">"value"</span><span class="keyword">, </span><span class="string">"future_timestamp"</span><span class="keyword">, </span><span class="string">"path"</span><span class="keyword">, </span><span class="string">"domain" </span><span class="keyword">); </span><span class="default">?&gt;<br /></span><br />- delete -<br /><span class="default">&lt;?php setcookie</span><span class="keyword">( </span><span class="string">"name"</span><span class="keyword">, </span><span class="string">"value"</span><span class="keyword">, </span><span class="string">"past_timestamp"</span><span class="keyword">, </span><span class="string">"path"</span><span class="keyword">, </span><span class="string">"domain" </span><span class="keyword">); </span><span class="default">?&gt;<br /></span><br />Jonathan</span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="105120">  <div class="votes">
+    <div id="Vu105120">
+    <a href="/manual/vote-note.php?id=105120&amp;page=function.setcookie&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd105120">
+    <a href="/manual/vote-note.php?id=105120&amp;page=function.setcookie&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V105120" title="54% like this...">
+    4
+    </div>
+  </div>
+  <a href="#105120" class="name">
+  <strong class="user"><em>mkmohsinali at gmail dot com</em></strong></a><a class="genanchor" href="#105120"> &para;</a><div class="date" title="2011-07-28 11:01"><strong>10 years ago</strong></div>
+  <div class="text" id="Hcom105120">
+<div class="phpcode"><code><span class="html">
+#cookies.php<br />/*This code will demonstrate use of cookies with PHP<br />It is very easy to understand and is better for beginner to<br />understand and get idea about power of cookies when used<br />with PHP.Here we give user a form to choose colors he/she<br />likes for website and when he/she visits site again within one<br />hour his/her settings are saved and read from cookie <br />and he/she doesn't have to set the page color and page<br />text color again.You can change time from 3600<br />seconds to whatever you deem appropriate in your case.<br />if you don't understand anything please email me*/<br /><br /><span class="default">&lt;?php<br /></span><span class="comment">#checking if form has been submitted<br /></span><span class="keyword">if (isset(</span><span class="default">$_POST</span><span class="keyword">[</span><span class="string">'submitted'</span><span class="keyword">])){<br /></span><span class="comment">#if yes (form is submitted) assign values from POST array to variables<br /></span><span class="default">$newbgColor</span><span class="keyword">=</span><span class="default">$_POST</span><span class="keyword">[</span><span class="string">'bgColor'</span><span class="keyword">];<br /></span><span class="default">$newtxtColor</span><span class="keyword">=</span><span class="default">$_POST</span><span class="keyword">[</span><span class="string">'txtColor'</span><span class="keyword">];<br /></span><span class="comment">#set cookies<br /></span><span class="default">setcookie</span><span class="keyword">(</span><span class="string">"bgColor"</span><span class="keyword">,</span><span class="default">$newbgColor</span><span class="keyword">,</span><span class="default">time</span><span class="keyword">()+</span><span class="default">3600</span><span class="keyword">);<br /></span><span class="default">setcookie</span><span class="keyword">(</span><span class="string">"txtColor"</span><span class="keyword">,</span><span class="default">$newtxtColor</span><span class="keyword">,</span><span class="default">time</span><span class="keyword">()+</span><span class="default">3600</span><span class="keyword">);<br /><br />}<br /></span><span class="comment">#in case user has come for first time and cookies are not set then<br /></span><span class="keyword">if ((!isset(</span><span class="default">$_COOKIE</span><span class="keyword">[</span><span class="string">'bgColor'</span><span class="keyword">]) ) &amp;&amp; (!isset(</span><span class="default">$_COOKIE</span><span class="keyword">[</span><span class="string">'txtColor'</span><span class="keyword">]))){<br /></span><span class="default">$bgColor </span><span class="keyword">= </span><span class="string">"Black"</span><span class="keyword">;<br /></span><span class="default">$txtColor</span><span class="keyword">=</span><span class="string">"White"</span><span class="keyword">;<br />}<br /></span><span class="comment">#if cookies are set then use them<br /></span><span class="keyword">else{<br /></span><span class="default">$bgColor </span><span class="keyword">= </span><span class="default">$_COOKIE</span><span class="keyword">[</span><span class="string">'bgColor'</span><span class="keyword">];<br /></span><span class="default">$txtColor </span><span class="keyword">= </span><span class="default">$_COOKIE</span><span class="keyword">[</span><span class="string">'txtColor'</span><span class="keyword">];<br />}<br /></span><span class="default">?&gt;<br /></span>&lt;!-- HTML Page--&gt;<br />&lt;html&gt;<br />&lt;body bgcolor="<span class="default">&lt;?php </span><span class="keyword">echo </span><span class="default">$bgColor ?&gt;</span>" text="<span class="default">&lt;?php </span><span class="keyword">echo </span><span class="default">$txtColor ?&gt;</span>"&gt; <br />&lt;form action= "<span class="default">&lt;?php </span><span class="keyword">echo </span><span class="default">$_SERVER</span><span class="keyword">[</span><span class="string">'PHP_SELF'</span><span class="keyword">]; </span><span class="default">?&gt;</span>" method ="POST"&gt;<br />&lt;p&gt;Body Color:&lt;/p&gt;<br />&lt;select name=bgColor&gt;<br />&lt;option value ="Red"&gt;Red&lt;/option&gt;<br />&lt;option value ="Green" selected&gt;Green&lt;/option&gt;<br />&lt;option value ="Blue"&gt;Blue&lt;/option&gt;<br />&lt;option value ="Yellow"&gt;Yellow&lt;/option&gt;<br />&lt;option value ="Black"&gt;Black&lt;/option&gt;<br />&lt;option value ="Brown"&gt;Brown&lt;/option&gt;<br />&lt;option value ="White"&gt;White&lt;/option&gt;<br />&lt;/select&gt;<br />&lt;p&gt;Text Color:&lt;/p&gt;<br />&lt;select name=txtColor&gt;<br />&lt;tion value ="Red"&gt;Red&lt;/option&gt;<br />&lt;option value ="Green" selected&gt;Green&lt;/option&gt;<br />&lt;option value ="Blue"&gt;Blue&lt;/option&gt;<br />&lt;option value ="Yellow"&gt;Yellow&lt;/option&gt;<br />&lt;option value ="Black"&gt;Black&lt;/option&gt;<br />&lt;option value ="Brown"&gt;Brown&lt;/option&gt;<br />&lt;option value ="White"&gt;White&lt;/option&gt;<br />&lt;/select&gt;<br />&lt;input type ="hidden" name="submitted" value="true"&gt;&lt;/br&gt;<br />&lt;input type="submit" value="remind"&gt;<br />&lt;/form&gt;<br />&lt;/body&gt;<br />&lt;/html&gt;</span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="99845">  <div class="votes">
+    <div id="Vu99845">
+    <a href="/manual/vote-note.php?id=99845&amp;page=function.setcookie&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd99845">
+    <a href="/manual/vote-note.php?id=99845&amp;page=function.setcookie&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V99845" title="54% like this...">
+    3
+    </div>
+  </div>
+  <a href="#99845" class="name">
+  <strong class="user"><em>Anonymous</em></strong></a><a class="genanchor" href="#99845"> &para;</a><div class="date" title="2010-09-10 03:20"><strong>11 years ago</strong></div>
+  <div class="text" id="Hcom99845">
+<div class="phpcode"><code><span class="html">
+A period in a cookie name (like user.name) seems to show up in the $_COOKIE array as an underscore (so user_name). This means that for example $_COOKIE["user_name"] must be used to read a cookie that has been set with setcookie("user.name" ...), which is already rather confusing. <br /><br />Furthermore the variable $_COOKIE["user_name"] will retain the value set by setcookie("user.name" ...) and no amount of calling setcookie("user_name" ...) will alter this value. This is rather trivially fixed by clearing the "user.name" cookie, but it can take a while to realize this since there's only "user_name" in $_COOKIE.<br /><br />Hope this saves someone some time.</span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="104198">  <div class="votes">
+    <div id="Vu104198">
+    <a href="/manual/vote-note.php?id=104198&amp;page=function.setcookie&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd104198">
+    <a href="/manual/vote-note.php?id=104198&amp;page=function.setcookie&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V104198" title="51% like this...">
+    1
+    </div>
+  </div>
+  <a href="#104198" class="name">
+  <strong class="user"><em>chris at styl dot ee</em></strong></a><a class="genanchor" href="#104198"> &para;</a><div class="date" title="2011-05-31 08:10"><strong>10 years ago</strong></div>
+  <div class="text" id="Hcom104198">
+<div class="phpcode"><code><span class="html">
+I was searching for a simple example of creating a cookie, storing a random number and updating it on refresh. I couldn't find one so I had to figure it out on my own....<br /><br />- - - - <br />One thing to *NOTE* is technically you can't update a cookie, you can only overwrite it with a new one with the same name.<br /><br />- - - -<br /><br />This creates a random number, stores it in a cookie, then references it on refresh, checks for duplicates and does necessary correction, then stores it again, rinse and repeat...<br /><br /><span class="default">&lt;?php<br />ob_start</span><span class="keyword">();<br /></span><span class="default">$MaxCount </span><span class="keyword">= </span><span class="default">4</span><span class="keyword">;</span><span class="comment">// set the max of the counter, in my tests "4" = (0,1,2,3) I adjusted below (+1) to get a "real" 4 (0,1,2,3,4) this is in reality 5 keys to humans, you can adjust script to eliminate "0", but my script makes use of the "0"<br /><br /></span><span class="default">$random </span><span class="keyword">=(</span><span class="default">rand</span><span class="keyword">()%(</span><span class="default">$MaxCount</span><span class="keyword">+</span><span class="default">1</span><span class="keyword">));</span><span class="comment">//give me a random number limited by the max, adding "1" because computers start counting at "0"<br /><br /></span><span class="keyword">if(!isset(</span><span class="default">$_COOKIE</span><span class="keyword">[</span><span class="string">'random'</span><span class="keyword">])){</span><span class="comment">// check if random number cookie is not set<br />&nbsp; &nbsp; //echo"not set";<br />&nbsp; &nbsp; </span><span class="default">setcookie</span><span class="keyword">(</span><span class="string">'random'</span><span class="keyword">, </span><span class="default">$random</span><span class="keyword">);</span><span class="comment">//set the cookie for the first time<br />&nbsp; &nbsp; </span><span class="keyword">}else{<br />&nbsp; &nbsp; </span><span class="default">$lastRandom</span><span class="keyword">= </span><span class="default">$_COOKIE</span><span class="keyword">[</span><span class="string">'random'</span><span class="keyword">]; </span><span class="comment">//hold the last number if it was set before<br />&nbsp; &nbsp; </span><span class="keyword">if(</span><span class="default">$lastRandom </span><span class="keyword">== </span><span class="default">$random</span><span class="keyword">){</span><span class="comment">//some logic to avoid repeats<br />&nbsp; &nbsp;&nbsp; </span><span class="keyword">if(</span><span class="default">$random </span><span class="keyword">&lt; </span><span class="default">$MaxCount</span><span class="keyword">){</span><span class="comment">//if below max, add 1<br />&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="default">$random</span><span class="keyword">++;<br />&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="comment">//echo "under the max, adding 1, ";&nbsp; &nbsp; <br />&nbsp; &nbsp; </span><span class="keyword">}elseif(</span><span class="default">$random </span><span class="keyword">&gt;= (</span><span class="default">$MaxCount</span><span class="keyword">-</span><span class="default">1</span><span class="keyword">)){</span><span class="comment">// if for some reason the random number is more than max or equal to it -1, and an additional -1 for max count in initial var (so in reality this -1 from intial max var, and -1 from $random which should be the same number)<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="default">$random</span><span class="keyword">--;<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="comment">//echo "hit the max, subtracting 1, ";<br />&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="keyword">}else{<br />&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="default">$random</span><span class="keyword">++;<br />&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="comment">//echo "no case match, adding 1, ";&nbsp; &nbsp; <br />&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="keyword">}<br />&nbsp; &nbsp; </span><span class="comment">//echo "(".$lastRandom.", ".$random. "), they matched initally - was it fixed?";<br />&nbsp; &nbsp; </span><span class="keyword">}else{<br />&nbsp; &nbsp; </span><span class="comment">//echo "(".$lastRandom.", ".$random. "), they DO NOT match";<br />&nbsp; &nbsp; </span><span class="default">setcookie</span><span class="keyword">(</span><span class="string">'random'</span><span class="keyword">, </span><span class="default">$random</span><span class="keyword">);&nbsp; &nbsp; <br />&nbsp; &nbsp; }<br />&nbsp; &nbsp; </span><span class="comment">//echo"is set: {$_COOKIE['random']}";<br /></span><span class="keyword">}<br /><br /></span><span class="default">ob_end_flush</span><span class="keyword">();<br /><br /></span><span class="default">?&gt;</span>
+</span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="81398">  <div class="votes">
+    <div id="Vu81398">
+    <a href="/manual/vote-note.php?id=81398&amp;page=function.setcookie&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd81398">
+    <a href="/manual/vote-note.php?id=81398&amp;page=function.setcookie&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V81398" title="52% like this...">
+    1
+    </div>
+  </div>
+  <a href="#81398" class="name">
+  <strong class="user"><em>isooik at gmail-antispam dot com</em></strong></a><a class="genanchor" href="#81398"> &para;</a><div class="date" title="2008-02-26 05:18"><strong>14 years ago</strong></div>
+  <div class="text" id="Hcom81398">
+<div class="phpcode"><code><span class="html">
+Here's a more advanced version of the php setcookie() alternative function:<br /><br /><span class="default">&lt;?php<br /><br />&nbsp; &nbsp; </span><span class="comment">/**<br />&nbsp; &nbsp;&nbsp; * A better alternative (RFC 2109 compatible) to the php setcookie() function<br />&nbsp; &nbsp;&nbsp; *<br />&nbsp; &nbsp;&nbsp; * @param string Name of the cookie<br />&nbsp; &nbsp;&nbsp; * @param string Value of the cookie<br />&nbsp; &nbsp;&nbsp; * @param int Lifetime of the cookie<br />&nbsp; &nbsp;&nbsp; * @param string Path where the cookie can be used<br />&nbsp; &nbsp;&nbsp; * @param string Domain which can read the cookie<br />&nbsp; &nbsp;&nbsp; * @param bool Secure mode?<br />&nbsp; &nbsp;&nbsp; * @param bool Only allow HTTP usage?<br />&nbsp; &nbsp;&nbsp; * @return bool True or false whether the method has successfully run<br />&nbsp; &nbsp;&nbsp; */<br />&nbsp; &nbsp; </span><span class="keyword">function </span><span class="default">createCookie</span><span class="keyword">(</span><span class="default">$name</span><span class="keyword">, </span><span class="default">$value</span><span class="keyword">=</span><span class="string">''</span><span class="keyword">, </span><span class="default">$maxage</span><span class="keyword">=</span><span class="default">0</span><span class="keyword">, </span><span class="default">$path</span><span class="keyword">=</span><span class="string">''</span><span class="keyword">, </span><span class="default">$domain</span><span class="keyword">=</span><span class="string">''</span><span class="keyword">, </span><span class="default">$secure</span><span class="keyword">=</span><span class="default">false</span><span class="keyword">, </span><span class="default">$HTTPOnly</span><span class="keyword">=</span><span class="default">false</span><span class="keyword">)<br />&nbsp; &nbsp; {<br />&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="default">$ob </span><span class="keyword">= </span><span class="default">ini_get</span><span class="keyword">(</span><span class="string">'output_buffering'</span><span class="keyword">);<br /><br />&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="comment">// Abort the method if headers have already been sent, except when output buffering has been enabled<br />&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="keyword">if ( </span><span class="default">headers_sent</span><span class="keyword">() &amp;&amp; (bool) </span><span class="default">$ob </span><span class="keyword">=== </span><span class="default">false </span><span class="keyword">|| </span><span class="default">strtolower</span><span class="keyword">(</span><span class="default">$ob</span><span class="keyword">) == </span><span class="string">'off' </span><span class="keyword">)<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return </span><span class="default">false</span><span class="keyword">;<br /><br />&nbsp; &nbsp; &nbsp; &nbsp; if ( !empty(</span><span class="default">$domain</span><span class="keyword">) )<br />&nbsp; &nbsp; &nbsp; &nbsp; {<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="comment">// Fix the domain to accept domains with and without 'www.'.<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="keyword">if ( </span><span class="default">strtolower</span><span class="keyword">( </span><span class="default">substr</span><span class="keyword">(</span><span class="default">$domain</span><span class="keyword">, </span><span class="default">0</span><span class="keyword">, </span><span class="default">4</span><span class="keyword">) ) == </span><span class="string">'www.' </span><span class="keyword">) </span><span class="default">$domain </span><span class="keyword">= </span><span class="default">substr</span><span class="keyword">(</span><span class="default">$domain</span><span class="keyword">, </span><span class="default">4</span><span class="keyword">);<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="comment">// Add the dot prefix to ensure compatibility with subdomains<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="keyword">if ( </span><span class="default">substr</span><span class="keyword">(</span><span class="default">$domain</span><span class="keyword">, </span><span class="default">0</span><span class="keyword">, </span><span class="default">1</span><span class="keyword">) != </span><span class="string">'.' </span><span class="keyword">) </span><span class="default">$domain </span><span class="keyword">= </span><span class="string">'.'</span><span class="keyword">.</span><span class="default">$domain</span><span class="keyword">;<br /><br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="comment">// Remove port information.<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="default">$port </span><span class="keyword">= </span><span class="default">strpos</span><span class="keyword">(</span><span class="default">$domain</span><span class="keyword">, </span><span class="string">':'</span><span class="keyword">);<br /><br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; if ( </span><span class="default">$port </span><span class="keyword">!== </span><span class="default">false </span><span class="keyword">) </span><span class="default">$domain </span><span class="keyword">= </span><span class="default">substr</span><span class="keyword">(</span><span class="default">$domain</span><span class="keyword">, </span><span class="default">0</span><span class="keyword">, </span><span class="default">$port</span><span class="keyword">);<br />&nbsp; &nbsp; &nbsp; &nbsp; }<br /><br />&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="comment">// Prevent "headers already sent" error with utf8 support (BOM)<br />&nbsp; &nbsp; &nbsp; &nbsp; //if ( utf8_support ) header('Content-Type: text/html; charset=utf-8');<br /><br />&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="default">header</span><span class="keyword">(</span><span class="string">'Set-Cookie: '</span><span class="keyword">.</span><span class="default">rawurlencode</span><span class="keyword">(</span><span class="default">$name</span><span class="keyword">).</span><span class="string">'='</span><span class="keyword">.</span><span class="default">rawurlencode</span><span class="keyword">(</span><span class="default">$value</span><span class="keyword">)<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; .(empty(</span><span class="default">$domain</span><span class="keyword">) ? </span><span class="string">'' </span><span class="keyword">: </span><span class="string">'; Domain='</span><span class="keyword">.</span><span class="default">$domain</span><span class="keyword">)<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; .(empty(</span><span class="default">$maxage</span><span class="keyword">) ? </span><span class="string">'' </span><span class="keyword">: </span><span class="string">'; Max-Age='</span><span class="keyword">.</span><span class="default">$maxage</span><span class="keyword">)<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; .(empty(</span><span class="default">$path</span><span class="keyword">) ? </span><span class="string">'' </span><span class="keyword">: </span><span class="string">'; Path='</span><span class="keyword">.</span><span class="default">$path</span><span class="keyword">)<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; .(!</span><span class="default">$secure </span><span class="keyword">? </span><span class="string">'' </span><span class="keyword">: </span><span class="string">'; Secure'</span><span class="keyword">)<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; .(!</span><span class="default">$HTTPOnly </span><span class="keyword">? </span><span class="string">'' </span><span class="keyword">: </span><span class="string">'; HttpOnly'</span><span class="keyword">), </span><span class="default">false</span><span class="keyword">);<br />&nbsp; &nbsp; &nbsp; &nbsp; return </span><span class="default">true</span><span class="keyword">;<br />&nbsp; &nbsp; }<br /><br /></span><span class="default">?&gt;<br /></span><br />Regards,<br />Isaak</span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="125413">  <div class="votes">
+    <div id="Vu125413">
+    <a href="/manual/vote-note.php?id=125413&amp;page=function.setcookie&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd125413">
+    <a href="/manual/vote-note.php?id=125413&amp;page=function.setcookie&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V125413" title="50% like this...">
+    0
+    </div>
+  </div>
+  <a href="#125413" class="name">
+  <strong class="user"><em>Anonymous</em></strong></a><a class="genanchor" href="#125413"> &para;</a><div class="date" title="2020-10-04 07:36"><strong>1 year ago</strong></div>
+  <div class="text" id="Hcom125413">
+<div class="phpcode"><code><span class="html">
+Chrome versions prior to version 67 reject samesite=none cookies. And starting in Chrome version 84 samesite=none cookies without the secure attribute are also rejected. But that doesn't mean you can't set cookies on an unencrypted connection. The simple way around it is to use browser sniffing to detect samesite=none compatible browsers:<br /><br />$cookie_string = 'set-cookie: name=value';<br /><br />if (!preg_match('/Chrom[^ \/]+\/([0-9]+)[\.0-9]* /', $_SERVER['HTTP_USER_AGENT'], $matches) || $matches[1]&gt;66 &amp;&amp; $matches[1]&lt;84) {// match samesite=none compatible browsers<br />&nbsp; &nbsp; $cookie_string.= '; samesite=none';<br />}<br /><br />header($cookie_string, false);// set cookie</span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="103629">  <div class="votes">
+    <div id="Vu103629">
+    <a href="/manual/vote-note.php?id=103629&amp;page=function.setcookie&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd103629">
+    <a href="/manual/vote-note.php?id=103629&amp;page=function.setcookie&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V103629" title="50% like this...">
+    0
+    </div>
+  </div>
+  <a href="#103629" class="name">
+  <strong class="user"><em>bocian941 at pawno dot pl</em></strong></a><a class="genanchor" href="#103629"> &para;</a><div class="date" title="2011-04-24 12:51"><strong>10 years ago</strong></div>
+  <div class="text" id="Hcom103629">
+<div class="phpcode"><code><span class="html">
+My 2 functions to use "live cookies":<br /><br /><span class="default">&lt;?php<br />&nbsp; &nbsp; </span><span class="keyword">function </span><span class="default">SetCookieLive</span><span class="keyword">(</span><span class="default">$name</span><span class="keyword">, </span><span class="default">$value</span><span class="keyword">=</span><span class="string">''</span><span class="keyword">, </span><span class="default">$expire </span><span class="keyword">= </span><span class="default">0</span><span class="keyword">, </span><span class="default">$path </span><span class="keyword">= </span><span class="string">''</span><span class="keyword">, </span><span class="default">$domain</span><span class="keyword">=</span><span class="string">''</span><span class="keyword">, </span><span class="default">$secure</span><span class="keyword">=</span><span class="default">false</span><span class="keyword">, </span><span class="default">$httponly</span><span class="keyword">=</span><span class="default">false</span><span class="keyword">)<br />&nbsp; &nbsp; {<br />&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="default">$_COOKIE</span><span class="keyword">[</span><span class="default">$name</span><span class="keyword">] = </span><span class="default">$value</span><span class="keyword">;<br />&nbsp; &nbsp; &nbsp; &nbsp; return </span><span class="default">setcookie</span><span class="keyword">(</span><span class="default">$name</span><span class="keyword">, </span><span class="default">$value</span><span class="keyword">, </span><span class="default">$expire</span><span class="keyword">, </span><span class="default">$path</span><span class="keyword">, </span><span class="default">$domain</span><span class="keyword">, </span><span class="default">$secure</span><span class="keyword">, </span><span class="default">$httponly</span><span class="keyword">);<br />&nbsp; &nbsp; }<br /><br />&nbsp; &nbsp; function </span><span class="default">RemoveCookieLive</span><span class="keyword">(</span><span class="default">$name</span><span class="keyword">)<br />&nbsp; &nbsp; {<br />&nbsp; &nbsp; &nbsp; &nbsp; unset(</span><span class="default">$_COOKIE</span><span class="keyword">[</span><span class="default">$name</span><span class="keyword">]);<br />&nbsp; &nbsp; &nbsp; &nbsp; return </span><span class="default">setcookie</span><span class="keyword">(</span><span class="default">$name</span><span class="keyword">, </span><span class="default">NULL</span><span class="keyword">, -</span><span class="default">1</span><span class="keyword">);<br />&nbsp; &nbsp; }<br /></span><span class="default">?&gt;</span>
+</span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="36202">  <div class="votes">
+    <div id="Vu36202">
+    <a href="/manual/vote-note.php?id=36202&amp;page=function.setcookie&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd36202">
+    <a href="/manual/vote-note.php?id=36202&amp;page=function.setcookie&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V36202" title="50% like this...">
+    0
+    </div>
+  </div>
+  <a href="#36202" class="name">
+  <strong class="user"><em>J?rg Aldinger</em></strong></a><a class="genanchor" href="#36202"> &para;</a><div class="date" title="2003-09-30 04:13"><strong>18 years ago</strong></div>
+  <div class="text" id="Hcom36202">
+<div class="phpcode"><code><span class="html">
+When using your cookies on a webserver that is not on the standard port 80, you should NOT include the :[port] in the "Cookie domain" parameter, since this would not be recognized correctly.<br />I had the issue working on a project that runs on multiple servers (development, production, etc.). One of the servers is running on a different port (together with other websites that run on the same server but on different ports).</span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="100094">  <div class="votes">
+    <div id="Vu100094">
+    <a href="/manual/vote-note.php?id=100094&amp;page=function.setcookie&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd100094">
+    <a href="/manual/vote-note.php?id=100094&amp;page=function.setcookie&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V100094" title="48% like this...">
+    -1
+    </div>
+  </div>
+  <a href="#100094" class="name">
+  <strong class="user"><em>RC</em></strong></a><a class="genanchor" href="#100094"> &para;</a><div class="date" title="2010-09-24 07:50"><strong>11 years ago</strong></div>
+  <div class="text" id="Hcom100094">
+<div class="phpcode"><code><span class="html">
+For those of your banging your head as to why a cookie is not present when Internet Explorer 6 prints, the explanation is quite interesting. After a bit of investigation, a cookie with an expiration time other than 0 fails to be passed from IE6 to the server when printing. A cookie with an expiration time of 0 is sent.<br /><br />Therefore:<br /><br />setcookie("TestCookie", $value, time()+3600); //will not be sent from Print / Print Preview in IE6<br /><br />setcookie("TestCookie", $value, 0); //will be sent from Print / Print Preview in IE6<br /><br />I'll let everyone figure out who's bright idea it was to not send normal expiring cookies when printing in IE6...</span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="74126">  <div class="votes">
+    <div id="Vu74126">
+    <a href="/manual/vote-note.php?id=74126&amp;page=function.setcookie&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd74126">
+    <a href="/manual/vote-note.php?id=74126&amp;page=function.setcookie&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V74126" title="47% like this...">
+    -1
+    </div>
+  </div>
+  <a href="#74126" class="name">
+  <strong class="user"><em>mike</em></strong></a><a class="genanchor" href="#74126"> &para;</a><div class="date" title="2007-03-26 08:00"><strong>14 years ago</strong></div>
+  <div class="text" id="Hcom74126">
+<div class="phpcode"><code><span class="html">
+Be careful of using the same cookie name in subdirectories. Setting a simple cookie <br /><br /><span class="default">&lt;?php setcookie</span><span class="keyword">(</span><span class="string">"region"</span><span class="keyword">, </span><span class="default">$_GET</span><span class="keyword">[</span><span class="string">'set_region'</span><span class="keyword">]); </span><span class="default">?&gt;<br /></span><br />both in the root / and for instance in this case /admin/ will create 2 cookies with different paths. In reading the cookies back only the first one is read regardless of path.</span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="74046">  <div class="votes">
+    <div id="Vu74046">
+    <a href="/manual/vote-note.php?id=74046&amp;page=function.setcookie&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd74046">
+    <a href="/manual/vote-note.php?id=74046&amp;page=function.setcookie&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V74046" title="45% like this...">
+    -2
+    </div>
+  </div>
+  <a href="#74046" class="name"><strong class="user"><em>Anonymous</em></strong></a><a class="genanchor" href="#74046"> &para;</a><div class="date" title="2007-03-21 02:40"><strong>14 years ago</strong></div>
+  <div class="text" id="Hcom74046">
+<div class="phpcode"><code><span class="html">
+if you only want to do something once per unique visitor, you can test if a cookie is set, and if not, set the cookie and perform the action. This being the poorman's version, it has a problem, where if a user is blocking cookies they will appear as a first time visitor each time. What you can do to avoid this is to set a test cookie first and check that it exists. If it exists, then check to see if your second cookie has been set. If the first one is set, but the second isn't, then you know this is a first time visitor.</span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="124276">  <div class="votes">
+    <div id="Vu124276">
+    <a href="/manual/vote-note.php?id=124276&amp;page=function.setcookie&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd124276">
+    <a href="/manual/vote-note.php?id=124276&amp;page=function.setcookie&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V124276" title="42% like this...">
+    -1
+    </div>
+  </div>
+  <a href="#124276" class="name">
+  <strong class="user"><em>niall at maranelda dot org</em></strong></a><a class="genanchor" href="#124276"> &para;</a><div class="date" title="2019-10-09 09:28"><strong>2 years ago</strong></div>
+  <div class="text" id="Hcom124276">
+<div class="phpcode"><code><span class="html">
+Be warned! PHP will mangle the names of incoming cookies far more than others have detailed below!<br /><br />Theoretically, the following non-alphanumeric characters are allowed in a cookie name:<br /><br />!#$%&amp;'()*+-./:&lt;&gt;?@[]^_`{|}~<br /><br />However, if you do this:<br /><br /><span class="default">&lt;?php<br />&nbsp; &nbsp; setcookie</span><span class="keyword">(</span><span class="string">'!#$%&amp;\'()*+-./:&lt;&gt;?@[]^_`{|}~'</span><span class="keyword">, </span><span class="default">123</span><span class="keyword">);<br />&nbsp; &nbsp; </span><span class="default">setcookie</span><span class="keyword">(</span><span class="string">'!#$%&amp;\'()*+-./:&lt;&gt;?@[^_`{|}~'</span><span class="keyword">, </span><span class="default">466</span><span class="keyword">);<br />&nbsp; &nbsp; </span><span class="default">setcookie</span><span class="keyword">(</span><span class="string">'!#$%&amp;\'()*+-./:&lt;&gt;?@]^_`{|}~'</span><span class="keyword">, </span><span class="default">789</span><span class="keyword">);<br />&nbsp; &nbsp; </span><span class="default">setcookie</span><span class="keyword">(</span><span class="string">'!#$%&amp;\'()*+-./:&lt;&gt;?@^_`{|}~'</span><span class="keyword">, </span><span class="string">'abc'</span><span class="keyword">);<br /></span><span class="default">?&gt;<br /></span><br />then this:<br /><br /><span class="default">&lt;?php<br />&nbsp; &nbsp; print_r</span><span class="keyword">(</span><span class="default">$_COOKIE</span><span class="keyword">);<br /></span><span class="default">?&gt;<br /></span><br />you get this back:<br /><br /><span class="default">&lt;?php<br /></span><span class="keyword">Array<br />(<br />&nbsp; &nbsp; [!</span><span class="comment">#$%&amp;'()*_-_/:&lt;&gt;?@] =&gt; Array<br />&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="keyword">(<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [</span><span class="default">0</span><span class="keyword">] =&gt; </span><span class="default">123<br />&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="keyword">)<br /><br />&nbsp; &nbsp; [!</span><span class="comment">#$%&amp;'()*_-_/:&lt;&gt;?@_^_`{|}~] =&gt; 456<br />&nbsp; &nbsp; </span><span class="keyword">[!</span><span class="comment">#$%&amp;'()*_-_/:&lt;&gt;?@]^_`{|}~] =&gt; 789<br />&nbsp; &nbsp; </span><span class="keyword">[!</span><span class="comment">#$%&amp;'()*_-_/:&lt;&gt;?@^_`{|}~] =&gt; abc<br /></span><span class="keyword">)<br /></span><span class="default">?&gt;<br /></span><br />The rules would appear to be as follows:<br /><br />- Convert all periods to underscores (as detailed below).<br />- Convert all plus signs to underscores.<br />- Convert all unmatched open square brackets to underscores.<br />- Square bracket pairs mean the value is an array; ignore everything after the closing square bracket.<br /><br />Note that these rules are only applied by PHP when generating the $_COOKIE array; the cookie name part in the headers sent by your browser and as received by PHP are exactly as you specified above;<br /><br /><span class="default">&lt;?php<br />&nbsp; &nbsp; </span><span class="keyword">echo </span><span class="default">$_SERVER</span><span class="keyword">[</span><span class="string">'HTTP_COOKIE'</span><span class="keyword">];<br /></span><span class="default">?&gt;<br /></span><br />gives<br /><br /><span class="default">&lt;?php<br />&nbsp; &nbsp; </span><span class="keyword">!</span><span class="comment">#$%&amp;'()*+-./:&lt;&gt;?@[]^_`{|}~=123; !#$%&amp;'()*+-./:&lt;&gt;?@[^_`{|}~=456; !#$%&amp;'()*+-./:&lt;&gt;?@]^_`{|}~=789; !#$%&amp;'()*+-./:&lt;&gt;?@^_`{|}~=abc<br /></span><span class="default">?&gt;<br /></span><br />It would be nice if the official notes mentioned this conversion.</span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="126348">  <div class="votes">
+    <div id="Vu126348">
+    <a href="/manual/vote-note.php?id=126348&amp;page=function.setcookie&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd126348">
+    <a href="/manual/vote-note.php?id=126348&amp;page=function.setcookie&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V126348" title="41% like this...">
+    -2
+    </div>
+  </div>
+  <a href="#126348" class="name">
+  <strong class="user"><em>j () fy7 !eu</em></strong></a><a class="genanchor" href="#126348"> &para;</a><div class="date" title="2021-08-18 10:16"><strong>6 months ago</strong></div>
+  <div class="text" id="Hcom126348">
+<div class="phpcode"><code><span class="html">
+In versions below 7.4 to add "samesite" param to cookie, you can add it on $path value.<br /><span class="default">&lt;?php<br />setcookie</span><span class="keyword">(</span><span class="string">'foo'</span><span class="keyword">,</span><span class="string">'1'</span><span class="keyword">,(</span><span class="default">time</span><span class="keyword">() + </span><span class="default">86400</span><span class="keyword">), </span><span class="string">'/; samesite=lax'</span><span class="keyword">, </span><span class="string">'www.example.com'</span><span class="keyword">,</span><span class="default">false</span><span class="keyword">,</span><span class="default">false</span><span class="keyword">);<br /></span><span class="default">?&gt;</span>
+</span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="68666">  <div class="votes">
+    <div id="Vu68666">
+    <a href="/manual/vote-note.php?id=68666&amp;page=function.setcookie&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd68666">
+    <a href="/manual/vote-note.php?id=68666&amp;page=function.setcookie&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V68666" title="42% like this...">
+    -3
+    </div>
+  </div>
+  <a href="#68666" class="name">
+  <strong class="user"><em>adruff at gmail dot com</em></strong></a><a class="genanchor" href="#68666"> &para;</a><div class="date" title="2006-08-05 10:14"><strong>15 years ago</strong></div>
+  <div class="text" id="Hcom68666">
+<div class="phpcode"><code><span class="html">
+If you intend to use persistent cookies (vice session cookies that are deleted when the browser is closed) be aware:<br />1) Firefox appears to require that you include all paramaters, or it will ignore the expiration and treat the cookie as a session cookie<br />2) My version of firefox (1.5.0.6) defaults to 'keep cookies until i close firefox' , which essentially makes every cookie a session cookie. This of course sucks for devs, but i suppose is supposed to be a security feature for the end user. If the user wants to configure firefox to respect the expiration date and retain cookies beyond the session, the user must change it to 'keep cookies until they expire'.</span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="121659">  <div class="votes">
+    <div id="Vu121659">
+    <a href="/manual/vote-note.php?id=121659&amp;page=function.setcookie&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd121659">
+    <a href="/manual/vote-note.php?id=121659&amp;page=function.setcookie&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V121659" title="33% like this...">
+    -4
+    </div>
+  </div>
+  <a href="#121659" class="name">
+  <strong class="user"><em>stuff at joneva dot de</em></strong></a><a class="genanchor" href="#121659"> &para;</a><div class="date" title="2017-09-20 09:58"><strong>4 years ago</strong></div>
+  <div class="text" id="Hcom121659">
+<div class="phpcode"><code><span class="html">
+How to store a cookie in php with JSON and read it in JavaScript correctly without using setcookieraw<br /><br />$defaultActions = array(<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; '1' =&gt; '0',<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; '2' =&gt; '0',<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; '3' =&gt; '0',<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; '4' =&gt; '0',<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; '5' =&gt; '0',<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; '6' =&gt; '0',<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; '7' =&gt; '0',<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; '8' =&gt; '0',<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; '9' =&gt; '0',<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; '10' =&gt; '0'<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; );<br />$json_str = json_encode($defaultActions); <br /><br />//delete all cookies<br />if (isset($_SERVER['HTTP_COOKIE'])) {<br />&nbsp; &nbsp; $cookies = explode(';', $_SERVER['HTTP_COOKIE']);<br />&nbsp; &nbsp; foreach($cookies as $cookie) {<br />&nbsp; &nbsp; &nbsp; &nbsp; $parts = explode('=', $cookie);<br />&nbsp; &nbsp; &nbsp; &nbsp; $name = trim($parts[0]);<br />&nbsp; &nbsp; &nbsp; &nbsp; setcookie($name, '', time()-1000);<br />&nbsp; &nbsp; &nbsp; &nbsp; setcookie($name, '', time()-1000, '/');<br />&nbsp; &nbsp; }<br />} <br />//setrawcookie("test", $json_str, false,"/",false); <br /><br />setcookie("test", $json_str, false,"/",false);<br /><br />?&gt;<br /><br />&lt;script type="text/javascript"&gt;<br />&nbsp; &nbsp; <br />&nbsp; &nbsp; function getCookie(name) {<br />&nbsp; &nbsp; &nbsp; &nbsp; var value = "; " + document.cookie;<br />&nbsp; &nbsp; &nbsp; &nbsp; var parts = value.split("; " + name + "=");<br />&nbsp; &nbsp; &nbsp; &nbsp; if (parts.length == 2)<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return parts.pop().split(";").shift();<br />&nbsp; &nbsp; } <br />&nbsp; &nbsp; <br />&nbsp; &nbsp; console.log(decodeURIComponent(getCookie('test')));<br />&nbsp; &nbsp; <br />&lt;/script&gt;</span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="37732">  <div class="votes">
+    <div id="Vu37732">
+    <a href="/manual/vote-note.php?id=37732&amp;page=function.setcookie&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd37732">
+    <a href="/manual/vote-note.php?id=37732&amp;page=function.setcookie&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V37732" title="33% like this...">
+    -8
+    </div>
+  </div>
+  <a href="#37732" class="name">
+  <strong class="user"><em>apex at xepa dot nl</em></strong></a><a class="genanchor" href="#37732"> &para;</a><div class="date" title="2003-11-24 06:59"><strong>18 years ago</strong></div>
+  <div class="text" id="Hcom37732">
+<div class="phpcode"><code><span class="html">
+Note on setting cookies allowing access to sites:<br /><br />If you are not using something "personal" from the computer that you are sending the cookie too watch out.&nbsp; Via javascript it is possible to steal cookies from other users.&nbsp; Thus allowing the stealer to login to your site as another user that might not have access otherwise.&nbsp; Try to add something like the user's ip in the cookie and allowing access from that ip only with the stored cookie data.<br /><br />[Editor's note: ... or simply use sessions. You can't be sure that the visitor will use the same IP the next visit. Not even on the next request (thanks to proxy servers)]</span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="120616">  <div class="votes">
+    <div id="Vu120616">
+    <a href="/manual/vote-note.php?id=120616&amp;page=function.setcookie&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd120616">
+    <a href="/manual/vote-note.php?id=120616&amp;page=function.setcookie&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V120616" title="25% like this...">
+    -6
+    </div>
+  </div>
+  <a href="#120616" class="name">
+  <strong class="user"><em>dont at mail dot me</em></strong></a><a class="genanchor" href="#120616"> &para;</a><div class="date" title="2017-02-08 10:45"><strong>5 years ago</strong></div>
+  <div class="text" id="Hcom120616">
+<div class="phpcode"><code><span class="html">
+&gt; "When deleting a cookie you should assure that the expiration date is in the past, to trigger the removal mechanism in your browser"<br /><br />This part of the documentation is no longer accurate. On my version of PHP (5.6.28) setting a null, empty string or boolean false value causes the server to ignore your expire date parameter and always sends value "deleted" and expire date 1970-01-01 00:00:01.</span>
+</code></div>
+  </div>
+ </div>
+  <div class="note" id="124625">  <div class="votes">
+    <div id="Vu124625">
+    <a href="/manual/vote-note.php?id=124625&amp;page=function.setcookie&amp;vote=up" title="Vote up!" class="usernotes-voteu">up</a>
+    </div>
+    <div id="Vd124625">
+    <a href="/manual/vote-note.php?id=124625&amp;page=function.setcookie&amp;vote=down" title="Vote down!" class="usernotes-voted">down</a>
+    </div>
+    <div class="tally" id="V124625" title="24% like this...">
+    -17
+    </div>
+  </div>
+  <a href="#124625" class="name">
+  <strong class="user"><em>fapchat at gmail dot com</em></strong></a><a class="genanchor" href="#124625"> &para;</a><div class="date" title="2020-01-18 11:15"><strong>2 years ago</strong></div>
+  <div class="text" id="Hcom124625">
+<div class="phpcode"><code><span class="html">
+Instead of this:<br /><span class="default">&lt;?php setcookie</span><span class="keyword">( </span><span class="string">"TestCookie"</span><span class="keyword">, </span><span class="default">$value</span><span class="keyword">, </span><span class="default">strtotime</span><span class="keyword">( </span><span class="string">'+30 days' </span><span class="keyword">) ); </span><span class="default">?&gt;<br /></span><br />You can this:<br /><span class="default">&lt;?php setcookie</span><span class="keyword">( </span><span class="string">"TestCookie"</span><span class="keyword">); </span><span class="default">?&gt;</span>
+</span>
+</code></div>
+  </div>
+ </div></div>
+
+ <div class="foot"><a href="/manual/add-note.php?sect=function.setcookie&amp;redirect=https://www.php.net/manual/en/function.setcookie.php"><img src='/images/notes-add@2x.png' alt='add a note' width='12' height='12'> <small>add a note</small></a></div>
+</section>    </section><!-- layout-content -->
+        <aside class='layout-menu'>
+
+        <ul class='parent-menu-list'>
+                                    <li>
+                <a href="ref.network.php">Network Functions</a>
+
+                                    <ul class='child-menu-list'>
+
+                                                <li class="">
+                            <a href="function.checkdnsrr.php" title="checkdnsrr">checkdnsrr</a>
+                        </li>
+                                                <li class="">
+                            <a href="function.closelog.php" title="closelog">closelog</a>
+                        </li>
+                                                <li class="">
+                            <a href="function.dns-check-record.php" title="dns_&#8203;check_&#8203;record">dns_&#8203;check_&#8203;record</a>
+                        </li>
+                                                <li class="">
+                            <a href="function.dns-get-mx.php" title="dns_&#8203;get_&#8203;mx">dns_&#8203;get_&#8203;mx</a>
+                        </li>
+                                                <li class="">
+                            <a href="function.dns-get-record.php" title="dns_&#8203;get_&#8203;record">dns_&#8203;get_&#8203;record</a>
+                        </li>
+                                                <li class="">
+                            <a href="function.fsockopen.php" title="fsockopen">fsockopen</a>
+                        </li>
+                                                <li class="">
+                            <a href="function.gethostbyaddr.php" title="gethostbyaddr">gethostbyaddr</a>
+                        </li>
+                                                <li class="">
+                            <a href="function.gethostbyname.php" title="gethostbyname">gethostbyname</a>
+                        </li>
+                                                <li class="">
+                            <a href="function.gethostbynamel.php" title="gethostbynamel">gethostbynamel</a>
+                        </li>
+                                                <li class="">
+                            <a href="function.gethostname.php" title="gethostname">gethostname</a>
+                        </li>
+                                                <li class="">
+                            <a href="function.getmxrr.php" title="getmxrr">getmxrr</a>
+                        </li>
+                                                <li class="">
+                            <a href="function.getprotobyname.php" title="getprotobyname">getprotobyname</a>
+                        </li>
+                                                <li class="">
+                            <a href="function.getprotobynumber.php" title="getprotobynumber">getprotobynumber</a>
+                        </li>
+                                                <li class="">
+                            <a href="function.getservbyname.php" title="getservbyname">getservbyname</a>
+                        </li>
+                                                <li class="">
+                            <a href="function.getservbyport.php" title="getservbyport">getservbyport</a>
+                        </li>
+                                                <li class="">
+                            <a href="function.header-register-callback.php" title="header_&#8203;register_&#8203;callback">header_&#8203;register_&#8203;callback</a>
+                        </li>
+                                                <li class="">
+                            <a href="function.header-remove.php" title="header_&#8203;remove">header_&#8203;remove</a>
+                        </li>
+                                                <li class="">
+                            <a href="function.header.php" title="header">header</a>
+                        </li>
+                                                <li class="">
+                            <a href="function.headers-list.php" title="headers_&#8203;list">headers_&#8203;list</a>
+                        </li>
+                                                <li class="">
+                            <a href="function.headers-sent.php" title="headers_&#8203;sent">headers_&#8203;sent</a>
+                        </li>
+                                                <li class="">
+                            <a href="function.http-response-code.php" title="http_&#8203;response_&#8203;code">http_&#8203;response_&#8203;code</a>
+                        </li>
+                                                <li class="">
+                            <a href="function.inet-ntop.php" title="inet_&#8203;ntop">inet_&#8203;ntop</a>
+                        </li>
+                                                <li class="">
+                            <a href="function.inet-pton.php" title="inet_&#8203;pton">inet_&#8203;pton</a>
+                        </li>
+                                                <li class="">
+                            <a href="function.ip2long.php" title="ip2long">ip2long</a>
+                        </li>
+                                                <li class="">
+                            <a href="function.long2ip.php" title="long2ip">long2ip</a>
+                        </li>
+                                                <li class="">
+                            <a href="function.net-get-interfaces.php" title="net_&#8203;get_&#8203;interfaces">net_&#8203;get_&#8203;interfaces</a>
+                        </li>
+                                                <li class="">
+                            <a href="function.openlog.php" title="openlog">openlog</a>
+                        </li>
+                                                <li class="">
+                            <a href="function.pfsockopen.php" title="pfsockopen">pfsockopen</a>
+                        </li>
+                                                <li class="current">
+                            <a href="function.setcookie.php" title="setcookie">setcookie</a>
+                        </li>
+                                                <li class="">
+                            <a href="function.setrawcookie.php" title="setrawcookie">setrawcookie</a>
+                        </li>
+                                                <li class="">
+                            <a href="function.socket-get-status.php" title="socket_&#8203;get_&#8203;status">socket_&#8203;get_&#8203;status</a>
+                        </li>
+                                                <li class="">
+                            <a href="function.socket-set-blocking.php" title="socket_&#8203;set_&#8203;blocking">socket_&#8203;set_&#8203;blocking</a>
+                        </li>
+                                                <li class="">
+                            <a href="function.socket-set-timeout.php" title="socket_&#8203;set_&#8203;timeout">socket_&#8203;set_&#8203;timeout</a>
+                        </li>
+                                                <li class="">
+                            <a href="function.syslog.php" title="syslog">syslog</a>
+                        </li>
+                        
+                    </ul>
+                
+            </li>
+                        
+                    </ul>
+    </aside>
+
+
+  </div><!-- layout -->
+
+  <footer>
+    <div class="container footer-content">
+      <div class="row-fluid">
+      <ul class="footmenu">
+        <li><a href="/copyright.php">Copyright &copy; 2001-2022 The PHP Group</a></li>
+        <li><a href="/my.php">My PHP.net</a></li>
+        <li><a href="/contact.php">Contact</a></li>
+        <li><a href="/sites.php">Other PHP.net sites</a></li>
+        <li><a href="/privacy.php">Privacy policy</a></li>
+        <li><a href="https://github.com/php/web-php/blob/master/manual%2Fen%2Ffunction.setcookie.php">View Source</a></li>
+      </ul>
+      </div>
+    </div>
+  </footer>
+
+    
+ <!-- External and third party libraries. -->
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" integrity="sha384-aBL3Lzi6c9LNDGvpHkZrrm3ZVsIwohDD7CDozL0pk8FwCrfmV7H9w8j3L7ikEv6h" crossorigin="anonymous"></script>
+<script src="/cached.php?t=1421837618&amp;f=/js/ext/modernizr.js"></script>
+<script src="/cached.php?t=1421837618&amp;f=/js/ext/hogan-2.0.0.min.js"></script>
+<script src="/cached.php?t=1421837618&amp;f=/js/ext/typeahead.min.js"></script>
+<script src="/cached.php?t=1421837618&amp;f=/js/ext/mousetrap.min.js"></script>
+<script src="/cached.php?t=1421837618&amp;f=/js/search.js"></script>
+<script src="/cached.php?t=1637324403&amp;f=/js/common.js"></script>
+
+<a id="toTop" href="javascript:;"><span id="toTopHover"></span><img width="40" height="40" alt="To Top" src="/images/to-top@2x.png"></a>
+
+</body>
+</html>

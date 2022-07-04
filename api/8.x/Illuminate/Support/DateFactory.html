@@ -1,0 +1,4307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="index, follow, all" />
+    <title>Illuminate\Support\DateFactory | Laravel API</title>
+
+            <link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="../../css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="../../css/doctum.css">
+        <link rel="stylesheet" type="text/css" href="../../fonts/doctum-font.css">
+        <script src="../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../doctum.js"></script>
+        <script async defer src="../../js/bootstrap.min.js"></script>
+        <script async defer src="../../js/autocomplete.min.js"></script>
+        <meta name="MobileOptimized" content="width">
+        <meta name="HandheldFriendly" content="true">
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+
+        <link rel="search"
+          type="application/opensearchdescription+xml"
+          href="https://laravel.com/api/5.5/opensearch.xml"
+          title="Laravel API (5.5)" />
+    <link rel="search"
+          type="application/opensearchdescription+xml"
+          href="https://laravel.com/api/5.8/opensearch.xml"
+          title="Laravel API (5.8)" />
+    <link rel="search"
+          type="application/opensearchdescription+xml"
+          href="https://laravel.com/api/6.x/opensearch.xml"
+          title="Laravel API (6.x)" />
+    <link rel="search"
+          type="application/opensearchdescription+xml"
+          href="https://laravel.com/api/7.x/opensearch.xml"
+          title="Laravel API (7.x)" />
+    <link rel="search"
+          type="application/opensearchdescription+xml"
+          href="https://laravel.com/api/8.x/opensearch.xml"
+          title="Laravel API (8.x)" />
+    <link rel="search"
+          type="application/opensearchdescription+xml"
+          href="https://laravel.com/api/9.x/opensearch.xml"
+          title="Laravel API (9.x)" />
+    <link rel="search"
+          type="application/opensearchdescription+xml"
+          href="https://laravel.com/api/master/opensearch.xml"
+          title="Laravel API (master)" />
+    </head>
+
+    <body id="class" data-name="class:Illuminate_Support_DateFactory" data-root-path="../../" data-search-index-url="../../doctum-search.json">
+            <div id="content">
+        <div id="left-column">
+                <div id="control-panel">
+                    <form action="#">
+                <select class="form-control" id="version-switcher" name="version">
+                                            <option
+                            value="../../../5.5/index.html"
+                            data-version="5.5" >Laravel 5.5</option>
+                                            <option
+                            value="../../../5.8/index.html"
+                            data-version="5.8" >Laravel 5.8</option>
+                                            <option
+                            value="../../../6.x/index.html"
+                            data-version="6.x" >Laravel 6.x</option>
+                                            <option
+                            value="../../../7.x/index.html"
+                            data-version="7.x" >Laravel 7.x</option>
+                                            <option
+                            value="../../../8.x/index.html"
+                            data-version="8.x" selected>Laravel 8.x</option>
+                                            <option
+                            value="../../../9.x/index.html"
+                            data-version="9.x" >Laravel 9.x</option>
+                                            <option
+                            value="../../../master/index.html"
+                            data-version="master" >Laravel Dev</option>
+                                    </select>
+            </form>
+                <div class="search-bar hidden" id="search-progress-bar-container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" id="search-progress-bar"
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+        </div>
+        <form id="search-form" action="../../search.html">
+            <span class="icon icon-search"></span>
+            <input name="search"
+                   id="doctum-search-auto-complete"
+                   class="typeahead form-control"
+                   type="search"
+                   placeholder="Search"
+                   spellcheck="false"
+                   autocorrect="off"
+                   autocomplete="off"
+                   autocapitalize="off">
+            <div class="auto-complete-results" id="auto-complete-results"></div>
+        </form>
+    </div>
+
+                <div id="api-tree"></div>
+
+        </div>
+        <div id="right-column">
+                <nav id="site-nav" class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-elements">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../../index.html">Laravel API</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-elements">
+                <ul class="nav navbar-nav">
+                                        <li role="presentation" class="dropdown visible-xs-block visible-sm-block">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#"
+                            role="button" aria-haspopup="true" aria-expanded="false">Versions&nbsp;<span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                        <li ><a href="../../../5.5/index.html" data-version="5.5">Laravel 5.5</a></li>
+                        <li ><a href="../../../5.8/index.html" data-version="5.8">Laravel 5.8</a></li>
+                        <li ><a href="../../../6.x/index.html" data-version="6.x">Laravel 6.x</a></li>
+                        <li ><a href="../../../7.x/index.html" data-version="7.x">Laravel 7.x</a></li>
+                        <li class="active"><a href="../../../8.x/index.html" data-version="8.x">Laravel 8.x</a></li>
+                        <li ><a href="../../../9.x/index.html" data-version="9.x">Laravel 9.x</a></li>
+                        <li ><a href="../../../master/index.html" data-version="master">Laravel Dev</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="../../classes.html">Classes</a></li>
+                    <li><a href="../../namespaces.html">Namespaces</a></li>
+                    <li><a href="../../interfaces.html">Interfaces</a></li>
+                    <li><a href="../../traits.html">Traits</a></li>
+                    <li><a href="../../doc-index.html">Index</a></li>
+                    <li><a href="../../search.html">Search</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+                        <div class="namespace-breadcrumbs">
+            <ol class="breadcrumb">
+                <li><span class="label label-default">class</span></li>
+                        <li><a href="../../Illuminate.html">Illuminate</a></li><li class="backslash">\</li><li><a href="../../Illuminate/Support.html">Support</a></li><li class="backslash">\</li><li>DateFactory</li>
+            </ol>
+        </div>
+                <div id="page-content">
+    <div class="page-header">
+        <h1>DateFactory    
+            </h1>
+    </div>
+
+    
+    <p>        class
+    <strong>DateFactory</strong>        (<a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Support/DateFactory.php">View source</a>)
+</p>
+
+        
+    
+        
+
+            
+        
+            <h2>Constants</h2>    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                                                                                                        DEFAULT_CLASS_NAME
+                                    </td>
+                <td class="last">
+                    <p><em><p>The default class that will be used for all created dates.</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+            </table>
+
+    
+            <h2>Properties</h2>
+
+            <table class="table table-condensed">
+                    <tr>
+                <td class="type" id="property_dateClass">
+                    static                    protected                                        string
+                                                                                
+                                    </td>
+                <td>$dateClass</td>
+                <td class="last"><p>The type (class) of dates that should be created.</p></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_callable">
+                    static                    protected                                        callable
+                                                                                
+                                    </td>
+                <td>$callable</td>
+                <td class="last"><p>This callable may be used to intercept date creation.</p></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_factory">
+                    static                    protected                                        object
+                                                                                
+                                    </td>
+                <td>$factory</td>
+                <td class="last"><p>The Carbon factory that should be used when creating dates.</p></td>
+                <td></td>
+            </tr>
+            </table>
+
+    
+            <h2>Methods</h2>
+
+            <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;mixed
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_use">use</a>(mixed $handler)
+        
+                                            <p><p>Use the given handler when generating dates (class name, callable, or factory).</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_useDefault">useDefault</a>()
+        
+                                            <p><p>Use the default date class when generating dates.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_useCallable">useCallable</a>(callable $callable)
+        
+                                            <p><p>Execute the given callable on each date creation.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_useClass">useClass</a>(string $dateClass)
+        
+                                            <p><p>Use the given date type (class) when generating dates.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_useFactory">useFactory</a>(object $factory)
+        
+                                            <p><p>Use the given Carbon factory when generating dates.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    mixed
+                </div>
+                <div class="col-md-8">
+                    <a href="#method___call">__call</a>(string $method, array $parameters)
+        
+                                            <p><p>Handle dynamic calls to generate dates.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;<a href="../../Illuminate/Support/Carbon.html"><abbr title="Illuminate\Support\Carbon">Carbon</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_create">create</a>(mixed $year, mixed $month, mixed $day, mixed $hour, mixed $minute, mixed $second, mixed $tz)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;<a href="../../Illuminate/Support/Carbon.html"><abbr title="Illuminate\Support\Carbon">Carbon</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_createFromDate">createFromDate</a>(mixed $year, mixed $month, mixed $day, mixed $tz)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;<abbr title="Illuminate\Support\Carbon|false">Carbon|false</abbr>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_createFromFormat">createFromFormat</a>(mixed $format, mixed $time, mixed $tz)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;<a href="../../Illuminate/Support/Carbon.html"><abbr title="Illuminate\Support\Carbon">Carbon</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_createFromTime">createFromTime</a>(mixed $hour, mixed $minute, mixed $second, mixed $tz)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;<a href="../../Illuminate/Support/Carbon.html"><abbr title="Illuminate\Support\Carbon">Carbon</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_createFromTimeString">createFromTimeString</a>(mixed $time, mixed $tz)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;<a href="../../Illuminate/Support/Carbon.html"><abbr title="Illuminate\Support\Carbon">Carbon</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_createFromTimestamp">createFromTimestamp</a>(mixed $timestamp, mixed $tz)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;<a href="../../Illuminate/Support/Carbon.html"><abbr title="Illuminate\Support\Carbon">Carbon</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_createFromTimestampMs">createFromTimestampMs</a>(mixed $timestamp, mixed $tz)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;<a href="../../Illuminate/Support/Carbon.html"><abbr title="Illuminate\Support\Carbon">Carbon</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_createFromTimestampUTC">createFromTimestampUTC</a>(mixed $timestamp)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;<a href="../../Illuminate/Support/Carbon.html"><abbr title="Illuminate\Support\Carbon">Carbon</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_createMidnightDate">createMidnightDate</a>(mixed $year, mixed $month, mixed $day, mixed $tz)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;<abbr title="Illuminate\Support\Carbon|false">Carbon|false</abbr>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_createSafe">createSafe</a>(mixed $year, mixed $month, mixed $day, mixed $hour, mixed $minute, mixed $second, mixed $tz)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;<a href="../../Illuminate/Support/Carbon.html"><abbr title="Illuminate\Support\Carbon">Carbon</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_disableHumanDiffOption">disableHumanDiffOption</a>(mixed $humanDiffOption)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;<a href="../../Illuminate/Support/Carbon.html"><abbr title="Illuminate\Support\Carbon">Carbon</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_enableHumanDiffOption">enableHumanDiffOption</a>(mixed $humanDiffOption)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;mixed
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_executeWithLocale">executeWithLocale</a>(mixed $locale, mixed $func)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;<a href="../../Illuminate/Support/Carbon.html"><abbr title="Illuminate\Support\Carbon">Carbon</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_fromSerialized">fromSerialized</a>(mixed $value)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getAvailableLocales">getAvailableLocales</a>()
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getDays">getDays</a>()
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;int
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getHumanDiffOptions">getHumanDiffOptions</a>()
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getIsoUnits">getIsoUnits</a>()
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;<a href="../../Illuminate/Support/Carbon.html"><abbr title="Illuminate\Support\Carbon">Carbon</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getLastErrors">getLastErrors</a>()
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;string
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getLocale">getLocale</a>()
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;int
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getMidDayAt">getMidDayAt</a>()
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;<a href="../../Illuminate/Support/Carbon.html"><abbr title="Illuminate\Support\Carbon">Carbon</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getTestNow">getTestNow</a>()
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;<abbr title="Symfony\Component\Translation\TranslatorInterface">TranslatorInterface</abbr>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getTranslator">getTranslator</a>()
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;int
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getWeekEndsAt">getWeekEndsAt</a>()
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;int
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getWeekStartsAt">getWeekStartsAt</a>()
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getWeekendDays">getWeekendDays</a>()
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_hasFormat">hasFormat</a>(mixed $date, mixed $format)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_hasMacro">hasMacro</a>(mixed $name)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_hasRelativeKeywords">hasRelativeKeywords</a>(mixed $time)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_hasTestNow">hasTestNow</a>()
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;<a href="../../Illuminate/Support/Carbon.html"><abbr title="Illuminate\Support\Carbon">Carbon</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_instance">instance</a>(mixed $date)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_isImmutable">isImmutable</a>()
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_isModifiableUnit">isModifiableUnit</a>(mixed $unit)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;<a href="../../Illuminate/Support/Carbon.html"><abbr title="Illuminate\Support\Carbon">Carbon</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_isMutable">isMutable</a>()
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_isStrictModeEnabled">isStrictModeEnabled</a>()
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_localeHasDiffOneDayWords">localeHasDiffOneDayWords</a>(mixed $locale)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_localeHasDiffSyntax">localeHasDiffSyntax</a>(mixed $locale)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_localeHasDiffTwoDayWords">localeHasDiffTwoDayWords</a>(mixed $locale)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_localeHasPeriodSyntax">localeHasPeriodSyntax</a>(mixed $locale)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_localeHasShortUnits">localeHasShortUnits</a>(mixed $locale)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_macro">macro</a>(mixed $name, mixed $macro)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;<abbr title="Illuminate\Support\Carbon|null">Carbon|null</abbr>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_make">make</a>(mixed $var)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;<a href="../../Illuminate/Support/Carbon.html"><abbr title="Illuminate\Support\Carbon">Carbon</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_maxValue">maxValue</a>()
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;<a href="../../Illuminate/Support/Carbon.html"><abbr title="Illuminate\Support\Carbon">Carbon</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_minValue">minValue</a>()
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_mixin">mixin</a>(mixed $mixin)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;<a href="../../Illuminate/Support/Carbon.html"><abbr title="Illuminate\Support\Carbon">Carbon</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_now">now</a>(mixed $tz)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;<a href="../../Illuminate/Support/Carbon.html"><abbr title="Illuminate\Support\Carbon">Carbon</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_parse">parse</a>(mixed $time, mixed $tz)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;string
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_pluralUnit">pluralUnit</a>(string $unit)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_resetMonthsOverflow">resetMonthsOverflow</a>()
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_resetToStringFormat">resetToStringFormat</a>()
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_resetYearsOverflow">resetYearsOverflow</a>()
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_serializeUsing">serializeUsing</a>(mixed $callback)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;<a href="../../Illuminate/Support/Carbon.html"><abbr title="Illuminate\Support\Carbon">Carbon</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_setHumanDiffOptions">setHumanDiffOptions</a>(mixed $humanDiffOptions)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_setLocale">setLocale</a>(mixed $locale)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_setMidDayAt">setMidDayAt</a>(mixed $hour)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_setTestNow">setTestNow</a>(mixed $testNow)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_setToStringFormat">setToStringFormat</a>(mixed $format)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_setTranslator">setTranslator</a>(<abbr title="Symfony\Component\Translation\TranslatorInterface">TranslatorInterface</abbr> $translator)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;<a href="../../Illuminate/Support/Carbon.html"><abbr title="Illuminate\Support\Carbon">Carbon</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_setUtf8">setUtf8</a>(mixed $utf8)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_setWeekEndsAt">setWeekEndsAt</a>(mixed $day)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_setWeekStartsAt">setWeekStartsAt</a>(mixed $day)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_setWeekendDays">setWeekendDays</a>(mixed $days)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_shouldOverflowMonths">shouldOverflowMonths</a>()
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_shouldOverflowYears">shouldOverflowYears</a>()
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;string
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_singularUnit">singularUnit</a>(string $unit)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;<a href="../../Illuminate/Support/Carbon.html"><abbr title="Illuminate\Support\Carbon">Carbon</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_today">today</a>(mixed $tz)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;<a href="../../Illuminate/Support/Carbon.html"><abbr title="Illuminate\Support\Carbon">Carbon</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_tomorrow">tomorrow</a>(mixed $tz)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_useMonthsOverflow">useMonthsOverflow</a>(mixed $monthsOverflow)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;<a href="../../Illuminate/Support/Carbon.html"><abbr title="Illuminate\Support\Carbon">Carbon</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_useStrictMode">useStrictMode</a>(mixed $strictModeEnabled)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_useYearsOverflow">useYearsOverflow</a>(mixed $yearsOverflow)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;<a href="../../Illuminate/Support/Carbon.html"><abbr title="Illuminate\Support\Carbon">Carbon</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_yesterday">yesterday</a>(mixed $tz)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+            </div>
+
+
+        <h2>Details</h2>
+
+            <div id="method-details">
+                    <div class="method-item">
+                    <h3 id="method_use">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Support/DateFactory.php#L122">at line 122</a></div>
+        <code>        static            mixed
+    <strong>use</strong>(mixed $handler)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Use the given handler when generating dates (class name, callable, or factory).</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>mixed</td>
+                <td>$handler</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>mixed</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a target="_blank" rel="noopener" href="https://www.php.net/InvalidArgumentException">InvalidArgumentException</a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_useDefault">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Support/DateFactory.php#L140">at line 140</a></div>
+        <code>        static            void
+    <strong>useDefault</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Use the default date class when generating dates.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_useCallable">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Support/DateFactory.php#L153">at line 153</a></div>
+        <code>        static            void
+    <strong>useCallable</strong>(callable $callable)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Execute the given callable on each date creation.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>callable</td>
+                <td>$callable</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_useClass">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Support/DateFactory.php#L167">at line 167</a></div>
+        <code>        static            void
+    <strong>useClass</strong>(string $dateClass)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Use the given date type (class) when generating dates.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$dateClass</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_useFactory">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Support/DateFactory.php#L181">at line 181</a></div>
+        <code>        static            void
+    <strong>useFactory</strong>(object $factory)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Use the given Carbon factory when generating dates.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>object</td>
+                <td>$factory</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method___call">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Support/DateFactory.php#L198">at line 198</a></div>
+        <code>                    mixed
+    <strong>__call</strong>(string $method, array $parameters)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Handle dynamic calls to generate dates.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$method</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$parameters</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>mixed</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a target="_blank" rel="noopener" href="https://www.php.net/RuntimeException">RuntimeException</a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_create">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Support/DateFactory.php#L84">at line 84</a></div>
+        <code>        static            <a href="../../Illuminate/Support/Carbon.html"><abbr title="Illuminate\Support\Carbon">Carbon</abbr></a>
+    <strong>create</strong>(mixed $year, mixed $month, mixed $day, mixed $hour, mixed $minute, mixed $second, mixed $tz)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>mixed</td>
+                <td>$year</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>mixed</td>
+                <td>$month</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>mixed</td>
+                <td>$day</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>mixed</td>
+                <td>$hour</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>mixed</td>
+                <td>$minute</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>mixed</td>
+                <td>$second</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>mixed</td>
+                <td>$tz</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../Illuminate/Support/Carbon.html"><abbr title="Illuminate\Support\Carbon">Carbon</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_createFromDate">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Support/DateFactory.php#L84">at line 84</a></div>
+        <code>        static            <a href="../../Illuminate/Support/Carbon.html"><abbr title="Illuminate\Support\Carbon">Carbon</abbr></a>
+    <strong>createFromDate</strong>(mixed $year, mixed $month, mixed $day, mixed $tz)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>mixed</td>
+                <td>$year</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>mixed</td>
+                <td>$month</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>mixed</td>
+                <td>$day</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>mixed</td>
+                <td>$tz</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../Illuminate/Support/Carbon.html"><abbr title="Illuminate\Support\Carbon">Carbon</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_createFromFormat">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Support/DateFactory.php#L84">at line 84</a></div>
+        <code>        static            <abbr title="Illuminate\Support\Carbon|false">Carbon|false</abbr>
+    <strong>createFromFormat</strong>(mixed $format, mixed $time, mixed $tz)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>mixed</td>
+                <td>$format</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>mixed</td>
+                <td>$time</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>mixed</td>
+                <td>$tz</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="Illuminate\Support\Carbon|false">Carbon|false</abbr></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_createFromTime">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Support/DateFactory.php#L84">at line 84</a></div>
+        <code>        static            <a href="../../Illuminate/Support/Carbon.html"><abbr title="Illuminate\Support\Carbon">Carbon</abbr></a>
+    <strong>createFromTime</strong>(mixed $hour, mixed $minute, mixed $second, mixed $tz)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>mixed</td>
+                <td>$hour</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>mixed</td>
+                <td>$minute</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>mixed</td>
+                <td>$second</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>mixed</td>
+                <td>$tz</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../Illuminate/Support/Carbon.html"><abbr title="Illuminate\Support\Carbon">Carbon</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_createFromTimeString">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Support/DateFactory.php#L84">at line 84</a></div>
+        <code>        static            <a href="../../Illuminate/Support/Carbon.html"><abbr title="Illuminate\Support\Carbon">Carbon</abbr></a>
+    <strong>createFromTimeString</strong>(mixed $time, mixed $tz)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>mixed</td>
+                <td>$time</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>mixed</td>
+                <td>$tz</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../Illuminate/Support/Carbon.html"><abbr title="Illuminate\Support\Carbon">Carbon</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_createFromTimestamp">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Support/DateFactory.php#L84">at line 84</a></div>
+        <code>        static            <a href="../../Illuminate/Support/Carbon.html"><abbr title="Illuminate\Support\Carbon">Carbon</abbr></a>
+    <strong>createFromTimestamp</strong>(mixed $timestamp, mixed $tz)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>mixed</td>
+                <td>$timestamp</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>mixed</td>
+                <td>$tz</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../Illuminate/Support/Carbon.html"><abbr title="Illuminate\Support\Carbon">Carbon</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_createFromTimestampMs">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Support/DateFactory.php#L84">at line 84</a></div>
+        <code>        static            <a href="../../Illuminate/Support/Carbon.html"><abbr title="Illuminate\Support\Carbon">Carbon</abbr></a>
+    <strong>createFromTimestampMs</strong>(mixed $timestamp, mixed $tz)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>mixed</td>
+                <td>$timestamp</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>mixed</td>
+                <td>$tz</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../Illuminate/Support/Carbon.html"><abbr title="Illuminate\Support\Carbon">Carbon</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_createFromTimestampUTC">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Support/DateFactory.php#L84">at line 84</a></div>
+        <code>        static            <a href="../../Illuminate/Support/Carbon.html"><abbr title="Illuminate\Support\Carbon">Carbon</abbr></a>
+    <strong>createFromTimestampUTC</strong>(mixed $timestamp)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>mixed</td>
+                <td>$timestamp</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../Illuminate/Support/Carbon.html"><abbr title="Illuminate\Support\Carbon">Carbon</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_createMidnightDate">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Support/DateFactory.php#L84">at line 84</a></div>
+        <code>        static            <a href="../../Illuminate/Support/Carbon.html"><abbr title="Illuminate\Support\Carbon">Carbon</abbr></a>
+    <strong>createMidnightDate</strong>(mixed $year, mixed $month, mixed $day, mixed $tz)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>mixed</td>
+                <td>$year</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>mixed</td>
+                <td>$month</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>mixed</td>
+                <td>$day</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>mixed</td>
+                <td>$tz</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../Illuminate/Support/Carbon.html"><abbr title="Illuminate\Support\Carbon">Carbon</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_createSafe">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Support/DateFactory.php#L84">at line 84</a></div>
+        <code>        static            <abbr title="Illuminate\Support\Carbon|false">Carbon|false</abbr>
+    <strong>createSafe</strong>(mixed $year, mixed $month, mixed $day, mixed $hour, mixed $minute, mixed $second, mixed $tz)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>mixed</td>
+                <td>$year</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>mixed</td>
+                <td>$month</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>mixed</td>
+                <td>$day</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>mixed</td>
+                <td>$hour</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>mixed</td>
+                <td>$minute</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>mixed</td>
+                <td>$second</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>mixed</td>
+                <td>$tz</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="Illuminate\Support\Carbon|false">Carbon|false</abbr></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_disableHumanDiffOption">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Support/DateFactory.php#L84">at line 84</a></div>
+        <code>        static            <a href="../../Illuminate/Support/Carbon.html"><abbr title="Illuminate\Support\Carbon">Carbon</abbr></a>
+    <strong>disableHumanDiffOption</strong>(mixed $humanDiffOption)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>mixed</td>
+                <td>$humanDiffOption</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../Illuminate/Support/Carbon.html"><abbr title="Illuminate\Support\Carbon">Carbon</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_enableHumanDiffOption">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Support/DateFactory.php#L84">at line 84</a></div>
+        <code>        static            <a href="../../Illuminate/Support/Carbon.html"><abbr title="Illuminate\Support\Carbon">Carbon</abbr></a>
+    <strong>enableHumanDiffOption</strong>(mixed $humanDiffOption)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>mixed</td>
+                <td>$humanDiffOption</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../Illuminate/Support/Carbon.html"><abbr title="Illuminate\Support\Carbon">Carbon</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_executeWithLocale">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Support/DateFactory.php#L84">at line 84</a></div>
+        <code>        static            mixed
+    <strong>executeWithLocale</strong>(mixed $locale, mixed $func)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>mixed</td>
+                <td>$locale</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>mixed</td>
+                <td>$func</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>mixed</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_fromSerialized">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Support/DateFactory.php#L84">at line 84</a></div>
+        <code>        static            <a href="../../Illuminate/Support/Carbon.html"><abbr title="Illuminate\Support\Carbon">Carbon</abbr></a>
+    <strong>fromSerialized</strong>(mixed $value)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>mixed</td>
+                <td>$value</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../Illuminate/Support/Carbon.html"><abbr title="Illuminate\Support\Carbon">Carbon</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getAvailableLocales">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Support/DateFactory.php#L84">at line 84</a></div>
+        <code>        static            array
+    <strong>getAvailableLocales</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getDays">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Support/DateFactory.php#L84">at line 84</a></div>
+        <code>        static            array
+    <strong>getDays</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getHumanDiffOptions">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Support/DateFactory.php#L84">at line 84</a></div>
+        <code>        static            int
+    <strong>getHumanDiffOptions</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>int</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getIsoUnits">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Support/DateFactory.php#L84">at line 84</a></div>
+        <code>        static            array
+    <strong>getIsoUnits</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getLastErrors">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Support/DateFactory.php#L84">at line 84</a></div>
+        <code>        static            <a href="../../Illuminate/Support/Carbon.html"><abbr title="Illuminate\Support\Carbon">Carbon</abbr></a>
+    <strong>getLastErrors</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../Illuminate/Support/Carbon.html"><abbr title="Illuminate\Support\Carbon">Carbon</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getLocale">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Support/DateFactory.php#L84">at line 84</a></div>
+        <code>        static            string
+    <strong>getLocale</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getMidDayAt">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Support/DateFactory.php#L84">at line 84</a></div>
+        <code>        static            int
+    <strong>getMidDayAt</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>int</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getTestNow">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Support/DateFactory.php#L84">at line 84</a></div>
+        <code>        static            <a href="../../Illuminate/Support/Carbon.html"><abbr title="Illuminate\Support\Carbon">Carbon</abbr></a>
+    <strong>getTestNow</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../Illuminate/Support/Carbon.html"><abbr title="Illuminate\Support\Carbon">Carbon</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getTranslator">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Support/DateFactory.php#L84">at line 84</a></div>
+        <code>        static            <abbr title="Symfony\Component\Translation\TranslatorInterface">TranslatorInterface</abbr>
+    <strong>getTranslator</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="Symfony\Component\Translation\TranslatorInterface">TranslatorInterface</abbr></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getWeekEndsAt">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Support/DateFactory.php#L84">at line 84</a></div>
+        <code>        static            int
+    <strong>getWeekEndsAt</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>int</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getWeekStartsAt">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Support/DateFactory.php#L84">at line 84</a></div>
+        <code>        static            int
+    <strong>getWeekStartsAt</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>int</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getWeekendDays">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Support/DateFactory.php#L84">at line 84</a></div>
+        <code>        static            array
+    <strong>getWeekendDays</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_hasFormat">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Support/DateFactory.php#L84">at line 84</a></div>
+        <code>        static            bool
+    <strong>hasFormat</strong>(mixed $date, mixed $format)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>mixed</td>
+                <td>$date</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>mixed</td>
+                <td>$format</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_hasMacro">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Support/DateFactory.php#L84">at line 84</a></div>
+        <code>        static            bool
+    <strong>hasMacro</strong>(mixed $name)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>mixed</td>
+                <td>$name</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_hasRelativeKeywords">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Support/DateFactory.php#L84">at line 84</a></div>
+        <code>        static            bool
+    <strong>hasRelativeKeywords</strong>(mixed $time)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>mixed</td>
+                <td>$time</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_hasTestNow">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Support/DateFactory.php#L84">at line 84</a></div>
+        <code>        static            bool
+    <strong>hasTestNow</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_instance">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Support/DateFactory.php#L84">at line 84</a></div>
+        <code>        static            <a href="../../Illuminate/Support/Carbon.html"><abbr title="Illuminate\Support\Carbon">Carbon</abbr></a>
+    <strong>instance</strong>(mixed $date)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>mixed</td>
+                <td>$date</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../Illuminate/Support/Carbon.html"><abbr title="Illuminate\Support\Carbon">Carbon</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_isImmutable">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Support/DateFactory.php#L84">at line 84</a></div>
+        <code>        static            bool
+    <strong>isImmutable</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_isModifiableUnit">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Support/DateFactory.php#L84">at line 84</a></div>
+        <code>        static            bool
+    <strong>isModifiableUnit</strong>(mixed $unit)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>mixed</td>
+                <td>$unit</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_isMutable">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Support/DateFactory.php#L84">at line 84</a></div>
+        <code>        static            <a href="../../Illuminate/Support/Carbon.html"><abbr title="Illuminate\Support\Carbon">Carbon</abbr></a>
+    <strong>isMutable</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../Illuminate/Support/Carbon.html"><abbr title="Illuminate\Support\Carbon">Carbon</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_isStrictModeEnabled">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Support/DateFactory.php#L84">at line 84</a></div>
+        <code>        static            bool
+    <strong>isStrictModeEnabled</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_localeHasDiffOneDayWords">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Support/DateFactory.php#L84">at line 84</a></div>
+        <code>        static            bool
+    <strong>localeHasDiffOneDayWords</strong>(mixed $locale)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>mixed</td>
+                <td>$locale</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_localeHasDiffSyntax">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Support/DateFactory.php#L84">at line 84</a></div>
+        <code>        static            bool
+    <strong>localeHasDiffSyntax</strong>(mixed $locale)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>mixed</td>
+                <td>$locale</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_localeHasDiffTwoDayWords">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Support/DateFactory.php#L84">at line 84</a></div>
+        <code>        static            bool
+    <strong>localeHasDiffTwoDayWords</strong>(mixed $locale)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>mixed</td>
+                <td>$locale</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_localeHasPeriodSyntax">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Support/DateFactory.php#L84">at line 84</a></div>
+        <code>        static            bool
+    <strong>localeHasPeriodSyntax</strong>(mixed $locale)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>mixed</td>
+                <td>$locale</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_localeHasShortUnits">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Support/DateFactory.php#L84">at line 84</a></div>
+        <code>        static            bool
+    <strong>localeHasShortUnits</strong>(mixed $locale)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>mixed</td>
+                <td>$locale</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_macro">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Support/DateFactory.php#L84">at line 84</a></div>
+        <code>        static            void
+    <strong>macro</strong>(mixed $name, mixed $macro)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>mixed</td>
+                <td>$name</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>mixed</td>
+                <td>$macro</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_make">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Support/DateFactory.php#L84">at line 84</a></div>
+        <code>        static            <abbr title="Illuminate\Support\Carbon|null">Carbon|null</abbr>
+    <strong>make</strong>(mixed $var)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>mixed</td>
+                <td>$var</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="Illuminate\Support\Carbon|null">Carbon|null</abbr></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_maxValue">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Support/DateFactory.php#L84">at line 84</a></div>
+        <code>        static            <a href="../../Illuminate/Support/Carbon.html"><abbr title="Illuminate\Support\Carbon">Carbon</abbr></a>
+    <strong>maxValue</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../Illuminate/Support/Carbon.html"><abbr title="Illuminate\Support\Carbon">Carbon</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_minValue">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Support/DateFactory.php#L84">at line 84</a></div>
+        <code>        static            <a href="../../Illuminate/Support/Carbon.html"><abbr title="Illuminate\Support\Carbon">Carbon</abbr></a>
+    <strong>minValue</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../Illuminate/Support/Carbon.html"><abbr title="Illuminate\Support\Carbon">Carbon</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_mixin">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Support/DateFactory.php#L84">at line 84</a></div>
+        <code>        static            void
+    <strong>mixin</strong>(mixed $mixin)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>mixed</td>
+                <td>$mixin</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_now">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Support/DateFactory.php#L84">at line 84</a></div>
+        <code>        static            <a href="../../Illuminate/Support/Carbon.html"><abbr title="Illuminate\Support\Carbon">Carbon</abbr></a>
+    <strong>now</strong>(mixed $tz)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>mixed</td>
+                <td>$tz</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../Illuminate/Support/Carbon.html"><abbr title="Illuminate\Support\Carbon">Carbon</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_parse">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Support/DateFactory.php#L84">at line 84</a></div>
+        <code>        static            <a href="../../Illuminate/Support/Carbon.html"><abbr title="Illuminate\Support\Carbon">Carbon</abbr></a>
+    <strong>parse</strong>(mixed $time, mixed $tz)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>mixed</td>
+                <td>$time</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>mixed</td>
+                <td>$tz</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../Illuminate/Support/Carbon.html"><abbr title="Illuminate\Support\Carbon">Carbon</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_pluralUnit">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Support/DateFactory.php#L84">at line 84</a></div>
+        <code>        static            string
+    <strong>pluralUnit</strong>(string $unit)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$unit</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_resetMonthsOverflow">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Support/DateFactory.php#L84">at line 84</a></div>
+        <code>        static            void
+    <strong>resetMonthsOverflow</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_resetToStringFormat">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Support/DateFactory.php#L84">at line 84</a></div>
+        <code>        static            void
+    <strong>resetToStringFormat</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_resetYearsOverflow">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Support/DateFactory.php#L84">at line 84</a></div>
+        <code>        static            void
+    <strong>resetYearsOverflow</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_serializeUsing">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Support/DateFactory.php#L84">at line 84</a></div>
+        <code>        static            void
+    <strong>serializeUsing</strong>(mixed $callback)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>mixed</td>
+                <td>$callback</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setHumanDiffOptions">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Support/DateFactory.php#L84">at line 84</a></div>
+        <code>        static            <a href="../../Illuminate/Support/Carbon.html"><abbr title="Illuminate\Support\Carbon">Carbon</abbr></a>
+    <strong>setHumanDiffOptions</strong>(mixed $humanDiffOptions)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>mixed</td>
+                <td>$humanDiffOptions</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../Illuminate/Support/Carbon.html"><abbr title="Illuminate\Support\Carbon">Carbon</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setLocale">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Support/DateFactory.php#L84">at line 84</a></div>
+        <code>        static            bool
+    <strong>setLocale</strong>(mixed $locale)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>mixed</td>
+                <td>$locale</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setMidDayAt">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Support/DateFactory.php#L84">at line 84</a></div>
+        <code>        static            void
+    <strong>setMidDayAt</strong>(mixed $hour)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>mixed</td>
+                <td>$hour</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setTestNow">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Support/DateFactory.php#L84">at line 84</a></div>
+        <code>        static            void
+    <strong>setTestNow</strong>(mixed $testNow)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>mixed</td>
+                <td>$testNow</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setToStringFormat">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Support/DateFactory.php#L84">at line 84</a></div>
+        <code>        static            void
+    <strong>setToStringFormat</strong>(mixed $format)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>mixed</td>
+                <td>$format</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setTranslator">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Support/DateFactory.php#L84">at line 84</a></div>
+        <code>        static            void
+    <strong>setTranslator</strong>(<abbr title="Symfony\Component\Translation\TranslatorInterface">TranslatorInterface</abbr> $translator)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><abbr title="Symfony\Component\Translation\TranslatorInterface">TranslatorInterface</abbr></td>
+                <td>$translator</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setUtf8">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Support/DateFactory.php#L84">at line 84</a></div>
+        <code>        static            <a href="../../Illuminate/Support/Carbon.html"><abbr title="Illuminate\Support\Carbon">Carbon</abbr></a>
+    <strong>setUtf8</strong>(mixed $utf8)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>mixed</td>
+                <td>$utf8</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../Illuminate/Support/Carbon.html"><abbr title="Illuminate\Support\Carbon">Carbon</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setWeekEndsAt">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Support/DateFactory.php#L84">at line 84</a></div>
+        <code>        static            void
+    <strong>setWeekEndsAt</strong>(mixed $day)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>mixed</td>
+                <td>$day</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setWeekStartsAt">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Support/DateFactory.php#L84">at line 84</a></div>
+        <code>        static            void
+    <strong>setWeekStartsAt</strong>(mixed $day)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>mixed</td>
+                <td>$day</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setWeekendDays">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Support/DateFactory.php#L84">at line 84</a></div>
+        <code>        static            void
+    <strong>setWeekendDays</strong>(mixed $days)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>mixed</td>
+                <td>$days</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_shouldOverflowMonths">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Support/DateFactory.php#L84">at line 84</a></div>
+        <code>        static            bool
+    <strong>shouldOverflowMonths</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_shouldOverflowYears">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Support/DateFactory.php#L84">at line 84</a></div>
+        <code>        static            bool
+    <strong>shouldOverflowYears</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_singularUnit">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Support/DateFactory.php#L84">at line 84</a></div>
+        <code>        static            string
+    <strong>singularUnit</strong>(string $unit)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$unit</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_today">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Support/DateFactory.php#L84">at line 84</a></div>
+        <code>        static            <a href="../../Illuminate/Support/Carbon.html"><abbr title="Illuminate\Support\Carbon">Carbon</abbr></a>
+    <strong>today</strong>(mixed $tz)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>mixed</td>
+                <td>$tz</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../Illuminate/Support/Carbon.html"><abbr title="Illuminate\Support\Carbon">Carbon</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_tomorrow">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Support/DateFactory.php#L84">at line 84</a></div>
+        <code>        static            <a href="../../Illuminate/Support/Carbon.html"><abbr title="Illuminate\Support\Carbon">Carbon</abbr></a>
+    <strong>tomorrow</strong>(mixed $tz)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>mixed</td>
+                <td>$tz</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../Illuminate/Support/Carbon.html"><abbr title="Illuminate\Support\Carbon">Carbon</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_useMonthsOverflow">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Support/DateFactory.php#L84">at line 84</a></div>
+        <code>        static            void
+    <strong>useMonthsOverflow</strong>(mixed $monthsOverflow)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>mixed</td>
+                <td>$monthsOverflow</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_useStrictMode">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Support/DateFactory.php#L84">at line 84</a></div>
+        <code>        static            <a href="../../Illuminate/Support/Carbon.html"><abbr title="Illuminate\Support\Carbon">Carbon</abbr></a>
+    <strong>useStrictMode</strong>(mixed $strictModeEnabled)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>mixed</td>
+                <td>$strictModeEnabled</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../Illuminate/Support/Carbon.html"><abbr title="Illuminate\Support\Carbon">Carbon</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_useYearsOverflow">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Support/DateFactory.php#L84">at line 84</a></div>
+        <code>        static            void
+    <strong>useYearsOverflow</strong>(mixed $yearsOverflow)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>mixed</td>
+                <td>$yearsOverflow</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_yesterday">
+        <div class="location"><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Support/DateFactory.php#L84">at line 84</a></div>
+        <code>        static            <a href="../../Illuminate/Support/Carbon.html"><abbr title="Illuminate\Support\Carbon">Carbon</abbr></a>
+    <strong>yesterday</strong>(mixed $tz)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>mixed</td>
+                <td>$tz</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../Illuminate/Support/Carbon.html"><abbr title="Illuminate\Support\Carbon">Carbon</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+            </div>
+
+    
+</div><div id="footer">
+        Generated by <a href="https://github.com/code-lts/doctum">Doctum, a API Documentation generator and fork of Sami</a>.</div></div>
+    </div>
+    </body>
+
+</html>

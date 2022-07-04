@@ -1,0 +1,1836 @@
+<!DOCTYPE html>
+<html lang="en" class="documentation_page" >
+    <head>
+                        <link rel="manifest" href="https://static.blackfire.io/assets/ve756410286/bundles/blackfire/manifest.json">
+        <meta charset="utf-8">
+                <meta http-equiv="X-UA-Compatible" content="IE=edge">
+                <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="Blackfire.io: Continuous Performance Testing">
+        <meta name="twitter:description" content="Blackfire.io: Continuous Performance Testing">
+        <meta name="twitter:site" content="@blackfireio">
+        <meta name="twitter:domain" content="blackfire.io">
+        <meta name="author" content="Blackfire">
+        <meta property="og:site_name" content="Blackfire.io">
+        <meta property="og:type" content="website"/>
+        <meta property="og:locale" content="en_US"/>
+        <meta property="og:title" content="Blackfire.io: Continuous Performance Testing">
+        <meta property="og:description" content="Blackfire.io: Continuous Performance Testing">
+        <meta name="twitter:widgets:csp" content="on">
+                    <meta property="og:image" content="https://static.blackfire.io/assets/ve756410286/bundles/blackfire/img/og-image.jpg"/>
+            <meta property="og:image:width" content="1200"/>
+            <meta property="og:image:height" content="450"/>
+            <meta name="twitter:image" content="https://static.blackfire.io/assets/ve756410286/bundles/blackfire/img/og-image.jpg"/>
+                                    <meta name="blackfire-recaptcha-site-key" content="6LdE4k8eAAAAAMHiYfLavo6HkHemiNXt0k0VXqa1">
+            
+        
+        
+                <title>        Blackfire Player   - Blackfire
+</title>
+        
+                    <link rel="chrome-webstore-item" href="https://chrome.google.com/webstore/detail/miefikpgahefdbcgoiicnmpbeeomffld">
+        
+        <link rel="blackfire-chrome-webstore-item" href="https://chrome.google.com/webstore/detail/miefikpgahefdbcgoiicnmpbeeomffld">
+        <link rel="blackfire-mozilla-add-on-item" href="https://addons.mozilla.org/firefox/addon/blackfire/">
+
+                <link rel="shortcut icon" type="image/x-icon" href="https://static.blackfire.io/assets/ve756410286/bundles/blackfire/favicons/favicon.ico" />
+
+        <link rel="icon" type="image/png" sizes="32x32" href="https://static.blackfire.io/assets/ve756410286/bundles/blackfire/favicons/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="https://static.blackfire.io/assets/ve756410286/bundles/blackfire/favicons/favicon-16x16.png">
+        <link rel="shortcut icon" href="https://static.blackfire.io/assets/ve756410286/bundles/blackfire/favicons/favicon.ico">
+
+        <link rel="mask-icon" href="https://static.blackfire.io/assets/ve756410286/bundles/blackfire/favicons/safari-pinned-tab.svg" color="#de3e38">
+
+        <link rel="apple-touch-icon" sizes="180x180" href="https://static.blackfire.io/assets/ve756410286/bundles/blackfire/favicons/apple-touch-icon.png">
+
+        <meta name="apple-mobile-web-app-title" content="Blackfire.io">
+        <meta name="theme-color" content="#323232">
+        <meta name="application-name" content="Blackfire.io">
+        <meta name="msapplication-config" content="https://static.blackfire.io/assets/ve756410286/bundles/blackfire/favicons/browserconfig.xml" />
+
+        
+        <link rel="blackfire-api-assets-version" href="/web-api/assets-version">
+        <link rel="blackfire-sharing-profiles" href="/docs/profiling-cookbooks/sharing-profiles">
+        <link rel="blackfire-ondemand-profiles" href="/docs/profiling-cookbooks/index">
+        <link rel="blackfire-root" href="/">
+        <link rel="blackfire-dashboard" href="/dashboard">
+
+                            <link rel="blackfire-landing-page" href="/envs/de33be74-8cb3-48ce-9f08-2e83ccf16500/health-report">
+                <link rel="blackfire-my_settings_billing" href="/my/settings/billing">
+                <link rel="blackfire-welcome" href="/welcome">
+                <link rel="blackfire-pricing" href="https://www.blackfire.io/pricing">
+                <link rel="blackfire-demo" href="https://demo.blackfire.io">
+                <link rel="blackfire-monitoring" href="https://www.blackfire.io/monitoring">
+                <link rel="blackfire-try" href="/try/premium">
+                <link rel="blackfire-subscribe" href="/subscribe/plan-name-placeholder">
+                <link rel="blackfire-subscribe-organization" href="/subscribe-organization/plan-name-placeholder">
+                <link rel="blackfire-organization-settings-billing" href="/organizations/00000000-0000-0000-0000-000000000000/settings/billing">
+                <link rel="blackfire-organization-subscribe" href="/organizations/00000000-0000-0000-0000-000000000000/subscribe/plan-name-placeholder">
+                <link rel="blackfire-api-currency" href="/web-api/currency">
+                <link rel="blackfire-api-payment-subscribe" href="/web-api/payment/subscribe/plan-name-placeholder">
+                <link rel="blackfire-api-payment-organization-subscribe" href="/web-api/payment/organizations/00000000-0000-0000-0000-000000000000/subscribe/plan-name-placeholder">
+                <link rel="blackfire-api-payment-organization-cancel-apm-subscription" href="/web-api/payment/organizations/00000000-0000-0000-0000-000000000000/apm/cancel">
+                <link rel="blackfire-api-payment-organization-cancel-apm-downgrade" href="/web-api/payment/organizations/00000000-0000-0000-0000-000000000000/apm/cancel-downgrade">
+                <link rel="blackfire-api-payment-organization-reactivate-apm-subscription" href="/web-api/payment/organizations/00000000-0000-0000-0000-000000000000/apm/reactivate">
+                <link rel="blackfire-api-payment-organization-subscribe-apm" href="/web-api/payment/organizations/00000000-0000-0000-0000-000000000000/apm/subscribe">
+                <link rel="blackfire-api-payment-organization-apm-update-quota" href="/web-api/payment/organizations/00000000-0000-0000-0000-000000000000/apm/update">
+                <link rel="blackfire-api-payment-update-add-on" href="/web-api/payment/add-on/add-on-placeholder/update">
+                <link rel="blackfire-api-payment-organization-update-add-on" href="/web-api/payment/organizations/00000000-0000-0000-0000-000000000000/add-on/add-on-placeholder/update">
+                <link rel="blackfire-api-update-recurly-account" href="/web-api/payment/update-recurly-account">
+                <link rel="blackfire-api-organization-update-recurly-account" href="/web-api/payment/organizations/00000000-0000-0000-0000-000000000000/update-recurly-account">
+                <link rel="blackfire-api-recurly-account" href="/web-api/billing/recurly-account">
+                <link rel="blackfire-api-clear-billing-info" href="/web-api/payment/clear-billing-info">
+                <link rel="blackfire-api-organization-clear-billing-info" href="/web-api/payment/organizations/00000000-0000-0000-0000-000000000000/clear-billing-info">
+                <link rel="blackfire-api-add-billing-info" href="/web-api/payment/add-credit-card">
+                <link rel="blackfire-api-organization-add-billing-info" href="/web-api/payment/organizations/00000000-0000-0000-0000-000000000000/add-credit-card">
+                <link rel="blackfire-api-update-payment-method" href="/web-api/payment/update-credit-card">
+                <link rel="blackfire-api-organization-update-payment-method" href="/web-api/payment/organizations/00000000-0000-0000-0000-000000000000/update-credit-card">
+            
+                            <link rel="blackfire-signup" href="/signup">
+            
+        <link rel="blackfire-js-assets-path" href="https://static.blackfire.io/assets/ve756410286/build/">
+        <link rel="blackfire-embedded-not-found-asset" href="https://static.blackfire.io/assets/ve756410286/bundles/blackfire/thumbs/share_regular_preview_broken.png">
+
+        <link rel="blackfire-login" href="/login">
+        <link rel="blackfire-logout" href="/logout">
+        <link rel="blackfire-my-profiles" href="/my/profiles">
+        <link rel="blackfire-my-organizations" href="/my/organizations">
+        <link rel="blackfire-my-environments" href="/my/environments">
+        <link rel="blackfire-my_settings" href="/my/settings">
+        <link rel="blackfire-my_settings_notifications" href="/my/settings/notifications">
+        <link rel="blackfire-my_settings_security" href="/my/settings/security">
+        <link rel="blackfire-my_settings_credentials" href="/my/settings/credentials">
+        <link rel="blackfire-my_settings_account" href="/my/settings/account">
+        <link rel="blackfire-twofa_totp_qrcode" href="/account/qr-code">
+
+        
+        <link rel="blackfire-envs" href="/web-api/envs">
+        <link rel="blackfire-create-organization-env" href="/web-api/envs/organizations/00000000-0000-0000-0000-000000000000/create">
+        <link rel="blackfire-api-jwt" href="/jwt">
+        <link rel="blackfire-api-details" href="/web-api/account/details">
+
+        <link rel="blackfire-api-agent-jwt" href="/jwt/env/00000000-0000-0000-0000-000000000000">
+        <link rel="blackfire-profiles" href="/web-api/profiles">
+        <link rel="blackfire-cookie-policy" href="/cookie-policy">
+        <link rel="blackfire-terms-of-use" href="/terms-of-use">
+        <link rel="blackfire-terms-of-sss" href="/terms-of-subscription">
+        <link rel="blackfire-terms-of-sss-us" href="/terms-of-subscription-us">
+
+        <link rel="blackfire-api-my-profiles" href="/web-api/my-profiles">
+        <link rel="blackfire-profiles-per-env" href="/web-api/profiles/envs/00000000-0000-0000-0000-000000000000">
+        <link rel="blackfire-apm-profiles-per-env" href="/web-api/profiles/envs/00000000-0000-0000-0000-000000000000/apm">
+        <link rel="blackfire-api-env-settings" href="/web-api/envs/00000000-0000-0000-0000-000000000000">
+
+        <link rel="blackfire-organization-root" href="/organizations/00000000-0000-0000-0000-000000000000">
+        <link rel="blackfire-organization-environments" href="/organizations/00000000-0000-0000-0000-000000000000/environments">
+        <link rel="blackfire-organization-members" href="/organizations/00000000-0000-0000-0000-000000000000/members">
+        <link rel="blackfire-organization-settings" href="/organizations/00000000-0000-0000-0000-000000000000/settings">
+        <link rel="blackfire-organization-settings-usage" href="/organizations/00000000-0000-0000-0000-000000000000/settings/monitoring-usage">
+        <link rel="blackfire-organization-settings-details" href="/organizations/00000000-0000-0000-0000-000000000000/settings/details">
+
+        <link rel="blackfire-builds-per-env" href="/web-api/build-sets/envs/00000000-0000-0000-0000-000000000000">
+
+        <link rel="blackfire-env-root" href="/envs/00000000-0000-0000-0000-000000000000">
+        <link rel="blackfire-env-profiles" href="/envs/00000000-0000-0000-0000-000000000000/profiles">
+        <link rel="blackfire-env-settings" href="/envs/00000000-0000-0000-0000-000000000000/settings">
+        <link rel="blackfire-env-credentials" href="/envs/00000000-0000-0000-0000-000000000000/credentials">
+        <link rel="blackfire-env-members" href="/envs/00000000-0000-0000-0000-000000000000/members">
+        <link rel="blackfire-env-monitoring-settings" href="/envs/00000000-0000-0000-0000-000000000000/monitoring-settings">
+        <link rel="blackfire-env-health" href="/envs/00000000-0000-0000-0000-000000000000/health-report">
+        <link rel="blackfire-env-builds" href="/envs/00000000-0000-0000-0000-000000000000/builds">
+        <link rel="blackfire-env-build-show" href="/envs/00000000-0000-0000-0000-000000000000/builds/11111111-1111-1111-1111-111111111111">
+        <link rel="blackfire-env-channels" href="/envs/00000000-0000-0000-0000-000000000000/channels">
+        <link rel="blackfire-env-channel-add" href="/envs/00000000-0000-0000-0000-000000000000/channels/new/type-placeholder">
+        <link rel="blackfire-env-channel-edit" href="/envs/00000000-0000-0000-0000-000000000000/channels/11111111-1111-1111-1111-111111111111/edit">
+        <link rel="blackfire-env-channel-show" href="/envs/00000000-0000-0000-0000-000000000000/channels/11111111-1111-1111-1111-111111111111">
+        <link rel="blackfire-env-build-notifications" href="/envs/00000000-0000-0000-0000-000000000000/build-notifications">
+        <link rel="blackfire-env-alert-rules" href="/envs/00000000-0000-0000-0000-000000000000/alert-rules">
+        <link rel="blackfire-env-alert-rule-add" href="/envs/00000000-0000-0000-0000-000000000000/alert-rules/new">
+        <link rel="blackfire-env-alert-rule-edit" href="/envs/00000000-0000-0000-0000-000000000000/alert-rules/11111111-1111-1111-1111-111111111111/edit">
+        <link rel="blackfire-env-alert-rule-show" href="/envs/00000000-0000-0000-0000-000000000000/alert-rules/11111111-1111-1111-1111-111111111111">
+
+        <link rel="blackfire-monitoring-root" href="/monitoring/00000000-0000-0000-0000-000000000000">
+        <link rel="blackfire-monitoring-dashboard" href="/monitoring/00000000-0000-0000-0000-000000000000/dashboard">
+        <link rel="blackfire-monitoring-transactions" href="/monitoring/00000000-0000-0000-0000-000000000000/transactions">
+        <link rel="blackfire-monitoring-calls" href="/monitoring/00000000-0000-0000-0000-000000000000/calls">
+
+        <link rel="blackfire-api-build-set" href="/web-api/build-sets/00000000-0000-0000-0000-000000000000">
+        <link rel="blackfire-api-webhooks" href="/web-api/webhooklog/outgoing/source-type-placeholder/00000000-0000-0000-0000-000000000000">
+
+        <link rel="blackfire-api-health" href="/web-api/envs/00000000-0000-0000-0000-000000000000/health">
+        <link rel="blackfire-api-public-comparison-profile" href="/web-api/profiles/compare/00000000-0000-0000-0000-000000000000/profile">
+        <link rel="blackfire-api-profile" href="/web-api/profiles/00000000-0000-0000-0000-000000000000/profile">
+        <link rel="blackfire-api-graph" href="/web-api/profiles/00000000-0000-0000-0000-000000000000/graph">
+        <link rel="blackfire-api-compare-graph" href="/web-api/profiles/compare/00000000-0000-0000-0000-000000000000...11111111-1111-1111-1111-111111111111/profile">
+        <link rel="blackfire-api-timeline" href="/web-api/profiles/00000000-0000-0000-0000-000000000000/timeline">
+        <link rel="blackfire-api-subprofiles" href="/web-api/profiles/00000000-0000-0000-0000-000000000000/subprofiles">
+        <link rel="blackfire-api-organizations" href="/web-api/organizations/">
+        <link rel="blackfire-api-lock-info" href="/web-api/account/lock-information/00000000-0000-0000-0000-000000000000">
+
+        <link rel="blackfire-profile-graph" href="/profiles/00000000-0000-0000-0000-000000000000/graph">
+        <link rel="blackfire-profile-graph-embedded" href="/profiles/00000000-0000-0000-0000-000000000000/embed">
+        <link rel="blackfire-public-comparison-graph" href="/profiles/compare/00000000-0000-0000-0000-000000000000/graph">
+        <link rel="blackfire-public-comparison-graph-embedded" href="/profiles/compare/00000000-0000-0000-0000-000000000000/embed">
+
+        <link rel="blackfire-blog" href="https://blog.blackfire.io">
+        <link rel="blackfire-support" href="https://support.blackfire.io">
+        <link rel="blackfire-doc" href="/docs/introduction">
+        <link rel="blackfire-doc-installation" href="/docs/up-and-running/installation">
+        <link rel="blackfire-doc-upgrade" href="/docs/up-and-running/update">
+        <link rel="blackfire-doc-troubleshooting" href="https://support.blackfire.io/en/collections/145104-troubleshooting">
+        <link rel="blackfire-doc-troubleshooting-upgrade" href="https://support.blackfire.io/troubleshooting/upgrading-to-a-new-edition/upgrading-to-premium">
+        <link rel="blackfire-doc-pruning" href="/docs/profiling-cookbooks/understanding-call-graphs#beyond-the-hot-paths" >
+        <link rel="blackfire-doc-configuration-agent" href="/docs/up-and-running/configuration/agent">
+        <link rel="blackfire-doc-environments" href="/docs/php/training-resources/book/10-environments">
+        <link rel="blackfire-doc-distributed-profiling" href="/docs/profiling-cookbooks/distributed-profiling">
+        <link rel="blackfire-doc-apm-settings" href="/docs/monitoring-cookbooks/configuration">
+        <link rel="blackfire-cookbook-tests" href="/docs/testing-cookbooks/tests">
+        <link rel="blackfire-cookbook-scenarios" href="/docs/builds-cookbooks/scenarios">
+        <link rel="blackfire-doc-recommendations" href="/docs/testing-cookbooks/recommendations">
+        <link rel="blackfire-analyzing-call-graphs" href="/docs/profiling-cookbooks/understanding-call-graphs">
+        <link rel="blackfire-analyzing-timelines" href="/docs/profiling-cookbooks/understanding-timelines">
+        <link rel="blackfire-environment-documentation" href="/docs/reference-guide/environments">
+        <link rel="blackfire-assertions-documentation" href="/docs/testing-cookbooks/assertions">
+        <link rel="blackfire-metrics-documentation" href="/docs/testing-cookbooks/metrics">
+        <link rel="blackfire-recommendations-documentation" href="/docs/testing-cookbooks/recommendations">
+        <link rel="blackfire-debugging-documentation" href="/docs/profiling-cookbooks/debugging">
+        <link rel="blackfire-notifiers-documentation" href="/docs/builds-cookbooks/notification-channels">
+        <link rel="blackfire-triggers-documentation" href="/docs/builds-cookbooks/builds-integrations">
+        <link rel="blackfire-doc-companion" href="/docs/integrations/browsers/chrome">
+        <link rel="blackfire-doc-companion-firefox" href="/docs/integrations/browsers/firefox">
+        <link rel="blackfire-notifier-email" href="/docs/builds-cookbooks/notification-channels#email">
+        <link rel="blackfire-notifier-webhook" href="/docs/builds-cookbooks/notification-channels#webhook">
+        <link rel="blackfire-notifier-github" href="/docs/integrations/git/github">
+        <link rel="blackfire-notifier-gitlab" href="/docs/integrations/git/gitlab">
+        <link rel="blackfire-notifier-bitbucket" href="/docs/integrations/git/bitbucket">
+        <link rel="blackfire-notifier-slack" href="/docs/integrations/notifiers/slack">
+        <link rel="blackfire-notifier-pager_duty" href="/docs/integrations/notifiers/pager-duty">
+        <link rel="blackfire-notifier-opsgenie" href="/docs/integrations/notifiers/opsgenie">
+        <link rel="blackfire-notifier-teams" href="/docs/integrations/notifiers/microsoft-teams">
+        <link rel="blackfire-php-sdk-documentation" href="/docs/php/integrations/sdk">
+        <link rel="blackfire-python-sdk-documentation" href="/docs/python/integrations/sdk">
+        <link rel="blackfire-magento-integration" href="/docs/integrations/paas/magentocloud">
+        <link rel="blackfire-symfonycloud-integration" href="/docs/integrations/paas/symfonycloud">
+        <link rel="blackfire-platformsh-integration" href="/docs/integrations/paas/platformsh">
+        <link rel="blackfire-contact_us" href="https://support.blackfire.io/">
+        <link rel="blackfire-packages_domain" href="packages.blackfire.io">
+        <link rel="blackfire-magento" href="https://www.blackfire.io/magento">
+        <link rel="blackfire-students" href="https://www.blackfire.io/students">
+                <link rel="blackfire-build-periodic-documentation" href="/docs/builds-cookbooks/builds-periodic">
+        <link rel="blackfire-build-documentation" href="/docs/builds-cookbooks/index">
+        <link rel="blackfire-monitoring-unnamed-documentation" href="/docs/monitoring-cookbooks/naming-transactions">
+        <link rel="blackfire-monitoring-profiling" href="/docs/monitoring-cookbooks/automatic-profiling">
+        <link rel="blackfire-monitoring-index" href="/docs/monitoring-cookbooks/index">
+                    <link rel="blackfire-feedback" href="/web-api/feedback">
+        
+        <link rel="stylesheet" href="https://static.blackfire.io/assets/ve756410286/build/main.90f170a0.css" crossorigin="anonymous" integrity="sha384-9rM3onaRewB3VrXsxyHzonl5djZO9PXc3cbAAvBgG1Ak4bwqSzqyhEwo59JB6ePi">
+        <link rel="stylesheet" href="https://js.recurly.com/v4/recurly.css"/>
+                    <link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.css" />
+
+
+    
+                <style>
+            .error-400s {
+                background-image: url(https://static.blackfire.io/assets/ve756410286/bundles/blackfire/img/error-400s.png);
+            }
+            .error-500s {
+                background-image: url(https://static.blackfire.io/assets/ve756410286/bundles/blackfire/img/error-500s.png);
+            }
+            [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+                display: none !important;
+            }
+        </style>
+
+                <meta name="blackfire-assets-version" content="ve756410286">
+                <meta name="blackfire-sentry-dsn" content="https&#x3A;&#x2F;&#x2F;107a549e1af64c15a468c772ae1659f0&#x40;reporting.blackfire.io&#x2F;78235">
+        <meta name="blackfire-sentry-tunnel" content="https&#x3A;&#x2F;&#x2F;reporting.blackfire.io&#x2F;api&#x2F;78235&#x2F;envelope&#x2F;">
+        <meta name="blackfire-sentry-release" content="v2.26.102">
+
+        <meta name="blackfire-email-support" content="support&#x40;blackfire.io">
+
+        <meta name="blackfire-recurly-public-key-us" content="ewr1-4ATTzet5QToIvZrqg2yX1n">
+        <meta name="blackfire-recurly-public-key-eu" content="ewr1-OdjtqOMWclw5ZC6qRi3vlZ">
+
+            <meta name="blackfire-ga-code" content="UA-1221949-13">
+    <meta name="blackfire-twitter-pixel-id" content="o0k0p">
+        <meta name="blackfire-adwords-account" content="changeme">
+    <meta name="blackfire-adwords-conversion-label-premium-trial" content="changeme">
+    <meta name="blackfire-adwords-conversion-label-premium-monthly-v2" content="changeme">
+    <meta name="blackfire-adwords-conversion-label-premium-yearly-v2" content="env&#x28;ADWORDS_CONVERSION_LABEL_PREMIUM_YEARLY_V2&#x29;">
+    <meta name="blackfire-adwords-conversion-label-enterprise-monthly-v2" content="changeme">
+    <meta name="blackfire-adwords-conversion-label-enterprise-yearly-v2" content="changeme">
+    <meta name="blackfire-adwords-conversion-label-profiler-yearly-v2" content="changeme">
+
+    <meta name="blackfire-intercom-app-id" content="m8wnag1n">
+    
+            </head>
+
+    <body ng-csp="no-unsafe-eval" class="site " >
+                <header>
+            <nav id="global-nav" class="navbar navbar-default navbar-fixed-top">
+                <div class="container">
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a href="/dashboard" class="navbar-brand blackfire logo-container hidden-sm">
+                            <svg    viewBox="0 0 303 85.9" version="1.1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" xml:space="preserve"><g><g><circle fill="#FFFFFF" cx="42.9" cy="42.9" r="42.9"/><g><path fill="#E03C31" d="M35.3,72c0.5,0.7-0.1,1.6-0.9,1.4c-14.1-1.9-24.1-22.7-11-34.7c14.5-13.3,17.8-21.2,16.1-25.4
+				c-0.2-0.6,0.3-1.1,0.8-0.9c4.8,2.4,15.7,9.6,12.1,25.2c0,0,6.3-0.1,6.5-6c0-0.6,0.7-0.8,1.1-0.5c2.7,2.5,9.4,9.7,8.5,19.2
+				C67.2,64.1,57.7,71.3,50.7,73c-0.7,0.2-1.3-0.6-0.9-1.2c2-3,5.6-9.1-1.9-15.1c-5.6-4.2-6.3-8.6-5.5-11.3c0.1-0.5-0.4-0.8-0.7-0.5
+				C27.3,57.1,32.5,68,35.3,72z"/></g></g><g><path fill="#FFFFFF" d="M131,48.9c0,10.1-4.9,14.9-13.2,14.9c-7.5,0-12.8-4.1-12.8-12.4V25.8c0-1.9,1.5-3.3,3.3-3.3
+			s3.3,1.5,3.3,3.3v10.6c1.2-1.2,3.8-2.5,6.8-2.5C126.2,34,131,38.8,131,48.9z M111.6,51.4c0,4.3,2.5,6.7,6.1,6.7
+			c4.3,0,6.6-3.1,6.6-9.2c0-6.1-2.4-9.2-6.6-9.2c-3.7,0-6.1,3.2-6.1,3.2V51.4z"/><path fill="#FFFFFF" d="M141,25.8v30.3c0,0.7,0.7,1.1,1.2,1.1c1.7,0,3.1,1.4,3.1,3.1s-1.4,3.1-3.1,3.1c-4.8,0-7.9-2.7-7.9-7.9
+			V25.8c0-1.9,1.5-3.3,3.3-3.3C139.6,22.5,141,24,141,25.8z"/><path fill="#FFFFFF" d="M152.7,42.3c-0.6,0.4-1.1,0.6-1.9,0.6c-1.6,0-2.9-1.3-2.9-2.9c0-0.7,0.2-1.4,0.8-2c1.7-1.9,4.8-4,10.1-4
+			c7.7,0,12.3,3.8,12.3,10.3v15.8c0,1.8-1.5,3.3-3.3,3.3c-1.8,0-3.3-1.5-3.3-3.3c-1.7,2.7-4.4,3.6-8.1,3.6c-6.1,0-10.1-3.8-10.1-9.3
+			c0-5.8,4.6-8.7,10-8.7h8.1v-1.1c0-2.8-2-4.6-5.6-4.6C156.2,39.9,154.3,41.2,152.7,42.3z M164.6,52.6v-1.7h-7.2
+			c-2.7,0-4.2,1.3-4.2,3.5c0,2.4,1.7,3.8,5.1,3.8C161.5,58.2,164.6,56.1,164.6,52.6z"/><path fill="#FFFFFF" d="M187.9,34c5.7,0,9,2.8,10.1,4.3c0.5,0.7,0.7,1.2,0.7,1.9c0,1.7-1.3,3-3,3c-1,0-1.7-0.4-2.3-1.1
+			c-0.8-0.9-2.4-2.4-5.5-2.4c-4.3,0-6.7,3.3-6.7,9.2c0,5.9,2.4,9.2,6.7,9.2c2.8,0,4.7-1.4,6.1-2.5c0.7-0.5,1.2-0.6,1.9-0.6
+			c1.7,0,3,1.3,3,3c0,0.9-0.3,1.6-1.1,2.3c-1.4,1.3-4.8,3.5-9.9,3.5c-8.4,0-13.4-4.8-13.4-14.9S179.5,34,187.9,34z"/><path fill="#FFFFFF" d="M220.1,62.1l-9.2-12.4l-2,1.5v8.9c0,1.9-1.5,3.2-3.3,3.2c-1.9,0-3.3-1.4-3.3-3.2V25.7
+			c0-1.9,1.4-3.2,3.3-3.2c1.9,0,3.3,1.4,3.3,3.2v18.2l11.2-8.8c0.8-0.6,1.4-0.8,2.2-0.8c1.8,0,3.2,1.4,3.2,3.2
+			c0,0.9-0.4,1.9-1.2,2.5l-8.1,6.2l9.1,11.9c0.5,0.7,0.7,1.4,0.7,2c0,1.8-1.4,3.2-3.2,3.2C221.5,63.4,220.6,62.9,220.1,62.1z"/><path fill="#FFFFFF" d="M229.9,40.4c-1.5,0-2.8-1.2-2.8-2.8c0-1.5,1.2-2.8,2.8-2.8h1.3v-3.3c0-5.8,3.8-9.4,11.8-9.4
+			c1.6,0,2.9,1.3,2.9,2.9c0,1.6-1.3,2.9-2.9,2.9c-3.4,0-5.1,1.9-5.1,4.6v2.3h4.1c1.5,0,2.8,1.2,2.8,2.8c0,1.5-1.2,2.8-2.8,2.8h-4.1
+			v19.8c0,1.9-1.5,3.2-3.3,3.2c-2,0-3.3-1.4-3.3-3.2V40.4H229.9z"/><path fill="#FFFFFF" d="M247.9,29.7c0-2.8,1.4-4,3.9-4c2.5,0,3.9,1.2,3.9,4c0,2.4-1.4,3.8-3.9,3.8C249.3,33.5,247.9,32,247.9,29.7
+			z M255.1,60.1c0,1.9-1.5,3.3-3.3,3.3c-1.9,0-3.3-1.5-3.3-3.3V38.7c0-1.9,1.5-3.3,3.3-3.3c1.9,0,3.3,1.5,3.3,3.3V60.1z"/><path fill="#FFFFFF" d="M266.2,38c1.2-2.4,4.1-4,6.7-4c1.7,0,3.2,1.4,3.2,3.2c0,1.7-1.4,3.2-3.2,3.2c-4.3,0-6.7,2.7-6.7,6.9v12.9
+			c0,1.9-1.5,3.3-3.3,3.3c-1.9,0-3.3-1.5-3.3-3.3V37.7c0-1.9,1.5-3.3,3.3-3.3c1.9,0,3.3,1.5,3.3,3.3V38z"/><path fill="#FFFFFF" d="M289.8,34c10.5,0,12.4,8,12.4,12.3c0,2.3,0,5-3.8,5h-15.3c0,4.5,3.2,6.5,7.2,6.5c2.7,0,4.6-0.9,6.1-1.9
+			c0.7-0.4,1.2-0.7,2-0.7c1.6,0,2.9,1.3,2.9,2.9c0,1-0.5,1.8-1.1,2.3c-1.1,1-4.3,3.4-10,3.4c-8.6,0-13.9-4.6-13.9-15
+			C276.5,39.3,281.4,34,289.8,34z M283.3,45.7h12.3c0-3-1.7-6-5.8-6C286.2,39.7,283.6,41.7,283.3,45.7z"/></g></g></svg>
+                        </a>
+                        <a href="/dashboard" class="navbar-brand blackfire logo-container visible-sm">
+                            <svg    viewBox="0 0 197.3 157.3" version="1.1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" xml:space="preserve"><g><g><circle fill="#FFFFFF" cx="98.7" cy="51" r="51"/><g><path fill="#E03C31" d="M89.6,85.5c0.6,0.8-0.1,1.8-1.1,1.7C71.8,85,59.9,60.3,75.5,46c17.2-15.8,21.2-25.2,19.1-30.2
+				c-0.3-0.7,0.4-1.3,1-1c5.7,2.8,18.7,11.4,14.4,30c0,0,7.5-0.1,7.7-7.1c0-0.7,0.8-1,1.3-0.5c3.3,3,11.1,11.5,10.1,22.8
+				c-1.5,16.2-12.8,24.7-21.2,26.8c-0.8,0.2-1.5-0.7-1-1.5c2.4-3.5,6.6-10.8-2.2-18c-6.7-4.9-7.5-10.2-6.5-13.4
+				c0.2-0.5-0.5-1-0.9-0.6C80.1,67.8,86.2,80.7,89.6,85.5z"/></g></g><g><path fill="#FFFFFF" d="M26.1,142.4c0,10.1-4.9,14.9-13.2,14.9c-7.5,0-12.8-4.1-12.8-12.4v-25.5c0-1.9,1.5-3.3,3.3-3.3
+			s3.3,1.5,3.3,3.3V130c1.2-1.2,3.8-2.5,6.8-2.5C21.3,127.5,26.1,132.4,26.1,142.4z M6.7,144.9c0,4.3,2.5,6.7,6.1,6.7
+			c4.3,0,6.6-3.1,6.6-9.2c0-6.1-2.4-9.2-6.6-9.2c-3.7,0-6.1,3.2-6.1,3.2V144.9z"/><path fill="#FFFFFF" d="M36.1,119.4v30.3c0,0.7,0.7,1.1,1.2,1.1c1.7,0,3.1,1.4,3.1,3.1s-1.4,3.1-3.1,3.1c-4.8,0-7.9-2.7-7.9-7.9
+			v-29.7c0-1.9,1.5-3.3,3.3-3.3C34.7,116,36.1,117.5,36.1,119.4z"/><path fill="#FFFFFF" d="M47.8,135.8c-0.6,0.4-1.1,0.6-1.9,0.6c-1.6,0-2.9-1.3-2.9-2.9c0-0.7,0.2-1.4,0.8-2c1.7-1.9,4.8-4,10.1-4
+			c7.7,0,12.3,3.8,12.3,10.3v15.8c0,1.8-1.5,3.3-3.3,3.3c-1.8,0-3.3-1.5-3.3-3.3c-1.7,2.7-4.4,3.6-8.1,3.6c-6.1,0-10.1-3.8-10.1-9.3
+			c0-5.8,4.6-8.7,10-8.7h8.1v-1.1c0-2.8-2-4.6-5.6-4.6C51.3,133.5,49.4,134.7,47.8,135.8z M59.7,146.2v-1.7h-7.2
+			c-2.7,0-4.2,1.3-4.2,3.5c0,2.4,1.7,3.8,5.1,3.8C56.6,151.7,59.7,149.6,59.7,146.2z"/><path fill="#FFFFFF" d="M83.1,127.5c5.7,0,9,2.8,10.1,4.3c0.5,0.7,0.7,1.2,0.7,1.9c0,1.7-1.3,3-3,3c-1,0-1.7-0.4-2.3-1.1
+			c-0.8-0.9-2.4-2.4-5.5-2.4c-4.3,0-6.7,3.3-6.7,9.2c0,5.9,2.4,9.2,6.7,9.2c2.8,0,4.7-1.4,6.1-2.5c0.7-0.5,1.2-0.6,1.9-0.6
+			c1.7,0,3,1.3,3,3c0,0.9-0.3,1.6-1.1,2.3c-1.4,1.3-4.8,3.5-9.9,3.5c-8.4,0-13.4-4.8-13.4-14.9C69.6,132.3,74.6,127.5,83.1,127.5z"
+			/><path fill="#FFFFFF" d="M115.2,155.7l-9.2-12.4l-2,1.5v8.9c0,1.9-1.5,3.2-3.3,3.2c-1.9,0-3.3-1.4-3.3-3.2v-34.5
+			c0-1.9,1.4-3.2,3.3-3.2c1.9,0,3.3,1.4,3.3,3.2v18.2l11.2-8.8c0.8-0.6,1.4-0.8,2.2-0.8c1.8,0,3.2,1.4,3.2,3.2
+			c0,0.9-0.4,1.9-1.2,2.5l-8.1,6.2l9.1,11.9c0.5,0.7,0.7,1.4,0.7,2c0,1.8-1.4,3.2-3.2,3.2C116.6,157,115.7,156.4,115.2,155.7z"/><path fill="#FFFFFF" d="M125,134c-1.5,0-2.8-1.2-2.8-2.8c0-1.5,1.2-2.8,2.8-2.8h1.3V125c0-5.8,3.8-9.4,11.8-9.4
+			c1.6,0,2.9,1.3,2.9,2.9s-1.3,2.9-2.9,2.9c-3.4,0-5.1,1.9-5.1,4.6v2.3h4.1c1.5,0,2.8,1.2,2.8,2.8c0,1.5-1.2,2.8-2.8,2.8h-4.1v19.8
+			c0,1.9-1.5,3.2-3.3,3.2c-2,0-3.3-1.4-3.3-3.2V134H125z"/><path fill="#FFFFFF" d="M143,123.2c0-2.8,1.4-4,3.9-4c2.5,0,3.9,1.2,3.9,4c0,2.4-1.4,3.8-3.9,3.8C144.4,127,143,125.6,143,123.2z
+			 M150.2,153.6c0,1.9-1.5,3.3-3.3,3.3c-1.9,0-3.3-1.5-3.3-3.3v-21.4c0-1.9,1.5-3.3,3.3-3.3c1.9,0,3.3,1.5,3.3,3.3V153.6z"/><path fill="#FFFFFF" d="M161.3,131.5c1.2-2.4,4.1-4,6.7-4c1.7,0,3.2,1.4,3.2,3.2c0,1.7-1.4,3.2-3.2,3.2c-4.3,0-6.7,2.7-6.7,6.9
+			v12.9c0,1.9-1.5,3.3-3.3,3.3c-1.9,0-3.3-1.5-3.3-3.3v-22.4c0-1.9,1.5-3.3,3.3-3.3c1.9,0,3.3,1.5,3.3,3.3V131.5z"/><path fill="#FFFFFF" d="M184.9,127.5c10.5,0,12.4,8,12.4,12.3c0,2.3,0,5-3.8,5h-15.3c0,4.5,3.2,6.5,7.2,6.5c2.7,0,4.6-0.9,6.1-1.9
+			c0.7-0.4,1.2-0.7,2-0.7c1.6,0,2.9,1.3,2.9,2.9c0,1-0.5,1.8-1.1,2.3c-1.1,1-4.3,3.4-10,3.4c-8.6,0-13.9-4.6-13.9-15
+			C171.6,132.8,176.5,127.5,184.9,127.5z M178.4,139.2h12.3c0-3-1.7-6-5.8-6C181.3,133.2,178.7,135.3,178.4,139.2z"/></g></g></svg>
+                        </a>
+                    </div>
+
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                        <ul class="nav navbar-nav navbar-right">
+                                                                                                                                <li>
+                                        <a href="https://www.blackfire.io/features">Features</a>
+                                    </li>
+                                                                <li class="active">
+                                    <a href="/docs/introduction" >Docs</a>
+                                </li>
+                                                                                                                    <li class="hidden-integrations"><a href="https://www.blackfire.io/integrations">Integrations</a></li>
+                                            <li class="hidden-customers"><a href="https://www.blackfire.io/customers">Customers</a></li>
+                                                                                                                                                                                            <li><a href="https://www.blackfire.io/pricing">Pricing</a></li>
+                                                                                                        <li class="hidden-blog"><a href="https://blog.blackfire.io" rel="noopener noreferrer" target="_blank">Blog</a>
+                                                                                                                                                                                                                                                                                                                                                    <li>
+                                        <a class="login-button btn btn-login" href="/login?target=/docs/builds-cookbooks/player">Log In</a>
+                                    </li>
+                                    <li>
+                                                                                                                        <a class="login-button btn btn-primary btn-red" href="/signup?target=/docs/builds-cookbooks/player">Sign Up</a>                                    </li>
+                                                                                    </ul>
+                    </div><!-- /.navbar-collapse -->
+                </div><!-- /.container-fluid -->
+            </nav>
+        </header>
+        
+                <div class="site-content container">
+                        <!--[if lte IE 8]>
+            <div class="alert alert-danger">
+                <span class="glyphicon glyphicon-warning-sign"></span>
+                Your browser is not supported.
+                We recommand you to use Google Chrome or Mozilla Firefox.
+            </div>
+            <![endif]-->
+                            <div id="docs">
+        <div class="documentation-block nav sidenav hidden-xs hidden-sm col-md-3">
+    <div class="nav-button">
+    <a href="/docs/up-and-running/installation">
+        <button class="btn btn-lg btn-primary btn-red" type="submit"><svg    viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" xml:space="preserve"><path d="M13.03,9.293L9.578,5.841c-0.39-0.391-1.024-0.391-1.414,0c-0.391,0.39-0.391,1.024,0,1.414L10.908,10
+        l-2.744,2.745c-0.391,0.39-0.391,1.024,0,1.414c0.39,0.391,1.024,0.391,1.414,0l3.452-3.452c0.195-0.195,0.293-0.451,0.293-0.707
+        S13.225,9.488,13.03,9.293z M10,19.796c5.402,0,9.796-4.395,9.796-9.796S15.402,0.204,10,0.204S0.204,4.598,0.204,10
+        S4.598,19.796,10,19.796z M10,17.796c-4.299,0-7.796-3.497-7.796-7.796c0-4.299,3.497-7.796,7.796-7.796S17.796,5.701,17.796,10
+        C17.796,14.299,14.299,17.796,10,17.796z"/></svg> Install Blackfire</button>
+    </a>
+    <a href="/docs/profiling-cookbooks/profiling-http-via-browser">
+        <button class="btn btn-lg btn-primary btn-red" type="submit"><svg    viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" xml:space="preserve"><path d="M13.03,9.293L9.578,5.841c-0.39-0.391-1.024-0.391-1.414,0c-0.391,0.39-0.391,1.024,0,1.414L10.908,10
+        l-2.744,2.745c-0.391,0.39-0.391,1.024,0,1.414c0.39,0.391,1.024,0.391,1.414,0l3.452-3.452c0.195-0.195,0.293-0.451,0.293-0.707
+        S13.225,9.488,13.03,9.293z M10,19.796c5.402,0,9.796-4.395,9.796-9.796S15.402,0.204,10,0.204S0.204,4.598,0.204,10
+        S4.598,19.796,10,19.796z M10,17.796c-4.299,0-7.796-3.497-7.796-7.796c0-4.299,3.497-7.796,7.796-7.796S17.796,5.701,17.796,10
+        C17.796,14.299,14.299,17.796,10,17.796z"/></svg> Start Profiling</button>
+    </a>
+</div>
+<div class="clearfix"></div>
+
+<div>
+    <input id="algolia" placeholder="Search documentation" class="form-control" />
+</div>
+
+        
+<ul id="menu" class="">
+<li class="toctree-l1"><img src="https://static.blackfire.io/assets/ve756410286/bundles/blackfire/docs-pictos/doc-introduction.svg" /> <a href="/docs/introduction">What is Blackfire?</a></li>
+<li class="toctree-l1"><img src="https://static.blackfire.io/assets/ve756410286/bundles/blackfire/docs-pictos/doc-up-and-running-index.svg" /> <a href="/docs/up-and-running/index">Getting Up and Running</a>
+    <ul class="hidden ">
+    <li class="toctree-l2"><a href="/docs/up-and-running/installation">Installing Blackfire</a></li>
+    <li class="toctree-l2"><a href="/docs/up-and-running/update">Updating Blackfire</a></li>
+    <li class="toctree-l2"><a href="/docs/up-and-running/agent-upgrade">Agent Upgrade Guide</a></li>
+    <li class="toctree-l2"><a href="/docs/up-and-running/configuration/index">Configuration</a>
+        <ul>
+        <li class="toctree-l3"><a href="/docs/up-and-running/configuration/agent">Agent v2</a></li>
+        <li class="toctree-l3"><a href="/docs/up-and-running/configuration/agent-legacy">Agent v1</a></li>
+        <li class="toctree-l3"><a href="/docs/up-and-running/configuration/cli">CLI</a></li>
+        <li class="toctree-l3"><a href="/docs/up-and-running/configuration/php">PHP Probe</a></li>
+        <li class="toctree-l3"><a href="/docs/up-and-running/configuration/python">Python Probe</a></li>
+        <li class="toctree-l3"><a href="/docs/up-and-running/configuration/go">Go Probe</a></li>
+        </ul>
+        </li>
+    <li class="toctree-l2"><a href="/docs/up-and-running/upgrading-edition">Upgrading to a New Edition</a></li>
+    <li class="toctree-l2"><a href="/docs/up-and-running/docker">Docker</a></li>
+    <li class="toctree-l2"><a href="/docs/up-and-running/reverse-proxies">Bypassing Reverse Proxy, Cache, and Content Delivery Networks (CDN)</a></li>
+    </ul>
+    </li>
+<li class="toctree-l1"><img src="https://static.blackfire.io/assets/ve756410286/bundles/blackfire/docs-pictos/doc-php-index.svg" /> <a href="/docs/php/index">PHP</a>
+    <ul class="hidden ">
+    <li class="toctree-l2"><a href="/docs/php/configuration">Configuration</a></li>
+    <li class="toctree-l2"><a href="/docs/php/integrations/index">Integrations</a>
+        <ul>
+        <li class="toctree-l3"><a href="/docs/php/integrations/php-docker">PHP Probe with Docker</a></li>
+        <li class="toctree-l3"><a href="/docs/php/integrations/sdk">PHP SDK</a></li>
+        <li class="toctree-l3"><a href="/docs/php/integrations/phpunit">PHPUnit</a></li>
+        <li class="toctree-l3"><a href="/docs/php/integrations/behat">Behat</a></li>
+        <li class="toctree-l3"><a href="/docs/php/integrations/symfony/index">Symfony</a></li>
+        <li class="toctree-l3"><a href="/docs/php/integrations/laravel/index">Laravel</a></li>
+        <li class="toctree-l3"><a href="/docs/php/integrations/magento">Magento</a></li>
+        <li class="toctree-l3"><a href="/docs/php/integrations/guzzle">Guzzle</a></li>
+        <li class="toctree-l3"><a href="/docs/php/integrations/goutte">Goutte</a></li>
+        <li class="toctree-l3"><a href="/docs/php/integrations/swoole">Swoole</a></li>
+        </ul>
+        </li>
+    <li class="toctree-l2"><a href="/docs/php/training-resources/index">Training Resources</a>
+        <ul>
+        <li class="toctree-l3"><a href="/docs/php/training-resources/book/index">PHP Code Performance Explained</a></li>
+        <li class="toctree-l3"><a href="/docs/php/training-resources/symfonycasts">SymfonyCasts</a></li>
+        </ul>
+        </li>
+    </ul>
+    </li>
+<li class="toctree-l1"><img src="https://static.blackfire.io/assets/ve756410286/bundles/blackfire/docs-pictos/doc-python-index.svg" /> <a href="/docs/python/index">Python</a>
+    <ul class="hidden ">
+    <li class="toctree-l2"><a href="/docs/python/configuration">Configuration</a></li>
+    <li class="toctree-l2"><a href="/docs/python/integrations/index">Integrations</a>
+        <ul>
+        <li class="toctree-l3"><a href="/docs/python/integrations/blackfire-python">blackfire-python</a></li>
+        <li class="toctree-l3"><a href="/docs/python/integrations/django">Django</a></li>
+        <li class="toctree-l3"><a href="/docs/python/integrations/flask">Flask</a></li>
+        <li class="toctree-l3"><a href="/docs/python/integrations/odoo">Odoo</a></li>
+        <li class="toctree-l3"><a href="/docs/python/integrations/sdk">Python SDK</a></li>
+        <li class="toctree-l3"><a href="/docs/python/integrations/python-docker">Python Probe with Docker</a></li>
+        </ul>
+        </li>
+    <li class="toctree-l2"><a href="/docs/python/training-resources/django-profiling">Debugging Performance in Python and Django applications</a></li>
+    </ul>
+    </li>
+<li class="toctree-l1"><img src="https://static.blackfire.io/assets/ve756410286/bundles/blackfire/docs-pictos/doc-go-index.svg" /> <a href="/docs/go/index">Go</a>
+    <ul class="hidden ">
+    <li class="toctree-l2"><a href="/docs/go/configuration">Configuration</a></li>
+    <li class="toctree-l2"><a href="/docs/go/integrations/index">Integrations</a>
+        <ul>
+        <li class="toctree-l3"><a href="/docs/go/integrations/sdk">Go SDK</a></li>
+        </ul>
+        </li>
+    </ul>
+    </li>
+<li class="toctree-l1"><img src="https://static.blackfire.io/assets/ve756410286/bundles/blackfire/docs-pictos/doc-profiling-cookbooks-index.svg" /> <a href="/docs/profiling-cookbooks/index">Profile</a>
+    <ul class="hidden ">
+    <li class="toctree-l2"><a href="/docs/profiling-cookbooks/profiling-http-via-browser">Profiling HTTP Requests with a Browser</a></li>
+    <li class="toctree-l2"><a href="/docs/profiling-cookbooks/profiling-http-via-cli">Profiling HTTP Requests with the CLI</a></li>
+    <li class="toctree-l2"><a href="/docs/profiling-cookbooks/profiling-cli">Profiling CLI Commands</a></li>
+    <li class="toctree-l2"><a href="/docs/profiling-cookbooks/profiling-microservices">Profiling Micro-services</a></li>
+    <li class="toctree-l2"><a href="/docs/profiling-cookbooks/distributed-profiling">Distributed Profiling</a></li>
+    <li class="toctree-l2"><a href="/docs/profiling-cookbooks/debugging">Debugging Code</a></li>
+    <li class="toctree-l2"><a href="/docs/profiling-cookbooks/sharing-profiles">Sharing Profiles</a></li>
+    <li class="toctree-l2"><a href="/docs/profiling-cookbooks/understanding-call-graphs">Understanding Call Graphs</a></li>
+    <li class="toctree-l2"><a href="/docs/profiling-cookbooks/understanding-comparisons">Understanding Comparisons</a></li>
+    <li class="toctree-l2"><a href="/docs/profiling-cookbooks/understanding-timelines">Understanding Timelines</a></li>
+    </ul>
+    </li>
+<li class="toctree-l1"><img src="https://static.blackfire.io/assets/ve756410286/bundles/blackfire/docs-pictos/doc-monitoring-cookbooks-index.svg" /> <a href="/docs/monitoring-cookbooks/index">Monitor</a>
+    <ul class="hidden ">
+    <li class="toctree-l2"><a href="/docs/monitoring-cookbooks/configuration">Configuring Blackfire Monitoring</a></li>
+    <li class="toctree-l2"><a href="/docs/monitoring-cookbooks/alerting">Alerting</a></li>
+    <li class="toctree-l2"><a href="/docs/monitoring-cookbooks/health-report">Health Report</a></li>
+    <li class="toctree-l2"><a href="/docs/monitoring-cookbooks/naming-transactions">Naming Transactions</a></li>
+    <li class="toctree-l2"><a href="/docs/monitoring-cookbooks/ignoring-transactions">Ignoring Transactions</a></li>
+    <li class="toctree-l2"><a href="/docs/monitoring-cookbooks/services-monitoring">Services Monitoring</a></li>
+    <li class="toctree-l2"><a href="/docs/monitoring-cookbooks/consumers-monitoring">Consumers Monitoring</a></li>
+    <li class="toctree-l2"><a href="/docs/monitoring-cookbooks/automatic-profiling">Automatic Profiling</a></li>
+    <li class="toctree-l2"><a href="/docs/monitoring-cookbooks/events">Mark Events in the Monitoring Timeline</a></li>
+    </ul>
+    </li>
+<li class="toctree-l1"><img src="https://static.blackfire.io/assets/ve756410286/bundles/blackfire/docs-pictos/doc-testing-cookbooks-index.svg" /> <a href="/docs/testing-cookbooks/index">Test</a>
+    <ul class="hidden ">
+    <li class="toctree-l2"><a href="/docs/testing-cookbooks/tests">Writing Tests</a></li>
+    <li class="toctree-l2"><a href="/docs/testing-cookbooks/assertions">Assertions</a></li>
+    <li class="toctree-l2"><a href="/docs/testing-cookbooks/metrics">Metrics</a></li>
+    <li class="toctree-l2"><a href="/docs/testing-cookbooks/recommendations">Recommendations</a></li>
+    </ul>
+    </li>
+<li class="toctree-l1"><img src="https://static.blackfire.io/assets/ve756410286/bundles/blackfire/docs-pictos/doc-builds-cookbooks-index.svg" /> <a href="/docs/builds-cookbooks/index">Build</a>
+    <ul class="">
+    <li class="toctree-l2"><a href="/docs/builds-cookbooks/scenarios">Writing Scenarios</a></li>
+    <li class="active toctree-l2"><a href="/docs/builds-cookbooks/player">Blackfire Player</a></li>
+    <li class="toctree-l2"><a href="/docs/builds-cookbooks/builds-periodic">Configuring Periodic Builds</a></li>
+    <li class="toctree-l2"><a href="/docs/builds-cookbooks/builds-webhook">Starting a Build using a Webhook</a></li>
+    <li class="toctree-l2"><a href="/docs/builds-cookbooks/builds-integrations">Starting a Build Using a Native Integration</a></li>
+    <li class="toctree-l2"><a href="/docs/builds-cookbooks/notification-channels">Scenario Notification Channels</a></li>
+    </ul>
+    </li>
+<li class="toctree-l1"><img src="https://static.blackfire.io/assets/ve756410286/bundles/blackfire/docs-pictos/doc-integrations-index.svg" /> <a href="/docs/integrations/index">Integrate</a>
+    <ul class="hidden ">
+    <li class="toctree-l2"><a href="/docs/integrations/browsers/index">Browsers</a>
+        <ul>
+        <li class="toctree-l3"><a href="/docs/integrations/browsers/firefox">Firefox</a></li>
+        <li class="toctree-l3"><a href="/docs/integrations/browsers/chrome">Google Chrome</a></li>
+        </ul>
+        </li>
+    <li class="toctree-l2"><a href="/docs/integrations/proxies/index">Reverse Proxies / CDNs</a>
+        <ul>
+        <li class="toctree-l3"><a href="/docs/integrations/proxies/varnish">Varnish</a></li>
+        <li class="toctree-l3"><a href="/docs/integrations/proxies/cloudflare">Cloudflare</a></li>
+        <li class="toctree-l3"><a href="/docs/integrations/proxies/fastly">Fastly</a></li>
+        <li class="toctree-l3"><a href="/docs/integrations/proxies/nginx">Nginx</a></li>
+        </ul>
+        </li>
+    <li class="toctree-l2"><a href="/docs/integrations/blackfire-player">Blackfire Player</a></li>
+    <li class="toctree-l2"><a href="/docs/integrations/paas/index">PaaS &amp; Hosting Providers</a>
+        <ul>
+        <li class="toctree-l3"><a href="/docs/integrations/paas/platformsh">Platform.sh</a></li>
+        <li class="toctree-l3"><a href="/docs/integrations/paas/magentocloud">Magento Cloud</a></li>
+        <li class="toctree-l3"><a href="/docs/integrations/paas/laravel-forge">Laravel Forge</a></li>
+        <li class="toctree-l3"><a href="/docs/integrations/paas/laravel-vapor">Laravel Vapor</a></li>
+        <li class="toctree-l3"><a href="/docs/integrations/paas/heroku">Heroku</a></li>
+        <li class="toctree-l3"><a href="/docs/integrations/paas/fortrabbit">fortrabbit</a></li>
+        <li class="toctree-l3"><a href="/docs/integrations/paas/amazee">amazee.io</a></li>
+        <li class="toctree-l3"><a href="/docs/integrations/paas/hypernode">Hypernode</a></li>
+        <li class="toctree-l3"><a href="/docs/integrations/paas/hosted-power">Hosted Power</a></li>
+        <li class="toctree-l3"><a href="/docs/integrations/paas/odiso">Odiso</a></li>
+        <li class="toctree-l3"><a href="/docs/integrations/paas/ddev">DDEV</a></li>
+        <li class="toctree-l3"><a href="/docs/integrations/paas/lando">Lando</a></li>
+        <li class="toctree-l3"><a href="/docs/integrations/paas/aws-lambda">AWS Lambda</a></li>
+        </ul>
+        </li>
+    <li class="toctree-l2"><a href="/docs/integrations/git/index">Git Providers</a>
+        <ul>
+        <li class="toctree-l3"><a href="/docs/integrations/git/github">GitHub</a></li>
+        <li class="toctree-l3"><a href="/docs/integrations/git/gitlab">Gitlab</a></li>
+        <li class="toctree-l3"><a href="/docs/integrations/git/bitbucket">Bitbucket</a></li>
+        </ul>
+        </li>
+    <li class="toctree-l2"><a href="/docs/integrations/ci/index">Continuous Integration Providers</a>
+        <ul>
+        <li class="toctree-l3"><a href="/docs/integrations/ci/jenkins">Jenkins</a></li>
+        <li class="toctree-l3"><a href="/docs/integrations/ci/travis">Travis CI</a></li>
+        <li class="toctree-l3"><a href="/docs/integrations/ci/circleci">CircleCI</a></li>
+        <li class="toctree-l3"><a href="/docs/integrations/ci/github-actions">GitHub Actions</a></li>
+        </ul>
+        </li>
+    <li class="toctree-l2"><a href="/docs/integrations/chef">Chef</a></li>
+    <li class="toctree-l2"><a href="/docs/integrations/cpanel">cPanel</a></li>
+    <li class="toctree-l2"><a href="/docs/integrations/postman">Postman</a></li>
+    <li class="toctree-l2"><a href="/docs/integrations/notifiers/index">Notification Channels</a>
+        <ul>
+        <li class="toctree-l3"><a href="/docs/integrations/notifiers/slack">Slack</a></li>
+        <li class="toctree-l3"><a href="/docs/integrations/notifiers/pager-duty">Pager Duty</a></li>
+        <li class="toctree-l3"><a href="/docs/integrations/notifiers/opsgenie">Opsgenie</a></li>
+        <li class="toctree-l3"><a href="/docs/integrations/notifiers/microsoft-teams">Microsoft Teams</a></li>
+        </ul>
+        </li>
+    <li class="toctree-l2"><a href="/docs/integrations/ide/index">IDEs</a>
+        <ul>
+        <li class="toctree-l3"><a href="/docs/integrations/ide/phpstorm">PHPStorm</a></li>
+        <li class="toctree-l3"><a href="/docs/integrations/ide/vscode">Visual Studio Code</a></li>
+        </ul>
+        </li>
+    </ul>
+    </li>
+<li class="toctree-l1"><img src="https://static.blackfire.io/assets/ve756410286/bundles/blackfire/docs-pictos/doc-reference-guide-index.svg" /> <a href="/docs/reference-guide/index">Reference Guide</a>
+    <ul class="hidden ">
+    <li class="toctree-l2"><a href="/docs/reference-guide/environments">Environments</a></li>
+    <li class="toctree-l2"><a href="/docs/reference-guide/time">Time</a></li>
+    <li class="toctree-l2"><a href="/docs/reference-guide/faq">FAQ</a></li>
+    <li class="toctree-l2"><a href="/docs/reference-guide/glossary">Glossary</a></li>
+    </ul>
+    </li>
+</ul>
+
+</div>
+
+        <div class="col-xs-12 col-sm-12 col-md-9 documentation-block documentation-main">
+            <nav class="visible-xs visible-sm navbar navbar-default" style="border:none; background-color: white;margin-bottom:0;position:absolute;top: 30px;right: 15px;z-index: 80">
+                <div class="container-fluid" style="border:none; background-color: white;">
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class="navbar-header" style="border:none; background-color: white;">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2" aria-expanded="false">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                    </div>
+
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2" style="border:1px solid #E5E5E5; background-color: white;">
+                        <div class="documentation-block nav sidenav ">
+    <div class="nav-button">
+    <a href="/docs/up-and-running/installation">
+        <button class="btn btn-lg btn-primary btn-red" type="submit"><svg    viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" xml:space="preserve"><path d="M13.03,9.293L9.578,5.841c-0.39-0.391-1.024-0.391-1.414,0c-0.391,0.39-0.391,1.024,0,1.414L10.908,10
+        l-2.744,2.745c-0.391,0.39-0.391,1.024,0,1.414c0.39,0.391,1.024,0.391,1.414,0l3.452-3.452c0.195-0.195,0.293-0.451,0.293-0.707
+        S13.225,9.488,13.03,9.293z M10,19.796c5.402,0,9.796-4.395,9.796-9.796S15.402,0.204,10,0.204S0.204,4.598,0.204,10
+        S4.598,19.796,10,19.796z M10,17.796c-4.299,0-7.796-3.497-7.796-7.796c0-4.299,3.497-7.796,7.796-7.796S17.796,5.701,17.796,10
+        C17.796,14.299,14.299,17.796,10,17.796z"/></svg> Install Blackfire</button>
+    </a>
+    <a href="/docs/profiling-cookbooks/profiling-http-via-browser">
+        <button class="btn btn-lg btn-primary btn-red" type="submit"><svg    viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" xml:space="preserve"><path d="M13.03,9.293L9.578,5.841c-0.39-0.391-1.024-0.391-1.414,0c-0.391,0.39-0.391,1.024,0,1.414L10.908,10
+        l-2.744,2.745c-0.391,0.39-0.391,1.024,0,1.414c0.39,0.391,1.024,0.391,1.414,0l3.452-3.452c0.195-0.195,0.293-0.451,0.293-0.707
+        S13.225,9.488,13.03,9.293z M10,19.796c5.402,0,9.796-4.395,9.796-9.796S15.402,0.204,10,0.204S0.204,4.598,0.204,10
+        S4.598,19.796,10,19.796z M10,17.796c-4.299,0-7.796-3.497-7.796-7.796c0-4.299,3.497-7.796,7.796-7.796S17.796,5.701,17.796,10
+        C17.796,14.299,14.299,17.796,10,17.796z"/></svg> Start Profiling</button>
+    </a>
+</div>
+<div class="clearfix"></div>
+
+<div>
+    <input id="algolia" placeholder="Search documentation" class="form-control" />
+</div>
+
+        
+<ul class="nav navbar-nav">
+<li class="toctree-l1"><img src="https://static.blackfire.io/assets/ve756410286/bundles/blackfire/docs-pictos/doc-introduction.svg" /> <a href="/docs/introduction">What is Blackfire?</a></li>
+<li class="toctree-l1"><img src="https://static.blackfire.io/assets/ve756410286/bundles/blackfire/docs-pictos/doc-up-and-running-index.svg" /> <a href="/docs/up-and-running/index">Getting Up and Running</a>
+    <ul class="hidden ">
+    <li class="toctree-l2"><a href="/docs/up-and-running/installation">Installing Blackfire</a></li>
+    <li class="toctree-l2"><a href="/docs/up-and-running/update">Updating Blackfire</a></li>
+    <li class="toctree-l2"><a href="/docs/up-and-running/agent-upgrade">Agent Upgrade Guide</a></li>
+    <li class="toctree-l2"><a href="/docs/up-and-running/configuration/index">Configuration</a>
+        <ul>
+        <li class="toctree-l3"><a href="/docs/up-and-running/configuration/agent">Agent v2</a></li>
+        <li class="toctree-l3"><a href="/docs/up-and-running/configuration/agent-legacy">Agent v1</a></li>
+        <li class="toctree-l3"><a href="/docs/up-and-running/configuration/cli">CLI</a></li>
+        <li class="toctree-l3"><a href="/docs/up-and-running/configuration/php">PHP Probe</a></li>
+        <li class="toctree-l3"><a href="/docs/up-and-running/configuration/python">Python Probe</a></li>
+        <li class="toctree-l3"><a href="/docs/up-and-running/configuration/go">Go Probe</a></li>
+        </ul>
+        </li>
+    <li class="toctree-l2"><a href="/docs/up-and-running/upgrading-edition">Upgrading to a New Edition</a></li>
+    <li class="toctree-l2"><a href="/docs/up-and-running/docker">Docker</a></li>
+    <li class="toctree-l2"><a href="/docs/up-and-running/reverse-proxies">Bypassing Reverse Proxy, Cache, and Content Delivery Networks (CDN)</a></li>
+    </ul>
+    </li>
+<li class="toctree-l1"><img src="https://static.blackfire.io/assets/ve756410286/bundles/blackfire/docs-pictos/doc-php-index.svg" /> <a href="/docs/php/index">PHP</a>
+    <ul class="hidden ">
+    <li class="toctree-l2"><a href="/docs/php/configuration">Configuration</a></li>
+    <li class="toctree-l2"><a href="/docs/php/integrations/index">Integrations</a>
+        <ul>
+        <li class="toctree-l3"><a href="/docs/php/integrations/php-docker">PHP Probe with Docker</a></li>
+        <li class="toctree-l3"><a href="/docs/php/integrations/sdk">PHP SDK</a></li>
+        <li class="toctree-l3"><a href="/docs/php/integrations/phpunit">PHPUnit</a></li>
+        <li class="toctree-l3"><a href="/docs/php/integrations/behat">Behat</a></li>
+        <li class="toctree-l3"><a href="/docs/php/integrations/symfony/index">Symfony</a></li>
+        <li class="toctree-l3"><a href="/docs/php/integrations/laravel/index">Laravel</a></li>
+        <li class="toctree-l3"><a href="/docs/php/integrations/magento">Magento</a></li>
+        <li class="toctree-l3"><a href="/docs/php/integrations/guzzle">Guzzle</a></li>
+        <li class="toctree-l3"><a href="/docs/php/integrations/goutte">Goutte</a></li>
+        <li class="toctree-l3"><a href="/docs/php/integrations/swoole">Swoole</a></li>
+        </ul>
+        </li>
+    <li class="toctree-l2"><a href="/docs/php/training-resources/index">Training Resources</a>
+        <ul>
+        <li class="toctree-l3"><a href="/docs/php/training-resources/book/index">PHP Code Performance Explained</a></li>
+        <li class="toctree-l3"><a href="/docs/php/training-resources/symfonycasts">SymfonyCasts</a></li>
+        </ul>
+        </li>
+    </ul>
+    </li>
+<li class="toctree-l1"><img src="https://static.blackfire.io/assets/ve756410286/bundles/blackfire/docs-pictos/doc-python-index.svg" /> <a href="/docs/python/index">Python</a>
+    <ul class="hidden ">
+    <li class="toctree-l2"><a href="/docs/python/configuration">Configuration</a></li>
+    <li class="toctree-l2"><a href="/docs/python/integrations/index">Integrations</a>
+        <ul>
+        <li class="toctree-l3"><a href="/docs/python/integrations/blackfire-python">blackfire-python</a></li>
+        <li class="toctree-l3"><a href="/docs/python/integrations/django">Django</a></li>
+        <li class="toctree-l3"><a href="/docs/python/integrations/flask">Flask</a></li>
+        <li class="toctree-l3"><a href="/docs/python/integrations/odoo">Odoo</a></li>
+        <li class="toctree-l3"><a href="/docs/python/integrations/sdk">Python SDK</a></li>
+        <li class="toctree-l3"><a href="/docs/python/integrations/python-docker">Python Probe with Docker</a></li>
+        </ul>
+        </li>
+    <li class="toctree-l2"><a href="/docs/python/training-resources/django-profiling">Debugging Performance in Python and Django applications</a></li>
+    </ul>
+    </li>
+<li class="toctree-l1"><img src="https://static.blackfire.io/assets/ve756410286/bundles/blackfire/docs-pictos/doc-go-index.svg" /> <a href="/docs/go/index">Go</a>
+    <ul class="hidden ">
+    <li class="toctree-l2"><a href="/docs/go/configuration">Configuration</a></li>
+    <li class="toctree-l2"><a href="/docs/go/integrations/index">Integrations</a>
+        <ul>
+        <li class="toctree-l3"><a href="/docs/go/integrations/sdk">Go SDK</a></li>
+        </ul>
+        </li>
+    </ul>
+    </li>
+<li class="toctree-l1"><img src="https://static.blackfire.io/assets/ve756410286/bundles/blackfire/docs-pictos/doc-profiling-cookbooks-index.svg" /> <a href="/docs/profiling-cookbooks/index">Profile</a>
+    <ul class="hidden ">
+    <li class="toctree-l2"><a href="/docs/profiling-cookbooks/profiling-http-via-browser">Profiling HTTP Requests with a Browser</a></li>
+    <li class="toctree-l2"><a href="/docs/profiling-cookbooks/profiling-http-via-cli">Profiling HTTP Requests with the CLI</a></li>
+    <li class="toctree-l2"><a href="/docs/profiling-cookbooks/profiling-cli">Profiling CLI Commands</a></li>
+    <li class="toctree-l2"><a href="/docs/profiling-cookbooks/profiling-microservices">Profiling Micro-services</a></li>
+    <li class="toctree-l2"><a href="/docs/profiling-cookbooks/distributed-profiling">Distributed Profiling</a></li>
+    <li class="toctree-l2"><a href="/docs/profiling-cookbooks/debugging">Debugging Code</a></li>
+    <li class="toctree-l2"><a href="/docs/profiling-cookbooks/sharing-profiles">Sharing Profiles</a></li>
+    <li class="toctree-l2"><a href="/docs/profiling-cookbooks/understanding-call-graphs">Understanding Call Graphs</a></li>
+    <li class="toctree-l2"><a href="/docs/profiling-cookbooks/understanding-comparisons">Understanding Comparisons</a></li>
+    <li class="toctree-l2"><a href="/docs/profiling-cookbooks/understanding-timelines">Understanding Timelines</a></li>
+    </ul>
+    </li>
+<li class="toctree-l1"><img src="https://static.blackfire.io/assets/ve756410286/bundles/blackfire/docs-pictos/doc-monitoring-cookbooks-index.svg" /> <a href="/docs/monitoring-cookbooks/index">Monitor</a>
+    <ul class="hidden ">
+    <li class="toctree-l2"><a href="/docs/monitoring-cookbooks/configuration">Configuring Blackfire Monitoring</a></li>
+    <li class="toctree-l2"><a href="/docs/monitoring-cookbooks/alerting">Alerting</a></li>
+    <li class="toctree-l2"><a href="/docs/monitoring-cookbooks/health-report">Health Report</a></li>
+    <li class="toctree-l2"><a href="/docs/monitoring-cookbooks/naming-transactions">Naming Transactions</a></li>
+    <li class="toctree-l2"><a href="/docs/monitoring-cookbooks/ignoring-transactions">Ignoring Transactions</a></li>
+    <li class="toctree-l2"><a href="/docs/monitoring-cookbooks/services-monitoring">Services Monitoring</a></li>
+    <li class="toctree-l2"><a href="/docs/monitoring-cookbooks/consumers-monitoring">Consumers Monitoring</a></li>
+    <li class="toctree-l2"><a href="/docs/monitoring-cookbooks/automatic-profiling">Automatic Profiling</a></li>
+    <li class="toctree-l2"><a href="/docs/monitoring-cookbooks/events">Mark Events in the Monitoring Timeline</a></li>
+    </ul>
+    </li>
+<li class="toctree-l1"><img src="https://static.blackfire.io/assets/ve756410286/bundles/blackfire/docs-pictos/doc-testing-cookbooks-index.svg" /> <a href="/docs/testing-cookbooks/index">Test</a>
+    <ul class="hidden ">
+    <li class="toctree-l2"><a href="/docs/testing-cookbooks/tests">Writing Tests</a></li>
+    <li class="toctree-l2"><a href="/docs/testing-cookbooks/assertions">Assertions</a></li>
+    <li class="toctree-l2"><a href="/docs/testing-cookbooks/metrics">Metrics</a></li>
+    <li class="toctree-l2"><a href="/docs/testing-cookbooks/recommendations">Recommendations</a></li>
+    </ul>
+    </li>
+<li class="toctree-l1"><img src="https://static.blackfire.io/assets/ve756410286/bundles/blackfire/docs-pictos/doc-builds-cookbooks-index.svg" /> <a href="/docs/builds-cookbooks/index">Build</a>
+    <ul class="">
+    <li class="toctree-l2"><a href="/docs/builds-cookbooks/scenarios">Writing Scenarios</a></li>
+    <li class="active toctree-l2"><a href="/docs/builds-cookbooks/player">Blackfire Player</a></li>
+    <li class="toctree-l2"><a href="/docs/builds-cookbooks/builds-periodic">Configuring Periodic Builds</a></li>
+    <li class="toctree-l2"><a href="/docs/builds-cookbooks/builds-webhook">Starting a Build using a Webhook</a></li>
+    <li class="toctree-l2"><a href="/docs/builds-cookbooks/builds-integrations">Starting a Build Using a Native Integration</a></li>
+    <li class="toctree-l2"><a href="/docs/builds-cookbooks/notification-channels">Scenario Notification Channels</a></li>
+    </ul>
+    </li>
+<li class="toctree-l1"><img src="https://static.blackfire.io/assets/ve756410286/bundles/blackfire/docs-pictos/doc-integrations-index.svg" /> <a href="/docs/integrations/index">Integrate</a>
+    <ul class="hidden ">
+    <li class="toctree-l2"><a href="/docs/integrations/browsers/index">Browsers</a>
+        <ul>
+        <li class="toctree-l3"><a href="/docs/integrations/browsers/firefox">Firefox</a></li>
+        <li class="toctree-l3"><a href="/docs/integrations/browsers/chrome">Google Chrome</a></li>
+        </ul>
+        </li>
+    <li class="toctree-l2"><a href="/docs/integrations/proxies/index">Reverse Proxies / CDNs</a>
+        <ul>
+        <li class="toctree-l3"><a href="/docs/integrations/proxies/varnish">Varnish</a></li>
+        <li class="toctree-l3"><a href="/docs/integrations/proxies/cloudflare">Cloudflare</a></li>
+        <li class="toctree-l3"><a href="/docs/integrations/proxies/fastly">Fastly</a></li>
+        <li class="toctree-l3"><a href="/docs/integrations/proxies/nginx">Nginx</a></li>
+        </ul>
+        </li>
+    <li class="toctree-l2"><a href="/docs/integrations/blackfire-player">Blackfire Player</a></li>
+    <li class="toctree-l2"><a href="/docs/integrations/paas/index">PaaS &amp; Hosting Providers</a>
+        <ul>
+        <li class="toctree-l3"><a href="/docs/integrations/paas/platformsh">Platform.sh</a></li>
+        <li class="toctree-l3"><a href="/docs/integrations/paas/magentocloud">Magento Cloud</a></li>
+        <li class="toctree-l3"><a href="/docs/integrations/paas/laravel-forge">Laravel Forge</a></li>
+        <li class="toctree-l3"><a href="/docs/integrations/paas/laravel-vapor">Laravel Vapor</a></li>
+        <li class="toctree-l3"><a href="/docs/integrations/paas/heroku">Heroku</a></li>
+        <li class="toctree-l3"><a href="/docs/integrations/paas/fortrabbit">fortrabbit</a></li>
+        <li class="toctree-l3"><a href="/docs/integrations/paas/amazee">amazee.io</a></li>
+        <li class="toctree-l3"><a href="/docs/integrations/paas/hypernode">Hypernode</a></li>
+        <li class="toctree-l3"><a href="/docs/integrations/paas/hosted-power">Hosted Power</a></li>
+        <li class="toctree-l3"><a href="/docs/integrations/paas/odiso">Odiso</a></li>
+        <li class="toctree-l3"><a href="/docs/integrations/paas/ddev">DDEV</a></li>
+        <li class="toctree-l3"><a href="/docs/integrations/paas/lando">Lando</a></li>
+        <li class="toctree-l3"><a href="/docs/integrations/paas/aws-lambda">AWS Lambda</a></li>
+        </ul>
+        </li>
+    <li class="toctree-l2"><a href="/docs/integrations/git/index">Git Providers</a>
+        <ul>
+        <li class="toctree-l3"><a href="/docs/integrations/git/github">GitHub</a></li>
+        <li class="toctree-l3"><a href="/docs/integrations/git/gitlab">Gitlab</a></li>
+        <li class="toctree-l3"><a href="/docs/integrations/git/bitbucket">Bitbucket</a></li>
+        </ul>
+        </li>
+    <li class="toctree-l2"><a href="/docs/integrations/ci/index">Continuous Integration Providers</a>
+        <ul>
+        <li class="toctree-l3"><a href="/docs/integrations/ci/jenkins">Jenkins</a></li>
+        <li class="toctree-l3"><a href="/docs/integrations/ci/travis">Travis CI</a></li>
+        <li class="toctree-l3"><a href="/docs/integrations/ci/circleci">CircleCI</a></li>
+        <li class="toctree-l3"><a href="/docs/integrations/ci/github-actions">GitHub Actions</a></li>
+        </ul>
+        </li>
+    <li class="toctree-l2"><a href="/docs/integrations/chef">Chef</a></li>
+    <li class="toctree-l2"><a href="/docs/integrations/cpanel">cPanel</a></li>
+    <li class="toctree-l2"><a href="/docs/integrations/postman">Postman</a></li>
+    <li class="toctree-l2"><a href="/docs/integrations/notifiers/index">Notification Channels</a>
+        <ul>
+        <li class="toctree-l3"><a href="/docs/integrations/notifiers/slack">Slack</a></li>
+        <li class="toctree-l3"><a href="/docs/integrations/notifiers/pager-duty">Pager Duty</a></li>
+        <li class="toctree-l3"><a href="/docs/integrations/notifiers/opsgenie">Opsgenie</a></li>
+        <li class="toctree-l3"><a href="/docs/integrations/notifiers/microsoft-teams">Microsoft Teams</a></li>
+        </ul>
+        </li>
+    <li class="toctree-l2"><a href="/docs/integrations/ide/index">IDEs</a>
+        <ul>
+        <li class="toctree-l3"><a href="/docs/integrations/ide/phpstorm">PHPStorm</a></li>
+        <li class="toctree-l3"><a href="/docs/integrations/ide/vscode">Visual Studio Code</a></li>
+        </ul>
+        </li>
+    </ul>
+    </li>
+<li class="toctree-l1"><img src="https://static.blackfire.io/assets/ve756410286/bundles/blackfire/docs-pictos/doc-reference-guide-index.svg" /> <a href="/docs/reference-guide/index">Reference Guide</a>
+    <ul class="hidden ">
+    <li class="toctree-l2"><a href="/docs/reference-guide/environments">Environments</a></li>
+    <li class="toctree-l2"><a href="/docs/reference-guide/time">Time</a></li>
+    <li class="toctree-l2"><a href="/docs/reference-guide/faq">FAQ</a></li>
+    <li class="toctree-l2"><a href="/docs/reference-guide/glossary">Glossary</a></li>
+    </ul>
+    </li>
+</ul>
+
+</div>
+                    </div><!-- /.navbar-collapse -->
+                </div><!-- /.container-fluid -->
+            </nav>
+                <div id="documentation">
+        <ol class="breadcrumb"><li><a href="/docs/introduction">Documentation</a></li><li><a href="/docs/builds-cookbooks/index">Using Builds </a></li><li>Blackfire Player</li></ol>
+
+        <h1>Blackfire Player<a class="headerlink" href="#blackfire-player" title="Permalink to this headline">¶</a></h1>
+
+        <div class="toc"><ul>
+<li><a class="reference internal" href="#download">Download</a></li>
+<li><a class="reference internal" href="#docker">Docker</a></li>
+<li><a class="reference internal" href="#usage">Usage</a><ul>
+<li><a class="reference internal" href="#the-run-command">The “run” Command</a></li>
+<li><a class="reference internal" href="#the-validate-command">The “validate” Command</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#crawling-an-http-application">Crawling an HTTP application</a><ul>
+<li><a class="reference internal" href="#making-requests">Making Requests</a><ul>
+<li><a class="reference internal" href="#visiting-a-page-with-visit">Visiting a Page with <code class="docutils literal notranslate"><span class="pre">visit</span></code></a></li>
+<li><a class="reference internal" href="#clicking-on-a-link-with-click">Clicking on a Link with <code class="docutils literal notranslate"><span class="pre">click</span></code></a></li>
+<li><a class="reference internal" href="#submitting-forms-with-submit">Submitting Forms with <code class="docutils literal notranslate"><span class="pre">submit</span></code></a></li>
+<li><a class="reference internal" href="#following-redirections">Following Redirections</a></li>
+<li><a class="reference internal" href="#embedding-scenarios-with-include">Embedding Scenarios with <code class="docutils literal notranslate"><span class="pre">include</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#configuring-the-request">Configuring the Request</a><ul>
+<li><a class="reference internal" href="#setting-a-header-with-header">Setting a Header with <code class="docutils literal notranslate"><span class="pre">header</span></code></a></li>
+<li><a class="reference internal" href="#setting-a-user-and-password-with-auth">Setting a User and Password with <code class="docutils literal notranslate"><span class="pre">auth</span></code></a></li>
+<li><a class="reference internal" href="#waiting-after-sending-the-request-with-wait">Waiting after sending the request with <code class="docutils literal notranslate"><span class="pre">wait</span></code></a></li>
+<li><a class="reference internal" href="#sending-a-json-body-with-json">Sending a JSON Body with <code class="docutils literal notranslate"><span class="pre">json</span></code></a></li>
+<li><a class="reference internal" href="#setting-options-for-all-steps">Setting Options for all Steps</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#writing-expectations">Writing Expectations</a></li>
+<li><a class="reference internal" href="#using-variables">Using Variables</a></li>
+<li><a class="reference internal" href="#iterating">Iterating</a></li>
+<li><a class="reference internal" href="#loops">Loops</a></li>
+<li><a class="reference internal" href="#organizing-scenario-files">Organizing Scenario Files</a></li>
+<li><a class="reference internal" href="#blackfire-profiler-integration">Blackfire Profiler integration</a></li>
+<li><a class="reference internal" href="#scraping-values">Scraping Values</a></li>
+</ul>
+</li>
+</div><div class="section" id="blackfire-player">
+
+<p>Blackfire Player is a powerful Web Crawling, Web Testing, and Web Scraper
+application. It provides a nice DSL to <strong>crawl HTTP services</strong>, <strong>assert
+responses</strong>, and <strong>extract data</strong> from HTML/XML/JSON responses.</p>
+<p>Some Blackfire Player use cases:</p>
+<ul class="simple">
+<li>Crawl a website/API and check expectations – aka Acceptance Tests;</li>
+<li>Scrape a website/API and extract values;</li>
+<li>Monitor a website;</li>
+<li>Test code with unit test integration (PHPUnit, Behat, Codeception, …);</li>
+<li>Test code behavior from the outside thanks to the native Blackfire Profiler
+integration – aka <em>Unit Tests from the HTTP layer</em> (tm).</li>
+</ul>
+<p>Blackfire Player executes scenarios written in a special DSL (files should end with <code class="docutils literal notranslate"><span class="pre">.bkf</span></code>).</p>
+<div class="section" id="download">
+<h2>Download<a class="headerlink" href="#download" title="Permalink to this headline">¶</a></h2>
+<p>Running <code class="docutils literal notranslate"><span class="pre">.bkf</span></code> files can be done via the Blackfire Player:</p>
+<div class="highlight-bash notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span>curl -OLsS https://get.blackfire.io/blackfire-player.phar
+</pre></div>
+</td></tr></table></div>
+<p>Use <code class="docutils literal notranslate"><span class="pre">php</span> <span class="pre">blackfire-player.phar</span></code> to run the player or make it executable and
+move it to a directory under your <code class="docutils literal notranslate"><span class="pre">PATH</span></code>:</p>
+<div class="highlight-bash notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span>chmod +x blackfire-player.phar
+mv blackfire-player.phar /usr/local/bin/blackfire-player
+</pre></div>
+</td></tr></table></div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Blackfire Player is licensed under the MIT Open-Source license. Its <a class="reference external" rel="noopener noreferrer" target="_blank" href="https://github.com/blackfireio/player">source
+code</a> is hosted on Github.</p>
+</div>
+</div>
+<div class="section" id="docker">
+<span id="player-docker"></span><h2>Docker<a class="headerlink" href="#docker" title="Permalink to this headline">¶</a></h2>
+<p>You may use <code class="docutils literal notranslate"><span class="pre">blackfire-player</span></code> with Docker.
+Working directory is expected to be at <code class="docutils literal notranslate"><span class="pre">/app</span></code> in the container.</p>
+<p>Example running a scenario located in <code class="docutils literal notranslate"><span class="pre">my-scenario.bkf</span></code> file:</p>
+<div class="highlight-bash notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span>docker run --rm -it -e BLACKFIRE_CLIENT_ID -e BLACKFIRE_CLIENT_TOKEN -v <span class="s2">&quot;`pwd`:/app&quot;</span> blackfire/player run my-scenario.bkf
+</pre></div>
+</td></tr></table></div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last"><code class="docutils literal notranslate"><span class="pre">BLACKFIRE_CLIENT_ID</span></code> and <code class="docutils literal notranslate"><span class="pre">BLACKFIRE_CLIENT_TOKEN</span></code> environment variables
+need to be properly exposed from the host in order to be able to use the
+<a class="reference internal" href="../integrations/blackfire-player"><span class="doc">Blackfire Profiler integration</span></a>.</p>
+</div>
+<p><strong>You may also add a shell alias</strong> (in <code class="docutils literal notranslate"><span class="pre">.bashrc</span></code>, <code class="docutils literal notranslate"><span class="pre">.zshrc</span></code>, etc.) for convenience:</p>
+<div class="highlight-bash notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="nb">alias</span> blackfire-player<span class="o">=</span><span class="s2">&quot;docker run --rm -it -e BLACKFIRE_CLIENT_ID -e BLACKFIRE_CLIENT_TOKEN -v \&quot;`pwd`:/app\&quot; blackfire/player&quot;</span>
+</pre></div>
+</td></tr></table></div>
+<p>Don’t forget to restart your terminal for it to take effect. You can then use
+<code class="docutils literal notranslate"><span class="pre">blackfire-player</span></code> as if it was the binary itself:</p>
+<div class="highlight-bash notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span>blackfire-player --version
+blackfire-player list
+blackfire-player run my-scenario.bkf
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="the-run-command">
+<h3>The “run” Command<a class="headerlink" href="#the-run-command" title="Permalink to this headline">¶</a></h3>
+<p>Use the <code class="docutils literal notranslate"><span class="pre">run</span></code> command to execute a scenario file:</p>
+<div class="highlight-bash notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span>blackfire-player run scenario.bkf
+</pre></div>
+</td></tr></table></div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>The <em>file</em> argument may be omitted when using the standard input:</p>
+<div class="last highlight-bash notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span>cat scenario.bkf <span class="p">|</span> blackfire-player run
+</pre></div>
+</td></tr></table></div>
+</div>
+<p>You can also run scenarios contained in a <code class="docutils literal notranslate"><span class="pre">.blackfire.yaml</span></code> file:</p>
+<div class="highlight-bash notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span>blackfire-player run .blackfire.yaml
+</pre></div>
+</td></tr></table></div>
+<p>Use the <code class="docutils literal notranslate"><span class="pre">--endpoint</span></code> option to override the endpoint defined in the scenario file:</p>
+<div class="highlight-bash notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span>blackfire-player run scenario.bkf --endpoint<span class="o">=</span>http://example.com/
+</pre></div>
+</td></tr></table></div>
+<p>Use the <code class="docutils literal notranslate"><span class="pre">--json</span></code> option to output a JSON report:</p>
+<div class="highlight-bash notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span>blackfire-player run scenario.bkf --json
+</pre></div>
+</td></tr></table></div>
+<p>Use the <code class="docutils literal notranslate"><span class="pre">--variable</span></code> option to override variable values:</p>
+<div class="highlight-bash notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span>blackfire-player run scenario.bkf --variable <span class="s2">&quot;foo=bar&quot;</span> --variable <span class="s2">&quot;bar=foo&quot;</span>
+</pre></div>
+</td></tr></table></div>
+<p>Use the <code class="docutils literal notranslate"><span class="pre">--concurrency</span></code> option to run scenarios in parallel (experimental):</p>
+<div class="highlight-bash notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span>blackfire-player run scenario.bkf --concurrency<span class="o">=</span><span class="m">5</span>
+</pre></div>
+</td></tr></table></div>
+<p>Use <code class="docutils literal notranslate"><span class="pre">-v</span></code> to get logs about the progress of the player or use <code class="docutils literal notranslate"><span class="pre">tracer</span></code> option
+to store all requests and responses on disk.</p>
+<p><strong>The command uses the following exit codes in case of failure:</strong></p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">64</span></code> if at least one scenario fails;</li>
+<li><code class="docutils literal notranslate"><span class="pre">65</span></code> if a fatal error occurs, preventing the build to play correctly;</li>
+<li><code class="docutils literal notranslate"><span class="pre">66</span></code> if a non-fatal error occurs;</li>
+</ul>
+</div>
+<div class="section" id="the-validate-command">
+<h3>The “validate” Command<a class="headerlink" href="#the-validate-command" title="Permalink to this headline">¶</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">validate</span></code> command checks if passed scenario file is valid:</p>
+<div class="highlight-bash notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span>blackfire-player validate scenario.bkf
+</pre></div>
+</td></tr></table></div>
+<p>The <em>file</em> argument may be omitted when using the standard input:</p>
+<div class="highlight-bash notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span>cat scenario.bkf <span class="p">|</span> blackfire-player validate
+</pre></div>
+</td></tr></table></div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">It is not possible to validate a scenario contained in a <code class="docutils literal notranslate"><span class="pre">.blackfire.yaml</span></code>
+file.</p>
+</div>
+<p>Use the <code class="docutils literal notranslate"><span class="pre">--json</span></code> option to output a JSON report:</p>
+<div class="highlight-bash notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span>blackfire-player validate scenario.bkf --json
+</pre></div>
+</td></tr></table></div>
+<p><strong>The command uses the following exit codes in case of failure:</strong></p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">64</span></code> if the file is invalid;</li>
+</ul>
+</div>
+</div>
+<div class="section" id="crawling-an-http-application">
+<span id="id1"></span><h2>Crawling an HTTP application<a class="headerlink" href="#crawling-an-http-application" title="Permalink to this headline">¶</a></h2>
+<p>Blackfire Player lets you crawl an application thanks to descriptive scenarios
+written in a domain specific language:</p>
+<div class="highlight-blackfire notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span>name &quot;A build made of scenario&quot;
+
+# Default endpoint
+# Can be override with option &quot;--endpoint=http://newendpoint.com&quot;
+endpoint &quot;http://example.com/&quot;
+
+scenario
+    name &quot;Scenario Name&quot;
+
+    visit url(&#39;/&#39;)
+        expect status_code() == 200
+</pre></div>
+</td></tr></table></div>
+<p>This example shows how to make a request on an HTTP application
+(<code class="docutils literal notranslate"><span class="pre">http://example.com/</span></code>) and be sure that it behaves the way you expect it to
+by Writing Expectations (the status code of the response is 200).</p>
+<p>Store the scenario in a <code class="docutils literal notranslate"><span class="pre">scenario.bkf</span></code>, and run it:</p>
+<div class="highlight-bash notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span>blackfire-player run scenario.bkf
+
+<span class="c1"># or</span>
+php blackfire-player run scenario.bkf
+</pre></div>
+</td></tr></table></div>
+<p>Add more requests to a scenario by indenting lines as below:</p>
+<div class="highlight-blackfire notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span>scenario
+    visit url(&#39;/&#39;)
+        expect status_code() == 200
+
+    visit url(&#39;/blog/&#39;)
+        expect status_code() == 200
+</pre></div>
+</td></tr></table></div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The line indentation defines the structure like for Python scripts or YAML
+files. Validate <code class="docutils literal notranslate"><span class="pre">bkf</span></code> files with the <code class="docutils literal notranslate"><span class="pre">validate</span></code> command:
+<code class="docutils literal notranslate"><span class="pre">blackfire-player</span> <span class="pre">validate</span> <span class="pre">scenario.bkf</span></code>.</p>
+</div>
+<p>A <strong>scenario</strong> is a sequence of HTTP calls (<strong>steps</strong>) that share the HTTP
+session and cookies. Scenario definitions are <strong>declarative</strong>, the order of
+settings (like expectations) within a “step” does not matter.</p>
+<p>Instead of making discrete requests like above, you can also <strong>interact</strong> with
+the HTTP response if the content type is HTML by clicking on links, submitting
+forms, or follow redirections (see <a class="reference internal" href="#id2">Making requests</a> for more information):</p>
+<div class="highlight-blackfire notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span>scenario
+    visit url(&#39;/&#39;)
+        expect status_code() == 200
+
+    click link(&#39;Read more&#39;)
+        expect status_code() == 200
+</pre></div>
+</td></tr></table></div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">If your scenario does not work as expected, use <code class="docutils literal notranslate"><span class="pre">-v</span></code> to get a more
+verbose output.</p>
+</div>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p>You can add comments in a scenario file by prefixing the line with <code class="docutils literal notranslate"><span class="pre">#</span></code>:</p>
+<div class="last highlight-blackfire notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span># This is a comment
+scenario
+    # Comment are ignored
+    visit url(&#39;/&#39;)
+        expect status_code() == 200
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="making-requests">
+<span id="id2"></span><h3>Making Requests<a class="headerlink" href="#making-requests" title="Permalink to this headline">¶</a></h3>
+<p>There are several ways you can jump from one HTTP request to the next.</p>
+<div class="section" id="visiting-a-page-with-visit">
+<span id="id3"></span><h4>Visiting a Page with <code class="docutils literal notranslate"><span class="pre">visit</span></code><a class="headerlink" href="#visiting-a-page-with-visit" title="Permalink to this headline">¶</a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">visit</span></code> goes directly to the referenced HTTP URL (defaults to the <code class="docutils literal notranslate"><span class="pre">GET</span></code>
+HTTP method unless you define one explicitly):</p>
+<div class="highlight-blackfire notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span>scenario
+    visit url(&#39;/&#39;)
+        method &#39;POST&#39;
+</pre></div>
+</td></tr></table></div>
+<p>You can also pass a Request body:</p>
+<div class="highlight-blackfire notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span>scenario
+    visit url(&#39;/&#39;)
+        method &#39;PUT&#39;
+        body &#39;{ &quot;title&quot;: &quot;New Title&quot; }&#39;
+</pre></div>
+</td></tr></table></div>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p>An expression can be written on several lines with the following syntax:</p>
+<div class="highlight-blackfire notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span>scenario
+    visit url(&#39;/login&#39;)
+        method &#39;POST&#39;
+        body
+        &quot;&quot;&quot;
+        {
+            &quot;user&quot;: &quot;john&quot;,
+            &quot;password&quot;: &quot;doe&quot;
+        }
+        &quot;&quot;&quot;
+</pre></div>
+</td></tr></table></div>
+<p>Starting from version v1.11.0 you can also use variables by adding <code class="docutils literal notranslate"><span class="pre">i</span></code> option to multiline string.</p>
+<div class="last highlight-blackfire notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span>scenario
+    visit url(&#39;/login&#39;)
+        method &#39;POST&#39;
+        set username &quot;john&quot;
+        set password &quot;doe&quot;
+        body
+        &quot;&quot;&quot;i
+        {
+            &quot;user&quot;: &quot;${username}&quot;,
+            &quot;password&quot;: &quot;${password}&quot;
+        }
+        &quot;&quot;&quot;
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+<div class="section" id="clicking-on-a-link-with-click">
+<span id="id4"></span><h4>Clicking on a Link with <code class="docutils literal notranslate"><span class="pre">click</span></code><a class="headerlink" href="#clicking-on-a-link-with-click" title="Permalink to this headline">¶</a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">click</span></code> clicks on a link in an HTML page (takes an expression as an argument):</p>
+<div class="highlight-blackfire notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span>scenario
+    click link(&quot;Add a blog post&quot;)
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="submitting-forms-with-submit">
+<span id="id5"></span><h4>Submitting Forms with <code class="docutils literal notranslate"><span class="pre">submit</span></code><a class="headerlink" href="#submitting-forms-with-submit" title="Permalink to this headline">¶</a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">submit</span></code> submits a form in an HTML page (takes an expression as an argument);
+parameters to submit with the form are defined via <code class="docutils literal notranslate"><span class="pre">param</span></code> entries:</p>
+<div class="highlight-blackfire notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span>scenario
+    submit button(&quot;Submit&quot;)
+        param title &#39;Happy Scraping&#39;
+        param content &#39;Scraping with Blackfire Player is so easy!&#39;
+
+        # File Upload:
+        # the path is relative to the current .bkf file
+        # the name parameter is optional
+        param image file(&#39;relative/path/to/image.png&#39;, &#39;blackfire.png&#39;)
+</pre></div>
+</td></tr></table></div>
+<p>Values can also be randomly generated via the <code class="docutils literal notranslate"><span class="pre">fake()</span></code> function:</p>
+<div class="highlight-blackfire notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span>scenario
+    submit button(&quot;Submit&quot;)
+        param title fake(&#39;sentence&#39;, 5)
+        param content join(fake(&#39;paragraphs&#39;, 3), &quot;\n\n&quot;)
+</pre></div>
+</td></tr></table></div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last"><code class="docutils literal notranslate"><span class="pre">fake()</span></code> use the <a class="reference external" rel="noopener noreferrer" target="_blank" href="https://github.com/FakerPHP/Faker">Faker library</a>
+under the hood.</p>
+</div>
+</div>
+<div class="section" id="following-redirections">
+<span id="id6"></span><h4>Following Redirections<a class="headerlink" href="#following-redirections" title="Permalink to this headline">¶</a></h4>
+<p>HTTP redirections are never followed automatically to let you write
+expectations and assertions on redirect responses:</p>
+<div class="highlight-blackfire notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span>scenario
+    visit &quot;redirect.php&quot;
+        expect status_code() == 302
+        expect header(&#39;Location&#39;) == &#39;/redirected.php&#39;
+</pre></div>
+</td></tr></table></div>
+<p>Use <code class="docutils literal notranslate"><span class="pre">follow</span></code> to follow one redirection:</p>
+<div class="highlight-blackfire notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span>scenario
+    visit &quot;redirect.php&quot;
+        expect status_code() == 302
+        expect header(&#39;Location&#39;) == &#39;/redirected.php&#39;
+
+    follow
+        expect status_code() == 200
+</pre></div>
+</td></tr></table></div>
+<p><code class="docutils literal notranslate"><span class="pre">follow_redirects</span></code> switches the player to automatically follow all
+redirections:</p>
+<div class="highlight-blackfire notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span>scenario
+    follow_redirects true
+</pre></div>
+</td></tr></table></div>
+<p>or:</p>
+<div class="highlight-blackfire notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span>scenario
+    visit &quot;redirect.php&quot;
+        follow_redirects
+</pre></div>
+</td></tr></table></div>
+<p>Please note that when using <code class="docutils literal notranslate"><span class="pre">follow_redirects</span></code>, expectations (<code class="docutils literal notranslate"><span class="pre">expect</span></code>)
+and assertions (<code class="docutils literal notranslate"><span class="pre">assert</span></code>) are checked on the redirecting response
+(so, before the redirection).
+Use a <code class="docutils literal notranslate"><span class="pre">follow</span></code> step if you need to check them after the redirection.</p>
+</div>
+<div class="section" id="embedding-scenarios-with-include">
+<span id="id7"></span><h4>Embedding Scenarios with <code class="docutils literal notranslate"><span class="pre">include</span></code><a class="headerlink" href="#embedding-scenarios-with-include" title="Permalink to this headline">¶</a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">include</span></code> allows to embed some repetitive steps into several scenarios to
+avoid copy/pasting the same code over and over again:</p>
+<p>In a <code class="docutils literal notranslate"><span class="pre">groups.bkf</span></code> file, write a <code class="docutils literal notranslate"><span class="pre">group</span></code> that contains the logic to log in:</p>
+<div class="highlight-blackfire notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span>group login
+    visit url(&#39;/login&#39;)
+        expect status_code() == 200
+
+    submit button(&#39;Login&#39;)
+        param user &#39;admin&#39;
+        param password &#39;admin&#39;
+</pre></div>
+</td></tr></table></div>
+<p>Then, in another file, <code class="docutils literal notranslate"><span class="pre">load</span></code> the <code class="docutils literal notranslate"><span class="pre">group</span></code> and <code class="docutils literal notranslate"><span class="pre">include</span></code> it when you need
+it:</p>
+<div class="highlight-blackfire notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span>load &quot;groups.bkf&quot;
+
+scenario
+    name &quot;Scenario Name&quot;
+
+    include login
+
+    visit url(&#39;/admin&#39;)
+        expect status_code() == 200
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+<div class="section" id="configuring-the-request">
+<span id="id8"></span><h3>Configuring the Request<a class="headerlink" href="#configuring-the-request" title="Permalink to this headline">¶</a></h3>
+<p>Each step can be configured via the following options.</p>
+<div class="section" id="setting-a-header-with-header">
+<span id="id9"></span><h4>Setting a Header with <code class="docutils literal notranslate"><span class="pre">header</span></code><a class="headerlink" href="#setting-a-header-with-header" title="Permalink to this headline">¶</a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">header</span></code> sets a header:</p>
+<div class="highlight-blackfire notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span>scenario
+    visit url(&#39;/&#39;)
+        header &quot;Accept-Language: en-US&quot;
+</pre></div>
+</td></tr></table></div>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p>Simulate a specific browser is as simple as overriding the default
+<code class="docutils literal notranslate"><span class="pre">User-Agent</span></code> and using <code class="docutils literal notranslate"><span class="pre">fake()</span></code>:</p>
+<div class="last highlight-blackfire notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span>scenario
+    visit url(&#39;/&#39;)
+        header &#39;User-Agent: &#39; ~ fake(&#39;firefox&#39;)
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+<div class="section" id="setting-a-user-and-password-with-auth">
+<span id="id10"></span><h4>Setting a User and Password with <code class="docutils literal notranslate"><span class="pre">auth</span></code><a class="headerlink" href="#setting-a-user-and-password-with-auth" title="Permalink to this headline">¶</a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">auth</span></code> sets the <code class="docutils literal notranslate"><span class="pre">Authorization</span></code> header:</p>
+<div class="highlight-blackfire notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span>scenario
+    visit url(&#39;/&#39;)
+        auth &quot;username:password&quot;
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="waiting-after-sending-the-request-with-wait">
+<span id="id11"></span><h4>Waiting after sending the request with <code class="docutils literal notranslate"><span class="pre">wait</span></code><a class="headerlink" href="#waiting-after-sending-the-request-with-wait" title="Permalink to this headline">¶</a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">wait</span></code> adds a delay in milliseconds after sending the request:</p>
+<div class="highlight-blackfire notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span>scenario
+    visit url(&#39;/&#39;)
+        wait 10000
+</pre></div>
+</td></tr></table></div>
+<p>The <code class="docutils literal notranslate"><span class="pre">wait</span></code> value can be any valid expression; get a random delay by using
+<code class="docutils literal notranslate"><span class="pre">fake()</span></code>:</p>
+<div class="highlight-blackfire notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span>scenario
+    visit url(&#39;/&#39;)
+        wait fake(&#39;numberBetween&#39;, 1000, 3000)
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="sending-a-json-body-with-json">
+<span id="id12"></span><h4>Sending a JSON Body with <code class="docutils literal notranslate"><span class="pre">json</span></code><a class="headerlink" href="#sending-a-json-body-with-json" title="Permalink to this headline">¶</a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">json</span></code> configures the Request to upload JSON encoded data as the body:</p>
+<div class="highlight-blackfire notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span>scenario
+    visit url(&#39;/&#39;)
+        method &#39;POST&#39;
+        param foo &quot;bar&quot;
+        json true
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="setting-options-for-all-steps">
+<span id="id13"></span><h4>Setting Options for all Steps<a class="headerlink" href="#setting-options-for-all-steps" title="Permalink to this headline">¶</a></h4>
+<p>You can also set some of these options for all steps of a scenario:</p>
+<div class="highlight-blackfire notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span>scenario
+    auth &quot;username:password&quot;
+    header &quot;Accept-Language: en-US&quot;
+</pre></div>
+</td></tr></table></div>
+<p>… which can be disabled on any given step by setting the value to <code class="docutils literal notranslate"><span class="pre">false</span></code>:</p>
+<div class="highlight-blackfire notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span>scenario
+    visit url(&#39;/&#39;)
+        header &quot;Accept-Language: false&quot;
+        auth false
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+</div>
+<div class="section" id="writing-expectations">
+<span id="id14"></span><h2>Writing Expectations<a class="headerlink" href="#writing-expectations" title="Permalink to this headline">¶</a></h2>
+<p>Expectations are <strong>expressions</strong> evaluated against the current HTTP response
+and if one of them returns a <em>falsy</em> value, Blackfire Player stops the run and
+generates an error.</p>
+<p>Expressions have access to the following functions:</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">current_url()</span></code>: Returns the current URL</li>
+<li><code class="docutils literal notranslate"><span class="pre">status_code()</span></code>: The HTTP status code for the current HTTP response;</li>
+<li><code class="docutils literal notranslate"><span class="pre">header()</span></code>: Returns the value of an HTTP header;</li>
+<li><code class="docutils literal notranslate"><span class="pre">body()</span></code>: The HTTP body for the current HTTP response;</li>
+<li><code class="docutils literal notranslate"><span class="pre">trim()</span></code>: Strip whitespace from the beginning and end of a string;</li>
+<li><code class="docutils literal notranslate"><span class="pre">unique()</span></code>: Removes duplicate values from an array;</li>
+<li><code class="docutils literal notranslate"><span class="pre">join()</span></code>: Join array elements with a string;</li>
+<li><code class="docutils literal notranslate"><span class="pre">merge()</span></code>: Merge one or more arrays;</li>
+<li><code class="docutils literal notranslate"><span class="pre">regex()</span></code>: Perform a regular expression match;</li>
+<li><code class="docutils literal notranslate"><span class="pre">css()</span></code>: Returns nodes matching the CSS selector (for HTML responses);</li>
+<li><code class="docutils literal notranslate"><span class="pre">xpath()</span></code>: Returns nodes matching the XPath selector (for HTML and XML
+responses);</li>
+<li><code class="docutils literal notranslate"><span class="pre">json()</span></code>: Returns JSON elements (from the request) matching the CSS expression.</li>
+<li><code class="docutils literal notranslate"><span class="pre">transform()</span></code>: Returns JSON elements matching the CSS expression.</li>
+</ul>
+<p>The <code class="docutils literal notranslate"><span class="pre">css()</span></code> and <code class="docutils literal notranslate"><span class="pre">xpath()</span></code> functions return
+<code class="docutils literal notranslate"><span class="pre">Symfony\Component\DomCrawler\Crawler</span></code> instances. Learn more about <a class="reference external" rel="noopener noreferrer" target="_blank" href="http://symfony.com/doc/current/components/dom_crawler.html">methods
+you can call on Crawler instances</a>; the <code class="docutils literal notranslate"><span class="pre">json()</span></code>
+function returns a PHP array.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">json()</span></code> function accepts <a class="reference external" rel="noopener noreferrer" target="_blank" href="http://jmespath.org/specification.html">JMESPath</a>.</p>
+<p>The result of calling functions can be checked via <a class="reference external" rel="noopener noreferrer" target="_blank" href="http://symfony.com/doc/current/components/expression_language/syntax.html#supported-operators">operators</a> described.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Learn more about <a class="reference external" rel="noopener noreferrer" target="_blank" href="http://symfony.com/doc/current/components/expression_language/syntax.html">Expressions syntax</a>
+in the Symfony documentation.</p>
+</div>
+<p>Here are some expression examples:</p>
+<div class="highlight-blackfire notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span># return all HTML nodes matching &quot;.post h2 a&quot;
+css(&quot;.post h2 a&quot;)
+
+# return the text of the first node matching &quot;.post h2 a&quot;
+css(&quot;.post h2 a&quot;).first().text()
+
+# return the href attribute of the first node matching &quot;.post h2 a&quot;
+css(&quot;.post h2 a&quot;).first().attr(&quot;href&quot;)
+
+# check that &quot;h1&quot; contains &quot;Welcome&quot;
+css(&quot;h1:contains(&#39;Welcome&#39;)&quot;).count() &gt; 0
+
+# same as above
+css(&quot;h1&quot;).first().text() matches &quot;/Welcome/&quot;
+
+# return the Age request HTTP header
+header(&quot;Age&quot;)
+
+# check that the HTML body contains &quot;Welcome&quot;
+body() matches &quot;/Welcome/&quot;
+
+# get a value
+json(&quot;_links.store.href&quot;)
+
+# get keys
+json(&quot;arguments.&quot;sql.pdo.queries&quot;.keys(@)&quot;)
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="using-variables">
+<span id="id15"></span><h2>Using Variables<a class="headerlink" href="#using-variables" title="Permalink to this headline">¶</a></h2>
+<p>Variables can be defined to make your scenarios dynamic. Use <code class="docutils literal notranslate"><span class="pre">set</span></code> to define
+the default value:</p>
+<div class="highlight-blackfire notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span>scenario
+    name &quot;HTTP Cache&quot;
+    set env &quot;dev&quot;
+
+    when &quot;prod&quot; == env
+        visit url(&#39;/&#39;)
+        # check HTTP cache, but only on production
+</pre></div>
+</td></tr></table></div>
+<p>And override it with the <code class="docutils literal notranslate"><span class="pre">--variable</span></code> option on the CLI:</p>
+<div class="highlight-bash notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span>blackfire-player run scenario.bkf --variable <span class="nv">env</span><span class="o">=</span>prod
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="iterating">
+<h2>Iterating<a class="headerlink" href="#iterating" title="Permalink to this headline">¶</a></h2>
+<p>Use <code class="docutils literal notranslate"><span class="pre">with</span></code> to iterate over a set of data:</p>
+<div class="highlight-blackfire notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span>scenario
+    name &quot;HTTP Cache&quot;
+    set paths [&quot;/&quot;, &quot;/blog/&quot;]
+
+    with path in paths
+        visit url(path)
+            name &quot;Checking performance on path: &quot; ~ path
+            expect status_code() == 200
+            # performance checks
+
+scenario
+    name &quot;Checks on key pages&quot;
+
+    with name, data in \
+        { \
+            admin: { slug: &quot;/admin/&quot;, expectedStatusCode: 401 }, \
+            products: { slug: &quot;/products/&quot;, expectedStatusCode: 200 }, \
+            about: { slug: &quot;/about/&quot;, expectedStatusCode: 200 } \
+        }
+
+        visit url(data[&quot;slug&quot;])
+            name &quot;Checking performance on path: &quot; ~ name
+            expect status_code() == data[&quot;expectedStatusCode&quot;]
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="loops">
+<h2>Loops<a class="headerlink" href="#loops" title="Permalink to this headline">¶</a></h2>
+<p>Use <code class="docutils literal notranslate"><span class="pre">while</span></code> to perform loops:</p>
+<div class="highlight-blackfire notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span>scenario
+    name &quot;While loops&quot;
+    visit url(&#39;/products/&#39;)
+    set pageCount css(&quot;.max_results_count&quot;).first().text()
+
+    set page 1
+    while page &lt; pageCount
+        visit url(&#39;/products/?page=&#39; ~ page)
+            set page page + 1
+            expect status_code() == 200
+            # performance checks
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="organizing-scenario-files">
+<h2>Organizing Scenario Files<a class="headerlink" href="#organizing-scenario-files" title="Permalink to this headline">¶</a></h2>
+<p>To run scenarios defined in several files, you can use <code class="docutils literal notranslate"><span class="pre">load</span></code> instead of
+listing all the files as arguments to the player:</p>
+<div class="highlight-blackfire notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span># load and execute all scenarios from files in this directory
+load &quot;*.bkf&quot;
+
+# load and execute all scenarios from files in all sub-directories
+load &quot;**/*.bkf&quot;
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="blackfire-profiler-integration">
+<h2>Blackfire Profiler integration<a class="headerlink" href="#blackfire-profiler-integration" title="Permalink to this headline">¶</a></h2>
+<p>Blackfire Player integrates seamlessly with Blackfire Profiler.
+Read out <a class="reference external" rel="noopener noreferrer" target="_blank" href="https://blackfire.io/docs/integrations/blackfire-player">the dedicated documentation to learn more about Blackfire
+Profiler integration</a>.</p>
+</div>
+<div class="section" id="scraping-values">
+<span id="id16"></span><h2>Scraping Values<a class="headerlink" href="#scraping-values" title="Permalink to this headline">¶</a></h2>
+<p>When crawling an HTTP application, you can extract values from HTTP responses:</p>
+<div class="highlight-blackfire notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span>scenario
+    visit url(&#39;/&#39;)
+        expect status_code() == 200
+        set latest_post_title css(&quot;.post h2&quot;).first()
+        set latest_post_href css(&quot;.post h2 a&quot;).first().attr(&quot;href&quot;)
+        set latest_posts css(&quot;.post h2 a&quot;).extract(&#39;_text&#39;, &#39;href&#39;)
+        set age header(&quot;Age&quot;)
+        set content_type header(&quot;Content-Type&quot;)
+        set token regex(&#39;/name=&quot;_token&quot; value=&quot;([^&quot;]+)&quot;/&#39;)
+</pre></div>
+</td></tr></table></div>
+<p><code class="docutils literal notranslate"><span class="pre">set</span></code> takes two arguments:</p>
+<ul class="simple">
+<li>The name of the variable you want to store the value in;</li>
+<li>An expression to evaluate.</li>
+</ul>
+<p>Using <code class="docutils literal notranslate"><span class="pre">json()</span></code>, <code class="docutils literal notranslate"><span class="pre">css()</span></code>, and <code class="docutils literal notranslate"><span class="pre">xpath()</span></code> on JSON, HTML, and XML responses
+is recommended, but for pure text responses or complex values, you can use the
+generic <code class="docutils literal notranslate"><span class="pre">regex()</span></code> function.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last"><code class="docutils literal notranslate"><span class="pre">regex()</span></code> takes a regex as an argument and always returns the first
+captured parenthesized subpattern. Note that backslashes must be escaped by
+doubling them: <code class="docutils literal notranslate"><span class="pre">&quot;/\\.git/&quot;</span></code>.</p>
+</div>
+<p>The values are also available at the end of a crawling session:</p>
+<div class="highlight-bash notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1"># use --json to display a report including variable values</span>
+blackfire-player run scenario.bkf --json
+</pre></div>
+</td></tr></table></div>
+<p>Variable values can also be injected before running another scenario:</p>
+<div class="highlight-blackfire notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span>scenario
+    name &quot;Scenario name&quot;
+    auth api_username ~ &#39;:&#39; ~ api_password
+    set profile_uuid &#39;zzzz&#39;
+
+    visit url(&#39;/profiles&#39; ~ profile_uuid)
+        expect status_code() == 200
+        set sql_queries json(&#39;arguments.&quot;sql.pdo.queries&quot;.keys(@)&#39;)
+        set store_url json(&quot;_links.store.href&quot;)
+
+    visit url(store_url)
+        method &#39;POST&#39;
+        body &#39;{ &quot;foo&quot;: &quot;batman&quot; }&#39;
+        expect status_code() == 200
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+
+
+        <div class="navigation">
+                                            </div>
+    </div>
+        </div>
+    </div>
+        </div>
+        
+                <footer>
+            <div class="container">
+                <nav class="flex-container">
+                    <div>
+                        <h4>Product</h4>
+                        <ul class="list-unstyled">
+                            <li><a href="https://www.blackfire.io/features">Features</a></li>
+                                                                    <li><a href="https://www.blackfire.io/pricing">Pricing</a></li>
+                                                            <li><a href="https://www.blackfire.io/integrations">Integrations</a></li>
+                            <li><a href="https://www.blackfire.io/php">PHP Profiler</a></li>
+                            <li><a href="https://www.blackfire.io/python">Python Profiler</a></li>
+                            <li><a href="https://www.blackfire.io/go">Go Profiler</a></li>
+                            <li><a href="/docs/introduction">Documentation</a></li>
+                            <li><a href="/docs/up-and-running/installation">Getting Started</a></li>
+
+                        </ul>
+                    </div>
+                                                    <div>
+                                <h4>Solutions</h4>
+                                <ul class="list-unstyled">
+                                    <li><a href="https://www.blackfire.io/monitoring">Performance Monitoring</a></li>
+                                    <li><a href="https://www.blackfire.io/profiler">Code Performance Profiler</a></li>
+                                    <li><a href="https://www.blackfire.io/synthetic-monitoring">Synthetic User Monitoring</a></li>
+                                    <li><a href="https://www.blackfire.io/cicd-integration">CI/CD Integration</a></li>
+                                    <li><a href="https://www.blackfire.io/quality">Code Quality Recommendations</a></li>
+                                    <li><a href="https://www.blackfire.io/security">Code Security Recommendations</a></li>
+                                    <li><a href="https://www.blackfire.io/magento">Magento Code Profiler</a></li>
+                                    <li><a href="https://www.blackfire.io/students">Blackfire for Students</a></li>
+                                </ul>
+                            </div>
+                                            <div>
+                        <h4>Learn more</h4>
+                        <ul class="list-unstyled">
+                            <li><a href="https://www.blackfire.io/platformsh">A Platform.sh Business</a></li>
+                            <li><a target="_blank" rel="noopener noreferrer" href="https://blog.blackfire.io">Blog</a></li>
+                            <li><a target="_blank" rel="noopener noreferrer" href="https://platform.sh/company/careers/">Careers</a></li>
+                                                                    <li><a href="https://www.blackfire.io/customers">Customers</a></li>
+                                                            <li><a target="_blank" rel="noopener noreferrer" href="https://about.blackfire.io/open-source/">Supporting Open Source</a></li>
+                                                                    <li><a target="_blank" rel="noopener noreferrer" href="https://support.blackfire.io">Support</a></li>
+                                    <li><a target="_blank" rel="noopener noreferrer" href="https://status.blackfire.io">Service Status</a></li>
+                                                        </ul>
+                    </div>
+                    <div class="social">
+                        <ul class="list-unstyled">
+                            <li>
+                                <a href="https://twitter.com/blackfireio" rel="noopener noreferrer" target="_blank">
+                                    <img style="height: 18px; margin-right: 6px" title="Twitter" alt="Twitter" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAxNi4wLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+DQo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkNhbHF1ZV8xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB4PSIwcHgiIHk9IjBweCINCgkgd2lkdGg9IjMwMHB4IiBoZWlnaHQ9IjMwMHB4IiB2aWV3Qm94PSIwIDAgMzAwIDMwMCIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgMzAwIDMwMCIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+DQo8cGF0aCBmaWxsPSIjM0FBQUUxIiBkPSJNMjk2Ljc1OSw1Ny4wMDZjLTEwLjg5Nyw0LjgzNS0yMi42MTYsOC4xMDEtMzQuOTA4LDkuNTcxYzEyLjU0OC03LjUyMiwyMi4xODgtMTkuNDMzLDI2LjcyMy0zMy42MjcNCgljLTExLjc0NCw2Ljk2Ny0yNC43NSwxMi4wMjQtMzguNTk3LDE0Ljc1Yy0xMS4wODYtMTEuODE0LTI2Ljg4Mi0xOS4xOTMtNDQuMzY1LTE5LjE5M2MtMzMuNTY0LDAtNjAuNzgxLDI3LjIxMi02MC43ODEsNjAuNzc5DQoJYzAsNC43NjQsMC41MzgsOS40MDIsMS41NzMsMTMuODUyYy01MC41MTUtMi41MzUtOTUuMzAxLTI2LjczMy0xMjUuMjgtNjMuNTA2Yy01LjIzMiw4Ljk3Ny04LjIyOSwxOS40MTctOC4yMjksMzAuNTU2DQoJYzAsMjEuMDg3LDEwLjczLDM5LjY5MiwyNy4wMzksNTAuNTljLTkuOTYzLTAuMzE1LTE5LjMzNS0zLjA1LTI3LjUyOS03LjYwMWMtMC4wMDYsMC4yNTItMC4wMDYsMC41MDgtMC4wMDYsMC43NjUNCgljMCwyOS40NDcsMjAuOTUxLDU0LjAxMyw0OC43NTYsNTkuNTk3Yy01LjEsMS4zOTEtMTAuNDcsMi4xMzItMTYuMDEyLDIuMTMyYy0zLjkxNywwLTcuNzI0LTAuMzgxLTExLjQzNi0xLjA5MQ0KCWM3LjczNiwyNC4xNDcsMzAuMTgyLDQxLjcyMSw1Ni43OCw0Mi4yMWMtMjAuODAyLDE2LjMwNC00Ny4wMDksMjYuMDItNzUuNDg2LDI2LjAyYy00LjkwNiwwLTkuNzQ1LTAuMjg4LTE0LjUtMC44NQ0KCWMyNi44OTksMTcuMjQ1LDU4Ljg0OCwyNy4zMTEsOTMuMTcyLDI3LjMxMWMxMTEuNzk4LDAsMTcyLjkzNS05Mi42MTYsMTcyLjkzNS0xNzIuOTM4YzAtMi42MzUtMC4wNTctNS4yNTUtMC4xNzYtNy44NjQNCglDMjc4LjMwNyw3OS45LDI4OC42MSw2OS4xOTUsMjk2Ljc1OSw1Ny4wMDZMMjk2Ljc1OSw1Ny4wMDZ6Ii8+DQo8L3N2Zz4NCg=="/>
+                                    <span>@blackfireio</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://github.com/blackfireio" rel="noopener noreferrer" target="_blank">
+                                    <img style="height: 17px; margin-right: 6px" title="Github" alt="Github" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyRpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDIxIDc5LjE1NDkxMSwgMjAxMy8xMC8yOS0xMTo0NzoxNiAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6RERCMUIwOUY4NkNFMTFFM0FBNTJFRTMzNTJEMUJDNDYiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6RERCMUIwOUU4NkNFMTFFM0FBNTJFRTMzNTJEMUJDNDYiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoTWFjaW50b3NoKSI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkU1MTc4QTJBOTlBMDExRTI5QTE1QkMxMDQ2QTg5MDREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOkU1MTc4QTJCOTlBMDExRTI5QTE1QkMxMDQ2QTg5MDREIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+jUqS1wAAApVJREFUeNq0l89rE1EQx3e3gVJoSPzZeNEWPKgHoa0HBak0iHiy/4C3WvDmoZ56qJ7txVsPQu8qlqqHIhRKJZceesmhioQEfxTEtsoSpdJg1u/ABJ7Pmc1m8zLwgWTmzcw3L+/te+tHUeQltONgCkyCi2AEDHLsJ6iBMlgHL8FeoqokoA2j4CloRMmtwTmj7erHBXPgCWhG6a3JNXKdCiDl1cidVbXZkJoXQRi5t5BrxwoY71FzU8S4JuAIqFkJ2+BFSlEh525b/hr3+k/AklDkNsf6wTT4yv46KIMNpsy+iMdMc47HNWxbsgVcUn7FmLAzzoFAWDsBx+wVP6bUpp5ewI+DOeUx0Wd9D8F70BTGNjkWtqnhmT1JQAHcUgZd8Lo3rQb1LAT8eJVUfgGvHQigGp+V2Z0iAUUl8QH47kAA1XioxIo+bRN8OG8F/oBjwv+Z1nJgX5jpdzQDw0LCjsPmrcW7I/iHScCAEDj03FtD8A0EyuChHgg4KTlJQF3wZ7WELppnBX+dBFSVpJsOBWi1qiRgSwnOgoyD5hmuJdkWCVhTgnTvW3AgYIFrSbZGh0UW/Io5Vp+DQoK7o80pztWMemZbgxeNwCNwDbw1fIfgGZjhU6xPaJgBV8BdsMw5cbZoHsenwYFxkZzl83xTSKTiviCAfCsJLysH3POfC8m8NegyGAGfLP/VmGmfSChgXroR0RSWjEFv2J/nG84cuKFMf4sTCZqXuJd4KaXFVjEG3+tw4eXbNK/YC9oXXs3O8NY8y99L4BXY5cvLY/Bb2VZ58EOJVcB18DHJq9lRsKr8inyKGVjlmh29mtHs3AHfuhCwy1vXT/Nu2GKQt+UHsGdctyX6eQyNvc+5sfX9Dl7Pe2J/BRgAl2CpwmrsHR0AAAAASUVORK5CYII=" />
+                                    <span>Github organization</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://www.youtube.com/channel/UClkcAXtpk1vFmG5HaMdR7JA" rel="noopener noreferrer" target="_blank">
+                                    <img style="height: 15px; margin-right: 3px" title="Youtube" alt="Youtube" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAARCAYAAADHeGwwAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2hpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDoyMDJENEQxRDFBMjA2ODExODIyQUQxQzYyNUUwREY1RCIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDpEQkQ0NzRGMDRBNzExMUUzOURBRkZEMTk5NTE2RTJGOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDpEQkQ0NzRFRjRBNzExMUUzOURBRkZEMTk5NTE2RTJGOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M2IChNYWNpbnRvc2gpIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6MDI4MDExNzQwNzIwNjgxMTgyMkFCMDA0MjJDMTMxRkMiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6MjAyRDREMUQxQTIwNjgxMTgyMkFEMUM2MjVFMERGNUQiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz4LIL+iAAAC0UlEQVR42nxVy2pUQRCtnlxCwpgQo0JUjAENg5BRBI260BjXgugXKLgP/oIPUNCFbnxsdJEPEFyLC/HBxJWbxJ0GoyhGE3XMQLqrPNWve4ODF3qq6nbVOVXdVXfMUrNBZGiIiGYM0WESqsMeEKF+Y6gPchB7PdjTp0dI3ckJfoyQg/kT7zow16D/wvs25ByJub3j7fyK+dhsbBKRN3BvABD44pFMEOFR9GhLZFIlqNhAoKhITsH/HaxDhWM5D6uRfLs+UtnMGEKc+OO+JArxvw3wXFCCU8bIBoycuL73mRmK6cbYhGpCAQruXRj7wVe3oU4XLDwW6pa4tNxQdkBTeLFQi2pJHoACSnmEkiCS3F1Ypi3p5MN7juwSkgZyfWrqZTHR7F19cH8X2fWduRwPKLEQk+9AOFVvttYsS90yk3NMXrKQpguTLHpEdaYaj8xcOjr64vU2c+ZcyxJ9ternfeEDX5dsLAcG6xSD60pQqKFAlqsLTt4xBOvTPzTUO379xuTw4yeDfHK6BfBV7+cT4zKuJAaBZq4ZuwiszBHUxQBXuX1Tq9H2ffv6xi5fmZDmgYUUs+6if5QukPYVCu77LV77xq7w55gr0Ic7nc7i1WutL7OzE8R8pLzVSndx6jrpoE3Z+nA2oc3iVZvKcCmBWGsXb9569enuvb3s7Im8bUxMJA6oSV2oXNJGF0kb+6GTcnuBgONIQvkxNzf8fM/4EjroeJ6D1DVx+s3GOfRdBMMTLMNnNLa8spZE0d1+X9n/z3fDSE6m+9R7v286ye9hH8yx//tkeAfOR91t+tNcRPIPSvAU2tkcId1hJR5XeRQmX2oILe/OD5rnkmc1dNUjfC4W0FVoCgyVDpY2QmU5L9nv+5b2dvT1g1XGOY5SeB7yYQGWNuxj4LsI0kmsEej6HzAQC9hcKaYWchYXbf9/gNVBzFrU/0BvQd45vfz5918BBgCcsyG24b4SKgAAAABJRU5ErkJggg==" />
+                                    <span>Youtube channel</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                </nav>
+
+                <a href="https://www.blackfire.io" class="logo blackfire">
+                    <svg    viewBox="0 0 303 85.9" version="1.1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" xml:space="preserve"><g><g><circle fill="#FFFFFF" cx="42.9" cy="42.9" r="42.9"/><g><path fill="#E03C31" d="M35.3,72c0.5,0.7-0.1,1.6-0.9,1.4c-14.1-1.9-24.1-22.7-11-34.7c14.5-13.3,17.8-21.2,16.1-25.4
+				c-0.2-0.6,0.3-1.1,0.8-0.9c4.8,2.4,15.7,9.6,12.1,25.2c0,0,6.3-0.1,6.5-6c0-0.6,0.7-0.8,1.1-0.5c2.7,2.5,9.4,9.7,8.5,19.2
+				C67.2,64.1,57.7,71.3,50.7,73c-0.7,0.2-1.3-0.6-0.9-1.2c2-3,5.6-9.1-1.9-15.1c-5.6-4.2-6.3-8.6-5.5-11.3c0.1-0.5-0.4-0.8-0.7-0.5
+				C27.3,57.1,32.5,68,35.3,72z"/></g></g><g><path fill="#FFFFFF" d="M131,48.9c0,10.1-4.9,14.9-13.2,14.9c-7.5,0-12.8-4.1-12.8-12.4V25.8c0-1.9,1.5-3.3,3.3-3.3
+			s3.3,1.5,3.3,3.3v10.6c1.2-1.2,3.8-2.5,6.8-2.5C126.2,34,131,38.8,131,48.9z M111.6,51.4c0,4.3,2.5,6.7,6.1,6.7
+			c4.3,0,6.6-3.1,6.6-9.2c0-6.1-2.4-9.2-6.6-9.2c-3.7,0-6.1,3.2-6.1,3.2V51.4z"/><path fill="#FFFFFF" d="M141,25.8v30.3c0,0.7,0.7,1.1,1.2,1.1c1.7,0,3.1,1.4,3.1,3.1s-1.4,3.1-3.1,3.1c-4.8,0-7.9-2.7-7.9-7.9
+			V25.8c0-1.9,1.5-3.3,3.3-3.3C139.6,22.5,141,24,141,25.8z"/><path fill="#FFFFFF" d="M152.7,42.3c-0.6,0.4-1.1,0.6-1.9,0.6c-1.6,0-2.9-1.3-2.9-2.9c0-0.7,0.2-1.4,0.8-2c1.7-1.9,4.8-4,10.1-4
+			c7.7,0,12.3,3.8,12.3,10.3v15.8c0,1.8-1.5,3.3-3.3,3.3c-1.8,0-3.3-1.5-3.3-3.3c-1.7,2.7-4.4,3.6-8.1,3.6c-6.1,0-10.1-3.8-10.1-9.3
+			c0-5.8,4.6-8.7,10-8.7h8.1v-1.1c0-2.8-2-4.6-5.6-4.6C156.2,39.9,154.3,41.2,152.7,42.3z M164.6,52.6v-1.7h-7.2
+			c-2.7,0-4.2,1.3-4.2,3.5c0,2.4,1.7,3.8,5.1,3.8C161.5,58.2,164.6,56.1,164.6,52.6z"/><path fill="#FFFFFF" d="M187.9,34c5.7,0,9,2.8,10.1,4.3c0.5,0.7,0.7,1.2,0.7,1.9c0,1.7-1.3,3-3,3c-1,0-1.7-0.4-2.3-1.1
+			c-0.8-0.9-2.4-2.4-5.5-2.4c-4.3,0-6.7,3.3-6.7,9.2c0,5.9,2.4,9.2,6.7,9.2c2.8,0,4.7-1.4,6.1-2.5c0.7-0.5,1.2-0.6,1.9-0.6
+			c1.7,0,3,1.3,3,3c0,0.9-0.3,1.6-1.1,2.3c-1.4,1.3-4.8,3.5-9.9,3.5c-8.4,0-13.4-4.8-13.4-14.9S179.5,34,187.9,34z"/><path fill="#FFFFFF" d="M220.1,62.1l-9.2-12.4l-2,1.5v8.9c0,1.9-1.5,3.2-3.3,3.2c-1.9,0-3.3-1.4-3.3-3.2V25.7
+			c0-1.9,1.4-3.2,3.3-3.2c1.9,0,3.3,1.4,3.3,3.2v18.2l11.2-8.8c0.8-0.6,1.4-0.8,2.2-0.8c1.8,0,3.2,1.4,3.2,3.2
+			c0,0.9-0.4,1.9-1.2,2.5l-8.1,6.2l9.1,11.9c0.5,0.7,0.7,1.4,0.7,2c0,1.8-1.4,3.2-3.2,3.2C221.5,63.4,220.6,62.9,220.1,62.1z"/><path fill="#FFFFFF" d="M229.9,40.4c-1.5,0-2.8-1.2-2.8-2.8c0-1.5,1.2-2.8,2.8-2.8h1.3v-3.3c0-5.8,3.8-9.4,11.8-9.4
+			c1.6,0,2.9,1.3,2.9,2.9c0,1.6-1.3,2.9-2.9,2.9c-3.4,0-5.1,1.9-5.1,4.6v2.3h4.1c1.5,0,2.8,1.2,2.8,2.8c0,1.5-1.2,2.8-2.8,2.8h-4.1
+			v19.8c0,1.9-1.5,3.2-3.3,3.2c-2,0-3.3-1.4-3.3-3.2V40.4H229.9z"/><path fill="#FFFFFF" d="M247.9,29.7c0-2.8,1.4-4,3.9-4c2.5,0,3.9,1.2,3.9,4c0,2.4-1.4,3.8-3.9,3.8C249.3,33.5,247.9,32,247.9,29.7
+			z M255.1,60.1c0,1.9-1.5,3.3-3.3,3.3c-1.9,0-3.3-1.5-3.3-3.3V38.7c0-1.9,1.5-3.3,3.3-3.3c1.9,0,3.3,1.5,3.3,3.3V60.1z"/><path fill="#FFFFFF" d="M266.2,38c1.2-2.4,4.1-4,6.7-4c1.7,0,3.2,1.4,3.2,3.2c0,1.7-1.4,3.2-3.2,3.2c-4.3,0-6.7,2.7-6.7,6.9v12.9
+			c0,1.9-1.5,3.3-3.3,3.3c-1.9,0-3.3-1.5-3.3-3.3V37.7c0-1.9,1.5-3.3,3.3-3.3c1.9,0,3.3,1.5,3.3,3.3V38z"/><path fill="#FFFFFF" d="M289.8,34c10.5,0,12.4,8,12.4,12.3c0,2.3,0,5-3.8,5h-15.3c0,4.5,3.2,6.5,7.2,6.5c2.7,0,4.6-0.9,6.1-1.9
+			c0.7-0.4,1.2-0.7,2-0.7c1.6,0,2.9,1.3,2.9,2.9c0,1-0.5,1.8-1.1,2.3c-1.1,1-4.3,3.4-10,3.4c-8.6,0-13.9-4.6-13.9-15
+			C276.5,39.3,281.4,34,289.8,34z M283.3,45.7h12.3c0-3-1.7-6-5.8-6C286.2,39.7,283.6,41.7,283.3,45.7z"/></g></g></svg>
+                </a>
+                <p class="legal">
+                    © 2014-2022 Blackfire is a trademark of Blackfire SAS. All rights reserved.
+                                                    &nbsp;|&nbsp;
+                            <a href="/terms-of-use">Terms of Use</a>
+                            &nbsp;|&nbsp;
+                            <a href="/legal-notice">Legal Notice</a>
+                            &nbsp;|&nbsp;
+                            <a href="/privacy">Privacy Policy</a>
+                            &nbsp;|&nbsp;
+                            <a href="/cookie-policy">Cookie Policy</a>
+                            &nbsp;|&nbsp;
+                            <a href="javascript: void(0)" id="cookie-managment-btn">Cookie Management</a>
+                                            <br />
+                    This site is protected by reCAPTCHA and the Google
+                    <a rel="noopener noreferrer" target="_blank" href="https://policies.google.com/privacy">Privacy Policy</a> and
+                    <a rel="noopener noreferrer" target="_blank" href="https://policies.google.com/terms">Terms of Service</a> apply.
+                </p>
+            </div>
+        </footer>
+        
+                    <script src="https://www.google.com/recaptcha/api.js?render=6LdE4k8eAAAAAMHiYfLavo6HkHemiNXt0k0VXqa1"  ></script>
+                <script src="https://js.recurly.com/v4/recurly.js"  crossorigin="anonymous"></script>
+        <script src="https://static.blackfire.io/assets/ve756410286/build/runtime.0c678ce1.js" crossorigin="anonymous" integrity="sha384-6A6BjuJZ+7DaVJI4wHZJf5G0H6KEN3FfaHawcpD1on3keD4i1Yg7Y0nXrxKGc0xc"></script><script src="https://static.blackfire.io/assets/ve756410286/build/3395.1a7d0e6c.js" crossorigin="anonymous" integrity="sha384-Pz1Od8AB/2YVUd3r+Gf1kHmLiNJRpJxxD58hRCd84F+OD8p3JpJVPC0vt6xaM7fC"></script><script src="https://static.blackfire.io/assets/ve756410286/build/1928.95d8f817.js" crossorigin="anonymous" integrity="sha384-USssq7ENRm4pBdB2DX/bpg/eKp85JlV5/4e/Kdekojb/ecFPd7/6C3LwNA36eAQP"></script><script src="https://static.blackfire.io/assets/ve756410286/build/6617.efbe87f5.js" crossorigin="anonymous" integrity="sha384-sBzSQcuFDhPVK4lTbAJZbE2/emhh8MMGpbtnRU4VPllJWAc35zLCQoBxUKUG4fPw"></script><script src="https://static.blackfire.io/assets/ve756410286/build/1406.dfd0396b.js" crossorigin="anonymous" integrity="sha384-MZI7aFYb3mPBMfHzssaRZwFFDgSF8vdjvTJQl3MZW3UYF3OcLpAh1/q+xow2mlks"></script><script src="https://static.blackfire.io/assets/ve756410286/build/6709.e1df291b.js" crossorigin="anonymous" integrity="sha384-d4kIyLlr9CR4TPSPGi2aVKOZd2RcBxlzoTH1mw042cm49x2VqIbEx0TxaTzSVq6c"></script><script src="https://static.blackfire.io/assets/ve756410286/build/1770.04520ace.js" crossorigin="anonymous" integrity="sha384-vcHYRWeS5qYHfG4XYz6GblQF4uB6825WijwMALlyzZ/CkJ+MvtE3eqjC/OHfX45o"></script><script src="https://static.blackfire.io/assets/ve756410286/build/layout.19dfb08e.js" crossorigin="anonymous" integrity="sha384-3jloF+pMkIYZqBDwuMqZ80zlOqU2OiIS0G6uTBT/IByb+1SRUCCGKxznoJ8D8xrW"></script>
+                    <script>
+        var app_id = 'miefikpgahefdbcgoiicnmpbeeomffld';
+    </script>
+    
+    <script src="https://static.blackfire.io/assets/ve756410286/build/documentation.943bdf28.js" crossorigin="anonymous" integrity="sha384-CZ02uFcoAKze+G5NJUOBHjr/d6cn/NUwvcplymRizmOOocANfkrEkOl3s0P7Sss4"></script>
+
+            <script src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script>
+                <script>
+            if (window.docsearch) {
+                docsearch({
+                    apiKey: '8fd4184bbed1cc6d58d96adb5fb99a91',
+                    indexName: 'blackfire',
+                    inputSelector: '#algolia',
+                    debug: false,
+                });
+            } else {
+                $('#algolia').hide()
+            }
+        </script>
+            
+
+    
+                    <script src="https://static.blackfire.io/assets/ve756410286/build/6742.82877eb2.js" crossorigin="anonymous" integrity="sha384-tVeJlr3e0tFjYVWaZbr7mpC5u5dbjJHUy87c4Yr3a5Q5wObmHHAO4LTBpmj439b/"></script><script src="https://static.blackfire.io/assets/ve756410286/build/9899.6c20ba68.js" crossorigin="anonymous" integrity="sha384-Lq2H+hOkw4Wziq/wZHwEw4CzRpJhuJVn8WquzezzkDOACybEyt4SDT8HJzDZ7/yb"></script><script src="https://static.blackfire.io/assets/ve756410286/build/trackers.ba17a287.js" crossorigin="anonymous" integrity="sha384-mEf5owytjqwLyPb9ycU1OOq4JtfPZqX1KCjvu+VfWVFY9Pbtif44pT9UclbKFDJw"></script>
+                                                    <script>
+                                        window.BFCFG = window.BFCFG || {}; window.BFCFG.browser_key=""; !function(e,t,c,o,r){o=t.createElement(c),r=t.getElementsByTagName(c)[0],o.async=1,o.src=(e.BFCFG&&e.BFCFG.collector?e.BFCFG.collector:"https://apm.blackfire.io")+"/probe.js",r.parentNode.insertBefore(o,r)}(window,document,"script");
+                </script>
+                        </body>
+</html>

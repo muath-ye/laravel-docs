@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="/apple-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="/apple-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="/apple-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="/apple-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="/apple-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="/apple-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-icon-180x180.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/android-icon-192x192.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content="@php_swoole">
+<meta name="twitter:title" content="Swoole\Table - Swoole Table Documentation | Open Swoole PHP" />
+<meta name="twitter:description" content="" />
+<meta name="twitter:image" content="https://openswoole.com/images/large.png?v=1" />
+<meta name="twitter:creator" content="@php_swoole" />
+<meta property="og:title" content="Swoole\Table - Swoole Table Documentation | Open Swoole PHP" />
+<meta property="og:description" content="" />
+<meta property="og:url" content="https://openswoole.com/docs/modules/swoole-table" />
+<meta property="og:site_name" content="Swoole" />
+<meta property="og:image" content="https://openswoole.com/images/large.png>?v=1" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="robots" content="max-snippet:-1, max-image-preview:large, max-video-preview:-1"/>
+<link rel="manifest" href="/manifest.json">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+<meta name="theme-color" content="#ffffff">
+<link rel="canonical" href="https://openswoole.com/docs/modules/swoole-table">
+<script async src="https://t.pubperf.com/t/b5a635e307.js"></script>
+<script src='https://cmp.uniconsent.com/v2/stub.min.js'></script>
+<script async src='https://cmp.uniconsent.com/v2/57d3646d38/cmp.js'></script>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Swoole\Table - Swoole Table Documentation | Open Swoole PHP</title>
+
+<!-- Bootstrap -->
+<link href="/css/plugins/plugins.css" rel="stylesheet">
+<script type="text/unicscript" unic-purpose-id="3" data-ad-client="ca-pub-4791403894387706" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!--main css file-->
+<link href="/css/style.css" rel="stylesheet">
+<script>
+function lzload() {
+    var imgDefer = document.getElementsByTagName('img');
+    for (var i = 0; i < imgDefer.length; i++) {
+        if (imgDefer[i].getAttribute('data-src')) {
+            var boundingClientRect = imgDefer[i].getBoundingClientRect();
+            if (boundingClientRect.top < window.innerHeight) {
+                imgDefer[i].setAttribute('src', imgDefer[i].getAttribute('data-src'));
+                imgDefer[i].removeAttribute("data-src");
+            }
+        }
+    }
+}
+
+window.addEventListener('scroll', lzload);
+window.addEventListener('load', lzload);
+window.addEventListener('resize', lzload);
+</script>
+<link rel="manifest" href="/manifest.json" />
+<!-- <script id="unisignin-tag" data-license="589ad04d06" data-domain="account.swoole.co.uk" src="https://account.swoole.co.uk/tag/tag.js"></script> -->
+</head>
+<style type="text/css">
+.col-md-12 > ul {
+    padding: 0;
+}
+.container {
+    padding: 0;
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+}
+</style>
+<body class="docs">
+    <div class="container">
+<nav class="navbar navbar-expand-lg navbar-light bg-faded">
+    <a class="navbar-brand" href="/" alt="swoole" title="swoole"><img src="/images/swoole-logo.svg" alt="swoole" title="swoole"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="/" alt="swoole" title="swoole">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/article/" alt="swoole article" title="swoole article">News</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/docs/" alt="swoole docs" title="swoole docs">Docs</a>
+            </li>
+            <!--             <li class="nav-item dropdown">
+                <a class="nav-link" href="/how-it-works" alt="how swoole works" title="how swoole works">How Swoole Works</a>
+            </li> -->
+            <li class="nav-item">
+                <a class="nav-link" href="/community" alt="swoole community" title="swoole community">Community</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="https://swoolelabs.com/" alt="swoole support" title="swoole support">Swoole Labs</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/search" alt="swoole search" title="swoole search">Search</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="https://github.com/openswoole/swoole-src" alt="swoole github" title="swoole github"><i class="fa fa-github"></i> Github</a>
+            </li>
+            <!--                     <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Blog</a>
+                <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
+                    <li><a href="#" class="dropdown-item">Case studies</a></li>
+                </ul>
+            <li> -->
+        </ul>
+    </div>
+</nav>
+</div>
+<!--/footer-->
+    <div class="container content">
+        <div class="text-center">
+            <div id='div-gpt-ad-1529758163007-0'>
+                <script>
+                googletag.cmd.push(function() { googletag.display('div-gpt-ad-1529758163007-0'); });
+                </script>
+            </div>
+        </div>
+    </div>
+    <div class="container pb60 content">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="mb20">Swoole\Table - Swoole Table Documentation</h1>
+            </div>
+            <div class="col-md-12 col-lg-8">
+                <ol itemscope itemtype="http://schema.org/BreadcrumbList" class="breadcrumb">
+    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem" class="breadcrumb-item">
+        <a itemprop="item" href="https://openswoole.com/">
+            <span itemprop="name">Open Swoole</span>
+        </a>
+        <meta itemprop="position" content="1" />
+    </li>
+    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem" class="breadcrumb-item">
+        <a itemprop="item" href="https://openswoole.com/docs/">
+            <span itemprop="name">Swoole Docs</span>
+        </a>
+        <meta itemprop="position" content="2" />
+    </li>
+    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem" class="breadcrumb-item">
+        <a itemprop="item" href="https://openswoole.com/docs/modules">
+            <span itemprop="name">Modules</span>
+        </a>
+        <meta itemprop="position" content="3" />
+    </li>
+    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem" class="breadcrumb-item">
+        <a itemprop="item" href="https://openswoole.com/docs/modules/swoole-table">
+            <span itemprop="name">Swoole\Table - Swoole Table Documentation</span>
+        </a>
+        <meta itemprop="position" content="4" />
+    </li>
+</ol>
+
+<blockquote>
+<p>Latest version: <code>pecl install openswoole-4.10.0</code></p>
+</blockquote>
+
+<p>Swoole table is a high performance memory management module, implemented based on shared memory and spin lock. It can be used by multiple processes: worker process or task worker process.</p>
+
+<blockquote>
+<p>One row can be modified and accessed by multiple threads or processes.
+Global variables can be shared or used by multiple Swoole Worker processes.</p>
+</blockquote>
+
+<p>Swoole table provides a two dimensions memory table for developers. </p>
+
+<blockquote>
+<p>For performance reason, from v4.7.0, you can&#39;t use object of type Swoole\Table as array.</p>
+</blockquote>
+
+<h2 id="methods">Methods</h2>
+
+<ul>
+<li><a href="/docs/modules/swoole-table-construct"><code>Swoole\Table-&gt;__construct</code></a></li>
+<li><a href="/docs/modules/swoole-table-column"><code>Swoole\Table-&gt;column</code></a></li>
+<li><a href="/docs/modules/swoole-table-create"><code>Swoole\Table-&gt;create</code></a></li>
+<li><a href="/docs/modules/swoole-table-destroy"><code>Swoole\Table-&gt;destroy</code></a></li>
+<li><a href="/docs/modules/swoole-table-set"><code>Swoole\Table-&gt;set</code></a></li>
+<li><a href="/docs/modules/swoole-table-get"><code>Swoole\Table-&gt;get</code></a></li>
+<li><a href="/docs/modules/swoole-table-count"><code>Swoole\Table-&gt;count</code></a></li>
+<li><a href="/docs/modules/swoole-table-del"><code>Swoole\Table-&gt;del</code></a></li>
+<li><a href="/docs/modules/swoole-table-exists"><code>Swoole\Table-&gt;exists</code></a></li>
+<li><a href="/docs/modules/swoole-table-incr"><code>Swoole\Table-&gt;incr</code></a></li>
+<li><a href="/docs/modules/swoole-table-decr"><code>Swoole\Table-&gt;decr</code></a></li>
+<li><a href="/docs/modules/swoole-table-getMemorySize"><code>Swoole\Table-&gt;getMemorySize</code></a></li>
+<li><a href="/docs/modules/swoole-table-offsetExists"><code>Swoole\Table-&gt;offsetExists</code></a></li>
+<li><a href="/docs/modules/swoole-table-offsetGet"><code>Swoole\Table-&gt;offsetGet</code></a></li>
+<li><a href="/docs/modules/swoole-table-offsetSet"><code>Swoole\Table-&gt;offsetSet</code></a></li>
+<li><a href="/docs/modules/swoole-table-offsetUnset"><code>Swoole\Table-&gt;offsetUnset</code></a></li>
+<li><a href="/docs/modules/swoole-table-rewind"><code>Swoole\Table-&gt;rewind</code></a></li>
+<li><a href="/docs/modules/swoole-table-next"><code>Swoole\Table-&gt;next</code></a></li>
+<li><a href="/docs/modules/swoole-table-current"><code>Swoole\Table-&gt;current</code></a></li>
+<li><a href="/docs/modules/swoole-table-key"><code>Swoole\Table-&gt;key</code></a></li>
+<li><a href="/docs/modules/swoole-table-valid"><code>Swoole\Table-&gt;valid</code></a></li>
+<li><a href="/docs/modules/swoole-table-row-offsetExists"><code>Swoole\Table\Row-&gt;offsetExists</code></a></li>
+<li><a href="/docs/modules/swoole-table-row-offsetGet"><code>Swoole\Table\Row-&gt;offsetGet</code></a></li>
+<li><a href="/docs/modules/swoole-table-row-offsetSet"><code>Swoole\Table\Row-&gt;offsetSet</code></a></li>
+<li><a href="/docs/modules/swoole-table-row-offsetUnset"><code>Swoole\Table\Row-&gt;offsetUnset</code></a></li>
+</ul>
+
+<h2 id="why-using-swoole-table">Why using Swoole Table</h2>
+
+<ul>
+<li>High performance, the single thread read/write speed is more than 2 millions per second.</li>
+<li>Share variables across multiple threads or processes.</li>
+<li>Store counters in your application.</li>
+</ul>
+
+<h2 id="basic-usage-of-swoole-table-access-as-array">Basic usage of Swoole Table, Access as array:</h2>
+
+<blockquote>
+<p>For performance reason, from v4.7.0, you can&#39;t use object of type Swoole\Table as array.</p>
+</blockquote>
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+
+<span class="nv">$table</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Swoole\Table</span><span class="p">(</span><span class="mi">1024</span><span class="p">);</span>
+<span class="nv">$table</span><span class="o">-&gt;</span><span class="nf">column</span><span class="p">(</span><span class="s1">'name'</span><span class="p">,</span> <span class="nc">Swoole\Table</span><span class="o">::</span><span class="no">TYPE_STRING</span><span class="p">,</span> <span class="mi">64</span><span class="p">);</span>
+<span class="nv">$table</span><span class="o">-&gt;</span><span class="nf">column</span><span class="p">(</span><span class="s1">'id'</span><span class="p">,</span> <span class="nc">Swoole\Table</span><span class="o">::</span><span class="no">TYPE_INT</span><span class="p">,</span> <span class="mi">4</span><span class="p">);</span>       <span class="c1">//1,2,4,8</span>
+<span class="nv">$table</span><span class="o">-&gt;</span><span class="nf">column</span><span class="p">(</span><span class="s1">'num'</span><span class="p">,</span> <span class="nc">Swoole\Table</span><span class="o">::</span><span class="no">TYPE_FLOAT</span><span class="p">);</span>
+<span class="nv">$table</span><span class="o">-&gt;</span><span class="nf">create</span><span class="p">();</span>
+
+<span class="nv">$table</span><span class="o">-&gt;</span><span class="nf">set</span><span class="p">(</span><span class="s1">'a'</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span><span class="s1">'id'</span> <span class="o">=&gt;</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">'name'</span> <span class="o">=&gt;</span> <span class="s1">'swoole-co-uk'</span><span class="p">,</span> <span class="s1">'num'</span> <span class="o">=&gt;</span> <span class="mf">3.1415</span><span class="p">));</span>
+<span class="nv">$table</span><span class="o">-&gt;</span><span class="nf">set</span><span class="p">(</span><span class="s1">'b'</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span><span class="s1">'id'</span> <span class="o">=&gt;</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">'name'</span> <span class="o">=&gt;</span> <span class="s2">"swoole-uk"</span><span class="p">,</span> <span class="s1">'num'</span> <span class="o">=&gt;</span> <span class="mf">3.1415</span><span class="p">));</span>
+<span class="nv">$table</span><span class="o">-&gt;</span><span class="nf">set</span><span class="p">(</span><span class="s1">'<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="4e262b2222210e3d392121222b602d21603b25">[email&#160;protected]</a>'</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span><span class="s1">'id'</span> <span class="o">=&gt;</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">'name'</span> <span class="o">=&gt;</span> <span class="s1">'swoole'</span><span class="p">,</span> <span class="s1">'num'</span> <span class="o">=&gt;</span> <span class="mf">3.1415</span><span class="p">));</span>
+
+<span class="nb">var_dump</span><span class="p">(</span><span class="nv">$table</span><span class="o">-&gt;</span><span class="nf">get</span><span class="p">(</span><span class="s1">'a'</span><span class="p">));</span>
+<span class="nb">var_dump</span><span class="p">(</span><span class="nv">$table</span><span class="o">-&gt;</span><span class="nf">get</span><span class="p">(</span><span class="s1">'b'</span><span class="p">,</span> <span class="s1">'name'</span><span class="p">));</span>
+</code></pre></div>
+<p>More Swoole Table Example: <a href="/docs/modules/swoole-table-example">/docs/modules/swoole-table-example</a></p>
+
+<h5 id="iterator-and-countable">Iterator and Countable</h5>
+
+<blockquote>
+<p>The iterator and countable depends on pcre-devel</p>
+</blockquote>
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<span class="k">foreach</span><span class="p">(</span><span class="nv">$table</span> <span class="k">as</span> <span class="nv">$row</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nb">var_dump</span><span class="p">(</span><span class="nv">$row</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="k">echo</span> <span class="nb">count</span><span class="p">(</span><span class="nv">$table</span><span class="p">);</span>
+</code></pre></div>
+<!--                 <div class="row">
+                    <script>
+                    var VUUKLE_CONFIG = {
+                        apiKey: "b070edad-8d02-4426-aaeb-6e1a00088238",
+                        articleId: window.location.pathname,
+                        img: "",
+                        tags: "",
+                    };
+                    (function() {
+                        var d = document,
+                            s = d.createElement('script');
+                        s.src = 'https://cdn.vuukle.com/platform.js';
+                        (d.head || d.body).appendChild(s);
+                    })();
+                    </script>
+                    <div class='vuukle-powerbar' style="width: 100%"></div><br>
+                    <div id='vuukle-comments'></div>
+                    <div id='vuukle-newsfeed'></div>
+                </div> -->
+            </div>
+            <div class="col-lg-4 hidden-sm">
+<style type="text/css">
+/*#carbon {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    z-index: 1000;
+}*/
+#carbonads {
+    margin-bottom: 10px;
+}
+.carbon-poweredby {
+    display: none;
+}
+</style>
+<!--                 <div class="sidebar__widget">
+                    <a href="https://swoolebook.com/"><img src="/images/banner-swoolebook.png" alt="swoole book" title="swoole book" target="_blank" style="width: 350px; margin-bottom: 10px"></a>
+                </div> -->
+                
+                <div id="carbon">
+                    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?serve=CK7I6KJY&placement=swoolecouk" id="_carbonads_js"></script>
+                </div>
+                
+
+<div class="boxed boxed--border bg--secondary">
+    <h5>Community</h5>
+    <div class="mc-field-group">
+        <p>Join 2,000+ others and never miss out on new tips, tutorials, and more.</p>
+    </div>
+    <a href="https://github.com/openswoole/swoole-src/issues" target="_blank" class="btn btn-md btn-primary"><i class="fa fa-github"></i> Github</a>
+    <a href="https://twitter.com/openswoole" target="_blank" class="btn btn-md btn-primary"><i class="fa fa-twitter"></i>  Twitter</a>
+    <a href="https://www.getrevue.co/profile/swoole" target="_blank" class="btn btn-md btn-primary">Newsletter</a>
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLScqpkPJeFG-ss3P-KhFECDSNLyo1iKmU1DToIQX9YRWbuetjw/viewform" target="_blank" class="btn btn-md btn-primary"><i class="fa fa-slack"></i> Slack</a>
+    <a href="https://discord.com/invite/5QC57RNPpw" target="_blank" class="btn btn-md btn-primary"><i class="fa fa-discord"></i>  Discord</a>
+    <a href="/support" class="btn btn-md btn-primary">Support</a>
+</div>
+
+<!--                 <div class="sidebar__widget">
+                    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                    <ins class="adsbygoogle"
+                         style="display:inline-block;width:320px;height:90px"
+                         data-ad-client="ca-pub-4791403894387706"
+                         data-ad-slot="4070173268"></ins>
+                    <script>
+                         (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                </div> -->
+                <div class="sidebar boxed boxed--border boxed--lg bg--secondary">
+                    <div class="sidebar__widget">
+                        <h5>Swoole Documentation</a></h5>
+                        <ul>
+                            <li><a href="/docs/">Introduction</a></li>
+                            <li><a href="/docs/get-started-swoole">Get started with Swoole</a></li>
+                            <li><a href="/docs/get-started/installation">Installation</a></li>
+                            <li><a href="/docs/background-knowledge-index">Background Knowledge</a></li>
+                            <li><a href="/docs/common-questions-index">Common Questions</a></li>
+                            <li><a href="/docs/get-started/alias">Swoole Class Alias</a></li>
+                            <li><a href="/docs/swoole-features">Swoole Features</a></li>
+                            <li><a href="/docs/modules/swoole-event-loop">Event Loop API</a></li>
+                            <li><a href="/docs/modules/swoole-timer">Timer</a></li>
+                            <li><a href="/protocols">Protocols</a></li>
+                            <li><a href="/tools">Tools</a></li>
+                        </ul>
+                    </div>
+                    <div class="sidebar__widget">
+                        <h5>Server</a></h5>
+                        <ul>
+                            <li><a href="/docs/modules/swoole-server-doc">TCP/UDP Server</a></li>
+                            <li><a href="/docs/modules/swoole-http-server-doc">HTTP Server</a></li>
+                            <li><a href="/docs/modules/swoole-websocket-server">WebSocket Server</a></li>
+                            <li><a href="/docs/modules/swoole-mqtt-server">MQTT Server</a></li>
+                            <li><a href="/docs/modules/grpc-server">GRPC Server</a></li>
+                        </ul>
+                    </div>
+                    <div class="sidebar__widget">
+                        <h5>PHP Coroutine</a></h5>
+                        <ul>
+                            <li><a href="/docs/modules/swoole-coroutine">PHP Coroutine</a></li>
+                            <li><a href="/docs/modules/swoole-coroutine-system">Coroutine System</a></li>
+                            <li><a href="/docs/modules/swoole-coroutine-channel">Coroutine Channel</a></li>
+                            <li><a href="/docs/modules/swoole-coroutine-waitgroup">Coroutine WaitGroup</a></li>
+                            <li><a href="/docs/modules/swoole-coroutine-run">Coroutine Co\run</a></li>
+                            <li><a href="/docs/modules/swoole-coroutine-server">Coroutine TCP Server</a>
+                            <li><a href="/docs/modules/swoole-coroutine-http-server">Coroutine HTTP Server</a>
+                            <li><a href="/docs/modules/swoole-coroutine-library">Coroutine Library</a></li>
+                            <li><a href="/docs/modules/swoole-runtime-flags">Coroutine Hooks</a></li>
+                            
+                        </ul>
+                    </div>
+                    <div class="sidebar__widget">
+                        <h5>Coroutine Clients</a></h5>
+                        <ul>
+                            <li><a href="/docs/modules/swoole-coroutine-client">Coroutine TCP/UDP Client</a></li>
+                            <li><a href="/docs/modules/swoole-coroutine-http-client">Coroutine HTTP Client</a></li>
+                            <li><a href="/docs/modules/swoole-coroutine-http2-client">Coroutine HTTP2 Client</a></li>
+                            <li><a href="/docs/modules/swoole-coroutine-socket-client">Coroutine Socket Client</a></li>
+                            <li><a href="/docs/modules/swoole-coroutine-fastcgi-client">Coroutine FastCGI Client</a></li>
+                            <li><a href="/docs/modules/swoole-coroutine-redis">Coroutine Redis Client</a></li>
+                            <li><a href="/docs/modules/swoole-coroutine-mysql">Coroutine MySQL Client</a></li>
+                            <li><a href="/docs/modules/swoole-coroutine-postgres">Coroutine Postgres Client</a></li>
+                        </ul>
+                    </div>
+                    <div class="sidebar__widget">
+                        <h5>Multiprocessing</a></h5>
+                        <ul>
+                            <li><a href="/docs/modules/swoole-multiprocessing">Multiprocessing</a></li>
+                            <li><a href="/docs/modules/swoole-process">Process</a></li>
+                            <li><a href="/docs/modules/swoole-process-pool">Process Pool</a></li>
+                            <li><a href="/docs/modules/swoole-table">Table</a></li>
+                            <li><a href="/docs/modules/swoole-atomic">Atomic</a></li>
+                            <li><a href="/docs/modules/swoole-lock">Lock</a></li>
+                        </ul>
+                    </div>
+                    <div class="sidebar__widget">
+                        <h5>Swoole Community</h5>
+                        <ul>
+                            <li>
+                                <a href="https://twitter.com/php_swoole" target="_blank">Twitter</a>
+                            </li>
+                            <li>
+                                <a href="/community">Slack Group</a>
+                            </li>
+                            <li><a href="/support">Support</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="sidebar__widget">
+                    <!--                       <div id='div-gpt-ad-1529758163007-2'>
+                        <script>
+                        googletag.cmd.push(function() { googletag.display('div-gpt-ad-1529758163007-2'); });
+                        </script>
+                        </div> -->
+                    <!-- head -->
+                    <script>
+                    var googletag = googletag || {};
+                    googletag.cmd = googletag.cmd || [];
+                    </script>
+                    <!-- body -->
+                    <!-- /6919433/adliveApi_smartadunit -->
+                    <div id='dd7773c3-06e8-43b4-b3c7-604881e64122'>
+                        <script>
+                        googletag.cmd.push(function() { googletag.display('dd7773c3-06e8-43b4-b3c7-604881e64122'); });
+                        </script>
+                    </div>
+                </div>
+            </div>
+        </div>
+                <footer class="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 col-lg-3">
+                        <h4>Open Swoole</h4>
+                        <p>
+                            Open Swoole is an open source production ready high performance coroutine fiber async solution for PHP.
+                        </p>
+                    </div><!--/.column-->
+                    <div class="col-md-6 col-lg-3">
+                        <h4>Quick Links</h4>
+                        <ul class="list-unstyled pt-0">
+                            <li><a class="btn btn-underline" href="/how-it-works">How it works</a></li>
+                            <li><a href="https://swoolelabs.com" class="btn btn-underline">Swoole Labs</a></li>
+                            <li><a href="/docs/" class="btn btn-underline">Get started</a></li>
+                            <li><a href="/php-framework" class="btn btn-underline">Open Swoole Frameworks</a></li>
+                            <li><a href="https://swoolebook.com/" class="btn btn-underline">Swoole Book</a></li>
+                            <li><a href="https://openswoole.com/examples" class="btn btn-underline">Swoole Examples</a></li>
+                            <li><a href="https://github.com/openswoole/swoole-src" class="btn btn-underline">Swoole Github</a></li>
+                            <li><a href="/swoole-trademark" class="btn btn-underline">Trademark Policy</a></li>
+                        </ul>
+
+                    </div><!--/.column-->
+                    <div class="col-md-12 col-lg-6">
+                        <!-- <h4>Newsletter</h4>
+                        <div class="mb30">
+                            <form>
+                                <div class="form-group">
+                                    <label for="subscribe">Subscribe today and get Latest Updates</label>
+                                    <input type="email" class="form-control" placeholder="Mail id" id="subscribe">
+                                    <button type="submit" class="btn-newsletter"><i class="fa fa-paper-plane-o"></i></button>
+                                </div>
+                            </form>
+                        </div>
+                        <ul class="social list-inline mb30">
+                            <li class="list-inline-item"><a class="facebook" href="#"><i class="fa fa-facebook-f"></i></a></li>
+                            <li class="list-inline-item"><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
+                            <li class="list-inline-item"><a class="gplus" href="#"><i class="fa fa-google-plus"></i></a></li>
+                        </ul> -->
+                        <span class="font400">Copyright © 2017 - 2022 <a href="https://swoolelabs.com/" class="btn btn-underline">Swoole Labs</a>, Transfon Ltd, all rights reserved. Swoole® and OpenSwoole™ are trademarks Swoole Labs, Transfon Ltd, all rights reserved.<br> 
+                            Contact Us: <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="254d4049494a654a55404b56524a4a49400b464a48">[email&#160;protected]</a> <br> 
+                            <!--<a onclick="window.__cmp('showConsentTool')" class="btn btn-underline">Review consent</a>-->
+                            <a onclick='__tcfapi("openunic");return false;' class="btn btn-underline">Consent Settings</a>
+                        </span> 
+                    </div><!--/.column-->
+                </div><!--/.row-->
+            </div><!--/.container-->
+        </footer><!--/.footer-->
+
+
+        <!-- Global Site Tag (gtag.js) - Google Analytics -->
+        <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script async src="https://www.googletagmanager.com/gtag/js?id=UA-106992508-1"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments)};
+          gtag('js', new Date());
+
+          gtag('config', 'UA-106992508-1');
+        </script>
+
+        <script src="/js/bundle/bundle.js" type="text/javascript"></script>
+<script src="//instant.page/5.1.0" type="module" integrity="sha384-by67kQnR+pyfy8yWP4kPO12fHKRLHZPfEsiSXR8u2IKcTdxD805MGUXBzVPnkLHw"></script>
+
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "b34a0cb3b6434296b5f5ba1db96ed7a5"}'></script><!-- End Cloudflare Web Analytics -->
+
+        <script type="text/javascript">
+$('h2,h3').filter('[id]').each(function () {
+    $(this).html('<a href="#'+$(this).attr('id')+'">' + $(this).text() + '</a>');
+});
+        </script>
+    </div>
+</body>
+
+</html>

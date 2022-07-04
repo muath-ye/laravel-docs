@@ -1,0 +1,799 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/png" href="https://d2n6cmh8j179w8.cloudfront.net/5762a21f-d4ea-4171-9124-b2597c333b8d/img/favicon-16px.png" sizes="16x16">
+        <link rel="icon" type="image/png" href="https://d2n6cmh8j179w8.cloudfront.net/5762a21f-d4ea-4171-9124-b2597c333b8d/img/favicon-32px.png" sizes="32x32">
+
+        
+        <title>Laravel Vapor - Serverless PHP Platform</title>
+
+        <!-- Styles -->
+        <link href="https://d2n6cmh8j179w8.cloudfront.net/5762a21f-d4ea-4171-9124-b2597c333b8d/css/marketing.css" rel="stylesheet">
+
+        <!-- Scripts -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js"></script>
+        <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/16327/TweenMax-latest-beta.js"></script>
+        <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/16327/MorphSVGPlugin.min.js"></script>
+    </head>
+    <body class="font-sans antialiased text-gray-900">
+        <!-- Hero Section -->
+        <div id="hero" class="relative px-5 pb-12 lg:pb-20 max-w-xl mx-auto md:max-w-2xl lg:max-w-5xl">
+            <svg id="hero-svg" class="absolute inset-0 h-full w-full" viewBox="0 0 950 513" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMinYMin slice">
+    <defs>
+        <linearGradient id="heroGrad" data-name="New Gradient Swatch 6" x1="475.23" y1="661" x2="475.23" gradientUnits="userSpaceOnUse">
+            <stop offset="0.25" stop-color="#fff"/>
+            <stop offset="0.32" stop-color="#cef2fc"/>
+            <stop offset="0.41" stop-color="#a2e6f9"/>
+            <stop offset="0.49" stop-color="#7bdbf7"/>
+            <stop offset="0.58" stop-color="#5cd3f5"/>
+            <stop offset="0.67" stop-color="#44ccf4"/>
+            <stop offset="0.77" stop-color="#32c8f3"/>
+            <stop offset="0.87" stop-color="#28c5f2"/>
+            <stop offset="1" stop-color="#25c4f2"/>
+        </linearGradient>
+
+    </defs>
+    <g class="whole" >
+        <g class="allComets">
+            <g class="cometGroup1" fill="#25C4F2" >
+                <ellipse cx="0" cy="0" rx="5" ry="2"/>
+                <ellipse cx="0" cy="0" rx="5" ry="2"/>
+                <ellipse cx="0" cy="0" rx="5" ry="2"/>
+                <ellipse cx="0" cy="0" rx="5" ry="2"/>
+                <ellipse cx="0" cy="0" rx="5" ry="2"/>
+                <ellipse cx="0" cy="0" rx="5" ry="2"/>
+                <ellipse cx="0" cy="0" rx="5" ry="2"/>
+                <ellipse cx="0" cy="0" rx="5" ry="2"/>
+                <ellipse cx="0" cy="0" rx="5" ry="2"/>
+                <ellipse cx="0" cy="0" rx="5" ry="2"/>
+                <ellipse cx="0" cy="0" rx="5" ry="2"/>
+                <ellipse cx="0" cy="0" rx="5" ry="2"/>
+                <ellipse cx="0" cy="0" rx="5" ry="2"/>
+                <ellipse cx="0" cy="0" rx="5" ry="2"/>
+                <ellipse cx="0" cy="0" rx="5" ry="2"/>
+                <ellipse cx="0" cy="0" rx="5" ry="2"/>
+                <ellipse cx="0" cy="0" rx="5" ry="2"/>
+                <ellipse cx="0" cy="0" rx="5" ry="2"/>
+                <ellipse cx="0" cy="0" rx="5" ry="2"/>
+            </g>
+            <g class="cometGroup2" fill="#25C4F2" >
+                <ellipse cx="0" cy="0" rx="5" ry="2"/>
+                <ellipse cx="0" cy="0" rx="5" ry="2"/>
+                <ellipse cx="0" cy="0" rx="5" ry="2"/>
+                <ellipse cx="0" cy="0" rx="5" ry="2"/>
+                <ellipse cx="0" cy="0" rx="5" ry="2"/>
+                <ellipse cx="0" cy="0" rx="5" ry="2"/>
+                <ellipse cx="0" cy="0" rx="5" ry="2"/>
+                <ellipse cx="0" cy="0" rx="5" ry="2"/>
+                <ellipse cx="0" cy="0" rx="5" ry="2"/>
+                <ellipse cx="0" cy="0" rx="5" ry="2"/>
+                <ellipse cx="0" cy="0" rx="5" ry="2"/>
+                <ellipse cx="0" cy="0" rx="5" ry="2"/>
+                <ellipse cx="0" cy="0" rx="5" ry="2"/>
+                <ellipse cx="0" cy="0" rx="5" ry="2"/>
+                <ellipse cx="0" cy="0" rx="5" ry="2"/>
+                <ellipse cx="0" cy="0" rx="5" ry="2"/>
+                <ellipse cx="0" cy="0" rx="5" ry="2"/>
+                <ellipse cx="0" cy="0" rx="5" ry="2"/>
+                <ellipse cx="0" cy="0" rx="5" ry="2"/>
+            </g>
+            <g class="cometGroup3" fill="#25C4F2" >
+                <ellipse cx="0" cy="0" rx="5" ry="2"/>
+                <ellipse cx="0" cy="0" rx="5" ry="2"/>
+                <ellipse cx="0" cy="0" rx="5" ry="2"/>
+                <ellipse cx="0" cy="0" rx="5" ry="2"/>
+                <ellipse cx="0" cy="0" rx="5" ry="2"/>
+                <ellipse cx="0" cy="0" rx="5" ry="2"/>
+                <ellipse cx="0" cy="0" rx="5" ry="2"/>
+                <ellipse cx="0" cy="0" rx="5" ry="2"/>
+                <ellipse cx="0" cy="0" rx="5" ry="2"/>
+                <ellipse cx="0" cy="0" rx="5" ry="2"/>
+                <ellipse cx="0" cy="0" rx="5" ry="2"/>
+                <ellipse cx="0" cy="0" rx="5" ry="2"/>
+                <ellipse cx="0" cy="0" rx="5" ry="2"/>
+                <ellipse cx="0" cy="0" rx="5" ry="2"/>
+                <ellipse cx="0" cy="0" rx="5" ry="2"/>
+                <ellipse cx="0" cy="0" rx="5" ry="2"/>
+                <ellipse cx="0" cy="0" rx="5" ry="2"/>
+                <ellipse cx="0" cy="0" rx="5" ry="2"/>
+                <ellipse cx="0" cy="0" rx="5" ry="2"/>
+            </g>
+            <g class="cometGroup4" fill="#25C4F2" >
+                <ellipse cx="0" cy="0" rx="5" ry="2"/>
+                <ellipse cx="0" cy="0" rx="5" ry="2"/>
+                <ellipse cx="0" cy="0" rx="5" ry="2"/>
+                <ellipse cx="0" cy="0" rx="5" ry="2"/>
+                <ellipse cx="0" cy="0" rx="5" ry="2"/>
+                <ellipse cx="0" cy="0" rx="5" ry="2"/>
+                <ellipse cx="0" cy="0" rx="5" ry="2"/>
+                <ellipse cx="0" cy="0" rx="5" ry="2"/>
+                <ellipse cx="0" cy="0" rx="5" ry="2"/>
+                <ellipse cx="0" cy="0" rx="5" ry="2"/>
+                <ellipse cx="0" cy="0" rx="5" ry="2"/>
+                <ellipse cx="0" cy="0" rx="5" ry="2"/>
+                <ellipse cx="0" cy="0" rx="5" ry="2"/>
+                <ellipse cx="0" cy="0" rx="5" ry="2"/>
+                <ellipse cx="0" cy="0" rx="5" ry="2"/>
+                <ellipse cx="0" cy="0" rx="5" ry="2"/>
+                <ellipse cx="0" cy="0" rx="5" ry="2"/>
+                <ellipse cx="0" cy="0" rx="5" ry="2"/>
+                <ellipse cx="0" cy="0" rx="5" ry="2"/>
+            </g>
+        </g>
+        <g opacity="0.2">
+            <line class="midLine" x1="158.74" y1="330.5" x2="791.71" y2="330.5" fill="none" stroke="#25c4f2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path class="dataPath1" d="M950,.5l-316.48,660L317,.5l-158.24,330L.5.5" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke="url(#heroGrad)"/>
+            <path class="dataPath2" d="M.5,660.5l158.24-330L317,660.5,633.47.5,950,660.5" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke="url(#heroGrad)"/>
+
+        </g>
+    </g>
+</svg>
+
+<script>
+    let select = (s) => {
+        return document.querySelector(s);
+    },
+    selectAll = (s) => {
+        return document.querySelectorAll(s);
+    },
+    allCometCircles1 = selectAll('#hero-svg .cometGroup1 ellipse'),
+    allCometCircles2 = selectAll('#hero-svg .cometGroup2 ellipse'),
+    allCometCircles3 = selectAll('#hero-svg .cometGroup3 ellipse'),
+    allCometCircles4 = selectAll('#hero-svg .cometGroup4 ellipse'),
+    cometDuration1 = 20,
+    cometDuration2 = 24,
+    cometDuration3 = 21,
+    cometDuration4 = 23,
+    stagger = 0.045;
+
+    TweenMax.set('svg', {
+        visibility: 'visible'
+    })
+
+    let cometPath1 = MorphSVGPlugin.pathDataToBezier('M950,.5l-316.48,660L317,.5l-158.24,330L.5.5', {
+        offsetX: 0,
+        offsetY: 0
+    });
+    let cometPath2 = MorphSVGPlugin.pathDataToBezier('M.5,660.5l158.24-330L317,660.5,633.47.5,950,660.5', {
+        offsetX: 0,
+        offsetY: 0
+    });
+
+    TweenMax.set('ellipse', {
+        transformOrigin: '50% 50%'
+    })
+
+    let allCometsTl = new TimelineMax();
+
+    let comet1Tl = new TimelineMax({repeat: -1});
+    comet1Tl.staggerFromTo(allCometCircles1, cometDuration1, {
+        cycle: {
+            scale: function (i, target) {
+                return 1 - ((i/allCometCircles1.length) )
+            },
+            alpha: function (i, target) {
+                return 1 - ((i/allCometCircles1.length) )
+            }
+        }
+    }, {
+        bezier: {
+            type: "cubic",
+            values: cometPath1,
+            autoRotate: true
+        },
+        ease: Linear.easeNone
+    }, stagger).seek(41);
+
+    let comet3Tl = new TimelineMax({repeat: -1});
+    comet3Tl.staggerFromTo(allCometCircles3, cometDuration3, {
+        cycle: {
+            scale: function (i, target) {
+                return 1 - ((i/allCometCircles3.length) )
+            },
+            alpha: function (i, target) {
+                return 1 - ((i/allCometCircles3.length) )
+            }
+        }
+    }, {
+        bezier: {
+            type: "cubic",
+            values: cometPath1,
+            autoRotate: true
+        },
+        ease: Linear.easeNone
+    }, stagger).seek(28);
+
+    let comet2Tl = new TimelineMax({repeat: -1});
+    comet2Tl.staggerFromTo(allCometCircles2, cometDuration2, {
+        cycle: {
+            scale: function (i, target) {
+                return 1 - ((i/allCometCircles2.length) )
+            },
+            alpha: function (i, target) {
+                return 1 - ((i/allCometCircles2.length) )
+            }
+        }
+    }, {
+        bezier: {
+            type: "cubic",
+            values: cometPath2,
+            autoRotate: true
+        },
+        ease: Linear.easeNone
+    }, stagger).seek(60);
+
+    let comet4Tl = new TimelineMax({repeat: -1});
+    comet4Tl.staggerFromTo(allCometCircles4, cometDuration4, {
+        cycle: {
+            scale: function (i, target) {
+                return 1 - ((i/allCometCircles4.length) )
+            },
+            alpha: function (i, target) {
+                return 1 - ((i/allCometCircles4.length) )
+            }
+        }
+    }, {
+        bezier: {
+            type: "cubic",
+            values: cometPath2,
+            autoRotate: true
+        },
+        ease: Linear.easeNone
+    }, stagger).seek(23);
+
+    allCometsTl.add(comet1Tl)
+    .add(comet2Tl, 0)
+    .add(comet3Tl, 0)
+    .add(comet4Tl, 0)
+
+    allCometsTl.seek(100);
+
+    allCometsTl.timeScale(3)
+</script>
+
+            <div class="absolute inset-0" style="background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 1))">
+            </div>
+
+            <div class="relative">
+                <div class="flex items-center justify-between py-3">
+                    <div class="flex items-center">
+                        <svg viewBox="0 0 40 40" class="h-8 w-8" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M4.345 9h10.55L9.618 20 4.345 9zm21.099 0h10.55l-5.276 11-5.274-11z" fill="#E9F9FD" fill-opacity=".1"/><path fill-rule="evenodd" clip-rule="evenodd" d="M9.62 20h10.549l-5.275 11L9.62 20z" fill="#25C4F2" fill-opacity=".22"/><path fill-rule="evenodd" clip-rule="evenodd" d="M20.169 20h10.55l-5.275 11-5.275-11z" fill="#25C4F2" fill-opacity=".2"/><path fill-rule="evenodd" clip-rule="evenodd" d="M20.169 20H9.619l5.275-11 5.275 11z" fill="#25C4F2" fill-opacity=".4"/><path fill-rule="evenodd" clip-rule="evenodd" d="M30.718 20h-10.55l5.276-11 5.274 11z" fill="#25C4F2" fill-opacity=".4"/><path fill-rule="evenodd" clip-rule="evenodd" d="M25.444 31h-10.55l5.275-11 5.275 11z" fill="#25C4F2" fill-opacity=".5"/><path fill-rule="evenodd" clip-rule="evenodd" d="M3.494 8.467A1 1 0 0 1 4.34 8h10.55a1 1 0 0 1 .902.568l4.373 9.12 4.373-9.12A1 1 0 0 1 25.44 8h10.55a1 1 0 0 1 .902 1.432L26.345 31.424a1.001 1.001 0 0 1-.905.576H14.89a1 1 0 0 1-.902-.568l-10.55-22a1 1 0 0 1 .056-.965zm21.95 2.846L29.13 19h-7.372l3.686-7.687zM5.934 10l3.686 7.687L13.306 10H5.933zm8.96 1.313L18.58 19h-7.372l3.686-7.687zM27.032 10l3.686 7.687L34.405 10h-7.373zm-1.588 18.687L21.758 21h7.372l-3.686 7.687zM23.855 30l-3.686-7.687L16.483 30h7.372zm-8.96-1.313L11.207 21h7.372l-3.686 7.687z" fill="#25C4F2"/></svg>
+                        <span class="ml-2 text-lg text-gray-900">Laravel Vapor</span>
+                    </div>
+
+                    <div>
+                        <a class="flex items-center" href="/login">
+                            Sign In
+
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="ml-1 h-6 w-6 fill-current mt-px">
+                                <path d="M9.3 8.7a1 1 0 0 1 1.4-1.4l4 4a1 1 0 0 1 0 1.4l-4 4a1 1 0 0 1-1.4-1.4l3.29-3.3-3.3-3.3z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="mt-10 lg:mt-20 lg:text-center lg:max-w-xl lg:mx-auto">
+                    <h1 class="text-3xl font-headline tracking-tight font-bold text-gray-900 leading-tight sm:text-4xl md:text-5xl"><span class="text-cyan-500">Incredible scale</span> without breaking a sweat.</h1>
+
+                    <p class="mt-3 text-lg text-gray-700">
+                        Laravel Vapor is a <span class="font-medium">serverless deployment platform</span> for Laravel, powered by AWS. Launch your Laravel infrastructure on Vapor and fall in love with the scalable simplicity of serverless.
+                    </p>
+
+                    <div class="mt-6">
+                        <a href="/register" class="inline-block px-4 py-3 leading-none rounded bg-cyan-500 text-white font-medium">Sign Up Now</a>
+                        <a href="https://docs.vapor.build" class="ml-4 inline-block px-4 py-3 leading-none rounded bg-gray-200 text-gray-900">Documentation</a>
+                    </div>
+
+<!--                     <div id="form" class="lg:mx-auto">
+                        <form class="mt-6 sm:flex sm:items-center lg:justify-center" @submit.prevent="onSubmit" v-if="! submitted">
+                            <div class="relative sm:w-full sm:max-w-xs">
+                                <div class="pointer-events-none flex items-center absolute inset-y-0 left-0 pl-3">
+                                    <svg class="h-6 w-6" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M4 4h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2zm.32 1.616a.5.5 0 1 0-.64.768l6 5a.5.5 0 0 0 .64 0l6-5a.5.5 0 0 0-.64-.768L10 10.349 4.32 5.616z" fill="#BBC2C8" fill-rule="evenodd"/></svg>
+                                </div>
+
+                                <input type="email" name="email" class="pl-12 block w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:border-cyan-500" placeholder="Your email" v-model="email" required>
+                            </div>
+
+                            <button class="mt-4 sm:ml-4 sm:mt-0 w-full sm:w-auto sm:flex-shrink-0 block px-4 py-3 leading-none rounded bg-cyan-500 text-white font-medium focus:outline-none focus:shadow-outline" :class="{ 'opacity-50': submitting }" :disabled="submitting">
+                                Request Early Access
+                            </button>
+                        </form>
+
+                        <div class="mt-6 px-4 py-4 bg-gray-100 rounded-lg text-center" v-else>
+                            You're on the list!
+                        </div>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Features Section 1 -->
+        <div class="lg:overflow-hidden">
+            <div class="relative pt-4 md:pt-8 lg:pt-16" style="background-color: #f4f6f8">
+                <div class="absolute inset-0 bg-top" style="background-image: url(&quot;data:image/svg+xml,%3Csvg viewBox='0 0 121 121' height='121' width='121' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23EFF1F3' fill-rule='evenodd'%3E%3Cpath d='M1 60h60l-.024-60H62v60h59v1H62v59h-1V61H1zM0 0h1v121H0zM1 120h120v1H1z'/%3E%3C/g%3E%3C/svg%3E&quot;)">
+                </div>
+
+                <div class="absolute inset-0" style="background-image: linear-gradient(rgba(255, 255, 255, 0) 60%, rgba(255, 255, 255, 1))">
+                </div>
+
+                <div class="relative -mt-16 bg-no-repeat md:hidden" style="background-image: url('https://d2n6cmh8j179w8.cloudfront.net/5762a21f-d4ea-4171-9124-b2597c333b8d/img/cubes-horizontal.png'); background-size: 428px 242px; background-position: top right -100px; height: 242px;">
+                </div>
+
+                <div class="hidden absolute -mt-16 bg-no-repeat md:block lg:hidden right-0" style="background-image: url('https://d2n6cmh8j179w8.cloudfront.net/5762a21f-d4ea-4171-9124-b2597c333b8d/img/cubes-horizontal.png'); background-size: 428px 242px; background-position: top right -100px; width: 428px; height: 242px;">
+                </div>
+
+                <div class="relative px-5 max-w-xl md:max-w-2xl lg:max-w-5xl mx-auto">
+                    <div class="hidden absolute -mt-16 bg-no-repeat lg:block right-0 lg:-mr-32 lg:z-10" style="background-image: url('https://d2n6cmh8j179w8.cloudfront.net/5762a21f-d4ea-4171-9124-b2597c333b8d/img/desktop-cubes-stacked.png'); background-size: 559px 656px; background-position: top right; width: 559px; height: 656px;">
+                    </div>
+
+                    <div class="lg:w-1/2">
+                        <!-- Features Section 1 Heading -->
+                        <div class="md:w-3/5 lg:w-full">
+                            <h2 class="text-2xl lg:text-3xl font-headline tracking-tight text-gray-900 leading-snug">On-demand auto-scaling with zero server maintenance.</h2>
+
+                            <p class="mt-3 text-lg text-gray-700">
+                                You have to see it to believe it. Watch your web application and workers scale within seconds based on demand.
+                            </p>
+                        </div>
+
+                        <div class="md:flex md:-mx-4 lg:block">
+                            <!-- Databases -->
+                            <div class="md:px-4 md:w-1/2 lg:w-full lg:flex lg:mt-12">
+                                <div class="mt-10 lg:mt-0 lg:flex-shrink-0">
+                                    <svg viewBox="0 0 32 32" class="h-8 w-8" xmlns="http://www.w3.org/2000/svg"><g fill="#25C4F2" fill-rule="nonzero"><path d="M3.108 6.189A.914.914 0 0 1 4.6 5.892l4.526 4.526c.261.261.34.654.198.996L8.16 14.222a.914.914 0 0 1-.845.564h-6.4a.914.914 0 0 1-.844-1.264L3.108 6.19zm2.784-1.59a.914.914 0 0 1 .297-1.49L13.522.07a.914.914 0 0 1 1.264.844v6.4c0 .37-.222.703-.564.845l-2.808 1.163a.914.914 0 0 1-.996-.198L5.892 4.599z" opacity=".5"/><path d="M16.615.915a.914.914 0 0 1 1.264-.844l7.333 3.037A.914.914 0 0 1 25.51 4.6l-4.525 4.526a.914.914 0 0 1-.997.198L17.18 8.16a.914.914 0 0 1-.564-.845v-6.4zm10.187 4.977a.914.914 0 0 1 1.491.297l3.038 7.333a.914.914 0 0 1-.845 1.264h-6.4a.914.914 0 0 1-.845-.564l-1.163-2.808a.914.914 0 0 1 .199-.996l4.525-4.526zm3.684 10.723a.914.914 0 0 1 .845 1.264l-3.038 7.333a.914.914 0 0 1-1.491.297l-4.525-4.525a.914.914 0 0 1-.199-.997l1.163-2.808a.914.914 0 0 1 .845-.564h6.4zM25.51 26.802a.914.914 0 0 1-.297 1.491l-7.333 3.038a.914.914 0 0 1-1.264-.845v-6.4c0-.37.223-.703.564-.845l2.808-1.163a.914.914 0 0 1 .997.199l4.525 4.525zm-10.723 3.684a.914.914 0 0 1-1.264.845L6.19 28.293a.914.914 0 0 1-.297-1.491l4.526-4.525a.914.914 0 0 1 .996-.199l2.808 1.163a.914.914 0 0 1 .564.845v6.4zM4.6 25.51a.914.914 0 0 1-1.49-.297L.07 17.88a.914.914 0 0 1 .844-1.264h6.4c.37 0 .703.223.845.564l1.163 2.808a.914.914 0 0 1-.198.997l-4.526 4.525z"/></g></svg>
+                                </div>
+
+                                <div class="mt-4 lg:mt-0 lg:ml-6">
+                                    <h2 class="text-lg text-gray-900 font-medium">Databases</h2>
+
+                                    <p class="mt-2 text-normal text-gray-700">
+                                        Vapor isn't just about deployments. Create, manage, scale, and even restore your traditional and serverless databases directly from Vapor's intuitive dashboard.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <!-- Caches -->
+                            <div class="md:px-4 md:w-1/2 lg:w-full lg:flex lg:mt-12">
+                                <div class="mt-10 lg:mt-0 lg:flex-shrink-0">
+                                    <svg viewBox="0 0 32 32" class="h-8 w-8" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><circle fill="#25C4F2" cx="16" cy="16" r="16"/><path d="M13 17.002h-2.998c-.86 0-1.318-1.012-.753-1.658l7-8c.608-.695 1.753-.265 1.753.658V14a1 1 0 0 0 1 1H22c.86 0 1.318 1.012.753 1.659l-7 8C15.145 25.353 14 24.923 14 24v-5.998a1 1 0 0 0-1-1z" fill="#FFF" fill-rule="nonzero"/></g></svg>
+                                </div>
+
+                                <div class="mt-4 lg:mt-0 lg:ml-6">
+                                    <h2 class="text-lg text-gray-900 font-medium">Caches</h2>
+
+                                    <p class="mt-2 text-normal text-gray-700">
+                                        Need data fast? Vapor makes it a breeze to create and manage ElastiCache Redis clusters. Need even more speed? Let Vapor scale your cache while you kick back and relax.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cloud Graphic -->
+            <div class="relative bg-center bg-no-repeat lg:hidden" style="background-image: url('https://d2n6cmh8j179w8.cloudfront.net/5762a21f-d4ea-4171-9124-b2597c333b8d/svg/cloud-web.svg'); background-size: 680px 516px; height: 360px;">
+                <div class="absolute inset-0" style="background-image: linear-gradient(rgba(255, 255, 255, 1) 0%, 25%, rgba(255, 255, 255, 0) 50%, 75%, rgba(255, 255, 255, 1) 100%)">
+                </div>
+            </div>
+
+            <!-- Features Section 2 -->
+            <div class="relative px-5 pt-4 pb-20 lg:pt-48 max-w-xl md:max-w-2xl lg:max-w-5xl mx-auto">
+                <!-- Desktop Cloud Graphic -->
+                <div class="hidden absolute bg-left bg-no-repeat lg:block" style="background-image: url('https://d2n6cmh8j179w8.cloudfront.net/5762a21f-d4ea-4171-9124-b2597c333b8d/svg/cloud-web.svg'); background-size: 680px 516px; width: 100%; height: 516px; left: -110px; top: 130px">
+                    <div class="absolute inset-0" style="background-image: linear-gradient(rgba(255, 255, 255, 1) 0%, 15%, rgba(255, 255, 255, 0) 50%, 85%, rgba(255, 255, 255, 1) 100%)">
+                    </div>
+                </div>
+
+                <div class="relative lg:w-1/2 lg:ml-auto lg:mr-0">
+                    <!-- Features Section 2 Heading -->
+                    <h2 class="text-2xl lg:text-3xl font-headline tracking-tight text-gray-900 leading-snug">A serverless future for Laravel.</h2>
+
+                    <p class="mt-3 text-lg text-gray-700 md:max-w-lg">
+                        Laravel Vapor is fine-tuned by Laravel's creators to work seamlessly with the framework. You can keep writing your Laravel applications exactly like you're used to.
+                    </p>
+
+                    <div class="md:flex md:-mx-4 lg:block">
+                        <!-- Queues -->
+                        <div class="md:px-4 md:w-1/2 lg:w-full lg:flex lg:mt-12">
+                            <div class="mt-10 lg:mt-0 lg:flex-shrink-0">
+                                <svg viewBox="0 0 32 32" class="h-8 w-8" xmlns="http://www.w3.org/2000/svg"><g transform="translate(0 1)" fill="#25C4F2" fill-rule="evenodd"><path d="M12 0h8a2 2 0 0 1 2 2v26a2 2 0 0 1-2 2h-8a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2z"/><rect opacity=".6" y="2" width="6" height="26" rx="2"/><rect opacity=".6" x="26" y="2" width="6" height="26" rx="2"/></g></svg>
+                            </div>
+
+                            <div class="mt-4 lg:mt-0 lg:ml-6">
+                                <h2 class="text-lg text-gray-900 font-medium">Queues</h2>
+
+                                <p class="mt-2 text-normal text-gray-700">
+                                    Write and dispatch your Laravel jobs. Then, experience the power of serverless scalability as hundreds of jobs are executed concurrently with zero configuration.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Cloud Storage -->
+                        <div class="md:px-4 md:w-1/2 lg:w-full lg:flex lg:mt-12">
+                            <div class="mt-10 lg:mt-0 lg:flex-shrink-0">
+                                <svg viewBox="0 0 32 32" class="h-8 w-8" xmlns="http://www.w3.org/2000/svg"><g fill="#25C4F2" fill-rule="evenodd"><path d="M26 17.268A7.55 7.55 0 0 0 24 17c-3.695 0-6.782 2.662-7.528 6.213-2.066.996-3.472 3.144-3.472 5.6 0 1.165.315 2.256.863 3.187H3a3 3 0 0 1-3-3V3a3 3 0 0 1 3-3h15a1 1 0 0 1 .707.293l7 7A1 1 0 0 1 26 8v9.268z" fill-rule="nonzero"/><path d="M28.5 32h-9a3.5 3.5 0 0 1-.5-6.965V25a5 5 0 1 1 10 .035A3.5 3.5 0 0 1 28.5 32z" opacity=".6"/></g></svg>
+                            </div>
+
+                            <div class="mt-4 lg:mt-0 lg:ml-6">
+                                <h2 class="text-lg text-gray-900 font-medium">Cloud Storage</h2>
+
+                                <p class="mt-2 text-gray-700">
+                                    Easily stream your file uploads directly to S3 with Vapor’s built-in JavaScript utilities. It’s like magic.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dark Features Section -->
+            <div class="pt-4 lg:pt-32 pb-12 bg-gray-900">
+                <div class="relative -mt-20 bg-no-repeat lg:hidden" style="background-image: url('https://d2n6cmh8j179w8.cloudfront.net/5762a21f-d4ea-4171-9124-b2597c333b8d/img/scatter-cubes-horizontal.png'); background-size: 428px 242px; background-position: top right -100px; height: 242px;">
+                </div>
+
+                <div class="lg:relative px-5 max-w-xl md:max-w-2xl lg:max-w-5xl mx-auto">
+                    <div class="hidden absolute -mt-20 bg-no-repeat lg:block lg:right-0" style="background-image: url('https://d2n6cmh8j179w8.cloudfront.net/5762a21f-d4ea-4171-9124-b2597c333b8d/img/desktop-cubes-scattered.png'); background-size: 460px 460px; background-position: top right; width: 460px; height: 460px; top: -110px; right: -150px;">
+                    </div>
+
+                    <!-- Dark Features Section Heading -->
+                    <div class="md:max-w-lg">
+                        <h2 class="text-2xl lg:text-3xl font-headline tracking-tight text-white leading-snug">A robust platform for managing your entire Laravel application infrastructure.</h2>
+
+                        <p class="mt-3 text-lg text-gray-300">
+                            We've sweat the small stuff and meticulously crafted Vapor into the perfect Laravel deployment platform.
+                        </p>
+                    </div>
+
+                    <div class="md:flex md:-mx-4 lg:mt-16">
+                        <!-- Metrics -->
+                        <div class="md:px-4 md:w-1/3">
+                            <div class="mt-10 lg:mt-0 text-white">
+                                <svg viewBox="0 0 32 32" class="h-8 w-8" xmlns="http://www.w3.org/2000/svg"><path d="M7.712 20l4.467 9.828c.791 1.74 3.34 1.485 3.77-.378l4.191-18.163 1.928 7.228A2 2 0 0 0 24 20h6a2 2 0 1 0 0-4h-4.463L21.932 2.485C21.395.47 18.52.519 18.052 2.55L13.377 22.8l-2.557-5.628A2 2 0 0 0 9 16H2a2 2 0 1 0 0 4h5.712z" fill="#25C4F2" fill-rule="nonzero"/></svg>
+                            </div>
+
+                            <h2 class="mt-4 text-lg text-white font-medium">Metrics</h2>
+
+                            <p class="mt-2 text-gray-300">
+                                Vapor monitors a variety of metrics about your applications, databases, and caches. You'll never lose sight of your application's health. We'll even alert you when performance isn't up to par.
+                            </p>
+                        </div>
+
+                        <!-- Assets -->
+                        <div class="md:px-4 md:w-1/3">
+                            <div class="mt-10 lg:mt-0 text-white">
+                                <svg viewBox="0 0 32 32" class="h-8 w-8" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><path d="M4 0h24a4 4 0 0 1 4 4v24a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V4a4 4 0 0 1 4-4zm6.907 8.58c-.382-.829-1.586-.753-1.861.119l-6 19A1 1 0 0 0 4 29h24a1 1 0 0 0 .907-1.42l-6-13a1 1 0 0 0-1.667-.23l-4.986 5.816-5.347-11.585z" fill="#25C4F2"/><path d="M23.247 3.108c.792-.402 1.677.353 1.404 1.199-.098.305-.15.627-.15.959 0 1.562 1.14 2.837 2.57 2.938.87.062 1.25 1.132.612 1.728A3.91 3.91 0 0 1 25.003 11C22.782 11 21 9.128 21 6.844c0-1.6.88-3.042 2.247-3.736z" fill="#92E1F8" fill-rule="nonzero"/></g></svg>
+                            </div>
+
+                            <h2 class="mt-4 text-lg text-white font-medium">CloudFront CDN</h2>
+
+                            <p class="mt-2 text-gray-300">
+                                During deployment, Vapor automatically uploads and serves your assets via S3 or CloudFront CDN for blazing-fast load times.
+                            </p>
+                        </div>
+
+                        <!-- DNS -->
+                        <div class="md:px-4 md:w-1/3">
+                            <div class="mt-10 lg:mt-0 text-white">
+                                <svg viewBox="0 0 32 32" class="h-8 w-8" xmlns="http://www.w3.org/2000/svg"><path d="M16 32C7.163 32 0 24.837 0 16S7.163 0 16 0s16 7.163 16 16-7.163 16-16 16zm.99-29.7c-.123.158-.313.34-.612.592-.094.08-.184.153-.383.316-1.323 1.088-1.853 1.728-1.853 2.834 0 .77.307 1.262.907 1.796l.267.235c.406.364.53.608.507 1.221-.023.611-.23.985-.765 1.53-.036.035-.356.353-.452.453-.586.61-.89 1.155-.89 1.908 0 2.144 2.551 5.047 4.99 5.047 1.485 0 2.103-.754 2.735-2.43l.147-.39c.303-.785.542-1.152.905-1.351 1.256-.69 3.332-.577 4.54.02.344.17.214.092 2.201 1.302l.16.097a.34.34 0 0 0 .511-.339C28.74 7.164 24.486 2.8 17.147 2.046a1.49 1.49 0 0 1-.156.254zM16 30c.098.005.21.006.337.003a1 1 0 0 0 .96-1.193c-.43-2.184-1.983-3.847-4.66-4.99-.688-.28-2.724-.97-2.91-1.042-.464-.18-.696-.321-.682-.294-.111-.219-.102-.469.05-1.255.355-1.824.19-2.895-1.165-4.072-1.357-1.178-2.581-1.432-3.853-.835-.354.165-.692.383-1.125.705l-.323.244a1 1 0 0 0-.358 1.061C4.317 25.77 8.893 29.66 16 30z" fill="#25C4F2" fill-rule="evenodd"/></svg>
+                            </div>
+
+                            <h2 class="mt-4 text-lg text-white font-medium">DNS & Certificates</h2>
+
+                            <p class="mt-2 text-normal text-gray-300">
+                                You can manage your application's DNS records entirely from the Vapor UI or CLI. In addition, every Vapor application receives a free, auto-renewing SSL certificate during deployment.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="hidden md:block md:mt-12 md:-mb-32">
+                        <img class="rounded-lg" src="https://d2n6cmh8j179w8.cloudfront.net/5762a21f-d4ea-4171-9124-b2597c333b8d/img/vapor-screenshot.png">
+                    </div>
+                </div>
+            </div>
+
+            <div class="px-5 pt-12 md:pt-32 pb-12 max-w-xl md:max-w-2xl lg:max-w-5xl mx-auto">
+                <div class="md:flex md:-mx-4">
+                    <!-- Environments -->
+                    <div class="md:px-4 md:w-1/3">
+                        <div>
+                            <svg viewBox="0 0 32 32" class="h-8 w-8" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><path d="M2 0h11a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2z" fill="#92E1F8"/><path d="M2 17h11a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V19a2 2 0 0 1 2-2zM19 0h11a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H19a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2zM19 17h11a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H19a2 2 0 0 1-2-2V19a2 2 0 0 1 2-2z" fill="#25C4F2"/></g></svg>
+                        </div>
+
+                        <h2 class="mt-4 text-lg text-gray-900 font-medium">Multiple Environments</h2>
+
+                        <p class="mt-2 text-normal text-gray-700">
+                            Each Vapor project can have multiple unique environments. To help you preview your application, each environment receives its own Vapor vanity URL.
+                        </p>
+                    </div>
+
+                    <!-- Rollbacks -->
+                    <div class="md:px-4 md:w-1/3">
+                        <div class="mt-10 md:mt-0">
+                            <svg viewBox="0 0 32 32" class="h-8 w-8" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><circle fill="#25C4F2" cx="16" cy="16" r="16"/><path d="M8.626 17.257C10.012 21.664 12.75 23.75 17 23.75a1.25 1.25 0 0 1 0 2.5c-5.645 0-9.367-3.09-10.977-8.993h-1.79a1 1 0 0 1-.8-1.6l3-4a1 1 0 0 1 1.6 0l3 4a1 1 0 0 1-.8 1.6H8.627z" fill="#FFF" fill-rule="nonzero"/><path d="M23.374 14.743C21.988 10.336 19.25 8.25 15 8.25a1.25 1.25 0 1 1 0-2.5c5.645 0 9.367 3.09 10.977 8.993h1.79a1 1 0 0 1 .8 1.6l-3 4a1 1 0 0 1-1.6 0l-3-4a1 1 0 0 1 .8-1.6h1.607z" fill="#92E1F8" fill-rule="nonzero"/></g></svg>
+                        </div>
+
+                        <h2 class="mt-4 text-lg text-gray-900 font-medium">Quick Rollbacks</h2>
+
+                        <p class="mt-2 text-gray-700">
+                            Make a mistake? Rollback your entire application, including environment variables, in seconds from the Vapor UI or using Vapor's simple CLI.
+                        </p>
+                    </div>
+
+                    <!-- CI Friendly -->
+                    <div class="md:px-4 md:w-1/3">
+                        <div class="mt-10 md:mt-0">
+                            <svg viewBox="0 0 32 32" class="h-8 w-8" xmlns="http://www.w3.org/2000/svg"><g fill-rule="nonzero" fill="none"><path d="M0 7a1 1 0 0 1 .699-.953l19-6A1 1 0 0 1 21 1.001v19a1 1 0 0 1-.699.953l-19 6A1 1 0 0 1 0 26.001V7z" fill="#92E1F8"/><path d="M11 12a1 1 0 0 1 .699-.953l19-6A1 1 0 0 1 32 6.001v19a1 1 0 0 1-.699.953l-19 6A1 1 0 0 1 11 31.001V12z" fill="#25C4F2"/></g></svg>
+                        </div>
+
+                        <h2 class="mt-4 text-lg text-gray-900 font-medium">Pipeline Friendly</h2>
+
+                        <p class="mt-2 text-gray-700">
+                            You can install the Vapor CLI directly into your project, allowing you to deploy your Vapor application straight from your CI pipeline.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="px-5 pb-16 max-w-xl md:max-w-2xl lg:max-w-5xl mx-auto">
+                <div class="md:flex md:-mx-4">
+                    <!-- Infinite Deployments -->
+                    <div class="md:px-4 md:w-1/3">
+                        <div>
+                            <svg viewBox="0 0 36 36" class="h-8 w-8" xmlns="http://www.w3.org/2000/svg"><g fill="#25C4F2" fill-rule="evenodd"><path d="M26 18.2c-4.564.927-8 4.962-8 9.8 0 1.422.297 2.775.832 4H3a3 3 0 0 1-3-3V3a3 3 0 0 1 3-3h17a1 1 0 0 1 .707.293l5 5A1 1 0 0 1 26 6v12.2z" fill-rule="nonzero"/><path d="M28 36a8 8 0 1 1 0-16 8 8 0 0 1 0 16zm-1.293-10.707A1 1 0 0 0 26 25a3 3 0 0 0 0 6 1 1 0 0 0 0-2 1 1 0 0 1-.35-1.937l3.643 3.644A1 1 0 0 0 30 31a3 3 0 0 0 0-6 1 1 0 0 0 0 2 1 1 0 0 1 .35 1.937l-3.643-3.644z" opacity=".5"/></g></svg>
+                        </div>
+
+                        <h2 class="mt-4 text-lg text-gray-900 font-medium">Infinite Deployments</h2>
+
+                        <p class="mt-2 text-normal text-gray-700">
+                            Vapor will manage as many projects and deployments as you can throw at it. Bring it on.
+                        </p>
+                    </div>
+
+                    <!-- Teams -->
+                    <div class="md:px-4 md:w-1/3">
+                        <div class="mt-10 md:mt-0">
+                            <svg viewBox="0 0 32 32" class="h-8 w-8" xmlns="http://www.w3.org/2000/svg"><g fill="#25C4F2" fill-rule="nonzero"><path d="M7 9h2a5 5 0 0 1 5 5v2a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5v-2a5 5 0 0 1 5-5zM1 32a1 1 0 0 1-1-1c0-5.219 2.781-8 8-8 5.219 0 8 2.781 8 8a1 1 0 0 1-1 1H1z"/><path d="M23 0h2a5 5 0 0 1 5 5v2a5 5 0 0 1-5 5h-2a5 5 0 0 1-5-5V5a5 5 0 0 1 5-5zm-6 23a1 1 0 0 1-1-1c0-5.219 2.781-8 8-8 5.219 0 8 2.781 8 8a1 1 0 0 1-1 1H17z" opacity=".5"/></g></svg>
+                        </div>
+
+                        <h2 class="mt-4 text-lg text-gray-900 font-medium">Bring Friends</h2>
+
+                        <p class="mt-2 text-gray-700">
+                            Organize your projects into teams and collaborate with others to build the next big thing.
+                        </p>
+                    </div>
+
+                    <!-- Bring Your Own AWS -->
+                    <div class="md:px-4 md:w-1/3">
+                        <div class="mt-10 md:mt-0">
+                            <svg viewBox="0 0 32 32" class="h-8 w-8" xmlns="http://www.w3.org/2000/svg"><path d="M6.707 31.707A1 1 0 0 1 6 32H1a1 1 0 0 1-1-1v-5a1 1 0 0 1 .293-.707l12.196-12.196A9.993 9.993 0 0 1 12 10c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10a9.993 9.993 0 0 1-3.097-.489L6.707 31.707zM24 10a2 2 0 1 0 0-4 2 2 0 0 0 0 4zM3.707 28.707l11-11a1 1 0 0 0-1.414-1.414l-11 11a1 1 0 0 0 1.414 1.414z" fill="#25C4F2" fill-rule="nonzero"/></svg>
+                        </div>
+
+                        <h2 class="mt-4 text-lg text-gray-900 font-medium">Your Own Cloud</h2>
+
+                        <p class="mt-2 text-gray-700">
+                            Link your own AWS account to Vapor and stay in total control of your cloud. We never mark-up AWS prices.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pricing Table -->
+        <div class="lg:overflow-hidden">
+            <div class="sm:pb-16 max-w-xl md:max-w-2xl lg:max-w-5xl mx-auto">
+                <svg viewBox="0 0 282 6" class="mx-auto" width="282" height="6" xmlns="http://www.w3.org/2000/svg"><path d="M140.49 2.14a.934.934 0 0 1 .014-.008C142.984.715 145.486 0 148 0c2.514 0 5.017.715 7.496 2.132l.015.008C157.693 3.385 159.852 4 162 4c2.148 0 4.307-.615 6.49-1.86a.934.934 0 0 1 .014-.008C170.984.715 173.486 0 176 0c2.514 0 5.017.715 7.496 2.132l.015.008C185.693 3.385 187.852 4 190 4c2.148 0 4.307-.615 6.49-1.86a.934.934 0 0 1 .014-.008C198.983.715 201.486 0 204 0c2.514 0 5.017.715 7.496 2.132l.015.008C213.693 3.385 215.852 4 218 4c2.148 0 4.307-.615 6.49-1.86a.934.934 0 0 1 .014-.008C226.983.715 229.486 0 232 0c2.514 0 5.017.715 7.496 2.132l.015.008C241.693 3.385 243.852 4 246 4c2.147 0 4.307-.615 6.49-1.86a.934.934 0 0 1 .014-.008C254.983.715 257.486 0 260 0c2.514 0 5.017.715 7.496 2.132l.015.008C269.693 3.385 271.852 4 274 4c2.152 0 4.316-.618 6.504-1.868a1 1 0 0 1 .992 1.736C279.016 5.285 276.514 6 274 6c-2.514 0-5.017-.715-7.496-2.132a.934.934 0 0 1-.015-.008C264.307 2.615 262.147 2 260 2c-2.147 0-4.306.615-6.488 1.86a.934.934 0 0 1-.015.008C251.016 5.285 248.514 6 246 6c-2.514 0-5.017-.715-7.496-2.132a.934.934 0 0 1-.015-.008C236.307 2.615 234.148 2 232 2c-2.147 0-4.306.615-6.488 1.86a.934.934 0 0 1-.015.008C223.016 5.285 220.514 6 218 6c-2.514 0-5.017-.715-7.496-2.132a.934.934 0 0 1-.015-.008C208.307 2.615 206.148 2 204 2c-2.147 0-4.306.615-6.488 1.86a.934.934 0 0 1-.015.008C195.016 5.285 192.514 6 190 6c-2.514 0-5.017-.715-7.496-2.132a.934.934 0 0 1-.015-.008C180.307 2.615 178.148 2 176 2c-2.148 0-4.307.615-6.49 1.86a.934.934 0 0 1-.014.008C167.016 5.285 164.514 6 162 6c-2.514 0-5.017-.715-7.496-2.132a.934.934 0 0 1-.015-.008C152.307 2.615 150.148 2 148 2c-2.148 0-4.307.615-6.49 1.86a.934.934 0 0 1-.014.008C139.016 5.285 136.514 6 134 6c-2.514 0-5.017-.715-7.496-2.132a.934.934 0 0 1-.015-.008C124.307 2.615 122.148 2 120 2c-2.148 0-4.307.615-6.49 1.86a.934.934 0 0 1-.014.008C111.016 5.285 108.514 6 106 6c-2.514 0-5.017-.715-7.496-2.132a.934.934 0 0 1-.015-.008C96.307 2.615 94.148 2 92 2c-2.148 0-4.307.615-6.49 1.86a.934.934 0 0 1-.014.008C83.017 5.285 80.514 6 78 6c-2.514 0-5.017-.715-7.496-2.132a.934.934 0 0 1-.015-.008C68.307 2.615 66.148 2 64 2c-2.148 0-4.307.615-6.49 1.86a.934.934 0 0 1-.014.008C55.017 5.285 52.514 6 50 6c-2.514 0-5.017-.715-7.496-2.132a.936.936 0 0 1-.015-.008C40.307 2.615 38.148 2 36 2c-2.147 0-4.307.615-6.49 1.86a.935.935 0 0 1-.014.008C27.017 5.285 24.514 6 22 6c-2.514 0-5.017-.715-7.496-2.132a.935.935 0 0 1-.015-.008C12.307 2.615 10.148 2 8 2c-2.152 0-4.316.618-6.504 1.868a1 1 0 0 1-.992-1.736C2.984.715 5.486 0 8 0c2.514 0 5.017.715 7.496 2.132l.015.008C17.693 3.385 19.853 4 22 4c2.147 0 4.306-.615 6.488-1.86a.935.935 0 0 1 .015-.008C30.984.715 33.486 0 36 0c2.514 0 5.017.715 7.496 2.132l.015.008C45.693 3.385 47.852 4 50 4c2.147 0 4.306-.615 6.488-1.86a.934.934 0 0 1 .015-.008C58.984.715 61.486 0 64 0c2.514 0 5.017.715 7.496 2.132l.015.008C73.693 3.385 75.852 4 78 4c2.147 0 4.306-.615 6.488-1.86a.934.934 0 0 1 .015-.008C86.984.715 89.486 0 92 0c2.514 0 5.017.715 7.496 2.132l.015.008C101.693 3.385 103.852 4 106 4c2.148 0 4.307-.615 6.49-1.86a.934.934 0 0 1 .014-.008C114.984.715 117.486 0 120 0c2.514 0 5.017.715 7.496 2.132l.015.008C129.693 3.385 131.852 4 134 4c2.148 0 4.307-.615 6.49-1.86z" fill="#EFF1F3" fill-rule="nonzero"/></svg>
+
+                <div class="lg:max-w-xl lg:text-center lg:mx-auto px-5 pb-10 border-b-2 border-gray-100 sm:border-0">
+                    <div class="mt-16 text-2xl lg:text-3xl font-headline tracking-tight leading-snug text-gray-900">
+                        Simple, fixed pricing. <span class="text-cyan-500 font-medium">Unlimited projects and deployments.</span>
+                    </div>
+
+                    <div class="mt-4 text-gray-700">
+                        Laravel Vapor has dead simple pricing. We'll handle all the projects and deployments you can throw at us. You just build something amazing.
+                    </div>
+                </div>
+
+                <div class="lg:relative sm:px-5 lg:flex lg:-mx-4">
+                    <img class="hidden lg:block absolute" src="https://d2n6cmh8j179w8.cloudfront.net/5762a21f-d4ea-4171-9124-b2597c333b8d/img/pricing-cubes.png" style="width: 230px; height: 295px; right: -110px; top: -100px;">
+
+                    <div class="lg:w-1/2 lg:px-4 lg:flex lg:flex-col">
+                        <div class="flex flex-col lg:flex-1 lg:justify-between sm:border-2 sm:border-gray-100 sm:rounded-lg">
+                            <div class="px-5 pt-8 sm:pt-6">
+                                <div class="text-lg text-gray-900 font-medium">
+                                    Monthly Plan
+                                </div>
+
+                                <div class="mt-2 text-gray-700">
+                                    Simple month-to-month pricing.
+                                </div>
+                            </div>
+
+                            <div>
+                                <div class="px-5 pb-8">
+                                    <div class="mt-6 px-4 py-4 bg-gray-100 rounded-lg">
+                                        <div class="flex items-center">
+                                            <svg viewBox="0 0 20 20" class="h-5 w-5" xmlns="http://www.w3.org/2000/svg"><path d="M2 8h16a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2zm1-2a1 1 0 1 1 0-2h14a1 1 0 0 1 0 2H3zm3-4a1 1 0 1 1 0-2h8a1 1 0 0 1 0 2H6z" fill="#2C2F33" fill-rule="evenodd"/></svg>
+                                            <span><span class="ml-3 font-medium">Unlimited</span> projects</span>
+                                        </div>
+
+                                        <div class="mt-3">
+                                            <div class="flex items-center">
+                                            <svg viewBox="0 0 20 20" class="h-5 w-5" xmlns="http://www.w3.org/2000/svg"><path d="M9 0v11.586L5.707 8.293a1 1 0 0 0-1.414 1.414l5 5a1 1 0 0 0 1.414 0l5-5a1 1 0 1 0-1.414-1.414L11 11.586V0h7a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h7z" fill="#2C2F33" fill-rule="evenodd"/></svg>
+                                            <span><span class="ml-3 font-medium">Unlimited</span> deployments</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="px-5 pt-5 pb-5 border-t-2 border-gray-100">
+                                    <div class="flex justify-between items-center">
+                                        <span class="font-headline tracking-tight text-5xl">$39</span>
+
+<!--                                         <a href="/register" class="inline-flex items-center pl-4 pr-1 py-1 leading-none rounded bg-cyan-500 text-white font-medium">
+                                            Get Started
+
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="ml-1 h-8 w-8 fill-current mt-px opacity-50">
+                                                <path d="M9.3 8.7a1 1 0 0 1 1.4-1.4l4 4a1 1 0 0 1 0 1.4l-4 4a1 1 0 0 1-1.4-1.4l3.29-3.3-3.3-3.3z"/>
+                                            </svg>
+                                        </a> -->
+                                    </div>
+
+                                    <div class="text-gray-500 text-sm">
+                                        Price does not include your AWS cloud costs.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="lg:w-1/2 lg:px-4 lg:flex lg:flex-col">
+                        <div class="flex flex-col lg:justify-between lg:flex-1 bg-cyan-900 sm:rounded-lg sm:mt-6 lg:mt-0">
+                            <div class="px-5 pt-8 sm:pt-6">
+                                <div class="text-lg text-white font-medium">
+                                    Yearly Plan
+                                </div>
+
+                                <div class="mt-2 text-gray-300">
+                                    Save 14% and simplify your bookkeeping by paying annually.
+                                </div>
+                            </div>
+
+                            <div>
+                                <div class="px-5 pb-8">
+                                    <div class="mt-6 px-4 py-4 bg-gray-300-05 rounded-lg">
+                                        <div class="flex items-center text-gray-300">
+                                            <svg viewBox="0 0 20 20" class="fill-current text-cyan-500 h-5 w-5" xmlns="http://www.w3.org/2000/svg"><path d="M2 8h16a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2zm1-2a1 1 0 1 1 0-2h14a1 1 0 0 1 0 2H3zm3-4a1 1 0 1 1 0-2h8a1 1 0 0 1 0 2H6z" fill-rule="evenodd"/></svg>
+                                            <span><span class="ml-3 text-cyan-500 font-medium">Unlimited</span> projects</span>
+                                        </div>
+
+                                        <div class="mt-3">
+                                            <div class="flex items-center text-gray-300">
+                                                <svg viewBox="0 0 20 20" class="fill-current text-cyan-500 h-5 w-5" xmlns="http://www.w3.org/2000/svg"><path d="M9 0v11.586L5.707 8.293a1 1 0 0 0-1.414 1.414l5 5a1 1 0 0 0 1.414 0l5-5a1 1 0 1 0-1.414-1.414L11 11.586V0h7a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h7z" fill-rule="evenodd"/></svg>
+                                                <span><span class="ml-3 text-cyan-500 font-medium">Unlimited</span> deployments</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="px-5 pt-5 pb-5 border-t-2 border-gray-300-05">
+                                    <div class="flex justify-between items-center">
+                                        <span class="font-headline tracking-tight text-5xl text-cyan-500">$399</span>
+
+<!--                                         <a href="/register" class="inline-flex items-center pl-4 pr-1 py-1 leading-none rounded bg-cyan-500 text-white font-medium">
+                                            Get Started
+
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="ml-1 h-8 w-8 fill-current mt-px opacity-50">
+                                                <path d="M9.3 8.7a1 1 0 0 1 1.4-1.4l4 4a1 1 0 0 1 0 1.4l-4 4a1 1 0 0 1-1.4-1.4l3.29-3.3-3.3-3.3z"/>
+                                            </svg>
+                                        </a> -->
+                                    </div>
+
+                                    <div class="text-gray-500 text-sm">
+                                        Price does not include your AWS cloud costs.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Call To Action -->
+        <div class="pt-12 pb-12 bg-gray-100 border-b border-gray-200">
+            <div class="px-5 max-w-xl mx-auto">
+                <div class="text-2xl lg:text-3xl font-headline tracking-tight text-center leading-snug text-gray-900">
+                    <p>Already convinced?</p>
+                    <p class="mt-2 font-semibold">Get ready to leap into the future.</p>
+                </div>
+
+<!--                 <div class="mt-4 text-lg text-gray-700 text-center">
+                    Deploying your first serverless application has never been easier. There’s no need to spend weeks pouring over documentation and blog posts.
+                </div> -->
+
+                <div class="mt-8 text-center">
+                    <a href="/register" class="inline-block px-4 py-3 leading-none rounded bg-cyan-500 text-white font-medium">
+                        Sign Up Now
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Links -->
+        <div class="relative pt-12 pb-12 bg-gray-100 bg-no-repeat bg-top border-b border-gray-200" style="background-image: url('https://d2n6cmh8j179w8.cloudfront.net/5762a21f-d4ea-4171-9124-b2597c333b8d/svg/footer-background.svg'); background-size: 664px 462px;">
+            <div class="absolute inset-0" style="background-image: linear-gradient(rgba(255, 255, 255, 0), 25%, #f4f6f8)">
+            </div>
+
+            <div class="relative flex px-5 max-w-xl md:max-w-2xl lg:max-w-5xl mx-auto">
+                <!-- Ecosystem Links -->
+                <div class="w-1/2 lg:w-1/4 px-2">
+                    <h4 class="font-medium">Ecosystem</h4>
+
+                    <ul class="mt-4 text-gray-700">
+                        <li><a href="https://laravel.com">Laravel</a></li>
+                        <li class="mt-1"><a href="https://laracasts.com">Laracasts</a></li>
+                        <li class="mt-1"><a href="https://forge.laravel.com">Forge</a></li>
+                        <li class="mt-1"><a href="https://envoyer.io">Envoyer</a></li>
+                        <li class="mt-1"><a href="https://nova.laravel.com">Nova</a></li>
+                    </ul>
+                </div>
+
+                <!-- Legal Links -->
+                <div class="w-1/2 lg:w-3/4 px-2">
+                    <h4 class="font-medium">Legal</h4>
+
+                    <ul class="mt-4 text-gray-700">
+                        <li><a href="/privacy">Privacy</a></li>
+                        <li class="mt-1"><a href="/terms">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Copyright -->
+        <div class="pt-6 pb-6 bg-gray-100 text-gray-500">
+            <div class="flex items-center justify-between px-5 max-w-xl md:max-w-2xl lg:max-w-5xl mx-auto">
+                <div>
+                    © Laravel - 2022
+                </div>
+
+                <div>
+                    <a href="https://twitter.com/laravelphp">
+                        <svg viewBox="0 0 21 21" class="h-5 w-5" xmlns="http://www.w3.org/2000/svg"><path d="M17.762 5.53a4.024 4.024 0 0 0 1.714-2.234 7.63 7.63 0 0 1-2.477.979A3.826 3.826 0 0 0 14.154 3c-2.151 0-3.897 1.809-3.897 4.039 0 .317.034.624.1.92-3.239-.169-6.11-1.775-8.034-4.222a4.146 4.146 0 0 0-.528 2.033c0 1.4.688 2.637 1.734 3.362a3.797 3.797 0 0 1-1.766-.504v.05c0 1.957 1.344 3.59 3.128 3.96a3.68 3.68 0 0 1-1.027.142c-.251 0-.496-.024-.734-.071.496 1.604 1.935 2.772 3.641 2.803A7.648 7.648 0 0 1 1 17.187 10.772 10.772 0 0 0 6.975 19c7.171 0 11.091-6.154 11.091-11.492 0-.175-.003-.351-.01-.523A8.05 8.05 0 0 0 20 4.895a7.553 7.553 0 0 1-2.238.635z" fill="#6E767E" fill-rule="evenodd"/></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            var app = new Vue({
+                el: '#form',
+                data: {
+                    email: '',
+                    submitted: false,
+                    submitting: false
+                },
+                methods: {
+                    onSubmit: function () {
+                        this.submitting = true;
+
+                        fetch('/api/early-access', {
+                            method: 'POST',
+                            body: JSON.stringify({ email: this.email }),
+                            headers: {
+                                'Content-Type': 'application/json'
+                            }
+                        }).then(response => {
+                            this.submitted = true;
+                            this.submitting = false;
+                        });
+                    }
+                }
+            })
+        </script>
+    </body>
+</html>

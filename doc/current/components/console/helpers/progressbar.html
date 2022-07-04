@@ -1,0 +1,1821 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="index, follow, all" />
+        <meta name="Author" content="Symfony" />
+        <meta name="color-scheme" content="light dark">
+                <meta name="Keywords" content="symfony3, symfony2, symfony, project, framework, php, php5, php7, php8, open-source, components, symphony, symfony framework, symfony tutorial" />
+        
+                <meta name="docsearch:version" content="current" />
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="preconnect" href="https://www.google-analytics.com">
+        <link rel="preconnect" href="https://connect.symfony.com">
+
+                <title>Progress Bar (Symfony Docs)</title>
+
+                    <link rel="canonical" href="https://symfony.com/doc/current/components/console/helpers/progressbar.html" />
+        
+        <link rel="search" type="application/opensearchdescription+xml" href="https://symfony.com/opensearch/documentation.xml" title="Symfony documentation" />
+
+                        <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap" rel="stylesheet">
+            <link rel="stylesheet" href="/build/new-app.c9d4317e.css">
+            <link rel="stylesheet" href="/build/new-search.1be8b11b.css">
+        
+    <link rel="stylesheet" href="/build/new-doc.a38740ed.css">
+
+                        <script src="/build/runtime.8a677fde.js"></script><script src="/build/433.bc4b3430.js"></script><script src="/build/new-app.c2e873b8.js"></script>
+            <script src="/build/468.e290d697.js"></script><script src="/build/new-search.36ee4615.js"></script>
+        
+    <script src="/build/new-doc.42211651.js"></script>
+
+        <script>
+            window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+            ga('create', 'UA-89393-6', 'auto');
+            ga('send', 'pageview');
+            ga('set', 'anonymizeIp', true);
+        </script>
+        <script async defer src='https://www.google-analytics.com/analytics.js'></script>
+        <script type="text/javascript">
+            window.addEventListener('DOMContentLoaded', function () {
+                let js, fjs = document.getElementsByTagName('script')[0], load = function(url, id) {
+                    if (document.getElementById(id)) { return; }
+                    js = document.createElement('script'); js.src = url; js.id = id; js.defer = true;
+                    fjs.parentNode.insertBefore(js, fjs);
+                };
+                load('https://connect.symfony.com/sln.js?customize_url=https://symfony.com/account/sln_customiser.js', 'sln_bar');
+
+                let s = document.createElement('link');
+                s.rel = 'stylesheet';
+                s.href = 'https://connect.symfony.com/css/sln.css';
+                let x = document.getElementsByTagName('title')[0];
+                x.parentNode.insertBefore(s, x);
+            });
+        </script>
+
+        <link rel="shortcut icon" type="image/svg+xml" href="/favicons/favicon.svg">
+        <link rel="alternate icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png">
+        <link rel="mask-icon" href="/favicons/safari-pinned-tab.svg" color="#5bbad5">
+        <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png">
+        <link rel="manifest" href="/static/webmanifest.json">
+        <meta name="msapplication-config" content="/static/browserconfig.xml" />
+        <meta name="theme-color" content="#ffffff">
+        <meta name="apple-mobile-web-app-title" content="Symfony">
+
+        <meta property="fb:pages" content="211720082183067">
+        <meta name="twitter:site" content="@symfony">
+                    <meta name="twitter:card" content="summary_large_image" />
+        
+                    <meta property="og:type" content="website">
+            <meta property="og:title" content="Progress Bar (Symfony Docs)">
+            <meta property="og:image" content="https://symfony.com/images/opengraph/symfony.png">
+
+                    
+        <meta name="msapplication-TileColor" content="#262626">
+        <meta name="application-name" content="Symfony">
+        <meta name="msapplication-tooltip" content="Official Symfony website">
+
+        <meta name="theme-color" content="#262626">
+
+            </head>
+
+    <body class="" data-doc-book="symfony" data-doc-page="components/console/helpers/progressbar">
+        <script>
+            function setSymfonyWebsiteColorScheme () {
+                const selectedColorScheme = localStorage.getItem('colorScheme') || 'sync';
+                const resolvedColorScheme = 'sync' === selectedColorScheme
+                    ? matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+                    : selectedColorScheme;
+
+                document.body.classList.remove('light-theme', 'dark-theme');
+                document.body.classList.add('light' === resolvedColorScheme ? 'light-theme' : 'dark-theme');
+                localStorage.setItem('colorScheme', selectedColorScheme);
+                document.body.style.colorScheme = resolvedColorScheme;
+            }
+
+            setSymfonyWebsiteColorScheme();
+            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function (e) {
+                setSymfonyWebsiteColorScheme();
+            });
+
+            document.body.classList.add(
+                (navigator.appVersion.indexOf('Win') !== -1) ? 'windows' : (navigator.appVersion.indexOf('Mac') !== -1) ? 'macos' : 'linux'
+            );
+        </script>
+
+        <script type="application/ld+json">{"@context":"https:\/\/schema.org","@type":"WebSite","name":"Symfony","url":"https:\/\/symfony.com","potentialAction":{"@type":"SearchAction","target":"https:\/\/symfony.com\/search?q={query}","query-input":"required name=query"}}</script>
+        <script type="application/ld+json">{"@context":"https:\/\/schema.org","@type":"Organization","url":"https:\/\/symfony.com","name":"Symfony","logo":"\/images\/logos\/sf-positive.svg","sameAs":["https:\/\/github.com\/symfony","https:\/\/stackoverflow.com\/questions\/tagged\/symfony","https:\/\/twitter.com\/symfony","https:\/\/www.facebook.com\/SymfonyFramework","https:\/\/www.youtube.com\/user\/SensioLabs"]}</script>
+
+        <div id="sln"></div>
+
+        
+        
+        
+            <div class="doc-page-container">
+        <div>
+            <style>
+    #ukraine-message {
+        background: #171717;
+        border-top: 1px solid #525252;
+        border-bottom: 1px solid #525252;
+        font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+        padding: 10px 0;
+        position: relative;
+        width: 100%;
+    }
+    #ukraine-message:hover {
+        background: #262626;
+    }
+    #ukraine-message .message {
+        align-items: center;
+        color: #e5e5e5;
+        display: flex;
+        justify-content: center;
+    }
+    #ukraine-message .message svg {
+        margin-right: 10px;
+        height: 18px;
+        width: auto;
+    }
+    #ukraine-message .message p {
+        margin-bottom: 0;
+    }
+    #ukraine-message .message a {
+        color: inherit;
+        font-size: 14px;
+    }
+    #ukraine-message .message a:hover,
+    #ukraine-message .message a:active {
+        text-decoration: none;
+    }
+    #ukraine-message .message a:after{ bottom:0; content:""; right:0; position:absolute; left:0; top:0; z-index:1; }
+    #ukraine-message .hidden-xs { display: none; }
+
+    @media (min-width: 576px) {
+        #ukraine-message .hidden-xs { display: inline; }
+    }
+
+    @media (min-width: 768px) {
+        #ukraine-message { padding: 15px 0; }
+        #ukraine-message .message a { font-size: 18px; }
+        #ukraine-message .message svg { margin-right: 15px; height: 32px; }
+    }
+</style>
+<div id="ukraine-message">
+    <div class="page-container">
+        <div class="message">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800">
+                <rect width="1200" height="800" fill="#005BBB"/>
+                <rect width="1200" height="400" y="400" fill="#FFD500"/>
+            </svg>
+
+            <p>
+                <a target="_blank" href="https://symfony.com/blog/symfony-stands-with-ukraine">Symfony stands <span class="hidden-xs">united</span> with <span class="hidden-xs">the people of</span> Ukraine</a>
+            </p>
+        </div>
+    </div>
+</div>
+
+        </div>
+
+        <div class="doc-header-container">
+            <div class="doc-header-top">
+                <div class="doc-header-logo-search">
+                    <a class="doc-header-logo" href="/doc/current/index.html">
+                        <img loading="eager" height="30" src="/images/logos/header-logo.svg" alt="Symfony" />
+                        <span>Docs</span>
+                    </a>
+
+                    <div class="doc-search-form search-container">
+                        <form id="form-search" onsubmit="return false">
+    <div class="form-group">
+        <label for="form-search-input" class="sr-only visually-hidden">Search Symfony Docs</label>
+                <input type="search"
+               class="mousetrap form-control form-search-input"
+               placeholder="Search Symfony Docs" aria-label="Search in Symfony documentation"
+               autocapitalize="off" autocomplete="off" autocorrect="off" spellcheck="false"
+               onkeyup="Search.makeQuery(this.value, event.key)" onclick="event.stopPropagation()">
+    </div>
+    <button type="submit" class="sr-only visually-hidden">Search</button>
+</form>
+
+
+<div class="form-search-results-wrapper">
+    <div class="form-search-results"></div>
+    <div class="form-search-results-footer">
+        Search by <a target="_blank" href="https://algolia.com/?utm_source=symfony&utm_medium=link&utm_campaign=symfony_documentation">Algolia</a>
+    </div>
+</div>
+
+                    </div>
+                </div>
+                <div class="highlight">
+                    <div class="sensiolabs-sponsor hidden-xs">
+                        <span class="sponsored-by text-muted text-small block">sponsored by</span>
+                        <a class="logo-sensiolabs" target="_blank" rel="external noopener noreferrer" href="https://sensiolabs.com" title="SensioLabs, PHP services and software solutions for enterprise and community.">
+                            Sensio<span>Labs</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="doc-header-bottom">
+                <nav class="doc-header-menu">
+                    <a class="active" href="/doc/current/index.html">Documentation</a>
+                    <a class="" href="/book">Book</a>
+                    <a class="" href="/doc/current/reference/index.html">Reference</a>
+                    <a class="" href="/bundles">Bundles</a>
+                    <a class="" href="/doc/cloud/">Cloud</a>
+                    <a href="https://symfonycasts.com">SymfonyCasts</a>
+                </nav>
+
+                <div class="doc-header-back-to-site">
+                    <a href="/">Back to symfony.com</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="doc-body-container">
+            <aside class="doc-sidebar-container">
+                <div class="doc-sidebar-inner-container">
+                    <div class="doc-sidebar-actions">
+                                        
+            <div class="doc-action doc-alternative-selector branch-selector">
+            <span class="label">Version:</span>
+            <select>
+                                    <optgroup label="Maintained Versions">
+                                                    <option   data-url="https://symfony.com/doc/6.1/components/console/helpers/progressbar.html">
+                                6.1 (dev)                            </option>
+                                                    <option selected  data-url="https://symfony.com/doc/current/components/console/helpers/progressbar.html">
+                                6.0 (current)                            </option>
+                                                    <option   data-url="https://symfony.com/doc/5.4/components/console/helpers/progressbar.html">
+                                5.4                             </option>
+                                                    <option   data-url="https://symfony.com/doc/4.4/components/console/helpers/progressbar.html">
+                                4.4                             </option>
+                                            </optgroup>
+                
+                                    <optgroup label="Unmaintained Versions">
+                                                    <option   data-url="https://symfony.com/doc/5.3/components/console/helpers/progressbar.html">
+                            5.3                             </option>
+                                                    <option   data-url="https://symfony.com/doc/5.2/components/console/helpers/progressbar.html">
+                            5.2                             </option>
+                                                    <option   data-url="https://symfony.com/doc/5.1/components/console/helpers/progressbar.html">
+                            5.1                             </option>
+                                                    <option   data-url="https://symfony.com/doc/5.0/components/console/helpers/progressbar.html">
+                            5.0                             </option>
+                                                    <option   data-url="https://symfony.com/doc/4.3/components/console/helpers/progressbar.html">
+                            4.3                             </option>
+                                                    <option   data-url="https://symfony.com/doc/4.2/components/console/helpers/progressbar.html">
+                            4.2                             </option>
+                                                    <option   data-url="https://symfony.com/doc/4.1/components/console/helpers/progressbar.html">
+                            4.1                             </option>
+                                                    <option   data-url="https://symfony.com/doc/4.0/components/console/helpers/progressbar.html">
+                            4.0                             </option>
+                                                    <option   data-url="https://symfony.com/doc/3.4/components/console/helpers/progressbar.html">
+                            3.4                             </option>
+                                                    <option   data-url="https://symfony.com/doc/3.3/components/console/helpers/progressbar.html">
+                            3.3                             </option>
+                                                    <option   data-url="https://symfony.com/doc/3.2/components/console/helpers/progressbar.html">
+                            3.2                             </option>
+                                                    <option   data-url="https://symfony.com/doc/3.1/components/console/helpers/progressbar.html">
+                            3.1                             </option>
+                                                    <option   data-url="https://symfony.com/doc/3.0/components/console/helpers/progressbar.html">
+                            3.0                             </option>
+                                                    <option   data-url="https://symfony.com/doc/2.8/components/console/helpers/progressbar.html">
+                            2.8                             </option>
+                                                    <option   data-url="https://symfony.com/doc/2.7/components/console/helpers/progressbar.html">
+                            2.7                             </option>
+                                                    <option   data-url="https://symfony.com/doc/2.6/components/console/helpers/progressbar.html">
+                            2.6                             </option>
+                                                    <option   data-url="https://symfony.com/doc/2.5/components/console/helpers/progressbar.html">
+                            2.5                             </option>
+                                            </optgroup>
+                            </select>
+        </div>
+    
+    
+                        </div>
+
+                    <div class="doc-sidebar-menu ">
+                            
+    <ul>
+                    <li class="section-title">Getting Started</li>
+            
+                                <li class="">
+                    <a href="/doc/current/setup.html">Setup / Installation</a>
+                </li>
+            
+                                <li class="">
+                    <a href="/doc/current/page_creation.html">Creating Pages</a>
+                </li>
+            
+                                <li class="">
+                    <a href="/doc/current/routing.html">Routing / Generating URLs</a>
+                </li>
+            
+                                <li class="">
+                    <a href="/doc/current/controller.html">Controllers</a>
+                </li>
+            
+                                <li class="">
+                    <a href="/doc/current/templates.html">Templates / Twig</a>
+                </li>
+            
+                                <li class="">
+                    <a href="/doc/current/configuration.html">Configuration / Env Vars</a>
+                </li>
+                                <li class="section-title">Architecture</li>
+            
+                                <li class="">
+                    <a href="/doc/current/components/http_kernel.html">Requests / Responses</a>
+                </li>
+            
+                                <li class="">
+                    <a href="/doc/current/reference/configuration/kernel.html">Kernel</a>
+                </li>
+            
+                                <li class="">
+                    <a href="/doc/current/service_container.html">Services / DI</a>
+                </li>
+            
+                                <li class="">
+                    <a href="/doc/current/event_dispatcher.html">Events</a>
+                </li>
+            
+                                <li class="">
+                    <a href="/doc/current/components/contracts.html">Contracts</a>
+                </li>
+            
+                                <li class="">
+                    <a href="/doc/current/bundles.html">Bundles</a>
+                </li>
+                                <li class="section-title">The Basics</li>
+            
+                                <li class="">
+                    <a href="/doc/current/doctrine.html">Databases / Doctrine</a>
+                </li>
+            
+                                <li class="">
+                    <a href="/doc/current/forms.html">Forms</a>
+                </li>
+            
+                                <li class="">
+                    <a href="/doc/current/testing.html">Tests</a>
+                </li>
+            
+                                <li class="">
+                    <a href="/doc/current/session.html">Sessions</a>
+                </li>
+            
+                                <li class="">
+                    <a href="/doc/current/cache.html">Cache</a>
+                </li>
+            
+                                <li class="">
+                    <a href="/doc/current/logging.html">Logger</a>
+                </li>
+            
+                                <li class="">
+                    <a href="/doc/current/controller/error_pages.html">Errors / Debugging</a>
+                </li>
+                                <li class="section-title">Advanced Topics</li>
+            
+                                <li class="">
+                    <a href="/doc/current/console.html">Console</a>
+                </li>
+            
+                                <li class="">
+                    <a href="/doc/current/mailer.html">Mailer / Emails</a>
+                </li>
+            
+                                <li class="">
+                    <a href="/doc/current/validation.html">Validation</a>
+                </li>
+            
+                                <li class="">
+                    <a href="/doc/current/messenger.html">Messaging / Queues</a>
+                </li>
+            
+                                <li class="">
+                    <a href="/doc/current/notifier.html">Notifications</a>
+                </li>
+            
+                                <li class="">
+                    <a href="/doc/current/serializer.html">Serialization</a>
+                </li>
+            
+                                <li class="">
+                    <a href="/doc/current/translation.html">Translation / i18n</a>
+                </li>
+                                <li class="section-title">Security</li>
+            
+                                <li class="">
+                    <a href="/doc/current/security.html">Introduction</a>
+                </li>
+            
+                                <li class="">
+                    <a href="/doc/current/security.html#the-user">Users</a>
+                </li>
+            
+                                <li class="">
+                    <a href="/doc/current/security.html#the-firewall">Authentication / Firewalls</a>
+                </li>
+            
+                                <li class="">
+                    <a href="/doc/current/security.html#access-control-authorization">Authorization / Voters</a>
+                </li>
+            
+                                <li class="">
+                    <a href="/doc/current/security/passwords.html">Passwords</a>
+                </li>
+            
+                                <li class="">
+                    <a href="/doc/current/security/csrf.html">CSRF</a>
+                </li>
+            
+                                <li class="">
+                    <a href="/doc/current/security/ldap.html">LDAP</a>
+                </li>
+                                <li class="section-title">Front-end</li>
+            
+                                <li class="">
+                    <a href="/doc/current/frontend/encore/simple-example.html#stimulus-symfony-ux">Symfony UX / Stimulus</a>
+                </li>
+            
+                                <li class="">
+                    <a href="/doc/current/frontend.html">Webpack Encore</a>
+                </li>
+            
+                                <li class="">
+                    <a href="/doc/current/frontend/encore/reactjs.html">React.js</a>
+                </li>
+            
+                                <li class="">
+                    <a href="/doc/current/frontend/encore/vuejs.html">Vue.js</a>
+                </li>
+            
+                                <li class="">
+                    <a href="/doc/current/frontend/encore/bootstrap.html">Bootstrap</a>
+                </li>
+            
+                                <li class="">
+                    <a href="/doc/current/templating.html#linking-to-css-javascript-and-image-assets">Web Assets</a>
+                </li>
+            
+                                <li class="">
+                    <a href="/doc/current/web_link.html">WebLink</a>
+                </li>
+                                <li class="section-title">Utilities</li>
+            
+                                <li class="">
+                    <a href="/doc/current/http_client.html">HTTP Client</a>
+                </li>
+            
+                                <li class="">
+                    <a href="/doc/current/components/filesystem.html">Files / Filesystem</a>
+                </li>
+            
+                                <li class="">
+                    <a href="/doc/current/components/expression_language.html">Expression Language</a>
+                </li>
+            
+                                <li class="">
+                    <a href="/doc/current/components/lock.html">Locks</a>
+                </li>
+            
+                                <li class="">
+                    <a href="/doc/current/workflow.html">Workflows</a>
+                </li>
+            
+                                <li class="">
+                    <a href="/doc/current/components/string.html">Strings / Unicode</a>
+                </li>
+            
+                                <li class="">
+                    <a href="/doc/current/components/uid.html">UID / UUID</a>
+                </li>
+            
+                                <li class="">
+                    <a href="/doc/current/components/yaml.html">YAML Parser</a>
+                </li>
+                                <li class="section-title">Production</li>
+            
+                                <li class="">
+                    <a href="/doc/current/deployment.html">Deployment</a>
+                </li>
+            
+                                <li class="">
+                    <a href="/doc/current/performance.html">Performance</a>
+                </li>
+            
+                                <li class="">
+                    <a href="/doc/current/http_cache.html">HTTP Cache</a>
+                </li>
+            
+                                <li class="">
+                    <a href="/doc/current/cloud/intro.html">Cloud / Platform.sh</a>
+                </li>
+                        </ul>
+
+                    </div>
+
+                                                        <div class="doc-sidebar-highlight">
+                            <div class="highlight-carbon">
+    <script defer async type="text/javascript" src="//cdn.carbonads.com/carbon.js?serve=CKYILK3J&placement=symfonycom" id="_carbonads_js"></script>
+</div>
+
+                        </div>
+                    
+                    </div>
+            </aside>
+
+            <article class="doc-content-container">
+                <div class="doc-content-inner-container">
+                    <div class="doc-content-inner-inner-container">
+                                                                <div class="highlight-top-horizontal">
+                                <script>
+    const all_conferences = [
+        { title: 'SymfonyCon Disneyland Paris 2022', texts: ['Nov. 17–18', 'Worldwide event', '+25 talks and workshops'], link: 'https://live.symfony.com/2022-paris-con/', css_class: 'sfcon', in_french: false },
+        { title: 'SymfonyLive Paris 2022', texts: ['7 – 8 avril', 'En français 🇫🇷', '+25 talks and workshops'], link: 'https://live.symfony.com/2022-paris/', css_class: 'sflive', in_french: true },
+        { title: 'SymfonyWorld Online 2022 Summer Edition', texts: ['June 16–17', '100% Online', '+25 talks and workshops'], link: 'https://live.symfony.com/2022-world-summer/', css_class: 'sfonline', in_french: false },
+    ];
+
+    document.addEventListener('DOMContentLoaded', function() {
+        const userTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+        const frenchSpeaker = 'Europe/Paris' === userTimezone || 'Europe/Brussels' === userTimezone || 'Europe/Zurich' === userTimezone;
+        const conferences = all_conferences.filter(conference => frenchSpeaker ? conference : false === conference.in_french);
+        const conference = conferences[Math.floor(Math.random() * conferences.length)];
+
+        document.querySelector('.top-horizontal-highlights').classList.add(conference.css_class);
+
+        const highlightElement = document.querySelector('.top-horizontal-highlight');
+
+        const titleElement = document.createElement('a');
+        titleElement.classList.add('top-horizontal-highlight-title');
+        titleElement.href = conference.link;
+        titleElement.innerText = conference.title;
+        highlightElement.appendChild(titleElement);
+
+        conference.texts.forEach(function (text) {
+            const textItemElement = document.createElement('div');
+            textItemElement.classList.add('top-horizontal-highlight-data');
+            textItemElement.innerText = text;
+
+            highlightElement.appendChild(textItemElement);
+        });
+    });
+</script>
+
+<style>
+    .top-horizontal-highlights {
+        font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+        font-size: 16px;
+        position: relative;
+        width: 100%;
+    }
+    .top-horizontal-highlights.sfcon { background: #4c1d95; }
+    .top-horizontal-highlights.sfcon:hover { background: #5b21b6; }
+    .top-horizontal-highlights.sflive { background: #db2777; }
+    .top-horizontal-highlights.sflive:hover { background: #ec4899; }
+    .top-horizontal-highlights.sfonline { background: #1d4ed8; }
+    .top-horizontal-highlights.sfonline:hover { background: #2563eb; }
+    .top-horizontal-highlights a::after { content: ''; position: absolute; top: 0; left: 0; height: 100%; width: 100%; }
+    .top-horizontal-highlight { align-items: center; display: flex; flex-wrap: nowrap; padding: 12px 0; }
+    a.top-horizontal-highlight-title, a.top-horizontal-highlight-title:hover { color: rgba(255, 255, 255, 0.95); font-weight: 600; }
+    .top-horizontal-highlight-data { color: rgba(255, 255, 255, 0.85); display: none; font-size: 14px; margin-left: 30px; }
+    @media (min-width: 768px) {
+        .top-horizontal-highlight-data { display: block; margin-left: 20px; }
+    }
+
+    .dark-theme .top-horizontal-highlights.sfcon { border: 1px solid #7c3aed; border-width: 1px 0; }
+    .dark-theme .top-horizontal-highlights.sfcon:hover { background: #5b21b6; }
+    .dark-theme .top-horizontal-highlights.sflive { background: #be185d; }
+    .dark-theme .top-horizontal-highlights.sflive:hover { background: #db2777; }
+    .dark-theme .top-horizontal-highlights.sfonline { background: #1d4ed8; }
+    .dark-theme .top-horizontal-highlights.sfonline:hover { background: #2563eb; }
+</style>
+
+<div class="top-horizontal-highlights">
+    <div class="page-container">
+        <div class="top-horizontal-highlight">
+        </div>
+    </div>
+</div>
+
+                            </div>
+                        
+    
+                        <div class="doc-content">
+                                                        <main class="doc-content-contents">
+                                        <nav class="breadcrumb-nav" aria-label="breadcrumb">
+        <ol class="breadcrumb">
+                            <li class="breadcrumb-item ">
+                    <a href="/">Home</a>
+                </li>
+                            <li class="breadcrumb-item ">
+                    <a href="/doc/current/index.html">Documentation</a>
+                </li>
+                            <li class="breadcrumb-item ">
+                    <a href="/doc/current/components/console.html">Console</a>
+                </li>
+                            <li class="breadcrumb-item ">
+                    <a href="/doc/current/components/console/helpers/index.html">Helpers</a>
+                </li>
+                            <li class="breadcrumb-item active">
+                    <a href="">Progress Bar</a>
+                </li>
+                    </ol>
+    </nav>
+
+    <script type="application/ld+json">{"@context":"https:\/\/schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"\/","name":"Home"}},{"@type":"ListItem","position":2,"item":{"@id":"\/doc\/current\/index.html","name":"Documentation"}},{"@type":"ListItem","position":3,"item":{"@id":"\/doc\/current\/components\/console.html","name":"Console"}},{"@type":"ListItem","position":4,"item":{"@id":"\/doc\/current\/components\/console\/helpers\/index.html","name":"Helpers"}},{"@type":"ListItem","position":5,"item":{"@id":"\/doc\/current\/components\/console\/helpers\/progressbar.html","name":"Progress Bar"}}]}</script>
+
+
+    <section class="ui-prose ">
+    <article class="prose">            <h1 class="prose-title">Progress Bar</h1>
+
+                                    <a class="doc-action content-edit" href="https://github.com/symfony/symfony-docs/edit/6.0//components/console/helpers/progressbar.rst">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" height="18" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
+            </svg>
+            Edit this page
+        </a>
+    
+
+            
+                            <div class="toctree-wrapper toctree-programmatic toctree-size-md">
+                        <ul class="toctree toctree-level-1 toctree-length-2">
+                        <li>
+        <a href="#customizing-the-progress-bar">Customizing the Progress Bar</a>
+
+                        <ul class="toctree toctree-level-2 toctree-length-5">
+                        <li>
+        <a href="#built-in-formats">Built-in Formats</a>
+
+            </li>
+
+                        <li>
+        <a href="#custom-formats">Custom Formats</a>
+
+            </li>
+
+                        <li>
+        <a href="#bar-settings">Bar Settings</a>
+
+            </li>
+
+                        <li>
+        <a href="#custom-placeholders">Custom Placeholders</a>
+
+            </li>
+
+                        <li>
+        <a href="#custom-messages">Custom Messages</a>
+
+            </li>
+
+            </ul>
+
+            </li>
+
+                        <li>
+        <a href="#displaying-multiple-progress-bars">Displaying Multiple Progress Bars</a>
+
+            </li>
+
+            </ul>
+
+                </div>
+            
+            
+            <div class="section">
+<h1 id="progress-bar"><a class="headerlink" href="#progress-bar" title="Permalink to this headline">Progress Bar</a></h1>
+<p>When executing longer-running commands, it may be helpful to show progress
+information, which updates as your command runs:</p>
+<img src="/doc/6.0/_images/progressbar.gif"><p>To display progress details, use the
+<a href="https://github.com/symfony/symfony/blob/6.0/src/Symfony/Component/Console/Helper/ProgressBar.php" class="reference external" title="Symfony\Component\Console\Helper\ProgressBar" rel="external noopener noreferrer" target="_blank">ProgressBar</a>, pass it a total
+number of units, and advance the progress as the command executes:</p>
+<div translate="no" data-loc="21" class="notranslate codeblock codeblock-length-md codeblock-php">
+        <div class="codeblock-scroll">
+        <pre class="codeblock-lines">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21</pre>
+        <pre class="codeblock-code"><code><span class="hljs-keyword">use</span> <span class="hljs-title">Symfony</span>\<span class="hljs-title">Component</span>\<span class="hljs-title">Console</span>\<span class="hljs-title">Helper</span>\<span class="hljs-title">ProgressBar</span>;
+
+<span class="hljs-comment">// creates a new progress bar (50 units)</span>
+<span class="hljs-variable"><span class="hljs-variable-other-marker">$</span>progressBar</span> = <span class="hljs-keyword">new</span> ProgressBar(<span class="hljs-variable"><span class="hljs-variable-other-marker">$</span>output</span>, <span class="hljs-number">50</span>);
+
+<span class="hljs-comment">// starts and displays the progress bar</span>
+<span class="hljs-variable"><span class="hljs-variable-other-marker">$</span>progressBar</span><span class="hljs-operator">-&gt;</span>start();
+
+<span class="hljs-variable"><span class="hljs-variable-other-marker">$</span>i</span> = <span class="hljs-number">0</span>;
+<span class="hljs-keyword">while</span> (<span class="hljs-variable"><span class="hljs-variable-other-marker">$</span>i</span>++ &lt; <span class="hljs-number">50</span>) {
+    <span class="hljs-comment">// ... do some work</span>
+
+    <span class="hljs-comment">// advances the progress bar 1 unit</span>
+    <span class="hljs-variable"><span class="hljs-variable-other-marker">$</span>progressBar</span><span class="hljs-operator">-&gt;</span>advance();
+
+    <span class="hljs-comment">// you can also advance the progress bar by more than 1 unit</span>
+    <span class="hljs-comment">// $progressBar-&gt;advance(3);</span>
+}
+
+<span class="hljs-comment">// ensures that the progress bar is at 100%</span>
+<span class="hljs-variable"><span class="hljs-variable-other-marker">$</span>progressBar</span><span class="hljs-operator">-&gt;</span>finish();</code></pre>
+    </div>
+</div>
+<div class="admonition admonition-tip ">
+    <p class="admonition-title">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" width="24" height="24" viewbox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path></svg><span>Tip</span>
+    </p><p>You can also regress the progress bar (i.e. step backwards) by calling
+<code translate="no" class="notranslate">$progress-&gt;advance()</code> with a negative value. For example, if you call
+<code translate="no" class="notranslate">$progress-&gt;advance(-2)</code> then it will regress the progress bar 2 steps.</p>
+</div>
+<p>Instead of advancing the bar by a number of steps (with the
+<a href="https://github.com/symfony/symfony/blob/6.0/src/Symfony/Component/Console/Helper/ProgressBar.php#method_advance" class="reference external" title="Symfony\Component\Console\Helper\ProgressBar::advance()" rel="external noopener noreferrer" target="_blank">advance()</a> method),
+you can also set the current progress by calling the
+<a href="https://github.com/symfony/symfony/blob/6.0/src/Symfony/Component/Console/Helper/ProgressBar.php#method_setProgress" class="reference external" title="Symfony\Component\Console\Helper\ProgressBar::setProgress()" rel="external noopener noreferrer" target="_blank">setProgress()</a> method.</p>
+<div class="admonition admonition-tip ">
+    <p class="admonition-title">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" width="24" height="24" viewbox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path></svg><span>Tip</span>
+    </p><p>If your platform doesn't support ANSI codes, updates to the progress
+bar are added as new lines. To prevent the output from being flooded,
+use the <a href="https://github.com/symfony/symfony/blob/6.0/src/Symfony/Component/Console/Helper/ProgressBar.php#method_minSecondsBetweenRedraws" class="reference external" title="Symfony\Component\Console\Helper\ProgressBar::minSecondsBetweenRedraws()" rel="external noopener noreferrer" target="_blank">minSecondsBetweenRedraws()</a>
+method to limit the number of redraws and the
+<a href="https://github.com/symfony/symfony/blob/6.0/src/Symfony/Component/Console/Helper/ProgressBar.php#method_setRedrawFrequency" class="reference external" title="Symfony\Component\Console\Helper\ProgressBar::setRedrawFrequency()" rel="external noopener noreferrer" target="_blank">setRedrawFrequency()</a> method
+to redraw every N iterations. By default, redraw frequency is
+<strong>100ms</strong> or <strong>10%</strong> of your <code translate="no" class="notranslate">max</code>.</p>
+</div>
+<p>If you don't know the exact number of steps in advance, set it to a reasonable
+value and then call the <code translate="no" class="notranslate">setMaxSteps()</code> method to update it as needed:</p>
+<div translate="no" data-loc="5" class="notranslate codeblock codeblock-length-sm codeblock-php">
+        <div class="codeblock-scroll">
+        <pre class="codeblock-lines">1
+2
+3
+4
+5</pre>
+        <pre class="codeblock-code"><code><span class="hljs-comment">// start with a 50 units progressbar</span>
+<span class="hljs-variable"><span class="hljs-variable-other-marker">$</span>progressBar</span> = <span class="hljs-keyword">new</span> ProgressBar(<span class="hljs-variable"><span class="hljs-variable-other-marker">$</span>output</span>, <span class="hljs-number">50</span>);
+
+<span class="hljs-comment">// a complex task has just been created: increase the progressbar to 200 units</span>
+<span class="hljs-variable"><span class="hljs-variable-other-marker">$</span>progressBar</span><span class="hljs-operator">-&gt;</span>setMaxSteps(<span class="hljs-number">200</span>);</code></pre>
+    </div>
+</div>
+<p>Another solution is to omit the steps argument when creating the
+<a href="https://github.com/symfony/symfony/blob/6.0/src/Symfony/Component/Console/Helper/ProgressBar.php" class="reference external" title="Symfony\Component\Console\Helper\ProgressBar" rel="external noopener noreferrer" target="_blank">ProgressBar</a> instance:</p>
+<div translate="no" data-loc="1" class="notranslate codeblock codeblock-length-sm codeblock-php">
+        <div class="codeblock-scroll">
+        <pre class="codeblock-lines">1</pre>
+        <pre class="codeblock-code"><code><span class="hljs-variable"><span class="hljs-variable-other-marker">$</span>progressBar</span> = <span class="hljs-keyword">new</span> ProgressBar(<span class="hljs-variable"><span class="hljs-variable-other-marker">$</span>output</span>);</code></pre>
+    </div>
+</div>
+<p>The progress will then be displayed as a throbber:</p>
+<div translate="no" data-loc="9" class="notranslate codeblock codeblock-length-sm codeblock-text">
+        <div class="codeblock-scroll">
+        <pre class="codeblock-lines">1
+2
+3
+4
+5
+6
+7
+8
+9</pre>
+        <pre class="codeblock-code"><code># no max steps (displays it like a throbber)
+    0 [&gt;---------------------------]
+    5 [-----&gt;----------------------]
+    5 [============================]
+
+# max steps defined
+ 0/3 [&gt;---------------------------]   0%
+ 1/3 [=========&gt;------------------]  33%
+ 3/3 [============================] 100%</code></pre>
+    </div>
+</div>
+<p>Whenever your task is finished, don't forget to call
+<a href="https://github.com/symfony/symfony/blob/6.0/src/Symfony/Component/Console/Helper/ProgressBar.php#method_finish" class="reference external" title="Symfony\Component\Console\Helper\ProgressBar::finish()" rel="external noopener noreferrer" target="_blank">finish()</a> to ensure
+that the progress bar display is refreshed with a 100% completion.</p>
+<div class="admonition admonition-note ">
+    <p class="admonition-title">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" width="24" height="24" viewbox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path></svg><span>Note</span>
+    </p><p>If you want to output something while the progress bar is running,
+call <a href="https://github.com/symfony/symfony/blob/6.0/src/Symfony/Component/Console/Helper/ProgressBar.php#method_clear" class="reference external" title="Symfony\Component\Console\Helper\ProgressBar::clear()" rel="external noopener noreferrer" target="_blank">clear()</a> first.
+After you're done, call
+<a href="https://github.com/symfony/symfony/blob/6.0/src/Symfony/Component/Console/Helper/ProgressBar.php#method_display" class="reference external" title="Symfony\Component\Console\Helper\ProgressBar::display()" rel="external noopener noreferrer" target="_blank">display()</a>
+to show the progress bar again.</p>
+</div>
+<p>If the progress information is stored in an iterable variable (such as an array
+or a PHP generator) you can use the
+<a href="https://github.com/symfony/symfony/blob/6.0/src/Symfony/Component/Console/Helper/ProgressBar.php#method_iterate" class="reference external" title="Symfony\Component\Console\Helper\ProgressBar::iterate()" rel="external noopener noreferrer" target="_blank">iterate()</a> method,
+which starts, advances and finishes the progress bar automatically:</p>
+<div translate="no" data-loc="15" class="notranslate codeblock codeblock-length-md codeblock-php">
+        <div class="codeblock-scroll">
+        <pre class="codeblock-lines">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15</pre>
+        <pre class="codeblock-code"><code><span class="hljs-keyword">use</span> <span class="hljs-title">Symfony</span>\<span class="hljs-title">Component</span>\<span class="hljs-title">Console</span>\<span class="hljs-title">Helper</span>\<span class="hljs-title">ProgressBar</span>;
+
+<span class="hljs-variable"><span class="hljs-variable-other-marker">$</span>progressBar</span> = <span class="hljs-keyword">new</span> ProgressBar(<span class="hljs-variable"><span class="hljs-variable-other-marker">$</span>output</span>);
+
+<span class="hljs-comment">// $iterable can be array</span>
+<span class="hljs-variable"><span class="hljs-variable-other-marker">$</span>iterable</span> = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>];
+<span class="hljs-keyword">foreach</span> (<span class="hljs-variable"><span class="hljs-variable-other-marker">$</span>progressBar</span><span class="hljs-operator">-&gt;</span>iterate(<span class="hljs-variable"><span class="hljs-variable-other-marker">$</span>iterable</span>) <span class="hljs-keyword">as</span> <span class="hljs-variable"><span class="hljs-variable-other-marker">$</span>value</span>) {
+    <span class="hljs-comment">// ... do some work</span>
+}
+
+<span class="hljs-comment">// or a generator</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">iterable</span><span class="hljs-params">()</span> </span>{ <span class="hljs-keyword">yield</span> <span class="hljs-number">1</span>; <span class="hljs-keyword">yield</span> <span class="hljs-number">2</span>; ... };
+<span class="hljs-keyword">foreach</span> (<span class="hljs-variable"><span class="hljs-variable-other-marker">$</span>progressBar</span><span class="hljs-operator">-&gt;</span>iterate(iterable()) <span class="hljs-keyword">as</span> <span class="hljs-variable"><span class="hljs-variable-other-marker">$</span>value</span>) {
+    <span class="hljs-comment">// ... do some work</span>
+}</code></pre>
+    </div>
+</div>
+<p>The previous code will output:</p>
+<div translate="no" data-loc="3" class="notranslate codeblock codeblock-length-sm codeblock-text">
+        <div class="codeblock-scroll">
+        <pre class="codeblock-lines">1
+2
+3</pre>
+        <pre class="codeblock-code"><code>0/2 [&gt;---------------------------]   0%
+1/2 [==============&gt;-------------]  50%
+2/2 [============================] 100%</code></pre>
+    </div>
+</div>
+<div class="section">
+<h2 id="customizing-the-progress-bar"><a class="headerlink" href="#customizing-the-progress-bar" title="Permalink to this headline">Customizing the Progress Bar</a></h2>
+<div class="section">
+<h3 id="built-in-formats"><a class="headerlink" href="#built-in-formats" title="Permalink to this headline">Built-in Formats</a></h3>
+<p>By default, the information rendered on a progress bar depends on the current
+level of verbosity of the <code translate="no" class="notranslate">OutputInterface</code> instance:</p>
+<div translate="no" data-loc="19" class="notranslate codeblock codeblock-length-md codeblock-text">
+        <div class="codeblock-scroll">
+        <pre class="codeblock-lines">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19</pre>
+        <pre class="codeblock-code"><code># OutputInterface::VERBOSITY_NORMAL (CLI with no verbosity flag)
+ 0/3 [&gt;---------------------------]   0%
+ 1/3 [=========&gt;------------------]  33%
+ 3/3 [============================] 100%
+
+# OutputInterface::VERBOSITY_VERBOSE (-v)
+ 0/3 [&gt;---------------------------]   0%  1 sec
+ 1/3 [=========&gt;------------------]  33%  1 sec
+ 3/3 [============================] 100%  1 sec
+
+# OutputInterface::VERBOSITY_VERY_VERBOSE (-vv)
+ 0/3 [&gt;---------------------------]   0%  1 sec/1 sec
+ 1/3 [=========&gt;------------------]  33%  1 sec/1 sec
+ 3/3 [============================] 100%  1 sec/1 sec
+
+# OutputInterface::VERBOSITY_DEBUG (-vvv)
+ 0/3 [&gt;---------------------------]   0%  1 sec/1 sec  1.0 MB
+ 1/3 [=========&gt;------------------]  33%  1 sec/1 sec  1.0 MB
+ 3/3 [============================] 100%  1 sec/1 sec  1.0 MB</code></pre>
+    </div>
+</div>
+<div class="admonition admonition-note ">
+    <p class="admonition-title">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" width="24" height="24" viewbox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path></svg><span>Note</span>
+    </p><p>If you call a command with the quiet flag (<code translate="no" class="notranslate">-q</code>), the progress bar won't
+be displayed.</p>
+</div>
+<p>Instead of relying on the verbosity mode of the current command, you can also
+force a format via <code translate="no" class="notranslate">setFormat()</code>:</p>
+<div translate="no" data-loc="1" class="notranslate codeblock codeblock-length-sm codeblock-php">
+        <div class="codeblock-scroll">
+        <pre class="codeblock-lines">1</pre>
+        <pre class="codeblock-code"><code><span class="hljs-variable"><span class="hljs-variable-other-marker">$</span>progressBar</span><span class="hljs-operator">-&gt;</span>setFormat(<span class="hljs-string">'verbose'</span>);</code></pre>
+    </div>
+</div>
+<p>The built-in formats are the following:</p>
+<ul><li><code translate="no" class="notranslate">normal</code></li>
+<li><code translate="no" class="notranslate">verbose</code></li>
+<li><code translate="no" class="notranslate">very_verbose</code></li>
+<li><code translate="no" class="notranslate">debug</code></li>
+</ul><p>If you don't set the number of steps for your progress bar, use the <code translate="no" class="notranslate">_nomax</code>
+variants:</p>
+<ul><li><code translate="no" class="notranslate">normal_nomax</code></li>
+<li><code translate="no" class="notranslate">verbose_nomax</code></li>
+<li><code translate="no" class="notranslate">very_verbose_nomax</code></li>
+<li><code translate="no" class="notranslate">debug_nomax</code></li>
+</ul></div>
+<div class="section">
+<h3 id="custom-formats"><a class="headerlink" href="#custom-formats" title="Permalink to this headline">Custom Formats</a></h3>
+<p>Instead of using the built-in formats, you can also set your own:</p>
+<div translate="no" data-loc="1" class="notranslate codeblock codeblock-length-sm codeblock-php">
+        <div class="codeblock-scroll">
+        <pre class="codeblock-lines">1</pre>
+        <pre class="codeblock-code"><code><span class="hljs-variable"><span class="hljs-variable-other-marker">$</span>progressBar</span><span class="hljs-operator">-&gt;</span>setFormat(<span class="hljs-string">'%bar%'</span>);</code></pre>
+    </div>
+</div>
+<p>This sets the format to only display the progress bar itself:</p>
+<div translate="no" data-loc="3" class="notranslate codeblock codeblock-length-sm codeblock-text">
+        <div class="codeblock-scroll">
+        <pre class="codeblock-lines">1
+2
+3</pre>
+        <pre class="codeblock-code"><code>&gt;---------------------------
+=========&gt;------------------
+============================</code></pre>
+    </div>
+</div>
+<p>A progress bar format is a string that contains specific placeholders (a name
+enclosed with the <code translate="no" class="notranslate">%</code> character); the placeholders are replaced based on the
+current progress of the bar. Here is a list of the built-in placeholders:</p>
+<ul><li><code translate="no" class="notranslate">current</code>: The current step;</li>
+<li><code translate="no" class="notranslate">max</code>: The maximum number of steps (or 0 if no max is defined);</li>
+<li><code translate="no" class="notranslate">bar</code>: The bar itself;</li>
+<li><code translate="no" class="notranslate">percent</code>: The percentage of completion (not available if no max is defined);</li>
+<li><code translate="no" class="notranslate">elapsed</code>: The time elapsed since the start of the progress bar;</li>
+<li><code translate="no" class="notranslate">remaining</code>: The remaining time to complete the task (not available if no max is defined);</li>
+<li><code translate="no" class="notranslate">estimated</code>: The estimated time to complete the task (not available if no max is defined);</li>
+<li><code translate="no" class="notranslate">memory</code>: The current memory usage;</li>
+<li><code translate="no" class="notranslate">message</code>: used to display arbitrary messages in the progress bar (as explained later).</li>
+</ul><p>For instance, here is how you could set the format to be the same as the
+<code translate="no" class="notranslate">debug</code> one:</p>
+<div translate="no" data-loc="1" class="notranslate codeblock codeblock-length-sm codeblock-php">
+        <div class="codeblock-scroll">
+        <pre class="codeblock-lines">1</pre>
+        <pre class="codeblock-code"><code><span class="hljs-variable"><span class="hljs-variable-other-marker">$</span>progressBar</span><span class="hljs-operator">-&gt;</span>setFormat(<span class="hljs-string">' %current%/%max% [%bar%] %percent:3s%% %elapsed:6s%/%estimated:-6s% %memory:6s%'</span>);</code></pre>
+    </div>
+</div>
+<p>Notice the <code translate="no" class="notranslate">:6s</code> part added to some placeholders? That's how you can tweak
+the appearance of the bar (formatting and alignment). The part after the colon
+(<code translate="no" class="notranslate">:</code>) is used to set the <code translate="no" class="notranslate">sprintf</code> format of the string.</p>
+<p>Instead of setting the format for a given instance of a progress bar, you can
+also define global formats:</p>
+<div translate="no" data-loc="4" class="notranslate codeblock codeblock-length-sm codeblock-php">
+        <div class="codeblock-scroll">
+        <pre class="codeblock-lines">1
+2
+3
+4</pre>
+        <pre class="codeblock-code"><code>ProgressBar<span class="hljs-operator">::</span>setFormatDefinition(<span class="hljs-string">'minimal'</span>, <span class="hljs-string">'Progress: %percent%%'</span>);
+
+<span class="hljs-variable"><span class="hljs-variable-other-marker">$</span>progressBar</span> = <span class="hljs-keyword">new</span> ProgressBar(<span class="hljs-variable"><span class="hljs-variable-other-marker">$</span>output</span>, <span class="hljs-number">3</span>);
+<span class="hljs-variable"><span class="hljs-variable-other-marker">$</span>progressBar</span><span class="hljs-operator">-&gt;</span>setFormat(<span class="hljs-string">'minimal'</span>);</code></pre>
+    </div>
+</div>
+<p>This code defines a new <code translate="no" class="notranslate">minimal</code> format that you can then use for your
+progress bars:</p>
+<div translate="no" data-loc="3" class="notranslate codeblock codeblock-length-sm codeblock-text">
+        <div class="codeblock-scroll">
+        <pre class="codeblock-lines">1
+2
+3</pre>
+        <pre class="codeblock-code"><code>Progress: 0%
+Progress: 33%
+Progress: 100%</code></pre>
+    </div>
+</div>
+<div class="admonition admonition-tip ">
+    <p class="admonition-title">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" width="24" height="24" viewbox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path></svg><span>Tip</span>
+    </p><p>It is almost always better to redefine built-in formats instead of creating
+new ones as that allows the display to automatically vary based on the
+verbosity flag of the command.</p>
+</div>
+<p>When defining a new style that contains placeholders that are only available
+when the maximum number of steps is known, you should create a <code translate="no" class="notranslate">_nomax</code>
+variant:</p>
+<div translate="no" data-loc="5" class="notranslate codeblock codeblock-length-sm codeblock-php">
+        <div class="codeblock-scroll">
+        <pre class="codeblock-lines">1
+2
+3
+4
+5</pre>
+        <pre class="codeblock-code"><code>ProgressBar<span class="hljs-operator">::</span>setFormatDefinition(<span class="hljs-string">'minimal'</span>, <span class="hljs-string">'%percent%% %remaining%'</span>);
+ProgressBar<span class="hljs-operator">::</span>setFormatDefinition(<span class="hljs-string">'minimal_nomax'</span>, <span class="hljs-string">'%percent%%'</span>);
+
+<span class="hljs-variable"><span class="hljs-variable-other-marker">$</span>progressBar</span> = <span class="hljs-keyword">new</span> ProgressBar(<span class="hljs-variable"><span class="hljs-variable-other-marker">$</span>output</span>);
+<span class="hljs-variable"><span class="hljs-variable-other-marker">$</span>progressBar</span><span class="hljs-operator">-&gt;</span>setFormat(<span class="hljs-string">'minimal'</span>);</code></pre>
+    </div>
+</div>
+<p>When displaying the progress bar, the format will automatically be set to
+<code translate="no" class="notranslate">minimal_nomax</code> if the bar does not have a maximum number of steps like in
+the example above.</p>
+<div class="admonition admonition-tip ">
+    <p class="admonition-title">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" width="24" height="24" viewbox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path></svg><span>Tip</span>
+    </p><p>A format can contain any valid ANSI codes and can also use the
+Symfony-specific way to set colors:</p>
+<div translate="no" data-loc="4" class="notranslate codeblock codeblock-length-sm codeblock-php">
+        <div class="codeblock-scroll">
+        <pre class="codeblock-lines">1
+2
+3
+4</pre>
+        <pre class="codeblock-code"><code>ProgressBar<span class="hljs-operator">::</span>setFormatDefinition(
+    <span class="hljs-string">'minimal'</span>,
+    <span class="hljs-string">'&lt;info&gt;%percent%&lt;/info&gt;\033[32m%\033[0m &lt;fg=white;bg=blue&gt;%remaining%&lt;/&gt;'</span>
+);</code></pre>
+    </div>
+</div>
+</div>
+<div class="admonition admonition-note ">
+    <p class="admonition-title">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" width="24" height="24" viewbox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path></svg><span>Note</span>
+    </p><p>A format can span more than one line; that's very useful when you want to
+display more contextual information alongside the progress bar (see the
+example at the beginning of this article).</p>
+</div>
+</div>
+<div class="section">
+<h3 id="bar-settings"><a class="headerlink" href="#bar-settings" title="Permalink to this headline">Bar Settings</a></h3>
+<p>Among the placeholders, <code translate="no" class="notranslate">bar</code> is a bit special as all the characters used
+to display it can be customized:</p>
+<div translate="no" data-loc="11" class="notranslate codeblock codeblock-length-md codeblock-php">
+        <div class="codeblock-scroll">
+        <pre class="codeblock-lines">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11</pre>
+        <pre class="codeblock-code"><code><span class="hljs-comment">// the finished part of the bar</span>
+<span class="hljs-variable"><span class="hljs-variable-other-marker">$</span>progressBar</span><span class="hljs-operator">-&gt;</span>setBarCharacter(<span class="hljs-string">'&lt;comment&gt;=&lt;/comment&gt;'</span>);
+
+<span class="hljs-comment">// the unfinished part of the bar</span>
+<span class="hljs-variable"><span class="hljs-variable-other-marker">$</span>progressBar</span><span class="hljs-operator">-&gt;</span>setEmptyBarCharacter(<span class="hljs-string">' '</span>);
+
+<span class="hljs-comment">// the progress character</span>
+<span class="hljs-variable"><span class="hljs-variable-other-marker">$</span>progressBar</span><span class="hljs-operator">-&gt;</span>setProgressCharacter(<span class="hljs-string">'|'</span>);
+
+<span class="hljs-comment">// the bar width</span>
+<span class="hljs-variable"><span class="hljs-variable-other-marker">$</span>progressBar</span><span class="hljs-operator">-&gt;</span>setBarWidth(<span class="hljs-number">50</span>);</code></pre>
+    </div>
+</div>
+<div class="admonition admonition-caution ">
+    <p class="admonition-title">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" width="24" height="24" viewbox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg><span>Caution</span>
+    </p><p>For performance reasons, Symfony redraws the screen once every 100ms. If this is too
+fast or to slow for your application, use the methods
+<a href="https://github.com/symfony/symfony/blob/6.0/src/Symfony/Component/Console/Helper/ProgressBar.php#method_minSecondsBetweenRedraws" class="reference external" title="Symfony\Component\Console\Helper\ProgressBar::minSecondsBetweenRedraws()" rel="external noopener noreferrer" target="_blank">minSecondsBetweenRedraws()</a> and
+<a href="https://github.com/symfony/symfony/blob/6.0/src/Symfony/Component/Console/Helper/ProgressBar.php#method_maxSecondsBetweenRedraws" class="reference external" title="Symfony\Component\Console\Helper\ProgressBar::maxSecondsBetweenRedraws()" rel="external noopener noreferrer" target="_blank">maxSecondsBetweenRedraws()</a>:</p>
+<div translate="no" data-loc="15" class="notranslate codeblock codeblock-length-md codeblock-php">
+        <div class="codeblock-scroll">
+        <pre class="codeblock-lines">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15</pre>
+        <pre class="codeblock-code"><code><span class="hljs-variable"><span class="hljs-variable-other-marker">$</span>progressBar</span> = <span class="hljs-keyword">new</span> ProgressBar(<span class="hljs-variable"><span class="hljs-variable-other-marker">$</span>output</span>, <span class="hljs-number">50000</span>);
+<span class="hljs-variable"><span class="hljs-variable-other-marker">$</span>progressBar</span><span class="hljs-operator">-&gt;</span>start();
+
+<span class="hljs-comment">// this redraws the screen every 100 iterations, but sets additional limits:</span>
+<span class="hljs-comment">// don't redraw slower than 200ms (0.2) or faster than 100ms (0.1)</span>
+<span class="hljs-variable"><span class="hljs-variable-other-marker">$</span>progressBar</span><span class="hljs-operator">-&gt;</span>setRedrawFrequency(<span class="hljs-number">100</span>);
+<span class="hljs-variable"><span class="hljs-variable-other-marker">$</span>progressBar</span><span class="hljs-operator">-&gt;</span>maxSecondsBetweenRedraws(<span class="hljs-number">0.2</span>);
+<span class="hljs-variable"><span class="hljs-variable-other-marker">$</span>progressBar</span><span class="hljs-operator">-&gt;</span>minSecondsBetweenRedraws(<span class="hljs-number">0.1</span>);
+
+<span class="hljs-variable"><span class="hljs-variable-other-marker">$</span>i</span> = <span class="hljs-number">0</span>;
+<span class="hljs-keyword">while</span> (<span class="hljs-variable"><span class="hljs-variable-other-marker">$</span>i</span>++ &lt; <span class="hljs-number">50000</span>) {
+    <span class="hljs-comment">// ... do some work</span>
+
+    <span class="hljs-variable"><span class="hljs-variable-other-marker">$</span>progressBar</span><span class="hljs-operator">-&gt;</span>advance();
+}</code></pre>
+    </div>
+</div>
+</div>
+</div>
+<div class="section">
+<h3 id="custom-placeholders"><a class="headerlink" href="#custom-placeholders" title="Permalink to this headline">Custom Placeholders</a></h3>
+<p>If you want to display some information that depends on the progress bar
+display that are not available in the list of built-in placeholders, you can
+create your own. Let's see how you can create a <code translate="no" class="notranslate">remaining_steps</code> placeholder
+that displays the number of remaining steps:</p>
+<div translate="no" data-loc="6" class="notranslate codeblock codeblock-length-sm codeblock-php">
+        <div class="codeblock-scroll">
+        <pre class="codeblock-lines">1
+2
+3
+4
+5
+6</pre>
+        <pre class="codeblock-code"><code>ProgressBar<span class="hljs-operator">::</span>setPlaceholderFormatterDefinition(
+    <span class="hljs-string">'remaining_steps'</span>,
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(ProgressBar <span class="hljs-variable"><span class="hljs-variable-other-marker">$</span>progressBar</span>, OutputInterface <span class="hljs-variable"><span class="hljs-variable-other-marker">$</span>output</span>)</span> </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-variable"><span class="hljs-variable-other-marker">$</span>progressBar</span><span class="hljs-operator">-&gt;</span>getMaxSteps() - <span class="hljs-variable"><span class="hljs-variable-other-marker">$</span>progressBar</span><span class="hljs-operator">-&gt;</span>getProgress();
+    }
+);</code></pre>
+    </div>
+</div>
+</div>
+<div class="section">
+<h3 id="custom-messages"><a class="headerlink" href="#custom-messages" title="Permalink to this headline">Custom Messages</a></h3>
+<p>Progress bars define a placeholder called <code translate="no" class="notranslate">message</code> to display arbitrary
+messages. However, none of the built-in formats include that placeholder, so
+before displaying these messages, you must define your own custom format:</p>
+<div translate="no" data-loc="4" class="notranslate codeblock codeblock-length-sm codeblock-php">
+        <div class="codeblock-scroll">
+        <pre class="codeblock-lines">1
+2
+3
+4</pre>
+        <pre class="codeblock-code"><code>ProgressBar<span class="hljs-operator">::</span>setFormatDefinition(<span class="hljs-string">'custom'</span>, <span class="hljs-string">' %current%/%max% -- %message%'</span>);
+
+<span class="hljs-variable"><span class="hljs-variable-other-marker">$</span>progressBar</span> = <span class="hljs-keyword">new</span> ProgressBar(<span class="hljs-variable"><span class="hljs-variable-other-marker">$</span>output</span>, <span class="hljs-number">100</span>);
+<span class="hljs-variable"><span class="hljs-variable-other-marker">$</span>progressBar</span><span class="hljs-operator">-&gt;</span>setFormat(<span class="hljs-string">'custom'</span>);</code></pre>
+    </div>
+</div>
+<p>Now, use the <code translate="no" class="notranslate">setMessage()</code> method to set the value of the <code translate="no" class="notranslate">%message%</code>
+placeholder before displaying the progress bar:</p>
+<div translate="no" data-loc="8" class="notranslate codeblock codeblock-length-sm codeblock-php">
+        <div class="codeblock-scroll">
+        <pre class="codeblock-lines">1
+2
+3
+4
+5
+6
+7
+8</pre>
+        <pre class="codeblock-code"><code><span class="hljs-comment">// ...</span>
+<span class="hljs-variable"><span class="hljs-variable-other-marker">$</span>progressBar</span><span class="hljs-operator">-&gt;</span>setMessage(<span class="hljs-string">'Start'</span>);
+<span class="hljs-variable"><span class="hljs-variable-other-marker">$</span>progressBar</span><span class="hljs-operator">-&gt;</span>start();
+<span class="hljs-comment">// 0/100 -- Start</span>
+
+<span class="hljs-variable"><span class="hljs-variable-other-marker">$</span>progressBar</span><span class="hljs-operator">-&gt;</span>setMessage(<span class="hljs-string">'Task is in progress...'</span>);
+<span class="hljs-variable"><span class="hljs-variable-other-marker">$</span>progressBar</span><span class="hljs-operator">-&gt;</span>advance();
+<span class="hljs-comment">// 1/100 -- Task is in progress...</span></code></pre>
+    </div>
+</div>
+<p>Messages can be combined with custom placeholders too. In this example, the
+progress bar uses the <code translate="no" class="notranslate">%message%</code> and <code translate="no" class="notranslate">%filename%</code> placeholders:</p>
+<div translate="no" data-loc="4" class="notranslate codeblock codeblock-length-sm codeblock-php">
+        <div class="codeblock-scroll">
+        <pre class="codeblock-lines">1
+2
+3
+4</pre>
+        <pre class="codeblock-code"><code>ProgressBar<span class="hljs-operator">::</span>setFormatDefinition(<span class="hljs-string">'custom'</span>, <span class="hljs-string">' %current%/%max% -- %message% (%filename%)'</span>);
+
+<span class="hljs-variable"><span class="hljs-variable-other-marker">$</span>progressBar</span> = <span class="hljs-keyword">new</span> ProgressBar(<span class="hljs-variable"><span class="hljs-variable-other-marker">$</span>output</span>, <span class="hljs-number">100</span>);
+<span class="hljs-variable"><span class="hljs-variable-other-marker">$</span>progressBar</span><span class="hljs-operator">-&gt;</span>setFormat(<span class="hljs-string">'custom'</span>);</code></pre>
+    </div>
+</div>
+<p>The <code translate="no" class="notranslate">setMessage()</code> method accepts a second optional argument to set the value
+of the custom placeholders:</p>
+<div translate="no" data-loc="8" class="notranslate codeblock codeblock-length-sm codeblock-php">
+        <div class="codeblock-scroll">
+        <pre class="codeblock-lines">1
+2
+3
+4
+5
+6
+7
+8</pre>
+        <pre class="codeblock-code"><code><span class="hljs-comment">// ...</span>
+<span class="hljs-comment">// $files = ['client-001/invoices.xml', '...'];</span>
+<span class="hljs-keyword">foreach</span> (<span class="hljs-variable"><span class="hljs-variable-other-marker">$</span>files</span> <span class="hljs-keyword">as</span> <span class="hljs-variable"><span class="hljs-variable-other-marker">$</span>filename</span>) {
+    <span class="hljs-variable"><span class="hljs-variable-other-marker">$</span>progressBar</span><span class="hljs-operator">-&gt;</span>setMessage(<span class="hljs-string">'Importing invoices...'</span>);
+    <span class="hljs-variable"><span class="hljs-variable-other-marker">$</span>progressBar</span><span class="hljs-operator">-&gt;</span>setMessage(<span class="hljs-variable"><span class="hljs-variable-other-marker">$</span>filename</span>, <span class="hljs-string">'filename'</span>);
+    <span class="hljs-variable"><span class="hljs-variable-other-marker">$</span>progressBar</span><span class="hljs-operator">-&gt;</span>advance();
+    <span class="hljs-comment">// 2/100 -- Importing invoices... (client-001/invoices.xml)</span>
+}</code></pre>
+    </div>
+</div>
+<span id="console-multiple-progress-bars"></span>
+</div>
+</div>
+<div class="section">
+<h2 id="displaying-multiple-progress-bars"><a class="headerlink" href="#displaying-multiple-progress-bars" title="Permalink to this headline">Displaying Multiple Progress Bars</a></h2>
+<p>When using <a href="../../../console.html#console-output-sections" class="reference internal">Console output sections</a> it's
+possible to display multiple progress bars at the same time and change their
+progress independently:</p>
+<div translate="no" data-loc="19" class="notranslate codeblock codeblock-length-md codeblock-php">
+        <div class="codeblock-scroll">
+        <pre class="codeblock-lines">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19</pre>
+        <pre class="codeblock-code"><code><span class="hljs-variable"><span class="hljs-variable-other-marker">$</span>section1</span> = <span class="hljs-variable"><span class="hljs-variable-other-marker">$</span>output</span><span class="hljs-operator">-&gt;</span>section();
+<span class="hljs-variable"><span class="hljs-variable-other-marker">$</span>section2</span> = <span class="hljs-variable"><span class="hljs-variable-other-marker">$</span>output</span><span class="hljs-operator">-&gt;</span>section();
+
+<span class="hljs-variable"><span class="hljs-variable-other-marker">$</span>progress1</span> = <span class="hljs-keyword">new</span> ProgressBar(<span class="hljs-variable"><span class="hljs-variable-other-marker">$</span>section1</span>);
+<span class="hljs-variable"><span class="hljs-variable-other-marker">$</span>progress2</span> = <span class="hljs-keyword">new</span> ProgressBar(<span class="hljs-variable"><span class="hljs-variable-other-marker">$</span>section2</span>);
+
+<span class="hljs-variable"><span class="hljs-variable-other-marker">$</span>progress1</span><span class="hljs-operator">-&gt;</span>start(<span class="hljs-number">100</span>);
+<span class="hljs-variable"><span class="hljs-variable-other-marker">$</span>progress2</span><span class="hljs-operator">-&gt;</span>start(<span class="hljs-number">100</span>);
+
+<span class="hljs-variable"><span class="hljs-variable-other-marker">$</span>i</span> = <span class="hljs-number">0</span>;
+<span class="hljs-keyword">while</span> (++<span class="hljs-variable"><span class="hljs-variable-other-marker">$</span>i</span> &lt; <span class="hljs-number">100</span>) {
+    <span class="hljs-variable"><span class="hljs-variable-other-marker">$</span>progress1</span><span class="hljs-operator">-&gt;</span>advance();
+
+    <span class="hljs-keyword">if</span> (<span class="hljs-variable"><span class="hljs-variable-other-marker">$</span>i</span> % <span class="hljs-number">2</span> === <span class="hljs-number">0</span>) {
+        <span class="hljs-variable"><span class="hljs-variable-other-marker">$</span>progress2</span><span class="hljs-operator">-&gt;</span>advance(<span class="hljs-number">4</span>);
+    }
+
+    usleep(<span class="hljs-number">50000</span>);
+}</code></pre>
+    </div>
+</div>
+<p>After a couple of iterations, the output in the terminal will look like this:</p>
+<div translate="no" data-loc="2" class="notranslate codeblock codeblock-length-sm codeblock-text">
+        <div class="codeblock-scroll">
+        <pre class="codeblock-lines">1
+2</pre>
+        <pre class="codeblock-code"><code>34/100 [=========&gt;------------------]  34%
+68/100 [===================&gt;--------]  68%</code></pre>
+    </div>
+</div>
+</div>
+</div>
+
+    
+
+            
+            <div class="doc-license">
+                This work, including the code samples, is licensed under a
+                                    <a rel="license" href="https://creativecommons.org/licenses/by-sa/3.0/">Creative Commons BY-SA 3.0</a>
+                                license.
+            </div>
+        </article>
+</section>
+                            </main>
+
+                                                            <div class="doc-content-embedded-sidebar">
+                                                                                                                                                                            <div class="doc-backer">
+                                                <div>
+                                                                                                            <strong>The Console component</strong>
+                                                                                                        is <a href="/backers">backed</a> by <a class="link stretched-link" href="https://les-tilleuls.coop/">Les-Tilleuls.coop</a>.
+                                                </div>
+                                                <div class="backer_logo"><?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 25.2.3, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 1197.2 169.48" style="enable-background:new 0 0 1197.2 169.48;" xml:space="preserve">
+<style type="text/css">
+	.lestilleuls-logo-st0{fill:#EC4D28;}
+	.dark-theme .lestilleuls-logo-wordmark-dark { fill: #fff; }
+</style>
+<g id="Calque_1">
+</g>
+<g id="Calque_2">
+	<g>
+		<g>
+			<path class="lestilleuls-logo-wordmark-dark" d="M385.53,96.15h40v15h-40V96.15z"/>
+			<path class="lestilleuls-logo-wordmark-dark" d="M505.53,139.48h-20v-22.26c0-11.99,8.31-21.77,20-24.41L505.53,139.48z"/>
+			<path class="lestilleuls-logo-wordmark-dark" d="M745.53,137.09c-3.41,0.99-7.79,1.92-13.17,2.77c-5.37,0.85-11.02,1.28-16.93,1.28c-6,0-10-0.81-13.98-2.44
+				c-3.99-1.62-7.14-3.9-9.47-6.83c-2.33-2.93-3.99-6.43-4.97-10.49c-0.99-4.06-1.48-8.53-1.48-13.4V67.82h20v37.75
+				c0,6.49,0.85,11.19,2.56,14.07c1.7,2.89,3.89,4.33,8.56,4.33c1.43,0,2.96-0.07,4.58-0.2c1.62-0.13,3.05-0.29,4.31-0.47V67.82h20
+				V137.09z"/>
+			<g>
+				<path class="lestilleuls-logo-st0" d="M1054.11,136.58c-5.77-3.05-10.31-7.4-13.61-13.07c-3.3-5.66-4.96-12.28-4.96-19.86
+					c0-7.49,1.67-14.09,5.02-19.79c3.35-5.71,7.93-10.08,13.75-13.13c5.82-3.05,12.34-4.57,19.56-4.57c7.23,0,13.75,1.52,19.56,4.57
+					c5.82,3.05,10.4,7.43,13.75,13.13c3.35,5.71,5.02,12.3,5.02,19.79c0,7.49-1.7,14.09-5.09,19.79
+					c-3.39,5.71-8.02,10.08-13.88,13.13c-5.86,3.05-12.41,4.57-19.63,4.57C1066.38,141.15,1059.88,139.63,1054.11,136.58z
+					 M1084.64,117.11c3.04-3.13,4.56-7.62,4.56-13.46c0-5.84-1.48-10.32-4.43-13.46c-2.95-3.13-6.59-4.7-10.91-4.7
+					c-4.41,0-8.06,1.55-10.97,4.64c-2.91,3.1-4.36,7.6-4.36,13.53c0,5.84,1.43,10.32,4.3,13.46c2.86,3.14,6.45,4.7,10.77,4.7
+					C1077.92,121.81,1081.6,120.25,1084.64,117.11z"/>
+			</g>
+			<g>
+				<path class="lestilleuls-logo-st0" d="M969.11,136.58c-5.77-3.05-10.31-7.4-13.61-13.07c-3.3-5.66-4.96-12.28-4.96-19.86
+					c0-7.49,1.67-14.09,5.02-19.79c3.35-5.71,7.93-10.08,13.75-13.13c5.82-3.05,12.34-4.57,19.56-4.57s13.75,1.52,19.56,4.57
+					c5.82,3.05,10.4,7.43,13.75,13.13c3.35,5.71,5.02,12.3,5.02,19.79c0,7.49-1.7,14.09-5.09,19.79
+					c-3.39,5.71-8.02,10.08-13.88,13.13c-5.86,3.05-12.41,4.57-19.63,4.57C981.38,141.15,974.88,139.63,969.11,136.58z
+					 M999.64,117.11c3.04-3.13,4.56-7.62,4.56-13.46c0-5.84-1.48-10.32-4.43-13.46c-2.95-3.13-6.59-4.7-10.91-4.7
+					c-4.41,0-8.06,1.55-10.97,4.64c-2.91,3.1-4.36,7.6-4.36,13.53c0,5.84,1.43,10.32,4.3,13.46c2.86,3.14,6.45,4.7,10.77,4.7
+					C992.92,121.81,996.6,120.25,999.64,117.11z"/>
+			</g>
+			<path class="lestilleuls-logo-st0" d="M945.13,129.56c-2.09-3.58-3.67-7.44-4.77-11.55c-2.85,2.53-6.21,3.81-10.09,3.81
+				c-4.32,0-7.91-1.57-10.77-4.7c-2.86-3.13-4.3-7.62-4.3-13.46c0-5.92,1.45-10.43,4.36-13.53c2.91-3.09,6.56-4.64,10.97-4.64
+				c3.84,0,7.13,1.24,9.89,3.72c1.11-4.05,2.7-7.87,4.79-11.43c1.48-2.52,3.16-4.84,5.02-6.98c-0.04-0.02-0.09-0.05-0.13-0.07
+				c-5.82-3.05-12.34-4.57-19.56-4.57s-13.75,1.52-19.56,4.57c-5.82,3.05-10.4,7.43-13.75,13.13c-3.35,5.71-5.02,12.3-5.02,19.79
+				c0,7.58,1.65,14.2,4.96,19.86c3.3,5.66,7.84,10.02,13.61,13.07c5.77,3.05,12.27,4.57,19.5,4.57c7.22,0,13.77-1.52,19.63-4.57
+				c0.06-0.03,0.11-0.07,0.17-0.1C948.25,134.35,946.58,132.05,945.13,129.56z"/>
+			<path class="lestilleuls-logo-wordmark-dark" d="M233.87,119.48h-35v-100c-12.51,4.03-20,16.13-20,29.33v90.67h55V119.48z"/>
+			<path class="lestilleuls-logo-wordmark-dark" d="M410.53,19.48v20h35v100h20v-100l18.33,0c11.05,0,20-8.95,20-20v0L410.53,19.48z"/>
+			<path class="lestilleuls-logo-wordmark-dark" d="M668.01,136.65c-1.08,0.54-2.53,1.08-4.33,1.62c-1.81,0.54-3.81,1.02-6.02,1.42c-2.21,0.41-4.58,0.74-7.1,1.02
+				c-2.53,0.27-5.05,0.41-7.58,0.41c-6.41,0-11.98-0.95-16.71-2.84c-4.74-1.89-8.66-4.49-11.77-7.78c-3.11-3.29-5.41-7.19-6.9-11.7
+				c-1.49-4.51-2.23-9.38-2.23-14.61c0-6.31,0.97-11.84,2.91-16.58c1.94-4.74,4.49-8.68,7.64-11.84c3.16-3.16,6.79-5.55,10.89-7.17
+				c4.1-1.62,8.32-2.44,12.65-2.44c10.1,0,18.09,3.09,23.95,9.27c5.86,6.18,8.8,15.27,8.8,27.27c0,1.17-0.05,2.46-0.14,3.86
+				c-0.09,1.4-0.18,2.64-0.27,3.72h-45.74c0.45,4.15,2.39,7.44,5.82,9.88c3.43,2.44,8.03,3.65,13.8,3.65c3.7,0,7.33-0.34,10.89-1.02
+				c1.11-0.21,2.17-0.44,3.15-0.68L668.01,136.65z M652.72,96.26c-0.09-1.71-0.39-3.38-0.88-5.01c-0.5-1.63-1.26-3.07-2.3-4.33
+				c-1.04-1.26-2.35-2.3-3.92-3.11c-1.58-0.81-3.54-1.22-5.89-1.22c-2.26,0-4.19,0.38-5.82,1.15c-1.62,0.77-2.98,1.78-4.06,3.04
+				c-1.08,1.26-1.92,2.73-2.5,4.4c-0.59,1.67-1.02,3.36-1.29,5.07H652.72z"/>
+			<path class="lestilleuls-logo-wordmark-dark" d="M371.13,105.81c-1.67-1.84-3.95-3.56-6.83-5.15c-2.89-1.59-6.54-3.21-10.96-4.85c-2.17-0.81-3.95-1.57-5.35-2.25
+				c-1.4-0.68-2.5-1.31-3.32-1.9c-0.81-0.59-1.35-1.2-1.62-1.83c-0.27-0.63-0.41-1.35-0.41-2.16c0-3.52,3.16-5.28,9.47-5.28
+				c3.43,0,6.52,0.32,9.27,0.95c2.56,0.59,4.93,1.26,7.15,2.01V68.54c-1.61-0.43-3.42-0.84-5.46-1.23
+				c-3.97-0.77-8.12-1.15-12.45-1.15c-8.66,0-15.47,1.94-20.43,5.82c-4.96,3.88-7.44,9.16-7.44,15.83c0,3.43,0.49,6.36,1.49,8.79
+				c0.99,2.44,2.39,4.53,4.2,6.29c1.8,1.76,3.99,3.27,6.56,4.53c2.57,1.26,5.43,2.48,8.59,3.65c4.06,1.54,7.08,2.91,9.07,4.13
+				c1.98,1.22,2.98,2.64,2.98,4.26c0,2.07-0.77,3.47-2.3,4.19c-1.54,0.72-4.15,1.08-7.85,1.08c-3.52,0-7.08-0.38-10.69-1.15
+				c-1.91-0.41-3.79-0.89-5.65-1.46l-8.29,14.65c1.62,0.72,4.53,1.62,8.73,2.71c4.19,1.08,9.45,1.62,15.76,1.62
+				c9.65,0,17.12-1.8,22.39-5.4c5.28-3.6,7.92-8.91,7.92-15.93c0-2.97-0.34-5.58-1.02-7.83C373.97,109.7,372.8,107.65,371.13,105.81
+				z"/>
+			<path class="lestilleuls-logo-wordmark-dark" d="M852.67,105.84c-1.67-1.84-3.95-3.56-6.83-5.15c-2.89-1.59-6.54-3.21-10.96-4.85c-2.17-0.81-3.95-1.57-5.35-2.25
+				c-1.4-0.68-2.5-1.31-3.32-1.9c-0.81-0.59-1.35-1.2-1.62-1.83c-0.27-0.63-0.41-1.35-0.41-2.16c0-3.52,3.16-5.28,9.47-5.28
+				c3.43,0,6.52,0.32,9.27,0.95c2.56,0.59,4.93,1.26,7.15,2.01V68.57c-1.61-0.43-3.42-0.84-5.46-1.23
+				c-3.97-0.77-8.12-1.15-12.45-1.15c-8.66,0-15.47,1.94-20.43,5.82c-4.96,3.88-7.44,9.16-7.44,15.83c0,3.43,0.49,6.36,1.49,8.79
+				c0.99,2.44,2.39,4.53,4.2,6.29c1.8,1.76,3.99,3.27,6.56,4.53c2.57,1.26,5.43,2.48,8.59,3.65c4.06,1.54,7.08,2.91,9.07,4.13
+				c1.98,1.22,2.98,2.64,2.98,4.26c0,2.07-0.77,3.47-2.3,4.19c-1.54,0.72-4.15,1.08-7.85,1.08c-3.52,0-7.08-0.38-10.69-1.15
+				c-1.91-0.41-3.79-0.89-5.65-1.46l-8.29,14.65c1.62,0.72,4.53,1.62,8.73,2.71c4.19,1.08,9.45,1.62,15.76,1.62
+				c9.65,0,17.12-1.8,22.39-5.4c5.28-3.6,7.92-8.91,7.92-15.93c0-2.97-0.34-5.58-1.02-7.83
+				C855.51,109.74,854.34,107.69,852.67,105.84z"/>
+			<path class="lestilleuls-logo-wordmark-dark" d="M553.72,141.15c-5.82-0.09-10.54-0.72-14.16-1.88c-3.62-1.16-6.49-2.79-8.59-4.9c-2.1-2.1-3.54-4.65-4.3-7.65
+				c-0.76-3-1.14-6.38-1.14-10.13v-77.1h20v73.08c0,1.79,0.13,3.4,0.4,4.83c0.27,1.43,0.78,2.64,1.54,3.62
+				c0.76,0.99,1.86,1.79,3.29,2.42c1.43,0.63,3.36,1.03,5.77,1.21L553.72,141.15z"/>
+			<path class="lestilleuls-logo-wordmark-dark" d="M593.72,141.15c-5.82-0.09-10.54-0.72-14.16-1.88c-3.62-1.16-6.49-2.79-8.59-4.9c-2.1-2.1-3.54-4.65-4.3-7.65
+				c-0.76-3-1.14-6.38-1.14-10.13v-77.1h20v73.08c0,1.79,0.13,3.4,0.4,4.83c0.27,1.43,0.78,2.64,1.54,3.62
+				c0.76,0.99,1.86,1.79,3.29,2.42c1.43,0.63,3.36,1.03,5.77,1.21L593.72,141.15z"/>
+			<path class="lestilleuls-logo-wordmark-dark" d="M793.72,141.15c-5.82-0.09-10.54-0.72-14.16-1.88c-3.62-1.16-6.49-2.79-8.59-4.9c-2.1-2.1-3.54-4.65-4.3-7.65
+				c-0.76-3-1.14-6.38-1.14-10.13v-77.1h20v73.08c0,1.79,0.13,3.4,0.4,4.83c0.27,1.43,0.78,2.64,1.54,3.62
+				c0.76,0.99,1.86,1.79,3.29,2.42c1.43,0.63,3.36,1.03,5.77,1.21L793.72,141.15z"/>
+			<path class="lestilleuls-logo-st0" d="M507.2,72.82c0,3.8-1.19,6.7-3.58,8.69c-2.38,1.99-5.08,2.98-8.09,2.98s-5.71-0.99-8.09-2.98
+				c-2.38-1.99-3.58-4.88-3.58-8.69s1.19-6.7,3.58-8.69c2.38-1.99,5.08-2.98,8.09-2.98s5.71,0.99,8.09,2.98
+				C506.01,66.12,507.2,69.01,507.2,72.82z"/>
+			<path class="lestilleuls-logo-st0" d="M887.2,129.48c0,3.8-1.19,6.7-3.58,8.69c-2.38,1.99-5.08,2.98-8.09,2.98c-3.01,0-5.71-0.99-8.09-2.98
+				c-2.38-1.99-3.58-4.88-3.58-8.69c0-3.8,1.19-6.7,3.58-8.69c2.38-1.99,5.08-2.98,8.09-2.98c3.01,0,5.71,0.99,8.09,2.98
+				C886.01,122.78,887.2,125.68,887.2,129.48z"/>
+			<path class="lestilleuls-logo-st0" d="M1192.18,83.86c-3.35-5.71-7.93-10.08-13.75-13.13c-5.82-3.05-12.34-4.57-19.56-4.57s-13.75,1.52-19.56,4.57
+				c-5.82,3.05-10.4,7.43-13.75,13.13c-3.22,5.49-4.88,11.81-5,18.96h-0.02v66.67h20v-32.21c5.41,2.57,11.43,3.87,18.07,3.87
+				c7.22,0,13.77-1.52,19.63-4.57c5.86-3.05,10.49-7.43,13.88-13.13c3.39-5.7,5.09-12.3,5.09-19.79S1195.53,89.56,1192.18,83.86z
+				 M1169.64,117.11c-3.04,3.14-6.72,4.7-11.04,4.7c-4.32,0-7.91-1.57-10.77-4.7c-2.86-3.13-4.3-7.62-4.3-13.46
+				c0-5.92,1.45-10.43,4.36-13.53c2.91-3.09,6.56-4.64,10.97-4.64c4.32,0,7.95,1.57,10.91,4.7c2.95,3.14,4.43,7.62,4.43,13.46
+				C1174.2,109.49,1172.68,113.98,1169.64,117.11z"/>
+			<path class="lestilleuls-logo-wordmark-dark" d="M307.26,136.87c-1.08,0.54-2.53,1.08-4.33,1.62c-1.81,0.54-3.81,1.02-6.02,1.42c-2.21,0.41-4.58,0.74-7.1,1.02
+				c-2.53,0.27-5.05,0.41-7.58,0.41c-6.41,0-11.98-0.95-16.71-2.84c-4.74-1.89-8.66-4.49-11.77-7.78c-3.11-3.29-5.41-7.19-6.9-11.7
+				c-1.49-4.51-2.23-9.38-2.23-14.61c0-6.31,0.97-11.84,2.91-16.58c1.94-4.74,4.49-8.68,7.64-11.84c3.16-3.16,6.79-5.55,10.89-7.17
+				c4.1-1.62,8.32-2.44,12.65-2.44c10.1,0,18.09,3.09,23.95,9.27c5.86,6.18,8.8,15.27,8.8,27.27c0,1.17-0.05,2.46-0.14,3.86
+				c-0.09,1.4-0.18,2.64-0.27,3.72h-45.74c0.45,4.15,2.39,7.44,5.82,9.88c3.43,2.44,8.03,3.65,13.8,3.65c3.7,0,7.33-0.34,10.89-1.02
+				c1.11-0.21,2.17-0.44,3.15-0.68L307.26,136.87z M291.97,96.48c-0.09-1.71-0.39-3.38-0.88-5.01c-0.5-1.63-1.26-3.07-2.3-4.33
+				c-1.04-1.26-2.35-2.3-3.92-3.11c-1.58-0.81-3.54-1.22-5.89-1.22c-2.26,0-4.19,0.38-5.82,1.15c-1.62,0.77-2.98,1.78-4.06,3.04
+				c-1.08,1.26-1.92,2.73-2.5,4.4c-0.59,1.67-1.02,3.36-1.29,5.07H291.97z"/>
+		</g>
+		<g>
+			<path class="lestilleuls-logo-st0" d="M84.52,75.41C70.6,75.05,59.04,65.02,56.34,51.8c-0.93-0.26-1.82-0.61-2.66-1.06
+				c-2.08-1.1-3.71-2.66-4.9-4.7c-1.19-2.04-1.78-4.42-1.78-7.14c0-2.7,0.6-5.07,1.81-7.12c1.2-2.05,2.85-3.63,4.94-4.72
+				c2.09-1.1,4.44-1.65,7.04-1.65c2.6,0,4.94,0.55,7.04,1.65c2.09,1.1,3.74,2.67,4.94,4.72c1.2,2.05,1.81,4.42,1.81,7.12
+				c0,2.69-0.61,5.07-1.83,7.12c-1.22,2.05-2.88,3.63-4.99,4.72c-0.97,0.5-1.99,0.89-3.07,1.16c2.54,8.68,10.43,15.1,19.84,15.44
+				l0-30.84c-0.36-0.15-0.71-0.31-1.05-0.49c-2.08-1.1-3.71-2.66-4.9-4.7c-1.19-2.04-1.78-4.42-1.78-7.14c0-2.69,0.6-5.07,1.81-7.12
+				c1.2-2.05,2.85-3.63,4.94-4.72c2.09-1.1,4.44-1.65,7.04-1.65c2.6,0,4.94,0.55,7.04,1.65c2.09,1.1,3.74,2.67,4.94,4.72
+				c1.2,2.05,1.81,4.42,1.81,7.12c0,2.7-0.61,5.07-1.83,7.12c-1.22,2.05-2.88,3.63-4.99,4.72c-0.3,0.16-0.6,0.3-0.91,0.43v45
+				c9.96-3.92,17.42-12.85,19.24-23.68c-0.8-0.25-1.58-0.57-2.31-0.96c-2.08-1.1-3.71-2.66-4.9-4.7c-1.19-2.04-1.78-4.42-1.78-7.14
+				c0-2.7,0.6-5.07,1.81-7.12c1.2-2.05,2.85-3.63,4.94-4.72c2.09-1.1,4.44-1.65,7.04-1.65c2.6,0,4.94,0.55,7.04,1.65
+				c2.09,1.1,3.74,2.67,4.94,4.72c1.2,2.05,1.81,4.42,1.81,7.12c0,2.69-0.61,5.07-1.83,7.12c-1.22,2.05-2.88,3.63-4.99,4.72
+				c-1.14,0.59-2.35,1.02-3.64,1.29c-2.14,15.16-13.02,27.55-27.36,31.89v11.73c19.05-2.1,35.19-13.96,43.32-30.45V33.7
+				c0-18.61-15.09-33.7-33.7-33.7h-44.2C46.19,9.66,35.57,27.13,35.57,47.03c0,24.03,15.48,44.5,36.99,51.98v13.52
+				c-28.74-7.92-49.91-34.28-49.91-65.5c0-18.24,7.24-34.81,18.98-47.03H33.7C15.09,0,0,15.09,0,33.7v72.56
+				c0,18.61,15.09,33.7,33.7,33.7h50.83V75.41z"/>
+			<path class="lestilleuls-logo-st0" d="M126.19,44.95c0-2.1-0.53-3.71-1.59-4.84c-1.06-1.13-2.37-1.69-3.92-1.69c-1.59,0-2.9,0.56-3.95,1.67
+				c-1.05,1.11-1.57,2.74-1.57,4.87c0,2.1,0.51,3.71,1.55,4.84c1.03,1.13,2.32,1.69,3.88,1.69c1.55,0,2.88-0.56,3.97-1.69
+				C125.64,48.66,126.19,47.05,126.19,44.95z"/>
+			<path class="lestilleuls-logo-st0" d="M96.63,114.69l0,25.27h9.63c18.61,0,33.7-15.09,33.7-33.7V93.61C128.86,105.36,113.64,113.18,96.63,114.69z"
+				/>
+			<path class="lestilleuls-logo-st0" d="M60.78,32.36c-1.59,0-2.9,0.56-3.95,1.67c-1.05,1.11-1.57,2.73-1.57,4.87c0,2.1,0.51,3.71,1.55,4.84
+				c1.03,1.13,2.32,1.69,3.88,1.69c1.55,0,2.88-0.56,3.97-1.69c1.09-1.13,1.64-2.74,1.64-4.84c0-2.1-0.53-3.71-1.59-4.84
+				C63.64,32.92,62.34,32.36,60.78,32.36z"/>
+			<path class="lestilleuls-logo-st0" d="M90.58,17.62c-1.59,0-2.9,0.56-3.95,1.67c-1.05,1.11-1.57,2.73-1.57,4.86c0,2.1,0.51,3.71,1.55,4.84
+				c1.03,1.13,2.32,1.69,3.88,1.69c1.55,0,2.88-0.56,3.97-1.69c1.09-1.13,1.64-2.74,1.64-4.84c0-2.1-0.53-3.71-1.59-4.84
+				C93.44,18.19,92.13,17.62,90.58,17.62z"/>
+		</g>
+	</g>
+</g>
+</svg>
+</div>
+                                            </div>
+                                        
+                                        <div class="highlight-symfony">
+    <a href="https://certification.symfony.com/?utm_source=ad&amp;utm_medium=banner&amp;utm_campaign=certification&amp;utm_content=examhome" data-tracked data-category="Ads" data-action="sidebar" data-label="certif_insight">
+        <img loading="lazy" src="/images/network/sf6certif_01.png" height="100" width="130" alt="Take the exam at home" />
+    </a>
+    <p class="highlight-symfony-text">
+        <a href="https://certification.symfony.com/?utm_source=ad&amp;utm_medium=banner&amp;utm_campaign=certification&amp;utm_content=examhome">Take the exam at home</a>
+    </p>
+</div>
+
+
+<div class="highlight-symfony">
+    <a href="https://www.blackfire.io/profiler?utm_source=symfony&amp;utm_medium=ad_red_logo&amp;utm_campaign=profiler" data-tracked data-category="Ads" data-action="sidebar" data-label="blackfire_1">
+        <img loading="lazy" src="/images/network/blackfire_02.png" height="100" width="130" alt="Symfony Code Performance Profiling" />
+    </a>
+    <p class="highlight-symfony-text">
+        <a href="https://www.blackfire.io/profiler?utm_source=symfony&amp;utm_medium=ad_red_logo&amp;utm_campaign=profiler">Symfony Code Performance Profiling</a>
+    </p>
+</div>
+
+
+<div class="highlight-symfony">
+    <a href="https://www.blackfire.io/profiler?utm_source=symfony&amp;utm_medium=ad_black_logo&amp;utm_campaign=profiler" data-tracked data-category="Ads" data-action="sidebar" data-label="blackfire_2">
+        <img loading="lazy" src="/images/network/blackfire_03.png" height="100" width="130" alt="Check Code Performance in Dev, Test, Staging &amp; Production" />
+    </a>
+    <p class="highlight-symfony-text">
+        <a href="https://www.blackfire.io/profiler?utm_source=symfony&amp;utm_medium=ad_black_logo&amp;utm_campaign=profiler">Check Code Performance in Dev, Test, Staging &amp; Production</a>
+    </p>
+</div>
+
+                                    
+                                    </div>
+                                                    </div>
+
+                        <footer>
+    <div class="page-container">
+        <div class="footer-content">
+                                                <hx:include src="/_sub?_hash=g%2BTN8CruYP1lxdpH9XJz8DymM%2BHkqOMHQJFNGP6qYKg%3D&amp;_path=_format%3Dhtml%26_locale%3Den%26_controller%3DApp%255CController%255CContentController%253A%253Afooter"></hx:include>
+                
+                                    <section>
+                        <p>
+                            <b>Symfony</b>&trade; is a trademark of Symfony SAS. <a href="/trademark">All rights reserved</a>.
+                        </p>
+
+                        <ul class="sitemap ">
+    <li>
+        <h6><a href="/what-is-symfony">What is Symfony?</a></h6>
+        <ul class="list_menu_footer list-unstyled">
+                    <li id="menu-at-a-glance" >
+        <a href="/at-a-glance">
+                        Symfony at a Glance
+        </a>
+    </li>
+            <li id="menu-components" >
+        <a href="/components">
+                        Symfony Components
+        </a>
+    </li>
+            <li id="menu-case-studies" >
+        <a href="/blog/category/case-studies">
+                        Case Studies
+        </a>
+    </li>
+            <li id="menu-symfony-releases" >
+        <a href="/releases">
+                        Symfony Releases
+        </a>
+    </li>
+            <li id="menu-security-policy" >
+        <a href="/doc/current/contributing/code/security.html">
+                        Security Policy
+        </a>
+    </li>
+            <li id="menu-logo" >
+        <a href="/logo">
+                        Logo &amp; Screenshots
+        </a>
+    </li>
+            <li id="menu-license" >
+        <a href="/license">
+                        Trademark &amp; Licenses
+        </a>
+    </li>
+            <li id="menu-symfony-legacy" >
+        <a href="/legacy">
+                        symfony1 Legacy
+        </a>
+    </li>
+    
+        </ul>
+    </li>
+
+    <li>
+        <h6><a href="/doc/current/index.html">Learn Symfony</a></h6>
+        <ul class="list_menu_footer list-unstyled">
+                
+    
+
+
+    <li class="">
+        <a href="/doc/current/setup.html">Getting Started</a>
+    </li>
+    <li class="">
+        <a href="/doc/current/components/index.html">Components</a>
+    </li>
+    <li class="">
+        <a href="/doc/current/best_practices/index.html">Best Practices</a>
+    </li>
+    <li class="">
+        <a href="/bundles">Bundles</a>
+    </li>
+    <li class="">
+        <a href="/doc/current/reference/index.html">Reference</a>
+    </li>
+    <li class="">
+        <a href="https://training.sensiolabs.com/en/">Training</a>
+    </li>
+    <li class="">
+        <a href="https://university.sensiolabs.com/e-learning-platform">eLearning Platform</a>
+    </li>
+    <li class="">
+        <a href="https://certification.symfony.com/">Certification</a>
+    </li>
+
+        </ul>
+    </li>
+
+    <li>
+        <h6><a href="https://symfonycasts.com">Screencasts</a></h6>
+        <ul class="list_menu_footer list-unstyled">
+            <li><a href="https://symfonycasts.com/tracks/symfony">Learn Symfony</a></li>
+            <li><a href="https://symfonycasts.com/tracks/php">Learn PHP</a></li>
+            <li><a href="https://symfonycasts.com/tracks/javascript">Learn JavaScript</a></li>
+            <li><a href="https://symfonycasts.com/tracks/drupal">Learn Drupal</a></li>
+            <li><a href="https://symfonycasts.com/tracks/rest">Learn RESTful APIs</a></li>
+        </ul>
+    </li>
+
+    <li>
+        <h6><a href="/community">Community</a></h6>
+        <ul class="list_menu_footer list-unstyled">
+                    <li id="menu-symfony-connect" >
+        <a href="https://connect.symfony.com/">
+                        SymfonyConnect
+        </a>
+    </li>
+            <li id="menu-support" >
+        <a href="/support">
+                        Support
+        </a>
+    </li>
+            <li id="menu-how-to-be-involved" >
+        <a href="/doc/current/contributing/index.html">
+                        How to be Involved
+        </a>
+    </li>
+            <li id="menu-code-of-conduct" >
+        <a href="/doc/current/contributing/code_of_conduct/code_of_conduct.html">
+                        Code of Conduct
+        </a>
+    </li>
+            <li id="menu-events" >
+        <a href="/events/">
+                        Events &amp; Meetups
+        </a>
+    </li>
+            <li id="menu-projects" >
+        <a href="/projects">
+                        Projects using Symfony
+        </a>
+    </li>
+            <li id="menu-downloads_stats" >
+        <a href="/stats/downloads">
+                        Downloads Stats
+        </a>
+    </li>
+            <li id="menu-contributors" >
+        <a href="/contributors">
+                        Contributors
+        </a>
+    </li>
+            <li id="menu-backers" >
+        <a href="/backers">
+                        Backers
+        </a>
+    </li>
+    
+        </ul>
+    </li>
+
+    <li>
+        <h6><a href="/blog/">Blog</a></h6>
+        <ul class="list_menu_footer list-unstyled">
+            <li>
+    <a href="/events">Events &amp; Meetups</a>
+</li>
+
+
+    <li class="">
+        <a href="/blog/category/a-week-of-symfony">A week of symfony</a>
+    </li>
+    <li class="">
+        <a href="/blog/category/case-studies">Case studies</a>
+    </li>
+    <li class="">
+        <a href="/blog/category/cloud">Cloud</a>
+    </li>
+    <li class="">
+        <a href="/blog/category/community">Community</a>
+    </li>
+    <li class="">
+        <a href="/blog/category/conferences">Conferences</a>
+    </li>
+    <li class="">
+        <a href="/blog/category/diversity">Diversity</a>
+    </li>
+    <li class="">
+        <a href="/blog/category/documentation">Documentation</a>
+    </li>
+    <li class="">
+        <a href="/blog/category/living-on-the-edge">Living on the edge</a>
+    </li>
+    <li class="">
+        <a href="/blog/category/releases">Releases</a>
+    </li>
+    <li class="">
+        <a href="/blog/category/security-advisories">Security Advisories</a>
+    </li>
+    <li class="">
+        <a href="/blog/category/symfony-insight">SymfonyInsight</a>
+    </li>
+    <li class="">
+        <a href="/blog/category/twig">Twig</a>
+    </li>
+
+<li style="margin-bottom: 20px">
+    <a href="https://blog.sensiolabs.com/">SensioLabs</a>
+</li>
+
+        </ul>
+    </li>
+
+    <li>
+        <h6><a href="https://sensiolabs.com">Services</a></h6>
+        <ul class="list_menu_footer list-unstyled">
+            <li><a href="https://sensiolabs.com">SensioLabs services</a></li>
+            <li><a href="https://training.sensiolabs.com/en">Train developers</a></li>
+            <li><a href="https://insight.symfony.com/">Manage your project quality</a></li>
+            <li><a href="https://www.blackfire.io/?utm_source=symfony&utm_medium=symfonycom_footer&utm_campaign=profiler">Improve your project performance</a></li>
+            <li><a href="/cloud/">Host Symfony projects</a></li>
+        </ul>
+
+                    <div class="m-t-30">
+                <h6><span>Deployed on</span></h6>
+                <a href="/cloud/" class="block m-t-10 deploy-logo" title="Platform.sh, a Platform-as-a-Service optimized for Symfony developers">
+                    <svg viewBox="0 0 172.62 34.06" xmlns="http://www.w3.org/2000/svg"><g fill="currentColor"><path d="m144.07 0h28.55v11.35h-28.55z"/><path d="m144.07 24.69h28.55v3.86h-28.55z"/><path d="m144.07 15.02h28.55v5.82h-28.55z"/><path d="m0 13.85h3.61v2.15a5.45 5.45 0 0 1 1.9-1.79 5.25 5.25 0 0 1 2.66-.69 5.59 5.59 0 0 1 4.33 2 8.06 8.06 0 0 1 1.78 5.56 8.38 8.38 0 0 1 -1.79 5.71 5.6 5.6 0 0 1 -4.34 2 4.94 4.94 0 0 1 -2.15-.45 7.46 7.46 0 0 1 -2.08-1.66v7.38h-3.92zm3.83 7.07a5.66 5.66 0 0 0 1 3.65 3 3 0 0 0 2.37 1.17 2.78 2.78 0 0 0 2.24-1.08 5.55 5.55 0 0 0 .9-3.55 5.29 5.29 0 0 0 -.93-3.42 2.84 2.84 0 0 0 -2.28-1.11 3 3 0 0 0 -2.36 1.09 4.88 4.88 0 0 0 -.94 3.25z"/><path d="m16.07 28.49v-20.21h3.87v20.21z"/><path d="m25.5 18.32-3.5-.64a5.48 5.48 0 0 1 2-3.14 7.48 7.48 0 0 1 4.3-1 9.4 9.4 0 0 1 3.86.61 3.8 3.8 0 0 1 1.84 1.54 7.89 7.89 0 0 1 .52 3.47v4.52a15 15 0 0 0 .19 2.84 8 8 0 0 0 .69 2h-3.91c-.1-.26-.23-.64-.37-1.15-.07-.23-.11-.38-.14-.45a7 7 0 0 1 -2.12 1.45 6.15 6.15 0 0 1 -2.42.48 5 5 0 0 1 -3.56-1.23 4.05 4.05 0 0 1 -1.3-3.1 4.2 4.2 0 0 1 .59-2.21 3.87 3.87 0 0 1 1.66-1.49 13.49 13.49 0 0 1 3.08-.9 21.67 21.67 0 0 0 3.77-.95v-.39a2 2 0 0 0 -.56-1.58 3.26 3.26 0 0 0 -2.12-.52 2.8 2.8 0 0 0 -1.61.41 2.81 2.81 0 0 0 -.89 1.43zm5.18 3.14c-.5.16-1.29.36-2.36.59a7.55 7.55 0 0 0 -2.11.67 1.65 1.65 0 0 0 -.75 1.37 1.93 1.93 0 0 0 .6 1.41 2.13 2.13 0 0 0 1.54.59 3.34 3.34 0 0 0 2-.69 2.47 2.47 0 0 0 .93-1.28 7.73 7.73 0 0 0 .15-1.89z"/><path d="m43.81 13.85v3.09h-2.64v5.89a15.15 15.15 0 0 0 .07 2.09.82.82 0 0 0 .35.49 1 1 0 0 0 .65.2 5 5 0 0 0 1.56-.38l.33 3a7.63 7.63 0 0 1 -3.06.58 4.93 4.93 0 0 1 -1.89-.35 2.79 2.79 0 0 1 -1.18-.9 3.67 3.67 0 0 1 -.55-1.51 19.41 19.41 0 0 1 -.12-2.73v-6.38h-1.83v-3.09h1.78v-2.91l3.89-2.26v5.17z"/><path d="m44.94 13.85h2.15v-1.1a7.41 7.41 0 0 1 .39-2.75 3.18 3.18 0 0 1 1.45-1.48 5.56 5.56 0 0 1 2.67-.57 10.83 10.83 0 0 1 3.24.49l-.53 2.71a7.42 7.42 0 0 0 -1.77-.23 1.6 1.6 0 0 0 -1.21.4 2.28 2.28 0 0 0 -.33 1.5v1h2.9v3h-2.9v11.67h-3.91v-11.59h-2.15z"/><path d="m54.58 21a8 8 0 0 1 1-3.73 6.59 6.59 0 0 1 2.7-2.76 8 8 0 0 1 3.89-1 7.29 7.29 0 0 1 5.44 2.16 7.43 7.43 0 0 1 2.13 5.45 7.52 7.52 0 0 1 -2.14 5.5 7.24 7.24 0 0 1 -5.4 2.19 8.47 8.47 0 0 1 -3.84-.91 6.3 6.3 0 0 1 -2.78-2.67 8.91 8.91 0 0 1 -1-4.23zm4 .21a4.83 4.83 0 0 0 1 3.33 3.23 3.23 0 0 0 2.54 1.16 3.26 3.26 0 0 0 2.55-1.16 4.93 4.93 0 0 0 1-3.36 4.86 4.86 0 0 0 -1-3.31 3.29 3.29 0 0 0 -2.55-1.15 3.25 3.25 0 0 0 -2.54 1.15 4.86 4.86 0 0 0 -1.03 3.3z"/><path d="m75 28.49h-3.87v-14.64h3.6v2.08a6.06 6.06 0 0 1 1.66-1.93 3.07 3.07 0 0 1 1.67-.47 4.9 4.9 0 0 1 2.55.73l-1.2 3.38a3.32 3.32 0 0 0 -1.82-.64 2.11 2.11 0 0 0 -1.37.45 3 3 0 0 0 -.89 1.62 22.62 22.62 0 0 0 -.33 4.93z"/><path d="m81.77 13.85h3.57v2a5.75 5.75 0 0 1 4.56-2.33 4.87 4.87 0 0 1 2.44.58 4.39 4.39 0 0 1 1.66 1.75 6.73 6.73 0 0 1 2.09-1.75 5 5 0 0 1 2.38-.58 5.36 5.36 0 0 1 2.73.65 4.06 4.06 0 0 1 1.67 1.93 8.44 8.44 0 0 1 .4 3v9.36h-3.85v-8.34a6.16 6.16 0 0 0 -.4-2.81 1.83 1.83 0 0 0 -1.65-.83 2.66 2.66 0 0 0 -1.53.5 2.71 2.71 0 0 0 -1 1.45 10.52 10.52 0 0 0 -.32 3v7h-3.91v-8a11.17 11.17 0 0 0 -.2-2.76 1.76 1.76 0 0 0 -.64-.92 2 2 0 0 0 -1.18-.31 2.82 2.82 0 0 0 -1.59.56 2.7 2.7 0 0 0 -1 1.4 10.2 10.2 0 0 0 -.31 3v7.11h-3.92z"/><path d="m105.23 28.49v-3.88h3.87v3.88z"/><path d="m110.55 24.31 3.89-.59a2.84 2.84 0 0 0 1 1.72 3.4 3.4 0 0 0 2.12.58 3.86 3.86 0 0 0 2.27-.55 1.25 1.25 0 0 0 .5-1 1.05 1.05 0 0 0 -.27-.74 3.09 3.09 0 0 0 -1.3-.5q-4.68-1-5.94-1.89a3.79 3.79 0 0 1 -1.73-3.3 4.09 4.09 0 0 1 1.5-3.2 7 7 0 0 1 4.66-1.29 8 8 0 0 1 4.46 1 5 5 0 0 1 2 2.89l-3.66.68a2.21 2.21 0 0 0 -.89-1.31 3.18 3.18 0 0 0 -1.86-.45 4.33 4.33 0 0 0 -2.2.42.93.93 0 0 0 -.44.79.85.85 0 0 0 .39.7 14.37 14.37 0 0 0 3.62 1.09 10.82 10.82 0 0 1 4.33 1.64 3.58 3.58 0 0 1 1.21 2.88 4.4 4.4 0 0 1 -1.68 3.46 7.42 7.42 0 0 1 -5 1.45 8.07 8.07 0 0 1 -4.73-1.22 5.56 5.56 0 0 1 -2.25-3.26z"/><path d="m129.66 8.28v7.43a5.79 5.79 0 0 1 6.89-1.71 3.92 3.92 0 0 1 1.62 1.26 4.66 4.66 0 0 1 .74 1.71 15.64 15.64 0 0 1 .2 2.91v8.59h-3.87v-7.72a11.35 11.35 0 0 0 -.22-2.92 1.93 1.93 0 0 0 -.78-1 2.53 2.53 0 0 0 -1.4-.37 3.22 3.22 0 0 0 -1.72.47 2.64 2.64 0 0 0 -1.12 1.43 8.63 8.63 0 0 0 -.35 2.8v7.33h-3.87v-20.21z"/></g></svg>
+
+                </a>
+            </div>
+            </li>
+</ul>
+
+
+                        <div class="icons">
+                            <h6><span>Follow Symfony</span></h6>
+                            <a href="https://github.com/symfony" target="_blank" rel="external noopener noreferrer" title="Symfony on GitHub">
+                                <i class="icon"><svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="1.414"><path fill="currentColor" d="M8 0a8 8 0 0 0-8 8 8 8 0 0 0 5.47 7.59c.4.075.547-.172.547-.385 0-.19-.007-.693-.01-1.36-2.226.483-2.695-1.073-2.695-1.073-.364-.924-.89-1.17-.89-1.17-.725-.496.056-.486.056-.486.803.056 1.225.824 1.225.824.714 1.223 1.873.87 2.33.665.072-.517.278-.87.507-1.07-1.777-.2-3.644-.888-3.644-3.953 0-.873.31-1.587.823-2.147-.09-.202-.36-1.015.07-2.117 0 0 .67-.215 2.2.82a7.67 7.67 0 0 1 2-.27 7.67 7.67 0 0 1 2 .27c1.52-1.035 2.19-.82 2.19-.82.43 1.102.16 1.915.08 2.117a3.1 3.1 0 0 1 .82 2.147c0 3.073-1.87 3.75-3.65 3.947.28.24.54.73.54 1.48 0 1.07-.01 1.93-.01 2.19 0 .21.14.46.55.38A7.972 7.972 0 0 0 16 8a8 8 0 0 0-8-8"/></svg>
+</i>
+                            </a>
+                            <a href="/slack" target="_blank" rel="external noopener noreferrer" title="Symfony on Slack">
+                                <i class="icon"><svg width="16" height="16" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path fill="currentColor" d="M5.042 15.165a2.528 2.528 0 0 1-2.52 2.523A2.528 2.528 0 0 1 0 15.165a2.527 2.527 0 0 1 2.522-2.52h2.52v2.52zM6.313 15.165a2.527 2.527 0 0 1 2.521-2.52 2.527 2.527 0 0 1 2.521 2.52v6.313A2.528 2.528 0 0 1 8.834 24a2.528 2.528 0 0 1-2.521-2.522v-6.313zM8.834 5.042a2.528 2.528 0 0 1-2.521-2.52A2.528 2.528 0 0 1 8.834 0a2.528 2.528 0 0 1 2.521 2.522v2.52H8.834zM8.834 6.313a2.528 2.528 0 0 1 2.521 2.521 2.528 2.528 0 0 1-2.521 2.521H2.522A2.528 2.528 0 0 1 0 8.834a2.528 2.528 0 0 1 2.522-2.521h6.312z"/><path fill="currentColor" d="M18.956 8.834a2.528 2.528 0 0 1 2.522-2.521A2.528 2.528 0 0 1 24 8.834a2.528 2.528 0 0 1-2.522 2.521h-2.522V8.834zM17.688 8.834a2.528 2.528 0 0 1-2.523 2.521 2.527 2.527 0 0 1-2.52-2.521V2.522A2.527 2.527 0 0 1 15.165 0a2.528 2.528 0 0 1 2.523 2.522v6.312z"/><path fill="currentColor" d="M15.165 18.956a2.528 2.528 0 0 1 2.523 2.522A2.528 2.528 0 0 1 15.165 24a2.527 2.527 0 0 1-2.52-2.522v-2.522h2.52zM15.165 17.688a2.527 2.527 0 0 1-2.52-2.523 2.526 2.526 0 0 1 2.52-2.52h6.313A2.527 2.527 0 0 1 24 15.165a2.528 2.528 0 0 1-2.522 2.523h-6.313z"/></svg>
+</i>
+                            </a>
+                            <a href="https://twitter.com/symfony" target="_blank" rel="external noopener noreferrer" title="Symfony on Twitter">
+                                <i class="icon"><svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="1.414"><path d="M16 3.038a6.62 6.62 0 0 1-1.885.517 3.299 3.299 0 0 0 1.443-1.816c-.634.37-1.337.64-2.085.79a3.282 3.282 0 0 0-5.593 2.99 9.307 9.307 0 0 1-6.766-3.42A3.222 3.222 0 0 0 .67 3.75c0 1.14.58 2.143 1.46 2.732a3.278 3.278 0 0 1-1.487-.41v.04c0 1.59 1.13 2.918 2.633 3.22a3.336 3.336 0 0 1-1.475.056 3.29 3.29 0 0 0 3.07 2.28 6.578 6.578 0 0 1-4.85 1.359 9.332 9.332 0 0 0 5.04 1.474c6.04 0 9.34-5 9.34-9.33 0-.14 0-.28-.01-.42a6.63 6.63 0 0 0 1.64-1.7z" fill-rule="nonzero"/></svg>
+</i>
+                            </a>
+                            <a href="https://www.facebook.com/SymfonyFramework" target="_blank" rel="external noopener noreferrer" title="Symfony on Facebook">
+                                <i class="icon"><svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="1.414"><path d="M15.117 0H.883A.883.883 0 0 0 0 .883v14.234c0 .488.395.883.883.883h7.663V9.804H6.46V7.39h2.086V5.607c0-2.066 1.262-3.19 3.106-3.19.883 0 1.642.064 1.863.094v2.16h-1.28c-1 0-1.195.48-1.195 1.18v1.54h2.39l-.31 2.42h-2.08V16h4.077a.883.883 0 0 0 .883-.883V.883A.883.883 0 0 0 15.117 0" fill-rule="nonzero"/></svg>
+</i>
+                            </a>
+                            <a href="https://www.youtube.com/user/SensioLabs" target="_blank" rel="external noopener noreferrer" title="Symfony on YouTube">
+                                <i class="icon"><svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="1.414"><path d="M0 7.345c0-1.294.16-2.59.16-2.59s.156-1.1.636-1.587c.608-.637 1.408-.617 1.764-.684C3.84 2.36 8 2.324 8 2.324s3.362.004 5.6.166c.314.038.996.04 1.604.678.48.486.636 1.588.636 1.588S16 6.05 16 7.346v1.258c0 1.296-.16 2.59-.16 2.59s-.156 1.102-.636 1.588c-.608.638-1.29.64-1.604.678-2.238.162-5.6.166-5.6.166s-4.16-.037-5.44-.16c-.356-.067-1.156-.047-1.764-.684-.48-.487-.636-1.587-.636-1.587S0 9.9 0 8.605v-1.26zm6.348 2.73V5.58l4.323 2.255-4.32 2.24z"/></svg>
+</i>
+                            </a>
+                            <a href="https://symfonycasts.com/" target="_blank" rel="external noopener noreferrer" title="Symfony Screencasts">
+                                <i class="icon"><svg width="16" height="16" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:1.41421"><path style="fill:none" d="M0 0h300v300H0z"/><clipPath id="a"><path d="M0 0h300v300H0z"/></clipPath><g clip-path="url(#a)"><path d="M300 30c0-16.557-13.443-30-30-30H30C13.443 0 0 13.443 0 30v240c0 16.557 13.443 30 30 30h240c16.557 0 30-13.443 30-30V30z" style="fill:#111827"/><path d="M94.679 204.481c-4.374-1.925-9.01-2.625-13.734-2.625-18.632 0-32.278 12.51-32.278 31.317 0 19.42 12.859 31.841 32.191 31.841 3.587 0 9.272-.262 13.909-2.187l-.257-4.156a3.1 3.1 0 0 0-3.988-2.776c-2.99.903-6.622 1.421-9.577 1.421-12.684 0-23.006-9.534-23.006-23.881 0-13.733 9.36-23.881 23.444-23.881 3.038 0 5.994.528 8.787 1.582a3.098 3.098 0 0 0 4.178-2.646l.331-4.009zm13.522 19.85a3.1 3.1 0 0 0 4.404 2.615c2.741-1.268 5.876-1.996 8.866-1.996 8.223 0 11.022 3.937 11.022 11.635-3.237-.175-5.511-.175-8.748-.175-8.485 0-20.732 3.499-20.732 14.696 0 9.709 6.736 13.908 16.358 13.908 7.523 0 11.897-4.111 13.822-6.823h.175v5.774h4.352a3.098 3.098 0 0 0 3.093-3.296 125.34 125.34 0 0 1-.097-5.452v-18.458c0-12.159-5.161-18.457-17.933-18.457-5.686 0-10.585 1.75-14.696 4.199l.114 1.83zm44.173 38.234c3.761 2.012 8.048 2.449 12.247 2.449 7.96 0 15.57-4.373 15.57-13.908 0-14.259-19.332-11.635-19.332-20.732 0-3.674 3.674-5.424 7.873-5.424 1.107 0 3.2.377 5.127.913a3.097 3.097 0 0 0 3.926-2.68l.307-3.131c-3.237-.963-6.386-1.75-10.235-1.75-8.835 0-15.746 4.461-15.746 13.734 0 12.509 19.333 11.809 19.333 19.944 0 4.812-4.637 6.386-8.398 6.386-1.512 0-3.954-.43-6.366-1.29a3.097 3.097 0 0 0-4.141 2.732l-.165 2.757zm71.142 0c3.761 2.012 8.048 2.449 12.247 2.449 7.96 0 15.57-4.373 15.57-13.908 0-14.259-19.332-11.635-19.332-20.732 0-3.674 3.674-5.424 7.873-5.424 1.107 0 3.2.377 5.127.913a3.097 3.097 0 0 0 3.926-2.68l.307-3.131c-3.237-.963-6.386-1.75-10.235-1.75-8.835 0-15.746 4.461-15.746 13.734 0 12.509 19.333 11.809 19.333 19.944 0 4.812-4.637 6.386-8.398 6.386-1.512 0-3.954-.43-6.366-1.29a3.097 3.097 0 0 0-4.141 2.732l-.165 2.757zm-29.36-43.213v-12.947h5.123a3.1 3.1 0 0 1 3.099 3.1v9.847h11.81v3.548a3.1 3.1 0 0 1-3.1 3.1h-8.71v24.406c0 5.161 3.15 7.96 6.911 7.96.702 0 1.351-.06 1.947-.167a3.101 3.101 0 0 1 3.652 3.05v2.541c-1.837.525-4.374 1.224-6.999 1.224-8.485 0-13.733-4.024-13.733-12.946V226h-5.052a3.1 3.1 0 0 1-3.099-3.1v-3.548h8.151zm-61.663 27.292c0 6.649-4.286 11.722-12.422 11.722-3.761 0-8.31-2.537-8.31-7.26 0-7.873 11.022-8.573 15.483-8.573 1.75 0 3.499.175 5.249.175v3.936zm136.934-67.652H30.577c-.355-.024-.449-.012-.794-.109-1.164-.326-2.062-1.423-2.145-2.636a3.007 3.007 0 0 1 1.409-2.719c.344-.209.73-.346 1.129-.401.133-.019.268-.019.401-.028H53c-7.987-7.798-9.293-17.234-7.409-23.363 2.511-8.144 8.984-9.683 15.314-7.741 6.779 2.096 9.432 10.333 7.493 16.657-.216.677-.562 1.805-1.274 3.324-.787 1.738-2.245 3.272-2.869 5.31-.693 2.253.33 4.211 2.099 5.813h27.289c1.97-1.871 3.447-4.169 4.233-6.74 2.444-7.89-2.548-13.398-4.615-15.512l-10.054-10.762c-4.598-5.12-14.713-19.398-9.779-35.432 1.904-6.184 5.91-12.742 11.724-17.083 12.275-9.147 25.621-10.648 38.327-6.995 16.448 4.729 24.347 15.602 34.59 24.005 5.735-16.818 13.683-33.283 25.635-47.176 10.794-12.652 25.297-21.822 41.908-22.39 16.596-.548 29.142 6.974 29.556 18.882.167 5.068-2.74 14.92-12.864 15.261-7.572.262-12.8-4.263-13.036-11.135-.085-2.519.566-4.724 2.292-7.301 1.688-3.304 2.049-3.683 2.006-5.12-.152-4.333-6.692-4.493-8.482-4.409-24.548.811-31.018 33.939-36.263 60.875l-2.569 14.205c14.136 2.067 24.172-.481 29.77-4.102 7.881-5.117-2.205-10.374-.933-16.191 1.288-5.931 6.683-8.794 10.969-8.914 6-.148 10.283 6.077 10.144 12.395-.216 10.444-14.069 24.793-41.783 24.207a96.847 96.847 0 0 1-9.38-.665l-5.228 28.86c-1.387 6.478-2.91 13.66-4.945 21.237h94.561l.401.028c.132.027.265.045.394.082a3.005 3.005 0 0 1 2.09 2.237c.272 1.308-.46 2.759-1.711 3.302-.246.107-.506.18-.773.217-.132.018-.267.018-.401.027zm-127.085-5.893c.469-2.383.942-4.832 1.422-7.35l1.674-10.152c2.723-13.608 5.741-28.784 10.342-43.905-11.162-8.404-17.847-18.821-32.86-22.892-10.29-2.793-16.562-.423-20.973 5.155-5.222 6.604-3.488 15.2 1.557 20.241l8.336 9.223c10.222 11.808 15.809 20.999 13.707 33.359-1.024 6.057-3.949 11.682-8.315 16.321h25.11z" style="fill:#9ca3af"/></g></svg>
+</i>
+                            </a>
+                            <a href="https://feeds.feedburner.com/symfony/blog" target="_blank" rel="external noopener noreferrer" title="Symfony Blog RSS">
+                                <i class="icon"><svg width="16" height="16" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path fill="currentColor" d="M576 1344q0 80-56 136t-136 56-136-56-56-136 56-136 136-56 136 56 56 136zm512 123q2 28-17 48-18 21-47 21H889q-25 0-43-16.5t-20-41.5q-22-229-184.5-391.5T250 902q-25-2-41.5-20T192 839V704q0-29 21-47 17-17 43-17h5q160 13 306 80.5T826 902q114 113 181.5 259t80.5 306zm512 2q2 27-18 47-18 20-46 20h-143q-26 0-44.5-17.5T1329 1476q-12-215-101-408.5t-231.5-336-336-231.5T252 398q-25-1-42.5-19.5T192 335V192q0-28 20-46 18-18 44-18h3q262 13 501.5 120T1186 542q187 186 294 425.5t120 501.5z"/></svg>
+</i>
+                            </a>
+                        </div>
+
+                        <div class="theme">
+                            <form>
+                                <label for="color-scheme-switcher">
+                                    <i class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 512 512"><path d="M8 256c0 136.966 111.033 248 248 248s248-111.034 248-248S392.966 8 256 8 8 119.033 8 256zm248 184V72c101.705 0 184 82.311 184 184 0 101.705-82.311 184-184 184z"/></svg>
+</i>
+                                </label>
+                                <select id="color-scheme-switcher">
+                                    <option value="light">Light mode</option>
+                                    <option value="dark">Dark mode</option>
+                                    <option value="sync" selected>Sync with system</option>
+                                </select>
+                            </form>
+                        </div>
+                        <script async>
+                            const colorSchemeSwitcher = document.getElementById('color-scheme-switcher');
+                            const currentScheme = localStorage.getItem('colorScheme');
+
+                            colorSchemeSwitcher.value = currentScheme;
+                            colorSchemeSwitcher.addEventListener('change', function () {
+                                const selectedColorScheme = colorSchemeSwitcher.value;
+                                let resolvedColorScheme = selectedColorScheme;
+                                if ('sync' === resolvedColorScheme) {
+                                    resolvedColorScheme = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+                                }
+
+                                document.body.classList.remove('light-theme', 'dark-theme');
+                                document.body.classList.add('light' === resolvedColorScheme ? 'light-theme' : 'dark-theme');
+                                localStorage.setItem('colorScheme', selectedColorScheme);
+                                document.body.style.colorScheme = resolvedColorScheme;
+                            });
+                        </script>
+                    </section>
+                                    </div>
+    </div>
+</footer>
+
+                    </div>
+                </div>
+            </article>
+        </div>
+    </div>
+
+        
+        <div id="search-modal-backdrop" class="search-container" style="display: none">
+            <div role="dialog" aria-modal="true" id="search-modal-content" tabindex="-1">
+                <button aria-label="Close modal" id="search-modal-close-button">CLOSE</button>
+                <form id="form-search" onsubmit="return false">
+    <div class="form-group">
+        <label for="form-search-input" class="sr-only visually-hidden">Search Symfony Docs</label>
+                <input type="search"
+               class="mousetrap form-control form-search-input"
+               placeholder="Search Symfony Docs" aria-label="Search in Symfony documentation"
+               autocapitalize="off" autocomplete="off" autocorrect="off" spellcheck="false"
+               onkeyup="Search.makeQuery(this.value, event.key)" onclick="event.stopPropagation()">
+    </div>
+    <button type="submit" class="sr-only visually-hidden">Search</button>
+</form>
+
+
+<div class="form-search-results-wrapper">
+    <div class="form-search-results"></div>
+    <div class="form-search-results-footer">
+        Search by <a target="_blank" href="https://algolia.com/?utm_source=symfony&utm_medium=link&utm_campaign=symfony_documentation">Algolia</a>
+    </div>
+</div>
+
+            </div>
+        </div>
+    </body>
+</html>

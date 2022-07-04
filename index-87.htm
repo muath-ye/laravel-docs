@@ -1,0 +1,341 @@
+
+
+<!doctype html>
+<html lang="en-US" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>ngrok - secure introspectable tunnels to localhost</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="ngrok secure introspectable tunnels to localhost webhook development tool and debugging tool">
+    <meta name="author" content="inconshreveable">
+    
+    <link href="/static/css/normalize.min.css" rel="stylesheet" type="text/css">
+    <link href="/static/css/webflow.min.css" rel="stylesheet" type="text/css">
+    <link href="/static/css/ngrok.webflow.min.css" rel="stylesheet" type="text/css">
+    
+    
+    <link rel="stylesheet" href="/static/css/base.min.css?t=2022-03-17%2011%3A25%3A38.598435" />
+    <link rel="stylesheet" href="/static/css/marketing.min.css?t=2022-03-17%2011%3A25%3A38.598435" />
+    
+    <script src="/static/js/jquery-3.4.1.min.js" type="text/javascript"></script>
+
+    <link href="/static/img/favicon.png" rel="shortcut icon" type="image/x-icon">
+
+    
+  
+  <style>
+  .typed-text {text-decoration-color: #FA8080;
+        text-decoration-skip-ink: none;}
+  a:link {text-decoration-color: #FA8080;}
+</style>
+
+    <!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-P4F37ZW');</script>
+<!-- End Google Tag Manager -->
+    
+  </head>
+
+  <body>
+    
+      <header>
+  <nav class="nav-desktop">
+	  <a href=/ aria-current="page" class="nav-logo-link w-inline-block w--current no-border-bottom">
+		  <img src="/static/img/ngrok-black.svg" alt="ngrok" class="nav-logo-desktop">
+	  </a>
+    <div class="nav-links-center">
+      <a href=/product class="nav-link w-inline-block">
+        <div class="download-arrow-link">
+          <div class="nav-link-text">How it works</div>
+        </div>
+      </a>
+      <a href=/pricing class="nav-link w-inline-block">
+        <div class="download-arrow-link">
+          <div class="nav-link-text">Pricing</div>
+        </div>
+      </a>
+      <a href=/product/ngrok-link class="nav-link w-inline-block">
+        <div class="download-arrow-link">
+          <div class="nav-link-text">Enterprise solutions</div>
+        </div>
+      </a>
+      <a href=/docs class="nav-link w-inline-block">
+        <div class="download-arrow-link">
+          <div class="nav-link-text">Docs</div>
+        </div>
+      </a>
+      <a href=/download class="nav-link w-inline-block">
+        <div class="download-arrow-link">
+          <div class="nav-link-text">Download</div><img src="/static/img/download-arrow.svg" alt="" class="download-arrow-icon"></div>
+      </a>
+    </div>
+    <div class="nav-links-right">
+      <a href=https://dashboard.ngrok.com/login class="nav-link w-inline-block">
+        <div class="download-arrow-link">
+          <div class="nav-link-text">Login</div>
+        </div>
+      </a><a href=https://dashboard.ngrok.com/signup class="cta-button ghost-button-nav w-button">Sign up</a></div>
+  </nav>
+  <nav class="nav-mobile-wrap">
+    <div class="navbar-mobile"><a href="/" aria-current="page" class="w-inline-block w--current no-border-bottom"><img src="/static/img/ngrok-black.svg" alt="" class="nav-mobile-logo"></a><a href="#" data-w-id="d2062cc3-07a3-19b5-7ffa-4ca884b13fe8" class="hamburger-button w-inline-block no-border-bottom"><img src="/static/img/Group-3.svg" data-w-id="d2062cc3-07a3-19b5-7ffa-4ca884b13fe9" alt="" class="x-icon"><img src="/static/img/Group-34.svg" data-w-id="d2062cc3-07a3-19b5-7ffa-4ca884b13fea" alt="" class="hamburger-icon"></a></div>
+    <div data-w-id="d2062cc3-07a3-19b5-7ffa-4ca884b13feb" class="dark-overlay"></div>
+    <div class="nav-mobile-menu-wrap no-border-bottom">
+      <div class="nav-mobile-menu">
+		<a href=/product class="nav-link w-inline-block">
+			  <div class="nav-menu-link-text">How it works</div>
+        </a>
+		<a href=/pricing class="nav-link w-inline-block">
+          <div class="nav-menu-link-text">Pricing</div>
+        </a>
+		<a href=/product/ngrok-link class="nav-link w-inline-block">
+			<div class="nav-menu-link-text">Enterprise solutions</div>
+		</a>
+		<a href=/docs class="nav-link w-inline-block">
+          <div class="nav-menu-link-text">Docs</div>
+        </a>
+		<a href=/download class="nav-link w-inline-block">
+          <div class="nav-menu-link-text">Download</div>
+        </a>
+		<a href=https://dashboard.ngrok.com/login class="nav-link w-inline-block">
+          <div class="nav-menu-link-text">Login</div>
+        </a>
+		<a href=https://dashboard.ngrok.com/signup class="cta-button ghost-button mobile-nav w-button">Sign up</a></div>
+    </div>
+  </nav>
+</header>
+    
+
+    <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P4F37ZW"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+    
+    
+
+<div class="home-hero gradient-vignette">
+	<div class="mycontain">
+		<div class="flexcolwrap-home-hero">
+			<div class="flex60col-home-hero">
+				<div class="home-hero-moving-type">
+					<h1 class="heading">Public URLs for </h1>
+					<h1 class="typed-text"></h1>
+				</div>
+				<p class="hero-description-spacing">Spend more time programming. One command for an instant, secure URL to your localhost server through any NAT or firewall.</p><a href=https://dashboard.ngrok.com/signup class="cta-button w-button">Get started for free</a></div>
+			<div class="flex40col-home-hero">
+				<svg class="ngrok-demo" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 680 540">
+  <defs>
+    <filter id="ngrok-demo-a" width="108.3%" height="115.6%" x="-3.3%" y="-6.2%" filterUnits="objectBoundingBox">
+      <feOffset dx="5" dy="5" in="SourceAlpha" result="shadowOffsetOuter1"/>
+      <feGaussianBlur in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation="10"/>
+      <feColorMatrix in="shadowBlurOuter1" result="shadowMatrixOuter1" values="0 0 0 0 0.2   0 0 0 0 0.2   0 0 0 0 0.2  0 0 0 0.5 0"/>
+      <feMerge>
+        <feMergeNode in="shadowMatrixOuter1"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <rect id="ngrok-demo-b" width="600" height="320" rx="10"/>
+    <path id="ngrok-demo-c" d="M10,0 L590,0 L590,0 C595.522847,-1.01453063e-15 600,4.4771525 600,10 L600,32 L0,32 L0,10 L0,10 C-6.76353751e-16,4.4771525 4.4771525,1.01453063e-15 10,0 Z"/>
+    <rect id="ngrok-demo-d" width="400" height="20" x="100" y="6" rx="4"/>
+    <filter id="ngrok-demo-e" width="108.3%" height="115.6%" x="-4.2%" y="-6.2%" filterUnits="objectBoundingBox">
+      <feOffset dy="5" in="SourceAlpha" result="shadowOffsetOuter1"/>
+      <feGaussianBlur in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation="10"/>
+      <feColorMatrix in="shadowBlurOuter1" result="shadowMatrixOuter1" values="0 0 0 0 0.2   0 0 0 0 0.2   0 0 0 0 0.2  0 0 0 0.5 0"/>
+      <feMerge>
+        <feMergeNode in="shadowMatrixOuter1"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <rect id="ngrok-demo-f" width="600" height="320" rx="10"/>
+  </defs>
+
+  <g fill="none" fill-rule="evenodd">
+    <g class="browser" filter="url(#ngrok-demo-a)">
+      <use fill="#FFF" xlink:href="#ngrok-demo-b"/>
+      <rect width="599" height="319" x=".5" y=".5" stroke="#BBB" rx="10"/>
+      <use fill="#F5F5F5" xlink:href="#ngrok-demo-c"/>
+      <path stroke="#BBB" d="M0.5,31.5 L599.5,31.5 L599.5,10 C599.5,4.75329488 595.246705,0.5 590,0.5 L10,0.5 C4.75329488,0.5 0.5,4.75329488 0.5,10 L0.5,31.5 Z"/>
+      <use fill="#FFF" xlink:href="#ngrok-demo-d"/>
+      <rect width="399" height="19" x="100.5" y="6.5" stroke="#BBB" rx="4"/>
+      <text fill="#222" font-family="Ubuntu" font-size="14">
+        <tspan class="url" x="105" y="21">https://katesapp.ngrok.io</tspan>
+      </text>
+      <path fill="#BBB" fill-rule="nonzero" d="M16,22.5 C12.4101491,22.5 9.5,19.5898509 9.5,16 C9.5,12.4101491 12.4101491,9.5 16,9.5 C19.5898509,9.5 22.5,12.4101491 22.5,16 C22.5,19.5898509 19.5898509,22.5 16,22.5 Z M16,21.5 C19.0375661,21.5 21.5,19.0375661 21.5,16 C21.5,12.9624339 19.0375661,10.5 16,10.5 C12.9624339,10.5 10.5,12.9624339 10.5,16 C10.5,19.0375661 12.9624339,21.5 16,21.5 Z M34,22.5 C30.4101491,22.5 27.5,19.5898509 27.5,16 C27.5,12.4101491 30.4101491,9.5 34,9.5 C37.5898509,9.5 40.5,12.4101491 40.5,16 C40.5,19.5898509 37.5898509,22.5 34,22.5 Z M34,21.5 C37.0375661,21.5 39.5,19.0375661 39.5,16 C39.5,12.9624339 37.0375661,10.5 34,10.5 C30.9624339,10.5 28.5,12.9624339 28.5,16 C28.5,19.0375661 30.9624339,21.5 34,21.5 Z M52,22.5 C48.4101491,22.5 45.5,19.5898509 45.5,16 C45.5,12.4101491 48.4101491,9.5 52,9.5 C55.5898509,9.5 58.5,12.4101491 58.5,16 C58.5,19.5898509 55.5898509,22.5 52,22.5 Z M52,21.5 C55.0375661,21.5 57.5,19.0375661 57.5,16 C57.5,12.9624339 55.0375661,10.5 52,10.5 C48.9624339,10.5 46.5,12.9624339 46.5,16 C46.5,19.0375661 48.9624339,21.5 52,21.5 Z"/>
+      <g class="kates-site" fill="#BBB">
+        <text font-family="Ubuntu-Bold, Ubuntu" font-size="21" font-weight="bold">
+          <tspan x="0" y="20">Welcome to Kate’s Site!</tspan>
+        </text>
+        <text font-family="Ubuntu" font-size="16">
+          <tspan x="0" y="53">It’s currently under development…</tspan> <tspan x="0" y="73">Check back soon!</tspan>
+        </text>
+      </g>
+    </g>
+
+    <g class="terminal" filter="url(#ngrok-demo-e)">
+      <mask id="ngrok-demo-g" fill="#fff">
+        <use xlink:href="#ngrok-demo-f"/>
+      </mask>
+      <use fill="#222" xlink:href="#ngrok-demo-f"/>
+      <rect width="600" height="320" fill="#222" mask="url(#ngrok-demo-g)" rx="10"/>
+      <g class="python-text" font-size="18" mask="url(#ngrok-demo-g)">
+        <g transform="translate(16 8)">
+          <text font-family="UbuntuMono-Bold, Ubuntu Mono" font-weight="bold">
+            <tspan x="0" y="18" fill="#EBCE13">$</tspan>
+          </text>
+          <text font-family="UbuntuMono-Regular, Ubuntu Mono">
+            <tspan class="command" x="20" y="18" fill="#BBB">node app.js</tspan>
+            <tspan class="response" x="20" y="40" fill="#BBB">Serving app.js port 3000</tspan>
+          </text>
+        </g>
+      </g>
+      <g class="ngrok-text" font-size="18" mask="url(#ngrok-demo-g)">
+        <g transform="translate(16 74)">
+          <text font-family="UbuntuMono-Bold, Ubuntu Mono" font-weight="bold">
+            <tspan x="0" y="15" fill="#EBCE13">$</tspan>
+          </text>
+          <text font-family="UbuntuMono-Regular, Ubuntu Mono">
+            <tspan class="command" x="20" y="15" fill="#FFF">./ngrok http 3000</tspan>
+          </text>
+          <text class="response" font-family="UbuntuMono-Regular, Ubuntu Mono">
+            <tspan x="20" y="37" fill="#7CE3F7">ngrok</tspan>
+            <tspan x="74" y="37" fill="#FFF">by</tspan>
+            <tspan x="102" y="37" fill="#7CE3F7">@inconshreveable</tspan>
+            <tspan x="20" y="81" fill="#EBCE13">Session Status</tspan>
+            <tspan x="180" y="81" fill="#EBCE13">online</tspan>
+            <tspan x="20" y="103" fill="#FFF">Account</tspan>
+            <tspan x="180" y="103" fill="#FFF">Kate Libby (Plan: Pro)</tspan>
+            <tspan x="20" y="125" fill="#FFF">Web Interface</tspan>
+            <tspan x="180" y="125" fill="#FFF">http://127.0.0.1:4040</tspan>
+            <tspan x="20" y="147" fill="#FFF">Forwarding</tspan>
+            <tspan x="180" y="147" fill="#FFF">http://katesapp.ngrok.io -&gt; localhost:3000</tspan>
+            <tspan x="20" y="169" fill="#FFF">Forwarding</tspan>
+            <tspan x="180" y="169" fill="#FFF">https://katesapp.ngrok.io -&gt; localhost:3000</tspan>
+          </text>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>
+			</div>
+			<div class="home-hero-logo-block">
+				<div class="home-hero-logo-wrap">
+					<a target="_blank" rel="noreferrer noopener"
+					   href="https://api.slack.com/tutorials/tunneling-with-ngrok"><img
+					   src="/static/img/slack-logo.svg" class="home-hero-logo"/></a>
+					<a target="_blank" rel="noreferrer noopener" href="https://developer.github.com/webhooks/configuring/"><img src="/static/img/github-logo.svg"  class="home-hero-logo"/></a>
+					<a target="_blank" rel="noreferrer noopener" href="https://sendgrid.com/blog/test-webhooks-ngrok/"><img src="/static/img/sendgrid-logo.svg"  class="home-hero-logo"/></a>
+					<a target="_blank" rel="noreferrer noopener" href="https://www.twilio.com/blog/2015/09/6-awesome-reasons-to-use-ngrok-when-testing-webhooks.html"><img src="/static/img/twilio-logo.svg"  class="home-hero-logo"/></a>
+					<a target="_blank" rel="noreferrer noopener" href="https://developer.atlassian.com/blog/2015/05/secure-localhost-tunnels-with-ngrok/"><img src="/static/img/atlassian-logo.svg"  class="home-hero-logo"/></a>
+				</div>
+				<div class="center">As well as <a href="https://aws.amazon.com/blogs/developer/tag/ngrok/" target="_blank" rel="noreferrer noopener" class="inline-link-underline-yellow">Amazon Web Services</a> and many more.</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="inspector-section">
+	<div class="mycontain">
+		<div class="center">
+			<h4 class="smoke">Take advantage of a powerful local inspector<br></h4>
+			<div class="text-block smoke small-body">ngrok provides a real-time web UI where you can introspect all HTTP traffic running over your tunnels. Replay any request against your tunnel with one click.<br></div><img src="/static/img/ngrok-product-2.png" srcset="/static/img/ngrok-product-2-p-500.png 500w, /static/img/ngrok-product-2-p-800.png 800w, /static/img/ngrok-product-2-p-1080.png 1080w, /static/img/ngrok-product-2-p-1600.png 1600w, /static/img/ngrok-product-2.png 1803w" sizes="(max-width: 479px) 92vw, (max-width: 991px) 66vw, 70vw" alt="" class="inspector-image">
+			<h2 class="smoke">And so much more. </h2>
+			<div class="smoke"><a href=/docs class="inline-link-underline-yellow-reverse">Explore the docs</a> to see everything ngrok can do. </div>
+		</div>
+	</div>
+</div>
+<div class="love-section">
+	<div class="mycontain">
+		<h3 class="love-section-header"><span class="text-span">Join the hundreds of thousands of developers who love ngrok</span><br>Here’s some kind words from a few of them.<br></h3>
+		<div class="white-card">
+			<div class="w-layout-grid grid">
+				<div class="love-cards"><img src="/static/img/CzvaPSlb_bigger.jpg" alt="" class="love-card-image">
+					<div><strong>@_shadj</strong></div>
+					<p class="love-card-p">ngrok has become essential to my workflow. Makes testing responsive designs so much easier.</p>
+				</div>
+				<div class="love-cards"><img src="/static/img/AlyZVxzy_bigger.jpg" alt="" class="love-card-image">
+					<div><strong>@Breefield</strong></div>
+					<p class="love-card-p">ngrok is genius, replaying requests makes webhooks 1M times easier to handle. ngrok.com</p>
+				</div>
+				<div class="love-cards"><img src="/static/img/uCKhISdj_bigger.jpg" alt="" class="love-card-image">
+					<div><strong>@davejlong</strong></div>
+					<p class="love-card-p">#ngrok is a dream for testing localhost with remote APIs!</p>
+				</div>
+				<div class="love-cards"><img src="/static/img/0G_SCXt__bigger.jpg" alt="" class="love-card-image">
+					<div><strong>@thecodeboss</strong></div>
+					<p class="love-card-p">ngrok has got to be the easiest local tunnel solution I&#x27;ve ever used.</p>
+				</div>
+				<div class="love-cards"><img src="/static/img/martin_bigger.png" alt="" class="love-card-image">
+					<div><strong>@Botto</strong></div>
+					<p class="love-card-p">ngrok, probably the best tool I have started to use for my webwork since firebug also great support</p>
+				</div>
+				<div class="love-cards"><img src="/static/img/rFnJPELu_bigger.jpg" alt="" class="love-card-image">
+					<div><strong>@julianwachholz</strong></div>
+					<p class="love-card-p">holy crap. ngrok.com is awesome, this solves pretty much all local developer problems.</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- [if lte IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/placeholders/3.0.2/placeholders.min.js"></script><![endif] -->
+<script src="/static/js/typed-2.0.9.js"></script>
+<script>
+	var typed4 = new Typed('.typed-text', {
+		strings: ['testing your chatbot.', 'SSH access to your Raspberry Pi.', 'building webhook integrations.', 'exposing your local web server.', 'testing on mobile devices.','sending previews to clients.'],
+		typeSpeed: 70,
+		backSpeed: 25,
+		bindInputFocusEvents: true,
+		loop: true,
+		cursorChar: '',
+		backDelay: 1000,
+		startDelay: 1000
+	});
+</script>
+
+
+    
+    
+      <div id="footer" class="footer">
+	<div class="mycontain">
+		<div class="footer-upper-wrap p-v50">
+			<div class="footer-links-wrap">
+				<a href="/product" class="small-body footer-links">How it works</a>
+				<a href="/product/ngrok-link" class="small-body footer-links">Enterprise solutions</a>
+				<a href="/pricing" class="small-body footer-links">Pricing</a>
+				<a href="/docs" class="small-body footer-links">Docs</a>
+				<a href="/download" class="small-body footer-links">Download</a>
+				<a href="/careers" class="small-body footer-links">Careers</a>
+				<a href="https://status.ngrok.com" class="small-body footer-links">Status</a>
+			</div>
+			<div class="footer-cta-wrap">
+				<h3 class="white">Stay focused on coding.</h3><a
+					href="https://dashboard.ngrok.com/signup" class="cta-button ghost-button footer-ghost w-button">Get started for free</a></div>
+			<div class="div-block">
+				<div class="lower-links-wrap">
+					<a href="/abuse" class="small-body footer-links">Abuse</a>
+					<a href="/dpa" class="small-body footer-links">DPA</a>
+					<a href="/privacy" class="small-body footer-links">Privacy</a>
+					<a href="/security" class="small-body footer-links">Security</a>
+					<a href="/tos" class="small-body footer-links">Terms of service</a>
+				</div>
+				<a href="/" class="footer-logo-wrap w-inline-block"><img src="/static/img/ngrok-white.svg" width="10" alt="" class="footer-logo"></a>
+			</div>
+		</div>
+		<div class="small-caps copyright">© ngrok 2022</div>
+		
+		
+	</div>
+</div>
+    
+    
+  </body>
+  
+  
+  <script src='/static/js/simulate-typing.js?t=2022-03-17%2011%3A25%3A38.598435' defer></script>
+  
+  <script src='/static/js/main.js?t=2022-03-17%2011%3A25%3A38.598435' defer></script>
+  <script src="/static/js/webflow.js" type="text/javascript" defer></script>
+
+  
+
+</html>

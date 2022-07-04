@@ -1,0 +1,603 @@
+<!doctype html>
+<html lang="en" class="font-sans antialiased">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>The Laravel Blog </title>
+
+    <link rel="alternate" type="application/atom+xml" title="The Laravel Blog" href="/feed">
+
+    <meta name="theme-color" content="#ffffff">
+
+    <meta name="twitter:title" content="The Laravel Blog ">
+    <meta name="og:title" content="The Laravel Blog ">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:description" content="">
+    <meta name="twitter:site" content="@laravelphp">
+    <meta name="twitter:image" content="https://blog.laravel.com/social-share.jpg">
+
+    <meta name="og:site_name" content="The Laravel Blog">
+    <meta name="og:image" content="https://blog.laravel.com/social-share.jpg">
+    <meta name="og:type" content="website">
+    <meta name="og:locale" content="en_US">
+
+    <link href="https://fonts.googleapis.com/css?family=Miriam+Libre:400,700|Merriweather" rel="stylesheet">
+
+    <link rel="icon" type="image/png" href="https://laravel.com/favicon.png">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.13.1/build/styles/sunburst.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    <!-- Styles -->
+    <link href="/css/theme.css?id=fd1ba6f0744021eebaf9" rel="stylesheet">
+
+    <!-- Google analytics tracking code goes here -->
+    
+</head>
+<body>
+
+<header class="py-5 mb-10">
+    <div class="container mx-auto px-5 lg:max-w-screen">
+        <div class="flex items-center flex-col lg:flex-row">
+            <a href="/" class="flex items-center no-underline text-brand">
+                <img src="https://laravel.com/img/logomark.min.svg" class="w-10">
+
+                <img class="text-xl ml-3 w-24" src="https://laravel.com/img/logotype.min.svg" alt="">
+            </a>
+
+            <div class="lg:ml-auto mt-10 lg:mt-0 flex items-center">
+                <a href="/" class="no-underline hover:underline uppercase">Home</a>
+                <a href="/releases" class="ml-5 no-underline hover:underline uppercase">Releases</a>
+                <a href="/envoyer" class="ml-5 no-underline hover:underline uppercase">Envoyer</a>
+                <a href="/forge" class="ml-5 no-underline hover:underline uppercase">Forge</a>
+                <a href="/vapor" class="ml-5 no-underline hover:underline uppercase">Vapor</a>
+            </div>
+        </div>
+    </div>
+</header>
+
+    <div class="container mx-auto px-5 lg:max-w-screen-sm">
+            <a class="no-underline transition block border border-lighter w-full mb-10 p-5 rounded post-card" href="https://blog.laravel.com/laravel-v9-released">
+                        <div class="flex flex-col justify-between flex-1">
+                <div>
+                    <h2 class="font-sans leading-normal block mb-6">
+                        Laravel 9.0 Now Available!
+                    </h2>
+
+                    <p class="leading-normal mb-6 font-serif leading-loose">
+                        This week we shipped Laravel 9.0 - the exciting next chapter in our journey to make web development enjoyable and productive!
+
+Laravel 9 continues the improvements made in Laravel 8.x by introducing support for Symfony 6.0 components, Symfony Mailer, Flysystem 3.0, improved `route:list` output, a...
+                    </p>
+                </div>
+
+                <div class="flex items-center text-sm text-light">
+                    <img src="https://laravel-blog-assets.s3.amazonaws.com/4hOAcIZodxIYVD71y2Qzo1HAMPiHXqBfSRnoZQAw.jpeg" class="w-10 h-10 rounded-full" title="Dries Vints">
+                    <span class="ml-2">Dries Vints</span>
+                    <span class="ml-auto">Feb, 10 2022</span>
+                </div>
+            </div>
+        </a>
+            <a class="no-underline transition block border border-lighter w-full mb-10 p-5 rounded post-card" href="https://blog.laravel.com/deploying-soketi-to-laravel-forge-part-2">
+                            <div class="block h-post-card-image bg-cover bg-center bg-no-repeat w-full h-48 mb-5"
+                     style="background-image: url('https://laravel-blog-assets.s3.amazonaws.com/3j7jGm7ds1A0mSs73EqHgoX3F6mES4zfkTlVXBUl.png')">
+                </div>
+                        <div class="flex flex-col justify-between flex-1">
+                <div>
+                    <h2 class="font-sans leading-normal block mb-6">
+                        Deploying Soketi to Laravel Forge - Part 2
+                    </h2>
+
+                    <p class="leading-normal mb-6 font-serif leading-loose">
+                        In Part I of this tutorial we learnt how to install and deploy Soketi to our Laravel Forge servers.
+
+Currently, Soketi is accessible over our server&#039;s IP address, behind port 6001. In this post we&#039;re going to modify our setup so that we can access our socket server via socket.my-domain.com. We&#039;ll do this by using an Nginx reverse proxy.
+                    </p>
+                </div>
+
+                <div class="flex items-center text-sm text-light">
+                    <img src="https://laravel-blog-assets.s3.amazonaws.com/meZx1nJ84JUaNyICBxozi12NZ2Zickge37yAioLY.png" class="w-10 h-10 rounded-full" title="James Brooks">
+                    <span class="ml-2">James Brooks</span>
+                    <span class="ml-auto">Jan, 11 2022</span>
+                </div>
+            </div>
+        </a>
+            <a class="no-underline transition block border border-lighter w-full mb-10 p-5 rounded post-card" href="https://blog.laravel.com/managing-disk-space-with-ncdu">
+                            <div class="block h-post-card-image bg-cover bg-center bg-no-repeat w-full h-48 mb-5"
+                     style="background-image: url('https://laravel-blog-assets.s3.amazonaws.com/HhDadvCvSryWFqUDjFUn7BwkitnTUU2iNhnuzKPs.png')">
+                </div>
+                        <div class="flex flex-col justify-between flex-1">
+                <div>
+                    <h2 class="font-sans leading-normal block mb-6">
+                        Managing Disk Space With &quot;ncdu&quot;
+                    </h2>
+
+                    <p class="leading-normal mb-6 font-serif leading-loose">
+                        Linux ships with a useful command called `du` (Disk Usage), which is used to find the size of files and directories.
+
+When provisioning your server, Forge installs `ncdu` which is an advanced version of `du` that allows you to easily navigate your directories via an ncurses interface. This makes it much quicker to identify large files and directories.
+                    </p>
+                </div>
+
+                <div class="flex items-center text-sm text-light">
+                    <img src="https://laravel-blog-assets.s3.amazonaws.com/meZx1nJ84JUaNyICBxozi12NZ2Zickge37yAioLY.png" class="w-10 h-10 rounded-full" title="James Brooks">
+                    <span class="ml-2">James Brooks</span>
+                    <span class="ml-auto">Jan, 6 2022</span>
+                </div>
+            </div>
+        </a>
+            <a class="no-underline transition block border border-lighter w-full mb-10 p-5 rounded post-card" href="https://blog.laravel.com/deploying-soketi-to-laravel-forge">
+                            <div class="block h-post-card-image bg-cover bg-center bg-no-repeat w-full h-48 mb-5"
+                     style="background-image: url('https://laravel-blog-assets.s3.amazonaws.com/Db8csRBZ5V69439YTnQuNMkgjgRM1mXW3HgKuf1q.png')">
+                </div>
+                        <div class="flex flex-col justify-between flex-1">
+                <div>
+                    <h2 class="font-sans leading-normal block mb-6">
+                        Deploying Soketi to Laravel Forge
+                    </h2>
+
+                    <p class="leading-normal mb-6 font-serif leading-loose">
+                        Soketi is a simple, fast and resilient open-source WebSockets server written in Typescript. It&#039;s fully compatible with the Pusher v7 protocol which makes it a great replacement to Pusher when using Laravel Echo.
+                    </p>
+                </div>
+
+                <div class="flex items-center text-sm text-light">
+                    <img src="https://laravel-blog-assets.s3.amazonaws.com/meZx1nJ84JUaNyICBxozi12NZ2Zickge37yAioLY.png" class="w-10 h-10 rounded-full" title="James Brooks">
+                    <span class="ml-2">James Brooks</span>
+                    <span class="ml-auto">Jan, 5 2022</span>
+                </div>
+            </div>
+        </a>
+            <a class="no-underline transition block border border-lighter w-full mb-10 p-5 rounded post-card" href="https://blog.laravel.com/servers-for-artisans-the-next-generation">
+                            <div class="block h-post-card-image bg-cover bg-center bg-no-repeat w-full h-48 mb-5"
+                     style="background-image: url('https://laravel-blog-assets.s3.amazonaws.com/46E30h7XJX21GDekjhLMWzBm503w4u7AgC9T758C.png')">
+                </div>
+                        <div class="flex flex-col justify-between flex-1">
+                <div>
+                    <h2 class="font-sans leading-normal block mb-6">
+                        Servers for Artisans: The Next Generation
+                    </h2>
+
+                    <p class="leading-normal mb-6 font-serif leading-loose">
+                        During Laracon NYC 2014, Taylor Otwell, the creator of Laravel, announced both Laravel Homestead and Laravel Forge, instantly simplifying the entire process of building Laravel applications - from first download to final deployment.
+                    </p>
+                </div>
+
+                <div class="flex items-center text-sm text-light">
+                    <img src="https://laravel-blog-assets.s3.amazonaws.com/4z2L86bIOnzzKHOSUEQuTRcEKPoJralFujR4r0H5.png" class="w-10 h-10 rounded-full" title="Claudio Dekker">
+                    <span class="ml-2">Claudio Dekker</span>
+                    <span class="ml-auto">Dec, 15 2021</span>
+                </div>
+            </div>
+        </a>
+            <a class="no-underline transition block border border-lighter w-full mb-10 p-5 rounded post-card" href="https://blog.laravel.com/log4j-vulnerability-update">
+                        <div class="flex flex-col justify-between flex-1">
+                <div>
+                    <h2 class="font-sans leading-normal block mb-6">
+                        Log4j Vulnerability Update
+                    </h2>
+
+                    <p class="leading-normal mb-6 font-serif leading-loose">
+                        Log4j is a Java library by Apache used to log debug messages within applications. It&#039;s recently been featured in news outlets around the world due to a vulnerability (known as Log4Shell) that was discovered allowing remote code execution using a specific string.
+                    </p>
+                </div>
+
+                <div class="flex items-center text-sm text-light">
+                    <img src="https://laravel-blog-assets.s3.amazonaws.com/meZx1nJ84JUaNyICBxozi12NZ2Zickge37yAioLY.png" class="w-10 h-10 rounded-full" title="James Brooks">
+                    <span class="ml-2">James Brooks</span>
+                    <span class="ml-auto">Dec, 15 2021</span>
+                </div>
+            </div>
+        </a>
+            <a class="no-underline transition block border border-lighter w-full mb-10 p-5 rounded post-card" href="https://blog.laravel.com/our-ecosystem-is-php81-ready">
+                            <div class="block h-post-card-image bg-cover bg-center bg-no-repeat w-full h-48 mb-5"
+                     style="background-image: url('https://laravel-blog-assets.s3.amazonaws.com/W5nmKjjHdOLF8STJKvnRQay4xt0G0HtnZ7aCL4fK.png')">
+                </div>
+                        <div class="flex flex-col justify-between flex-1">
+                <div>
+                    <h2 class="font-sans leading-normal block mb-6">
+                        Laravel ecosystem — including Laravel, Forge, and Vapor — is PHP 8.1 ready
+                    </h2>
+
+                    <p class="leading-normal mb-6 font-serif leading-loose">
+                        As you may have noticed in the past few weeks, we ensured that Laravel, first-party libraries, Forge, Envoyer, Nova, and Vapor, do support PHP 8.1 since day one. So, let&#039;s take a look at what you need to start using PHP 8.1.
+                    </p>
+                </div>
+
+                <div class="flex items-center text-sm text-light">
+                    <img src="https://laravel-blog-assets.s3.amazonaws.com/GnC3qXN0smS5M4VvyrIoryq98y7sUbckrjEaFDTC.jpeg" class="w-10 h-10 rounded-full" title="Nuno Maduro">
+                    <span class="ml-2">Nuno Maduro</span>
+                    <span class="ml-auto">Nov, 24 2021</span>
+                </div>
+            </div>
+        </a>
+            <a class="no-underline transition block border border-lighter w-full mb-10 p-5 rounded post-card" href="https://blog.laravel.com/forge-mariadb-106-and-postgresql-14">
+                            <div class="block h-post-card-image bg-cover bg-center bg-no-repeat w-full h-48 mb-5"
+                     style="background-image: url('https://laravel-blog-assets.s3.amazonaws.com/qP6RpSaFURZcYlSEcCyEtnSVIGxqpAMDfqNLyqKx.jpeg')">
+                </div>
+                        <div class="flex flex-col justify-between flex-1">
+                <div>
+                    <h2 class="font-sans leading-normal block mb-6">
+                        Forge: MariaDB 10.6 and PostgreSQL 14
+                    </h2>
+
+                    <p class="leading-normal mb-6 font-serif leading-loose">
+                        We&#039;re happy to announce the immediate availability of MariaDB 10.6 and PostgreSQL 14 database versions on Laravel Forge.
+                    </p>
+                </div>
+
+                <div class="flex items-center text-sm text-light">
+                    <img src="https://laravel-blog-assets.s3.amazonaws.com/meZx1nJ84JUaNyICBxozi12NZ2Zickge37yAioLY.png" class="w-10 h-10 rounded-full" title="James Brooks">
+                    <span class="ml-2">James Brooks</span>
+                    <span class="ml-auto">Nov, 1 2021</span>
+                </div>
+            </div>
+        </a>
+            <a class="no-underline transition block border border-lighter w-full mb-10 p-5 rounded post-card" href="https://blog.laravel.com/vapor-rds-proxies-now-support-mysql-80">
+                            <div class="block h-post-card-image bg-cover bg-center bg-no-repeat w-full h-48 mb-5"
+                     style="background-image: url('https://laravel-blog-assets.s3.amazonaws.com/KSGsujM45OYv3Tv0LHR838mNwlWuTONcsZ9Jg5PX.png')">
+                </div>
+                        <div class="flex flex-col justify-between flex-1">
+                <div>
+                    <h2 class="font-sans leading-normal block mb-6">
+                        Vapor: RDS Proxies Now Support MySQL 8.0
+                    </h2>
+
+                    <p class="leading-normal mb-6 font-serif leading-loose">
+                        Starting today, you may use Vapor&#039;s managed RDS Proxies with MySQL 8.0 — the most recent MySQL version.
+                    </p>
+                </div>
+
+                <div class="flex items-center text-sm text-light">
+                    <img src="https://laravel-blog-assets.s3.amazonaws.com/GnC3qXN0smS5M4VvyrIoryq98y7sUbckrjEaFDTC.jpeg" class="w-10 h-10 rounded-full" title="Nuno Maduro">
+                    <span class="ml-2">Nuno Maduro</span>
+                    <span class="ml-auto">Oct, 25 2021</span>
+                </div>
+            </div>
+        </a>
+            <a class="no-underline transition block border border-lighter w-full mb-10 p-5 rounded post-card" href="https://blog.laravel.com/vapor-php-81-release-candidate-is-now-supported">
+                            <div class="block h-post-card-image bg-cover bg-center bg-no-repeat w-full h-48 mb-5"
+                     style="background-image: url('https://laravel-blog-assets.s3.amazonaws.com/2FK4WdWidMn0x6y8Z6PvFZOzlNoGfKIOEJMKpaHP.jpeg')">
+                </div>
+                        <div class="flex flex-col justify-between flex-1">
+                <div>
+                    <h2 class="font-sans leading-normal block mb-6">
+                        Vapor: PHP 8.1 Release Candidate Is Now Supported
+                    </h2>
+
+                    <p class="leading-normal mb-6 font-serif leading-loose">
+                        Starting today, you may use PHP 8.1 Release Candidates in your Vapor environments. To get started, simply specify &quot;php-8.1:al2&quot; as your preferred runtime in your &quot;vapor.yml&quot; configuration file.
+                    </p>
+                </div>
+
+                <div class="flex items-center text-sm text-light">
+                    <img src="https://laravel-blog-assets.s3.amazonaws.com/GnC3qXN0smS5M4VvyrIoryq98y7sUbckrjEaFDTC.jpeg" class="w-10 h-10 rounded-full" title="Nuno Maduro">
+                    <span class="ml-2">Nuno Maduro</span>
+                    <span class="ml-auto">Oct, 19 2021</span>
+                </div>
+            </div>
+        </a>
+            <a class="no-underline transition block border border-lighter w-full mb-10 p-5 rounded post-card" href="https://blog.laravel.com/forge-php-81-release-candidate-is-now-supported">
+                            <div class="block h-post-card-image bg-cover bg-center bg-no-repeat w-full h-48 mb-5"
+                     style="background-image: url('https://laravel-blog-assets.s3.amazonaws.com/vzO9spKEYmoaORj64y0IZe92IsIIc7ZBtKcFbsJB.png')">
+                </div>
+                        <div class="flex flex-col justify-between flex-1">
+                <div>
+                    <h2 class="font-sans leading-normal block mb-6">
+                        Forge: PHP 8.1 Release Candidate Is Now Supported
+                    </h2>
+
+                    <p class="leading-normal mb-6 font-serif leading-loose">
+                        Starting today, you may install PHP 8.1 Release Candidates by choosing &quot;PHP 8.1 RC&quot; while creating a new server. Or, you may install the release candidate on an existing server via the PHP tab on a server&#039;s management dashboard.
+                    </p>
+                </div>
+
+                <div class="flex items-center text-sm text-light">
+                    <img src="https://laravel-blog-assets.s3.amazonaws.com/GnC3qXN0smS5M4VvyrIoryq98y7sUbckrjEaFDTC.jpeg" class="w-10 h-10 rounded-full" title="Nuno Maduro">
+                    <span class="ml-2">Nuno Maduro</span>
+                    <span class="ml-auto">Oct, 11 2021</span>
+                </div>
+            </div>
+        </a>
+            <a class="no-underline transition block border border-lighter w-full mb-10 p-5 rounded post-card" href="https://blog.laravel.com/vapor-octane-support-is-now-available">
+                            <div class="block h-post-card-image bg-cover bg-center bg-no-repeat w-full h-48 mb-5"
+                     style="background-image: url('https://laravel-blog-assets.s3.amazonaws.com/B9pTsJd1UrdPCICsaCqc5Ka9dQMS87JmJC73ZT9a.png')">
+                </div>
+                        <div class="flex flex-col justify-between flex-1">
+                <div>
+                    <h2 class="font-sans leading-normal block mb-6">
+                        Vapor: Octane Support Is Now Available
+                    </h2>
+
+                    <p class="leading-normal mb-6 font-serif leading-loose">
+                        Today we&#039;re pleased to announce that Octane support is now available in Laravel Vapor. The speed improvements are just mind-blowing, so put on your seat belt, and let&#039;s get into the details.
+                    </p>
+                </div>
+
+                <div class="flex items-center text-sm text-light">
+                    <img src="https://laravel-blog-assets.s3.amazonaws.com/GnC3qXN0smS5M4VvyrIoryq98y7sUbckrjEaFDTC.jpeg" class="w-10 h-10 rounded-full" title="Nuno Maduro">
+                    <span class="ml-2">Nuno Maduro</span>
+                    <span class="ml-auto">Oct, 4 2021</span>
+                </div>
+            </div>
+        </a>
+            <a class="no-underline transition block border border-lighter w-full mb-10 p-5 rounded post-card" href="https://blog.laravel.com/forge-lets-encrypt-compatibility-changes">
+                            <div class="block h-post-card-image bg-cover bg-center bg-no-repeat w-full h-48 mb-5"
+                     style="background-image: url('https://laravel-blog-assets.s3.amazonaws.com/PACCtrMHvqTI5EfI3mMMl4R2tZxdpLsCTJD4O541.png')">
+                </div>
+                        <div class="flex flex-col justify-between flex-1">
+                <div>
+                    <h2 class="font-sans leading-normal block mb-6">
+                        Forge: Let&#039;s Encrypt Compatibility Changes
+                    </h2>
+
+                    <p class="leading-normal mb-6 font-serif leading-loose">
+                        On Thursday, September 30th there will be a small change in how older browsers and devices will treat Let&#039;s Encrypt&#039;s certificates. While most sites will be unaffected, it will likely impact you if you&#039;re providing an API or support IoT devices.
+                    </p>
+                </div>
+
+                <div class="flex items-center text-sm text-light">
+                    <img src="https://laravel-blog-assets.s3.amazonaws.com/4z2L86bIOnzzKHOSUEQuTRcEKPoJralFujR4r0H5.png" class="w-10 h-10 rounded-full" title="Claudio Dekker">
+                    <span class="ml-2">Claudio Dekker</span>
+                    <span class="ml-auto">Sep, 28 2021</span>
+                </div>
+            </div>
+        </a>
+            <a class="no-underline transition block border border-lighter w-full mb-10 p-5 rounded post-card" href="https://blog.laravel.com/envoyer-transfer-projects">
+                            <div class="block h-post-card-image bg-cover bg-center bg-no-repeat w-full h-48 mb-5"
+                     style="background-image: url('https://laravel-blog-assets.s3.amazonaws.com/1GlxCGgnz9Y7gTlapVYDbheO3KQOxSIPhJhwhvGi.png')">
+                </div>
+                        <div class="flex flex-col justify-between flex-1">
+                <div>
+                    <h2 class="font-sans leading-normal block mb-6">
+                        Envoyer: Transfer Projects
+                    </h2>
+
+                    <p class="leading-normal mb-6 font-serif leading-loose">
+                        Starting today, it&#039;s possible for project owners to transfer projects to another Envoyer account. Collaborators will not be able to...
+                    </p>
+                </div>
+
+                <div class="flex items-center text-sm text-light">
+                    <img src="https://laravel-blog-assets.s3.amazonaws.com/meZx1nJ84JUaNyICBxozi12NZ2Zickge37yAioLY.png" class="w-10 h-10 rounded-full" title="James Brooks">
+                    <span class="ml-2">James Brooks</span>
+                    <span class="ml-auto">Sep, 8 2021</span>
+                </div>
+            </div>
+        </a>
+            <a class="no-underline transition block border border-lighter w-full mb-10 p-5 rounded post-card" href="https://blog.laravel.com/forge-announcing-forge-cli">
+                            <div class="block h-post-card-image bg-cover bg-center bg-no-repeat w-full h-48 mb-5"
+                     style="background-image: url('https://laravel-blog-assets.s3.amazonaws.com/nt9OJ3oQcPYfknneO6NMvDH4fYoXqZqdH1CXKoR9.png')">
+                </div>
+                        <div class="flex flex-col justify-between flex-1">
+                <div>
+                    <h2 class="font-sans leading-normal block mb-6">
+                        Forge: Introducing The Forge CLI
+                    </h2>
+
+                    <p class="leading-normal mb-6 font-serif leading-loose">
+                        Today we&#039;re proud to introduce you to our new command-line tool: Forge CLI. In short, this new open-source tool provides a number of helpful commands that can assist you in managing your Forge servers, sites, and resources, from the command-line.
+                    </p>
+                </div>
+
+                <div class="flex items-center text-sm text-light">
+                    <img src="https://laravel-blog-assets.s3.amazonaws.com/GnC3qXN0smS5M4VvyrIoryq98y7sUbckrjEaFDTC.jpeg" class="w-10 h-10 rounded-full" title="Nuno Maduro">
+                    <span class="ml-2">Nuno Maduro</span>
+                    <span class="ml-auto">Aug, 9 2021</span>
+                </div>
+            </div>
+        </a>
+            <a class="no-underline transition block border border-lighter w-full mb-10 p-5 rounded post-card" href="https://blog.laravel.com/forge-infrastructure-upgrades">
+                            <div class="block h-post-card-image bg-cover bg-center bg-no-repeat w-full h-48 mb-5"
+                     style="background-image: url('https://laravel-blog-assets.s3.amazonaws.com/DMy6fyKPClzfCtQfVTrcUpRhORb4AzMhLQAdBRL6.png')">
+                </div>
+                        <div class="flex flex-col justify-between flex-1">
+                <div>
+                    <h2 class="font-sans leading-normal block mb-6">
+                        Forge: Infrastructure Upgrades
+                    </h2>
+
+                    <p class="leading-normal mb-6 font-serif leading-loose">
+                        On July 7th, we&#039;ve made infrastructure upgrades on Laravel Forge to increase its stability and capacity. Due to the upgrades, we&#039;ve updated the list of IP Addresses that may SSH into your server.
+                    </p>
+                </div>
+
+                <div class="flex items-center text-sm text-light">
+                    <img src="https://laravel-blog-assets.s3.amazonaws.com/GnC3qXN0smS5M4VvyrIoryq98y7sUbckrjEaFDTC.jpeg" class="w-10 h-10 rounded-full" title="Nuno Maduro">
+                    <span class="ml-2">Nuno Maduro</span>
+                    <span class="ml-auto">Jul, 8 2021</span>
+                </div>
+            </div>
+        </a>
+            <a class="no-underline transition block border border-lighter w-full mb-10 p-5 rounded post-card" href="https://blog.laravel.com/laravel-9-release-date">
+                        <div class="flex flex-col justify-between flex-1">
+                <div>
+                    <h2 class="font-sans leading-normal block mb-6">
+                        Laravel 9 Release Date
+                    </h2>
+
+                    <p class="leading-normal mb-6 font-serif leading-loose">
+                        As you may know, this year we updated the Laravel release cycle to include one major release per year. Previously, we released two major versions per year. 
+
+These release changes would typically indicate that a Laravel 9 release is due in September of this year....
+                    </p>
+                </div>
+
+                <div class="flex items-center text-sm text-light">
+                    <img src="https://laravel-blog-assets.s3.amazonaws.com/XPhmXiHS5V09GKk71k6ectxSQYMo73puTAecnPvU.png" class="w-10 h-10 rounded-full" title="Taylor Otwell">
+                    <span class="ml-2">Taylor Otwell</span>
+                    <span class="ml-auto">Jul, 7 2021</span>
+                </div>
+            </div>
+        </a>
+            <a class="no-underline transition block border border-lighter w-full mb-10 p-5 rounded post-card" href="https://blog.laravel.com/deploying-your-nextjs-app-to-forge">
+                            <div class="block h-post-card-image bg-cover bg-center bg-no-repeat w-full h-48 mb-5"
+                     style="background-image: url('https://laravel-blog-assets.s3.amazonaws.com/zJ8yJ6nFN2qsDhxvN0MeX7VBicXEvfzSldZ9Dkqg.png')">
+                </div>
+                        <div class="flex flex-col justify-between flex-1">
+                <div>
+                    <h2 class="font-sans leading-normal block mb-6">
+                        Deploying your Next.js App To Forge
+                    </h2>
+
+                    <p class="leading-normal mb-6 font-serif leading-loose">
+                        Next.js is a React framework developed by [Vercel](https://vercel.com). It includes functionality such as server-side rendering and static site generation. Today...
+                    </p>
+                </div>
+
+                <div class="flex items-center text-sm text-light">
+                    <img src="https://laravel-blog-assets.s3.amazonaws.com/meZx1nJ84JUaNyICBxozi12NZ2Zickge37yAioLY.png" class="w-10 h-10 rounded-full" title="James Brooks">
+                    <span class="ml-2">James Brooks</span>
+                    <span class="ml-auto">Jun, 24 2021</span>
+                </div>
+            </div>
+        </a>
+            <a class="no-underline transition block border border-lighter w-full mb-10 p-5 rounded post-card" href="https://blog.laravel.com/deploying-your-nuxtjs-site-to-laravel-forge">
+                            <div class="block h-post-card-image bg-cover bg-center bg-no-repeat w-full h-48 mb-5"
+                     style="background-image: url('https://laravel-blog-assets.s3.amazonaws.com/UsfleKs5KGEwRRtyNpvaU5x1eUPhWacqomxtCV4e.png')">
+                </div>
+                        <div class="flex flex-col justify-between flex-1">
+                <div>
+                    <h2 class="font-sans leading-normal block mb-6">
+                        Deploying Your Nuxt.js Site To Laravel Forge
+                    </h2>
+
+                    <p class="leading-normal mb-6 font-serif leading-loose">
+                        Nuxt.js is a framework for generating static websites using Vue.js. Today we’re we&#039;re going to explore how to deploy your...
+                    </p>
+                </div>
+
+                <div class="flex items-center text-sm text-light">
+                    <img src="https://laravel-blog-assets.s3.amazonaws.com/meZx1nJ84JUaNyICBxozi12NZ2Zickge37yAioLY.png" class="w-10 h-10 rounded-full" title="James Brooks">
+                    <span class="ml-2">James Brooks</span>
+                    <span class="ml-auto">Jun, 18 2021</span>
+                </div>
+            </div>
+        </a>
+            <a class="no-underline transition block border border-lighter w-full mb-10 p-5 rounded post-card" href="https://blog.laravel.com/vapor-api-gateway-vs-load-balancers">
+                            <div class="block h-post-card-image bg-cover bg-center bg-no-repeat w-full h-48 mb-5"
+                     style="background-image: url('https://laravel-blog-assets.s3.amazonaws.com/DsHqFQrZ2iy56I62JT2x0eLLc6rNZQl2MMEnRAaY.png')">
+                </div>
+                        <div class="flex flex-col justify-between flex-1">
+                <div>
+                    <h2 class="font-sans leading-normal block mb-6">
+                        Vapor: API Gateway vs Load Balancers
+                    </h2>
+
+                    <p class="leading-normal mb-6 font-serif leading-loose">
+                        When using an AWS serverless infrastructure powered by Vapor, you have three different options to consider when determining how to route traffic to your application: API Gateway v1, API Gateway v2, and Load Balancers. In this article, we are going to compare these three options in terms of performance, pricing, and features.
+                    </p>
+                </div>
+
+                <div class="flex items-center text-sm text-light">
+                    <img src="https://laravel-blog-assets.s3.amazonaws.com/GnC3qXN0smS5M4VvyrIoryq98y7sUbckrjEaFDTC.jpeg" class="w-10 h-10 rounded-full" title="Nuno Maduro">
+                    <span class="ml-2">Nuno Maduro</span>
+                    <span class="ml-auto">Jun, 16 2021</span>
+                </div>
+            </div>
+        </a>
+            <a class="no-underline transition block border border-lighter w-full mb-10 p-5 rounded post-card" href="https://blog.laravel.com/envoyer-infrastructure-upgrades">
+                        <div class="flex flex-col justify-between flex-1">
+                <div>
+                    <h2 class="font-sans leading-normal block mb-6">
+                        Envoyer: Infrastructure Upgrades
+                    </h2>
+
+                    <p class="leading-normal mb-6 font-serif leading-loose">
+                        On June 12th we upgraded Envoyer&#039;s infrastructure, which allowed us to migrate to PHP 8, Laravel 8, and Spark Next. Due to the upgrades, it means that Envoyer is now using new IP addresses.We emailed all subscribed customers on Wednesday June 9th advising that any...
+                    </p>
+                </div>
+
+                <div class="flex items-center text-sm text-light">
+                    <img src="https://laravel-blog-assets.s3.amazonaws.com/meZx1nJ84JUaNyICBxozi12NZ2Zickge37yAioLY.png" class="w-10 h-10 rounded-full" title="James Brooks">
+                    <span class="ml-2">James Brooks</span>
+                    <span class="ml-auto">Jun, 14 2021</span>
+                </div>
+            </div>
+        </a>
+            <a class="no-underline transition block border border-lighter w-full mb-10 p-5 rounded post-card" href="https://blog.laravel.com/vapor-common-infrastructure-performance-tips">
+                            <div class="block h-post-card-image bg-cover bg-center bg-no-repeat w-full h-48 mb-5"
+                     style="background-image: url('https://laravel-blog-assets.s3.amazonaws.com/VypgHUCTNpP4IurKktm6lQldERPWKxFpmUyqfdq0.png')">
+                </div>
+                        <div class="flex flex-col justify-between flex-1">
+                <div>
+                    <h2 class="font-sans leading-normal block mb-6">
+                        Vapor: Common Infrastructure Performance Tips
+                    </h2>
+
+                    <p class="leading-normal mb-6 font-serif leading-loose">
+                        In this article, we&#039;ll cover the Vapor most common infrastructure performance tips that may speed your Laravel applications powered by Vapor.
+                    </p>
+                </div>
+
+                <div class="flex items-center text-sm text-light">
+                    <img src="https://laravel-blog-assets.s3.amazonaws.com/GnC3qXN0smS5M4VvyrIoryq98y7sUbckrjEaFDTC.jpeg" class="w-10 h-10 rounded-full" title="Nuno Maduro">
+                    <span class="ml-2">Nuno Maduro</span>
+                    <span class="ml-auto">Jun, 11 2021</span>
+                </div>
+            </div>
+        </a>
+            <a class="no-underline transition block border border-lighter w-full mb-10 p-5 rounded post-card" href="https://blog.laravel.com/cashier-stripe-v13-released">
+                            <div class="block h-post-card-image bg-cover bg-center bg-no-repeat w-full h-48 mb-5"
+                     style="background-image: url('https://laravel-blog-assets.s3.amazonaws.com/yusGYQfAGlAXYKEUnZFJnHes3abhA84yrlFSVI7E.jpeg')">
+                </div>
+                        <div class="flex flex-col justify-between flex-1">
+                <div>
+                    <h2 class="font-sans leading-normal block mb-6">
+                        Cashier Stripe v13 Released
+                    </h2>
+
+                    <p class="leading-normal mb-6 font-serif leading-loose">
+                        We&#039;re very excited to announce the immediate availability of Cashier v13.
+                    </p>
+                </div>
+
+                <div class="flex items-center text-sm text-light">
+                    <img src="https://laravel-blog-assets.s3.amazonaws.com/4hOAcIZodxIYVD71y2Qzo1HAMPiHXqBfSRnoZQAw.jpeg" class="w-10 h-10 rounded-full" title="Dries Vints">
+                    <span class="ml-2">Dries Vints</span>
+                    <span class="ml-auto">Jun, 8 2021</span>
+                </div>
+            </div>
+        </a>
+            <a class="no-underline transition block border border-lighter w-full mb-10 p-5 rounded post-card" href="https://blog.laravel.com/forge-may-round-up">
+                            <div class="block h-post-card-image bg-cover bg-center bg-no-repeat w-full h-48 mb-5"
+                     style="background-image: url('https://laravel-blog-assets.s3.amazonaws.com/h6QL3kBOMq0AMQZfgWUBMbQzXPfZcpTkxvdwylut.png')">
+                </div>
+                        <div class="flex flex-col justify-between flex-1">
+                <div>
+                    <h2 class="font-sans leading-normal block mb-6">
+                        Forge: May Round-Up
+                    </h2>
+
+                    <p class="leading-normal mb-6 font-serif leading-loose">
+                        A whole month has flown by since our last post which rounded up all of the things...
+                    </p>
+                </div>
+
+                <div class="flex items-center text-sm text-light">
+                    <img src="https://laravel-blog-assets.s3.amazonaws.com/meZx1nJ84JUaNyICBxozi12NZ2Zickge37yAioLY.png" class="w-10 h-10 rounded-full" title="James Brooks">
+                    <span class="ml-2">James Brooks</span>
+                    <span class="ml-auto">Jun, 1 2021</span>
+                </div>
+            </div>
+        </a>
+    
+    <div class="uppercase flex items-center justify-center flex-1 py-5 font-sans">
+        
+                    <a href="https://blog.laravel.com?page=2" rel="next" class="block no-underline text-light hover:text-black px-5">Check More Articles</a>
+            </div>
+
+</div>
+
+
+<div class="border-t border-lighter mt-20">
+    <div class="container mx-auto px-5 lg:max-w-screen">
+        <div class="text-muted py-10 text-center">
+            Follow the <a href="/feed">RSS Feed</a>.
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,1782 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js ie ie6 lt-ie10 lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js ie ie7 lt-ie10 lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js ie ie8 lt-ie10 lt-ie9" lang="en"> <![endif]-->
+<!--[if IE 9]>         <html class="no-js ie ie9 lt-ie10" lang="en"> <![endif]-->
+<!--[if gt IE 9]><!--> <html class="no-js ffly" lang="en"> <!--<![endif]-->
+<head>
+    <!-- META -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="description" content="Browsersync makes your browser testing workflow faster by synchronising URLs, interactions and code changes across multiple devices. It&amp;rsquo;s wicked-fast and totally free.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Browsersync options</title>
+
+    <!-- ICONS -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=qAqkxQaJm0">
+    <link rel="icon" type="image/png" href="/favicon-32x32.png?v=qAqkxQaJm0" sizes="32x32">
+    <link rel="icon" type="image/png" href="/favicon-16x16.png?v=qAqkxQaJm0" sizes="16x16">
+    <link rel="manifest" href="/manifest.json?v=qAqkxQaJm0">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg?v=qAqkxQaJm0" color="#f24747">
+    <link rel="shortcut icon" href="/favicon.ico?v=qAqkxQaJm0">
+    <meta name="theme-color" content="#ffffff">
+
+    <!-- CSS Includes (PRODUCTION) -->
+    <style>@charset "UTF-8";
+           /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:0}article,aside,details,figcaption,figure,footer,header,hgroup,main,menu,nav,section,summary{display:block}audio,canvas,progress,video{display:inline-block;vertical-align:baseline}audio:not([controls]){display:none;height:0}[hidden],template{display:none}a{background-color:transparent}a:active,a:hover{outline:0}abbr[title]{border-bottom:1px dotted}b,strong{font-weight:700}dfn{font-style:italic}h1{font-size:2em;margin:.67em 0}mark{background:#ff0;color:#000}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sup{top:-.5em}sub{bottom:-.25em}img{border:0}svg:not(:root){overflow:hidden}figure{margin:1em 40px}hr{box-sizing:content-box;height:0}pre{overflow:auto}code,kbd,pre,samp{font-family:monospace,monospace;font-size:1em}button,input,optgroup,select,textarea{color:inherit;font:inherit;margin:0}button{overflow:visible}button,select{text-transform:none}button,html input[type=button],input[type=reset],input[type=submit]{-webkit-appearance:button;cursor:pointer}button[disabled],html input[disabled]{cursor:default}button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0}input{line-height:normal}input[type=checkbox],input[type=radio]{box-sizing:border-box;padding:0}input[type=number]::-webkit-inner-spin-button,input[type=number]::-webkit-outer-spin-button{height:auto}input[type=search]{-webkit-appearance:textfield;box-sizing:content-box}input[type=search]::-webkit-search-cancel-button,input[type=search]::-webkit-search-decoration{-webkit-appearance:none}fieldset{border:1px solid silver;margin:0 2px;padding:.35em .625em .75em}legend{border:0;padding:0}textarea{overflow:auto}optgroup{font-weight:700}table{border-collapse:collapse;border-spacing:0}td,th{padding:0}*,:after,:before{box-sizing:border-box}blockquote,caption,dd,dl,fieldset,form,h1,h2,h3,h4,h5,h6,hr,legend,ol,p,pre,table,td,th,ul{margin:0;padding:0}abbr[title],dfn[title]{cursor:help}a,ins,u{text-decoration:none}ins{border-bottom:1px solid}img{font-style:italic}button,input,label,option,select,textarea{cursor:pointer}.text-input:active,.text-input:focus,textarea:active,textarea:focus{cursor:text;outline:none}.hljs{display:block;overflow-x:auto;padding:.5em;background:#fdf6e3;color:#657b83;-webkit-text-size-adjust:none}.diff .hljs-header,.hljs-comment,.hljs-doctype,.hljs-javadoc,.hljs-pi,.hljs-template_comment,.lisp .hljs-string{color:#93a1a1}.css .hljs-tag,.hljs-addition,.hljs-keyword,.hljs-request,.hljs-status,.hljs-winutils,.method,.nginx .hljs-title{color:#859900}.hljs-command,.hljs-dartdoc,.hljs-hexcolor,.hljs-link_url,.hljs-number,.hljs-phpdoc,.hljs-regexp,.hljs-rules .hljs-value,.hljs-string,.hljs-tag .hljs-value,.tex .hljs-formula{color:#2aa198}.css .hljs-function,.hljs-built_in,.hljs-chunk,.hljs-decorator,.hljs-id,.hljs-identifier,.hljs-localvars,.hljs-title,.vhdl .hljs-literal{color:#268bd2}.hljs-attribute,.hljs-class .hljs-title,.hljs-constant,.hljs-link_reference,.hljs-parent,.hljs-type,.hljs-variable,.lisp .hljs-body,.smalltalk .hljs-number{color:#b58900}.clojure .hljs-title,.css .hljs-pseudo,.diff .hljs-change,.hljs-attr_selector,.hljs-cdata,.hljs-header,.hljs-pragma,.hljs-preprocessor,.hljs-preprocessor .hljs-keyword,.hljs-shebang,.hljs-special,.hljs-subst,.hljs-symbol,.hljs-symbol .hljs-string{color:#cb4b16}.hljs-deletion,.hljs-important{color:#dc322f}.hljs-link_label{color:#6c71c4}.tex .hljs-formula{background:#eee8d5}.hljs-params{color:#6c71c4}html{overflow-y:scroll;min-height:100%;font:100%/1.5 Titillium Web,Lucida Grande,Lucida Sans,sans-serif;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;-webkit-font-smoothing:antialiased}body,html{overflow-x:hidden;max-width:100%}body{background:#fff;color:#333;text-rendering:optimizeLegibility}.warning.lede{font-size:14px;font-size:.875rem;color:red}hr{clear:both;margin-bottom:24px;border:none;border-bottom:1px solid #ccc;padding-bottom:12px;height:1px}img{display:block;max-width:100%}.svg-icon{display:inline-block;fill:currentColor!important;height:1em;width:1em;vertical-align:middle}.doc-wrapper{background:#fff;padding:12px;border-radius:0;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between;-ms-flex-wrap:wrap;flex-wrap:wrap}@media (min-width:700px){.doc-wrapper{border-radius:5px;padding:36px 36px 0}}.one-quarter{width:100%;-webkit-box-ordinal-group:2;-ms-flex-order:1;order:1}@media only screen and (min-width:700px){.one-quarter{-webkit-box-ordinal-group:3;-ms-flex-order:2;order:2;width:28%}}.three-quarters{-webkit-box-ordinal-group:3;-ms-flex-order:2;order:2;width:100%}@media only screen and (min-width:700px){.three-quarters{-webkit-box-ordinal-group:2;-ms-flex-order:1;order:1;width:65%}}.grid{display:-webkit-box;display:-ms-flexbox;display:flex;-ms-flex-wrap:wrap;flex-wrap:wrap}.one-half{width:100%}@media only screen and (min-width:700px){.one-half{width:50%}}.algolia-autocomplete{width:100%}.algolia-autocomplete .ds-dropdown-menu.ds-dropdown-menu{max-width:none;width:100%}.input{border:0;outline:0;border-radius:3px;color:#0f2634}.input--text{height:40px;line-height:40px;padding:0 12px}.doc-search{border:1px solid #d9d9d9;position:relative;background:url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz48IURPQ1RZUEUgc3ZnIFBVQkxJQyAiLS8vVzNDLy9EVEQgU1ZHIDEuMS8vRU4iICJodHRwOi8vd3d3LnczLm9yZy9HcmFwaGljcy9TVkcvMS4xL0RURC9zdmcxMS5kdGQiPjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iTWFnbmlmeWluZ19nbGFzcyIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4IiB5PSIwcHgiIHZpZXdCb3g9IjAgMCAyMCAyMCIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgMjAgMjA7IiB4bWw6c3BhY2U9InByZXNlcnZlIj48c3R5bGUgdHlwZT0idGV4dC9jc3MiPi5zdDB7ZmlsbDojRDlEOUQ5O308L3N0eWxlPjxwYXRoIGNsYXNzPSJzdDAiIGQ9Ik0xNy41LDE1LjVsLTMuOC0zLjhjMC42LTAuOSwwLjktMiwwLjktMy4yYzAtMy40LTMtNi40LTYuNC02LjRjLTMuNCwwLTYuMiwyLjgtNi4yLDYuMmMwLDMuNCwzLDYuNCw2LjQsNi40YzEuMSwwLDIuMi0wLjMsMy4xLTAuOGwzLjgsMy44YzAuNCwwLjQsMSwwLjQsMS4zLDBsMC45LTAuOUMxOC4xLDE2LjMsMTcuOSwxNS44LDE3LjUsMTUuNXogTTQsOC4zQzQsNS45LDUuOSw0LDguMyw0YzIuNCwwLDQuNSwyLjEsNC41LDQuNWMwLDIuNC0xLjksNC4zLTQuMyw0LjNDNi4xLDEyLjgsNCwxMC43LDQsOC4zeiIvPjwvc3ZnPg==) no-repeat 0;background-size:20px 20px;background-position-x:10px;padding-left:40px;width:100%}a{color:#f24747;-webkit-transition:border .3s ease,background .3s ease,color .3s ease;transition:border .3s ease,background .3s ease,color .3s ease}a:focus,a:hover{color:#000;text-decoration:underline}a [class*=" icon-"],a [class^=icon-]{text-decoration:none}.nav-link{display:inline-block;color:#fff;padding:0 12px;height:40px;-webkit-transition:background .3s;transition:background .3s}.nav-link:active{-webkit-transform:scale(.98);transform:scale(.98)}.nav-link.mono{font-family:monospace}.nav__item{display:inline-block;line-height:40px;margin:0;padding:0;margin-right:6px;border-bottom:hsla(0,0%,100%,0)}.nav__item.active .nav-link{font-weight:700}.nav__item .nav-link{position:relative}.nav__item .nav-link:focus,.nav__item .nav-link:hover{color:#fff;background:hsla(0,0%,100%,.1);text-decoration:none}@media only screen and (min-width:700px){.nav__item{margin-right:0}.nav__item .nav-link{height:70px;line-height:70px}}.nav__item--right{position:absolute;top:0;right:0;margin-right:0}.nav__item--right a{height:70px;line-height:70px}@media only screen and (min-width:700px){.nav__item--right{position:relative;-webkit-box-flex:1;-ms-flex:1;flex:1;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:end;-ms-flex-pack:end;justify-content:flex-end}}.nav__item--right .svg-icon{width:24px;height:24px}.docs-nav{background:#0f2634}.fixed-nav{border-top:1px solid #1a435c;list-style:none;overflow-x:auto;white-space:nowrap;-webkit-overflow-scrolling:touch;margin-bottom:0}@media only screen and (min-width:700px){.fixed-nav{border-top:0}}.fixed-nav .nav-link{height:50px;line-height:50px}.fixed-nav .nav-link:focus,.fixed-nav .nav-link:hover{color:#fff;background:hsla(0,0%,100%,.1);text-decoration:none}.fixed-nav__item{display:inline-block}.fixed-nav__item.active .nav-link{font-weight:700}.fixed-nav__item a{color:#fff}.sticky-nav{border-radius:3px;padding:12px;background:hsla(0,0%,100%,.99);border:1px solid #ececec;border-top:3px solid #f24747;position:absolute;width:100%;-webkit-transition:opacity .3s;transition:opacity .3s;height:0;opacity:0;overflow:hidden}.open .sticky-nav{position:relative;height:auto;opacity:1}@media only screen and (min-width:700px){.sticky-nav{position:relative;opacity:1;height:auto}}.sticky-nav__items{list-style:none;margin-bottom:0}.sticky-nav__items .sticky-nav__item:last-child .nav-link{border-bottom:0}.sticky-nav__item{list-style:none}.sticky-nav__item .nav-link{color:#0f2634;width:100%;height:auto;padding:12px 0;border-bottom:1px solid #f9f9f9;position:relative}@media only screen and (min-width:700px){.sticky-nav__item .nav-link{padding:4px 0}}.doc-nav,.doc-wrapper{position:relative}.doc-nav{display:none;height:0}@media only screen and (min-width:700px){.doc-nav{display:block}}.doc-nav.open{height:auto}.nav-expand{width:40px;height:40px;display:block;border:3px solid #0f2634;border-radius:50%;position:absolute;right:12px;top:12px;background:hsla(0,0%,100%,.9);z-index:1}.nav-expand .svg-icon{-webkit-transition:all .2s;transition:all .2s;position:absolute;top:2px;left:2px;font-size:30px}.nav-expand .svg-icon.close{left:2px;opacity:0;-webkit-transform:scale(.5);transform:scale(.5)}@media only screen and (min-width:700px){.nav-expand{display:none}}.nav-expand:hover{cursor:pointer}.open .nav-expand{border-color:#f24747}.open .nav-expand .svg-icon.open{opacity:0;-webkit-transform:scale(.5);transform:scale(.5)}.open .nav-expand .svg-icon.close{color:#f24747;opacity:1;-webkit-transform:scale(1);transform:scale(1)}.commands-list tr{border-bottom:1px solid #f2f2f2}.commands-list tr td:first-child{white-space:nowrap;font-weight:700}.commands-list td{padding:6px}.button{display:inline-block;border:0;padding:12px 24px;width:auto;vertical-align:middle;background:#ccc;color:#f24747;font-weight:700;font-size:16px;font-size:1rem;line-height:1;text-align:center;cursor:pointer;border-radius:3px}.button:focus,.button:hover{background:#ccc;color:#000;text-decoration:none}.button:active{background:#000;color:#fff}.button+.button,.button+a{margin-left:12px}.button--primary{background:#f24747;color:#fff}.button--primary:focus,.button--primary:hover{background:#f45f5f;color:#fff}.button--primary:active{background:#f02f2f;color:#fff}address,blockquote,details,dl,fieldset,figcaption,figure,h1,h2,h3,h4,h5,h6,hgroup,ol,p,pre,table,ul{margin-bottom:12px}.h1,.h2,.h3,.h4,.h5,.h6,h1,h2,h3,h4,h5,h6{font-weight:700;line-height:1;font-family:Titillium Web,Lucida Grande,Lucida Sans,sans-serif;-webkit-font-smoothing:antialiased}.h1 small,.h2 small,.h3 small,.h4 small,.h5 small,.h6 small,h1 small,h2 small,h3 small,h4 small,h5 small,h6 small{font-size:inherit;font-weight:400}.h1,h1{font-size:36px;font-size:2.25rem}.h1,.h2,h1,h2{margin-bottom:24px;padding-top:24px}.h2,h2{font-size:24px;font-size:1.5rem}.h3,h3{padding-top:12px;font-size:18px;font-size:1.125rem}.lede{font-size:24px;font-size:1.5rem}.header-wrap{background:#0f2634;position:relative}.header-wrap.home{background:#0f2634 url(../img/bg.jpg) no-repeat;background-size:cover}.intro{text-align:center;color:#fff;padding-top:35px;padding-bottom:24px;position:relative}@media only screen and (min-width:700px){.intro{padding-top:70px;padding-bottom:72px;margin-bottom:72px}}.hook{margin:0 auto 24px;padding-top:0;margin-bottom:12px}@media only screen and (min-width:700px){.hook{padding-top:24px}}@media only screen and (min-width:900px){.hook{padding-top:24px;font-size:48px;font-size:3rem}}.ronseal{margin:0 auto 24px;font-style:italic;font-weight:700;font-size:20px;font-size:1.25rem}.video{margin-bottom:24px}.video__link{display:inline-block;color:#fff}.video__link:focus,.video__link:hover{color:#fff}.video__link:hover .svg-icon{-webkit-transform:scale(1.2);transform:scale(1.2)}.video__link:active{color:#fff}.video__link:active .svg-icon{-webkit-transform:scale(1);transform:scale(1)}.video__link .svg-icon{-webkit-transition:all .3s;transition:all .3s;width:40px;height:40px}.how-to{font-family:monospace;margin-bottom:24px}.how-to__command{font-family:monospace;background:hsla(0,0%,100%,.5);padding:15px 24px;border-radius:5px;color:#000;display:inline-block;line-height:.8}.player{display:none}.overlay{position:absolute;top:0;bottom:0;left:0;right:0;width:100%;height:100%;background:rgba(0,0,0,.9);z-index:1;display:-webkit-box;display:-ms-flexbox;display:flex;-ms-flex-wrap:wrap;flex-wrap:wrap;opacity:0;visibility:hidden;-webkit-transition:all .3s;transition:all .3s}.overlay.open{opacity:1;visibility:visible}.overlay__close{position:absolute;top:12px;right:12px;color:#fff}.overlay__close:hover{cursor:pointer}.overlay__close .svg-icon{font-size:40px}.overlay__content{width:100%;-ms-flex-item-align:center;align-self:center}.overlay__video{max-width:500px;margin:auto}@media only screen and (min-width:700px){.overlay__video{max-width:800px}}.overlay__video iframe{width:100%}.integrations{margin-top:24px;padding:24px 0;background:#0f2634;color:#fff;text-align:center;font-size:18px;font-size:1.125rem}.integrations a{color:#fff;font-weight:700}@media only screen and (min-width:700px){.integrations{padding:0;text-align:left;height:83px;line-height:83px;margin-top:72px}}.integrations .container{position:relative}.integrations__text{margin-bottom:0}.integrations__thumb{width:100px;margin:0 auto}@media only screen and (min-width:700px){.integrations__thumb{width:198px;position:absolute;right:12px;top:-48px}}.usp{zoom:1;margin-bottom:24px;margin-top:24px;position:relative}.usp:after,.usp:before{content:"";display:table}.usp:after{clear:both}@media only screen and (min-width:700px){.usp{min-height:500px}}.usp__thumb{display:none}@media only screen and (min-width:700px){.usp__thumb{position:absolute;left:50%;top:0;display:block;width:704px;height:524px}}@media only screen and (min-width:700px){.usp__content{width:46%}}.usp__title{color:#0f2634}@media only screen and (min-width:900px){.usp__title{padding-top:72px;font-weight:400;font-size:40px;font-size:2.5rem}}.usp__platforms{margin-top:24px}.usp__platforms img{width:110px}.features{padding-top:48px;padding-bottom:48px}@media only screen and (min-width:700px){.features{padding-top:72px;padding-bottom:72px}}.feature__list{list-style:none;display:-webkit-box;display:-ms-flexbox;display:flex;width:100%;-ms-flex-wrap:wrap;flex-wrap:wrap;-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between}.feature__item{width:100%}@media only screen and (min-width:700px){.feature__item{width:31%}}.feature{zoom:1;margin-bottom:24px}.feature:after,.feature:before{content:"";display:table}.feature:after{clear:both}.feature__content{margin-bottom:24px}.feature__title{display:-webkit-box;display:-ms-flexbox;display:flex;padding:0;margin-bottom:12px}.feature__title h3{padding:0;margin:0;line-height:1.1}@media only screen and (min-width:700px){.feature__title h3{line-height:1.5}}.feature__title .svg-icon{color:#f24747;width:20px;height:20px;margin-right:6px}@media only screen and (min-width:700px){.feature__title .svg-icon{width:30px;height:30px;margin-right:12px}}.jh{padding:48px 0;background:#0f2634;text-align:center}.jh,.jh a:hover{color:#fff}.jh__logo{width:82px;display:block;margin:0 auto}.jh__logo img{width:100%}.jh__title{margin-top:12px}.jh__text{max-width:600px;margin:0 auto}.jh__links{font-size:0;padding-top:24px}.jh__links a{color:#fff;margin:0 12px}.jh__links a:hover{color:#fff}.jh__links .svg-icon{height:30px;width:30px}.users{padding-top:48px;padding-bottom:48px}@media only screen and (min-width:700px){.users{padding-top:72px;padding-bottom:72px}}.user__list{width:100%;padding-top:24px}.user__list+.user__list{margin-top:48px}@media only screen and (min-width:700px){.user__list{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;padding-top:0}.user__list .google{position:relative;top:-5px}.user__list .adobe{position:relative;top:-2px}}.user__logo{margin-bottom:24px}@media only screen and (min-width:700px){.user__logo{margin:0 36px}}.user__logo img{margin:0 auto;max-width:150px}.user__person{padding-left:70px;position:relative}@media only screen and (min-width:700px){.user__person{padding-left:90px;width:100%}}.user__person img{max-width:50px;border-radius:50%;position:absolute;top:0;left:0}@media only screen and (min-width:700px){.user__person img{max-width:70px}}.person__name{font-size:18px;font-size:1.125rem;font-weight:700}.install{padding-top:48px;padding-bottom:48px}@media only screen and (min-width:700px){.install{padding-top:72px;padding-bottom:72px}}.signup{background:url(../img/bg.jpg) no-repeat;background-size:cover;color:#fff;text-align:center;padding-top:72px;padding-bottom:72px}@media only screen and (min-width:700px){.signup{padding-top:96px;padding-bottom:72px}}.signup__title{font-size:24px;font-size:1.5rem;margin-bottom:24px}@media only screen and (min-width:700px){.signup__title{font-size:36px;font-size:2.25rem}}.signup__form{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center}@media only screen and (min-width:700px){.signup__form{width:auto;margin:0 auto}}.signup__form .form__email{-webkit-box-flex:1;-ms-flex:1;flex:1;margin-right:2%;background:none;color:#fff;border:2px solid #fff}@media only screen and (min-width:700px){.signup__form .form__email{max-width:200px}}.signup__links{font-size:0;margin-top:12px}.signup__links a{display:inline-block;color:#fff;font-size:30px;margin:0 4px;padding:12px;border-radius:3px}.signup__links a:hover{color:#f24747}.credit{background:#0f2634}.credit .nav__item.logo{position:relative;top:2px}.credit .site-nav{display:-webkit-box;display:-ms-flexbox;display:flex;margin-bottom:0;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center}.credit .prev{margin-top:10px;text-align:center;color:#fff}.credit__thumb{width:100%;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;line-height:70px}@media only screen and (min-width:700px){.credit__thumb{width:auto;-webkit-box-flex:1;-ms-flex:1;flex:1;-webkit-box-pack:end;-ms-flex-pack:end;justify-content:flex-end}}.credit__thumb span{color:#fff;display:inline-block}.credit__thumb a{height:100%;padding:6px 6px 4px;margin-left:12px}.credit__thumb a:hover{border-bottom:0}.credit__thumb img{height:60px}@media only screen and (min-width:700px){.credit__content{overflow:hidden}}.wrapper{clear:both;width:100%}.wrapper--alt{background:#fbfbfb;border-bottom:1px solid #ebebeb}.wrapper--dark{background-size:cover;color:#fff}.wrapper--dark a{border-bottom:1px solid hsla(0,0%,100%,.25);color:#fff}.wrapper--dark a:hover{text-decoration:none;border-color:#fff}.container{margin:0 auto;padding-right:12px;padding-left:12px;width:auto;max-width:1020px;list-style:none}@media only screen and (min-width:700px){.container{padding-right:24px;padding-left:24px}}.container--skinny{max-width:800px}.text--center{text-align:center!important}.section-title{padding-top:12px;text-align:center;font-size:24px;font-size:1.5rem}@media only screen and (min-width:900px){.section-title{margin-bottom:48px;padding-top:24px;font-weight:400;font-size:26px;font-size:1.625rem}}.support{position:relative;margin-bottom:24px;padding-top:24px;font-size:12px;font-size:.75rem;text-align:center}.support:before{content:"";position:absolute;top:0;left:50%;width:50%;margin-left:-25%;height:1px;background:#e6e6e6}.support li{display:inline;margin:0 12px 0 0}@media only screen and (min-width:900px){.support{margin-top:24px;padding-top:48px}}.quote{margin-bottom:24px}.quote>:last-child{margin-bottom:0}@media only screen and (min-width:900px){.quote{font-size:18px;font-size:1.125rem}}.quote__source{font-size:12px;font-size:.75rem}.quote__source:before{content:"—";margin-right:.5em}.brand-asset-wrapper{padding:0 12px}.brand-rule{font-weight:400;padding:0}.brand-asset{border-bottom:1px dashed #ccc;padding:70px 0;margin-bottom:70px}.brand-asset:last-child{border:none;margin-bottom:0}.brand--evolution{display:-webkit-box;display:-ms-flexbox;display:flex;-ms-flex-wrap:wrap;flex-wrap:wrap;margin-left:-24px}.evolution__item{width:50%;margin-bottom:24px;text-align:center;padding-left:24px}@media only screen and (min-width:700px){.evolution__item{width:25%}}.evolution__image{margin:0;width:100%;padding-bottom:100%;border:1px solid #e6e6e6;position:relative}.evo-img{position:absolute;left:0;right:0;top:50%;-webkit-transform:translateY(-50%);transform:translateY(-50%);margin:0 auto;width:100%;height:5em;color:#ccc}.evo-img.evo-4{color:#f24747}.evo-img.evo-1{width:40%}.evolution__fig{position:absolute;bottom:0;left:0;padding:12px;margin:0;color:#ccc}.brand--colours{margin-left:-24px}@media only screen and (min-width:700px){.brand--colours{display:-webkit-box;display:-ms-flexbox;display:flex}}.colour__item{padding:24px;position:relative;color:#fff;margin-left:24px}.colour__item:nth-child(2){color:#6d6d6d;border:1px solid #ccc}@media only screen and (min-width:700px){.colour__item{-webkit-box-flex:1;-ms-flex-positive:1;flex-grow:1;height:160px;padding:12px}}.colour__desc{margin:0}.colour__hex{float:right}@media only screen and (min-width:700px){.colour__hex{position:absolute;bottom:0;left:0;padding:12px}}.brand--name{margin-left:-24px}@media only screen and (min-width:700px){.brand--name{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center}}.name__item{padding-left:24px}@media only screen and (min-width:700px){.name__item{-webkit-box-flex:1;-ms-flex:1;flex:1}}.name__item img{width:80%;margin:0 auto}@media only screen and (min-width:700px){.brand--typeface{display:-webkit-box;display:-ms-flexbox;display:flex}}.typeface__item{text-align:center;margin-bottom:24px}.typeface__item:last-child{margin:0}@media only screen and (min-width:700px){.typeface__item{-webkit-box-flex:1;-ms-flex:1;flex:1;margin:0}}.typeface__img{width:100%;height:8em;color:#6d6d6d;margin:0 auto 24px}.brand--usage{margin-left:-24px;display:-webkit-box;display:-ms-flexbox;display:flex;-ms-flex-wrap:wrap;flex-wrap:wrap}.usage__item{width:50%;padding-left:24px;margin-bottom:24px}@media only screen and (min-width:700px){.usage__item{width:25%}}.usage__item .svg-icon{width:100%;height:5em}.usage__image{margin:0 0 24px;width:100%;padding-bottom:100%;border:1px solid #e6e6e6;position:relative}.usage__image .svg-icon{position:absolute;left:0;right:0;top:50%;-webkit-transform:translateY(-50%);transform:translateY(-50%);margin:0 auto;width:80%;height:5em}.usage--light .svg-icon{color:#f24747}.usage--dark{background:#0f2634}.usage--dark .svg-icon{color:#fff}.usage__desc{font-size:12px}.spacing__item:nth-child(2){margin-top:96px}.spacing__item img{margin:0 auto}.brand--restrictions{display:-webkit-box;display:-ms-flexbox;display:flex;-ms-flex-wrap:wrap;flex-wrap:wrap;margin-left:-24px}.restriction__item{width:50%;margin-bottom:24px;padding-left:24px;position:relative}@media only screen and (min-width:700px){.restriction__item{width:33.33%}}@media only screen and (min-width:900px){.restriction__item{width:16.66%}}.restriction__image{margin:0 0 24px;width:100%;padding-bottom:100%;border:1px solid #e6e6e6;position:relative}.restriction__image .svg-icon{position:absolute;left:0;right:0;top:50%;-webkit-transform:translateY(-50%);transform:translateY(-50%);width:100%;height:5em;margin:0 auto;color:#f24747}.restriction__image .svg-icon.restriction-2{color:#e9ac00}.restriction-cross{color:#c00;width:1.5em;height:1.5em}.site-header{text-align:center}@media only screen and (min-width:700px){.site-header{height:70px}}.site-header.alt{padding-top:0;padding-bottom:0}.site-header.alt a{border-bottom:0}.logo{border:0!important;font-weight:700;font-size:24px;font-size:1.5rem;width:100%;text-align:left}.logo span{font-weight:400}.logo .nav-link{position:relative;height:70px;line-height:66px}.logo .svg-icon{position:relative;top:-4px;margin-right:6px;height:30px;width:140px}@media only screen and (min-width:700px){.logo{width:auto}}.logo--large{display:none}@media only screen and (min-width:700px){.logo--large{display:inline-block;width:120px;height:120px}}.site-nav{list-style:none;position:relative;zoom:1}.site-nav:after,.site-nav:before{content:"";display:table}.site-nav:after{clear:both}@media only screen and (min-width:700px){.site-nav{display:-webkit-box;display:-ms-flexbox;display:flex}}.update-banner{background:#f24747;text-align:center;padding:12px 0;display:none}.update-banner p{margin-bottom:0}.update-banner a{color:#fff;text-decoration:underline}.update-banner a:active,.update-banner a:hover{text-decoration:none}.update-banner--active{display:block}.sub-header{border-top:1px solid hsla(0,0%,100%,.1);background:#0f2634;color:#fff;margin-bottom:70px}.sub-header__intro{padding:24px 12px 48px}@media only screen and (min-width:700px){.sub-header__intro{width:65%;padding:70px 12px}}.sub-header__title{font-weight:400;padding:0}.sub-header__desc{margin-bottom:24px;opacity:.7}.sub-header__cta{margin:0}.zip{margin-left:5px;font-weight:100;font-size:12px}code,samp{font-size:16px;font-size:1rem;font-family:monospace;padding:2px 4px;margin:0 2px;border:1px solid #efefef;border-radius:3px}code,pre,samp{background:#fcfcfc}pre{padding:24px;line-height:1.4;margin-bottom:24px;border:1px solid #e8e8e8;border-radius:3px;border-top-left-radius:0;border-top-right-radius:0}pre code{border:0;padding:0;margin:0}@media only screen and (min-width:700px){pre{margin-left:0;margin-right:0}}.section-link{padding-bottom:12px;border-bottom:1px dashed #e6e6e6}.code-example{padding-top:0}.code-example h2{font-size:32px;font-size:2rem;color:#0f2634}.code-example h2,.code-example h3,.code-example p{margin-bottom:24px}@media (min-width:700px){.code-example h2,.code-example h2.flush,.code-example h3,.code-example h3.flush,.code-example p,.code-example p.flush{margin-bottom:24px}}.code-example h2.flush,.code-example h3.flush,.code-example p.flush{margin-bottom:12px}.code-example .container{padding-top:0;padding-left:0;padding-right:0}.code-example h3{font-size:22px;font-size:1.375rem;padding-top:12px;margin-bottom:12px;position:relative}.code-example h3 a{color:#0f2634}@media (min-width:700px){.code-example h3{font-size:30px;font-size:1.875rem;padding-top:36px;margin-bottom:24px;border-top:0}}.code-example h3 .icon{font-size:20px;font-size:1.25rem;margin-left:6px}.code-example.docs{text-align:center}.code-example.docs ul{margin-bottom:48px}.code-example.docs ul li{display:inline-block}.code-example.docs ul li p{margin-bottom:0}.code-example.docs ul li a{display:block;padding:12px}.code-example.docs ul:before{content:"";display:none}.param-list{list-style:none;margin-bottom:24px}.param-list li{color:#000}.param-list li.name,.param-list li.type{line-height:30px}.param-list li.name .icon,.param-list li.type .icon{font-size:14px;font-size:.875rem;margin-left:4px}.param-list li.name{font-size:20px;font-size:1.25rem;color:#000;font-weight:700}.param-list li.desc{padding-top:12px}.param-list li .recede{color:#9e9e9e}.page-anchor{color:#0f2634;position:relative;font-weight:400}.page-anchor:after{-webkit-transition:all .3s;transition:all .3s;content:"";width:0;height:1px;background:#0f2634;position:absolute;bottom:-5px;left:0}.page-anchor:hover{text-decoration:none}.page-anchor:hover:after{width:100%}.page-title{font-size:20px;font-size:1.25rem;font-weight:400}@media (min-width:700px){.page-title{font-size:34px;font-size:2.125rem;margin-bottom:24px;padding-bottom:12px;border-bottom:1px dashed #ccc}}.subprops{margin-top:12px;padding-left:12px}.back-to-top{font-weight:400;font-size:14px;font-size:.875rem;position:absolute;top:19px;right:0}.back-to-top:hover{text-decoration:none}@media only screen and (min-width:700px){.back-to-top{top:48px}}.highlight-header{border-top-right-radius:3px;border-top-left-radius:3px;height:28px;background:#e7e7e7;padding-left:12px;position:relative;display:-webkit-box;display:-ms-flexbox;display:flex}.highlight-header .circle{margin:auto 0;width:12px;height:12px;background:#fff;border-radius:50%;margin-right:8px}.highlight-header .svg-icon{color:#a4a4a4;position:absolute;right:12px;top:6px}.step-list{margin-left:0;list-style:none}.step{position:relative;margin-bottom:24px;border:1px solid #ccc;padding:12px 24px;background:#fff;border-radius:5px}.step+.step:before{content:"";position:absolute;top:-25px;left:50%;width:1px;height:24px;background:#ccc}.clearfix,.container{zoom:1}.clearfix:after,.clearfix:before,.container:after,.container:before{content:"";display:table}.clearfix:after,.container:after{clear:both}hr{border-color:#ccc}.fl{float:left;margin-right:24px}.ct{display:block;margin-right:auto;margin-left:auto}.banner{padding-top:12px;padding-bottom:12px;text-align:center}.banner__logo{display:inline-block}.banner__logo img{width:100px}@media only screen and (min-width:900px){.banner__logo{position:absolute;top:12px;left:0}}.banner{max-width:1000px;padding:12px;margin:0 auto;position:relative}@media only screen and (min-width:900px){.banner{text-align:left;padding-left:112px}}.banner__content{padding-top:12px}[hl]{border:1px solid red}.nav{margin-left:0;list-style:none}.hidden{display:none!important}
+           /*# sourceMappingURL=core.min.css.map */
+</style>
+
+    <!--[if gt IE 9]>
+    <script src="/img/icons/svg4everybody.min.js"></script>
+    <![endif]-->
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.css" />
+
+</head>
+
+
+<body id="page-top">
+<div class="header-wrap ">
+
+    <div class="update-banner">
+        <p>Update available - <a href="" id="update">click here to reload</a></p>
+    </div>
+    <header class="wrapper site-header" role="banner">
+        <div class="container">
+            <nav>
+                <ul class="site-nav">
+                    <li class="nav__item logo">
+                        <a href="/" class="nav-link"><svg class="svg-icon "><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/img/icons/icons.svg#svg-wordmark"></use></svg>
+    </a>
+                    </li>
+                    <li class="nav__item "><a href="/docs" class="nav-link">Documentation</a></li>
+                    <li class="nav__item nav__item--right">
+                        <a href="https://github.com/Browsersync/browser-sync" class="nav-link" title="Browsersync on Github"><svg class="svg-icon "><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/img/icons/icons.svg#svg-github"></use></svg>
+    </a>
+                        <a href="https://twitter.com/browsersync" class="nav-link" title="@Browsersync on Twitter"><svg class="svg-icon "><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/img/icons/icons.svg#svg-twitter"></use></svg>
+    </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header><!-- .end .site-header -->
+
+
+
+</div>
+
+<div class="site-body" role="main">
+    
+
+
+    <div class="wrapper docs-nav">
+        <div class="container">
+            <ul class="fixed-nav">
+                <li class="fixed-nav__item "><a class="nav-link" href="/docs/gulp">+ Gulp</a></li>
+                <li class="fixed-nav__item "><a class="nav-link" href="/docs/grunt">+ Grunt</a></li>
+                <li class="fixed-nav__item "><a class="nav-link" href="/docs/api">API</a></li>
+                <li class="fixed-nav__item "><a class="nav-link" href="/docs/command-line">Command line</a></li>
+                <li class="fixed-nav__item active"><a class="nav-link" href="/docs/options">Options</a></li>
+                <li class="fixed-nav__item "><a class="nav-link" href="/docs/recipes">Recipes</a></li>
+                <li class="fixed-nav__item "><a class="nav-link" href="/docs/http-protocol">HTTP Protocol</a></li>
+            </ul>
+        </div>
+    </div>
+    <section id="top" class="wrapper code-example">
+    <div class="container">
+        <article class="doc-wrapper">
+            <div class="three-quarters">
+                <input class="input input--text doc-search" type="text" id="search-input" placeholder="Search docs...">
+                <h1 class="page-title">Browsersync options</h1>
+                
+
+                <p>These are all the options that you can configure when using Browsersync. Create a single object and pass
+                it as the <a href="/docs/api/#api-browserSync">first argument</a> (for GulpJS and normal API usage). If you&#39;re using Grunt, you can
+                still use all of these options, but you need to provide them as detailed in the <a href="/docs/grunt">Browsersync Grunt Documentation</a></p>
+
+
+                <h3 id="option-ui" class="section-link">
+                    <a href="#option-ui" class="page-anchor">ui</a>
+                    <a href="#page-top" class="back-to-top">^ TOP</a>
+                </h3>
+
+
+                <ul class="param-list">
+                    <li class="type">Type: <span class="color-teal">Object</span>
+                    <ul class="nav nav--stacked subprops">
+                            <li><b>port</b> - Default: <span class="color-teal">3001</span></li>
+                    </ul>
+                    </li>
+                </ul>
+
+                <p class="lede warning"><b>Note: </b> requires at least version 2.0.0</p>
+
+                <p>Browsersync includes a user-interface that is accessed via a separate port.
+                The UI allows to controls all devices, push sync updates and much more.</p>
+
+
+<div class="highlight-block"><div class="highlight-header"><span class="circle"></span><span class="circle"></span><span class="circle"></span><svg class="svg-icon "><use xlink:href="/img/icons/icons.svg#svg-code"></use></svg></div><pre class='highlight'><code class="js"><span class="hljs-comment">// Change the default port</span>
+ui: {
+    port: <span class="hljs-number">8080</span>
+}
+
+<span class="hljs-comment">// Change the default weinre port</span>
+ui: {
+    port: <span class="hljs-number">8080</span>,
+    weinre: {
+        port: <span class="hljs-number">9090</span>
+    }
+}
+
+<span class="hljs-comment">// Disable UI completely</span>
+ui: <span class="hljs-literal">false</span>
+</code></pre></div>
+
+
+                <h3 id="option-files" class="section-link">
+                    <a href="#option-files" class="page-anchor">files</a>
+                    <a href="#page-top" class="back-to-top">^ TOP</a>
+                </h3>
+
+
+                <ul class="param-list">
+                    <li class="type">Type: <span class="color-teal">Array | String</span>
+                    </li>
+                    <li class="default">Default: <span class="color-teal">false</span></li>
+                </ul>
+
+
+                <p>Browsersync can watch your files as you work. Changes you make will either
+                be injected into the page (CSS &amp; images) or will cause all browsers to do
+                a full-page refresh.</p>
+
+
+<div class="highlight-block"><div class="highlight-header"><span class="circle"></span><span class="circle"></span><span class="circle"></span><svg class="svg-icon "><use xlink:href="/img/icons/icons.svg#svg-code"></use></svg></div><pre class='highlight'><code class="js"><span class="hljs-comment">// single file</span>
+browserSync({
+    files: <span class="hljs-string">"app/css/style.css"</span>
+});
+
+<span class="hljs-comment">// multiple files</span>
+browserSync({
+    files: [<span class="hljs-string">"app/css/style.css"</span>, <span class="hljs-string">"app/js/*.js"</span>]
+});
+
+<span class="hljs-comment">// patterns + 1 with custom callback</span>
+<span class="hljs-comment">// since 2.6.0</span>
+browserSync({
+    files: [
+        <span class="hljs-string">"wp-content/themes/**/*.css"</span>,
+        {
+            match: [<span class="hljs-string">"wp-content/themes/**/*.php"</span>],
+            fn:    <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">event, file</span>) </span>{
+                <span class="hljs-comment">/** Custom event handler **/</span>
+            }
+        }
+    ]
+});</code></pre></div>
+
+
+                <h3 id="option-watchEvents" class="section-link">
+                    <a href="#option-watchEvents" class="page-anchor">watchEvents</a>
+                    <a href="#page-top" class="back-to-top">^ TOP</a>
+                </h3>
+
+
+                <ul class="param-list">
+                    <li class="type">Type: <span class="color-teal">Array</span>
+                    </li>
+                    <li class="default">Default: <span class="color-teal">[&quot;change&quot;]</span></li>
+                </ul>
+
+                <p class="lede warning"><b>Note: </b> requires at least version 2.18.8</p>
+
+                <p>Specify which file events to respond to.
+                Available events: <code>add</code>, <code>change</code>, <code>unlink</code>, <code>addDir</code>, <code>unlinkDir</code></p>
+
+
+
+
+                <h3 id="option-watch" class="section-link">
+                    <a href="#option-watch" class="page-anchor">watch</a>
+                    <a href="#page-top" class="back-to-top">^ TOP</a>
+                </h3>
+
+
+                <ul class="param-list">
+                    <li class="type">Type: <span class="color-teal">Boolean</span>
+                    </li>
+                    <li class="default">Default: <span class="color-teal">false</span></li>
+                </ul>
+
+                <p class="lede warning"><b>Note: </b> requires at least version 2.23.0</p>
+
+                <p>Watch files automatically - this should be used as an
+                alternative to the <code>files</code> option. When this option is used, some directories
+                will be ignored automatically such as <code>node_modules</code> <code>bower_components</code> <code>.sass-cache</code>
+                <code>.vscode</code> <code>.git</code> <code>.idea</code></p>
+
+
+<div class="highlight-block"><div class="highlight-header"><span class="circle"></span><span class="circle"></span><span class="circle"></span><svg class="svg-icon "><use xlink:href="/img/icons/icons.svg#svg-code"></use></svg></div><pre class='highlight'><code class="js"><span class="hljs-keyword">var</span> browserSync = <span class="hljs-built_in">require</span>(<span class="hljs-string">"browser-sync"</span>).create();
+
+<span class="hljs-comment">/**
+ * This example will serve files from the './app' directory
+ * and will automatically watch for html/css/js changes
+ */</span>
+browserSync.init({
+    watch: <span class="hljs-literal">true</span>,
+    server: <span class="hljs-string">"./app"</span>
+});
+</code></pre></div>
+
+
+                <h3 id="option-ignore" class="section-link">
+                    <a href="#option-ignore" class="page-anchor">ignore</a>
+                    <a href="#page-top" class="back-to-top">^ TOP</a>
+                </h3>
+
+
+                <ul class="param-list">
+                    <li class="type">Type: <span class="color-teal">Array</span>
+                    </li>
+                    <li class="default">Default: <span class="color-teal">[]</span></li>
+                </ul>
+
+                <p class="lede warning"><b>Note: </b> requires at least version 2.23.0</p>
+
+                <p>Patterns for any watchers to ignore. Anything provided here
+                will end up inside <code>watchOptions.ignored</code></p>
+
+
+
+
+                <h3 id="option-single" class="section-link">
+                    <a href="#option-single" class="page-anchor">single</a>
+                    <a href="#page-top" class="back-to-top">^ TOP</a>
+                </h3>
+
+
+                <ul class="param-list">
+                    <li class="type">Type: <span class="color-teal">Boolean</span>
+                    </li>
+                    <li class="default">Default: <span class="color-teal">false</span></li>
+                </ul>
+
+                <p class="lede warning"><b>Note: </b> requires at least version 2.23.0</p>
+
+                <p>Serve an index.html file for all non-asset routes. Useful
+                when using client-routers</p>
+
+
+
+
+                <h3 id="option-watchOptions" class="section-link">
+                    <a href="#option-watchOptions" class="page-anchor">watchOptions</a>
+                    <a href="#page-top" class="back-to-top">^ TOP</a>
+                </h3>
+
+
+                <ul class="param-list">
+                    <li class="type">Type: <span class="color-teal">Object</span>
+                    </li>
+                    <li class="default">Default: <span class="color-teal">undefined</span></li>
+                </ul>
+
+                <p class="lede warning"><b>Note: </b> requires at least version 2.6.0</p>
+
+                <p>File watching options that get passed along to <a href="https://github.com/paulmillr/chokidar">Chokidar</a>.
+                Check their docs for available options</p>
+
+
+<div class="highlight-block"><div class="highlight-header"><span class="circle"></span><span class="circle"></span><span class="circle"></span><svg class="svg-icon "><use xlink:href="/img/icons/icons.svg#svg-code"></use></svg></div><pre class='highlight'><code class="js"><span class="hljs-keyword">const</span> bs = <span class="hljs-built_in">require</span>(<span class="hljs-string">'browser-sync'</span>).create();
+
+<span class="hljs-comment">// Options passed to Chokidar</span>
+bs.init({
+    watchOptions: {
+        ignoreInitial: <span class="hljs-literal">true</span>,
+        ignored: <span class="hljs-string">'*.txt'</span>
+    },
+    files: [<span class="hljs-string">'./app'</span>]
+});
+
+<span class="hljs-comment">// options for chokidar with custom callback</span>
+<span class="hljs-comment">// since 2.6.0</span>
+bs.init({
+    files: [
+        {
+            match: [<span class="hljs-string">"wp-content/themes/**/*.php"</span>],
+            fn: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">event, file</span>) </span>{
+                <span class="hljs-comment">/** Custom event handler **/</span>
+            },
+            options: {
+                ignored: <span class="hljs-string">'*.txt'</span>
+            }
+        }
+    ]
+});
+
+<span class="hljs-comment">// <span class="hljs-doctag">NOTE:</span> the .watch() method will not receive</span>
+<span class="hljs-comment">// these options automatically, so you must provide</span>
+<span class="hljs-comment">// them manually in the following way</span>
+bs.watch([<span class="hljs-string">'app/*.css'</span>], {ignored: <span class="hljs-string">'*.map.css'</span>});
+</code></pre></div>
+
+
+                <h3 id="option-server" class="section-link">
+                    <a href="#option-server" class="page-anchor">server</a>
+                    <a href="#page-top" class="back-to-top">^ TOP</a>
+                </h3>
+
+
+                <ul class="param-list">
+                    <li class="type">Type: <span class="color-teal">Object | Boolean</span>
+                    </li>
+                    <li class="default">Default: <span class="color-teal">false</span></li>
+                </ul>
+
+
+                <p>Use the built-in static server for basic HTML/JS/CSS websites.</p>
+
+
+<div class="highlight-block"><div class="highlight-header"><span class="circle"></span><span class="circle"></span><span class="circle"></span><svg class="svg-icon "><use xlink:href="/img/icons/icons.svg#svg-code"></use></svg></div><pre class='highlight'><code class="js"><span class="hljs-comment">// Serve files from the app directory</span>
+server: <span class="hljs-string">"app"</span>
+
+<span class="hljs-comment">// Serve files from the current directory</span>
+server: <span class="hljs-literal">true</span>
+
+<span class="hljs-comment">// Serve files from the app directory with directory listing</span>
+server: {
+    baseDir: <span class="hljs-string">"app"</span>,
+    directory: <span class="hljs-literal">true</span>
+}
+
+<span class="hljs-comment">// Multiple base directories</span>
+server: [<span class="hljs-string">"app"</span>, <span class="hljs-string">"dist"</span>]
+
+<span class="hljs-comment">// Serve files from the app directory, with a specific index filename</span>
+server: {
+    baseDir: <span class="hljs-string">"app"</span>,
+    index: <span class="hljs-string">"index.htm"</span>
+}
+
+<span class="hljs-comment">// The static file server is based on expressjs/serve-static, </span>
+<span class="hljs-comment">// so we inherit all of their options, like trying a default extension</span>
+<span class="hljs-comment">// when one isn't specified</span>
+<span class="hljs-comment">// https://github.com/expressjs/serve-static</span>
+server: {
+    baseDir: <span class="hljs-string">"app"</span>,
+    serveStaticOptions: {
+        extensions: [<span class="hljs-string">"html"</span>]
+    }
+}
+
+<span class="hljs-comment">// Since version 1.2.1</span>
+<span class="hljs-comment">// The key is the url to match</span>
+<span class="hljs-comment">// The value is which folder to serve (relative to your current working directory)</span>
+server: {
+    baseDir: <span class="hljs-string">"app"</span>,
+    routes: {
+        <span class="hljs-string">"/bower_components"</span>: <span class="hljs-string">"bower_components"</span>
+    }
+}
+</code></pre></div>
+
+
+                <h3 id="option-proxy" class="section-link">
+                    <a href="#option-proxy" class="page-anchor">proxy</a>
+                    <a href="#page-top" class="back-to-top">^ TOP</a>
+                </h3>
+
+
+                <ul class="param-list">
+                    <li class="type">Type: <span class="color-teal">String | Object | Boolean</span>
+                    <ul class="nav nav--stacked subprops">
+                            <li><b>target</b> - Default: <span class="color-teal">undefined</span></li>
+                            <li><b>ws</b> - Default: <span class="color-teal">undefined</span></li>
+                            <li><b>middleware</b> - Default: <span class="color-teal">undefined</span></li>
+                            <li><b>reqHeaders</b> - Default: <span class="color-teal">undefined</span></li>
+                            <li><b>proxyReq</b> - Default: <span class="color-teal">undefined</span></li>
+                            <li><b>proxyRes</b> - Default: <span class="color-teal">undefined</span></li>
+                    </ul>
+                    </li>
+                </ul>
+
+
+                <p>Proxy an EXISTING vhost. Browsersync will wrap your vhost with a proxy URL to view your site.</p>
+
+
+<div class="highlight-block"><div class="highlight-header"><span class="circle"></span><span class="circle"></span><span class="circle"></span><svg class="svg-icon "><use xlink:href="/img/icons/icons.svg#svg-code"></use></svg></div><pre class='highlight'><code class="js"><span class="hljs-comment">// Using a vhost-based url</span>
+proxy: <span class="hljs-string">"local.dev"</span>
+
+<span class="hljs-comment">// Using a localhost address with a port</span>
+proxy: <span class="hljs-string">"localhost:8888"</span>
+
+<span class="hljs-comment">// Using localhost sub directories</span>
+proxy: <span class="hljs-string">"localhost/site1"</span>
+
+<span class="hljs-comment">// When your app also uses web sockets</span>
+<span class="hljs-comment">// <span class="hljs-doctag">NOTE:</span> requires 2.8.1 or above</span>
+proxy: {
+    target: <span class="hljs-string">"http://yourlocal.dev"</span>,
+    ws: <span class="hljs-literal">true</span>
+}
+
+proxy: {
+    target: <span class="hljs-string">"http://yourlocal.dev"</span>,
+}
+
+<span class="hljs-comment">// Modify the server request before it hits your application</span>
+<span class="hljs-comment">// <span class="hljs-doctag">NOTE:</span> requires v2.12.1</span>
+proxy: {
+    target: <span class="hljs-string">"http://yourlocal.dev"</span>,
+    proxyReq: [
+        <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">proxyReq</span>) </span>{
+            proxyReq.setHeader(<span class="hljs-string">'X-Special-Proxy-Header'</span>, <span class="hljs-string">'foobar'</span>);
+        }
+    ]
+}
+
+<span class="hljs-comment">// Modify the server response after it's returned from the proxy</span>
+proxy: {
+    target: <span class="hljs-string">"http://yourlocal.dev"</span>,
+    proxyRes: [
+        <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">proxyRes, req, res</span>) </span>{
+            <span class="hljs-built_in">console</span>.log(proxyRes.headers);
+        }
+    ]
+}
+</code></pre></div>
+
+
+                <h3 id="option-port" class="section-link">
+                    <a href="#option-port" class="page-anchor">port</a>
+                    <a href="#page-top" class="back-to-top">^ TOP</a>
+                </h3>
+
+
+                <ul class="param-list">
+                    <li class="type">Type: <span class="color-teal">Number</span>
+                    </li>
+                    <li class="default">Default: <span class="color-teal">3000</span></li>
+                </ul>
+
+
+
+
+<div class="highlight-block"><div class="highlight-header"><span class="circle"></span><span class="circle"></span><span class="circle"></span><svg class="svg-icon "><use xlink:href="/img/icons/icons.svg#svg-code"></use></svg></div><pre class='highlight'><code class="js"><span class="hljs-comment">// Use a specific port (instead of the one auto-detected by Browsersync)</span>
+port: <span class="hljs-number">8080</span></code></pre></div>
+
+
+                <h3 id="option-middleware" class="section-link">
+                    <a href="#option-middleware" class="page-anchor">middleware</a>
+                    <a href="#page-top" class="back-to-top">^ TOP</a>
+                </h3>
+
+
+                <ul class="param-list">
+                    <li class="type">Type: <span class="color-teal">Function | Array</span>
+                    </li>
+                    <li class="default">Default: <span class="color-teal">false</span></li>
+                </ul>
+
+
+
+
+<div class="highlight-block"><div class="highlight-header"><span class="circle"></span><span class="circle"></span><span class="circle"></span><svg class="svg-icon "><use xlink:href="/img/icons/icons.svg#svg-code"></use></svg></div><pre class='highlight'><code class="js"><span class="hljs-comment">// Multiple Global Middlewares</span>
+middleware: [
+    <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">req, res, next</span>) </span>{
+        <span class="hljs-comment">/** First middleware handler **/</span>
+    },
+    <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">req, res, next</span>) </span>{
+        <span class="hljs-comment">/** Second middleware handler **/</span>
+    }
+]
+
+<span class="hljs-comment">// Per-route middleware</span>
+<span class="hljs-comment">// <span class="hljs-doctag">NOTE:</span> requires v2.12.1</span>
+middleware: [
+    {
+        route: <span class="hljs-string">"/api"</span>,
+        handle: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">req, res, next</span>) </span>{
+            <span class="hljs-comment">// handle any requests at /api</span>
+        }
+    }
+]
+
+<span class="hljs-comment">// Per-route + global middleware</span>
+<span class="hljs-comment">// <span class="hljs-doctag">NOTE:</span> requires v2.12.1</span>
+middleware: [
+    <span class="hljs-built_in">require</span>(<span class="hljs-string">"compression"</span>)(), <span class="hljs-comment">// global</span>
+    {
+        route: <span class="hljs-string">"/api"</span>, <span class="hljs-comment">// per-route</span>
+        handle: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">req, res, next</span>) </span>{
+            <span class="hljs-comment">// handle any requests at /api</span>
+        }
+    }
+]
+</code></pre></div>
+
+
+                <h3 id="option-serveStatic" class="section-link">
+                    <a href="#option-serveStatic" class="page-anchor">serveStatic</a>
+                    <a href="#page-top" class="back-to-top">^ TOP</a>
+                </h3>
+
+
+                <ul class="param-list">
+                    <li class="type">Type: <span class="color-teal">Array</span>
+                    </li>
+                    <li class="default">Default: <span class="color-teal">[]</span></li>
+                </ul>
+
+                <p class="lede warning"><b>Note: </b> requires at least version 2.8.0</p>
+
+                <p>Add additional directories from which static
+                files should be served. Should only be used in <code>proxy</code> or <code>snippet</code>
+                mode.</p>
+
+
+<div class="highlight-block"><div class="highlight-header"><span class="circle"></span><span class="circle"></span><span class="circle"></span><svg class="svg-icon "><use xlink:href="/img/icons/icons.svg#svg-code"></use></svg></div><pre class='highlight'><code class="js"><span class="hljs-keyword">var</span> bs = <span class="hljs-built_in">require</span>(<span class="hljs-string">'browser-sync'</span>).create();
+
+<span class="hljs-comment">// Run in proxy mode with static files also served</span>
+<span class="hljs-comment">// from current directory + ./app/css</span>
+bs.init({
+    proxy: <span class="hljs-string">"http://www.bbc.co.uk"</span>,
+    serveStatic: [<span class="hljs-string">'.'</span>, <span class="hljs-string">'./app/css'</span>]
+});
+
+<span class="hljs-comment">// Run in proxy mode where files under /assets will be served</span>
+<span class="hljs-comment">// from a local ./tmp directory</span>
+<span class="hljs-comment">// <span class="hljs-doctag">NOTE:</span> requires 2.17.0</span>
+bs.init({
+    proxy: <span class="hljs-string">"http://www.bbc.co.uk"</span>,
+    serveStatic: [{
+        route: <span class="hljs-string">'/assets'</span>,
+        dir: <span class="hljs-string">'tmp'</span>
+    }]
+});
+
+<span class="hljs-comment">// Run in proxy mode where files under /assets + /content will be served</span>
+<span class="hljs-comment">// from a local ./tmp directory</span>
+<span class="hljs-comment">// <span class="hljs-doctag">NOTE:</span> requires 2.17.0</span>
+bs.init({
+    proxy: <span class="hljs-string">"http://www.bbc.co.uk"</span>,
+    serveStatic: [{
+        route: [<span class="hljs-string">'/assets'</span>, <span class="hljs-string">'/content'</span>],
+        dir: <span class="hljs-string">'tmp'</span>
+    }]
+});
+
+<span class="hljs-comment">// Run in proxy mode where files under /assets will be served</span>
+<span class="hljs-comment">// from either the ./tmp or ./app directory</span>
+<span class="hljs-comment">// <span class="hljs-doctag">NOTE:</span> requires 2.17.0</span>
+bs.init({
+    proxy: <span class="hljs-string">"http://www.bbc.co.uk"</span>,
+    serveStatic: [{
+        route: <span class="hljs-string">'/assets'</span>,
+        dir: [<span class="hljs-string">'./tmp'</span>, <span class="hljs-string">'./app'</span>]
+    }]
+});
+</code></pre></div>
+
+
+                <h3 id="option-serveStaticOptions" class="section-link">
+                    <a href="#option-serveStaticOptions" class="page-anchor">serveStaticOptions</a>
+                    <a href="#page-top" class="back-to-top">^ TOP</a>
+                </h3>
+
+
+                <ul class="param-list">
+                    <li class="type">Type: <span class="color-teal">Object</span>
+                    </li>
+                    <li class="default">Default: <span class="color-teal"></span></li>
+                </ul>
+
+                <p class="lede warning"><b>Note: </b> requires at least version 2.17.0</p>
+
+                <p>Options that are passed to the serve-static middleware
+                when you use the string[] syntax: eg: <code>serveStatic: [&#39;./app&#39;]</code>. Please see
+                <a href="https://github.com/expressjs/serve-static">serve-static</a> for details</p>
+
+
+<div class="highlight-block"><div class="highlight-header"><span class="circle"></span><span class="circle"></span><span class="circle"></span><svg class="svg-icon "><use xlink:href="/img/icons/icons.svg#svg-code"></use></svg></div><pre class='highlight'><code class="js"><span class="hljs-keyword">var</span> bs = <span class="hljs-built_in">require</span>(<span class="hljs-string">'browser-sync'</span>).create();
+
+<span class="hljs-comment">// Serve files from 3 directories with serve-static options</span>
+bs.init({
+    serveStatic: [<span class="hljs-string">'.'</span>, <span class="hljs-string">'./app'</span>, <span class="hljs-string">'./temp'</span>],
+    serveStaticOptions: {
+        extensions: [<span class="hljs-string">'html'</span>] <span class="hljs-comment">// pretty urls</span>
+    }
+});
+</code></pre></div>
+
+
+                <h3 id="option-https" class="section-link">
+                    <a href="#option-https" class="page-anchor">https</a>
+                    <a href="#page-top" class="back-to-top">^ TOP</a>
+                </h3>
+
+
+                <ul class="param-list">
+                    <li class="type">Type: <span class="color-teal">Boolean</span>
+                    </li>
+                    <li class="default">Default: <span class="color-teal">undefined</span></li>
+                </ul>
+
+                <p class="lede warning"><b>Note: </b> requires at least version 1.3.0</p>
+
+                <p>Enable https for localhost development. <strong>Note</strong> - this is not needed for proxy
+                option as it will be inferred from your target url.</p>
+
+
+<div class="highlight-block"><div class="highlight-header"><span class="circle"></span><span class="circle"></span><span class="circle"></span><svg class="svg-icon "><use xlink:href="/img/icons/icons.svg#svg-code"></use></svg></div><pre class='highlight'><code class="js"><span class="hljs-comment">// Enable HTTPS for static file server</span>
+browserSync({
+    server: <span class="hljs-string">"./app"</span>,
+    https: <span class="hljs-literal">true</span>
+});
+
+<span class="hljs-comment">// Enable HTTPS for snippet mode</span>
+browserSync({
+    https: <span class="hljs-literal">true</span>
+});
+
+<span class="hljs-comment">// Enable HTTPS mode with custom certificates</span>
+browserSync({
+    server: <span class="hljs-string">"./app"</span>,
+    https: {
+        key: <span class="hljs-string">"path-to-custom.key"</span>,
+        cert: <span class="hljs-string">"path-to-custom.crt"</span>
+    }
+});</code></pre></div>
+
+
+                <h3 id="option-httpModule" class="section-link">
+                    <a href="#option-httpModule" class="page-anchor">httpModule</a>
+                    <a href="#page-top" class="back-to-top">^ TOP</a>
+                </h3>
+
+
+                <ul class="param-list">
+                    <li class="type">Type: <span class="color-teal">string</span>
+                    </li>
+                    <li class="default">Default: <span class="color-teal">undefined</span></li>
+                </ul>
+
+                <p class="lede warning"><b>Note: </b> requires at least version 2.18.0</p>
+
+                <p>Override http module to allow using 3rd party server modules (such as http2)
+                <em>Note</em>: these modules are not included in the Browsersync package - you need
+                to &#39;npm install&#39; any that you&#39;d like to use.</p>
+
+
+<div class="highlight-block"><div class="highlight-header"><span class="circle"></span><span class="circle"></span><span class="circle"></span><svg class="svg-icon "><use xlink:href="/img/icons/icons.svg#svg-code"></use></svg></div><pre class='highlight'><code class="js"><span class="hljs-comment">// First run: npm install browser-sync http2</span>
+<span class="hljs-keyword">const</span> bs = <span class="hljs-built_in">require</span>(<span class="hljs-string">'browser-sync'</span>).create();
+
+bs.init({
+    server: <span class="hljs-string">'./app'</span>,
+    httpModule: <span class="hljs-string">'http2'</span>,
+    https: <span class="hljs-literal">true</span>
+});
+</code></pre></div>
+
+
+                <h3 id="option-cwd" class="section-link">
+                    <a href="#option-cwd" class="page-anchor">cwd</a>
+                    <a href="#page-top" class="back-to-top">^ TOP</a>
+                </h3>
+
+
+                <ul class="param-list">
+                    <li class="type">Type: <span class="color-teal">String</span>
+                    </li>
+                    <li class="default">Default: <span class="color-teal"></span></li>
+                </ul>
+
+                <p class="lede warning"><b>Note: </b> requires at least version 2.23.0</p>
+
+                <p>Current working directory</p>
+
+
+
+
+                <h3 id="option-callbacks" class="section-link">
+                    <a href="#option-callbacks" class="page-anchor">callbacks</a>
+                    <a href="#page-top" class="back-to-top">^ TOP</a>
+                </h3>
+
+
+                <ul class="param-list">
+                    <li class="type">Type: <span class="color-teal">Object</span>
+                    <ul class="nav nav--stacked subprops">
+                            <li><b>ready</b> - Default: <span class="color-teal">undefined</span></li>
+                    </ul>
+                    </li>
+                </ul>
+
+
+                <p>Register callbacks via a regular option - this can be used
+                to get access the Browsersync instance in situations where you
+                cannot provide a callback via the normal API (for example, in a Gruntfile)</p>
+                <p><strong>Note</strong>: Only the <code>ready</code> callback is currently supported here.</p>
+
+
+<div class="highlight-block"><div class="highlight-header"><span class="circle"></span><span class="circle"></span><span class="circle"></span><svg class="svg-icon "><use xlink:href="/img/icons/icons.svg#svg-code"></use></svg></div><pre class='highlight'><code class="js"><span class="hljs-keyword">var</span> browserSync = <span class="hljs-built_in">require</span>(<span class="hljs-string">"browser-sync"</span>).create();
+
+browserSync.init({
+    watch: <span class="hljs-literal">true</span>,
+    server: <span class="hljs-string">"./app"</span>,
+    callbacks: {
+        <span class="hljs-comment">/**
+         * This 'ready' callback can be used
+         * to access the Browsersync instance
+         */</span>
+        ready: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">err, bs</span>) </span>{
+
+            <span class="hljs-comment">// example of accessing URLS</span>
+            <span class="hljs-built_in">console</span>.log(bs.options.get(<span class="hljs-string">'urls'</span>));
+
+            <span class="hljs-comment">// example of adding a middleware at the end</span>
+            <span class="hljs-comment">// of the stack after Browsersync is running</span>
+            bs.addMiddleware(<span class="hljs-string">"*"</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">req, res</span>) </span>{
+                res.writeHead(<span class="hljs-number">302</span>, {
+                    location: <span class="hljs-string">"404.html"</span>
+                });
+                res.end(<span class="hljs-string">"Redirecting!"</span>);
+            });
+        }
+    }
+});
+</code></pre></div>
+
+
+                <h3 id="option-ghostMode" class="section-link">
+                    <a href="#option-ghostMode" class="page-anchor">ghostMode</a>
+                    <a href="#page-top" class="back-to-top">^ TOP</a>
+                </h3>
+
+
+                <ul class="param-list">
+                    <li class="type">Type: <span class="color-teal">Object</span>
+                    <ul class="nav nav--stacked subprops">
+                            <li><b>clicks</b> - Default: <span class="color-teal">true</span></li>
+                            <li><b>scroll</b> - Default: <span class="color-teal">true</span></li>
+                            <li><b>location</b> - Default: <span class="color-teal">true</span></li>
+                            <li><b>forms</b> - Default: <span class="color-teal">true</span></li>
+                    </ul>
+                    </li>
+                </ul>
+
+
+                <p>Clicks, Scrolls &amp; Form inputs on any device will be mirrored to all others.</p>
+
+
+<div class="highlight-block"><div class="highlight-header"><span class="circle"></span><span class="circle"></span><span class="circle"></span><svg class="svg-icon "><use xlink:href="/img/icons/icons.svg#svg-code"></use></svg></div><pre class='highlight'><code class="js"><span class="hljs-comment">// Here you can disable/enable each feature individually</span>
+ghostMode: {
+    clicks: <span class="hljs-literal">true</span>,
+    forms: <span class="hljs-literal">true</span>,
+    scroll: <span class="hljs-literal">false</span>
+}
+
+<span class="hljs-comment">// Or switch them all off in one go</span>
+ghostMode: <span class="hljs-literal">false</span></code></pre></div>
+
+
+                <h3 id="option-logLevel" class="section-link">
+                    <a href="#option-logLevel" class="page-anchor">logLevel</a>
+                    <a href="#page-top" class="back-to-top">^ TOP</a>
+                </h3>
+
+
+                <ul class="param-list">
+                    <li class="type">Type: <span class="color-teal">String</span>
+                    </li>
+                    <li class="default">Default: <span class="color-teal">info</span></li>
+                </ul>
+
+
+                <p>Can be either &quot;info&quot;, &quot;debug&quot;, &quot;warn&quot;, or &quot;silent&quot;</p>
+
+
+<div class="highlight-block"><div class="highlight-header"><span class="circle"></span><span class="circle"></span><span class="circle"></span><svg class="svg-icon "><use xlink:href="/img/icons/icons.svg#svg-code"></use></svg></div><pre class='highlight'><code class="js"><span class="hljs-comment">// Show me additional info about the process</span>
+logLevel: <span class="hljs-string">"debug"</span>
+
+<span class="hljs-comment">// Just show basic info</span>
+logLevel: <span class="hljs-string">"info"</span>
+
+<span class="hljs-comment">// output NOTHING to the commandline</span>
+logLevel: <span class="hljs-string">"silent"</span></code></pre></div>
+
+
+                <h3 id="option-logPrefix" class="section-link">
+                    <a href="#option-logPrefix" class="page-anchor">logPrefix</a>
+                    <a href="#page-top" class="back-to-top">^ TOP</a>
+                </h3>
+
+
+                <ul class="param-list">
+                    <li class="type">Type: <span class="color-teal">String</span>
+                    </li>
+                    <li class="default">Default: <span class="color-teal">Browsersync</span></li>
+                </ul>
+
+                <p class="lede warning"><b>Note: </b> requires at least version 1.5.1</p>
+
+                <p>Change the console logging prefix. Useful if you&#39;re creating your
+                own project based on Browsersync</p>
+
+
+<div class="highlight-block"><div class="highlight-header"><span class="circle"></span><span class="circle"></span><span class="circle"></span><svg class="svg-icon "><use xlink:href="/img/icons/icons.svg#svg-code"></use></svg></div><pre class='highlight'><code class="js">logPrefix: <span class="hljs-string">"My Awesome Project"</span>
+
+<span class="hljs-comment">// [My Awesome Project] Local URL: http://localhost:3000</span>
+<span class="hljs-comment">// [My Awesome Project] Watching files....</span>
+<span class="hljs-comment">// [My Awesome Project] File changed: "index.html"</span></code></pre></div>
+
+
+                <h3 id="option-logConnections" class="section-link">
+                    <a href="#option-logConnections" class="page-anchor">logConnections</a>
+                    <a href="#page-top" class="back-to-top">^ TOP</a>
+                </h3>
+
+
+                <ul class="param-list">
+                    <li class="type">Type: <span class="color-teal">Boolean</span>
+                    </li>
+                    <li class="default">Default: <span class="color-teal">false</span></li>
+                </ul>
+
+
+
+
+<div class="highlight-block"><div class="highlight-header"><span class="circle"></span><span class="circle"></span><span class="circle"></span><svg class="svg-icon "><use xlink:href="/img/icons/icons.svg#svg-code"></use></svg></div><pre class='highlight'><code class="js"><span class="hljs-comment">// Log connections</span>
+logConnections: <span class="hljs-literal">true</span>
+
+<span class="hljs-comment">// Don't log connections</span>
+logConnections: <span class="hljs-literal">false</span></code></pre></div>
+
+
+                <h3 id="option-logFileChanges" class="section-link">
+                    <a href="#option-logFileChanges" class="page-anchor">logFileChanges</a>
+                    <a href="#page-top" class="back-to-top">^ TOP</a>
+                </h3>
+
+
+                <ul class="param-list">
+                    <li class="type">Type: <span class="color-teal">Boolean</span>
+                    </li>
+                    <li class="default">Default: <span class="color-teal">true</span></li>
+                </ul>
+
+
+
+
+<div class="highlight-block"><div class="highlight-header"><span class="circle"></span><span class="circle"></span><span class="circle"></span><svg class="svg-icon "><use xlink:href="/img/icons/icons.svg#svg-code"></use></svg></div><pre class='highlight'><code class="js"><span class="hljs-comment">// Log information about changed files</span>
+logFileChanges: <span class="hljs-literal">true</span>
+
+<span class="hljs-comment">// Don't log file changes</span>
+logFileChanges: <span class="hljs-literal">false</span></code></pre></div>
+
+
+                <h3 id="option-logSnippet" class="section-link">
+                    <a href="#option-logSnippet" class="page-anchor">logSnippet</a>
+                    <a href="#page-top" class="back-to-top">^ TOP</a>
+                </h3>
+
+
+                <ul class="param-list">
+                    <li class="type">Type: <span class="color-teal">: Boolean</span>
+                    </li>
+                    <li class="default">Default: <span class="color-teal">true</span></li>
+                </ul>
+
+                <p class="lede warning"><b>Note: </b> requires at least version 1.5.2</p>
+
+                <p>Log the snippet to the console when you&#39;re in snippet mode (no proxy/server)</p>
+
+
+<div class="highlight-block"><div class="highlight-header"><span class="circle"></span><span class="circle"></span><span class="circle"></span><svg class="svg-icon "><use xlink:href="/img/icons/icons.svg#svg-code"></use></svg></div><pre class='highlight'><code class="js"><span class="hljs-comment">// Don't ever log the snippet</span>
+logSnippet: <span class="hljs-literal">false</span></code></pre></div>
+
+
+                <h3 id="option-snippet" class="section-link">
+                    <a href="#option-snippet" class="page-anchor">snippet</a>
+                    <a href="#page-top" class="back-to-top">^ TOP</a>
+                </h3>
+
+
+                <ul class="param-list">
+                    <li class="type">Type: <span class="color-teal">Boolean</span>
+                    </li>
+                    <li class="default">Default: <span class="color-teal">undefined</span></li>
+                </ul>
+
+
+                <p>You can prevent Browsersync from injecting the connection snippet
+                by passing <code>snippet: false</code>.</p>
+
+
+<div class="highlight-block"><div class="highlight-header"><span class="circle"></span><span class="circle"></span><span class="circle"></span><svg class="svg-icon "><use xlink:href="/img/icons/icons.svg#svg-code"></use></svg></div><pre class='highlight'><code class="js"><span class="hljs-comment">// CLI</span>
+browser-sync ./app -w --no-snippet
+
+<span class="hljs-comment">// API</span>
+<span class="hljs-keyword">const</span> bs = <span class="hljs-built_in">require</span>(<span class="hljs-string">'browser-sync'</span>).create();
+bs.init({
+    watch: <span class="hljs-literal">true</span>,
+    server: <span class="hljs-string">"./app"</span>,
+    snippet: <span class="hljs-literal">false</span>
+})
+</code></pre></div>
+
+
+                <h3 id="option-snippetOptions" class="section-link">
+                    <a href="#option-snippetOptions" class="page-anchor">snippetOptions</a>
+                    <a href="#page-top" class="back-to-top">^ TOP</a>
+                </h3>
+
+
+                <ul class="param-list">
+                    <li class="type">Type: <span class="color-teal">Object</span>
+                    <ul class="nav nav--stacked subprops">
+                            <li><b>async</b> - Default: <span class="color-teal">undefined</span></li>
+                            <li><b>blacklist</b> - Default: <span class="color-teal">undefined</span></li>
+                            <li><b>whitelist</b> - Default: <span class="color-teal">undefined</span></li>
+                            <li><b>rule.match</b> - Default: <span class="color-teal">/$/</span></li>
+                            <li><b>rule.fn</b> - Default: <span class="color-teal">Function</span></li>
+                    </ul>
+                    </li>
+                </ul>
+
+                <p class="lede warning"><b>Note: </b> requires at least version 2.0.0</p>
+
+                <p>You can control how the snippet is injected
+                onto each page via a custom regex + function.
+                You can also provide patterns for certain urls
+                that should be ignored from the snippet injection.</p>
+
+
+<div class="highlight-block"><div class="highlight-header"><span class="circle"></span><span class="circle"></span><span class="circle"></span><svg class="svg-icon "><use xlink:href="/img/icons/icons.svg#svg-code"></use></svg></div><pre class='highlight'><code class="js"><span class="hljs-comment">// Customise the placement of the snippet</span>
+<span class="hljs-comment">// and ignore certain paths</span>
+snippetOptions: {
+
+    <span class="hljs-comment">// Ignore all HTML files within the templates folder</span>
+    ignorePaths: <span class="hljs-string">"templates/*.html"</span>,
+
+    <span class="hljs-comment">// Provide a custom Regex for inserting the snippet.</span>
+    rule: {
+        match: <span class="hljs-regexp">/&lt;\/body&gt;/i</span>,
+        fn: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">snippet, match</span>) </span>{
+            <span class="hljs-keyword">return</span> snippet + match;
+        }
+    }
+}</code></pre></div>
+
+
+                <h3 id="option-rewriteRules" class="section-link">
+                    <a href="#option-rewriteRules" class="page-anchor">rewriteRules</a>
+                    <a href="#page-top" class="back-to-top">^ TOP</a>
+                </h3>
+
+
+                <ul class="param-list">
+                    <li class="type">Type: <span class="color-teal">Array</span>
+                    </li>
+                    <li class="default">Default: <span class="color-teal">false</span></li>
+                </ul>
+
+                <p class="lede warning"><b>Note: </b> requires at least version 2.4.0</p>
+
+                <p>Add additional HTML rewriting rules.</p>
+
+
+<div class="highlight-block"><div class="highlight-header"><span class="circle"></span><span class="circle"></span><span class="circle"></span><svg class="svg-icon "><use xlink:href="/img/icons/icons.svg#svg-code"></use></svg></div><pre class='highlight'><code class="js"><span class="hljs-comment">// Replace every occurrence of the word Browsersync with 'kittenz'</span>
+rewriteRules: [
+    {
+        match: <span class="hljs-regexp">/Browsersync/g</span>,
+        fn: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">req, res, match</span>) </span>{
+            <span class="hljs-keyword">return</span> <span class="hljs-string">'kittenz'</span>;
+        }
+    }
+]
+
+<span class="hljs-comment">// Also accepts a string as a replacement</span>
+rewriteRules: [
+    {
+        match: <span class="hljs-regexp">/(cats|kitten[sz]) are mediocre/g</span>,
+        replace: <span class="hljs-string">"$1 are excellent"</span>
+    }
+]
+</code></pre></div>
+
+
+                <h3 id="option-tunnel" class="section-link">
+                    <a href="#option-tunnel" class="page-anchor">tunnel</a>
+                    <a href="#page-top" class="back-to-top">^ TOP</a>
+                </h3>
+
+
+                <ul class="param-list">
+                    <li class="type">Type: <span class="color-teal">String | Boolean</span>
+                    </li>
+                    <li class="default">Default: <span class="color-teal">null</span></li>
+                </ul>
+
+
+
+
+<div class="highlight-block"><div class="highlight-header"><span class="circle"></span><span class="circle"></span><span class="circle"></span><svg class="svg-icon "><use xlink:href="/img/icons/icons.svg#svg-code"></use></svg></div><pre class='highlight'><code class="js"><span class="hljs-comment">// Tunnel the Browsersync server through a random Public URL</span>
+<span class="hljs-comment">// -&gt; http://randomstring23232.localtunnel.me</span>
+tunnel: <span class="hljs-literal">true</span>
+
+<span class="hljs-comment">// Attempt to use the URL "http://my-private-site.localtunnel.me"</span>
+tunnel: <span class="hljs-string">"my-private-site"</span></code></pre></div>
+
+
+                <h3 id="option-online" class="section-link">
+                    <a href="#option-online" class="page-anchor">online</a>
+                    <a href="#page-top" class="back-to-top">^ TOP</a>
+                </h3>
+
+
+                <ul class="param-list">
+                    <li class="type">Type: <span class="color-teal">Boolean</span>
+                    </li>
+                    <li class="default">Default: <span class="color-teal">undefined</span></li>
+                </ul>
+
+
+                <p>Some features of Browsersync (such as <code>xip</code> &amp; <code>tunnel</code>) require an internet connection, but if you&#39;re
+                working offline, you can reduce start-up time by setting this option to <code>false</code></p>
+
+
+<div class="highlight-block"><div class="highlight-header"><span class="circle"></span><span class="circle"></span><span class="circle"></span><svg class="svg-icon "><use xlink:href="/img/icons/icons.svg#svg-code"></use></svg></div><pre class='highlight'><code class="js"><span class="hljs-comment">// Will not attempt to determine your network status, assumes you're ONLINE.</span>
+online: <span class="hljs-literal">true</span>
+
+<span class="hljs-comment">// Will not attempt to determine your network status, assumes you're OFFLINE</span>
+online: <span class="hljs-literal">false</span></code></pre></div>
+
+
+                <h3 id="option-open" class="section-link">
+                    <a href="#option-open" class="page-anchor">open</a>
+                    <a href="#page-top" class="back-to-top">^ TOP</a>
+                </h3>
+
+
+                <ul class="param-list">
+                    <li class="type">Type: <span class="color-teal">Boolean | String</span>
+                    </li>
+                    <li class="default">Default: <span class="color-teal">true</span></li>
+                </ul>
+
+
+                <p>Decide which URL to open automatically when Browsersync starts. Defaults to &quot;local&quot; if none set.
+                Can be <code>true</code>, <code>local</code>, <code>external</code>, <code>ui</code>, <code>ui-external</code>, <code>tunnel</code> or <code>false</code></p>
+
+
+<div class="highlight-block"><div class="highlight-header"><span class="circle"></span><span class="circle"></span><span class="circle"></span><svg class="svg-icon "><use xlink:href="/img/icons/icons.svg#svg-code"></use></svg></div><pre class='highlight'><code class="js"><span class="hljs-comment">// Stop the browser from automatically opening</span>
+open: <span class="hljs-literal">false</span>
+
+<span class="hljs-comment">// Open the localhost URL</span>
+open: <span class="hljs-string">"local"</span>
+
+<span class="hljs-comment">// Open the external URL - must be online.</span>
+open: <span class="hljs-string">"external"</span>
+
+<span class="hljs-comment">// Open the UI - since 2.0.0</span>
+open: <span class="hljs-string">"ui"</span>
+
+<span class="hljs-comment">// Open the tunnel URL - must also set the `tunnel` option</span>
+open: <span class="hljs-string">"tunnel"</span></code></pre></div>
+
+
+                <h3 id="option-browser" class="section-link">
+                    <a href="#option-browser" class="page-anchor">browser</a>
+                    <a href="#page-top" class="back-to-top">^ TOP</a>
+                </h3>
+
+
+                <ul class="param-list">
+                    <li class="type">Type: <span class="color-teal">String | Array</span>
+                    </li>
+                    <li class="default">Default: <span class="color-teal">default</span></li>
+                </ul>
+
+
+
+
+<div class="highlight-block"><div class="highlight-header"><span class="circle"></span><span class="circle"></span><span class="circle"></span><svg class="svg-icon "><use xlink:href="/img/icons/icons.svg#svg-code"></use></svg></div><pre class='highlight'><code class="js"><span class="hljs-comment">// Open the site in Chrome</span>
+browser: <span class="hljs-string">"google chrome"</span>
+
+<span class="hljs-comment">// Open the site in Chrome &amp; Firefox</span>
+browser: [<span class="hljs-string">"google chrome"</span>, <span class="hljs-string">"firefox"</span>]</code></pre></div>
+
+
+                <h3 id="option-cors" class="section-link">
+                    <a href="#option-cors" class="page-anchor">cors</a>
+                    <a href="#page-top" class="back-to-top">^ TOP</a>
+                </h3>
+
+
+                <ul class="param-list">
+                    <li class="type">Type: <span class="color-teal">boolean</span>
+                    </li>
+                    <li class="default">Default: <span class="color-teal">false</span></li>
+                </ul>
+
+                <p class="lede warning"><b>Note: </b> requires at least version 2.16.0</p>
+
+                <p>Add HTTP access control (CORS) headers to assets served by Browsersync.</p>
+
+
+
+
+                <h3 id="option-xip" class="section-link">
+                    <a href="#option-xip" class="page-anchor">xip</a>
+                    <a href="#page-top" class="back-to-top">^ TOP</a>
+                </h3>
+
+
+                <ul class="param-list">
+                    <li class="type">Type: <span class="color-teal">Boolean</span>
+                    </li>
+                    <li class="default">Default: <span class="color-teal">false</span></li>
+                </ul>
+
+
+                <p>Requires an internet connection - useful for services such as <a href="https://typekit.com/">Typekit</a>
+                as it allows you to configure domains such as <code>*.xip.io</code> in your kit settings</p>
+
+
+<div class="highlight-block"><div class="highlight-header"><span class="circle"></span><span class="circle"></span><span class="circle"></span><svg class="svg-icon "><use xlink:href="/img/icons/icons.svg#svg-code"></use></svg></div><pre class='highlight'><code class="js"><span class="hljs-comment">// Append '.xip.io' to the hostname. (eg: http://192.168.0.4.xip.io:3002)</span>
+xip: <span class="hljs-literal">true</span></code></pre></div>
+
+
+                <h3 id="option-reloadOnRestart" class="section-link">
+                    <a href="#option-reloadOnRestart" class="page-anchor">reloadOnRestart</a>
+                    <a href="#page-top" class="back-to-top">^ TOP</a>
+                </h3>
+
+
+                <ul class="param-list">
+                    <li class="type">Type: <span class="color-teal">Boolean</span>
+                    </li>
+                    <li class="default">Default: <span class="color-teal">false</span></li>
+                </ul>
+
+
+                <p>Reload each browser when Browsersync is restarted.</p>
+
+
+<div class="highlight-block"><div class="highlight-header"><span class="circle"></span><span class="circle"></span><span class="circle"></span><svg class="svg-icon "><use xlink:href="/img/icons/icons.svg#svg-code"></use></svg></div><pre class='highlight'><code class="js"><span class="hljs-comment">// don't auto-reload all browsers following a Browsersync reload</span>
+reloadOnRestart: <span class="hljs-literal">false</span></code></pre></div>
+
+
+                <h3 id="option-notify" class="section-link">
+                    <a href="#option-notify" class="page-anchor">notify</a>
+                    <a href="#page-top" class="back-to-top">^ TOP</a>
+                </h3>
+
+
+                <ul class="param-list">
+                    <li class="type">Type: <span class="color-teal">Boolean</span>
+                    </li>
+                    <li class="default">Default: <span class="color-teal">true</span></li>
+                </ul>
+
+
+                <p>The small pop-over notifications in the browser are not always needed/wanted.</p>
+
+
+<div class="highlight-block"><div class="highlight-header"><span class="circle"></span><span class="circle"></span><span class="circle"></span><svg class="svg-icon "><use xlink:href="/img/icons/icons.svg#svg-code"></use></svg></div><pre class='highlight'><code class="js"><span class="hljs-comment">// Don't show any notifications in the browser.</span>
+notify: <span class="hljs-literal">false</span></code></pre></div>
+
+
+                <h3 id="option-scrollProportionally" class="section-link">
+                    <a href="#option-scrollProportionally" class="page-anchor">scrollProportionally</a>
+                    <a href="#page-top" class="back-to-top">^ TOP</a>
+                </h3>
+
+
+                <ul class="param-list">
+                    <li class="type">Type: <span class="color-teal">Boolean</span>
+                    </li>
+                    <li class="default">Default: <span class="color-teal">true</span></li>
+                </ul>
+
+
+
+
+<div class="highlight-block"><div class="highlight-header"><span class="circle"></span><span class="circle"></span><span class="circle"></span><svg class="svg-icon "><use xlink:href="/img/icons/icons.svg#svg-code"></use></svg></div><pre class='highlight'><code class="js">scrollProportionally: <span class="hljs-literal">false</span> <span class="hljs-comment">// Sync viewports to TOP position</span></code></pre></div>
+
+
+<h3 id="option-scrollThrottle" class="section-link">
+    <a href="#option-scrollThrottle" class="page-anchor">scrollThrottle</a>
+    <a href="#page-top" class="back-to-top">^ TOP</a>
+</h3>
+
+
+<ul class="param-list">
+    <li class="type">Type: <span class="color-teal">Number</span>
+    </li>
+    <li class="default">Default: <span class="color-teal">0</span></li>
+</ul>
+
+
+
+
+<div class="highlight-block"><div class="highlight-header"><span class="circle"></span><span class="circle"></span><span class="circle"></span><svg class="svg-icon "><use xlink:href="/img/icons/icons.svg#svg-code"></use></svg></div><pre class='highlight'><code class="js">scrollThrottle: <span class="hljs-number">100</span> <span class="hljs-comment">// only send scroll events every 100 milliseconds</span></code></pre></div>
+
+
+<h3 id="option-scrollRestoreTechnique" class="section-link">
+    <a href="#option-scrollRestoreTechnique" class="page-anchor">scrollRestoreTechnique</a>
+    <a href="#page-top" class="back-to-top">^ TOP</a>
+</h3>
+
+
+<ul class="param-list">
+    <li class="type">Type: <span class="color-teal">String</span>
+    </li>
+    <li class="default">Default: <span class="color-teal">&#x27;window.name&#x27;</span></li>
+</ul>
+
+
+<p>Decide which technique should be used to restore
+scroll position following a reload.
+Can be <code>window.name</code> or <code>cookie</code></p>
+
+
+
+
+<h3 id="option-scrollElements" class="section-link">
+    <a href="#option-scrollElements" class="page-anchor">scrollElements</a>
+    <a href="#page-top" class="back-to-top">^ TOP</a>
+</h3>
+
+
+<ul class="param-list">
+    <li class="type">Type: <span class="color-teal">Array</span>
+    </li>
+    <li class="default">Default: <span class="color-teal">[]</span></li>
+</ul>
+
+<p class="lede warning"><b>Note: </b> requires at least version 2.9.0</p>
+
+<p>Sync the scroll position of any element
+on the page. Add any amount of CSS selectors</p>
+
+
+<div class="highlight-block"><div class="highlight-header"><span class="circle"></span><span class="circle"></span><span class="circle"></span><svg class="svg-icon "><use xlink:href="/img/icons/icons.svg#svg-code"></use></svg></div><pre class='highlight'><code class="js"><span class="hljs-comment">// Sync the scrollTop position of the element .scroller</span>
+<span class="hljs-comment">// in addition to the window scroll</span>
+scrollElements: [<span class="hljs-string">'.scroller'</span>]
+</code></pre></div>
+
+
+                <h3 id="option-scrollElementMapping" class="section-link">
+                    <a href="#option-scrollElementMapping" class="page-anchor">scrollElementMapping</a>
+                    <a href="#page-top" class="back-to-top">^ TOP</a>
+                </h3>
+
+
+                <ul class="param-list">
+                    <li class="type">Type: <span class="color-teal">Array</span>
+                    </li>
+                    <li class="default">Default: <span class="color-teal">[]</span></li>
+                </ul>
+
+                <p class="lede warning"><b>Note: </b> requires at least version 2.9.0</p>
+
+                <p>Sync the scroll position of any element
+                on the page - where any scrolled element
+                will cause all others to match scroll position.
+                This is helpful when a breakpoint alters which element
+                is actually scrolling</p>
+
+
+<div class="highlight-block"><div class="highlight-header"><span class="circle"></span><span class="circle"></span><span class="circle"></span><svg class="svg-icon "><use xlink:href="/img/icons/icons.svg#svg-code"></use></svg></div><pre class='highlight'><code class="js"><span class="hljs-comment">// Sync the scrollTop position between different elements</span>
+<span class="hljs-comment">// useful if your scroll container changes based on a breakpoint</span>
+scrollElementMapping: [<span class="hljs-string">'.scroller-mobile'</span>, <span class="hljs-string">'.scroller'</span>]
+</code></pre></div>
+
+
+                <h3 id="option-reloadDelay" class="section-link">
+                    <a href="#option-reloadDelay" class="page-anchor">reloadDelay</a>
+                    <a href="#page-top" class="back-to-top">^ TOP</a>
+                </h3>
+
+
+                <ul class="param-list">
+                    <li class="type">Type: <span class="color-teal">Number</span>
+                    </li>
+                    <li class="default">Default: <span class="color-teal">0</span></li>
+                </ul>
+
+
+                <p>Time, in milliseconds, to wait before
+                instructing the browser to reload/inject following a
+                file change event</p>
+
+
+<div class="highlight-block"><div class="highlight-header"><span class="circle"></span><span class="circle"></span><span class="circle"></span><svg class="svg-icon "><use xlink:href="/img/icons/icons.svg#svg-code"></use></svg></div><pre class='highlight'><code class="js"><span class="hljs-comment">// Wait for 2 seconds before any browsers should try to inject/reload a file.</span>
+reloadDelay: <span class="hljs-number">2000</span></code></pre></div>
+
+
+                <h3 id="option-reloadDebounce" class="section-link">
+                    <a href="#option-reloadDebounce" class="page-anchor">reloadDebounce</a>
+                    <a href="#page-top" class="back-to-top">^ TOP</a>
+                </h3>
+
+
+                <ul class="param-list">
+                    <li class="type">Type: <span class="color-teal">Number</span>
+                    </li>
+                    <li class="default">Default: <span class="color-teal">0</span></li>
+                </ul>
+
+                <p class="lede warning"><b>Note: </b> requires at least version 2.6.0</p>
+
+                <p>Wait for a specified window of event-silence before
+                sending any reload events.</p>
+
+
+<div class="highlight-block"><div class="highlight-header"><span class="circle"></span><span class="circle"></span><span class="circle"></span><svg class="svg-icon "><use xlink:href="/img/icons/icons.svg#svg-code"></use></svg></div><pre class='highlight'><code class="js"><span class="hljs-comment">// Wait 2 seconds after a reload event before allowing more.</span>
+reloadDebounce: <span class="hljs-number">2000</span></code></pre></div>
+
+
+                <h3 id="option-reloadThrottle" class="section-link">
+                    <a href="#option-reloadThrottle" class="page-anchor">reloadThrottle</a>
+                    <a href="#page-top" class="back-to-top">^ TOP</a>
+                </h3>
+
+
+                <ul class="param-list">
+                    <li class="type">Type: <span class="color-teal">Number</span>
+                    </li>
+                    <li class="default">Default: <span class="color-teal">0</span></li>
+                </ul>
+
+                <p class="lede warning"><b>Note: </b> requires at least version 2.13.0</p>
+
+                <p>Emit only the first event during sequential time windows
+                of a specified duration.</p>
+
+
+
+
+                <h3 id="option-plugins" class="section-link">
+                    <a href="#option-plugins" class="page-anchor">plugins</a>
+                    <a href="#page-top" class="back-to-top">^ TOP</a>
+                </h3>
+
+
+                <ul class="param-list">
+                    <li class="type">Type: <span class="color-teal">Array</span>
+                    </li>
+                    <li class="default">Default: <span class="color-teal">[]</span></li>
+                </ul>
+
+                <p class="lede warning"><b>Note: </b> requires at least version 2.6.0</p>
+
+                <p>User provided plugins</p>
+
+
+<div class="highlight-block"><div class="highlight-header"><span class="circle"></span><span class="circle"></span><span class="circle"></span><svg class="svg-icon "><use xlink:href="/img/icons/icons.svg#svg-code"></use></svg></div><pre class='highlight'><code class="js"><span class="hljs-comment">// First run `npm install bs-html-injector`</span>
+<span class="hljs-comment">// Then provide the module name</span>
+plugins: [<span class="hljs-string">"bs-html-injector"</span>]
+
+<span class="hljs-comment">// If the plugin you are using requires options</span>
+<span class="hljs-comment">// just as bs-snippet-injector requires a 'file' option,</span>
+<span class="hljs-comment">// you can pass an object instead like this.</span>
+plugins: [
+    {
+        <span class="hljs-built_in">module</span>: <span class="hljs-string">"bs-snippet-injector"</span>,
+        options: {
+            file: <span class="hljs-string">"./app/index.php"</span>
+        }
+    }
+]
+
+<span class="hljs-comment">// Shorthand for bs-html-injector + files: ["*.html"] option</span>
+<span class="hljs-comment">// <span class="hljs-doctag">NOTE:</span> requires v2.12.1</span>
+plugins: [<span class="hljs-string">"bs-html-injector?files[]=*.html"</span>]
+</code></pre></div>
+
+
+                <h3 id="option-injectChanges" class="section-link">
+                    <a href="#option-injectChanges" class="page-anchor">injectChanges</a>
+                    <a href="#page-top" class="back-to-top">^ TOP</a>
+                </h3>
+
+
+                <ul class="param-list">
+                    <li class="type">Type: <span class="color-teal">Boolean</span>
+                    </li>
+                    <li class="default">Default: <span class="color-teal">true</span></li>
+                </ul>
+
+
+
+
+<div class="highlight-block"><div class="highlight-header"><span class="circle"></span><span class="circle"></span><span class="circle"></span><svg class="svg-icon "><use xlink:href="/img/icons/icons.svg#svg-code"></use></svg></div><pre class='highlight'><code class="js"><span class="hljs-comment">// Inject CSS changes</span>
+injectChanges: <span class="hljs-literal">true</span>,
+
+<span class="hljs-comment">// Don't try to inject, just do a page refresh</span>
+injectChanges: <span class="hljs-literal">false</span>,</code></pre></div>
+
+
+                <h3 id="option-startPath" class="section-link">
+                    <a href="#option-startPath" class="page-anchor">startPath</a>
+                    <a href="#page-top" class="back-to-top">^ TOP</a>
+                </h3>
+
+
+                <ul class="param-list">
+                    <li class="type">Type: <span class="color-teal">String | Null</span>
+                    </li>
+                    <li class="default">Default: <span class="color-teal">null</span></li>
+                </ul>
+
+
+
+
+<div class="highlight-block"><div class="highlight-header"><span class="circle"></span><span class="circle"></span><span class="circle"></span><svg class="svg-icon "><use xlink:href="/img/icons/icons.svg#svg-code"></use></svg></div><pre class='highlight'><code class="js"><span class="hljs-comment">// Open the first browser window at URL + "/info.php"</span>
+startPath: <span class="hljs-string">"/info.php"</span></code></pre></div>
+
+
+                <h3 id="option-minify" class="section-link">
+                    <a href="#option-minify" class="page-anchor">minify</a>
+                    <a href="#page-top" class="back-to-top">^ TOP</a>
+                </h3>
+
+
+                <ul class="param-list">
+                    <li class="type">Type: <span class="color-teal">Boolean</span>
+                    </li>
+                    <li class="default">Default: <span class="color-teal">true</span></li>
+                </ul>
+
+
+                <p>Whether to minify client script, or not.</p>
+
+
+<div class="highlight-block"><div class="highlight-header"><span class="circle"></span><span class="circle"></span><span class="circle"></span><svg class="svg-icon "><use xlink:href="/img/icons/icons.svg#svg-code"></use></svg></div><pre class='highlight'><code class="js"><span class="hljs-comment">// Don't minify the client-side JS</span>
+minify: <span class="hljs-literal">false</span></code></pre></div>
+
+
+                <h3 id="option-host" class="section-link">
+                    <a href="#option-host" class="page-anchor">host</a>
+                    <a href="#page-top" class="back-to-top">^ TOP</a>
+                </h3>
+
+
+                <ul class="param-list">
+                    <li class="type">Type: <span class="color-teal">String</span>
+                    </li>
+                    <li class="default">Default: <span class="color-teal">null</span></li>
+                </ul>
+
+
+
+
+<div class="highlight-block"><div class="highlight-header"><span class="circle"></span><span class="circle"></span><span class="circle"></span><svg class="svg-icon "><use xlink:href="/img/icons/icons.svg#svg-code"></use></svg></div><pre class='highlight'><code class="js"><span class="hljs-comment">// Override host detection if you know the correct IP to use</span>
+host: <span class="hljs-string">"192.168.1.1"</span></code></pre></div>
+
+
+                <h3 id="option-listen" class="section-link">
+                    <a href="#option-listen" class="page-anchor">listen</a>
+                    <a href="#page-top" class="back-to-top">^ TOP</a>
+                </h3>
+
+
+                <ul class="param-list">
+                    <li class="type">Type: <span class="color-teal">String</span>
+                    </li>
+                    <li class="default">Default: <span class="color-teal">undefined</span></li>
+                </ul>
+
+
+                <p>Specify a host to listen on. Use this if you want to
+                prevent binding to all interfaces.</p>
+                <p>Note: When you specify this option, it overrides the &#39;host&#39; option</p>
+
+
+
+
+                <h3 id="option-localOnly" class="section-link">
+                    <a href="#option-localOnly" class="page-anchor">localOnly</a>
+                    <a href="#page-top" class="back-to-top">^ TOP</a>
+                </h3>
+
+
+                <ul class="param-list">
+                    <li class="type">Type: <span class="color-teal">Boolean</span>
+                    </li>
+                    <li class="default">Default: <span class="color-teal">false</span></li>
+                </ul>
+
+                <p class="lede warning"><b>Note: </b> requires at least version 2.14.0</p>
+
+                <p>Support environments where dynamic hostnames are not required
+                (ie: electron)</p>
+
+
+<div class="highlight-block"><div class="highlight-header"><span class="circle"></span><span class="circle"></span><span class="circle"></span><svg class="svg-icon "><use xlink:href="/img/icons/icons.svg#svg-code"></use></svg></div><pre class='highlight'><code class="js"><span class="hljs-comment">// For use in electron development</span>
+<span class="hljs-keyword">const</span> bs = <span class="hljs-built_in">require</span>(<span class="hljs-string">'browser-sync'</span>);
+bs.init({
+    localOnly: <span class="hljs-literal">true</span>
+});
+</code></pre></div>
+
+
+                <h3 id="option-codeSync" class="section-link">
+                    <a href="#option-codeSync" class="page-anchor">codeSync</a>
+                    <a href="#page-top" class="back-to-top">^ TOP</a>
+                </h3>
+
+
+                <ul class="param-list">
+                    <li class="type">Type: <span class="color-teal">Boolean</span>
+                    </li>
+                    <li class="default">Default: <span class="color-teal">true</span></li>
+                </ul>
+
+
+
+
+<div class="highlight-block"><div class="highlight-header"><span class="circle"></span><span class="circle"></span><span class="circle"></span><svg class="svg-icon "><use xlink:href="/img/icons/icons.svg#svg-code"></use></svg></div><pre class='highlight'><code class="js"><span class="hljs-comment">// Don't send any file-change events to browsers</span>
+codeSync: <span class="hljs-literal">false</span>
+</code></pre></div>
+
+
+                <h3 id="option-timestamps" class="section-link">
+                    <a href="#option-timestamps" class="page-anchor">timestamps</a>
+                    <a href="#page-top" class="back-to-top">^ TOP</a>
+                </h3>
+
+
+                <ul class="param-list">
+                    <li class="type">Type: <span class="color-teal">Boolean</span>
+                    </li>
+                    <li class="default">Default: <span class="color-teal">true</span></li>
+                </ul>
+
+
+
+
+<div class="highlight-block"><div class="highlight-header"><span class="circle"></span><span class="circle"></span><span class="circle"></span><svg class="svg-icon "><use xlink:href="/img/icons/icons.svg#svg-code"></use></svg></div><pre class='highlight'><code class="js"><span class="hljs-comment">// Don't append timestamps to injected files</span>
+timestamps: <span class="hljs-literal">false</span></code></pre></div>
+
+
+                <h3 id="option-scriptPath" class="section-link">
+                    <a href="#option-scriptPath" class="page-anchor">scriptPath</a>
+                    <a href="#page-top" class="back-to-top">^ TOP</a>
+                </h3>
+
+
+                <ul class="param-list">
+                    <li class="type">Type: <span class="color-teal">Function</span>
+                    </li>
+                    <li class="default">Default: <span class="color-teal">undefined</span></li>
+                </ul>
+
+                <p class="lede warning"><b>Note: </b> requires at least version 1.5.0</p>
+
+                <p>Alter the script path for complete control over where the Browsersync
+                Javascript is served from. Whatever you return from this function
+                will be used as the script path.</p>
+
+
+<div class="highlight-block"><div class="highlight-header"><span class="circle"></span><span class="circle"></span><span class="circle"></span><svg class="svg-icon "><use xlink:href="/img/icons/icons.svg#svg-code"></use></svg></div><pre class='highlight'><code class="js"><span class="hljs-comment">// This will result in something like</span>
+<span class="hljs-comment">// http://localhost:3002/browser-sync/browser-sync-client.1.6.0.js</span>
+scriptPath: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">path, port, options</span>) </span>{
+    <span class="hljs-keyword">return</span> options.getIn([<span class="hljs-string">'urls'</span>, <span class="hljs-string">'local'</span>]) + path;
+}
+</code></pre></div>
+
+
+                <h3 id="option-socket" class="section-link">
+                    <a href="#option-socket" class="page-anchor">socket</a>
+                    <a href="#page-top" class="back-to-top">^ TOP</a>
+                </h3>
+
+
+                <ul class="param-list">
+                    <li class="type">Type: <span class="color-teal">Object</span>
+                    <ul class="nav nav--stacked subprops">
+                            <li><b>path</b> - Default: <span class="color-teal">&quot;/browser-sync/socket.io&quot;</span></li>
+                            <li><b>clientPath</b> - Default: <span class="color-teal">&quot;/browser-sync&quot;</span></li>
+                            <li><b>namespace</b> - Default: <span class="color-teal">&quot;/browser-sync&quot;</span></li>
+                            <li><b>domain</b> - Default: <span class="color-teal">undefined</span></li>
+                            <li><b>port</b> - Default: <span class="color-teal">undefined</span></li>
+                            <li><b>clients.heartbeatTimeout</b> - Default: <span class="color-teal">5000</span></li>
+                    </ul>
+                    </li>
+                </ul>
+
+                <p class="lede warning"><b>Note: </b> requires at least version 1.6.2</p>
+
+                <p>Configure the Socket.IO path and namespace &amp; domain to avoid collisions.</p>
+
+
+<div class="highlight-block"><div class="highlight-header"><span class="circle"></span><span class="circle"></span><span class="circle"></span><svg class="svg-icon "><use xlink:href="/img/icons/icons.svg#svg-code"></use></svg></div><pre class='highlight'><code class="js"><span class="hljs-comment">// To change the namespace used by Browsersync</span>
+socket: {
+    namespace: <span class="hljs-string">'/someothername'</span>
+}
+
+<span class="hljs-comment">// By default, Browsersync is configured to use the domain</span>
+<span class="hljs-comment">// of your page in order to connect to socket.io</span>
+<span class="hljs-comment">// eg: location.host + '/browser-sync</span>
+<span class="hljs-comment">// but, should you need to change that, provide the `domain` property</span>
+socket: {
+    domain: <span class="hljs-string">'localhost:3000'</span>
+}
+</code></pre></div>
+
+
+                <h3 id="option-script" class="section-link">
+                    <a href="#option-script" class="page-anchor">script</a>
+                    <a href="#page-top" class="back-to-top">^ TOP</a>
+                </h3>
+
+
+                <ul class="param-list">
+                    <li class="type">Type: <span class="color-teal">Object</span>
+                    <ul class="nav nav--stacked subprops">
+                            <li><b>domain</b> - Default: <span class="color-teal">undefined</span></li>
+                    </ul>
+                    </li>
+                </ul>
+
+                <p class="lede warning"><b>Note: </b> requires at least version 2.14.0</p>
+
+                <p>Configure the script domain</p>
+
+
+
+
+
+            </div>
+            <div class="one-quarter">
+                <div class="doc-nav">
+
+                    <span class="nav-expand">
+                        <svg class="svg-icon open"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/img/icons/icons.svg#svg-menu"></use></svg>
+
+                        <svg class="svg-icon close"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/img/icons/icons.svg#svg-cross"></use></svg>
+
+                    </span>
+
+                    <div class="sticky-nav">
+                        <p class="lede">Jump to...</p>
+                        <ul class="sticky-nav__items" id="sticky-nav">
+                            <!--<li class="nav-toggle-btn"><a href="#sticky-nav">Menu</a></li>-->
+                                <li class="sticky-nav__item"><a class="nav-link mono" href="#option-ui">ui</a></li>
+                                <li class="sticky-nav__item"><a class="nav-link mono" href="#option-files">files</a></li>
+                                <li class="sticky-nav__item"><a class="nav-link mono" href="#option-watchEvents">watchEvents</a></li>
+                                <li class="sticky-nav__item"><a class="nav-link mono" href="#option-watch">watch</a></li>
+                                <li class="sticky-nav__item"><a class="nav-link mono" href="#option-ignore">ignore</a></li>
+                                <li class="sticky-nav__item"><a class="nav-link mono" href="#option-single">single</a></li>
+                                <li class="sticky-nav__item"><a class="nav-link mono" href="#option-watchOptions">watchOptions</a></li>
+                                <li class="sticky-nav__item"><a class="nav-link mono" href="#option-server">server</a></li>
+                                <li class="sticky-nav__item"><a class="nav-link mono" href="#option-proxy">proxy</a></li>
+                                <li class="sticky-nav__item"><a class="nav-link mono" href="#option-port">port</a></li>
+                                <li class="sticky-nav__item"><a class="nav-link mono" href="#option-middleware">middleware</a></li>
+                                <li class="sticky-nav__item"><a class="nav-link mono" href="#option-serveStatic">serveStatic</a></li>
+                                <li class="sticky-nav__item"><a class="nav-link mono" href="#option-serveStaticOptions">serveStaticOptions</a></li>
+                                <li class="sticky-nav__item"><a class="nav-link mono" href="#option-https">https</a></li>
+                                <li class="sticky-nav__item"><a class="nav-link mono" href="#option-httpModule">httpModule</a></li>
+                                <li class="sticky-nav__item"><a class="nav-link mono" href="#option-cwd">cwd</a></li>
+                                <li class="sticky-nav__item"><a class="nav-link mono" href="#option-callbacks">callbacks</a></li>
+                                <li class="sticky-nav__item"><a class="nav-link mono" href="#option-ghostMode">ghostMode</a></li>
+                                <li class="sticky-nav__item"><a class="nav-link mono" href="#option-logLevel">logLevel</a></li>
+                                <li class="sticky-nav__item"><a class="nav-link mono" href="#option-logPrefix">logPrefix</a></li>
+                                <li class="sticky-nav__item"><a class="nav-link mono" href="#option-logConnections">logConnections</a></li>
+                                <li class="sticky-nav__item"><a class="nav-link mono" href="#option-logFileChanges">logFileChanges</a></li>
+                                <li class="sticky-nav__item"><a class="nav-link mono" href="#option-logSnippet">logSnippet</a></li>
+                                <li class="sticky-nav__item"><a class="nav-link mono" href="#option-snippet">snippet</a></li>
+                                <li class="sticky-nav__item"><a class="nav-link mono" href="#option-snippetOptions">snippetOptions</a></li>
+                                <li class="sticky-nav__item"><a class="nav-link mono" href="#option-rewriteRules">rewriteRules</a></li>
+                                <li class="sticky-nav__item"><a class="nav-link mono" href="#option-tunnel">tunnel</a></li>
+                                <li class="sticky-nav__item"><a class="nav-link mono" href="#option-online">online</a></li>
+                                <li class="sticky-nav__item"><a class="nav-link mono" href="#option-open">open</a></li>
+                                <li class="sticky-nav__item"><a class="nav-link mono" href="#option-browser">browser</a></li>
+                                <li class="sticky-nav__item"><a class="nav-link mono" href="#option-cors">cors</a></li>
+                                <li class="sticky-nav__item"><a class="nav-link mono" href="#option-xip">xip</a></li>
+                                <li class="sticky-nav__item"><a class="nav-link mono" href="#option-reloadOnRestart">reloadOnRestart</a></li>
+                                <li class="sticky-nav__item"><a class="nav-link mono" href="#option-notify">notify</a></li>
+                                <li class="sticky-nav__item"><a class="nav-link mono" href="#option-scrollProportionally">scrollProportionally</a></li>
+                                <li class="sticky-nav__item"><a class="nav-link mono" href="#option-scrollThrottle">scrollThrottle</a></li>
+                                <li class="sticky-nav__item"><a class="nav-link mono" href="#option-scrollRestoreTechnique">scrollRestoreTechnique</a></li>
+                                <li class="sticky-nav__item"><a class="nav-link mono" href="#option-scrollElements">scrollElements</a></li>
+                                <li class="sticky-nav__item"><a class="nav-link mono" href="#option-scrollElementMapping">scrollElementMapping</a></li>
+                                <li class="sticky-nav__item"><a class="nav-link mono" href="#option-reloadDelay">reloadDelay</a></li>
+                                <li class="sticky-nav__item"><a class="nav-link mono" href="#option-reloadDebounce">reloadDebounce</a></li>
+                                <li class="sticky-nav__item"><a class="nav-link mono" href="#option-reloadThrottle">reloadThrottle</a></li>
+                                <li class="sticky-nav__item"><a class="nav-link mono" href="#option-plugins">plugins</a></li>
+                                <li class="sticky-nav__item"><a class="nav-link mono" href="#option-injectChanges">injectChanges</a></li>
+                                <li class="sticky-nav__item"><a class="nav-link mono" href="#option-startPath">startPath</a></li>
+                                <li class="sticky-nav__item"><a class="nav-link mono" href="#option-minify">minify</a></li>
+                                <li class="sticky-nav__item"><a class="nav-link mono" href="#option-host">host</a></li>
+                                <li class="sticky-nav__item"><a class="nav-link mono" href="#option-listen">listen</a></li>
+                                <li class="sticky-nav__item"><a class="nav-link mono" href="#option-localOnly">localOnly</a></li>
+                                <li class="sticky-nav__item"><a class="nav-link mono" href="#option-codeSync">codeSync</a></li>
+                                <li class="sticky-nav__item"><a class="nav-link mono" href="#option-timestamps">timestamps</a></li>
+                                <li class="sticky-nav__item"><a class="nav-link mono" href="#option-scriptPath">scriptPath</a></li>
+                                <li class="sticky-nav__item"><a class="nav-link mono" href="#option-socket">socket</a></li>
+                                <li class="sticky-nav__item"><a class="nav-link mono" href="#option-script">script</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </article>
+    </div>
+
+    </section>
+
+
+</div>
+
+<footer class="wrapper signup" role="contentinfo">
+    <div class="container">
+        <p class="signup__title">Reach out on Twitter or Github</p>
+        <div class="signup__links">
+            <a href="https://twitter.com/browsersync" title="@Browsersync on Twitter"><svg class="svg-icon "><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/img/icons/icons.svg#svg-twitter"></use></svg>
+</a>
+            <a href="https://github.com/Browsersync/browser-sync" title="Browsersync on Github"><svg class="svg-icon "><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/img/icons/icons.svg#svg-github"></use></svg>
+</a>
+        </div>
+    </div>
+</footer><!-- end .site-footer -->
+
+<div class="credit">
+    <div class="container">
+        <nav>
+            <ul class="site-nav">
+                <li class="nav__item "><a href="/docs" class="nav-link">Documentation</a></li>
+                <li class="nav__item "><a href="/brand-assets" class="nav-link">Brand Assets</a></li>
+            </ul>
+        </nav>
+    </div>
+</div>
+<div class="credit">
+    <div class="container">
+        <p class="prev"><small>Previously supported by <a href="https://wearejh.com/">JH</a></small></p>
+    </div>
+</div>
+
+<script src="/js/app.min.js"></script>
+
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Titillium+Web:400,400italic,700">
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script>
+    <script type="text/javascript">
+    docsearch({
+        apiKey: 'a5c2ad2440b6b5c621ecff9023de9154',
+        indexName: 'browsersync',
+        inputSelector: '#search-input',
+        debug: false // Set debug to true if you want to inspect the dropdown
+    });
+    </script>
+
+
+</body>
+</html>

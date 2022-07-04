@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+    <html xmlns="http://www.w3.org/1999/xhtml" ng-app="AWSDocsDocPageApp"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Amazon SQS visibility timeout - Amazon Simple Queue Service</title><meta name="viewport" content="width=device-width,initial-scale=1" /><meta name="assets_root" content="/assets" /><meta name="target_state" content="sqs-visibility-timeout" /><meta name="default_state" content="sqs-visibility-timeout" /><link rel="icon" type="image/ico" href="/assets/images/favicon.ico" /><link rel="shortcut icon" type="image/ico" href="/assets/images/favicon.ico" /><link rel="canonical" href="https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-visibility-timeout.html" /><meta name="description" content="Learn about the visibility timeout, which Amazon SQS uses to prevent consumers from processing a message a second time." /><meta name="deployment_region" content="IAD" /><meta name="product" content="Amazon Simple Queue Service" /><meta name="guide" content="Developer Guide" /><meta name="abstract" content="Queue messages that one component in the application generates to be consumed by another component using Amazon SQS." /><meta name="guide-locale" content="en_us" /><meta name="tocs" content="toc-contents.json" /><meta name="feedback-item" content="SQS" /><meta name="this_doc_product" content="Amazon Simple Queue Service" /><meta name="this_doc_guide" content="Developer Guide" /><link href="/assets/css/vendor4.css?version=2021.12.02" rel="stylesheet" /><link href="/assets/css/awsdocs-common.css?version=2021.12.02" rel="stylesheet" /><script type="text/javascript" src="/assets/js/vendor3.js?version=2021.12.02" defer=""></script><script type="text/javascript" src="/assets/js/vendor4.js?version=2021.12.02" defer=""></script><script type="text/javascript" src="/assets/js/vendor1.js?version=2021.12.02" defer=""></script><script type="text/javascript" src="/assets/js/awsdocs-common.js?version=2021.12.02" defer=""></script><script type="text/javascript" src="/assets/js/awsdocs-doc-app.js?version=2021.12.02" defer=""></script></head><body ng-csp="no-unsafe-eval" class="awsdocs awsui"><div class="awsdocs-container"><awsdocs-header></awsdocs-header><awsui-app-layout id="app-layout" class="awsui-util-no-gutters" ng-controller="ContentController as $ctrl" header-selector="awsdocs-header" navigation-hide="false" navigation-width="$ctrl.navWidth" navigation-open="$ctrl.navOpen" navigation-change="$ctrl.onNavChange($event)" tools-hide="$ctrl.hideTools" tools-width="$ctrl.toolsWidth" tools-open="$ctrl.toolsOpen" tools-change="$ctrl.onToolsChange($event)"><div id="guide-toc" dom-region="navigation"><awsdocs-toc></awsdocs-toc></div><div id="main-column" dom-region="content" tabindex="-1"><awsdocs-view class="awsdocs-view"><div id="awsdocs-content"><head><title>Amazon SQS visibility timeout - Amazon Simple Queue Service</title><meta name="pdf" content="sqs-dg.pdf#sqs-visibility-timeout" /><meta name="kindle" content="https://www.amazon.com/dp/B07644Y214" /><meta name="github" content="https://github.com/awsdocs/amazon-sqs-developer-guide/tree/main/doc_source/sqs-visibility-timeout.md" /><meta name="rss" content="recent-updates.rss" /><meta name="forums" content="http://forums.aws.amazon.com/forum.jspa?forumID=12" /><meta name="feedback" content="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=SQS&amp;topic_url=http://docs.aws.amazon.com/en_us/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-visibility-timeout.html" /><meta name="feedback-yes" content="feedbackyes.html?topic_url=http://docs.aws.amazon.com/en_us/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-visibility-timeout.html" /><meta name="feedback-no" content="feedbackno.html?topic_url=http://docs.aws.amazon.com/en_us/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-visibility-timeout.html" /></head><body><div id="main"><div style="display: none"><a href="sqs-dg.pdf#sqs-visibility-timeout" target="_blank" rel="noopener noreferrer" title="Open PDF"></a><a target="_blank" rel="noopener noreferrer" href="https://www.amazon.com/dp/B07644Y214" title="Open Kindle"></a><a href="https://github.com/awsdocs/amazon-sqs-developer-guide/tree/main/doc_source/sqs-visibility-timeout.md" target="_blank" rel="noopener noreferrer" title="Edit this page on GitHub"></a></div><div id="breadcrumbs" class="breadcrumb"><a href="http://aws.amazon.com">AWS</a><a href="/index.html">Documentation</a><a href="/sqs/index.html">Amazon Simple Queue Service</a><a href="welcome.html">Developer Guide</a></div><div id="page-toc-src"><a href="#inflight-messages">Inflight messages</a><a href="#configuring-visibility-timeout">Setting the visibility timeout</a><a href="#changing-message-visibility-timeout">Changing the visibility timeout for a message</a><a href="#terminating-message-visibility-timeout">Terminating the visibility timeout for a message</a></div><div id="main-content" class="awsui-util-container"><div id="main-col-body"><awsdocs-language-banner data-service="$ctrl.pageService"></awsdocs-language-banner><h1 class="topictitle" id="sqs-visibility-timeout">Amazon SQS visibility timeout</h1><div class="awsdocs-page-header-container"><awsdocs-page-header></awsdocs-page-header><awsdocs-filter-selector id="awsdocs-filter-selector"></awsdocs-filter-selector></div><p>When a consumer receives and processes a message from a queue, the message remains in the
+            queue. Amazon SQS doesn't automatically delete the message. Because Amazon SQS is a distributed
+            system, there's no guarantee that the consumer actually receives the message (for
+            example, due to a connectivity issue, or due to an issue in the consumer application).
+            Thus, the consumer must delete the message from the queue after receiving and processing
+            it.</p><div class="mediaobject">
+	         
+	            <img src="images/sqs-visibility-timeout-diagram.png" class="aws-docs-img-whiteBg aws-docs-img-padding" alt="&#xA;&#x9;            Visibility Timeout&#xA;&#x9;        " style="max-width:100%" />
+	         
+	         
+	    </div><p>Immediately after a message is received, it remains in the queue. To prevent other consumers from processing
+    the message again, Amazon SQS sets a <em>visibility timeout</em>, a period of time during which Amazon SQS prevents other consumers from receiving
+    and processing the message. The default visibility timeout for a message is 30 seconds. The minimum is 0 seconds. The maximum is 12 hours.
+            For information about configuring visibility timeout for a queue using the console, see
+            <a href="./sqs-configure-queue-parameters.html">Configuring queue parameters (console)</a>.</p><div class="awsdocs-note"><div class="awsdocs-note-title"><awsui-icon name="status-info" variant="link"></awsui-icon><span>Note</span></div><div class="awsdocs-note-text"><p>For standard queues, the visibility timeout isn't a guarantee against receiving a message
+                twice. For more information, see <a href="./standard-queues.html#standard-queues-at-least-once-delivery">At-least-once delivery</a>.</p><p>FIFO queues allow the producer or consumer to attempt multiple retries:</p><div class="itemizedlist">
+		             
+		             
+		             
+		        <ul class="itemizedlist" type="disc"><li class="listitem">
+		              <p>If the producer detects a failed <code class="code">SendMessage</code> action, it can retry sending as
+		                many times as necessary, using the same message deduplication ID. Assuming
+		                that the producer receives at least one acknowledgement before the
+		                deduplication interval expires, multiple retries neither affect the ordering
+		                of messages nor introduce duplicates.</p>
+		            </li><li class="listitem">
+		              <p>If the consumer detects a failed <code class="code">ReceiveMessage</code> action, it can retry as many
+		                times as necessary, using the same receive request attempt ID. Assuming that
+		                the consumer receives at least one acknowledgement before the visibility
+		                timeout expires, multiple retries don't affect the ordering of
+		                messages.</p>
+		            </li><li class="listitem">
+		              <p>When you receive a message with a message group ID, no more messages for the same
+		                message group ID are returned unless you delete the message or it becomes visible.</p>
+		            </li></ul></div></div></div><div class="highlights" id="inline-topiclist"><p><strong>Topics</strong></p><ul><li><a href="#inflight-messages">Inflight messages</a></li><li><a href="#configuring-visibility-timeout">Setting the visibility timeout</a></li><li><a href="#changing-message-visibility-timeout">Changing the visibility timeout for a message</a></li><li><a href="#terminating-message-visibility-timeout">Terminating the visibility timeout for a message</a></li></ul></div>
+            <h2 id="inflight-messages">Inflight messages</h2>
+            <p>An Amazon SQS message has three basic states:</p><div class="orderedlist">
+         
+         
+         
+    <ol><li>
+            <p>Sent to a queue by a producer.</p>
+        </li><li>
+            <p>Received from the queue by a consumer.</p>
+        </li><li>
+            <p>Deleted from the queue.</p>
+        </li></ol></div><p>A message is considered to be <em>stored</em> after it is sent to a queue by a producer, but not yet received from the queue by a consumer (that is, between states 1 and 2). There is no quota to the number of stored messages.
+    A message is considered to be <em>in flight</em> after it is received from a queue by a consumer, but not yet deleted from the queue (that is, between states 2 and 3). There is a quota to the number of inflight messages.</p><div class="awsdocs-note awsdocs-important"><div class="awsdocs-note-title"><awsui-icon name="status-warning" variant="error"></awsui-icon><span>Important</span></div><div class="awsdocs-note-text"><p>Quotas that apply to inflight messages are unrelated to the <em>unlimited</em> number of stored messages.</p></div></div><p>For most standard queues (depending on queue traffic and message backlog), there can be a maximum of approximately 120,000 inflight messages (received from a queue by a consumer, but not yet deleted from the queue).
+    If you reach this quota while using <a href="./sqs-short-and-long-polling.html#sqs-short-polling">short polling</a>, Amazon SQS returns the <code class="code">OverLimit</code> error message. If you use <a href="./sqs-short-and-long-polling.html#sqs-long-polling">long polling</a>, Amazon SQS returns no error messages.
+    To avoid reaching the quota, you should delete messages from the queue after they're processed. You can also increase the number of queues you use to process your messages.
+    To request a quota increase, <a href="https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&amp;limitType=service-code-sqs" rel="noopener noreferrer" target="_blank"><span>submit a support request</span><awsui-icon class="awsdocs-link-icon" name="external"></awsui-icon></a>.</p><p>For FIFO queues, there can be a maximum of 20,000 inflight messages (received from a queue by a consumer, but not yet deleted from the queue). If you reach this quota, Amazon SQS returns no error messages.</p>
+	        <div class="awsdocs-note awsdocs-important"><div class="awsdocs-note-title"><awsui-icon name="status-warning" variant="error"></awsui-icon><span>Important</span></div><div class="awsdocs-note-text"><p>When working with FIFO queues, <code class="code">DeleteMessage</code> operations will fail if the request is received outside of the visibility timeout window. 
+	            If the visibility timeout is 0 seconds, the message must be deleted within the same millisecond it was sent, or it is considered abandoned. 
+	            This can cause Amazon SQS to include duplicate messages in the same response to a <code class="code">ReceiveMessage</code> operation if the <code class="code">MaxNumberOfMessages</code> 
+	            parameter is greater than 1. For additional details see <a href="http://aws.amazon.com/blogs/developer/how-the-amazon-sqs-fifo-api-works/" rel="noopener noreferrer" target="_blank"><span>How the Amazon SQS FIFO API Works</span><awsui-icon class="awsdocs-link-icon" name="external"></awsui-icon></a>.</p></div></div>
+         
+            <h2 id="configuring-visibility-timeout">Setting the visibility timeout</h2>
+    		<p>The visibility timeout begins when Amazon SQS returns a message. During this time, the
+                consumer processes and deletes the message. However, if the consumer fails before
+                deleting the message and your system doesn't call the <code class="code"><a href="https://docs.aws.amazon.com/AWSSimpleQueueService/latest/APIReference/API_DeleteMessage.html">DeleteMessage</a></code>
+                action for that message before the visibility timeout expires, the message becomes
+                visible to other consumers and the message is received again. If a message must be
+                received only once, your consumer should delete it within the duration of the
+                visibility timeout.</p>
+    		<p>Every Amazon SQS queue has the default visibility timeout setting of 30 seconds. You can
+                change this setting for the entire queue. Typically, you should set the visibility
+                timeout to the maximum time that it takes your application to process and delete a
+                message from the queue. When receiving messages, you can also set a special
+                visibility timeout for the returned messages without changing the overall queue
+                timeout. For more information, see the best practices in the <a href="./working-with-messages.html#processing-messages-timely-manner">Processing messages in a timely manner</a> section.</p>
+    		    <p>If you don't know how long it takes to process a message, create a <em>heartbeat</em> for your consumer
+    process: Specify the initial visibility timeout (for example, 2 minutes) and then—as long as your consumer still works on the message—keep
+    extending the visibility timeout by 2 minutes every minute. </p> <div class="awsdocs-note awsdocs-important"><div class="awsdocs-note-title"><awsui-icon name="status-warning" variant="error"></awsui-icon><span>Important</span></div><div class="awsdocs-note-text"><p>The maximum visibility timeout is 12 hours from the time that Amazon SQS receives the <code class="code">ReceiveMessage</code> request.
+    Extending the visibility timeout does not reset the 12 hour maximum.</p><p>Additionally, you may be unable to set the timeout on an individual message to the full 12 hours (e.g. 43,200 seconds) since the <code class="code">ReceiveMessage</code> 
+    request initiates the timer. For example, if you receive a message and immediately set the 12 hour maximum by sending a <code class="code">ChangeMessageVisibility</code> call with <code class="code">VisibilityTimeout</code> equal to 43,200 seconds, it will likely fail. 
+    However, using a value of 43,195 seconds will work unless there is a significant delay between requesting the message via <code class="code">ReceiveMessage</code> and updating the visibility timeout. If your consumer needs longer than 12 hours, consider using Step Functions.
+    </p></div></div>
+    		     
+		 
+            <h2 id="changing-message-visibility-timeout">Changing the visibility timeout for a message</h2>
+			<p>When you receive a message from a queue and begin to process it, the visibility timeout for
+                the queue may be insufficient (for example, you might need to process and delete a
+                message). You can shorten or extend a message's visibility by specifying a new
+                timeout value using the <code class="code"><a href="https://docs.aws.amazon.com/AWSSimpleQueueService/latest/APIReference/API_ChangeMessageVisibility.html">ChangeMessageVisibility</a></code> action.</p>
+			<p>For example, if the default timeout for a queue is 60 seconds, 15 seconds have elapsed
+                since you received the message, and you send a <code class="code">ChangeMessageVisibility</code>
+                call with <code class="code">VisibilityTimeout</code> set to 10 seconds, the 10 seconds begin to
+                count from the time that you make the <code class="code">ChangeMessageVisibility</code> call.
+                Thus, any attempt to change the visibility timeout or to delete that message 10
+                seconds after you initially change the visibility timeout (a total of 25 seconds)
+                might result in an error.</p>
+			<div class="awsdocs-note"><div class="awsdocs-note-title"><awsui-icon name="status-info" variant="link"></awsui-icon><span>Note</span></div><div class="awsdocs-note-text"><p>The new timeout period takes effect from the time you call the
+                        <code class="code">ChangeMessageVisibility</code> action. In addition, the new
+                    timeout period applies only to the particular receipt of the message.
+                        <code class="code">ChangeMessageVisibility</code> doesn't affect the timeout of later
+                    receipts of the message or later queues.</p></div></div>
+			 
+            <h2 id="terminating-message-visibility-timeout">Terminating the visibility timeout for a message</h2>
+			<p>When you receive a message from a queue, you might find that you actually don't want to
+				process and delete that message. Amazon SQS allows you to terminate the visibility
+				timeout for a specific message. This makes the message immediately visible to other
+				components in the system and available for processing. </p>
+			<p>To terminate a message's visibility timeout after calling
+					<code class="code">ReceiveMessage</code>, call <a href="https://docs.aws.amazon.com/AWSSimpleQueueService/latest/APIReference/API_ChangeMessageVisibility.html"><code class="code">ChangeMessageVisibility</code></a> with
+					<code class="code">VisibilityTimeout</code> set to 0 seconds. </p>
+		<awsdocs-copyright class="copyright-print"></awsdocs-copyright><awsdocs-thumb-feedback right-edge="{{$ctrl.thumbFeedbackRightEdge}}"></awsdocs-thumb-feedback></div><noscript><div><div><div><div id="js_error_message"><p><img src="https://d1ge0kk1l5kms0.cloudfront.net/images/G/01/webservices/console/warning.png" alt="Warning" /> <strong>Javascript is disabled or is unavailable in your browser.</strong></p><p>To use the Amazon Web Services Documentation, Javascript must be enabled. Please refer to your browser's Help pages for instructions.</p></div></div></div></div></noscript><div id="main-col-footer" class="awsui-util-font-size-0"><div id="doc-conventions"><a target="_top" href="/general/latest/gr/docconventions.html">Document Conventions</a></div><div class="prev-next"><div id="previous" class="prev-link" accesskey="p" href="./sqs-dead-letter-queues.html">Dead-letter queues</div><div id="next" class="next-link" accesskey="n" href="./sqs-delay-queues.html">Delay queues</div></div></div><awsdocs-page-utilities></awsdocs-page-utilities></div><div id="quick-feedback-yes" style="display: none;"><div class="title">Did this page help you? - Yes</div><div class="content"><p>Thanks for letting us know we're doing a good job!</p><p>If you've got a moment, please tell us what we did right so we can do more of it.</p><p><awsui-button id="fblink" target="_blank" text="Feedback" click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=SQS&amp;topic_url=https://docs.aws.amazon.com/en_us/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-visibility-timeout.html"></awsui-button></p></div></div><div id="quick-feedback-no" style="display: none;"><div class="title">Did this page help you? - No</div><div class="content"><p>Thanks for letting us know this page needs work. We're sorry we let you down.</p><p>If you've got a moment, please tell us how we can make the documentation better.</p><p><awsui-button id="fblink" target="_blank" text="Feedback" click="linkClick($event)" href="https://docs.aws.amazon.com/forms/aws-doc-feedback?hidden_service_name=SQS&amp;topic_url=https://docs.aws.amazon.com/en_us/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-visibility-timeout.html"></awsui-button></p></div></div></div></body></div></awsdocs-view><div class="page-loading-indicator" id="page-loading-indicator"><awsui-spinner size="large"></awsui-spinner></div></div><div id="tools-panel" dom-region="tools"><awsdocs-tools-panel id="awsdocs-tools-panel"></awsdocs-tools-panel></div></awsui-app-layout><awsdocs-cookie-banner class="doc-cookie-banner"></awsdocs-cookie-banner></div></body></html>
